@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>predefined &mdash; anaphora UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="anaphora UNRELEASED documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="predefined">
+<h1>predefined<a class="headerlink" href="#predefined" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div>Preprocessor macros predefined by the parser.</div></blockquote>
+<div class="section" id="description">
+<h2>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Several preprocessor macros are pre-<code class="docutils literal"><span class="pre">#defined</span></code> by the parser to provide
+information about parser version, compile time options and parser invocation
+options:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Macro</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>LPC3</td>
+<td>always defined.</td>
+</tr>
+<tr class="row-odd"><td>__LDMUD__</td>
+<td>always defined.</td>
+</tr>
+<tr class="row-even"><td>__EUIDS__</td>
+<td>always (for compatibility).</td>
+</tr>
+<tr class="row-odd"><td>COMPAT_FLAG</td>
+<td>defined if the driver runs in compat mode.</td>
+</tr>
+<tr class="row-even"><td>__COMPAT_MODE__</td>
+<td>ditto</td>
+</tr>
+<tr class="row-odd"><td>__STRICT_EUIDS__</td>
+<td>defined if strict euid usage is enforced.</td>
+</tr>
+<tr class="row-even"><td>__FILENAME_SPACES__</td>
+<td>defined if filenames may contain spaces.</td>
+</tr>
+<tr class="row-odd"><td>__MASTER_OBJECT__</td>
+<td>the name of the master object (in compat mode
+without leading &#8216;/&#8217;).</td>
+</tr>
+<tr class="row-even"><td>__FILE__</td>
+<td>the name of the compiled file (in compat
+mode without leading &#8216;/&#8217;).</td>
+</tr>
+<tr class="row-odd"><td>__LINE__</td>
+<td>the current line number.</td>
+</tr>
+<tr class="row-even"><td>__FUNCTION__</td>
+<td>the current function name.</td>
+</tr>
+<tr class="row-odd"><td>__DIR__</td>
+<td>the directory path of the compiled file
+(in compat mode without leading &#8216;/&#8217;).</td>
+</tr>
+<tr class="row-even"><td>__PATH__(n)</td>
+<td>the directory path of the compiled file
+without the &lt;n&gt; trailing elements (in
+compat mode without leading &#8216;/&#8217;).</td>
+</tr>
+<tr class="row-odd"><td>__VERSION__</td>
+<td>the version string of the driver.</td>
+</tr>
+<tr class="row-even"><td>__VERSION_MAJOR__</td>
+<td>the major version number of the driver.</td>
+</tr>
+<tr class="row-odd"><td>__VERSION_MINOR__</td>
+<td>the minor version number of the driver.</td>
+</tr>
+<tr class="row-even"><td>__VERSION_MICRO__</td>
+<td>the micro version number of the driver.</td>
+</tr>
+<tr class="row-odd"><td>__VERSION_PATCH__</td>
+<td>the patchlevel of the driver; a 0 here
+means &#8216;no patchlevel&#8217;.</td>
+</tr>
+<tr class="row-even"><td>__VERSION_COMMITID__</td>
+<td>the commit ID of the source of the driver
+(attention it might be &lt;unknown&gt;, if the
+driver was not compiled from a git
+repository)</td>
+</tr>
+<tr class="row-odd"><td>__VERSION_LOCAL__</td>
+<td>the (optional) LOCAL_LEVEL, the user has
+defined.</td>
+</tr>
+<tr class="row-even"><td>__DOMAIN_NAME__</td>
+<td>the domain the host is part of.</td>
+</tr>
+<tr class="row-odd"><td>__HOST_IP_NUMBER__</td>
+<td>the hosts IP number (as a string).</td>
+</tr>
+<tr class="row-even"><td>__HOST_NAME__</td>
+<td>the full hostname.</td>
+</tr>
+<tr class="row-odd"><td>__MAX_RECURSION__</td>
+<td>the max count of nested function calls
+(this is config.h:MAX_USER_TRACE).</td>
+</tr>
+<tr class="row-even"><td>__MAX_EVAL_COST__</td>
+<td>the max evaluation cost.</td>
+</tr>
+<tr class="row-odd"><td>__RESET_TIME__</td>
+<td>default interval time between object
+resets.</td>
+</tr>
+<tr class="row-even"><td>__CLEANUP_TIME__</td>
+<td>default interval time between object
+cleanups.</td>
+</tr>
+<tr class="row-odd"><td>__ALARM_TIME__</td>
+<td>the configured timing granularity.</td>
+</tr>
+<tr class="row-even"><td>__HEART_BEAT_INTERVAL__</td>
+<td>the configured heartbeat time.</td>
+</tr>
+<tr class="row-odd"><td>__SYNCHRONOUS_HEART_BEAT__</td>
+<td>defined if synchronous heartbeats are
+enabled.</td>
+</tr>
+<tr class="row-even"><td>__MAX_COMMAND_LENGTH__</td>
+<td>the maximum length a command can have.</td>
+</tr>
+<tr class="row-odd"><td>__EFUN_DEFINED__(name)</td>
+<td>if the efun &#8216;name&#8217; exists, this
+macro evaluates to &#8221; 1 &#8221;, else to &#8221; 0 &#8221;.</td>
+</tr>
+<tr class="row-even"><td>__DRIVER_LOG__</td>
+<td>the name of the default debug.log file
+(within the mudlib); undefined if a
+different name has been specified on the
+commandline.</td>
+</tr>
+<tr class="row-odd"><td>__WIZLIST__</td>
+<td>the name of the (mudlib) file from where
+the driver read the initial WIZLIST
+information. It is undefined if the driver
+was configured to not read the
+information.</td>
+</tr>
+<tr class="row-even"><td>__MAX_MALLOC__</td>
+<td>the internal upper limit for total memory
+usage.</td>
+</tr>
+<tr class="row-odd"><td>__INT_MAX__</td>
+<td>the largest integer number.</td>
+</tr>
+<tr class="row-even"><td>__INT_MIN__</td>
+<td>the smallest integer number.</td>
+</tr>
+<tr class="row-odd"><td>__FLOAT_MAX__</td>
+<td>the largest (positive) float number.</td>
+</tr>
+<tr class="row-even"><td>__FLOAT_MIN__</td>
+<td>the smallest (positive) float number.</td>
+</tr>
+<tr class="row-odd"><td>__LPC_NOSAVE__</td>
+<td>always defined.</td>
+</tr>
+<tr class="row-even"><td>__LPC_STRUCTS__</td>
+<td>always defined.</td>
+</tr>
+<tr class="row-odd"><td>__LPC_INLINE_CLOSURES__</td>
+<td>always defined.</td>
+</tr>
+<tr class="row-even"><td>__LPC_ARRAY_CALLS__</td>
+<td>always defined.</td>
+</tr>
+<tr class="row-odd"><td>__BOOT_TIME__</td>
+<td>the time() the driver was started.</td>
+</tr>
+</tbody>
+</table>
+<p>If the ERQ is supported, the following macros are defined:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Macro</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>__ERQ_MAX_SEND__</td>
+<td>the max size of the send buffer.</td>
+</tr>
+<tr class="row-odd"><td>__ERQ_MAX_REPLY__</td>
+<td>the max size of the reply buffer.</td>
+</tr>
+</tbody>
+</table>
+<p>The following macros are defined if their associated package
+has been compiled into the driver:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Macro</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>__IDNA__</td>
+<td>support for IDNA.</td>
+</tr>
+<tr class="row-odd"><td>__IPV6__</td>
+<td>support for IP v.6.</td>
+</tr>
+<tr class="row-even"><td>__MYSQL__</td>
+<td>support for mySQL.</td>
+</tr>
+<tr class="row-odd"><td>__PGSQL__</td>
+<td>support for PostgreSQL.</td>
+</tr>
+<tr class="row-even"><td>__SQLITE__</td>
+<td>support for SQLite 3.</td>
+</tr>
+<tr class="row-odd"><td>__XML_DOM__</td>
+<td>support for XML parsing.</td>
+</tr>
+<tr class="row-even"><td>__MCCP__</td>
+<td>support for MCCP.
+<a class="reference external" href="http://www.randomly.org/projects/MCCP">http://www.randomly.org/projects/MCCP</a></td>
+</tr>
+<tr class="row-odd"><td>__ALISTS__</td>
+<td>support for alists.</td>
+</tr>
+<tr class="row-even"><td>__PCRE__</td>
+<td>support for PCRE (always defined).</td>
+</tr>
+<tr class="row-odd"><td>__TLS__</td>
+<td>support for TLS (internal).</td>
+</tr>
+<tr class="row-even"><td>__GNUTLS__</td>
+<td>if __TLS__: TLS support provided by GnuTLS.</td>
+</tr>
+<tr class="row-odd"><td>__OPENSSL__</td>
+<td>if __TLS__: TLS support provided by OpenSSL.</td>
+</tr>
+<tr class="row-even"><td>__GCRYPT__</td>
+<td>cryptographic routines provided by libgcrypt.</td>
+</tr>
+<tr class="row-odd"><td>__DEPRECATED__</td>
+<td>support for obsolete and deprecated efuns.</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="history">
+<h2>HISTORY<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">3.2.1:</th><td class="field-body">added __DOMAIN_NAME__, __HOST_IP_NUMBER__, __HOST_NAME__,
+__MAX_RECURSION__, __EFUN_DEFINED__().</td>
+</tr>
+<tr class="field-even field"><th class="field-name">3.2.5:</th><td class="field-body">added __COMPAT_MODE__, __NATIVE_MODE__, __EUIDS__,
+__ERQ_MAX_SEND__ and __ERQ_MAX_REPLY__.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">3.2.6:</th><td class="field-body">added __MAX_EVAL_COST__.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">3.2.7:</th><td class="field-body">added __STRICT_EUIDS__ and made __EUIDS__ standard.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">3.2.8:</th><td class="field-body">added __IPV6__, __LPC_NOSAVE__, __DIR__, __PATH__().</td>
+</tr>
+<tr class="field-even field"><th class="field-name">3.2.9:</th><td class="field-body">added __LDMUD__, __MYSQL__, __DEPRECATED__, __VERSION_MAJOR__,
+__VERSION_MINOR__, __VERSION_MICRO__, __VERSION_PATCH__,
+__INT_MAX__, __INT_MIN__, __FLOAT_MIN__, __FLOAT_MAX__,
+__CATCH_EVAL_COST__, __MASTER_EVAL_COST__, __RESET_TIME__,
+__CLEANUP_TIME__, __DRIVER_LOG__, and __WIZLIST__.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">3.2.10:</th><td class="field-body">added __MAX_MALLOC__, __MSDOS_FS__, __LPC_ARRAY_CALLS__
+and __FILENAME_SPACES__.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">3.3:</th><td class="field-body">made __LPC_NOSAVE__ always defined and added __ALISTS__,
+__MCCP__, __LPC_STRUCTS__, __LPC_INLINE_CLOSURES__, __PGSQL__,
+__PTHREADS__, __TLS__, __BOOT_TIME__, __ALARM_TIME__,
+__HEART_BEAT_INTERVAL__, __SYNCHRONOUS_HEART_BEAT__, and __PCRE__.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">3.3.713:</th><td class="field-body">added __IDNA__, __SQLITE__.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">3.3.714:</th><td class="field-body">added __OPENSSL__, __GNUTLS__.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">3.3.718:</th><td class="field-body">added __XML_DOM__.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">3.3.719:</th><td class="field-body">removed __PTHREADS__, AMIGA, MSDOS_FS, __BEOS__
+and added __GCRYPT__.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">3.3.721:</th><td class="field-body">added __FUNCTION__.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">3.5.0:</th><td class="field-body">changed __LPC_STRUCTS__, __LPC_INLINE_CLOSURES__,
+__LPC_ARRAY_CALLS__ to be always on.
+removed __ALISTS__</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="see-also">
+<h2>SEE ALSO<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><cite>pragma</cite>, <cite>preprocessor</cite></div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">predefined</a><ul>
+<li><a class="reference internal" href="#description">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#history">HISTORY</a></li>
+<li><a class="reference internal" href="#see-also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/predefined.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Travis A. Everett.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/predefined.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
