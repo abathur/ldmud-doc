@@ -1,0 +1,126 @@
+
+HISTORY
+*******
+
+   LDMud 3.2.6
+      Introduced
+   LDMud 3.2.7
+      new basic result OIB_REPLACED.
+      basic result OIB_IS_WIZARD is always 0 if set_is_wizard()
+      is not available.
+      basic result OIB_APPROVED is gone.
+   LDMud 3.2.8
+      added OIM_DATA_SIZE to the result of OINFO_MEMORY.
+   LDMud 3.2.9
+      added the index mechanism, OIM_NUM_INCLUDES,
+      OIM_NO_INHERIT, OIM_NO_SHADOW, OIM_NO_CLONE, OIM_SIZE_STRINGS_DATA,
+      OIM_SIZE_STRINGS_TOTAL, and OIM_DATA_SIZE_TOTAL to the result
+      of OINFO_MEMORY.
+   LDMud 3.3.378
+      added the OIM_SHARE_VARIABLES to the result
+      of OINFO_MEMORY.
+   LDMud 3.3.654
+      added the OIB_NEXT_CLEANUP to the result of OINFO_BASIC.
+
+======================================================================
+
++---------+-----------------------------------------------------------------------+
+| LDMud   | Change                                                                |
++=========+=======================================================================+
+| 3.2.6   | Introduced                                                            |
++---------+-----------------------------------------------------------------------+
+| 3.2.7   | * new basic result OIB_REPLACED.  * basic result OIB_IS_WIZARD is     |
+|         | always 0 if set_is_wizard() is not available.  * basic result         |
+|         | OIB_APPROVED is gone.                                                 |
++---------+-----------------------------------------------------------------------+
+| 3.2.8   | added OIM_DATA_SIZE to the result of OINFO_MEMORY.                    |
++---------+-----------------------------------------------------------------------+
+| 3.2.9   | added the index mechanism, OIM_NUM_INCLUDES, OIM_NO_INHERIT,          |
+|         | OIM_NO_SHADOW, OIM_NO_CLONE, OIM_SIZE_STRINGS_DATA,                   |
+|         | OIM_SIZE_STRINGS_TOTAL, and OIM_DATA_SIZE_TOTAL to the result of      |
+|         | OINFO_MEMORY.                                                         |
++---------+-----------------------------------------------------------------------+
+| 3.3.378 | added the OIM_SHARE_VARIABLES to the result of OINFO_MEMORY.          |
++---------+-----------------------------------------------------------------------+
+| 3.3.654 | added the OIB_NEXT_CLEANUP to the result of OINFO_BASIC.              |
++---------+-----------------------------------------------------------------------+
+
+======================================================================
+
+3.2.6:
+   Introduced
+
+3.2.7:
+   * new basic result OIB_REPLACED.
+
+   * basic result OIB_IS_WIZARD is always 0 if set_is_wizard() is
+     not available.
+
+   * basic result OIB_APPROVED is gone.
+
+3.2.8:
+   added OIM_DATA_SIZE to the result of OINFO_MEMORY.
+
+3.2.9:
+   added the index mechanism, OIM_NUM_INCLUDES, OIM_NO_INHERIT,
+   OIM_NO_SHADOW, OIM_NO_CLONE, OIM_SIZE_STRINGS_DATA,
+   OIM_SIZE_STRINGS_TOTAL, and OIM_DATA_SIZE_TOTAL to the result of
+   OINFO_MEMORY.
+
+3.3.378:
+   added the OIM_SHARE_VARIABLES to the result of OINFO_MEMORY.
+
+3.3.654:
+   added the OIB_NEXT_CLEANUP to the result of OINFO_BASIC.
+
+======================================================================
+
+LDMud 3.2.6
+   Introduced
+
+LDMud 3.2.7
+   * new basic result OIB_REPLACED.
+
+   * basic result OIB_IS_WIZARD is always 0 if set_is_wizard() is
+     not available.
+
+   * basic result OIB_APPROVED is gone.
+
+LDMud 3.2.8
+   added OIM_DATA_SIZE to the result of OINFO_MEMORY.
+
+LDMud 3.2.9
+   added the index mechanism, OIM_NUM_INCLUDES, OIM_NO_INHERIT,
+   OIM_NO_SHADOW, OIM_NO_CLONE, OIM_SIZE_STRINGS_DATA,
+   OIM_SIZE_STRINGS_TOTAL, and OIM_DATA_SIZE_TOTAL to the result of
+   OINFO_MEMORY.
+
+LDMud 3.3.378
+   added the OIM_SHARE_VARIABLES to the result of OINFO_MEMORY.
+
+LDMud 3.3.654
+   added the OIB_NEXT_CLEANUP to the result of OINFO_BASIC.
+
+======================================================================
+
+New in version 3.2.6.
+
+Changed in version 3.2.7: new basic result OIB_REPLACED, basic result
+OIB_IS_WIZARD is always 0 if set_is_wizard() is not available, basic
+result OIB_APPROVED is gone.
+
+Changed in version 3.2.8: added OIM_DATA_SIZE to the result of
+OINFO_MEMORY.
+
+Changed in version 3.2.9: added the index mechanism, OIM_NUM_INCLUDES,
+OIM_NO_INHERIT, OIM_NO_SHADOW, OIM_NO_CLONE, OIM_SIZE_STRINGS_DATA,
+OIM_SIZE_STRINGS_TOTAL, and OIM_DATA_SIZE_TOTAL to the result of
+OINFO_MEMORY.
+
+Changed in version 3.3.378: added the OIM_SHARE_VARIABLES to the
+result of OINFO_MEMORY.
+
+Changed in version 3.3.654: added the OIB_NEXT_CLEANUP to the result
+of OINFO_BASIC.
+
+Deprecated since version 10.0.0: just kidding!
