@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>unique_array &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="unique_array">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.unique_array">
+mixed <code class="descname">unique_array</code><span class="sig-paren">(</span>object<em>&nbsp;*obarr</em>, string|closure<em>&nbsp;fun</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.unique_array" title="Permalink to this definition">¶</a></dt>
+<dt>
+mixed <code class="descname">unique_array</code><span class="sig-paren">(</span>object<em>&nbsp;*obarr</em>, string|closure<em>&nbsp;fun</em>, mixed<em>&nbsp;skip</em><span class="sig-paren">)</span></dt>
+<dt>
+mixed <code class="descname">unique_array</code><span class="sig-paren">(</span>object<em>&nbsp;*obarr</em>, string|closure<em>&nbsp;fun</em>, mixed<em>&nbsp;extra...</em>, mixed<em>&nbsp;skip</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>DESCRIPTION
+Groups objects together for which the separator function returns the
+same value. obarr should be an array of objects, other types are
+ignored.</p>
+<p>If the separator function is defined by name, it is searched and
+called in the objects from &lt;obarr&gt;. If &lt;extra&gt; arguments are given,
+they are passed to the function as arguments.</p>
+<p>If the separator function is defined as a closure, it will be passed
+the objects from &lt;obarr&gt; as first argument, with the &lt;extra&gt; arguments
+(if any) passed following.</p>
+<p>If the &lt;skip&gt; argument is given (it is required when &lt;extra&gt; arguments
+are to be used), and the return value from the separator function call
+matches this value, the object in question will _not_ be included in
+the returned array. Default value for &lt;skip&gt; is the number 0.</p>
+<p>The returned array is an array of arrays of objects in the form:</p>
+<dl class="docutils">
+<dt>({ ({ Same1:1, Same1:2, ... Same1:N }),</dt>
+<dd><dl class="first docutils">
+<dt>({ Same2:1, Same2:2, ... Same2:N }),</dt>
+<dd></dd>
+</dl>
+<p class="last">({ SameM:1, SameM:2, ... SameM:N }) })</p>
+</dd>
+</dl>
+<p>EXAMPLES
+mixed <a href="#id1"><span class="problematic" id="id2">*</span></a>arr;
+arr=unique_array(users(), &#8220;_query_level&#8221;, -1);</p>
+<p>This will return an array of arrays holding all user objects
+grouped together by their user levels. Wizards have a user
+level of -1 so they will not appear in the the returned array.</p>
+<dl class="docutils">
+<dt>LDMud 3.3 added the possibility to call closures, and to</dt>
+<dd><p class="first">pass extra arguments to the separator function.</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="filter.html#lpc.filter" title="filter"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter</span></code>(E)</a>, <a class="reference internal" href="map.html#lpc.map" title="map"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map</span></code>(E)</a></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">unique_array</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/unique_array.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

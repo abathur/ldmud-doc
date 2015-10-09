@@ -1,0 +1,4 @@
+.. efun:: void swap(object obj)
+
+  Swap out an object. This efun is only used for system internal
+  debugging and can cause a crash.

@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>H_CREATE_CLONE &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="H_CREATE_CLONE">
+<div class="section" id="SYNOPSIS">
+<span id="lpc.create_clone"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="hook">
+<dl class="include">
+<dt>
+#include &lt;sys/driver_hooks.h&gt;</dt>
+</dl>
+
+<dt id="lpc.H_CREATE_CLONE">
+<code class="descname">set_driver_hook</code><span class="sig-paren">(</span><em>H_CREATE_CLONE</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.H_CREATE_CLONE" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>value</strong> (<em>string</em>) &#8211; void &lt;name&gt; (0)</li>
+<li><strong>value</strong> (<em>closure</em>) &#8211; int &lt;closure&gt; ( void )</li>
+<li><strong>value</strong> (<em>closure</em>) &#8211; int &lt;closure&gt; (object obj_to_init)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Optional hooks to initialize a cloned object after creation.
+Hook setting can be unbound lambda closures, or the name of
+the function (static or public) to call in the object.</p>
+<p>If the hook is a closure expecting an argument, it is bound
+to the current object and called with the created object as
+argument. If the hook is a closure without arguments, it is bound to
+the object to be initalized and called.</p>
+<p>If the result of the closure call is a non-zero number, it is used
+as the interval to wait before the first reset(), else the default
+interval computed from TIME_TO_RESET is used.</p>
+<p>If the hook is defined as the name of an lfun in the object,
+it is called in the object with 0 as argument, and any result
+is ignored.</p>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.2.10</em>) &#8211; allowed static functions to be given by name.</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="hook.html#lpc.hooks" title="hooks"><span class="xref lpc lpc-concept">hooks</span></a>, <a class="reference internal" href="create_ob.html#lpc.create_ob" title="create_ob"><code class="xref lpc lpc-hook docutils literal"><span class="pre">create_ob</span></code>(H)</a>, <a class="reference internal" href="create_super.html#lpc.create_super" title="create_super"><code class="xref lpc lpc-hook docutils literal"><span class="pre">create_super</span></code>(H)</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">H_CREATE_CLONE</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/hook/create_clone.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>query_limits &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="query_limits">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dl class="include">
+<dt>
+#include &lt;rtlimits.h&gt;</dt>
+</dl>
+
+<dt id="lpc.query_limits">
+int * <code class="descname">query_limits</code><a class="headerlink" href="#lpc.query_limits" title="Permalink to this definition">¶</a></dt>
+<dt>
+int * <code class="descname">query_limits</code><span class="sig-paren">(</span>int<em>&nbsp;default</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Return an array with the current runtime limits, resp. if &lt;defaults&gt;
+is true, the default runtime limits. The entries in the returned
+array are:</p>
+<blockquote>
+<div><p>int[LIMIT_EVAL]:    the max number of eval costs
+int[LIMIT_ARRAY]:   the max number of array entries
+int[LIMIT_MAPPING_SIZE]: the max number of mapping values
+int[LIMIT_MAPPING_KEYS]: the max number of mapping entries</p>
+<blockquote>
+<div>(LIMIT_MAPPING is an alias for LIMIT_MAPPING_KEYS)</div></blockquote>
+<dl class="docutils">
+<dt>int[LIMIT_BYTE]:    the max number of bytes handled with</dt>
+<dd>one read_bytes()/write_bytes() call.</dd>
+<dt>int[LIMIT_FILE]:    the max number of bytes handled with</dt>
+<dd>one read_file()/write_file() call.</dd>
+</dl>
+<p>int[LIMIT_CALLOUTS]: the number of callouts at one time.
+int[LIMIT_COST]:    how to account the current cost.
+int[LIMIT_MEMROY]:  the max. number of bytes which can be</p>
+<blockquote>
+<div>_additionally_ allocated/used
+_per top-level execution <a href="#id1"><span class="problematic" id="id2">thread_</span></a></div></blockquote>
+</div></blockquote>
+<p>For all limits except LIMIT_COST a limit of &#8216;0&#8217; aka LIMIT_UNLIMITED
+means &#8216;no limit&#8217;.</p>
+<p>The value for LIMIT_COST has these meanings:</p>
+<blockquote>
+<div><p>value &gt; 0: the execution will cost minimum(&lt;value&gt;, actual cost) .</p>
+<dl class="docutils">
+<dt>value = 0: if the current LIMIT_EVAL is larger than the calling</dt>
+<dd>LIMIT_EVAL, the evaluation will cost only 10; otherwise
+the full cost will be accounted.</dd>
+<dt>value &lt; 0: (-value)% of the current evaluation cost will be</dt>
+<dd>accounted; -100 obviously means &#8216;full cost&#8217;.</dd>
+</dl>
+</div></blockquote>
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>query_limits()</dt>
+<dd>&#8211;&gt; returns the current runtime limits</dd>
+<dt>query_limits(1)</dt>
+<dd>&#8211;&gt; returns the default runtime limits</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">query_limits</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/query_limits.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

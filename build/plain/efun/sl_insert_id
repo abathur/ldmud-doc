@@ -1,0 +1,11 @@
+SYNOPSIS (OPTIONAL)
+===================
+   int sl_insert_id
+
+DESCRIPTION
+===========
+   After inserting a line into a table with an AUTO_INCREMENT field, this efun
+   can be used to return the (new) value of the AUTO_INCREMENT field.
+
+   The function is available only if the driver is compiled with
+   SQLitesupport. In that case, __SQLITE__ is defined.

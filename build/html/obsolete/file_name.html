@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>file_name &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="file_name">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.file_name">
+string <code class="descname">file_name</code><a class="headerlink" href="#lpc.file_name" title="Permalink to this definition">¶</a></dt>
+<dt>
+string <code class="descname">file_name</code><span class="sig-paren">(</span>object<em>&nbsp;ob</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Get the name of an object &lt;ob&gt; or, if no argument is given, of
+the current object.</p>
+<p>This name is the name under which the object is stored in the
+muds object table. It is initialised at the creation of the
+object such that blueprints are named after the file they are
+compiled from (without the trailing &#8216;.c&#8217;), and clones receive
+the name of their blueprint, extended by &#8216;#&#8217; followed by
+a unique non-negative number. These rules also apply to
+virtual objects - the real name/type of virtual objects
+is ignored.</p>
+<p>The name of an object can be changed with rename_object(), and
+object_name() will reflect any of these changes.</p>
+<p>The returned name always begins with &#8216;/&#8217; (absolute path),
+except when the parser runs in COMPAT mode.</p>
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>This is guaranteed to be true for all objects ob that are not
+destructed:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">find_object</span><span class="p">(</span><span class="n">file_name</span><span class="p">(</span><span class="n">ob</span><span class="p">))</span> <span class="o">==</span> <span class="n">ob</span>
+</pre></div>
+</div>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.2.6</em>) &#8211; renamed to object_name(), this old name is</li>
+</ul>
+<p>available as alias.
+:history 3.2.9 changed: not available if driver is compiled without USE_DEPRECATED.
+:history 3.3 removed:</p>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/clone_object.html#lpc.clone_object" title="clone_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clone_object</span></code>(E)</a>, <a class="reference internal" href="../efun/load_name.html#lpc.load_name" title="load_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">load_name</span></code>(E)</a>, <a class="reference internal" href="../efun/load_object.html#lpc.load_object" title="load_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">load_object</span></code>(E)</a>, <a class="reference internal" href="../efun/find_object.html#lpc.find_object" title="find_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">find_object</span></code>(E)</a>, <a class="reference internal" href="../efun/program_name.html#lpc.program_name" title="program_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">program_name</span></code>(E)</a>, <a class="reference internal" href="../efun/rename_object.html#lpc.rename_object" title="rename_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rename_object</span></code>(E)</a>, <a class="reference internal" href="object_name.html#lpc.object_name" title="object_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">object_name</span></code>(M)</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">file_name</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/obsolete/file_name.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

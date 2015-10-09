@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>sprintf &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sprintf">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.sprintf">
+string <code class="descname">sprintf</code><span class="sig-paren">(</span>string<em>&nbsp;fmt</em>, ...<span class="sig-paren">)</span><a class="headerlink" href="#lpc.sprintf" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Most of the characters in the format string &lt;fmt&gt; get passed
+straight through to the output (i.e.: printed or put in the
+return string), to format arguments into the string it is
+necessary to include an argument format string (AFS) in the format
+string. An AFS is a series of characters starting with a percent
+sign &#8220;%&#8221; and terminated with a argument type specifier.</p>
+<p>To include a &#8220;%&#8221; sign in the output, it is necessary to include a
+double percent sign &#8220;%%&#8221;. The sequence &#8220;%^&#8221; will output &#8220;%^&#8221; again.</p>
+<dl class="docutils">
+<dt>Valid argument type specifiers are:</dt>
+<dd><p class="first">&#8220;s&#8221; : the argument is a string.
+&#8220;d&#8221; : the argument is an integer to be included in decimal</p>
+<blockquote>
+<div>representation.</div></blockquote>
+<p>&#8220;i&#8221; : same as &#8220;d&#8221;.
+&#8220;b&#8221; : the argument is an integer to be included in binary</p>
+<blockquote>
+<div>representation.</div></blockquote>
+<dl class="docutils">
+<dt>&#8220;o&#8221; <span class="classifier-delimiter">:</span> <span class="classifier">the argument is an integer to be included in octal</span></dt>
+<dd>representation.</dd>
+<dt>&#8220;x&#8221; <span class="classifier-delimiter">:</span> <span class="classifier">the argument is an integer to be included in hexadecimal</span></dt>
+<dd>representation.</dd>
+</dl>
+<p>&#8220;X&#8221; : as &#8220;x&#8221; except letters are capitalised.
+&#8220;e&#8221;,&#8221;E&#8221;,&#8221;f&#8221;,&#8221;g&#8221;,&#8221;G&#8221; : the argument is a float to be included in</p>
+<blockquote>
+<div>decimal representation; see examples for details.</div></blockquote>
+<p>&#8220;c&#8221; : the argument is an int to included as a character.
+&#8220;O&#8221; : the argument is an LPC datatype to be printed in an arbituary</p>
+<blockquote>
+<div>format, this is for debugging purposes.
+If the argument is an object the function printf_obj_name()
+is called on the master object with the
+object as a parameter; the string returned is included in
+brackets at the end of object file name.
+If 0 is returned, nothing is appended after the file name.</div></blockquote>
+<dl class="last docutils">
+<dt>&#8220;Q&#8221;   Like &#8220;O&#8221;, except that special characters in strings are</dt>
+<dd>printed in LPC notation.</dd>
+</dl>
+</dd>
+</dl>
+<p>Between the percent sign and the argument type specifier in the AFS,
+the following modifiers can be included to specify the formatting
+information. Order is not important unless otherwise specified.
+&#8220;n&#8221; is used to specify a integer, which can be a &#8220;*&#8221; in which case
+the next argument is used as the number.</p>
+<dl class="docutils">
+<dt>Modifiers:</dt>
+<dd><blockquote class="first">
+<div><dl class="docutils">
+<dt>n    specifies the field size. If the size is prepended with</dt>
+<dd>a 0, the argument is printed with leading zeroes.</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>&#8221;.&#8221;n  specifies the precision, for simple strings (not columns or</dt>
+<dd>tables) specifies the truncation length.</dd>
+<dt>&#8221;:&#8221;n  n specifies both the field size _and_ the precision; if n is</dt>
+<dd>prepended by a zero then the pad string is set to &#8220;0&#8221;.</dd>
+<dt>&#8220;&#8216;X&#8217;&#8221; the pad string is set to the char(s) between the single</dt>
+<dd>quotes; if the field size is also prepended with a zero then
+whichever is specified last will overrule.
+NOTE: to include &#8220;&#8217;&#8221; in the pad string, you must use &#8220;\&#8217;&#8221;
+(as the backslash has to be escaped past the interpreter);
+similarly, to include &#8220;&#8221; you must use &#8220;\\&#8221;.</dd>
+</dl>
+<p>&#8221; &#8221;   pad positive integers with a space.
+&#8220;+&#8221;   pad positive integers with a plus sign.
+&#8220;-&#8221;   left-aligned within field size.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>NB: std (s)printf() defaults to right alignment, which is</dt>
+<dd>unnatural in the context of a mainly string based language
+but has been retained for &#8220;compatibility&#8221; ;)</dd>
+</dl>
+</div></blockquote>
+<p>&#8220;|&#8221;   centered within field size.
+&#8220;$&#8221;   justified to field size. Ignored unless the type specifier</p>
+<blockquote>
+<div>is &#8216;s&#8217;.</div></blockquote>
+<dl class="last docutils">
+<dt>&#8220;=&#8221;   column mode. Ignored unless the argument type specifier is &#8216;s&#8217;.</dt>
+<dd>Field size must be specified; if precision is specified then
+it sets the width for the string to be wordwrapped at,
+but otherwise the field size is used. Field size specifies the
+width of the column the last line of the column is padded with
+spaces to achieve this length.</dd>
+<dt>&#8220;#&#8221;   For strings: table mode.</dt>
+<dd><blockquote class="first">
+<div>Field size must be specified; if precision is
+specified it sets the number of columns in the table,
+otherwise the number is &#8220;optimally&#8221; generated (as few
+lines and columns as possible). Table mode is passed a
+list of backslash-n separated &#8216;words&#8217; which are put in
+a format similar to that of ls.</div></blockquote>
+<p class="last">For %O/%Q: compact output.</p>
+</dd>
+<dt>&#8220;&#64;&#8221;   the argument is an array. The corresponding AFS (minus all</dt>
+<dd>&#8220;&#64;&#8221;) is applied to each element of the array.</dd>
+</dl>
+</dd>
+</dl>
+<p>When the formatting of an element results in several output lines
+(column or table mode) and no explicit pad string has been
+defined, any padding whitespace before the newlines of all but the
+last line is removed. However, if an explicit pad string has been
+given, even if it is the simple &#8216; &#8216;, the padding will not be removed.</p>
+</div>
+</div>
+<dl class="docutils">
+<dt>EXAMPLES</dt>
+<dd><p class="first">sprintf(&#8220;decimal=%d, octal=%o, hexadecimal=%xn&#8221;, 7, 7, 7);</p>
+<p>sprintf(&#8220;array=%On&#8221;, ({1, 2, 3}));
+this will return the following:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>({ /* sizeof() == 3 <a href="#id1"><span class="problematic" id="id2">*</span></a>/</dt>
+<dd>1,
+2,
+3</dd>
+</dl>
+<p>})</p>
+</div></blockquote>
+<p>An array will be printed recursively and each element of the
+array will be indented. Can also be used as a debugging tool.</p>
+<p>sprintf(&#8220;%-<a href="#id3"><span class="problematic" id="id4">*</span></a>#sn&#8221;, 80, implode(get_dir(&#8220;~/.&#8221;), &#8220;n&#8221;));</p>
+<p>sprintf(&#8220;foo&#8221;)                      // returns &#8220;foo&#8221;</p>
+<p>sprintf(&#8220;%s&#8221;,&#8221;foo&#8221;)                 // returns &#8220;foo&#8221;
+sprintf(&#8220;%7s&#8221;,&#8221;foo&#8221;)                // returns &#8221;    foo&#8221;
+sprintf(&#8220;%-7s&#8221;,&#8221;foo&#8221;)               // returns &#8220;foo    &#8221;
+sprintf(&#8220;%|7s&#8221;,&#8221;foo&#8221;)               // returns &#8221;  foo  &#8221;
+sprintf(&#8220;%7&#8217;.&#8217;s&#8221;,&#8221;foo&#8221;)             // returns &#8221;....foo&#8221;
+sprintf(&#8220;%-7&#8217;+-&#8216;s&#8221;,&#8221;foo&#8221;)           // returns &#8220;foo+-+-&#8221;
+sprintf(&#8220;%|9&#8217;-+&#8217;s&#8221;,&#8221;foo&#8221;)           // returns &#8220;-+-foo-+-&#8221;
+sprintf(&#8220;%3s&#8221;,&#8221;foobarbloh&#8221;)         // returns &#8220;foobarbloh&#8221;
+sprintf(&#8220;%3.6s&#8221;,&#8221;foobarbloh&#8221;)       // returns &#8220;foobar&#8221;
+sprintf(&#8220;%6.3s&#8221;,&#8221;foobarbloh&#8221;)       // returns &#8221;   foo&#8221;
+sprintf(&#8220;%:6s&#8221;,&#8221;foobarbloh&#8221;)        // returns &#8220;foobar&#8221;
+sprintf(&#8220;%:3s&#8221;,&#8221;foobarbloh&#8221;)        // returns &#8220;foo&#8221;
+sprintf(&#8220;%*.*s&#8221;,-7,2,&#8221;foobarbloh&#8221;)  // returns &#8220;fo     &#8220;</p>
+<dl class="docutils">
+<dt>sprintf(&#8220;%=12s&#8221;,&#8221;this is a very long sentencen&#8221;)</dt>
+<dd>// returns &#8221;   this is an&#8221;
+//         &#8221;   very longn&#8221;
+//         &#8221;    sentencen&#8221;</dd>
+<dt>sprintf(&#8220;%=-12s&#8221;,&#8221;this is a very long sentencen&#8221;)</dt>
+<dd>// returns &#8220;this is an&#8221;
+//         &#8220;very longn&#8221;
+//         &#8220;sentencen&#8221;</dd>
+<dt>sprintf(&#8220;%=|12s&#8221;,&#8221;this is a very long sentencen&#8221;)</dt>
+<dd>// returns &#8221;  this is an&#8221;
+//         &#8221;  very longn&#8221;
+//         &#8221;  sentencen&#8221;</dd>
+<dt>sprintf(&#8220;%=10.6s&#8221;,&#8221;this is a very long sentencen&#8221;)</dt>
+<dd>// returns &#8221;      thisn&#8221;
+//         &#8221;      is an&#8221;
+//         &#8221;      veryn&#8221;
+//         &#8221;      longn&#8221;
+//         &#8221;    sentenn&#8221;
+//         &#8221;        cen&#8221;</dd>
+<dt>sprintf(&#8220;%#-40.3s&#8221;,</dt>
+<dd><dl class="first last docutils">
+<dt>&#8220;onentwonthreenfournfivensixnsevenneightnninentenn&#8221;)</dt>
+<dd>// returns &#8220;one          five         ninen&#8221;
+//         &#8220;two          six          tenn&#8221;
+//         &#8220;three        seven        n&#8221;
+//         &#8220;four         eight        &#8220;</dd>
+</dl>
+</dd>
+<dt>sprintf(&#8220;%#-40s&#8221;,</dt>
+<dd><dl class="first last docutils">
+<dt>&#8220;onentwonthreenfournfivensixnsevenneightnninentenn&#8221;)</dt>
+<dd>// returns &#8220;one     three   five    seven   ninen&#8221;
+//         &#8220;two     four    six     eight   ten&#8221;</dd>
+</dl>
+</dd>
+</dl>
+<p>sprintf(&#8220;<a class="reference external" href="mailto:%&#37;&#52;&#48;-5s">%<span>&#64;</span>-5s</a>&#8221;,({&#8220;foo&#8221;,&#8221;bar&#8221;,&#8221;bloh&#8221;})) // returns &#8220;foo  bar  bloh &#8220;</p>
+<p>sprintf(&#8220;%d&#8221;,123)                   // returns &#8220;123&#8221;
+sprintf(&#8220;%7d&#8221;,123)                  // returns &#8221;    123&#8221;
+sprintf(&#8220;%-7d&#8221;,123)                 // returns &#8220;123&#8221; (yes, really)
+sprintf(&#8220;%d/%d&#8221;,123,-123)           // returns &#8220;123/-123&#8221;
+sprintf(&#8220;% d/% d&#8221;,123,-123)         // returns &#8221; 123/-123&#8221;
+sprintf(&#8220;%+d/%+d&#8221;,123,-123)         // returns &#8220;+123/-123&#8221;
+sprintf(&#8220;%+6d/%6d&#8221;,123,123)         // returns &#8221; +123/  123&#8221;
+sprintf(&#8220;%|6d&#8221;,123)                 // returns &#8221;  123&#8221; (yes, really)
+sprintf(&#8220;%|10d&#8221;,123)                // returns &#8221;    123&#8221; (yes, really)
+sprintf(&#8220;%|10d%3s&#8221;,123,&#8221;foo&#8221;)       // returns &#8221;    123   foo&#8221;</p>
+<p>sprintf(&#8220;%o&#8221;,16)                    // returns &#8220;20&#8221;
+sprintf(&#8220;%&#8216;0&#8216;3o&#8221;,8)                 // returns &#8220;010&#8221;</p>
+<p>sprintf(&#8220;%x&#8221;,123)                   // returns &#8220;7b&#8221;
+sprintf(&#8220;%X&#8221;,123)                   // returns &#8220;7B&#8221;</p>
+<p class="last">sprintf(&#8220;%f&#8221;,123.5)                 // returns &#8220;124&#8221;
+sprintf(&#8220;%8.3f&#8221;,123.5)              // returns &#8221; 123.500&#8221;
+sprintf(&#8220;%E&#8221;,123.5)                 // returns &#8220;1E+02&#8221;
+sprintf(&#8220;%12.4e&#8221;,123.5)             // returns &#8221;  1.2350e+02&#8221;
+sprintf(&#8220;%g&#8221;,123.5)                 // returns &#8220;124&#8221;
+sprintf(&#8220;%8.3G&#8221;,123.5)              // returns &#8221;     124&#8221;
+sprintf(&#8220;%8.6g&#8221;,123.5)              // returns &#8221;   123.5&#8221;</p>
+</dd>
+</dl>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">sprintf</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/sprintf.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

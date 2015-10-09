@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>explode &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="explode">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.explode">
+string * <code class="descname">explode</code><span class="sig-paren">(</span>string<em>&nbsp;str</em>, string<em>&nbsp;del</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.explode" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>Return an array of strings, created when the string str is split
+into substrings as divided by del.</p>
+<p>implode(explode(str, del), del) == str is always true.</p>
+<p>EXAMPLES
+function                    returns
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+explode(&#8221; ab cd ef &#8221;, &#8221; &#8221;)  ({ &#8220;&#8221;, &#8220;ab&#8221;, &#8220;cd&#8221;, &#8220;ef&#8221;, &#8220;&#8221; })
+explode(&#8220;abc&#8221;, &#8220;abc&#8221;)       ({ &#8220;&#8221;, &#8220;&#8221; })
+explode(&#8220;&#8221;, &#8220;&#8221;)             ({ &#8220;&#8221; })
+explode(&#8220;&#8221;, &lt;whatever&gt;)     ({ &#8220;&#8221; })
+explode(&#8220;abc&#8221;, &#8220;xyz&#8221;)       ({ &#8220;abc&#8221; })
+explode(&#8220;abc&#8221;, &#8220;&#8221;)          ({ &#8220;a&#8221;, &#8220;b&#8221;, &#8220;c&#8221; })</p>
+<p>Date of change is unknown.
+explode(&#8221; ab cd ef &#8221;, &#8221; &#8221;) formerly returned ({ &#8220;ab&#8221;, &#8220;cd&#8221;, &#8220;ef&#8221; })
+instead of ({ &#8220;&#8221;, &#8220;ab&#8221;, &#8220;cd&#8221;, &#8220;ef&#8221;, &#8220;&#8221; }), i. e. the empty strings
+were ignored. The new behaviour is more consistent, because now
+implode(explode(str, del), del) == str is always true.
+Since 3.5.0 explode(&#8220;&#8221;,&#8221;&#8221;) returns ({&#8220;&#8221;}), so it is guaranteed to
+return a non-empty array.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="sscanf.html#lpc.sscanf" title="sscanf"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sscanf</span></code>(E)</a>, <a class="reference internal" href="../obsolete/extract.html#lpc.extract" title="extract"><code class="xref lpc lpc-efun docutils literal"><span class="pre">extract</span></code>(E)</a>, <a class="reference internal" href="implode.html#lpc.implode" title="implode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">implode</span></code>(E)</a>, <a class="reference internal" href="regexplode.html#lpc.regexplode" title="regexplode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexplode</span></code>(E)</a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">explode</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/explode.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

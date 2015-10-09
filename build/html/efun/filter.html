@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>filter &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="filter">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.filter">
+mixed * <code class="descname">filter</code><span class="sig-paren">(</span>mixed<em>&nbsp;*arg</em>, string<em>&nbsp;fun</em>, string|object<em>&nbsp;ob</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.filter" title="Permalink to this definition">¶</a></dt>
+<dt>
+mixed * <code class="descname">filter</code><span class="sig-paren">(</span>mixed<em>&nbsp;*arg</em>, closure<em>&nbsp;cl</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span></dt>
+<dt>
+mixed * <code class="descname">filter</code><span class="sig-paren">(</span>mixed<em>&nbsp;*arg</em>, mapping<em>&nbsp;map</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span></dt>
+<dt>
+string  <code class="descname">filter</code><span class="sig-paren">(</span>string<em>&nbsp;arg</em>, string<em>&nbsp;fun</em>, string|object<em>&nbsp;ob</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span></dt>
+<dt>
+string  <code class="descname">filter</code><span class="sig-paren">(</span>string<em>&nbsp;arg</em>, closure<em>&nbsp;cl</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span></dt>
+<dt>
+string  <code class="descname">filter</code><span class="sig-paren">(</span>string<em>&nbsp;arg</em>, mapping<em>&nbsp;map</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span></dt>
+<dt>
+mapping <code class="descname">filter</code><span class="sig-paren">(</span>mapping<em>&nbsp;arg</em>, string<em>&nbsp;func</em>, string|object<em>&nbsp;ob</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span></dt>
+<dt>
+mapping <code class="descname">filter</code><span class="sig-paren">(</span>mapping<em>&nbsp;arg</em>, closure<em>&nbsp;cl</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>Call the function &lt;ob&gt;-&gt;&lt;func&gt;() resp. the closure &lt;cl&gt; for
+every element of the array, or mapping &lt;arg&gt;, and return a
+result made from those elements for which the function call
+returns TRUE.  The &lt;extra&gt; arguments are passed as additional
+parameters to the function calls and must not be references of
+array of mapping elements (like &amp;(i[1]) ).</p>
+<p>If &lt;ob&gt; is omitted, or neither a string nor an object, it
+defaults to this_object().</p>
+<p>If &lt;arg&gt; is an array or struct, the function will be called with
+each of the array/struct values as first parameter, followed by the
+&lt;extra&gt; arguments. If the result from the function call is true,
+the array element in question is included into the efun result.</p>
+<p>If the efun is used with a mapping &lt;map&gt; instead of a function,
+every array element which is key in &lt;map&gt; is included into the
+result.</p>
+<p>If &lt;arg&gt; is a mapping, the function will be called with
+each of the mapping keys as first, and (if existing) the
+associated values as second parameter, followed by the &lt;extra&gt;
+arguments. If the result is true, the mapping element in question
+is included into the result.</p>
+<p>Depending on the width of the mapping &lt;arg&gt;, the function
+call takes one of three forms:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>widthof(arg) == 0: ob-&gt;func(key, 0, extra...)</dt>
+<dd><dl class="first last docutils">
+<dt>== 1: ob-&gt;func(key, arg[key], extra...)</dt>
+<dd><dl class="first last docutils">
+<dt>&gt; 1: ob-&gt;func( key</dt>
+<dd>, ({ arg[key,0] ...arg[key,width-1] })
+, extra...)</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<p>The advantage of this approach is that the two types of
+multi-dimensional mappings (mappings with multiple values
+per key, and mappings of arrays) can be treated in the same way.</p>
+<p>Historical Note: filter() used with arrays behaves like
+filter_array(), but used with mappings is a generalisation of
+filter_indices().</p>
+<p>Introduced in LDMud 3.2.6, obsoletes filter_array().
+LDMud 3.3.439 added filtering of strings.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="#lpc.filter" title="filter"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter</span></code>(E)</a>, <a class="reference internal" href="filter_indices.html#lpc.filter_indices" title="filter_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter_indices</span></code>(E)</a>, <a class="reference internal" href="map.html#lpc.map" title="map"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map</span></code>(E)</a>, <a class="reference internal" href="walk_mapping.html#lpc.walk_mapping" title="walk_mapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">walk_mapping</span></code>(E)</a>, <a class="reference internal" href="member.html#lpc.member" title="member"><code class="xref lpc lpc-efun docutils literal"><span class="pre">member</span></code>(E)</a>, <a class="reference internal" href="m_contains.html#lpc.m_contains" title="m_contains"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_contains</span></code>(E)</a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">filter</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/filter.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

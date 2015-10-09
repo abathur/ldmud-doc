@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>process_string &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="process_string">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS (OPTIONAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.process_string">
+string <code class="descname">process_string</code><span class="sig-paren">(</span>string<em>&nbsp;str</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.process_string" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>Searches string str for occurences of a &#8220;value by function
+call&#8221;, which is an implicit function call surrounded by &#64;&#64;. See
+&#8220;value_by_function_call&#8221; in the principles section.</p>
+<p>The value should contain a string like this:
+&#64;&#64;function[:filename][<a href="#id1"><span class="problematic" id="id2">|</span></a>arg|arg]&#64;&#64;</p>
+<p>&lt;function&gt; must return a string or else the string which should be
+processed will be returned unchanged.</p>
+<p>process_string() does not recurse over returned
+replacement values. If a function returns another function
+description, that description will not be replaced.</p>
+<p>Both the filename and the args are optional.</p>
+<p>Consecutive function calls can be written adjacent:</p>
+<blockquote>
+<div>&#64;&#64;function1&#64;&#64;function2&#64;&#64;</div></blockquote>
+<p>EXAMPLES
+string foo(string str) {</p>
+<blockquote>
+<div>return &#8220;ab&#8221;+str+&#8221;ef&#8221;;</div></blockquote>
+<p>}
+void func() {</p>
+<blockquote>
+<div>write(process_string(&#8220;&#64;&#64;foo|cd&#64;&#64;&#8221;)+&#8221;n&#8221;);</div></blockquote>
+<p>}</p>
+<p>The function func() will print out the string &#8220;abcdef&#8221;.</p>
+<p>BUGS
+Using process_string() can lead to severe security problems.</p>
+<p>Because of the security problems, process_string() is an
+optional efun since <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;34">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>34</a>
+LDMud 3.3.160 removed the undocumented &#8216;feature&#8217; that a function call
+declaration could be terminated by a space. In turn this now allows
+the use of arguments with spaces.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="notify_fail.html#lpc.notify_fail" title="notify_fail"><code class="xref lpc lpc-efun docutils literal"><span class="pre">notify_fail</span></code>(E)</a>, <span class="xref lpc lpc-lang">closures</span>, <a class="reference internal" href="../master/get_bb_uid.html#lpc.get_bb_uid" title="get_bb_uid"><code class="xref lpc lpc-master docutils literal"><span class="pre">get_bb_uid</span></code>(M)</a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">process_string</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (OPTIONAL)</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/process_string.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

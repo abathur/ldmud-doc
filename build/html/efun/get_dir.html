@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>get_dir &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="get_dir">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.get_dir">
+mixed * <code class="descname">get_dir</code><span class="sig-paren">(</span>string<em>&nbsp;str</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.get_dir" title="Permalink to this definition">¶</a></dt>
+<dt>
+mixed * <code class="descname">get_dir</code><span class="sig-paren">(</span>string<em>&nbsp;str</em>, int<em>&nbsp;mask</em><span class="sig-paren">)</span></dt>
+<dt>
+<code class="descname">:include &lt;files.h&gt;</code></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>This function takes a path as argument and returns an array of file
+names and attributes in that directory.</p>
+<p>Returns 0 if the directory to search in does not exist.</p>
+<p>The filename part of the path may contain &#8216;*&#8217; or &#8216;?&#8217; as wildcards:
+every &#8216;*&#8217; matches an arbitrary amount of characters (or just itself),
+a &#8216;?&#8217; matches any character. Thus get_dir(&#8220;/path/<em>&#8221;) would return an
+alphabetically sorted array of all files in directory &#8220;/path&#8221;, or
+just ({ &#8220;/path/</em>&#8221; }) if this file happens to exist.</p>
+<p>To query the content of a directory, use the directory name with a
+trailing &#8216;/&#8217; or &#8216;/.&#8217;, for example get_dir(&#8220;/path/.&#8221;). Use the
+directory name as it is to get information about the directory itself.</p>
+<p>The optional second argument mask can be used to get
+information about the specified files.</p>
+<dl class="docutils">
+<dt>GETDIR_EMPTY    (0x00)  get_dir returns an empty array (not very</dt>
+<dd>useful).</dd>
+<dt>GETDIR_NAMES    (0x01)  put the alphabetically sorted file names into</dt>
+<dd>the returned array.</dd>
+<dt>GETDIR_SIZES    (0x02)  put the file sizes unsorted into the returned</dt>
+<dd>array. directories have size FSIZE_DIR (-2).</dd>
+<dt>GETDIR_DATES    (0x04)  put the file modification dates (in seconds</dt>
+<dd>since 01/01/1970) unsorted into the
+returned array.</dd>
+<dt>GETDIR_ACCESS   (0x40)  put the file access dates unsorted into</dt>
+<dd>the returned array.</dd>
+<dt>GETDIR_MODES    (0x80)  put the unix file modes unsorted into</dt>
+<dd>the returned array.</dd>
+</dl>
+<p>GETDIR_ALL      (0xDF)  Return all.</p>
+<dl class="docutils">
+<dt>GETDIR_PATH     (0x10)  if this mask bit is set, the filenames with</dt>
+<dd>the full path will be returned
+(GETDIR_NAMES is implied).</dd>
+<dt>GETDIR_UNSORTED (0x20)  if this mask bit is set, the result of will</dt>
+<dd>_not_ be sorted.</dd>
+</dl>
+<p>Note: You should use GETDIR_NAMES|GETDIR_UNSORTED to get the entries
+in the same order as with GETDIR_SIZES and GETDIR_DATES.</p>
+<p>The values of mask can be added together.</p>
+<p>NOTES
+The path argument to this efun is processed by valid_read() in the
+mudlib master before being used. The mudlib may normalize this path
+(e.g. strip leading or trailing &#8220;/&#8221;) and this may lead to expected
+results (e.g. get_dir(&#8220;/dir/&#8221;, ...) not returning the contents
+of /dir/).
+COMPAT mode: GETDIR_PATH will return the paths without leading /.</p>
+<p>EXAMPLES
+function                         returns
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+get_dir(&#8220;/obj/.&#8221;)                all files contained in directory /obj.
+get_dir(&#8220;/obj/&#8221;)                 the same as get_dir(&#8220;/obj/&#8221;)</p>
+<dl class="docutils">
+<dt>get_dir(&#8220;/obj/sword.c&#8221;)          ({ &#8220;sword.c&#8221; }) if /obj/sword.c</dt>
+<dd>exists (it may be a file or a
+directory), otherwise ({ }) if
+/obj is a directory,
+otherwise 0.</dd>
+<dt>get_dir(&#8220;/obj/<em>&#8221;)                ({ &#8220;</em>&#8221; }) if * exists.</dt>
+<dd>otherwise and normally an
+alphabetically sorted array with all
+names of files and directories in
+/obj if /obj is a directory,
+otherwise 0.</dd>
+<dt>get_dir(&#8220;/obj/sword.c&#8221;, GETDIR_SIZES)  ({ &lt;size of /obj/sword.c&gt; })</dt>
+<dd>if that file exists.</dd>
+</dl>
+<p>get_dir(&#8220;/obj/.&#8221;, GETDIR_NAMES)  the same as get_dir(&#8220;/obj/.&#8221;).
+get_dir(&#8220;/obj/.&#8221;, GETDIR_SIZES)  an array with the sizes of the files</p>
+<blockquote>
+<div>in /obj, not sorted by names.</div></blockquote>
+<p>get_dir(&#8220;/obj/.&#8221;, GETDIR_NAMES|GETDIR_SIZES|GETDIR_DATES) or shorter
+get_dir(&#8220;/obj/.&#8221;, GETDIR_ALL)    an one-dimensional array that</p>
+<blockquote>
+<div><p>contains for each file in /obj its
+name, its size and its modification
+date, sorted by names, for example</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>({</dt>
+<dd>&#8220;axe.c&#8221;  ,  927, 994539583,
+&#8220;sword.c&#8221;, 1283, 998153903,</dd>
+</dl>
+<p>}).</p>
+</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt>get_dir(&#8220;/obj/sword.c&#8221;, GETDIR_NAMES|GETDIR_PATH)</dt>
+<dd>({ &#8220;/obj/sword.c&#8221; }) if applicable.</dd>
+</dl>
+<p>get_dir(&#8220;/obj/sword.c&#8221;, GETDIR_PATH)  Short form of the same query.</p>
+<dl class="docutils">
+<dt>transpose_array(({ get_dir(str, GETDIR_NAMES|GETDIR_UNSORTED)</dt>
+<dd>, get_dir(str, GETDIR_SIZES)
+, get_dir(str, GETDIR_DATES) }));</dd>
+</dl>
+<p>This returns an array of arrays, with filename, size and
+filetime as elements, not sorted by names, for example</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>({</dt>
+<dd>({ &#8220;sword.c&#8221;, 1283, 998153903 }),
+({ &#8220;axe.c&#8221;  ,  927, 994539583 }),</dd>
+</dl>
+<p>}).</p>
+</div></blockquote>
+<p>LDMud 3.2.9 added GETDIR_PATH.
+LDMud 3.2.11/3.3.648 added GETDIR_ACCESS and GETDIR_MODES.</p>
+<blockquote>
+<div><blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="mkdir.html#lpc.mkdir" title="mkdir"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mkdir</span></code>(E)</a>, <a class="reference internal" href="rmdir.html#lpc.rmdir" title="rmdir"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rmdir</span></code>(E)</a>, <a class="reference internal" href="file_size.html#lpc.file_size" title="file_size"><code class="xref lpc lpc-efun docutils literal"><span class="pre">file_size</span></code>(E)</a>, <a class="reference internal" href="write_file.html#lpc.write_file" title="write_file"><code class="xref lpc lpc-efun docutils literal"><span class="pre">write_file</span></code>(E)</a>, <a class="reference internal" href="write_bytes.html#lpc.write_bytes" title="write_bytes"><code class="xref lpc lpc-efun docutils literal"><span class="pre">write_bytes</span></code>(E)</a>,</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><a class="reference internal" href="read_file.html#lpc.read_file" title="read_file"><code class="xref lpc lpc-efun docutils literal"><span class="pre">read_file</span></code>(E)</a>, <a class="reference internal" href="read_bytes.html#lpc.read_bytes" title="read_bytes"><code class="xref lpc lpc-efun docutils literal"><span class="pre">read_bytes</span></code>(E)</a></p>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">get_dir</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/get_dir.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

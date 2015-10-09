@@ -1,0 +1,16 @@
+SYNOPSIS
+========
+   malloc
+
+DESCRIPTION
+===========
+   This command is hardcoded into the driver's input parser. It shows the
+   statistics of the memory management module.
+
+HISTORY
+=======
+   - **changed** (*3.2.7*) -- 'status malloc' now has the same effect
+
+SEE ALSO
+========
+   status, *memory*, debug_info(E)

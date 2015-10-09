@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>limitations &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="limitations">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" id="lpc.limitations" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">limitations:</th><td class="field-body"><span class="first last"></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>This file contains a collection of non-configurable limits:</p>
+<div class="section" id="Program properties">
+<span id="lpc.Program properties"></span><h3>PROGRAM PROPERTIES<a class="headerlink" href="#Program properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>maximum program length: 1 MB (1048575 Bytes)
+This is defined by FUNSTART_MASK in exec.h, which is the maximum offset
+(address) of a functions code within the program block (relativ to the
+beginning). Changing it involves changing funflag_t and probably other
+stuff.</li>
+<li>maximum number of programs: 2^32-1
+The unique program ID number is a int32. It is incremented for each compiled
+program. If it reaches zero (after wrapping to negative values) the
+compiler or swapper calls renumber_programs(), which recycles numbers from
+old programs.
+(exec.h, prolang.y, swap.c, ...)</li>
+<li>maximum number of functions in a program: 65534
+The lookup table for function indexes holding the offsets of the function in
+the functions tables is unsigned short.
+The types of function arguments are stored in program_s.argument_types,
+which is index by the unsigned short programs_s.type_start. 65535 has a
+special meaning. Some code relies that this is unsigned short.
+(exec.h, ...)
+program_s.num_function_names and num_functions are unsigned short as well.</li>
+<li>maximum length of switch: 256k (262143 Bytes)
+Limited by BREAK_ADDRESS_MASK and CONTINUE_ADDRESS_MASK?</li>
+<li>maximum offset for branches: 32765 (0x7ffd)
+(prolang.y)</li>
+<li>number of virtual variables: 255</li>
+<li>number of global variables: 65536 (F_IDENTIFIER16)</li>
+<li>number of local variables: 256 (F_PUSH_LOCAL_VARIABLE_LVALUE)</li>
+<li>number of context variables: 256 (Should be consistent with local
+variables, MAX_LOCAL applies to both. 16 bit opcodes are not used yet.)</li>
+<li>max number of struct members: 255
+(exec.h, ...)</li>
+<li>max number of structs per program: usually 32767 (short)</li>
+</ul>
+<div class="section" id="Hash tables">
+<span id="lpc.Hash tables"></span><h4>HASH TABLES<a class="headerlink" href="#Hash tables" title="Permalink to this headline">¶</a></h4>
+</div>
+<ul class="simple">
+<li>maximum size of the hash table for identifiers (ITABLE): 32768
+The hashes of identifiers are signed short which are in most cases 16 bit
+wide integers (lex.h, lex.c, ...)</li>
+<li>maximum size of the hash table for objects (OTABLE): 65536</li>
+<li>maximum size of the hash table for shared strings (HTABLE): 65536
+The hashes are of type unsigned short which are in most cases 16 bit
+wide integers.</li>
+</ul>
+<div class="section" id="Objects">
+<span id="lpc.Objects"></span><h4>OBJECTS<a class="headerlink" href="#Objects" title="Permalink to this headline">¶</a></h4>
+</div>
+<ul class="simple">
+<li>maximum clone ID number: 2^32-1
+Not a real limitation, after that the driver starts checking if
+blueprint name + #cloneid are unique.</li>
+</ul>
+<div class="section" id="Memory management">
+<span id="lpc.Memory management"></span><h4>MEMORY MANAGEMENT<a class="headerlink" href="#Memory management" title="Permalink to this headline">¶</a></h4>
+</div>
+<ul class="simple">
+<li>max. size of single large block in slaballo.c and smalloc.c:
+0x07ffffff (134217727, defined by M_MASK)</li>
+</ul>
+<div class="section" id="Language">
+<span id="lpc.Language"></span><h4>LANGUAGE<a class="headerlink" href="#Language" title="Permalink to this headline">¶</a></h4>
+</div>
+<ul class="simple">
+<li>maximum number of simul-efuns: 2048
+Only values 0xf800-0xffff in .x.closure_type of
+a T_CLOSURE svalue are reserved for simul-efuns.
+F_SIMUL_EFUN however takes a short int, so there 65536
+simul-efuns would be possible.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">limitations</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#Program properties">PROGRAM PROPERTIES</a><ul>
+<li><a class="reference internal" href="#Hash tables">HASH TABLES</a></li>
+<li><a class="reference internal" href="#Objects">OBJECTS</a></li>
+<li><a class="reference internal" href="#Memory management">MEMORY MANAGEMENT</a></li>
+<li><a class="reference internal" href="#Language">LANGUAGE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/driver/limitations.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

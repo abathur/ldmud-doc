@@ -1,0 +1,12 @@
+SYNOPSIS
+========
+   void printf(string format, ...)
+
+DESCRIPTION
+===========
+   A cross between sprintf() and write(). Returns void and prints the result
+   string to the user.
+
+SEE ALSO
+========
+   sprintf(E), write(E), terminal_colour(E)

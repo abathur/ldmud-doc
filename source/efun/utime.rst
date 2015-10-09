@@ -1,0 +1,18 @@
+.. efun:: int * utime()
+
+  Return the time since 1. Jan 1970, 00:00:00 GMT in microsecond
+  precision.
+
+  Return is an array:
+    int[0]: number of seconds elapsed
+    int[1]: number of microseconds within the current second.
+
+EXAMPLES
+  write(ctime(utime())+"\n");
+
+  Print out the current date and time.
+
+.. history
+  Introduced in LDMud 3.2.9.
+
+  .. seealso:: :efun:`ctime`, :efun:`gmtime`, :efun:`localtime`, :efun:`time`

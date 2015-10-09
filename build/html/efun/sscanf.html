@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>sscanf &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sscanf">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.sscanf">
+int <code class="descname">sscanf</code><span class="sig-paren">(</span>string<em>&nbsp;str</em>, string<em>&nbsp;fmt</em>, mixed<em>&nbsp;var1</em>, mixed<em>&nbsp;var2</em>, ...<span class="sig-paren">)</span><a class="headerlink" href="#lpc.sscanf" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Parse a string &lt;str&gt; using the format &lt;fmt&gt;. &lt;fmt&gt; can contain
+strings seperated by %d and %s. Every %d and %s corresponds to
+one of &lt;var1&gt;, &lt;var2&gt;, ... .</p>
+<p>The match operators in the format string have one of these
+formats:</p>
+<blockquote>
+<div>%[+][!|~][&lt;size&gt;[.&lt;minmatch&gt;]]&lt;type&gt;</div></blockquote>
+<dl class="docutils">
+<dt>&lt;type&gt; may be:</dt>
+<dd><p class="first">d: matches any number.
+D: matches any number.
+U: matches any unsigned number.
+s: matches any string.
+%: matches the % character.
+t: matches whitespace (spaces and tab characters), but does</p>
+<blockquote class="last">
+<div>not store them (the simple &#8216; &#8216; matches just spaces and
+can&#8217;t be given a size specification).</div></blockquote>
+</dd>
+</dl>
+<p>&lt;size&gt; is the expected field size, and &lt;minmatch&gt; the demanded
+minimal match length (defaults are 0 for strings and 1 for
+numbers). Each of these both may be specified numerically, or
+as &#8216;*&#8217; - in which case the value of the variable at the current
+place in the argument list is used.</p>
+<p>Specifying + will require that the characters after the field
+match as well, or the match will be deemed unsuccessful (the variable
+might still get assigned, though).</p>
+<p>Specifying ! will perform the match, but neither store the
+result nor count the match.</p>
+<p>Specifying ~ will perform and count the match, but not store
+the result.</p>
+<p>If the %s specifier is not at the end of the format string,
+it is matched only if the following character(s) or format
+is found, too. See below for an example.</p>
+<p>The difference between %d and %D/%U is that the latter will abort
+an immediately preceeding %s as soon as possible, whereas the
+former will attempt to make the largest match to %s first.
+%D/%U will still not skip whitespace; use %.0t%D to skip optional
+whitespace.</p>
+<p>The number of matched arguments will be returned.</p>
+<p>The function sscanf is special in that arguments are passed
+by reference automatically.</p>
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">string</span> <span class="n">who</span><span class="p">,</span> <span class="n">what</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">sscanf</span><span class="p">(</span><span class="s">&quot;throw frisbee to rover&quot;</span><span class="p">,</span>
+   <span class="s">&quot;throw %s to %s&quot;</span><span class="p">,</span> <span class="n">what</span><span class="p">,</span> <span class="n">who</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
+   <span class="n">write</span><span class="p">(</span><span class="s">&quot;Usage: throw &lt;what&gt; to &lt;who&gt;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="k">else</span>
+   <span class="nf">write</span><span class="p">(</span><span class="s">&quot;You throw a &quot;</span><span class="o">+</span><span class="n">what</span><span class="o">+</span><span class="s">&quot; to &quot;</span><span class="o">+</span><span class="n">who</span><span class="o">+</span><span class="s">&quot; to get his attention.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="n">sscanf</span><span class="p">(</span><span class="s">&quot;ab&quot;</span><span class="p">,</span> <span class="s">&quot;%s%s&quot;</span><span class="p">,</span> <span class="n">who</span><span class="p">,</span> <span class="n">what</span><span class="p">)</span>
+  <span class="o">==&gt;</span> <span class="n">result</span> <span class="mi">2</span><span class="p">,</span> <span class="n">who</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">what</span> <span class="o">=</span> <span class="s">&quot;ab&quot;</span>
+
+<span class="n">sscanf</span><span class="p">(</span><span class="s">&quot;ab&quot;</span><span class="p">,</span> <span class="s">&quot;%s %s&quot;</span><span class="p">,</span> <span class="n">who</span><span class="p">,</span> <span class="n">what</span><span class="p">)</span>
+  <span class="o">==&gt;</span> <span class="n">result</span> <span class="mi">0</span><span class="p">,</span> <span class="n">who</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">what</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">sscanf</span><span class="p">(</span><span class="s">&quot;ab &quot;</span><span class="p">,</span> <span class="s">&quot;%s %s&quot;</span><span class="p">,</span> <span class="n">who</span><span class="p">,</span> <span class="n">what</span><span class="p">)</span>
+  <span class="o">==&gt;</span> <span class="n">result</span> <span class="mi">2</span><span class="p">,</span> <span class="n">who</span> <span class="o">=</span> <span class="s">&quot;ab&quot;</span><span class="p">,</span> <span class="n">what</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">sscanf</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/sscanf.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

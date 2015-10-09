@@ -1,0 +1,38 @@
+.. efun:: string query_verb(void)
+  string query_verb(int flag)
+
+  Return the verb of the current command, of 0 if not executing from
+  a command. If <flag> is 0 or not given, the verb as given by the user
+  is returned (this is the first word from the line input by the player,
+  up to but not including the first space or lineend). If <flag> is
+  non-0, the verb as specified in the add_action() statement is returned.
+
+  .. usage::
+
+    void init() {
+       ...
+       add_action("sing","sing");
+       add_action("sing","chant", 1);
+       ...
+    }
+    int sing(string str) {
+       write("Your command was: "+query_verb()+(str ? str : "")+"\n");
+       write("The action verb was: "+query_verb(1)+(str ? str : "")+"\n");
+       return 1;
+    }
+
+    The command 'sing ...' will print:
+        Your command was: sing
+        The action verb was: sing
+
+    The command 'chant ...' will print:
+        Your command was: chant
+        The action verb was: chant
+
+    The command 'chantit ...' will print:
+        Your command was: chantit
+        The action verb was: chant
+
+  :history 3.2.9 changed: added the optional flag argument.
+
+  .. seealso:: :efun:`add_action`, :efun:`query_command`

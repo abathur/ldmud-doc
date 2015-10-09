@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>to_struct &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="to_struct">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.to_struct">
+mixed <code class="descname">to_struct</code><span class="sig-paren">(</span>mixed *|mapping<em>&nbsp;data</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.to_struct" title="Permalink to this definition">¶</a></dt>
+<dt>
+mixed <code class="descname">to_struct</code><span class="sig-paren">(</span>mixed *|mapping<em>&nbsp;data</em>, struct<em>&nbsp;template</em><span class="sig-paren">)</span></dt>
+<dt>
+mixed <code class="descname">to_struct</code><span class="sig-paren">(</span>struct<em>&nbsp;data</em><span class="sig-paren">)</span></dt>
+<dt>
+mixed <code class="descname">to_struct</code><span class="sig-paren">(</span>struct<em>&nbsp;data</em>, struct<em>&nbsp;template</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>DESCRIPTION
+The given array, mapping or struct &lt;data&gt; is returned as a struct.
+If a &lt;template&gt; struct is given, the returned struct is of the same
+type. Without a template, an anonymous struct is returned in case of
+arrays and mappings and in case of structs &lt;data&gt; is returned
+unchanged.</p>
+<p>If &lt;data&gt; is an array, its elements are assigned in order to the
+resulting struct. For an anonymous struct, all elements of &lt;data&gt;
+are assigned, for a templated struct only as many as fit into
+the struct.</p>
+<p>If &lt;data&gt; is a mapping and no template is given, the resulting
+anonymous struct contains all elements from &lt;data&gt; with a string
+key; the key name is used as struct member name.</p>
+<p>If &lt;data&gt; is a mapping and a template is given, the struct
+member names are used as keys for lookups in &lt;data&gt;; the found
+data is assigned to the struct members.</p>
+<p>If &lt;data&gt; is a struct and a template is given, a struct of the type
+of template is created and all members from &lt;data&gt; are copied to the
+new struct, which exist in both structs. This conversion is only
+allowed between a struct and one of its base structs or a base struct
+and one of its children. Otherwise an error is raised.</p>
+<p>Neither &lt;data&gt; nor &lt;template&gt; will be changed in this process - the
+result is a new struct value. The actual value of &lt;template&gt; does not
+matter, only its type.</p>
+<p>Since the returned struct can&#8217;t be known at compile time, the
+efun is declared to return &#8216;mixed&#8217;.</p>
+<p>Introduced in LDMud 3.3.250 .
+LDMud 3.3.344 added the template argument.
+LDMud 3.3.433 added the conversion from mappings.
+LDMud 3.3.720 added the conversion of structs into another struct.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="to_array.html#lpc.to_array" title="to_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_array</span></code>(E)</a>, <a class="reference internal" href="to_string.html#lpc.to_string" title="to_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_string</span></code>(E)</a>, <a class="reference internal" href="mkmapping.html#lpc.mkmapping" title="mkmapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mkmapping</span></code>(E)</a>, <span class="xref lpc lpc-lang">structs</span></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">to_struct</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/to_struct.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

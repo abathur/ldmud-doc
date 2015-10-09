@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>object_info &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="object_info">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dl class="include">
+<dt>
+#include &lt;objectinfo.h&gt;</dt>
+</dl>
+
+<dt id="lpc.object_info">
+mixed * <code class="descname">object_info</code><span class="sig-paren">(</span>object<em>&nbsp;ob</em>, int<em>&nbsp;what</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.object_info" title="Permalink to this definition">¶</a></dt>
+<dt>
+mixed * <code class="descname">object_info</code><span class="sig-paren">(</span>object<em>&nbsp;ob</em>, int<em>&nbsp;what</em>, int<em>&nbsp;index</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Returns some internal information about object &lt;ob&gt;, collected
+in an array. Argument &lt;what&gt; determines which information is
+returned.</p>
+<p>The result is usually an array. However, if &lt;index&gt; is specified,
+the result is the value from position &lt;index&gt; of the array which
+would have been returned normally.</p>
+<p>The possible values of &lt;what&gt;, and the indices of the returned
+arrays are defined in the include file &lt;objectinfo.h&gt;, and may
+change in future versions of the driver!</p>
+<p>&lt;what&gt; == OINFO_BASIC:</p>
+<blockquote>
+<div><p>This call returns basic information about &lt;ob&gt;:</p>
+<p>int [OIB_HEART_BEAT]:       1 if &lt;ob&gt; has a heart_beat, 0 else.
+int [OIB_IS_WIZARD]:        1 if &lt;ob&gt; has the wizard flag set,</p>
+<blockquote>
+<div><blockquote>
+<div>0 else.</div></blockquote>
+<p>This entry is always 0 when set_is_wizard() is not available.</p>
+</div></blockquote>
+<p>int [OIB_ENABLE_COMMANDS]:  1 if &lt;ob&gt; can give commands, 0 else.
+int [OIB_CLONE]:            1 if &lt;ob&gt; is a clone, 0 else.
+int [OIB_DESTRUCTED]:       1 if &lt;ob&gt; is destructed, 0 else.
+int [OIB_SWAPPED]:          1 if &lt;ob&gt; is swapped, 0 else.
+int [OIB_ONCE_INTERACTIVE]: 1 if &lt;ob&gt; was once interactive, 0 else.
+int [OIB_RESET_STATE]:      1 if &lt;ob&gt; is (still) reset, 0 else.
+int [OIB_WILL_CLEAN_UP]:    1 if &lt;ob&gt; will call clean_up(), 0 else.
+int [OIB_LAMBDA_REFERENCED]: 1 if &lt;ob&gt; has lambdas, 0 else.
+int [OIB_SHADOW]:           1 if &lt;ob&gt; has a shadow structure tied</p>
+<blockquote>
+<div>to it, 0 if not.</div></blockquote>
+<dl class="docutils">
+<dt>int [OIB_REPLACED]:         1 if the program for &lt;ob&gt; was replaced,</dt>
+<dd>0 else.</dd>
+</dl>
+<p>int [OIB_NEXT_RESET]:   time of the next reset
+int [OIB_TIME_OF_REF]:  time of the last call to &lt;ob&gt;
+int [OIB_NEXT_CLEANUP]: time of the next data cleanup
+int [OIB_REF]:          number of references to &lt;ob&gt;
+int [OIB_GIGATICKS] and [OIB_TICKS]: together, these numbers</p>
+<blockquote>
+<div>give the accumulated evaluation cost spend in &lt;ob&gt;</div></blockquote>
+<dl class="docutils">
+<dt>int [OIB_SWAP_NUM]:     the swap number for &lt;ob&gt;s program,</dt>
+<dd>or -1 if not swapped.</dd>
+</dl>
+<p>int [OIB_PROG_SWAPPED]: 1 if &lt;ob&gt;&#8217;s program is swapped, 0 else.
+int [OIB_VAR_SWAPPED]:  1 if &lt;ob&gt;&#8217;s variables are swapped, 0 else.
+int [OIB_NAME]:         &lt;ob&gt;&#8217;s object name.
+int [OIB_LOAD_NAME]:    &lt;ob&gt;&#8217;s load name.
+object [OIB_NEXT_ALL]:  next object in the object list.
+object [OIB_PREV_ALL]:  previous object in the object list.</p>
+</div></blockquote>
+<p>&lt;what&gt; == OINFO_POSITION:</p>
+<blockquote>
+<div><p>This call returns information about &lt;ob&gt;&#8217;s position in the
+global list of objects:</p>
+<p>object [OIP_NEXT]: next object in the object list.
+object [OIP_PREV]: previous object in the object list.
+int    [OIP_POS]:  position of &lt;ob&gt; in list, counting from 0 up.</p>
+<p>This call can be expensive in computing time.</p>
+</div></blockquote>
+<p>&lt;what&gt; == OINFO_MEMORY:</p>
+<blockquote>
+<div><p>This call returns information about the program &lt;ob&gt; uses:</p>
+<p>int    [OIM_REF]:            number of references to the program.
+string [OIM_NAME]:           name of program.
+int    [OIM_PROG_SIZE]:      size of the program.
+int    [OIM_NUM_FUNCTIONS]:  number of functions in the program.
+int    [OIM_SIZE_FUNCTIONS]: size needed for the function structs.
+int    [OIM_NUM_VARIABLES]:  number of variables in the program.
+int    [OIM_SIZE_VARIABLES]: size needed for the variable structs.
+int    [OIM_NUM_STRINGS]:    number of strings in the program.
+int    [OIM_SIZE_STRINGS]:   size needed for the string pointers.
+int    [OIM_SIZE_STRINGS_DATA]: size needed for the string data,</p>
+<blockquote>
+<div>scaled down according to the extend of
+data sharing.</div></blockquote>
+<dl class="docutils">
+<dt>int    [OIM_SIZE_STRINGS_TOTAL]: unmodified size needed for the</dt>
+<dd>string data.</dd>
+</dl>
+<p>int    [OIM_NUM_INCLUDES]:   number of included files in the program.
+int    [OIM_NUM_INHERITED]:  number of inherited programs.
+int    [OIM_SIZE_INHERITED]: size needed for the inherit structs.
+int    [OIM_TOTAL_SIZE]:     total size of the program.
+int    [OIM_DATA_SIZE]:      total size of the values held in the</p>
+<blockquote>
+<div>object&#8217;s variables, scaled down
+according to the extend of data
+sharing.</div></blockquote>
+<dl class="docutils">
+<dt>int    [OIM_DATA_SIZE_TOTAL]: unmodified total size of the values</dt>
+<dd>held in the object&#8217;s variables</dd>
+</dl>
+<p>int    [OIM_NO_INHERIT]:     1 if the program can&#8217;t be inherited.
+int    [OIM_NO_CLONE]:       1 if the program/blueprint can&#8217;t be</p>
+<blockquote>
+<div>cloned.</div></blockquote>
+<dl class="docutils">
+<dt>int    [OIM_NO_SHADOW]:      1 if the program&#8217;s functions can&#8217;t be</dt>
+<dd>shadowed.</dd>
+<dt>int    [OIM_SHARE_VARIABLES]:  1 if clones of this program share</dt>
+<dd>their initial variable values with
+the blueprint.</dd>
+</dl>
+<p>This call swaps in the program if necessary.
+Note that the OIM_SIZE_xxx entries only give the size spent on
+the structures and pointers, not the size of the variable data,
+function code, and strings themselves.</p>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">object_info</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/object_info.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

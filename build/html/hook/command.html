@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>H_COMMAND &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="H_COMMAND">
+<div class="section" id="SYNOPSIS">
+<span id="lpc.command"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="hook">
+<dl class="include">
+<dt>
+#include &lt;sys/driver_hooks.h&gt;</dt>
+</dl>
+
+<dt id="lpc.H_COMMAND">
+<code class="descname">set_driver_hook</code><span class="sig-paren">(</span><em>H_COMMAND</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.H_COMMAND" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>value</strong> (<em>closure</em>) &#8211; int &lt;closure&gt;(string command, object command_giver)</li>
+<li><strong>value</strong> (<em>string</em>) &#8211; int &lt;name&gt;(string command, object command_giver)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Optional hook to parse and execute commands. If this hook is
+used, it bypasses the normal command parsing done by the
+driver (including the MODIFY_COMMAND and NOTIFY_FAIL hooks).</p>
+<p>The hook is called with two parameters: the command received
+from the living (interactive user or NPC), and the living
+object (the &#8216;command giver&#8217;) itself. The hook has to return
+non-0 if the command was found and executed, and 0 otherwise.</p>
+<p>At the time the hook is called, query_command() returns the
+command string and this_player() returns the living object.
+query_verb() and query_notify_fail() return 0.</p>
+<p>If the hook is a string, it is the name of an lfun in the
+command giver; if the hook is a lambda closure, it is bound to
+the command giver before the call.</p>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="hook.html#lpc.hooks" title="hooks"><span class="xref lpc lpc-concept">hooks</span></a>, <a class="reference internal" href="modify_command.html#lpc.modify_command" title="modify_command"><code class="xref lpc lpc-hook docutils literal"><span class="pre">modify_command</span></code>(H)</a>, <a class="reference internal" href="modify_command_fname.html#lpc.modify_command_fname" title="modify_command_fname"><code class="xref lpc lpc-hook docutils literal"><span class="pre">modify_command_fname</span></code>(H)</a>, <a class="reference internal" href="notify_fail.html#lpc.notify_fail" title="notify_fail"><code class="xref lpc lpc-hook docutils literal"><span class="pre">notify_fail</span></code>(H)</a>, <a class="reference internal" href="send_notify_fail.html#lpc.send_notify_fail" title="send_notify_fail"><code class="xref lpc lpc-hook docutils literal"><span class="pre">send_notify_fail</span></code>(H)</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">H_COMMAND</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/hook/command.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,8 @@
+SYNOPSIS
+========
+   int negate(int)
+   float negate(float)
+
+DESCRIPTION
+===========
+   Unary minus. Returns the negative argument.

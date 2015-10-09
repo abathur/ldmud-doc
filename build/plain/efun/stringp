@@ -1,0 +1,12 @@
+SYNOPSIS
+========
+   int stringp(mixed arg)
+
+DESCRIPTION
+===========
+   Return 1 if <arg> is a string.
+
+SEE ALSO
+========
+   clonep(E), closurep(E), floatp(E), mappingp(E), objectp(E), intp(E),
+   referencep(E), pointerp(E), symbolp(E), structp(E)

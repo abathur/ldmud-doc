@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>map_mapping &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="map_mapping">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.map_mapping">
+mapping <code class="descname">map_mapping</code><span class="sig-paren">(</span>mapping<em>&nbsp;m</em>, string<em>&nbsp;func</em>, string|object<em>&nbsp;ob</em>, ...<span class="sig-paren">)</span><a class="headerlink" href="#lpc.map_mapping" title="Permalink to this definition">¶</a></dt>
+<dt>
+mapping <code class="descname">map_mapping</code><span class="sig-paren">(</span>mapping<em>&nbsp;m</em>, closure<em>&nbsp;cl</em>, ...<span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>ob-&gt;func() is called resp. cl applied to every element in the mapping,
+with the key of the element as first argument, and then the extra args
+that were given to map_mapping (these args must not be protected
+references like &amp;(i[0])).  The data item in the mapping is replaced by
+the return value of the function. ob can also be a file_name of an
+object.</p>
+<p>If &lt;ob&gt; is omitted, or neither a string nor an object, it
+defaults to this_object().</p>
+<p>Note that if mapping m has more than one value per key, these
+are ignored: the resulting mapping always has one value per key.</p>
+<p>Also note that the behaviour of this function is different from
+map_array().</p>
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-c"><div class="highlight"><pre>m = mkmapping(users());
+m = map_mapping(m, #&#39;environment);
+</pre></div>
+</div>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.2.6</em>) &#8211; renamed to map_indices()</li>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; not available if driver is compiled without USE_DEPRECATED.</li>
+<li><strong>removed</strong> (<em>3.3</em>)</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/map.html#lpc.map" title="map"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map</span></code>(E)</a>, <a class="reference internal" href="../efun/filter.html#lpc.filter" title="filter"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter</span></code>(E)</a>, <a class="reference internal" href="../efun/filter_indices.html#lpc.filter_indices" title="filter_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter_indices</span></code>(E)</a>, <a class="reference internal" href="../efun/walk_mapping.html#lpc.walk_mapping" title="walk_mapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">walk_mapping</span></code>(E)</a>, <a class="reference internal" href="../efun/member.html#lpc.member" title="member"><code class="xref lpc lpc-efun docutils literal"><span class="pre">member</span></code>(E)</a>, <a class="reference internal" href="../efun/m_contains.html#lpc.m_contains" title="m_contains"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_contains</span></code>(E)</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">map_mapping</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/obsolete/map_mapping.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

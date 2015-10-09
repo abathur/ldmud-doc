@@ -1,0 +1,20 @@
+SYNOPSIS
+========
+   int sgn(int|float arg)
+
+DESCRIPTION
+===========
+   Return the sign of the argument.
+
+   > 0   1
+      0   0
+
+   < 0  -1
+
+HISTORY
+=======
+   - **introduced** (*3.2.9*)
+
+SEE ALSO
+========
+   abs(E)

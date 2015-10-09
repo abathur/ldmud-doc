@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>trace &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="trace">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dl class="include">
+<dt>
+#include &lt;trace.h&gt;</dt>
+</dl>
+
+<dt id="lpc.trace">
+int <code class="descname">trace</code><span class="sig-paren">(</span>int<em>&nbsp;traceflags</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.trace" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Sets the trace flags and returns the old trace flags. When
+tracing is on, a lot of information is printed during
+execution and too much output can crash your connection or
+even the whole driver.</p>
+<p>Tracing is done on a per-connection basis: each interactive(!)
+user may specifiy their own tracelevel and -prefix. Each gets the
+traceoutput for just the code executed during the evaluation
+of the commands he entered.</p>
+<p>The trace bits are:</p>
+<blockquote>
+<div><p>TRACE_NOTHING     (  0): stop tracing.</p>
+<p>TRACE_CALL        (  1): trace all calls to lfuns.
+TRACE_CALL_OTHER  (  2): trace call_others()s.
+TRACE_RETURN      (  4): trace function returns.
+TRACE_ARGS        (  8): print function arguments and results.
+TRACE_EXEC        ( 16): trace all executed instructions.
+TRACE_HEART_BEAT  ( 32): trace heartbeat code.
+TRACE_APPLY       ( 64): trace driver applies.
+TRACE_OBJNAME     (128): print the object names.</p>
+</div></blockquote>
+<p>TRACE_EXEC and TRACE_HEART_BEAT should be avoided as they cause
+massive output! TRACE_OBJNAME should be avoided when you know
+what you trace.</p>
+<p>The master-lfun valid_trace() is called with (&#8220;trace&#8221;, traceflags)
+as argument to verify the use of this efun.</p>
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">object</span> <span class="n">obj</span><span class="p">;</span>
+<span class="n">string</span> <span class="n">prefix</span><span class="p">;</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">find_player</span><span class="p">(</span><span class="s">&quot;wessex&quot;</span><span class="p">);</span>
+<span class="n">prefix</span> <span class="o">=</span> <span class="n">object_name</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+<span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span><span class="p">[</span><span class="mf">1.</span><span class="p">.];</span>  <span class="cm">/* cut off the leading &quot;/&quot; */</span>
+<span class="n">traceprefix</span><span class="p">(</span><span class="n">prefix</span><span class="p">);</span>
+  <span class="cm">/* From here on, only code in the object &quot;std/player#69&quot;</span>
+<span class="cm">   * will be traced.</span>
+<span class="cm">   */</span>
+<span class="n">trace</span><span class="p">(</span><span class="n">TRACE_CALL</span><span class="o">|</span><span class="n">TRACE_CALL_OTHER</span><span class="o">|</span><span class="n">TRACE_RETURN</span><span class="o">|</span><span class="n">TRACE_ARGS</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">trace</span><span class="p">(</span><span class="n">TRACE_NOTHING</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">trace</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/trace.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

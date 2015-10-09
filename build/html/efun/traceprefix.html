@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>traceprefix &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="traceprefix">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dl class="include">
+<dt>
+#include &lt;trace.h&gt;</dt>
+</dl>
+
+<dt id="lpc.traceprefix">
+string <code class="descname">traceprefix</code><span class="sig-paren">(</span>string<em>&nbsp;prefix</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.traceprefix" title="Permalink to this definition">¶</a></dt>
+<dt>
+string <code class="descname">traceprefix</code><span class="sig-paren">(</span>int<em>&nbsp;dummy</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>DESCRIPTION
+If called with a string, only objects matching this prefix will
+be traced. The string must not contain a leading &#8220;/&#8221; because
+the object names are stored internally without it. If called
+with a number, the traceprefix will be ignored and all objects
+will be traced. Returns the last traceprefix or 0 if there
+wasn&#8217;t any.</p>
+<p>The master-lfun valid_trace() is called with (&#8220;traceprefix&#8221;, prefix)
+as arguments to verify the use of this efun.</p>
+<p>EXAMPLES
+object obj;
+string prefix;
+obj = find_player(&#8220;wessex&#8221;);
+prefix = object_name(obj);
+prefix = prefix[1..];  /* cut off the leading &#8220;/&#8221; <a href="#id1"><span class="problematic" id="id2">*</span></a>/
+traceprefix(prefix);</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>/* From here on, only code in the object &#8220;std/player#69&#8221;</dt>
+<dd><ul class="first simple">
+<li>will be traced.</li>
+</ul>
+<p class="last"><a href="#id3"><span class="problematic" id="id4">*</span></a>/</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>trace(TRACE_CALL | TRACE_CALL_OTHER | TRACE_RETURN | TRACE_ARGS);
+...
+trace(TRACE_NOTHING);</p>
+<p>LDMud 3.2.9 passes the &lt;prefix&gt; argument to the valid_trace()
+apply as well.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="trace.html#lpc.trace" title="trace"><code class="xref lpc lpc-efun docutils literal"><span class="pre">trace</span></code>(E)</a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">traceprefix</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/traceprefix.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

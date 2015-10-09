@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>modifiers &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <blockquote>
+<div><div class="section" id="modifiers">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<p id="lpc.modifiers">modifiers</p>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>A modifier changes the syntactic and/or semantic behaviour of
+an object-global variable or a function in an object.
+The existing modifiers are described below.
+To use a modifier just prepend it to the declaration. If several
+modifiers are to be used their order does not matter:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">private</span> <span class="kt">int</span> <span class="n">bar</span><span class="p">;</span>                         <span class="c1">// example for a variable</span>
+<span class="n">protected</span> <span class="n">nomask</span> <span class="kt">int</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">3</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// example for a function</span>
+</pre></div>
+</div>
+<div class="section" id="For functions">
+<span id="lpc.For functions"></span><h1>FOR FUNCTIONS<a class="headerlink" href="#For functions" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>private</dt>
+<dd>such functions can only be called with an internal
+call from within this file. Not even inheriting
+objects can call these functions. You can nevertheless
+build an lfun-closure with #&#8217; out of a private function
+(but you cannot save and restore it).</dd>
+<dt>protected</dt>
+<dd>such functions can be called from within the object,
+or from inheriting objects; but in neither case
+with call_other(). It is possible to create #&#8217; closures
+or use symbol_function() from within the object.
+Its use is preferred over the older &#8220;static&#8221;.</dd>
+<dt>static</dt>
+<dd>such functions can be called from within the object
+in either way (internal call or with call_other()).
+Inheriting objects can call such functions.
+But it is not possible to call static functions from
+other objects via call_other().
+The use of &#8216;static&#8217; in new code is not recommended.
+Note that an add_action() is treated like a call
+from within the object except the player who got the
+add_action() was forced (thus it is a simple way to
+secure an add_action() against forces, although this
+method has the severe disadvantages of raising an error
+at the force so better use the security system).
+Also efuns like call_out() or input_to() can call
+these functions if given as a string.</dd>
+<dt>public</dt>
+<dd>this is the default type. Such functions can be called
+from within the file as well as from inheriting objects
+and other objects via call_other().
+To declare a function public only results in the
+impossibility to change the accessibility at the
+inherit statement (see below). No error will occur,
+only the type will not be modified by the inherit
+statement.</dd>
+<dt>nomask</dt>
+<dd>such functions cannot be overridden by inheriting
+objects. If you have the fun foo() defined in your
+object and inherit an object which also has declared
+a function foo() and this nomask, you will get an
+compile error if you try to load your object.
+Furthermore a shadow will fail if it tries to shadow
+a nomask declared function.</dd>
+<dt>varargs</dt>
+<dd>this changes the syntax of the function in a way that
+not all of the arguments in the declaration must be
+given at the call. This is often very usefull if some
+of the arguments shall be omitable (the omitted
+arguments are set to 0 if the function is called with
+fewer arguments than specified).
+This is mainly within the object really necessary;
+call_other()s usually (that is if they do not have a
+certain pragma (&#8216;man pragma&#8217;)) do not need the called
+function to be declared varargs to omit any arguments,
+but it is good style to use this modifier to document
+the code by this.</dd>
+<dt>deprecated</dt>
+<dd>Whenever this function is called, a warning is issued.
+Usually this is done at compile-time. Exceptions are
+call_others and symbol_function() which warn at run-time.</dd>
+</dl>
+</div>
+<div class="section" id="For object-global variables">
+<span id="lpc.For object-global variables"></span><h1>FOR OBJECT-GLOBAL VARIABLES<a class="headerlink" href="#For object-global variables" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>private</dt>
+<dd>such variables can only be accessed from within the
+same object. Not even inheriting objects can access
+private variables.
+It is a good style to declare all internal variables
+private to prevent inheriting objects from accessing
+the variables directly without using functions.</dd>
+<dt>nosave</dt>
+<dd>such variables are neither stored with save_object()
+nor restored with restore_object(). This can be very
+useful if you want a room to use save_object() and
+restore_object() to save your own defined variables
+but not the hundreds of variables inherited from a
+room-class (e.g. /complex/room). You then use the modifier
+at the inherit statement (see below).
+Note that nosave and private do not overlap in any
+way. They are absolutely independant.</dd>
+<dt>static</dt>
+<dd>the old name for &#8216;nosave&#8217;. Its use is deprecated.</dd>
+<dt>public</dt>
+<dd>declares the variable public. It cannot be declared
+private or static by inheriting. No error will occur,
+only the type will not be modified by the inherit
+statement.</dd>
+<dt>deprecated</dt>
+<dd>Whenever this variable is used, a warning is issue.
+Usually this is done at compile-time, but
+symbol_variable() warns at run-time.</dd>
+</dl>
+</div>
+<p>It is no good style to let inheriting objects have access to
+internal variables so declare them as private and offer functions
+to query and change the variables if possible.</p>
+<p>It is also possible to redeclare all variables and/or functions
+of an inherited object for the own object at the inheriting
+statement:</p>
+<p>private functions nosave variables inherit &#8220;complex/room&#8221;;
+public variables inherit &#8220;complex/room&#8221;;
+private functions inherit &#8220;complex/room&#8221;;</p>
+<p>To redeclare a function or a variable declared public in the
+inherited object to be private or protected is not possible.</p>
+<p>There also exists a modifier explicitly for the inherit statement:</p>
+<dl class="docutils">
+<dt>virtual</dt>
+<dd><p class="first">inherits the given object virtually. This only makes
+sense in a complex inherit tree.
+If an object is inherited normally (not virtually)
+twice somewhere in the inherit tree the intern
+variables exist twice. If inherited virtually they
+exist only once.</p>
+<p>Example:</p>
+<div class="last highlight-c"><div class="highlight"><pre>A inherits B and C.
+B inherits D.
+C inherits D.
+If the inheritance of D is virtual in B and C
+D&#39;s variables exist only once in A. If A changes
+D&#39;s variables via functions of B this also changes
+the variables of D as known by C.
+
+ virtual:               non-virtual:
+    A                        A
+   / \                      / \
+  B   C                    B   C
+   \ /                     |   |
+    D                      D   D
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>To simplify the adoption of existing code, LPC allows to specify
+a default visibility for functions and variables, using a syntax
+similar to the inherit syntax.</p>
+<p>All variables and functions are by default private:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">default</span> <span class="n">private</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>All variables are by default private, but functions are public:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">default</span> <span class="n">private</span> <span class="n">variables</span> <span class="n">public</span> <span class="n">functions</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Only the modifiers <code class="docutils literal"><span class="pre">private</span></code>, <code class="docutils literal"><span class="pre">public</span></code> and <code class="docutils literal"><span class="pre">protected</span></code> (and <code class="docutils literal"><span class="pre">static</span></code>
+for functions only) are allowed here.</p>
+<p>The default visibility thus set affects only variables/functions with
+no explicite visibility:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">default</span> <span class="n">private</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">private_var</span><span class="p">;</span>
+<span class="n">public</span> <span class="kt">int</span> <span class="n">public_var</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The definition is valid from the point of the &#8216;default&#8217; statement
+until the end of the file, or until the next &#8216;default&#8217; statement:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">default</span> <span class="n">private</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">private_var</span><span class="p">;</span>
+
+<span class="k">default</span> <span class="n">public</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">public_var</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">this default visibility does not affect inherits.</p>
+</div>
+<p>The modifier &#8216;static&#8217; for variables was renamed to &#8216;nosave&#8217;
+with LDMud 3.2.8. &#8216;static&#8217; is still recognized as an alias.</p>
+<p>The default visibility was added in LDMud 3.2.9 as experimental
+feature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><span class="xref lpc lpc-lang">closures</span>, <span class="xref lpc lpc-lang">inheritance</span>, <span class="xref lpc lpc-lang">functions</span>, <span class="xref lpc lpc-lang">types</span></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/LPC/modifiers.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

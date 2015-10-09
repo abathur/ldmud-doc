@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>runtime_error &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="runtime_error">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="master">
+<dt id="lpc.runtime_error">
+void <code class="descname">runtime_error</code><span class="sig-paren">(</span>string<em>&nbsp;err</em>, string<em>&nbsp;prg</em>, string<em>&nbsp;curobj</em>, int<em>&nbsp;line</em>, mixed<em>&nbsp;culprit</em>, int<em>&nbsp;caught</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.runtime_error" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>This function has to announce a runtime error to the active
+user. If the user has enough privileges, it might give him the
+full error message together with the source line. Else it
+should issue a decent message (&#8220;Your sensitive mind notices a
+wrongness in the fabric of space&#8221;).</p>
+<p>&lt;err&gt; is the error message, &lt;prg&gt; is the program executed (which
+might be an inherited program), &lt;curobj&gt; is the current object at
+the time of the error. &lt;line&gt; is the linenumber within the program.</p>
+<p>If the error is a normal runtime error, &lt;culprit&gt; is -1. Otherwise,
+the error occured during a heartbeat and &lt;culprit&gt; is the object which
+heart_beat() function was executed. Also, in case of a heartbeat error,
+the heartbeat for the &lt;culprit&gt; has been turned off.</p>
+<p>If the error is caught on a higher level, &lt;caught&gt; is non-zero;
+otherwise it is 0.</p>
+<p>Note that any of the the objects or programs might be destructed, ie.
+might be passed as 0.</p>
+<p>One common pitfall in the implementation of runtime_error() is
+that runtime_error() itself could run out of evaluation ticks,
+causing a runtime error itself. The workaround is to use
+limited() like this:</p>
+<div class="highlight-c"><div class="highlight"><pre>static void
+handle_runtime_error ( string err, string prg, string curobj
+                     , int line)
+{ ... the actual error handler ... }
+
+static void
+call_runtime_error (string err, string prg, string curobj, int line)
+{
+    limited(#&#39;handle_runtime_error, ({ 200000 }), err, prg, curobj
+           , line);
+}
+
+void
+runtime_error (string err, string prg, string curobj, int line)
+{
+    limited(#&#39;call_runtime_error, ({ LIMIT_UNLIMITED })
+           , err, prg, curobj, line);
+}
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">runtime_error</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/master/runtime_error.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

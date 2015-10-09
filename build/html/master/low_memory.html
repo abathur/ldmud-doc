@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>low_memory &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="low_memory">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="master">
+<dt id="lpc.low_memory">
+void <code class="descname">low_memory</code><span class="sig-paren">(</span>int<em>&nbsp;what</em>, int<em>&nbsp;limitvalue</em>, int<em>&nbsp;memory</em>, int<em>&nbsp;reservestate</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.low_memory" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>This efun is called when there is a (potential) low-memory situation.
+Two different limits for the amount of allocated memory can be
+configured: a soft limit and a hard limit. If the soft limit is
+exceeded, the driver calls low_memory() but does nothing else.
+If the hard limit is exceeded, the driver calls low_memory() as well,
+but initiates a garbage collection directly after the call. The efun
+is called as well directly before a user-initiated garbage collection
+is started.</p>
+<p>&lt;what&gt; denotes the type of limit which was exceeded:</p>
+<ul>
+<li><p class="first">NO_MALLOC_LIMIT_EXCEEDED   (0)</p>
+<p>No limit was exceeded, but a garbage collection was requested by a
+call to garbage_collection() and it will begin right after
+low_memory() returns.</p>
+</li>
+<li><p class="first">SOFT_MALLOC_LIMIT_EXCEEDED (1)</p>
+<p>The soft limit was exceeded.</p>
+</li>
+<li><p class="first">HARD_MALLOC_LIMIT_EXCEEDED (2)</p>
+<p>The hard limit was exceeded. A garbage collection will begin right
+after low_memory() returns.</p>
+</li>
+</ul>
+<p>&lt;limit&gt; specifies the numerical value of the limit which was exceeded.
+It is 0 in case of NO_MALLOC_LIMIT_EXCEEDED.</p>
+<p>&lt;memory&gt; specifies the amount of allocated memory right now.</p>
+<p>&lt;reservestate&gt; specifies the current state of the memory reserves of
+the driver. The states of the 3 different reserves are OR&#8217;ed together.</p>
+<ul>
+<li><p class="first">USER_RESERVE_AVAILABLE   (1)</p>
+<p>The user reserve is available.</p>
+</li>
+<li><p class="first">MASTER_RESERVE_AVAILABLE (2)</p>
+<p>The master reserve is available.</p>
+</li>
+<li><p class="first">SYSTEM_RESERVE_AVAILABLE (4)</p>
+<p>The system reserve is available.</p>
+</li>
+</ul>
+<p>This efun might be used to inform users about the garbage collection
+and the expected long lag.</p>
+<p>Another possibility is to initiate a garbage collection deliberately
+at a suitable time (e.g. during the following night) after the soft
+limit was hit.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If in a low_memory condition when the memory reserves have been
+used already and they could not be re-allocated after a garbage collection
+slow_shut_down() is called instead of calling this function again.</p>
+</div>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>introduced</strong> (<em>3.3.719</em>)</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/debug_info.html#lpc.debug_info" title="debug_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">debug_info</span></code>(E)</a>, <a class="reference internal" href="../efun/garbage_collection.html#lpc.garbage_collection" title="garbage_collection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">garbage_collection</span></code>(E)</a>, <a class="reference internal" href="slow_shut_down.html#lpc.slow_shut_down" title="slow_shut_down"><code class="xref lpc lpc-master docutils literal"><span class="pre">slow_shut_down</span></code>(M)</a>, <a class="reference internal" href="../concepts/memory.html#lpc.memory" title="memory"><span class="xref lpc lpc-concept">memory</span></a>, <a class="reference internal" href="../driver/malloc.html#lpc.malloc" title="malloc"><code class="xref lpc lpc-driver docutils literal"><span class="pre">malloc</span></code></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">low_memory</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/master/low_memory.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

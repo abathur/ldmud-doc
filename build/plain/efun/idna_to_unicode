@@ -1,0 +1,19 @@
+SYNOPSIS (OPTIONAL)
+===================
+   #include <idn.h>
+
+   string idna_to_unicode(string name)
+
+DESCRIPTION
+===========
+Convert string <name> from idna representation (8z punycode) to UTF-8.
+
+If an error occurs, an exception is thrown.
+
+The efun is available only if the system supports libidn - in that case
+__IDNA__ is defined.
+
+Introduced in LDMud 3.3.713.
+
+   See Also:
+      convert_charset(E), idna_to_ascii(E), idna_stringprep(E)

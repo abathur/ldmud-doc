@@ -1,0 +1,8 @@
+SYNOPSIS
+========
+   void export_uid(object ob)
+
+DESCRIPTION
+===========
+   Set the uid of object ob to the current object's effective uid. It is
+   onlypossible when object ob has an effective uid of 0.

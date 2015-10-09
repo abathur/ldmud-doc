@@ -1,0 +1,8 @@
+.. efun:: int command_stack_depth(void)
+
+  Return the number of nested commands, ie. the depth of the command
+  stack
+
+  :history 3.2.7 introduced:
+
+  .. seealso:: :efun:`command`, :efun:`command_stack`

@@ -1,0 +1,468 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>efun &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="efun">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<p id="lpc.efun">efun</p>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>This directory contains descriptions for the efuns of LDMud 3.3.</p>
+<p>These are functions that are supplied by the driver and can be
+called by any LPC object (somewhat similar to system calls in the
+C library).</p>
+<p>There a few kinds of efuns:</p>
+<dl class="docutils">
+<dt>&#8216;optional&#8217;</dt>
+<dd><p class="first">A mud&#8217;s maintainer is free to deactivate these efuns when
+compiling the driver:</p>
+<ul class="last simple">
+<li>assoc()</li>
+<li>break_point()</li>
+<li>db_*()</li>
+<li>insert_alist()</li>
+<li>intersect_alist()</li>
+<li>parse_command()</li>
+<li>process_string()</li>
+<li>rusage()</li>
+<li>set_is_wizard()</li>
+<li>transfer()</li>
+<li>tls_available()</li>
+<li>tls_check_certificate()</li>
+<li>tls_deinit_connection()</li>
+<li>tls_error()</li>
+<li>tls_init_connection()</li>
+<li>tls_query_connection_info()</li>
+<li>tls_query_connection_state()</li>
+<li>tls_refresh_certs()</li>
+<li>xml_generate()</li>
+<li>xml_parse()</li>
+</ul>
+</dd>
+<dt>&#8216;preliminary&#8217; or &#8216;experimental&#8217;</dt>
+<dd><p class="first">The behaviour of these efuns is not fixed yet, and may change
+with further releases:</p>
+<ul class="last simple">
+<li>tls_*()</li>
+<li>xml_generate()</li>
+<li>xml_parse()</li>
+</ul>
+</dd>
+<dt>&#8216;deprecated&#8217; or &#8216;obsolete&#8217;</dt>
+<dd><p class="first">These efuns should no longer be used, they are merely provided
+for backwards compatibility:</p>
+<ul class="last simple">
+<li>make_shared_string()</li>
+<li>md5()</li>
+<li>sha1()</li>
+</ul>
+</dd>
+</dl>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="abs.html">abs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acos.html">acos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_action.html">add_action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="all_environment.html">all_environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="all_inventory.html">all_inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allocate.html">allocate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="and_bits.html">and_bits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apply.html">apply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asin.html">asin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atan.html">atan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atan2.html">atan2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="attach_erq_demon.html">attach_erq_demon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="baseof.html">baseof</a></li>
+<li class="toctree-l1"><a class="reference internal" href="binary_message.html">binary_message</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bind_lambda.html">bind_lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blueprint.html">blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="break_point.html">break_point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="call_direct.html">call_direct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="call_direct_resolved.html">call_direct_resolved</a></li>
+<li class="toctree-l1"><a class="reference internal" href="call_other.html">(fun)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="call_out.html">call_out</a></li>
+<li class="toctree-l1"><a class="reference internal" href="call_out_info.html">call_out_info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="call_resolved.html">call_resolved</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caller_stack.html">caller_stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caller_stack_depth.html">caller_stack_depth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capitalize.html">capitalize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catch.html">catch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ceil.html">ceil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clear_bit.html">clear_bit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clone_object.html">clone_object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clonep.html">clonep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clones.html">clones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="closurep.html">closurep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command.html">command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_stack.html">command_stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_stack_depth.html">command_stack_depth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configure_driver.html">configure_driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configure_interactive.html">configure_interactive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert_charset.html">convert_charset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copy.html">copy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copy_bits.html">copy_bits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copy_file.html">copy_file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cos.html">cos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="count_bits.html">count_bits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creator.html">creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crypt.html">crypt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctime.html">ctime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_affected_rows.html">db_affected_rows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_close.html">db_close</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_coldefs.html">db_coldefs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_connect.html">db_connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_conv_string.html">db_conv_string</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_error.html">db_error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_exec.html">db_exec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_fetch.html">db_fetch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_handles.html">db_handles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_insert_id.html">db_insert_id</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug_info.html">debug_info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug_message.html">debug_message</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deep_copy.html">deep_copy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deep_inventory.html">deep_inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="destruct.html">destruct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disable_commands.html">disable_commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ed.html">ed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enable_commands.html">enable_commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enable_telnet.html">enable_telnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="end_mccp_compress.html">end_mccp_compress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment.html">environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exec.html">exec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execute_command.html">execute_command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exp.html">exp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expand_define.html">expand_define</a></li>
+<li class="toctree-l1"><a class="reference internal" href="explode.html">explode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="export_uid.html">export_uid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extern_call.html">extern_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_size.html">file_size</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter_indices.html">filter_indices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter_objects.html">filter_objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="find_call_out.html">find_call_out</a></li>
+<li class="toctree-l1"><a class="reference internal" href="find_input_to.html">find_input_to</a></li>
+<li class="toctree-l1"><a class="reference internal" href="find_object.html">find_object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first_inventory.html">first_inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="floatp.html">floatp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="floor.html">floor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcall.html">funcall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function_exists.html">function_exists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="garbage_collection.html">garbage_collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_combine_charset.html">get_combine_charset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_connection_charset.html">get_connection_charset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_dir.html">get_dir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_error_file.html">get_error_file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_eval_cost.html">get_eval_cost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_extra_wizinfo.html">get_extra_wizinfo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_max_commands.html">get_max_commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_type_info.html">get_type_info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geteuid.html">geteuid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getuid.html">getuid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmtime.html">gmtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hash.html">hash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heart_beat_info.html">heart_beat_info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hmac.html">hmac</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idna_stringprep.html">idna_stringprep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idna_to_ascii.html">idna_to_ascii</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idna_to_unicode.html">idna_to_unicode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implode.html">implode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="include_list.html">include_list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inherit_list.html">inherit_list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_to.html">input_to</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_to_info.html">input_to_info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive.html">interactive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intp.html">intp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="invert_bits.html">invert_bits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lambda.html">lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="last_bit.html">last_bit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="last_instructions.html">last_instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limited.html">limited</a></li>
+<li class="toctree-l1"><a class="reference internal" href="living.html">living</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_name.html">load_name</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_object.html">load_object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="localtime.html">localtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lower_case.html">lower_case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_add.html">m_add</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_allocate.html">m_allocate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_contains.html">m_contains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_delete.html">m_delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_entry.html">m_entry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_indices.html">m_indices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_reallocate.html">m_reallocate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_values.html">m_values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="make_shared_string.html">make_shared_string</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map.html">map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_indices.html">map_indices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_objects.html">map_objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mappingp.html">mappingp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="match_command.html">match_command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="max.html">max</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md5.html">md5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md5_crypt.html">md5_crypt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="member.html">member</a></li>
+<li class="toctree-l1"><a class="reference internal" href="min.html">min</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mkdir.html">mkdir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mkmapping.html">mkmapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mktime.html">mktime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="move_object.html">move_object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="negate.html">negate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net_connect.html">net_connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="next_bit.html">next_bit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="next_inventory.html">next_inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notify_fail.html">notify_fail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_info.html">object_info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_name.html">object_name</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_time.html">object_time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objectp.html">objectp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="or_bits.html">or_bits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parse_command.html">parse_command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pg_close.html">pg_close</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pg_connect.html">pg_connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pg_conv_string.html">pg_conv_string</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pg_pending.html">pg_pending</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pg_query.html">pg_query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pointerp.html">pointerp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pow.html">pow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="present.html">present</a></li>
+<li class="toctree-l1"><a class="reference internal" href="previous_object.html">previous_object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="printf.html">printf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process_string.html">process_string</a></li>
+<li class="toctree-l1"><a class="reference internal" href="program_time.html">program_time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_command.html">query_command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_editing.html">query_editing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_idle.html">query_idle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_input_pending.html">query_input_pending</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_ip_name.html">query_ip_name</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_ip_number.html">query_ip_number</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_limits.html">query_limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_load_average.html">query_load_average</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_mccp.html">query_mccp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_mccp_stats.html">query_mccp_stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_mud_port.html">query_mud_port</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_notify_fail.html">query_notify_fail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_once_interactive.html">query_once_interactive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_shadowing.html">query_shadowing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_snoop.html">query_snoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_udp_port.html">query_udp_port</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_verb.html">query_verb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quote.html">quote</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raise_error.html">raise_error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="random.html">random</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read_bytes.html">read_bytes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read_file.html">read_file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencep.html">referencep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regexp.html">regexp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regexp_package.html">regexp_package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regexplode.html">regexplode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regmatch.html">regmatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regreplace.html">regreplace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remove_action.html">remove_action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remove_call_out.html">remove_call_out</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remove_input_to.html">remove_input_to</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remove_interactive.html">remove_interactive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rename.html">rename</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rename_object.html">rename_object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="replace_program.html">replace_program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restore_object.html">restore_object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restore_value.html">restore_value</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reverse.html">reverse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rm.html">rm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rmdir.html">rmdir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rmember.html">rmember</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rusage.html">rusage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="save_object.html">save_object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="save_value.html">save_value</a></li>
+<li class="toctree-l1"><a class="reference internal" href="say.html">say</a></li>
+<li class="toctree-l1"><a class="reference internal" href="send_erq.html">send_erq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="send_udp.html">send_udp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_bit.html">set_bit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_buffer_size.html">set_buffer_size</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_combine_charset.html">set_combine_charset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_connection_charset.html">set_connection_charset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_driver_hook.html">set_driver_hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_environment.html">set_environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_extra_wizinfo.html">set_extra_wizinfo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_extra_wizinfo_size.html">set_extra_wizinfo_size</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_heart_beat.html">set_heart_beat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_is_wizard.html">set_is_wizard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_limits.html">set_limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_max_commands.html">set_max_commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_modify_command.html">set_modify_command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_next_reset.html">set_next_reset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_prompt.html">set_prompt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_this_object.html">set_this_object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_this_player.html">set_this_player</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seteuid.html">seteuid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sgn.html">sgn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sha1.html">sha1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shadow.html">shadow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shutdown.html">shutdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sin.html">sin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sizeof.html">sizeof</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sl_close.html">sl_close</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sl_exec.html">sl_exec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sl_insert_id.html">sl_insert_id</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sl_open.html">sl_open</a></li>
+<li class="toctree-l1"><a class="reference internal" href="snoop.html">snoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sort_array.html">sort_array</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprintf.html">sprintf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sqrt.html">sqrt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sscanf.html">sscanf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start_mccp_compress.html">start_mccp_compress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strftime.html">strftime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stringp.html">stringp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strlen.html">strlen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strrstr.html">strrstr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strstr.html">strstr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="struct_info.html">struct_info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structp.html">structp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swap.html">swap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbol_function.html">symbol_function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbol_variable.html">symbol_variable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolp.html">symbolp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tan.html">tan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tell_object.html">tell_object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tell_room.html">tell_room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terminal_colour.html">terminal_colour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test_bit.html">test_bit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="this_interactive.html">this_interactive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="this_object.html">this_object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="this_player.html">this_player</a></li>
+<li class="toctree-l1"><a class="reference internal" href="throw.html">throw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_available.html">tls_available</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_check_certificate.html">tls_check_certificate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_deinit_connection.html">tls_deinit_connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_error.html">tls_error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_init_connection.html">tls_init_connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_query_connection_info.html">tls_query_connection_info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_query_connection_state.html">tls_query_connection_state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_refresh_certs.html">tls_refresh_certs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="to_array.html">to_array</a></li>
+<li class="toctree-l1"><a class="reference internal" href="to_float.html">to_float</a></li>
+<li class="toctree-l1"><a class="reference internal" href="to_int.html">to_int</a></li>
+<li class="toctree-l1"><a class="reference internal" href="to_object.html">to_object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="to_string.html">to_string</a></li>
+<li class="toctree-l1"><a class="reference internal" href="to_struct.html">to_struct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trace.html">trace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traceprefix.html">traceprefix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transfer.html">transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transpose_array.html">transpose_array</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trim.html">trim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typeof.html">typeof</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unbound_lambda.html">unbound_lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unique_array.html">unique_array</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unmkmapping.html">unmkmapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unquote.html">unquote</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unshadow.html">unshadow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upper_case.html">upper_case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utime.html">utime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variable_exists.html">variable_exists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variable_list.html">variable_list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="walk_mapping.html">walk_mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="widthof.html">widthof</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wizlist_info.html">wizlist_info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="write.html">write</a></li>
+<li class="toctree-l1"><a class="reference internal" href="write_bytes.html">write_bytes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="write_file.html">write_file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xor_bits.html">xor_bits</a></li>
+</ul>
+</div>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><span class="xref lpc lpc-lang">efuns</span>, <code class="xref lpc lpc-applied docutils literal"><span class="pre">applied</span></code>, <a class="reference internal" href="../master/master.html#lpc.master" title="master"><code class="xref lpc lpc-master docutils literal"><span class="pre">master</span></code></a>, <a class="reference internal" href="../LPC/lpc.html#lpc.lpc" title="lpc"><span class="xref lpc lpc-lang">lpc</span></a>, <a class="reference internal" href="../concepts/concepts.html#lpc.concepts" title="concepts"><span class="xref lpc lpc-concept">concepts</span></a>, <a class="reference internal" href="../driver/driver.html#lpc.driver" title="driver"><code class="xref lpc lpc-driver docutils literal"><span class="pre">driver</span></code></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">efun</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/efun.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

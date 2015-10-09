@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mccp &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mccp">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" id="lpc.mccp" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">mccp:</th><td class="field-body"><span class="first last">The Mud Client Compression Protocol</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Information and code taken from the MCCP Homepage
+<a class="reference external" href="http://www.randomly.org/projects/MCCP/">http://www.randomly.org/projects/MCCP/</a></p>
+<p>MCCP is implemented as a Telnet option [RFC854, RFC855]. The server
+and client negotiate the use of MCCP as they would any other telnet
+option. Once agreement has been reached on the use of the option,
+option subnegotiation is used to determine acceptable compression
+methods to use, and to indicate the start of a compressed data stream.</p>
+<p>If the driver is compiled with MCCP Support there is a
+define __MCCP__.</p>
+<p>The driver currently supports both versions of mccp. If your mud
+has a H_NOECHO hook you have to find out if the client supports
+mccp. Without this hook you still have to start neogotiation.</p>
+<p>All sub-negotiation is done by the efuns start_mccp_compress() and
+end_mccp_compress() whether you have this hook or not.</p>
+<dl class="docutils">
+<dt>Notice: when the client uses compressions all binary_message calls</dt>
+<dd>are executed with flag=3. This is because writing to the
+socket would disturb zlib stream.</dd>
+</dl>
+<p>mccp-efuns:</p>
+<blockquote>
+<div>start_mccp_compress(int telopt) (only needed with H_NOECHO)
+end_mccp_compress(int telopt)   (only needed with H_NOECHO)
+query_mccp(object player)
+query_mccp_stats(object player)</div></blockquote>
+<p>Initiating MCCP without H_NOECHO hook:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if(!query_mccp()){</dt>
+<dd>binary_message(({ IAC, WILL, TELOPT_COMPRESS2 }),1)
+binary_message(({ IAC, WILL, TELOPT_COMPRESS }),1)</dd>
+</dl>
+<p>}</p>
+<p>the driver will parse the clients answers and start compression.
+(The connection might already be compressed, because although the</p>
+<blockquote>
+<div>documentation says clients should not negotiate from themselves,
+zmud e.g. does.)</div></blockquote>
+<p>You can start and stop compression manually by efuns
+when you are sure client supports compression :)</p>
+</div></blockquote>
+<p>Initiating MCCP compression with H_NOECHO hook:</p>
+<blockquote>
+<div><p>If your mudlib uses the H_NOECHO driver-hook you decided to do
+all the negotiation by yourself:</p>
+<p>Server Commands
+IAC WILL COMPRESS  indicates the sender supports version 1 of the</p>
+<blockquote>
+<div>protocol, and is willing to compress data it sends.</div></blockquote>
+<dl class="docutils">
+<dt>IAC WILL COMPRESS2 indicates the sender supports version 2, and is</dt>
+<dd>willing to compress data it sends.</dd>
+<dt>IAC WONT COMPRESS  indicates the sender refuses to compress data using</dt>
+<dd>version 1.</dd>
+<dt>IAC WONT COMPRESS2 indicates the sender refuses to compress data</dt>
+<dd>using version 2.</dd>
+</dl>
+<p>Client Commands
+IAC DO COMPRESS    indicates the sender supports version 1 of the</p>
+<blockquote>
+<div>protocol, and is willing to decompress data
+received.</div></blockquote>
+<dl class="docutils">
+<dt>IAC DO COMPRESS2   indicates the sender supports version 2 or above,</dt>
+<dd>and is willing to decompress data received.</dd>
+<dt>IAC DONT COMPRESS  indicates the sender refuses to support version 1.</dt>
+<dd>If compression was previously negotiated and is
+currently being used, the server should terminate
+compression.</dd>
+<dt>IAC DONT COMPRESS2 indicates the sender refuses to support version 2.</dt>
+<dd>If compression was previously negotiated and is
+currently being used, the server should terminate
+compression</dd>
+</dl>
+<p>After you found out whether the client supports mccp or not you can
+start compression with start_mccp_compress(TELOPT_COMPRESS2) or
+start_mccp_compress(TELOPT_COMPRESS). ( you could start it without
+checking but some players would protest :) )</p>
+</div></blockquote>
+<th class="field-name">Author:</th><td class="field-body">Bastian Hoyer (<a class="reference external" href="mailto:dafire&#37;&#52;&#48;ff&#46;mud&#46;de">dafire<span>&#64;</span>ff<span>&#46;</span>mud<span>&#46;</span>de</a>) (some text taken from project page)</td>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>introduced</strong> (<em>3.3.447</em>)</li>
+<li><strong>backported</strong> (<em>3.2.10</em>)</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/start_mccp_compress.html#lpc.start_mccp_compress" title="start_mccp_compress"><code class="xref lpc lpc-efun docutils literal"><span class="pre">start_mccp_compress</span></code>(E)</a>, <a class="reference internal" href="../efun/end_mccp_compress.html#lpc.end_mccp_compress" title="end_mccp_compress"><code class="xref lpc lpc-efun docutils literal"><span class="pre">end_mccp_compress</span></code>(E)</a>, <a class="reference internal" href="../efun/query_mccp.html#lpc.query_mccp" title="query_mccp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_mccp</span></code>(E)</a>, <a class="reference internal" href="../efun/query_mccp_stats.html#lpc.query_mccp_stats" title="query_mccp_stats"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_mccp_stats</span></code>(E)</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">mccp</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/concepts/mccp.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

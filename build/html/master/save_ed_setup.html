@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>save_ed_setup &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="save_ed_setup">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="master">
+<dt id="lpc.save_ed_setup">
+int <code class="descname">save_ed_setup</code><span class="sig-paren">(</span>object<em>&nbsp;who</em>, int<em>&nbsp;code</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.save_ed_setup" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Save individual option settings of the builtin ed, encoded
+into code, for the user denoted by who. These functions are
+located in the master object so that the local gods can decide
+what strategy they want to use. suggestions:</p>
+<ul>
+<li><p class="first">A setup file for every user.
+- advantages:</p>
+<blockquote>
+<div><ul class="simple">
+<li>transparent to the user</li>
+<li>independent of user count</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>disadvantage:
+- extra file access at ed invocation</li>
+</ul>
+</li>
+<li><p class="first">An array in the master object, users are searched by member_array
+- advantage:</p>
+<blockquote>
+<div><ul class="simple">
+<li>easy to implement</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>disadvantage:
+- performance degradation with high user counts</li>
+</ul>
+</li>
+<li><p class="first">An AVL-tree to access users by name
+- advantage:</p>
+<blockquote>
+<div><ul class="simple">
+<li>can fit any need</li>
+</ul>
+</div></blockquote>
+<ul>
+<li><p class="first">disadvantage:
+- hard to implement, will need more overhead on small and medium</p>
+<blockquote>
+<div><p>installations than it can ever make good by lg(usercount) complexity</p>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p class="first">Dedicated flags in every user object.
+- advantages:</p>
+<blockquote>
+<div><ul class="simple">
+<li>easy to implement</li>
+<li>independent of user count</li>
+<li>Will also work for nusers w/o file access privileges.</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>disadvantage:
+- care has to be taken to avoid collision with other uses of the flags in the user object</li>
+</ul>
+</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/ed.html#lpc.ed" title="ed"><code class="xref lpc lpc-efun docutils literal"><span class="pre">ed</span></code>(E)</a>, <a class="reference internal" href="retrieve_ed_setup.html#lpc.retrieve_ed_setup" title="retrieve_ed_setup"><code class="xref lpc lpc-master docutils literal"><span class="pre">retrieve_ed_setup</span></code>(M)</a>, <a class="reference internal" href="valid_write.html#lpc.valid_write" title="valid_write"><code class="xref lpc lpc-master docutils literal"><span class="pre">valid_write</span></code>(M)</a>, <a class="reference internal" href="get_ed_buffer_save_file_name.html#lpc.get_ed_buffer_save_file_name" title="get_ed_buffer_save_file_name"><code class="xref lpc lpc-master docutils literal"><span class="pre">get_ed_buffer_save_file_name</span></code>(M)</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">save_ed_setup</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/master/save_ed_setup.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

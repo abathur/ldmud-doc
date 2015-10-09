@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>set_this_object &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="set_this_object">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.set_this_object">
+void <code class="descname">set_this_object</code><span class="sig-paren">(</span>object<em>&nbsp;object_to_pretend_to_be</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.set_this_object" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>This is a privileged function, only to be used in the master
+object or in the simul_efun object.</p>
+<p>It changes the result of this_object() in the using function,
+and the result of previous_object() in functions called in
+other objects by call_other()/apply()/funcall(). Its effect will
+remain till there is a return of an external function call, or
+another call of set_this_object(). While executing code in the
+master object&#8217;s program or the primary simul_efun object&#8217;s
+program, set_this_object() is granted even if this_object() is
+altered by set_this_object(). This does not apply to functions
+inherited from other programs.</p>
+<p>Use it with extreme care to avoid inconsistencies.  After a
+call of set_this_object(), some LPC-constructs might behave in
+an odd manner, or even crash the system. In particular, using
+global variables or calling local functions (except by
+call_other) is illegal and actively prevented.</p>
+<p>Allowed are call_other(), map functions, access of local variables
+(which might hold array pointers to a global array), simple arithmetic
+and the assignment operators.</p>
+</div>
+</div>
+<dl class="docutils">
+<dt>BUGS</dt>
+<dd><p class="first">It is currently not possible to directly restore the original
+current object. So instead of writing</p>
+<blockquote>
+<div>object me = this_object();
+set_this_object(that);
+&lt;some code&gt;
+set_this_object(me);
+&lt;more code&gt;</div></blockquote>
+<p>one has to use a workaround:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>private void doit (object that) {</dt>
+<dd>set_this_object(that);
+&lt;some code&gt;</dd>
+</dl>
+<p>}</p>
+<p>funcall(#&#8217;doit, that);
+&lt;more code&gt;</p>
+</div></blockquote>
+<p class="last">Some people would consider this a feature.</p>
+</dd>
+</dl>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">set_this_object</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/set_this_object.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

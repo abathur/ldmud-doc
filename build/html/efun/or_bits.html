@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>or_bits &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="or_bits">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.or_bits">
+string <code class="descname">or_bits</code><span class="sig-paren">(</span>string<em>&nbsp;str1</em>, string<em>&nbsp;str2</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.or_bits" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>&lt;str1&gt; and &lt;str2&gt; are both bitstrings. The result of the function
+is a bitstring with the binary-or of &lt;str1&gt; and &lt;str2&gt;,
+ie. a string in which a bit is set if the corresponding
+bit in &lt;str1&gt; or &lt;str2&gt; (or both) is set.</p>
+<p>EXAMPLES
+string s1, s2, s3;</p>
+<p>s1 = set_bit(&#8220;&#8221;, 3); s1 = set_bit(s1, 15);  -&gt; s1 is &#8220;( (&#8221;
+s2 = set_bit(&#8220;&#8221;, 3); s2 = set_bit(s2, 4);   -&gt; s2 is &#8220;8&#8221;</p>
+<p>s3 = or_bits(s1, s2);</p>
+<p>-&gt; s3 is now &#8220;8 (&#8221;, ie. a bitstring with bits 3, 4 and 15 set.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="clear_bit.html#lpc.clear_bit" title="clear_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clear_bit</span></code>(E)</a>, <a class="reference internal" href="set_bit.html#lpc.set_bit" title="set_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_bit</span></code>(E)</a>, <a class="reference internal" href="test_bit.html#lpc.test_bit" title="test_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">test_bit</span></code>(E)</a>, <a class="reference internal" href="next_bit.html#lpc.next_bit" title="next_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">next_bit</span></code>(E)</a>, <a class="reference internal" href="last_bit.html#lpc.last_bit" title="last_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">last_bit</span></code>(E)</a>, <a class="reference internal" href="count_bits.html#lpc.count_bits" title="count_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">count_bits</span></code>(E)</a>, <a class="reference internal" href="and_bits.html#lpc.and_bits" title="and_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">and_bits</span></code>(E)</a>, <a class="reference internal" href="xor_bits.html#lpc.xor_bits" title="xor_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">xor_bits</span></code>(E)</a>, <a class="reference internal" href="invert_bits.html#lpc.invert_bits" title="invert_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">invert_bits</span></code>(E)</a>, <a class="reference internal" href="copy_bits.html#lpc.copy_bits" title="copy_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">copy_bits</span></code>(E)</a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">or_bits</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/or_bits.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

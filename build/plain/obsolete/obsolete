@@ -1,0 +1,43 @@
+SYNOPSIS
+========
+   obsolete
+
+DESCRIPTION
+===========
+   This directory contains descriptions for features removed from the game
+   driver, since they can come in handy when reworking old LPC code.
+
+   - add_verb
+   - add_xverb
+   - allocate_mapping
+   - assoc
+   - cat
+   - copy_mapping
+   - creator_file
+   - define_include_dirs
+   - efun308
+   - extract
+   - file_name
+   - filter_array
+   - filter_mapping
+   - get_root_uid
+   - insert_alist
+   - intersect_alist
+   - m_sizeof
+   - map_array
+   - map_mapping
+   - mapping_contains
+   - member_array
+   - object_name
+   - order_alist
+   - query_imp_port
+   - receive_imp
+   - send_imp
+   - set_auto_include_string
+   - set_light
+   - slice_array
+   - tail
+
+SEE ALSO
+========
+   **applied**, **efun**, master, **concepts**, **lpc**, **driver**

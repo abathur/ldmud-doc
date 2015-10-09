@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>inheritance &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="inheritance">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<p id="lpc.inheritance">inheritance</p>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Have you noticed how many objects in the system have the same
+functionality in common? Let&#8217;s look at rooms for instance, they
+all have the ability to host people and provide commands. It&#8217;s
+not that every room is programmed with the same basic functions
+again and again, rather it will use a model room and then make
+some special changes to it. That doesn&#8217;t work by copying the
+file.. Ouch! Don&#8217;t replicate code! But by putting a tiny inherit
+declaration</p>
+<blockquote>
+<div>inherit &#8220;&lt;model-class&gt;&#8221;;</div></blockquote>
+<p>at the beginning of your new file. This must come before any local
+variables or functions. Once inherited your class will behave just
+like the model class, because all the public methods are available
+to the outside world. Now it is in your hands to change such an
+inherited behaviour. You have the following tools to do so:</p>
+<ul class="simple">
+<li>Access to variables</li>
+</ul>
+<p>It is one of the best design decisions in LPC that variables
+are not accessible from outside, but you can use inherited
+variables just as if they were your own. Modifiers apply however.</p>
+<ul>
+<li><p class="first">Method overloading</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>int method_that_also_exists_in_the_model() {</dt>
+<dd><p class="first last">&lt;your new code&gt;</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</li>
+</ul>
+<p>You can simply rewrite a method that is also defined in the model
+class, and thus change how it behaves. Contrary to other languages
+in LPC method overloading only matches the name of the method, so
+even by changing the amount and type of parameters you will mask
+out the original version of the method. You can even apply other
+modifiers to it as the original.</p>
+<ul>
+<li><p class="first">Calling inherited methods</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>int method_that_also_exists_in_the_model() {</dt>
+<dd><p class="first last">&lt;your new code&gt;
+return ::method_that_also_exists_in_the_model();</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</li>
+</ul>
+<p>You can add to the behaviour of a method by redefining it,
+then calling it from within your new version. You can actually
+call inherited methods from anywhere in your code. The double
+colon tells the compiler you are looking for the inherited
+variant.</p>
+<div class="section" id="EXAMPLE">
+<span id="lpc.EXAMPLE"></span><h3>EXAMPLE<a class="headerlink" href="#EXAMPLE" title="Permalink to this headline">¶</a></h3>
+<p>Let&#8217;s imagine very simple food in a file called &#8220;/the/food.c&#8221;:</p>
+<blockquote>
+<div><p>// unless &#8220;modified&#8221; variables are accessible by inheritors
+int vitamins = 10;</p>
+<p>// please overload this function with your own description
+public short() { return &#8220;something edible&#8221;; }</p>
+<p>// let&#8217;s do some standard action for food
+public consume() {</p>
+<blockquote>
+<div>this_player() -&gt; nourish(vitamins);
+destruct(this_object());</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>And now someone else decides to do some italian cooking in a
+file called &#8220;/the/fusilli.c&#8221;</p>
+<blockquote>
+<div><p>inherit &#8220;/the/food&#8221;;</p>
+<p>// we have our own variables.
+int gone_cold = 0;</p>
+<p>// and we simply redefine the short() function to replace it
+public short() {</p>
+<blockquote>
+<div><p>// description changes depending on gone_cold
+return &#8220;a &#8220;+( gone_cold ? &#8220;stinking&#8221; : &#8220;steaming&#8221; )</p>
+<blockquote>
+<div>+&#8221; plate of fusilli&#8221;;</div></blockquote>
+</div></blockquote>
+<p>}</p>
+<p>// we have a new function to make food go cold
+private deteriorate() {</p>
+<blockquote>
+<div>gone_cold = 1;
+write(&#8220;The fusilli have gone cold.n&#8221;);</div></blockquote>
+<p>}</p>
+<p>// assume this gets called at creation
+private create() {</p>
+<blockquote>
+<div><p>// we can access the variable we inherited from food.c
+vitamins = 44;           // tomato has plenty of vitamins</p>
+<p>// go cold in 5 minutes
+call_out( #&#8217;deteriorate, 5 * 60 );</p>
+</div></blockquote>
+<p>}</p>
+<p>// we can overload the function even with new parameters
+public consume(how) {</p>
+<blockquote>
+<div><p>// fetch the name of the person, or use &#8220;Someone&#8221;
+string name = this_player() -&gt; name() || &#8220;Someone&#8221;;</p>
+<dl class="docutils">
+<dt>if (!gone_cold) {</dt>
+<dd>write(&#8220;You enjoy a delicious plate of fusilli.n&#8221;);
+say(name +&#8221; guzzles a plate of hot fusilli.n&#8221;);</dd>
+</dl>
+<p>}
+else if (how == &#8220;quickly&#8221;) {</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>write(&#8220;You eat the fusilli so quickly you &#8220;</dt>
+<dd>&#8220;hardly notice they have gone cold.n&#8221;);</dd>
+</dl>
+<p>say(name +&#8221; wolfs down a plate of cold fusilli.n&#8221;);</p>
+</div></blockquote>
+<p>}
+else {</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>write(&#8220;You eye the plate and wonder if you &#8220;</dt>
+<dd>&#8220;really feel like eating cold fusilli.n&#8221;);</dd>
+</dl>
+<p>return; // don&#8217;t eat</p>
+</div></blockquote>
+<p>}</p>
+<p>// and here comes the most important part:
+// we execute consume() from food.c, so we
+// actually inherit its behaviour.
+::consume();</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</div>
+<div class="section" id="ADVANCED USAGE">
+<span id="lpc.ADVANCED USAGE"></span><h3>ADVANCED USAGE<a class="headerlink" href="#ADVANCED USAGE" title="Permalink to this headline">¶</a></h3>
+</div>
+<ul>
+<li><p class="first">Doing multiple inheritance</p>
+<p>While the Java(TM) language has so-called interfaces as a kludge,
+LPC doesn&#8217;t need them as it supports real multiple inheritance.
+A very powerful feature, it lets you combine the behaviour of
+several classes into a new one. Simply put several lines of
+inherit declarations underneath each other. If you have name
+collisions in the namespace of inherited methods, you will have
+to address them explicitely with a &#8220;the/file&#8221;::method(args) syntax.</p>
+<ul class="simple">
+<li>Wildcarded multiple inheritance</li>
+</ul>
+<p>LDMud <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;117">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>117</a> introduces an advanced voodoo syntax which allows
+you to call several methods in model classes at once. This works by
+writing a glob type match (&#8216;*&#8217; and &#8216;?&#8217; wildcards) into the string
+in front of the double colon, as in &#8220;*&#8221;::create().
+I wouldn&#8217;t recommend you to use this, it&#8217;s better to be clearly
+conscious of what you inherit and do. But if you&#8217;re desperate, there
+you go.</p>
+<p>Since LDMud 3.5.0 it is possible to pass arguments as well.</p>
+</li>
+</ul>
+<div class="section" id="ADVANCED EXAMPLE">
+<span id="lpc.ADVANCED EXAMPLE"></span><h3>ADVANCED EXAMPLE<a class="headerlink" href="#ADVANCED EXAMPLE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">inherit</span> <span class="s">&quot;foo&quot;</span><span class="p">;</span>
+<span class="n">inherit</span> <span class="s">&quot;bar&quot;</span><span class="p">;</span>
+<span class="n">inherit</span> <span class="s">&quot;baz&quot;</span><span class="p">;</span>
+<span class="n">inherit</span> <span class="s">&quot;ball&quot;</span><span class="p">;</span>
+
+<span class="n">reset</span><span class="p">()</span> <span class="p">{</span>
+      <span class="s">&quot;ba?&quot;</span><span class="o">::</span><span class="n">reset</span><span class="p">();</span>
+      <span class="c1">// calls bar::reset() and baz::reset()</span>
+
+      <span class="s">&quot;ba*&quot;</span><span class="o">::</span><span class="n">reset</span><span class="p">();</span>
+      <span class="c1">// calls bar::reset(), baz::reset() and ball::reset()</span>
+
+      <span class="s">&quot;*&quot;</span><span class="o">::</span><span class="n">reset</span><span class="p">();</span>
+      <span class="c1">// calls every inherited reset() function.</span>
+
+      <span class="s">&quot;ball&quot;</span><span class="o">::</span><span class="n">rejoice</span><span class="p">(</span><span class="s">&quot;Listen to italectro today!&quot;</span><span class="p">);</span>
+      <span class="c1">// only explicit filename of model class allows</span>
+      <span class="c1">// passing arguments to the inherited method</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="AUTHOR">
+<span id="lpc.AUTHOR"></span><h3>AUTHOR<a class="headerlink" href="#AUTHOR" title="Permalink to this headline">¶</a></h3>
+<p>symlynX of PSYC and Nemesis, with a little help from Someone</p>
+</div>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><span class="xref lpc lpc-lang">functions</span>, <span class="xref lpc lpc-lang">initialisation</span>, <span class="xref lpc lpc-lang">modifiers</span>, <a class="reference internal" href="../LPC/pragma.html#lpc.pragma" title="pragma"><span class="xref lpc lpc-lang">pragma</span>(LPC)</a>, <a class="reference internal" href="overloading.html#lpc.overloading" title="overloading"><span class="xref lpc lpc-concept">overloading</span></a>, <a class="reference internal" href="../efun/function_exists.html#lpc.function_exists" title="function_exists"><code class="xref lpc lpc-efun docutils literal"><span class="pre">function_exists</span></code>(E)</a>, <code class="xref lpc lpc-efun docutils literal"><span class="pre">functionlist</span></code>, <a class="reference internal" href="../efun/inherit_list.html#lpc.inherit_list" title="inherit_list"><code class="xref lpc lpc-efun docutils literal"><span class="pre">inherit_list</span></code>(E)</a>, <a class="reference internal" href="../efun/symbol_variable.html#lpc.symbol_variable" title="symbol_variable"><code class="xref lpc lpc-efun docutils literal"><span class="pre">symbol_variable</span></code>(E)</a>, <a class="reference internal" href="../efun/variable_exists.html#lpc.variable_exists" title="variable_exists"><code class="xref lpc lpc-efun docutils literal"><span class="pre">variable_exists</span></code>(E)</a>, <a class="reference internal" href="../efun/variable_list.html#lpc.variable_list" title="variable_list"><code class="xref lpc lpc-efun docutils literal"><span class="pre">variable_list</span></code>(E)</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">inheritance</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#EXAMPLE">EXAMPLE</a></li>
+<li><a class="reference internal" href="#ADVANCED USAGE">ADVANCED USAGE</a></li>
+<li><a class="reference internal" href="#ADVANCED EXAMPLE">ADVANCED EXAMPLE</a></li>
+<li><a class="reference internal" href="#AUTHOR">AUTHOR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/concepts/inheritance.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

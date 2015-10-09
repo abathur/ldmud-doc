@@ -1,0 +1,126 @@
+Todo: fix pre-justified hyphens throughout this doc
+
+(The *original entry* is located in  /home/lddoc/source/LPC/closure_guide.rst,
+line 3.)
+
+Todo: fix code indentation throughout
+
+(The *original entry* is located in  /home/lddoc/source/LPC/closure_guide.rst,
+line 5.)
+
+Todo: fix this section.
+
+(The *original entry* is located in  /home/lddoc/source/LPC/closure_guide.rst,
+line 479.)
+
+Todo: Is there a better way to structure the various closure documents so that
+there's a single topical heading? Or is that the job of a :topics: or :tags:
+option?
+
+(The *original entry* is located in  /home/lddoc/source/LPC/closures.rst, line
+3.)
+
+Todo: in the original docs, there is a separate file (closures-abstract) with
+a copy of the content in this section. Assuming we want to preserve it as an
+artifact, I'm still looking for a good way to advertise its presence. This may
+get resolved through the general process of cleaning up how closures is
+structured.
+
+(The *original entry* is located in  /home/lddoc/source/LPC/closures.rst, line
+260.)
+
+Todo: slashes need escaping, but I'd like to wait to see if they can be a good
+test case for a linter rule to detect things that probably need escaping.
+
+(The *original entry* is located in  /home/lddoc/source/LPC/escape.rst, line
+19.)
+
+Todo: vary this language depending on whether we're generating HTML or
+plaintext (or make it generic enough to suit both)
+
+(The *original entry* is located in  /home/lddoc/source/LPC/lpc.rst, line 3.)
+
+Todo: this was plaintext-justified; need to fix errant spaces
+
+(The *original entry* is located in  /home/lddoc/source/LPC/mappings.rst, line
+3.)
+
+Todo: all of these should link to manual pages, yeah?
+
+(The *original entry* is located in  /home/lddoc/source/LPC/types.rst, line
+5.)
+
+Todo: there are multiple things I hate about this: these definitions are
+roughly duplicating *escape* and it would instead be most-ideal to have a
+directive/role that could either link us to those defs or reproduce them
+locally, a definition list is a really airy/verbose markup element to use for
+such brief definitions, this list is duplicated *again* in the string section
+below; I'm roughly talking about having small topical glossaries that can be
+included or linked, I guess.
+
+(The *original entry* is located in  /home/lddoc/source/LPC/types.rst, line
+26.)
+
+Todo: see above
+
+(The *original entry* is located in  /home/lddoc/source/LPC/types.rst, line
+89.)
+
+Todo: if there were a pragma directive subclassing macro, we could link to the
+pragma def anytime one appears in text...
+
+(The *original entry* is located in  /home/lddoc/source/LPC/unions.rst, line
+7.)
+
+Todo: This is out of date. Also document the relation with reset
+
+(The *original entry* is located in  /home/lddoc/source/concepts/memory.rst,
+line 4.)
+
+Todo: the above section should probably use more semantic markup instead of
+just being a big literal block
+
+(The *original entry* is located in  /home/lddoc/source/concepts/pgsql.rst,
+line 71.)
+
+Todo: This manpage might be not quite up to date with the implementation.
+
+(The *original entry* is located in  /home/lddoc/source/concepts/tls.rst, line
+67.)
+
+Todo: should this just link to the other list where these are more thoroughly
+defined? Does this list have any information the others don't?
+
+(The *original entry* is located in
+/home/lddoc/source/efun/set_driver_hook.rst, line 13.)
+
+Todo: directory thing re: html/plain
+
+(The *original entry* is located in  /home/lddoc/source/master/master.rst,
+line 3.)
+
+Todo: the below was tagged "Security hint" in our docs; it might be nice to
+either have a separate directive for security issues, or be able to supply a
+type/category option to the other admonitions (i.e., use directives like note,
+warning, hint, tip, but be able to supply a :category: security, etc.)
+
+(The *original entry* is located in  /home/lddoc/source/master/master.rst,
+line 74.)
+
+Todo: this is another case where being able to pull part of this from the
+target would be nice; I wonder if a >>:role:`ref`<< can be magicked into an
+expansion based on the target? If nothing else, make these into links
+
+(The *original entry* is located in  /home/lddoc/source/master/master.rst,
+line 83.)
+
+Todo: make the last half of the title some sort of addendum/annotation
+
+(The *original entry* is located in  /home/lddoc/source/master/master.rst,
+line 224.)
+
+Todo: not clear what status should be indicated here; deprecated? removed?
+just optional? obsolete?
+
+(The *original entry* is located in/home/lddoc/source/obsolete/set_light.rst,
+line 4.)

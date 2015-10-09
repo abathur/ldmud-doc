@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>input_to &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="input_to">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dl class="include">
+<dt>
+#include &lt;input_to.h&gt;</dt>
+</dl>
+
+<dt id="lpc.input_to">
+void <code class="descname">input_to</code><span class="sig-paren">(</span>string|closure<em>&nbsp;fun</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.input_to" title="Permalink to this definition">¶</a></dt>
+<dt>
+void <code class="descname">input_to</code><span class="sig-paren">(</span>string|closure<em>&nbsp;fun</em>, int<em>&nbsp;flag</em>, ...<span class="sig-paren">)</span></dt>
+<dt>
+void <code class="descname">input_to</code><span class="sig-paren">(</span>string|closure<em>&nbsp;fun</em>, int<em>&nbsp;flag</em>, string|closure<em>&nbsp;prompt</em>, ...<span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Enable next line of user input to be sent to the function &lt;fun&gt;
+as an argument. Exception: if the next input
+line starts with a &#8221;!&#8221;, it will be parsed as a command resp.
+passed to the most recent input_to() given with the
+INPUT_IGNORE_BANG flag.
+The function &lt;fun&gt; may be static, but must not be private (or
+it won&#8217;t be found).</p>
+<p>Note that fun is not called immediately but after pressing the
+RETURN key.</p>
+<p>Usually, if input_to() is called more than once in the same execution,
+only the first call has any effect. This behaviour can be
+modified by specifying the INPUT_APPEND flag which will append
+the given input_to to the already existing input_tos (see
+EXAMPLES).</p>
+<p>Also, if a command given during an input_to() (using the &#8221;!&#8221;
+escape) issues its own input_to(), the previous input_to() is
+suspended until the new input_to() has been handled, then the
+previous one becomes active again.</p>
+<p>The optional argument &lt;flag&gt; may be a binary-OR (&#8216;|&#8217;) of the
+following option values:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>INPUT_NOECHO  (1):</dt>
+<dd><p class="first">The line given by the player will not be echoed, and is
+not seen if snooped.</p>
+<p class="last">A change of this mode not possible with telnet disabled.</p>
+</dd>
+<dt>INPUT_CHARMODE  (2):</dt>
+<dd><p class="first">The connection is switched from line- into charmode to
+retrieve a single character(!) from the player.</p>
+<p>Is telnet disabled, then only the handling of the
+incoming data by the driver is changed - the client
+program of the player will remain in its current mode.</p>
+<p>After execution of &lt;fun&gt;, the connection is switched
+back into linemode unless a subsequent input_to( , 2)
+has been issued.</p>
+<p>Lineends are received exactly as the client sent them:
+&#8220;n&#8221;, &#8220;r&#8221; followed by &#8220;n&#8221;, or just &#8220;r&#8221;.</p>
+<p>Note that the players frontend is free to stay in
+linemode all the time: even if you request a single
+character, the player might be forced to type (and send)
+that character plus the return key. Usually your function
+will then receive the complete input line (including the
+newline character sequence!) in one call.</p>
+<p class="last">If you plan to stay in charmode a longer time , you can
+reduce the call overhead by using set_combine_charset()
+to retrieve sequences of certain characters as one string
+instead of one-by-one. In a screen-oriented editor for
+example this would be most of the printable characters.</p>
+</dd>
+<dt>INPUT_PROMPT (4):</dt>
+<dd>The argument following the &lt;flag&gt; argument is used as
+prompt for the input. If this flag is not given, and thus
+no prompt specified, nothing will be printed.</dd>
+<dt>INPUT_NO_TELNET (8):</dt>
+<dd>Modifies the INPUT_CHARMODE flag: the driver will switch
+it&#8217;s internal handling of incoming data, but not send out
+any telnet commands to switch the client&#8217;s behaviour.</dd>
+<dt>INPUT_APPEND (16):</dt>
+<dd>Append the input_to to the list of currently pending input_tos
+(if any).</dd>
+<dt>INPUT_IGNORE_BANG  (128):</dt>
+<dd>Input lines starting with &#8216;!&#8217; (or whatever the input
+escape character was configured to be) will _not_ be parsed as
+commands, but are given to the function as well. Usage
+of this option is privileged.</dd>
+</dl>
+</div></blockquote>
+<p>The optional trailing args will be passed as second and
+subsequent args to the function fun.</p>
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>void func() {</dt>
+<dd><p class="first">...
+input_to(&#8220;enter_name&#8221;, INPUT_PROMPT, &#8220;Please enter your name:&#8221;);
+/* The traditional way of doing this was:</p>
+<blockquote>
+<div><ul class="simple">
+<li>write(&#8220;Please enter your name:&#8221;);</li>
+<li>input_to(&#8220;enter_name&#8221;);</li>
+</ul>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
+</div></blockquote>
+<p class="last">...</p>
+</dd>
+</dl>
+<p>}
+enter_name(string str) {</p>
+<blockquote>
+<div>write(&#8220;Is &#8216;&#8221;+str+&#8221;&#8217; really your name?? <em>giggle</em>n&#8221;);
+...</div></blockquote>
+<p>}</p>
+<p>When reaching the input_to() statement the driver
+continues the function func() but also asks the user for
+input. If you entered whatever is asked and press RETURN the
+driver will invoke the enter_name() function with the
+string you entered as argument to it.</p>
+<dl class="docutils">
+<dt>void func() {</dt>
+<dd>input_to(&#8220;enter_firstname&#8221;);
+input_to(&#8220;enter_lastname, INPUT_APPEND);
+...</dd>
+</dl>
+<p>}</p>
+<p>This sequence will queue two input_tos: the input first goes
+to enter_firstname(); and when this function is done
+(including any non-INPUT_APPEND input_to()s on its own), the next
+input will go to enter_lastname().</p>
+<p>Note that the list of input_to-s is treated as a flat list:</p>
+<dl class="docutils">
+<dt>void func() {</dt>
+<dd>input_to(&#8220;func1&#8221;);
+input_to(&#8220;func2&#8221;, INPUT_APPEND);</dd>
+</dl>
+<p>}</p>
+<dl class="docutils">
+<dt>void func1() {</dt>
+<dd>input_to(&#8220;func3&#8221;, INPUT_APPEND);</dd>
+</dl>
+<p>}</p>
+<p>void func2() { ... }
+void func3() { ... }</p>
+<p>This code will result in the functions being called in the order
+func(), func1(), func2(), func3(); and not func(), func1(), func3(),
+func2().</p>
+<p>BUGS
+In charmode, it is not possible to receive the NUL character
+and pass it to the mudlib: internally the NUL character has
+magical properties.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">input_to</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/input_to.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

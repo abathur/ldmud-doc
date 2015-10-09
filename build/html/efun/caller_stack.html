@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>caller_stack &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="caller_stack">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.caller_stack">
+object * <code class="descname">caller_stack</code><a class="headerlink" href="#lpc.caller_stack" title="Permalink to this definition">¶</a></dt>
+<dt>
+object * <code class="descname">caller_stack</code><span class="sig-paren">(</span>int<em>&nbsp;add_interactive</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>Returns an array of the previous_object()s who caused the
+call_other() to this_object().
+previous_object(i) equals caller_stack()[i].</p>
+<p>If you pass the optional argument &lt;add_interactive&gt; (as true value)
+this_interactive() is appended to the array, or 0 if there is no
+current interactive.</p>
+<p>Note: calls to &#8216;alien lfun closures&#8217; (see <a class="reference internal" href="symbol_function.html#lpc.symbol_function" title="symbol_function"><code class="xref lpc lpc-efun docutils literal"><span class="pre">symbol_function</span></code>(E)</a>)
+generate two entries on the stack if the bound object differs
+from the closure object: the first is for the bound object,
+the second for the closure object.</p>
+<p>EXAMPLES
+interactive object A enters a command which causes
+a call to a function in object B, that one calls a
+function in object C and that, in turn, in object D</p>
+<p>If D now calls caller_stack() the result would be: ({C,B}).
+If it calls caller_stack(1) the result is: ({C,B,A}).</p>
+<p>Introduced in LDMud 3.2.6, suggested by Tubmud.</p>
+<blockquote>
+<div><blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="caller_stack_depth.html#lpc.caller_stack_depth" title="caller_stack_depth"><code class="xref lpc lpc-efun docutils literal"><span class="pre">caller_stack_depth</span></code>(E)</a>, <a class="reference internal" href="previous_object.html#lpc.previous_object" title="previous_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">previous_object</span></code>(E)</a>, <a class="reference internal" href="this_interactive.html#lpc.this_interactive" title="this_interactive"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_interactive</span></code>(E)</a>,</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><a class="reference internal" href="call_other.html#lpc.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a></p>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">caller_stack</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/caller_stack.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

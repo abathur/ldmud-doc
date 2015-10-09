@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>find_input_to &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="find_input_to">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.find_input_to">
+int <code class="descname">find_input_to</code><span class="sig-paren">(</span>object<em>&nbsp;player</em>, string<em>&nbsp;fun</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.find_input_to" title="Permalink to this definition">¶</a></dt>
+<dt>
+int <code class="descname">find_input_to</code><span class="sig-paren">(</span>object<em>&nbsp;player</em>, closure<em>&nbsp;fun</em><span class="sig-paren">)</span></dt>
+<dt>
+int <code class="descname">find_input_to</code><span class="sig-paren">(</span>object<em>&nbsp;player</em>, object<em>&nbsp;fun</em><span class="sig-paren">)</span></dt>
+<dt>
+int <code class="descname">find_input_to</code><span class="sig-paren">(</span>object<em>&nbsp;player</em>, object<em>&nbsp;ob</em>, string<em>&nbsp;fun</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Find the input_to most recently added to the interactive &lt;player&gt;
+object matching the &lt;fun&gt; argument:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">&lt;fun&gt; is a string: the input_to functionname has to match</p>
+</li>
+<li><dl class="first docutils">
+<dt>&lt;fun&gt; is an object: the object the input_to function is bound to</dt>
+<dd><p class="first last">has to match</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">&lt;fun&gt; is a closure: the input_to closure has to match.</p>
+</li>
+<li><dl class="first docutils">
+<dt>&lt;ob&gt; and &lt;fun&gt; are given: both the object and the functionname have</dt>
+<dd><p class="first last">to match</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>Return -1 if not found, or the position in the input_to stack (0
+being _least_ recently added input_to).</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">find_input_to</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/find_input_to.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,20 @@
+SYNOPSIS
+========
+   int symbolp(mixed arg)
+
+DESCRIPTION
+===========
+   Returns 1 if <arg> is a symbol.
+
+USAGE
+=====
+   `symbolp('foo)` returns `1`.
+
+HISTORY
+=======
+   - **introduced** (*3.2@70*)
+
+SEE ALSO
+========
+   quote(E), clonep(E), closurep(E), floatp(E), mappingp(E), objectp(E),
+   intp(E), referencep(E), pointerp(E), stringp(E), structp(E)

@@ -1,0 +1,27 @@
+SYNOPSIS
+========
+   driver
+
+DESCRIPTION
+===========
+   This directory contains descriptions of miscellaneous internals of
+   Amylaar's version of the LPC parser/interpreter, that might be useful to
+   know.
+
+   One thing described here are the special hardcoded commands of the
+   interpreter for querying the status of the memory management.
+
+   - architectures
+   - debugmalloc
+   - dumpallobj
+   - invocation
+   - limitations
+   - malloc
+   - opcdump
+   - predefined
+   - showsmallnewmalloced
+   - status malloc
+
+SEE ALSO
+========
+   efun, `applied`, *concepts*, master, *lpc*, malloc, status

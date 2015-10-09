@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>call_out &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="call_out">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.call_out">
+void <code class="descname">call_out</code><span class="sig-paren">(</span>string<em>&nbsp;fun</em>, int<em>&nbsp;delay</em>, mixed<em>&nbsp;arg</em>, ...<span class="sig-paren">)</span><a class="headerlink" href="#lpc.call_out" title="Permalink to this definition">¶</a></dt>
+<dt>
+void <code class="descname">call_out</code><span class="sig-paren">(</span>closure<em>&nbsp;cl</em>, int<em>&nbsp;delay</em>, mixed<em>&nbsp;arg</em>, ...<span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>Set up a call to function fun in the current object, or to
+closure cl. The call will take place after &lt;delay&gt; seconds, with the
+remaining argument list provided.
+&lt;delay&gt; can be a minimum time of 0 (negative values are implicitly
+treated as 0), but the real delay will be something between &lt;delay&gt;
+and &lt;delay&gt; + __ALARM_TIME__.</p>
+<p>call_out() saves and restores the current user. It is now
+possible to use say() or write() which rely on a current
+user to be something useful.</p>
+<p>call_out() can only call functions by name &lt;fun&gt; which are publicly
+accessible, i.e. &#8220;public&#8221; and &#8220;static&#8221; functions. &#8220;private&#8221; and
+&#8220;protected&#8221; functions can&#8217;t be called.</p>
+<p>If &lt;fun&gt; does not define a publicly accessible function, the
+efun will call the H_DEFAULT_METHOD hook if set.
+Calls to the master object never use the H_DEFAULT_METHOD hook.</p>
+<p>The execution of the call_out()s implies a simple (not
+exhaustive) measure against rabbits: the evaluation costs of
+those call_outs() executing at the same time are summed up on
+a per-UID base. If the summed-up costs exceed the given maximum,
+a &#8216;too long evaluation&#8217; error will occur and any remaining
+call_outs() of this user scheduled for the same time are
+discarded.</p>
+<p>If two call_out()s were started with the same target time
+the one that was issued first will be executed first.</p>
+<p>EXAMPLES
+call_out(&#8220;RefreshMe&#8221;, 10);</p>
+<p>This will call the function RefreshMe() in 10 seconds without
+any arguments. The function RefreshMe() can then call out
+itself again which will result in a loop (not in a recursion)
+which can be used to check or set up things in the object in
+intervals. Be aware that callouts are stored in a linear
+list, and so are somewhat expensive for the driver.</p>
+<p>And YES: self-replicating call_out()s, where each call_out()
+creates two or more other call_out()s in a loop (so called
+&#8216;rabbits&#8217;) slow the mud down very fast, and are even able
+to crash it. No need to try it yourself.</p>
+<blockquote>
+<div><blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="remove_call_out.html#lpc.remove_call_out" title="remove_call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">remove_call_out</span></code>(E)</a>, <a class="reference internal" href="call_out_info.html#lpc.call_out_info" title="call_out_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out_info</span></code>(E)</a>, <a class="reference internal" href="find_call_out.html#lpc.find_call_out" title="find_call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">find_call_out</span></code>(E)</a>,</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><a class="reference internal" href="this_player.html#lpc.this_player" title="this_player"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_player</span></code>(E)</a>, <a class="reference internal" href="../applied/reset.html#lpc.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a>, <a class="reference internal" href="../applied/heart_beat.html#lpc.heart_beat" title="heart_beat"><code class="xref lpc lpc-applied docutils literal"><span class="pre">heart_beat</span></code>(A)</a></p>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">call_out</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/call_out.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

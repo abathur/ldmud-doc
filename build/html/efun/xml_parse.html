@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>DESCRIPTION
+Parses the given string &lt;xml&gt; as an XML conformant string. The string
+must have only one root tag, subsequent root tags are ignored.</p>
+<p>If the xml string is correct, an array of three elements is
+returned, where the following indices are defined:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>string XML_TAG_NAME</dt>
+<dd>The name of the XML tag.</dd>
+<dt>mapping XML_TAG_ATTRIBUTES</dt>
+<dd><p class="first">All attributes given to the XML tag as a mapping where the key
+is the attribute name and the value is its string value.</p>
+<p class="last">If the xml tag does not contain any attributes, this element
+is set 0.</p>
+</dd>
+<dt>mixed * XML_TAG_CONTENTS</dt>
+<dd><p class="first">The contents of this xml tag as an array. This array may
+contain either strings, or arrays of sub-tags again with
+three elements. (see example)</p>
+<p class="last">If the xml tag does not contain anything, the element is
+set to 0.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>If the XML string is not well formed, or there is not enough memory to
+parse the whole XML structure into the array an error is raised.</p>
+<p>The function is available only if the driver is compiled with Iksemel
+support. In that case, __XML_DOM__ is defined.</p>
+<p>EXAMPLES
+xml_parse(&#8220;&lt;abc/&gt;&#8221;)           -&gt; ({ &#8220;abc&#8221;, 0, 0 })
+xml_parse(&#8220;&lt;abc xyz=&#8221;cde&#8221;/&gt;&#8221;) -&gt; ({ &#8220;abc&#8221;, ([ &#8220;xyz&#8221; : &#8220;cde&#8221; ]), 0 })</p>
+<dl class="docutils">
+<dt>xml_parse(&#8220;&lt;book language=&#8221;common&#8221;&gt;&#8221; +</dt>
+<dd><blockquote class="first">
+<div>&#8221;    &lt;title&gt;This is the title&lt;/title&gt;&#8221; +
+&#8221;    &lt;chapter&gt;This is a chapter&lt;/chapter&gt;&#8221; +
+&#8221;    &lt;chapter&gt;We want &lt;b&gt;bold&lt;/b&gt; here.&lt;/chapter&gt;&#8221; +
+&#8220;&lt;/book&gt;&#8221;)</div></blockquote>
+<dl class="last docutils">
+<dt>-&gt; ({ &#8220;book&#8221;</dt>
+<dd><blockquote class="first">
+<div><p>, ([ &#8220;language&#8221; : &#8220;common&#8221; ])
+, ({ ({ &#8220;title&#8221;</p>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div>, 0
+, ({ &#8220;This is a title&#8221; })</div></blockquote>
+<p>})</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>, ({ &#8220;chapter&#8221;</dt>
+<dd><blockquote class="first">
+<div>, 0
+, ({ &#8220;This is a chapter&#8221; })</div></blockquote>
+<p class="last">})</p>
+</dd>
+<dt>, ({ &#8220;chapter&#8221;</dt>
+<dd><blockquote class="first">
+<div><p>, 0
+, ({ &#8220;We want &#8220;</p>
+<blockquote>
+<div><blockquote>
+<div><dl class="docutils">
+<dt>, ({ &#8220;b&#8221;</dt>
+<dd><blockquote class="first">
+<div>, 0
+, ({ &#8220;bold&#8221; })</div></blockquote>
+<p class="last">})</p>
+</dd>
+</dl>
+<p>, &#8220;here&#8221;</p>
+</div></blockquote>
+<p>})</p>
+</div></blockquote>
+</div></blockquote>
+<p class="last">})</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>})</p>
+</div></blockquote>
+</div></blockquote>
+<p class="last">})</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Added in LDMud 3.3.718.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><code class="xref lpc lpc-efun docutils literal"><span class="pre">xml_generate</span></code></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/xml_parse.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

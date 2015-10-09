@@ -1,0 +1,67 @@
+Welcome to lddoc's documentation!
+=================================
+The LDMud documentation is organized in chapters that are stored in separate
+directories described below.
+
+`applied/`: 
+   member functions (lfuns) that the driver applies to objects
+
+`concepts/`: 
+   general concepts of LPMUD and LPC
+
+`driver/`: 
+   some info about internal operation of the driver
+
+`efun/`: 
+   the "system calls" of LPC .. efun.de/    german translations of the efun/
+   manpages.
+
+`hooks/`: 
+   the driver hooks
+
+`LPC/`: 
+   about parts of the LPC language
+
+`master/`: 
+   lfuns that are applied to the master object only
+
+`obsolete/`: 
+   docs for features removed from the driver
+
+`other/`: 
+   other useful MUD-related documents
+
+A reference to foo(X) means the function foo as descibed in chapter X, where X
+is one of:
+
+   A:
+      for applied
+
+   C:
+      for concepts
+
+   D:
+      for driver
+
+   E:
+      for efun
+
+   H:
+      for hook
+
+   LPC:
+      for LPC
+
+   M:
+      for master
+
+   O:
+      for obsolete
+
+   OTHER:
+      for other
+
+Indices and tables
+==================
+- Index
+- Search Page

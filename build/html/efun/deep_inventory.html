@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>deep_inventory &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="deep_inventory">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.deep_inventory">
+object * <code class="descname">deep_inventory</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#lpc.deep_inventory" title="Permalink to this definition">¶</a></dt>
+<dt>
+object * <code class="descname">deep_inventory</code><span class="sig-paren">(</span>object<em>&nbsp;ob</em><span class="sig-paren">)</span></dt>
+<dt>
+object * <code class="descname">deep_inventory</code><span class="sig-paren">(</span>object<em>&nbsp;ob</em>, int<em>&nbsp;depth</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Returns an array of the objects contained in the inventory of
+ob (or this_object() if no arg given) and in the inventories
+of these objects, climbing down recursively.</p>
+<p>If &lt;depth&gt; is given and not 0, the result is limited as follows:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>&lt;depth&gt; &gt; 0: Only the objects in the first &lt;depth&gt; levels of</dt>
+<dd>inventory are returned.</dd>
+<dt>&lt;depth&gt; &lt; 0: Only the objects in level -&lt;depth&gt; of inventory are</dt>
+<dd>returned.</dd>
+</dl>
+</div></blockquote>
+<p>In this, level &#8216;1&#8217; is the inventory of &lt;ob&gt; itself.</p>
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Given the following inventory structure</p>
+<p>ob
++- ob1
++- ob2
+|   <a href="#id1"><span class="problematic" id="id2">`</span></a>- ob21
+|  ob3
+|   <a href="#id3"><span class="problematic" id="id4">`</span></a>- ob31
++- ob4</p>
+<p>deep_inventory(ob)     =&gt; ({ob1, ob2, ob3, ob4, ob21, ob31})
+deep_inventory(ob, 1)  =&gt; ({ob1, ob2, ob3, ob4})
+deep_inventory(ob, 2)  =&gt; ({ob1, ob2, ob3, ob4, ob21, ob31})
+deep_inventory(ob, -2) =&gt; ({ob21, ob31})</p>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.3.554</em>) &#8211; added the &lt;depth&gt; parameter</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="first_inventory.html#lpc.first_inventory" title="first_inventory"><code class="xref lpc lpc-efun docutils literal"><span class="pre">first_inventory</span></code>(E)</a>, <a class="reference internal" href="next_inventory.html#lpc.next_inventory" title="next_inventory"><code class="xref lpc lpc-efun docutils literal"><span class="pre">next_inventory</span></code>(E)</a>, <a class="reference internal" href="all_inventory.html#lpc.all_inventory" title="all_inventory"><code class="xref lpc lpc-efun docutils literal"><span class="pre">all_inventory</span></code>(E)</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">deep_inventory</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/deep_inventory.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

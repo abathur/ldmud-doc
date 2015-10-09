@@ -1,0 +1,8 @@
+SYNOPSIS
+========
+   string get_root_uid(void)
+
+DESCRIPTION
+===========
+   Return the string to be used as root-uid. Under !native, the function
+   isexpendable.

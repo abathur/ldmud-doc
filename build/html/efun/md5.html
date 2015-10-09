@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>md5 &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="md5">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS (OBSOLETE)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.md5">
+string <code class="descname">md5</code><span class="sig-paren">(</span>string arg<em>&nbsp;[</em>, int<em>&nbsp;iterations]</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.md5" title="Permalink to this definition">¶</a></dt>
+<dt>
+string <code class="descname">md5</code><span class="sig-paren">(</span>int *  arg<em>&nbsp;[</em>, int<em>&nbsp;iterations]</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>Create and return a MD5 message digest from &lt;arg&gt;.
+&lt;arg&gt; may be a string, or an array of numbers (each considered to
+be a character, ignoring all but the lowest byte).</p>
+<p>If &lt;iterations&gt; is given as a number greater than 0, it is
+the number of iterations used in the digest calculation. If omitted,
+the driver executes just one iteration.</p>
+<p>The efun costs 5 ticks per iteration.</p>
+<p>EXAMPLES
+string s;</p>
+<p>s = md5(&#8220;Hello&#8221;);
+s = md5( ({ &#8216;H&#8217;, &#8216;e&#8217;, &#8216;l&#8217;, &#8216;l&#8217;, &#8216;o&#8217; }) )
+s = md5( ({ &#8216;H&#8217;, &#8216;e&#8217;, &#8216;l&#8217;, &#8216;l&#8217;, &#8216;o&#8217; }), 2 )</p>
+<p>Introduced in LDMud 3.2.9.
+LDMud 3.2.12 added number arrays as argument, and the number of
+interations.
+LDMud 3.3.717 added the iteration-based evaluation cost.
+Since LDMud 3.3.719 obsoleted by hash().</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="crypt.html#lpc.crypt" title="crypt"><code class="xref lpc lpc-efun docutils literal"><span class="pre">crypt</span></code>(E)</a>, <a class="reference internal" href="md5_crypt.html#lpc.md5_crypt" title="md5_crypt"><code class="xref lpc lpc-efun docutils literal"><span class="pre">md5_crypt</span></code>(E)</a>, <a class="reference internal" href="sha1.html#lpc.sha1" title="sha1"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sha1</span></code>(E)</a>, <a class="reference internal" href="hash.html#lpc.hash" title="hash"><code class="xref lpc lpc-efun docutils literal"><span class="pre">hash</span></code>(E)</a>, <a class="reference internal" href="hmac.html#lpc.hmac" title="hmac"><code class="xref lpc lpc-efun docutils literal"><span class="pre">hmac</span></code>(E)</a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">md5</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (OBSOLETE)</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/md5.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

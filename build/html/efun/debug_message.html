@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>debug_message &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="debug_message">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dl class="include">
+<dt>
+#include &lt;debug_message.h&gt;</dt>
+</dl>
+
+<dt id="lpc.debug_message">
+void <code class="descname">debug_message</code><span class="sig-paren">(</span>string<em>&nbsp;text</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.debug_message" title="Permalink to this definition">¶</a></dt>
+<dt>
+void <code class="descname">debug_message</code><span class="sig-paren">(</span>string<em>&nbsp;text</em>, int<em>&nbsp;flags</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Prints the given text to stdout, stderr, the &lt;host&gt;.debug.log file,
+or any combination of these.</p>
+<p>The parameter &lt;flags&gt; is a combination of bitflags determining the
+target and the mode of writing.</p>
+<p>The target flags are: DMSG_STDOUT, DMSG_STDERR and DMSG_LOGFILE.
+If the flag DMSG_STAMP is given, the message is prepended with the
+current date and time in the format &#8216;YYYY.MM.DD HH:MM:SS &#8216;.</p>
+<p>If &lt;flags&gt; is given as 0, left out, or contains no target
+definition, debug_message() will print to stdout and to the logfile.</p>
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>debug_message(&#8220;This goes to stdout and the logfile.n&#8221;);
+debug_message(&#8220;This goes to stderr.n&#8221;, DMSG_STDERR);
+debug_message(&#8220;This goes to stdout and stderr.n&#8221;</p>
+<blockquote>
+<div>, DMSG_STDOUT | DMSG_STDERR);</div></blockquote>
+<dl class="docutils">
+<dt>debug_message(&#8220;This goes to stdout and the logfile, with timestamp.n&#8221;</dt>
+<dd>, DMSG_STAMP);</dd>
+<dt>debug_message(&#8220;This goes to stdout and has the timestamp in front.n&#8221;</dt>
+<dd>, DMSG_STDOUT | DMSG_STAMP);</dd>
+</dl>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>introduced</strong> (<em>3.2.1&#64;34</em>)</li>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added the &lt;flags&gt; parameter</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="last_instructions.html#lpc.last_instructions" title="last_instructions"><code class="xref lpc lpc-efun docutils literal"><span class="pre">last_instructions</span></code>(E)</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">debug_message</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/debug_message.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

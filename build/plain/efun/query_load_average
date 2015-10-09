@@ -1,0 +1,12 @@
+SYNOPSIS
+========
+   string query_load_average(void)
+
+DESCRIPTION
+===========
+   Returns the load of the mud. Two figures are given, executed
+   commands/second and compiled lines/second.
+
+SEE ALSO
+========
+   rusage(E)

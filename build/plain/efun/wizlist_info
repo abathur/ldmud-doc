@@ -1,0 +1,30 @@
+SYNOPSIS
+========
+   #include <wizlist.h>
+
+   mixed * wizlist_info
+
+DESCRIPTION
+===========
+   Returns an array with the interesting entries of the wizlist. Needs to be
+   privileged by the master object.
+
+   The result is an array with one entry for every wizard (uid). Every entry
+   is an array itself:
+
+      string w[WL_NAME]           = Name of the wizard. int    w[WL_COMMANDS]
+      = Weighted number of commands execute by
+
+         objects of this wizard.
+
+      int    w[WL_COST] int    w[WL_GIGACOST]       = Weighted sum
+      ofeval_costs. int    w[WL_TOTAL_COST] int    w[WL_TOTAL_GIGACOST] =
+      Totalsum of eval_costs. int    w[WL_HEART_BEATS]    = Weighted count
+      ofheart_beats. int    w[WL_CALL_OUT]       = Reserved for
+      call_out()(unused yet). int    w[WL_ARRAY_TOTAL]    = Total size of
+      arrays inelements. int    w[WL_MAPPING_TOTAL]  = Total size of
+      mappings inelements. int    w[WL_STRUCT_TOTAL]   = Total size of
+      structs inelements. mixed  w[WL_EXTRA]          = Extra wizlist-info
+      if set.
+
+   The 'weighted' entries decay every hour by 10%.

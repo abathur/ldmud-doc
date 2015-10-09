@@ -1,0 +1,11 @@
+SYNOPSIS (OPTIONAL)
+===================
+   int set_is_wizard(object ob, int n)
+
+DESCRIPTION
+===========
+   Change object ob's wizardhood flag. If n is 0, it is cleared, if n is, itis
+   set, if n is -1 the current status is reported. The return value isalways
+   the old value of the flag. Using this function sets a flag in theparser,
+   that affects permissions for dumpallobj etc, which are by defaultfree for
+   every user.

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>ENTFERNTE EFUN
+SYNOPSIS</p>
+<blockquote>
+<div>int cat(string path, int start, int num)</div></blockquote>
+<dl class="docutils">
+<dt>BESCHREIBUNG</dt>
+<dd><p class="first">Listet die Datei, die unter &lt;path&gt; gefunden wird.</p>
+<p>In den meisten Installationen sind &#8221;..&#8221; oder Leerzeichen in &lt;path&gt;
+unzulaessig. Dieses Kommando haengt normalerweise mit dem &#8220;cat&#8221;
+Kommando fuer Goetter zusammen. Es wird auch von &#8220;hilfe&#8221; verwendet.
+Die optionalen Argumente &lt;start&gt; und &lt;num&gt; bezeichnen die erste Zeile,
+die ausgelesen wird, und die Anzahl Zeilen, die ausgelesen werden.
+Werden diese Argumente nicht angegeben, wird die gesamte Datei von
+Beginn weg ausgegeben.</p>
+<p>Die totale Anzahl Zeilen ist durch ein Systemlimit beschraenkt, das
+normalerweise bei 50 Zeilen liegt.</p>
+<p>cat() liefert die Anzahl ausgegebener Zeilen bei Erfolg oder 0,
+wenn &lt;pfad&gt; nicht gefunden werden kann oder keine Zeilen ausgegeben
+werden koennen (weil z.B. &lt;start&gt; groesser ist als die Laenge der
+Datei).</p>
+<p class="last">Diese efun ist veraltet. Bitte nutzt sie nicht mehr in neuem Code,
+sondern verwendet stattdessen read_bytes() + tell_object() oder
+die im Driverpaket mitgelieferte sefun cat().</p>
+</dd>
+<dt>BEISPIELE</dt>
+<dd><p class="first">cat(&#8220;/doc/efun/cat&#8221;, 5, 9);</p>
+<p class="last">Das gibt die Datei &#8220;/doc/efun/cat&#8221; aus, beginnend mit Zeile 5 bis und
+mit Zeile 13.</p>
+</dd>
+<dt>GESCHICHTE</dt>
+<dd>Veraltet seid 3.3.719.
+Entfernt in LDMud 3.5.0</dd>
+<dt>SIEHE AUCH</dt>
+<dd><a class="reference internal" href="../efun/get_dir.html#lpc.get_dir" title="get_dir"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_dir</span></code>(E)</a>, <a class="reference internal" href="../efun/file_size.html#lpc.file_size" title="file_size"><code class="xref lpc lpc-efun docutils literal"><span class="pre">file_size</span></code>(E)</a>, <a class="reference internal" href="../efun/read_file.html#lpc.read_file" title="read_file"><code class="xref lpc lpc-efun docutils literal"><span class="pre">read_file</span></code>(E)</a>, <a class="reference internal" href="../efun/read_bytes.html#lpc.read_bytes" title="read_bytes"><code class="xref lpc lpc-efun docutils literal"><span class="pre">read_bytes</span></code>(E)</a>, <a class="reference internal" href="../master/valid_read.html#lpc.valid_read" title="valid_read"><code class="xref lpc lpc-master docutils literal"><span class="pre">valid_read</span></code>(M)</a></dd>
+</dl>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/obsolete/cat.de.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

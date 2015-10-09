@@ -1,0 +1,8 @@
+.. master:: string get_master_uid(void)
+
+  Return the string to be used as root-uid.
+  Under !strict_euids, the function is expendable.
+
+  :history 3.2.1@40 introduced: replaces get_root_uid().
+
+  .. seealso:: :master:`get_bb_uid`, :master:`get_master_uid`, :concept:`uids`, :master:`creator_file`, :efun:`creator`

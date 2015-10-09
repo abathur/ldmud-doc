@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>write_file &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="write_file">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.write_file">
+int <code class="descname">write_file</code><span class="sig-paren">(</span>string<em>&nbsp;file</em>, string<em>&nbsp;str</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.write_file" title="Permalink to this definition">¶</a></dt>
+<dt>
+int <code class="descname">write_file</code><span class="sig-paren">(</span>string<em>&nbsp;file</em>, string<em>&nbsp;str</em>, int<em>&nbsp;flags</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>DESCRIPTION
+Append the string &lt;str&gt; to the file &lt;file&gt;. Returns 1 for success
+and 0 if any failure occured.</p>
+<p>If &lt;flags&gt; is 1, the file is removed first; thus making the
+&#8216;append&#8217; effectively an &#8216;overwrite&#8217;. Default for &lt;flags&gt; is 0.</p>
+<p>LDMud 3.3.523 added the &lt;flags&gt; parameter.</p>
+<blockquote>
+<div><blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="file_size.html#lpc.file_size" title="file_size"><code class="xref lpc lpc-efun docutils literal"><span class="pre">file_size</span></code>(E)</a>, <a class="reference internal" href="write_bytes.html#lpc.write_bytes" title="write_bytes"><code class="xref lpc lpc-efun docutils literal"><span class="pre">write_bytes</span></code>(E)</a>, <a class="reference internal" href="#lpc.write_file" title="write_file"><code class="xref lpc lpc-efun docutils literal"><span class="pre">write_file</span></code>(E)</a>, <a class="reference internal" href="read_file.html#lpc.read_file" title="read_file"><code class="xref lpc lpc-efun docutils literal"><span class="pre">read_file</span></code>(E)</a>,</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><a class="reference internal" href="read_bytes.html#lpc.read_bytes" title="read_bytes"><code class="xref lpc lpc-efun docutils literal"><span class="pre">read_bytes</span></code>(E)</a>, <a class="reference internal" href="rm.html#lpc.rm" title="rm"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rm</span></code>(E)</a>, <a class="reference internal" href="get_dir.html#lpc.get_dir" title="get_dir"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_dir</span></code>(E)</a></p>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">write_file</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/write_file.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

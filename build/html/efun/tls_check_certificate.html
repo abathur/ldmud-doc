@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>tls_check_certificate &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tls_check_certificate">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS (PRELIMINARY)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.tls_check_certificate">
+mixed * <code class="descname">tls_check_certificate</code><span class="sig-paren">(</span>object<em>&nbsp;obj</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.tls_check_certificate" title="Permalink to this definition">¶</a></dt>
+<dt>
+mixed * <code class="descname">tls_check_certificate</code><span class="sig-paren">(</span>object<em>&nbsp;obj</em>, int<em>&nbsp;extra</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>tls_check_certificate() checks the certificate of the secured
+connection bound to &lt;obj&gt; (default is the current object). An
+error is thrown if &lt;obj&gt; is not interactive or TLS is not
+available.</p>
+<p>An error is also thrown if &lt;obj&gt; doesn&#8217;t have a secure connection
+up and running.</p>
+<p>Otherwise, the result is an array with these values:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>int [0] <span class="classifier-delimiter">:</span> <span class="classifier">Result code of SSL_get_verify_result (see &#8216;man 1 verify&#8217;</span></dt>
+<dd>subsection DIAGNOSTICS for possible values).</dd>
+<dt>array [1] <span class="classifier-delimiter">:</span> <span class="classifier">Array with 3*n entries of extra x509 data.</span></dt>
+<dd><dl class="first last docutils">
+<dt>Structure is:</dt>
+<dd><dl class="first docutils">
+<dt>3*i <span class="classifier-delimiter">:</span> <span class="classifier">numerical form of object name,</span></dt>
+<dd>e.g. &#8220;2.5.4.3&#8221;</dd>
+<dt>3*i + 1: long or short name if available,</dt>
+<dd>e.g. &#8220;commonName&#8221;</dd>
+</dl>
+<p class="last">3*i + 2: value</p>
+</dd>
+</dl>
+</dd>
+<dt>array [2] <span class="classifier-delimiter">:</span> <span class="classifier">If &lt;extra&gt; is set:</span></dt>
+<dd><p class="first">array with 3*n entries of x509 extension data
+data structure is:
+3*i    : numerical form of extension name
+3*i + 1: long or short name of extension</p>
+<blockquote>
+<div>name if available</div></blockquote>
+<dl class="last docutils">
+<dt>3*i + 2: array of strings with the data</dt>
+<dd>structure of [1]</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">An X509 certificate can have more than one object with</p>
+</div>
+<p>the same name.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">tls_check_certificate</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (PRELIMINARY)</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/tls_check_certificate.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

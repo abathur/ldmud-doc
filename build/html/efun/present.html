@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>present &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="present">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.present">
+object <code class="descname">present</code><span class="sig-paren">(</span>string<em>&nbsp;str</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.present" title="Permalink to this definition">¶</a></dt>
+<dt>
+object <code class="descname">present</code><span class="sig-paren">(</span>string<em>&nbsp;str</em>, int<em>&nbsp;n</em><span class="sig-paren">)</span></dt>
+<dt>
+object <code class="descname">present</code><span class="sig-paren">(</span>string<em>&nbsp;str</em>, object<em>&nbsp;env</em><span class="sig-paren">)</span></dt>
+<dt>
+object <code class="descname">present</code><span class="sig-paren">(</span>string<em>&nbsp;str</em>, int<em>&nbsp;n</em>, object<em>&nbsp;env</em><span class="sig-paren">)</span></dt>
+<dt>
+object <code class="descname">present</code><span class="sig-paren">(</span>object<em>&nbsp;ob</em><span class="sig-paren">)</span></dt>
+<dt>
+object <code class="descname">present</code><span class="sig-paren">(</span>object<em>&nbsp;ob</em>, object<em>&nbsp;env</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>This efun checks if an object is present in a given environment.
+The object is identified by id &lt;str&gt; or by an object &lt;ob&gt;. This
+latter form of the efun can be used as a fast way to test for the
+presence of a known object.</p>
+<p>When searching objects by id, the efun by default returns the first
+object found matching the id. In order to search for other than the
+first object, a number can be specified either directly as the
+argument &lt;n&gt;, or implicetely inside the &lt;str&gt; in the form &#8220;&lt;id&gt;
+&lt;n&gt;&#8221;.</p>
+<p>By default, the efun searches first in the inventory of
+this_object(), then in its environment. However, if &lt;env&gt; is given,
+the efun searches just inside &lt;env&gt;.</p>
+<p>When searching both inventory and environment of this_object(),
+the numbering is applied linear over both spaces (see examples).</p>
+<p>The driver identifies objects by calling the lfun id() in each
+object.</p>
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>present(&#8220;chest&#8221;);</dt>
+<dd>&#8211;&gt; returns the first &#8216;chest&#8217; object in this object.</dd>
+<dt>present(&#8220;chest 2&#8221;)</dt>
+<dd>&#8211;&gt; returns the second &#8216;chest&#8217; object in this object.</dd>
+<dt>present(&#8220;chest 2&#8221;, 1)</dt>
+<dd>&#8211;&gt; returns the first &#8216;chest 2&#8217; object in this object.</dd>
+</dl>
+<p>Assume there is one &#8220;chest&#8221; inside the current object, and
+two in its environment:</p>
+<blockquote>
+<div>present(&#8220;chest&#8221;, 1) -&gt; returns the chest inside
+present(&#8220;chest&#8221;, 2) -&gt; returns the first chest outside
+present(&#8220;chest&#8221;, 3) -&gt; returns the second chest outside</div></blockquote>
+<p>A typical 2.4.5-implementation of the &#8220;do &lt;id&gt; &lt;n&gt;&#8221; command style
+is:</p>
+<blockquote>
+<div><p>void init() { add_action(&#8220;open_chest&#8221;, &#8220;open&#8221;); }</p>
+<dl class="docutils">
+<dt>int open_chest (string str) {</dt>
+<dd><dl class="first docutils">
+<dt>if (present (str) != this_object ())</dt>
+<dd>return 0; /* Not this chest <a href="#id1"><span class="problematic" id="id2">*</span></a>/</dd>
+</dl>
+<p class="last">...</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">present</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/present.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>attach_erq_demon &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="attach_erq_demon">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.attach_erq_demon">
+int <code class="descname">attach_erq_demon</code><span class="sig-paren">(</span>object<em>&nbsp;ob</em>, int<em>&nbsp;do_close</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.attach_erq_demon" title="Permalink to this definition">¶</a></dt>
+<dt>
+int <code class="descname">attach_erq_demon</code><span class="sig-paren">(</span>string<em>&nbsp;obname</em>, int<em>&nbsp;do_close</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>This privileged efun is to set/change the connection of the
+driver to the external erq demon, thus in effect changing the
+demons.</p>
+<p>The connection of the given interactive &#8216;ob&#8217;ject is taken away(!)
+from it and stored as the erq-connection. The object itself is
+then no longer needed, but may stay alive - it is just another
+non-interactive object then.</p>
+<p>In the second form, the string will be combined as suffix to
+the filename ERQFILE&lt;obname&gt;, which is then the binary to be
+forked off as new erq demon. The communication with this erq
+will take place over unix domain sockets. ERQFILE defaults to
+BINDIR/erq, where BINDIR is the configuration value for the
+executable directory.</p>
+<p>If there is alreay an erq demon connected to the driver, the
+function will fail unless &#8216;do_close&#8217; (default 0) is specified
+as 1 (or any other odd integer): then the old connection will
+be closed before attaching the new.
+The efun returns 1 on success, else 0.</p>
+<p>EXAMPLES
+To restart the (default) erq, write in
+master.c::stale_erq(closure c):</p>
+<blockquote>
+<div>attach_erq_demon(&#8220;&#8221;, 0);</div></blockquote>
+<p>Introduced in <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;61">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>61</a>.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="send_erq.html#lpc.send_erq" title="send_erq"><code class="xref lpc lpc-efun docutils literal"><span class="pre">send_erq</span></code>(E)</a>, <a class="reference internal" href="../concepts/erq.html#lpc.erq" title="erq"><span class="xref lpc lpc-concept">erq</span></a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">attach_erq_demon</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/attach_erq_demon.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

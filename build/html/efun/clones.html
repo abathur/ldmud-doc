@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>clones &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="clones">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.clones">
+object * <code class="descname">clones</code><a class="headerlink" href="#lpc.clones" title="Permalink to this definition">¶</a></dt>
+<dt>
+object * <code class="descname">clones</code><span class="sig-paren">(</span>int<em>&nbsp;what</em><span class="sig-paren">)</span></dt>
+<dt>
+object * <code class="descname">clones</code><span class="sig-paren">(</span>string|object obj<em>&nbsp;[</em>, int<em>&nbsp;what]</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>The efuns returns an array with all clones of a certain blueprint.
+The array is subject to the usual runtime limits.</p>
+<p>If &lt;obj&gt; is given, all clones of the blueprint of &lt;obj&gt; (which
+may be &lt;obj&gt; itself) are returned, otherwise all clones of the
+current object resp. of the current object&#8217;s blueprint. If &lt;obj&gt;
+is given as string, it must name an existing object.</p>
+<p>&lt;what&gt; selects how to treat clones made from earlier versions
+of the blueprint:</p>
+<blockquote>
+<div>== 0: (default) return the clones of the current blueprint only.
+== 1: return the clones of the previous blueprints only.
+== 2: return all clones of the blueprint.</div></blockquote>
+<p>Note: this efun is computationally expensive.</p>
+<p>If the driver is compiled with DYNAMIC_COSTS, the cost of this
+efun is proportional to the number of objects in the game.</p>
+<p>EXAMPLES
+object o, p;
+o = clone_object(&#8220;/std/thing&#8221;); /* or &#8220;std/thing&#8221; in COMPAT mode <a href="#id1"><span class="problematic" id="id2">*</span></a>/
+destruct(find_object(&#8220;/std/thing&#8221;));
+p = clone_object(&#8220;/std/thing&#8221;);</p>
+<p>clones(&#8220;/std/thing&#8221;)    &#8211;&gt; returns ({ p })
+clones(&#8220;/std/thing&#8221;, 0) &#8211;&gt; returns ({ p })
+clones(&#8220;/std/thing&#8221;, 1) &#8211;&gt; returns ({ o })
+clones(&#8220;/std/thing&#8221;, 2) &#8211;&gt; returns ({ o, p })</p>
+<p>Introduced in LDMud 3.2.8.
+LDMud 3.2.9 added the dynamic cost.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="blueprint.html#lpc.blueprint" title="blueprint"><code class="xref lpc lpc-efun docutils literal"><span class="pre">blueprint</span></code>(E)</a>, <a class="reference internal" href="clone_object.html#lpc.clone_object" title="clone_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clone_object</span></code>(E)</a>, <a class="reference internal" href="clonep.html#lpc.clonep" title="clonep"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clonep</span></code>(E)</a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">clones</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/clones.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

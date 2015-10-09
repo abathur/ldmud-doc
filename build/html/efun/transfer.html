@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>transfer &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="transfer">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS (DEPRECATED)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.transfer">
+int <code class="descname">transfer</code><span class="sig-paren">(</span>object<em>&nbsp;item</em>, object<em>&nbsp;dest</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.transfer" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>DESCRIPTION
+This efun is for backward compatibility only. It is only
+available in compat mode.</p>
+<p>Move the object &#8220;item&#8221; to the object &#8220;dest&#8221;. All kinds of
+tests are done, and a number is returned specifying the
+result:</p>
+<p>0: Success.
+1: Too heavy for destination.
+2: Can&#8217;t be dropped.
+3: Can&#8217;t take it out of it&#8217;s container.
+4: The object can&#8217;t be inserted into bags etc.
+5: The destination doesn&#8217;t allow insertions of objects.
+6: The object can&#8217;t be picked up.</p>
+<p>If an object is transfered to a newly created object, make
+sure that the new object first is transfered to its
+destination.</p>
+<p>The efun calls add_weight(), drop(), get(), prevent_insert(),
+add_weight(), and can_put_and_get() where needed.</p>
+<p>REPLACEMENT
+This efun can easily be replaced with a simul_efun:</p>
+<p>/<em>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;</em>/
+int transfer(object item, object dest)
+{</p>
+<blockquote>
+<div><p>int weight;
+object from;</p>
+<p>efun::set_this_object(previous_object());</p>
+<p>weight = item-&gt;query_weight();
+if (!item)</p>
+<blockquote>
+<div>return 3;</div></blockquote>
+<p>from = environment(item);
+if (from)
+{</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>/*</dt>
+<dd><ul class="first simple">
+<li>If the original place of the object is a living object,</li>
+<li>then we must call drop() to check that the object can be</li>
+<li>dropped.</li>
+</ul>
+<p class="last"><a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
+</dd>
+</dl>
+<p>if (living(from))
+{</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if (item-&gt;drop() || !item)</dt>
+<dd>return 2;</dd>
+</dl>
+</div></blockquote>
+<p>}
+/*</p>
+<blockquote>
+<div><ul class="simple">
+<li>If &#8216;from&#8217; is not a room and not a player, check that we may</li>
+<li>remove things out of it.</li>
+</ul>
+<p><a href="#id3"><span class="problematic" id="id4">*</span></a>/</p>
+</div></blockquote>
+<p>else if (environment(from))
+{</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if (!from-&gt;can_put_and_get() || !from)</dt>
+<dd>return 3;</dd>
+</dl>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<dl class="docutils">
+<dt>/*</dt>
+<dd><ul class="first simple">
+<li>If the destination is not a room, and not a player,</li>
+<li>Then we must test &#8216;prevent_insert&#8217;, and &#8216;can_put_and_get&#8217;.</li>
+</ul>
+<p class="last"><a href="#id5"><span class="problematic" id="id6">*</span></a>/</p>
+</dd>
+</dl>
+<p>if (environment(dest) &amp;&amp; !living(dest))
+{</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if (item-&gt;prevent_insert())</dt>
+<dd>return 4;</dd>
+<dt>if (!dest-&gt;can_put_and_get() || !dest)</dt>
+<dd>return 5;</dd>
+</dl>
+</div></blockquote>
+<p>}</p>
+<p>if (living(dest))
+{</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if (!item-&gt;get() || !item)</dt>
+<dd>return 6;</dd>
+</dl>
+</div></blockquote>
+<p>}</p>
+<dl class="docutils">
+<dt>/*</dt>
+<dd><ul class="first simple">
+<li>If it is not a room, correct the total weight in the</li>
+<li>destination.</li>
+</ul>
+<p class="last"><a href="#id7"><span class="problematic" id="id8">*</span></a>/</p>
+</dd>
+</dl>
+<p>if (environment(dest) &amp;&amp; weight)
+{</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if (!dest-&gt;add_weight(weight) || !dest)</dt>
+<dd>return 1;</dd>
+</dl>
+</div></blockquote>
+<p>}</p>
+<dl class="docutils">
+<dt>/*</dt>
+<dd><ul class="first simple">
+<li>If it is not a room, correct the weight in the &#8216;from&#8217; object.</li>
+</ul>
+<p class="last"><a href="#id9"><span class="problematic" id="id10">*</span></a>/</p>
+</dd>
+</dl>
+<p>if (from &amp;&amp; environment(from) &amp;&amp; weight)
+{</p>
+<blockquote>
+<div>from-&gt;add_weight(-weight);</div></blockquote>
+<p>}</p>
+<p>move_object(item, dest);</p>
+<p>return 0;</p>
+</div></blockquote>
+<p>}
+/<em>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;</em>/</p>
+<dl class="docutils">
+<dt>Deprecated in LDMud 3.3; available only when compiled with</dt>
+<dd><blockquote class="first">
+<div><p>USE_DEPRECATED.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="move_object.html#lpc.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object</span></code>(E)</a>, <a class="reference internal" href="../applied/drop.html#lpc.drop" title="drop"><code class="xref lpc lpc-applied docutils literal"><span class="pre">drop</span></code>(A)</a>, <a class="reference internal" href="../applied/get.html#lpc.get" title="get"><code class="xref lpc lpc-applied docutils literal"><span class="pre">get</span></code>(A)</a>, <a class="reference internal" href="../applied/prevent_insert.html#lpc.prevent_insert" title="prevent_insert"><code class="xref lpc lpc-applied docutils literal"><span class="pre">prevent_insert</span></code>(A)</a>,</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p class="last"><a class="reference internal" href="../applied/can_put_and_get.html#lpc.can_put_and_get" title="can_put_and_get"><code class="xref lpc lpc-applied docutils literal"><span class="pre">can_put_and_get</span></code>(A)</a>, <a class="reference internal" href="../applied/add_weight.html#lpc.add_weight" title="add_weight"><code class="xref lpc lpc-applied docutils literal"><span class="pre">add_weight</span></code>(A)</a></p>
+</dd>
+</dl>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">transfer</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (DEPRECATED)</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/transfer.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

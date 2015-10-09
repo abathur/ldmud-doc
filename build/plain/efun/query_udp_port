@@ -1,0 +1,7 @@
+SYNOPSIS
+========
+   int query_udp_port(void)
+
+DESCRIPTION
+===========
+   Returns the port number of the UDP socket.

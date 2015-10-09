@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>hsregexp &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="hsregexp">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" id="lpc.hsregexp" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">hsregexp:</th><td class="field-body"><span class="first last">Henry Spencer Regular Expressions</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>This document describes the regular expressions supported by the
+implementation by Henry Spencer (the traditional package for
+LPMud).</p>
+<div class="section" id="OPTIONS">
+<span id="lpc.OPTIONS"></span><h3>OPTIONS<a class="headerlink" href="#OPTIONS" title="Permalink to this headline">¶</a></h3>
+<p>The following bitflag options modify the behaviour of the
+regular expressions - both interpretation and actual matching.</p>
+<p>The efuns may understand additional options.</p>
+<blockquote>
+<div>RE_EXCOMPATIBLE</div></blockquote>
+<p>If this bit is set, the pattern is interpreted as the UNIX ed
+editor would do it: () match literally, and the ( ) group
+expressions.</p>
+</div>
+<div class="section" id="REGULAR EXPRESSION DETAILS">
+<span id="lpc.REGULAR EXPRESSION DETAILS"></span><h3>REGULAR EXPRESSION DETAILS<a class="headerlink" href="#REGULAR EXPRESSION DETAILS" title="Permalink to this headline">¶</a></h3>
+<p>A regular expression is a pattern that is matched against  a
+subject string from left to right. Most characters stand for
+themselves in a pattern, and match the corresponding charac-
+ters in the subject. As a trivial example, the pattern</p>
+<blockquote>
+<div>The quick brown fox</div></blockquote>
+<p>matches a portion of a subject string that is  identical  to
+itself.  The  power  of  regular  expressions comes from the
+ability to include alternatives and repetitions in the  pat-
+tern.  These  are encoded in the pattern by the use of meta-
+characters, which do not stand for  themselves  but  instead
+are interpreted in some special way.</p>
+<p>There are two different sets of meta-characters: those  that
+are  recognized anywhere in the pattern except within square
+brackets, and those that are recognized in square  brackets.
+Outside square brackets, the meta-characters are as follows:</p>
+<blockquote>
+<div><p>.       Match any character.</p>
+<p>^       Match begin of line.</p>
+<p>$       Match end of line.</p>
+<p>&lt;      Match begin of word.</p>
+<p>&gt;      Match end of word.</p>
+<dl class="docutils">
+<dt>B      not at edge of a word (supposed to be like the emacs</dt>
+<dd>compatibility one in gnu egrep)</dd>
+</dl>
+<p>x|y     Match regexp x or regexp y.</p>
+<dl class="docutils">
+<dt>()      Match enclosed regexp like a &#8216;simple&#8217; one (unless</dt>
+<dd>RE_EXCOMPATIBLE is set).</dd>
+</dl>
+<p>x*      Match any number (0 or more) of regexp x.</p>
+<p>x+      Match any number (1 or more) of regexp x.</p>
+<p>[..]    Match one of the characters enclosed.</p>
+<dl class="docutils">
+<dt>[^ ..]  Match none of the characters enclosed. The .. are to</dt>
+<dd>replaced by single characters or character ranges:</dd>
+</dl>
+<p>[abc]   matches a, b or c.</p>
+<p>[ab0-9] matches a, b or any digit.</p>
+<p>[^a-z]  does not match any lowercase character.</p>
+<dl class="docutils">
+<dt>c      match character c even if it&#8217;s one of the special</dt>
+<dd>characters.</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The &lt; and &gt; metacharacters from Henry Spencers package
+are not available in PCRE, but can be emulate with b,
+as required, also in conjunction with W or w.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In LDMud, backtracks are limited by the EVAL_COST runtime
+limit, to avoid freezing the driver with a match
+like regexp(({&#8220;=XX===================&#8221;}), &#8220;X(.+)+X&#8221;).</p>
+</div>
+<div class="section" id="AUTHORS">
+<span id="lpc.AUTHORS"></span><h3>AUTHORS<a class="headerlink" href="#AUTHORS" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Mark H. Colburn, NAPS International (<a class="reference external" href="mailto:mark&#37;&#52;&#48;jhereg&#46;mn&#46;org">mark<span>&#64;</span>jhereg<span>&#46;</span>mn<span>&#46;</span>org</a>)</li>
+<li>Henry Spencer, University of Torronto (<a class="reference external" href="mailto:henry&#37;&#52;&#48;utzoo&#46;edu">henry<span>&#64;</span>utzoo<span>&#46;</span>edu</a>)</li>
+<li>Joern Rennecke</li>
+<li>Ian Phillipps</li>
+</ul>
+</div>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="regexp.html#lpc.regexp" title="regexp"><span class="xref lpc lpc-concept">regexp</span></a>, <a class="reference internal" href="pcre.html#lpc.pcre" title="pcre"><span class="xref lpc lpc-concept">pcre</span></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">hsregexp</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#OPTIONS">OPTIONS</a></li>
+<li><a class="reference internal" href="#REGULAR EXPRESSION DETAILS">REGULAR EXPRESSION DETAILS</a></li>
+<li><a class="reference internal" href="#AUTHORS">AUTHORS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/concepts/hsregexp.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

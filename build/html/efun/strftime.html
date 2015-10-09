@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>strftime &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="strftime">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.strftime">
+string <code class="descname">strftime</code><a class="headerlink" href="#lpc.strftime" title="Permalink to this definition">¶</a></dt>
+<dt>
+string <code class="descname">strftime</code><span class="sig-paren">(</span>string<em>&nbsp;fmt</em><span class="sig-paren">)</span></dt>
+<dt>
+string <code class="descname">strftime</code><span class="sig-paren">(</span>int<em>&nbsp;clock</em><span class="sig-paren">)</span></dt>
+<dt>
+string <code class="descname">strftime</code><span class="sig-paren">(</span>string<em>&nbsp;fmt</em>, int<em>&nbsp;clock</em><span class="sig-paren">)</span></dt>
+<dt>
+string <code class="descname">strftime</code><span class="sig-paren">(</span>string<em>&nbsp;fmt</em>, int<em>&nbsp;clock</em>, int<em>&nbsp;localized</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>The function strftime() formats the given time in &lt;clock&gt; as a string,
+similar to ctime(). Unlike ctime(), strftime() accepts a format string
+with placeholders for the different elements. The format string
+consists of zero or more conversion specifiers (see below) and ordinary
+characters. Ordinary characters are just copied to the result. A
+conversion specifier starts with a percent sign (&#8216;%&#8217;). If no format
+string is given, a default of &#8220;%c&#8221; will be used.</p>
+<p>The argument &lt;clock&gt; is the number of seconds since the epoch (00:00:00
+UTC, January 1, 1970), as returned by time/mktime(). If &lt;clock&gt; is not
+given, the current result of time() will be used.</p>
+<p>The argument &lt;localized&gt; specifies whether the result will be in English
+(the classic &#8220;C&#8221; locale) or in the language configured on the host
+computer (e.g. German). The language has to be configured with the
+environment variables LC_TIME or LC_ALL (please ask your admins). If
+&lt;localized&gt; is not given, the default is 1.
+0: use classic &#8220;C&#8221; locale (english)
+1: use current locale on the host computer (national representation).</p>
+</div>
+</div>
+<dl class="docutils">
+<dt>REMARKS:</dt>
+<dd>The resulting string is at most 511 character long.</dd>
+<dt>CONVERSION SPECIFIERS:</dt>
+<dd><p class="first">This function accepts all conversion specifiers which the function
+strftime() from the C library accepts. Currently these are:</p>
+<p>%A    replaced by national representation of the full weekday name.
+%a    replaced by national representation of the abbreviated weekday</p>
+<blockquote>
+<div>name.</div></blockquote>
+<p>%B    replaced by national representation of the full month name.
+%b    replaced by national representation of the abbreviated month name.
+%C    replaced by (year / 100) as decimal number; single digits are</p>
+<blockquote>
+<div>preceded by a zero.</div></blockquote>
+<p>%c    replaced by national representation of time and date.
+%D    equivalent to &#8220;%m/%d/%y&#8221;.
+%d    replaced by the day of the month as a decimal number (01-31).
+%E* %O*</p>
+<blockquote>
+<div>POSIX locale extensions. The sequences %Ec %EC %Ex %EX %Ey %EY %Od
+%Oe %OH %OI %Om %OM %OS %Ou %OU %OV %Ow %OW %Oy are supposed to
+provide alternate representations.
+Additionally %OB implemented to represent alternative
+month names (used standalone, without day mentioned).</div></blockquote>
+<dl class="docutils">
+<dt>%e    replaced by the day of month as a decimal number (1-31); single</dt>
+<dd>digits are preceded by a blank.</dd>
+</dl>
+<p>%F    equivalent to &#8220;%Y-%m-%d&#8221;.
+%G    replaced by a year as a decimal number with century. This year</p>
+<blockquote>
+<div>is the one that contains the greater part of the week (Monday as
+the first day of the week).</div></blockquote>
+<dl class="docutils">
+<dt>%g    replaced by the same year as in &#8220;%G&#8221;, but as a decimal number</dt>
+<dd>without century (00-99).</dd>
+</dl>
+<p>%H    replaced by the hour (24-hour clock) as a decimal number (00-23).
+%h    the same as %b.
+%I    replaced by the hour (12-hour clock) as a decimal number (01-12).
+%j    replaced by the day of the year as a decimal number (001-366).
+%k    replaced by the hour (24-hour clock) as a decimal number (0-23);</p>
+<blockquote>
+<div>single digits are preceded by a blank.</div></blockquote>
+<dl class="docutils">
+<dt>%l    replaced by the hour (12-hour clock) as a decimal number (1-12);</dt>
+<dd>single digits are preceded by a blank.</dd>
+</dl>
+<p>%M    replaced by the minute as a decimal number (00-59).
+%m    replaced by the month as a decimal number (01-12).
+%n    replaced by a newline.
+%O*   the same as %E*.
+%p    replaced by national representation of either &#8220;ante meridiem&#8221; or</p>
+<blockquote>
+<div>&#8220;post meridiem&#8221; as appropriate.</div></blockquote>
+<p>%R    equivalent to &#8220;%H:%M&#8221;.
+%r    equivalent to &#8220;%I:%M:%S %p&#8221;.
+%S    replaced by the second as a decimal number (00-60).
+%s    replaced by the number of seconds since the Epoch, UTC (see</p>
+<blockquote>
+<div>mktime(3)).</div></blockquote>
+<p>%T    equivalent to &#8220;%H:%M:%S&#8221;.
+%t    replaced by a tab.
+%U    replaced by the week number of the year (Sunday as the</p>
+<blockquote>
+<div>first day of the week) as a decimal number (00-53).</div></blockquote>
+<dl class="docutils">
+<dt>%u    replaced by the weekday (Monday as the first day of</dt>
+<dd>the week) as a decimal number (1-7).</dd>
+<dt>%V    replaced by the week number of the year (Monday as the</dt>
+<dd>first day of the week) as a decimal number (01-53). If the week
+containing January 1st has four or more days in the new year,
+then it is week 1; otherwise it is the last week of the previous
+year, and the next week is week 1.</dd>
+</dl>
+<p>%v    equivalent to &#8220;%e-%b-%Y&#8221;.
+%W    replaced by the week number of the year (Monday as the</p>
+<blockquote>
+<div>first day of the week) as a decimal number (00-53).</div></blockquote>
+<dl class="docutils">
+<dt>%w    replaced by the weekday (Sunday as the first day of the week)</dt>
+<dd>as a decimal number (0-6).</dd>
+</dl>
+<p>%X    replaced by national representation of the time.
+%x    replaced by national representation of the date.
+%Y    replaced by the year with century as a decimal number.
+%y    replaced by the year without century as a decimal number (00-99).
+%Z    replaced by the time zone name.
+%z    replaced by the time zone offset from UTC; a leading plus sign</p>
+<blockquote>
+<div>stands for east of UTC, a minus sign for west of UTC, hours and
+minutes follow with two digits each and no delimiter between
+them (common form for RFC 822 date headers).</div></blockquote>
+<dl class="docutils">
+<dt>%+    replaced by national representation of the date and time</dt>
+<dd>(the format is similar to that produced by date(1)).</dd>
+</dl>
+<p class="last">%%    replaced by <a href="#id1"><span class="problematic" id="id2">`</span></a>%&#8217;.</p>
+</dd>
+<dt>BUGS</dt>
+<dd>There is no conversion specification for the phase of the moon.</dd>
+<dt>EXAMPLES</dt>
+<dd>write(strftime(&#8220;Today is %A, %d. %B %Y.n&#8221;))
+results in &#8220;Today is Monday, 24. September 2007.n&#8221;</dd>
+</dl>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">strftime</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/strftime.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

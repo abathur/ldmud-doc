@@ -1,0 +1,12 @@
+.. master:: void receive_udp(string host, string msg, int hostport)
+
+  Handle a received UDP message.
+
+  This function is called for every message received on the UDP
+  port. Usually it is passed on to some object that handles
+  inter-mud communications.
+
+  :history 3.2.1 changed: added 'hostport' argument
+  :history 3.2.9 changed: renamed to receive_udp() from receive_imp().
+
+  .. seealso:: :efun:`send_udp`, :efun:`query_udp_port`

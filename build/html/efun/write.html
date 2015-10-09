@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>write &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="write">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.write">
+void <code class="descname">write</code><span class="sig-paren">(</span>mixed<em>&nbsp;msg</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.write" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>DESCRIPTION
+Write out something to the current user. What exactly will
+be printed in the end depends of the type of msg.</p>
+<p>If it is a string or a number then just prints it out.</p>
+<p>If it is an object then the object will be printed in the
+form: &#8220;OBJ(&#8220;+object_name((object)mix)+&#8221;)&#8221;</p>
+<p>If it is an array just &#8220;&lt;ARRAY&gt;&#8221; will be printed.
+If it is a mapping just &#8220;&lt;MAPPING&gt;&#8221; will be printed.
+If it is a closure just &#8220;&lt;CLOSURE&gt;&#8221; will be printed.</p>
+<p>If the write() function is invoked by a command of a living,
+non-interactive object and the given argument is a string
+then the lfun catch_tell() of the living will be invoked with
+the message as argument.</p>
+<p>EXAMPLES
+write(&#8220;Hello world!n&#8221;);</p>
+<p>Just print out a string.</p>
+<p>write(this_player());</p>
+<p>This will print out something like &#8220;OBJ(std/player#1234)&#8221;.</p>
+<p>write( ({ &#8220;blub&#8221; }) );</p>
+<p>Will print out &#8220;&lt;ARRAY&gt;&#8221;.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="say.html#lpc.say" title="say"><code class="xref lpc lpc-efun docutils literal"><span class="pre">say</span></code>(E)</a>, <a class="reference internal" href="tell_object.html#lpc.tell_object" title="tell_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tell_object</span></code>(E)</a>, <a class="reference internal" href="tell_room.html#lpc.tell_room" title="tell_room"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tell_room</span></code>(E)</a>, <a class="reference internal" href="../applied/catch_tell.html#lpc.catch_tell" title="catch_tell"><code class="xref lpc lpc-applied docutils literal"><span class="pre">catch_tell</span></code>(A)</a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">write</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/write.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

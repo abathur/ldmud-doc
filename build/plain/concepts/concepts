@@ -1,0 +1,34 @@
+SYNOPSIS
+========
+   concepts:
+      sigh
+
+DESCRIPTION
+===========
+   This directory contains man pages about basic concepts of the LPC language
+   as it is provided by Amylaars parser/interpreter.
+
+   - erq
+   - files
+   - hsregexp
+   - imp
+   - inheritance
+   - intermud
+   - intermud.basic
+   - mccp
+   - memory
+   - mysql
+   - native
+   - negotiation
+   - objects
+   - overloading
+   - pcre
+   - pgsql
+   - regexp
+   - simul_efun
+   - tls
+   - uids
+
+SEE ALSO
+========
+   driver, efun, `applied`, master, *lpc*

@@ -1,0 +1,17 @@
+SYNOPSIS (OPTIONAL)
+===================
+   int sl_open(string filename)
+
+DESCRIPTION
+===========
+Opens the file <filename> for use as a SQLite database. The file will be
+created if it doesn't exist. Only one open file per object is allowed. On
+success this function returns 1, otherwise an error is usually thrown.
+
+The function is available only if the driver is compiled with SQLite support.
+In that case, __SQLITE__ is defined.
+
+Added in LDMud 3.3.713.
+
+   See Also:
+      sl_exec(E), sl_insert_id(E), sl_close(E)

@@ -1,0 +1,15 @@
+SYNOPSIS
+========
+   float cos(int|float)
+
+DESCRIPTION
+===========
+   Returns the cosinus of the argument.
+
+HISTORY
+=======
+   - **changed** (*3.2.9*) -- added integers as arguments.
+
+SEE ALSO
+========
+   sin(E), asin(E), acos(E), tan(E), atan(E), atan2(E)

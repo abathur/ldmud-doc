@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>filter_array &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="filter_array">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.filter_array">
+mixed *<code class="descname">filter_array</code><span class="sig-paren">(</span>mixed<em>&nbsp;*arr</em>, string<em>&nbsp;fun</em>, string|object<em>&nbsp;ob</em>, mixed<em>&nbsp;extra</em>, ...<span class="sig-paren">)</span><a class="headerlink" href="#lpc.filter_array" title="Permalink to this definition">¶</a></dt>
+<dt>
+mixed *<code class="descname">filter_array</code><span class="sig-paren">(</span>mixed<em>&nbsp;*arr</em>, closure<em>&nbsp;cl</em>, mixed<em>&nbsp;extra</em>, ...<span class="sig-paren">)</span></dt>
+<dt>
+mixed *<code class="descname">filter_array</code><span class="sig-paren">(</span>mixed<em>&nbsp;*arr</em>, mapping<em>&nbsp;map</em>, mixed<em>&nbsp;extra</em>, ...<span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Returns an array holding the items of arr filtered through
+ob-&gt;fun(element, extra, ...), the closure cl, or the mapping map.
+The function &#8216;fun&#8217; in &#8216;ob&#8217; resp. the closure &#8216;cl&#8217; is called
+for each element in arr with that element as parameter. The
+extra and following parameters are in each call if given.
+The mapping &#8216;map&#8217; is likewise indexed by each element.
+If ob-&gt;fun(arr[index], extra) returns != 0 resp.
+map[arr[index]] exists, the element is included in the
+returned array.</p>
+<p>If arr is not an array, an error occurs.</p>
+<p>The extra argument(s) are optional and must not be protected
+references like &amp;(i[0]).
+If &lt;ob&gt; is omitted, or neither a string nor an object, it
+defaults to this_object().</p>
+<p>Since <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;36">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>36</a>, the second arg can also be a mapping. Then
+only the elements of the array which belong to the map (as
+keys) will be returned (i.e. map[arr[index]] != 0).</p>
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-c"><div class="highlight"><pre>int check_if_idle(object user) { return query_idle(user); }
+
+...
+
+object *idle_users;
+
+idle_users = filter_array(users(), &quot;check_if_idle&quot;);
+/* equivalent but smaller and faster */
+idle_users = filter_array(users(), #&#39;query_idle );
+</pre></div>
+</div>
+<p>Now idle_users contains all users that have been idle for more
+than 1 second.</p>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.2.6</em>) &#8211; obsoleted by efun filter().</li>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; not available if driver is compiled without USE_DEPRECATED.</li>
+<li><strong>removed</strong> (<em>3.3</em>)</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/filter.html#lpc.filter" title="filter"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter</span></code>(E)</a>, <a class="reference internal" href="../efun/filter_objects.html#lpc.filter_objects" title="filter_objects"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter_objects</span></code>(E)</a>, <a class="reference internal" href="../efun/map.html#lpc.map" title="map"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map</span></code>(E)</a>, <a class="reference internal" href="../efun/map_objects.html#lpc.map_objects" title="map_objects"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_objects</span></code>(E)</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">filter_array</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/obsolete/filter_array.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

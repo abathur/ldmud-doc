@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>parse_command &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="parse_command">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS (OPTIONAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.parse_command">
+int <code class="descname">parse_command</code><span class="sig-paren">(</span>string<em>&nbsp;cmd</em>, object <em>&nbsp;env</em>, string<em>&nbsp;fmt</em>, mixed<em>&nbsp;&amp;var</em>, ...<span class="sig-paren">)</span><a class="headerlink" href="#lpc.parse_command" title="Permalink to this definition">¶</a></dt>
+<dt>
+int <code class="descname">parse_command</code><span class="sig-paren">(</span>string<em>&nbsp;cmd</em>, object<em>&nbsp;*arr</em>, string<em>&nbsp;fmt</em>, mixed<em>&nbsp;&amp;var</em>, ...<span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>parse_command() is basically a spiffed up sscanf operating
+on word basis and targeted at recognizing object descriptions from
+command strings.</p>
+<p>The efun takes the command string &lt;cmd&gt; and the object(s) &lt;env&gt;/&lt;arr&gt;
+and tries to match it against the format string &lt;fmt&gt;. Successfully
+matched elements are assigned to the variables &lt;var&gt;.... The result
+from the efun is 1 if the command could be fully matched, and 0
+otherwise.</p>
+<p>If the objects are given as a single object &lt;env&gt;, the efun matches
+against the given object and all objects contained therein. Otherwise,
+if the objects are given as an array &lt;arr&gt; of objects, the efun
+matches only against the given objects.</p>
+<p>The format string &lt;fmt&gt; consists of words, syntactic markers, and
+%-directives for the values to parse and return in the variables.
+A typical example is &#8221; &#8216;get&#8217; / &#8216;take&#8217; %i &#8221; or
+&#8221; &#8216;spray&#8217; / &#8216;paint&#8217; [paint] %i &#8221;. The elements in detail are:</p>
+<blockquote>
+<div><p>&#8216;word&#8217;: obligatory text
+[word]: optional text
+/     : Alternative marker
+%o    : Single item, object
+%s    : Any text
+%w    : Any word
+%p    : One of a list of prepositions.</p>
+<blockquote>
+<div>If the variable associated with %p is used to pass
+a list of words to the efun, the matching will take
+only against this list.</div></blockquote>
+<dl class="docutils">
+<dt>%l <span class="classifier-delimiter">:</span> <span class="classifier">non-compat: Living objects</span></dt>
+<dd>compat: a single living object</dd>
+</dl>
+<p>%i    : Any objects
+%d    : Number &gt;= 0, or when given textual: 0-99.</p>
+</div></blockquote>
+<p>A &lt;word&gt; in this context is any sequence of characters not containing
+a space. &#8216;living objects&#8217; are searched by calls to the (simul)efuns
+find_player() and find_living(): both functions have to accept a name
+as argument and return the object for this name, or 0 if there
+is none.</p>
+<p>The results assigned to the variables by the %-directives are:</p>
+<blockquote>
+<div><p>%o : returns an object
+%s : returns a string of words
+%w : returns a string of one word
+%p : if passed empty: a string</p>
+<blockquote>
+<div>if passed as array of words: var[0] is the matched word</div></blockquote>
+<dl class="docutils">
+<dt>%i <span class="classifier-delimiter">:</span> <span class="classifier">returns an array with the following content:</span></dt>
+<dd><blockquote class="first">
+<div><dl class="docutils">
+<dt>[0]: int: the count/number recognized in the object spec</dt>
+<dd>&gt; 0: a count (e.g. &#8216;three&#8217;, &#8216;4&#8217;)
+&lt; 0: an ordinal (e.g. &#8216;second&#8217;, &#8216;third&#8217;)
+= 0: &#8216;all&#8217; or a generic plural such as &#8216;apples&#8217;</dd>
+<dt>[1..]: object: all(!) objects matching the item description.</dt>
+<dd>In the &lt;env&gt; form this may be the whole
+recursive inventory of the &lt;env&gt; object.</dd>
+</dl>
+</div></blockquote>
+<p class="last">It is up to the caller to interpret the recognized numeral
+and to apply it on the list of matched objects.</p>
+</dd>
+<dt>%l <span class="classifier-delimiter">:</span> <span class="classifier">non-compat: as %i, except that only living objects are</span></dt>
+<dd><blockquote class="first">
+<div>returned.</div></blockquote>
+<p class="last">compat: as %o, except that only a living object is returned.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>%i (and non-compat-%l) match descriptions like &#8216;three red roses&#8217;,
+&#8216;all nasty bugs&#8217; or &#8216;second blue sword&#8217;.</p>
+<p>Note: Patterns of type: &#8220;%s %w %i&#8221; might not work as one would expect.
+%w will always succeed so the arg corresponding to %s will always be
+empty.</p>
+<p>To make the efun useful it must have a certain support from the
+mudlib: it calls a set of functions in objects to get the
+information it needs to parse a string.</p>
+<blockquote>
+<div><ol class="arabic">
+<li><dl class="first docutils">
+<dt>string <a href="#id1"><span class="problematic" id="id2">*</span></a>parse_command_id_list()</dt>
+<dd><p class="first last">Normal singular names of the object.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>string <a href="#id3"><span class="problematic" id="id4">*</span></a>parse_command_plural_id_list() - optional</dt>
+<dd><p class="first last">Plural forms of the names returned by 1.
+If this function doesn&#8217;t exist, the parser tries to pluralize
+the names returned by 1.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>string <a href="#id5"><span class="problematic" id="id6">*</span></a>parse_command_adjectiv_id_list() -  optional</dt>
+<dd><p class="first last">All adjectives associated with this object.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+<p>All names and adjectives may consist of several words separated
+by spaces.</p>
+<p>These functions should exist in all objects and are therefore best
+put into a mandatory inherit file (e.g. /std/object.c).</p>
+<p>In addition the master object may offer the same functions to provide
+reasonable defaults (like &#8216;thing&#8217; as generic singular name):</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>string <a href="#id7"><span class="problematic" id="id8">*</span></a>parse_command_id_list()</dt>
+<dd><ul class="first last simple">
+<li>Would normally return: ({ &#8220;one&#8221;, &#8220;thing&#8221; })</li>
+</ul>
+</dd>
+<dt>string <a href="#id9"><span class="problematic" id="id10">*</span></a>parse_command_plural_id_list()</dt>
+<dd><ul class="first last simple">
+<li>Would normally return: ({ &#8220;ones&#8221;, &#8220;things&#8221;, &#8220;them&#8221; })</li>
+</ul>
+</dd>
+<dt>string <a href="#id11"><span class="problematic" id="id12">*</span></a>parse_command_adjectiv_id_list()</dt>
+<dd><ul class="first last simple">
+<li>Would normally return ({ &#8220;iffish&#8221; })</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<p>Two additional functions in the master object provide the default
+list of prepositions (needed for %p) and the single &#8216;all&#8217; word:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>string <a href="#id13"><span class="problematic" id="id14">*</span></a>parse_command_prepos_list()</dt>
+<dd><ul class="first last simple">
+<li>Would normally return: ({ &#8220;in&#8221;, &#8220;on&#8221;, &#8220;under&#8221;, &#8220;behind&#8221;,
+&#8220;beside&#8221; })</li>
+</ul>
+</dd>
+<dt>string parse_command_all_word()</dt>
+<dd><ul class="first last simple">
+<li>Would normally return: &#8220;all&#8221;</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<p>int parse_command(string, object|object*, string, destargs...)</p>
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>object <a href="#id15"><span class="problematic" id="id16">*</span></a>items;
+parse_command(&#8220;take apple&#8221;,environment(this_player()),</p>
+<blockquote>
+<div>&#8221; &#8216;get&#8217; / &#8216;take&#8217; %i &#8221;, items);</div></blockquote>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.3.258</em>) &#8211; removed the compat-mode parse_command().</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="sscanf.html#lpc.sscanf" title="sscanf"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sscanf</span></code>(E)</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">parse_command</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (OPTIONAL)</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/parse_command.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

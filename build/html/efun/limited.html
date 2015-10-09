@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>limited &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="limited">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dl class="include">
+<dt>
+#include &lt;rtlimits.h&gt;</dt>
+</dl>
+
+<dt id="lpc.limited">
+mixed <code class="descname">limited</code><span class="sig-paren">(</span>closure<em>&nbsp;fun</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.limited" title="Permalink to this definition">¶</a></dt>
+<dt>
+mixed <code class="descname">limited</code><span class="sig-paren">(</span>closure<em>&nbsp;fun</em>, int<em>&nbsp;tag</em>, int<em>&nbsp;value</em>, ...<span class="sig-paren">)</span></dt>
+<dt>
+mixed <code class="descname">limited</code><span class="sig-paren">(</span>closure<em>&nbsp;fun</em>, int<em>&nbsp;*limits</em><span class="sig-paren">)</span></dt>
+<dt>
+mixed <code class="descname">limited</code><span class="sig-paren">(</span>closure<em>&nbsp;fun</em>, int<em>&nbsp;*limits</em>, mixed<em>&nbsp;*args</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>DESCRIPTION
+Call the function &lt;fun&gt; with any given &lt;args&gt; as parameters,
+and execute it with the given runtime limits.</p>
+<p>After the function exits, the currently active limits are restored.
+Result of the efun is the result of the closure call.</p>
+<p>The runtime limits can be given in two ways: as an array (like the
+one returned from query_limits(), or as a list of tagged values.  If
+the efun is used without any limit specification, all limits are
+supposed to be &#8216;unlimited&#8217;.</p>
+<dl class="docutils">
+<dt>The limit settings recognize three special values:</dt>
+<dd>LIMIT_UNLIMITED: the limit is deactivated
+LIMIT_KEEP:      the former setting is kept
+LIMIT_DEFAULT:   the &#8216;global&#8217; default setting is used.</dd>
+<dt>For LIMIT_COST, the special values have these meaning:</dt>
+<dd>LIMIT_UNLIMITED: at maximum 1 tick is accounted
+LIMIT_KEEP:      LIMIT_COST is set to 0
+LIMIT_DEFAULT:   LIMIT_COST is set to -100</dd>
+</dl>
+<p>The efun causes a privilege violation (&#8220;limited&#8221;, current_object,
+fun, limits-array).</p>
+<p>EXAMPLES
+limited(#&#8217;function)</p>
+<blockquote>
+<div>&#8211;&gt; executes function with no limits at all</div></blockquote>
+<dl class="docutils">
+<dt>limited(#&#8217;function, ({ 200000 }), &#8220;foo&#8221;)</dt>
+<dd><dl class="first last docutils">
+<dt>&#8211;&gt; executes function with an eval_cost limit of 200000, and</dt>
+<dd>calls function as &lt;function&gt;(&#8220;foo&#8221;).</dd>
+</dl>
+</dd>
+<dt>limited(lambda(0, ({#&#8217;function, &#8220;foo&#8221;})), LIMIT_EVAL, 200000)</dt>
+<dd><dl class="first last docutils">
+<dt>&#8211;&gt; executes function with an eval_cost limit of 200000, and</dt>
+<dd>calls function as &lt;function&gt;(&#8220;foo&#8221;).</dd>
+</dl>
+</dd>
+</dl>
+<p>Introduced in LDMud 3.2.7.
+LDMud 3.3.563 introduced LIMIT_COST.
+LDMud 3.3.677 introduced LIMIT_MAPPING_KEYS, LIMIT_MAPPING_SIZE.
+LDMud 3.5.0 introduced LIMIT_MEMORY.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="query_limits.html#lpc.query_limits" title="query_limits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_limits</span></code>(E)</a>, <a class="reference internal" href="set_limits.html#lpc.set_limits" title="set_limits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_limits</span></code>(E)</a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">limited</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/limited.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

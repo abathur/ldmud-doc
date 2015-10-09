@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pragma &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pragma">
+<span id="lpc.pragma"></span><div class="section" id="SYNTAX">
+<h2>SYNTAX<a class="headerlink" href="#SYNTAX" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-c"><div class="highlight"><pre><span class="cp">#pragma &lt;name&gt;</span>
+<span class="cp">#pragma &lt;name&gt;[, &lt;name&gt;...]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>The preprocessor directive #pragma can be used to select
+several compilation options. Multiple options can be selected
+in one #pragma directive by separating them with commas.</p>
+<dl class="docutils">
+<dt>no_clone</dt>
+<dd>The blueprint object can&#8217;t be cloned.</dd>
+<dt>no_inherit</dt>
+<dd>The program can&#8217;t be inherited.</dd>
+<dt>no_shadow</dt>
+<dd>The program can&#8217;t be shadowed (similar to declaring
+all functions as &#8216;nomask&#8217;).</dd>
+<dt>init_variables</dt>
+<dd>Clone variables are initialized by __INIT().</dd>
+<dt>share_variables</dt>
+<dd>Clone variables are initialized from the
+blueprint.</dd>
+<dt>weak_types</dt>
+<dd>no type checking (this is the default).</dd>
+<dt>strict_types</dt>
+<dd>all functions must be declared with argument
+prototypes, and the return values of call_other() must
+be casted.</dd>
+<dt>strong_types</dt>
+<dd>all functions must be declared with complete
+types of return value and parameters.</dd>
+<dt>save_types</dt>
+<dd>the declaration data is kept after compilation and
+checked at runtime. This is important for type-safe
+inheritance.</dd>
+<dt>rtt_checks</dt>
+<dd>runtime checks during execution of this program will be
+enabled. The interpreter will check for correct datatypes of
+arguments on function calls. (Later it will include checks
+upon assignments.)
+Don&#8217;t confuse this with strong/strict_types, they only
+check at compile time.
+strong_types/strict_types is seriously recommended.
+This pragma implicitly enables save_types as well.</dd>
+<dt>no_rtt_checks</dt>
+<dd>disable runtime type checks for this program (default).</dd>
+<dt>pedantic</dt>
+<dd>Certain warnings are treated as errors:
+- failure to pass enough arguments to simul efuns</dd>
+<dt>sloppy</dt>
+<dd>Turns off pedantic (the default).</dd>
+<dt>range_check</dt>
+<dd>Use of questionable ranges (ranges of negative sizes,
+or with bounds beyond the array&#8217;s size) cause a runtime
+warning.</dd>
+<dt>no_range_check</dt>
+<dd>Turns off range_check (the default).</dd>
+<dt>warn_deprecated</dt>
+<dd>Use of deprecated efuns or indexing operations
+causes the compiler to issue a warning (the default).</dd>
+<dt>no_warn_deprecated</dt>
+<dd>Turns off warn_deprecated.</dd>
+<dt>warn_empty_casts</dt>
+<dd>A cast of a value to its own type generates
+a warning (the default). Exception are casts to type
+&#8216;mixed&#8217;.</dd>
+<dt>no_warn_empty_casts</dt>
+<dd>Turns off warn_empty_casts.</dd>
+<dt>warn_missing_return</dt>
+<dd>Warn if a value-returning function is missing
+a return statement (the default). If possible, the driver
+will try to detect this at compile time; otherwise a runtime
+warning will be generated when the function is executed.
+The check applies only to functions with a declared return
+type other than &#8216;void&#8217;.</dd>
+<dt>no_warn_missing_return</dt>
+<dd>Turn off warn_missing_return.</dd>
+<dt>warn_function_inconsistent</dt>
+<dd>If an inherited function is
+overloaded with inconsistent return types or arguments,
+a warning is generated; or if pragma_pedantic is in effect,
+an error. By default this is active.</dd>
+<dt>no_warn_function_inconsistent</dt>
+<dd><p class="first">An inherited function can
+be overloaded with inconsistent return types or arguments,
+as long as pragma_pedantic is not in effect.</p>
+<p class="last">This pragma is meant to easen the adaption of legacy
+mudlib code - in general one should fix the warnings,
+not turn them off.</p>
+</dd>
+</dl>
+<p>When an object is compiled with type testing (#pragma
+strict_types), all types are saved of the arguments for that
+function during compilation.  If the #pragma save_types is
+specified, then the types are saved even after compilation, to
+be used when the object is inherited.</p>
+<p>The following two pragmas are available if the driver was
+compiled with DEBUG and TRACE_CODE options:</p>
+<dl class="docutils">
+<dt>set_code_window</dt>
+<dd>Sets an offset to the current program writing
+position. Use this BEFORE a piece of code where you
+want to check to what bytecodes it is compiled.</dd>
+<dt>show_code_window</dt>
+<dd>shows some bytes starting at or near the
+last point set_code_window was called.</dd>
+</dl>
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-c"><div class="highlight"><pre><span class="cp">#pragma strict_types</span>
+<span class="cp">#pragma no_clone, no_inherit</span>
+</pre></div>
+</div>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.2.7</em>) &#8211; added local_scopes, no_local_scopes, no_clone
+and no_inherit.</li>
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; added weak_types, pedantic and sloppy.</li>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; allowed to specify multiple pragmas in one directive.</li>
+<li><strong>changed</strong> &#8211; added (<a href="#id1"><span class="problematic" id="id2">no_</span></a>)warn_deprecated.</li>
+<li><strong>changed</strong> (<em>3.2.10</em>) &#8211; added (<a href="#id3"><span class="problematic" id="id4">no_</span></a>)warn_empty_casts.</li>
+<li><strong>changed</strong> &#8211; #pragma xxx_types in an included file are
+no longer valid only until the end of the file, but remain active
+when processing returns to the including file.</li>
+<li><strong>changed</strong> (<em>3.2.11</em>) &#8211; added (<a href="#id5"><span class="problematic" id="id6">no_</span></a>)warn_function_inconsistent.</li>
+<li><strong>changed</strong> (<em>3.3.378</em>) &#8211; added init_variables, share_variables.</li>
+<li><strong>changed</strong> (<em>3.3.357</em>) &#8211; added (<a href="#id7"><span class="problematic" id="id8">no_</span></a>)warn_missing_return.</li>
+<li><strong>changed</strong> (<em>3.3.646</em>) &#8211; added (<a href="#id9"><span class="problematic" id="id10">no_</span></a>)range_check.</li>
+<li><strong>changed</strong> (<em>3.5.0</em>) &#8211; removed combine_strings and no_combine_strings.</li>
+<li><strong>changed</strong> &#8211; removed local_scopes and no_local_scopes.</li>
+<li><strong>changed</strong> &#8211; removed verbose_errors (making its behaviour mandatory).</li>
+<li><strong>changed</strong> &#8211; enabled warn_deprecated by default.</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><span class="xref lpc lpc-lang">inheritance</span>, <span class="xref lpc lpc-lang">initialisation</span>, <a class="reference internal" href="../concepts/objects.html#lpc.objects" title="objects"><span class="xref lpc lpc-concept">objects</span></a>, <span class="xref lpc lpc-lang">operators</span></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pragma</a><ul>
+<li><a class="reference internal" href="#SYNTAX">SYNTAX</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/LPC/pragma.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

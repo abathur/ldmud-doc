@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>H_TELNET_NEG &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="H_TELNET_NEG">
+<div class="section" id="SYNOPSIS">
+<span id="lpc.no_echo"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="hook">
+<dl class="include">
+<dt>
+#include &lt;sys/driver_hooks.h&gt;</dt>
+</dl>
+
+<dt id="lpc.H_TELNET_NEG">
+<code class="descname">set_driver_hook</code><span class="sig-paren">(</span><em>H_TELNET_NEG</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.H_TELNET_NEG" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>value</strong> (<em>string</em>) &#8211; void &lt;name&gt;(int flag, object user, int no_telnet)</li>
+<li><strong>value</strong> (<em>closure</em>) &#8211; void &lt;closure&gt;(int flag, object user, int no_telnet)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Optional hook to specifiy how to perform the telnet actions to
+switch the echo mode (used for e.g. password input_to()s).
+Hook setting may be any closure or a string. If not set, a
+default handling is performed.</p>
+<p>If the setting is a string, it is used as name of an lfun to call
+in the interactive &lt;user&gt;, where &lt;flag&gt; is the echo-flag
+passed to the input_to() statement.</p>
+<p>If the setting is a closure, it is called with the same
+arguments, and unbound lambda-closures being bound to
+this_player() prior to execution.</p>
+<p>&lt;local&gt; is a boolean flag: it is TRUE when input_to() was
+called with the INPUT_NO_TELNET flag.</p>
+<p>When set, the hook is called whenever the driver needs to
+change the echo mode, thus you can negotiate about things that
+are coupled with it, like LINEMODE or character-at-a-time.</p>
+<p>IMPORTANT: If this hook is used, the control of all telnet
+negotiation is transferred to the mudlib: all incoming negotiations
+are passed to H_TELNET_NEG, and the sending of no-echo negotiations
+is handled by this hook.</p>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.2.11/3.3.593</em>) &#8211; added the &lt;no_telnet&gt; argument.</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="hook.html#lpc.hooks" title="hooks"><span class="xref lpc lpc-concept">hooks</span></a>, <span class="xref lpc lpc-concept">telnet</span>, <a class="reference internal" href="telnet_neg.html#lpc.telnet_neg" title="telnet_neg"><code class="xref lpc lpc-hook docutils literal"><span class="pre">telnet_neg</span></code>(H)</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">H_TELNET_NEG</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/hook/no_echo.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

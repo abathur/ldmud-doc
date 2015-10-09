@@ -1,0 +1,45 @@
+SYNOPSIS
+========
+   lpc
+
+DESCRIPTION
+===========
+   Todo: vary this language depending on whether we're generating HTML or
+   plaintext (or make it generic enough to suit both)
+
+   This directory contains man pages about various aspects of the LPC language
+   as it is provided by Amylaar's parser/driver.
+
+   - arrays
+   - block
+   - guide to closures
+   - closures
+   - closures example
+   - comments
+   - do-while
+   - efuns
+   - escape
+   - for
+   - foreach
+   - functions
+   - if
+   - index
+   - inherit
+   - intialisation
+   - inline-closures
+   - lfuns
+   - A step-by-step introduction to mappings
+   - operators
+   - pragma
+   - preprocessor
+   - references
+   - structs
+   - switch
+   - types
+   - unions
+   - varargs
+   - while
+
+SEE ALSO
+========
+   *concepts*, driver, efun, `applied`, master

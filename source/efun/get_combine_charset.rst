@@ -1,0 +1,18 @@
+.. efun:: mixed get_combine_charset(int mode)
+  :include: <comm.h>
+
+  Return the combine charset of the current interactive in the form
+  requested by <mode>:
+    <mode> == CHARSET_VECTOR: return as bitvector
+    <mode> == CHARSET_STRING: return as string
+
+  The bitvector is interpreted as an array of 8-bit-values and might
+  contain up to 32 elements. Character n is "combinable"
+  if sizeof(bitvector) > n/8 && bitvector[n/8] & (1 << n%8) .
+
+  If there is no current interactive, the function returns 0.
+
+.. history
+  Introduced in LDMud 3.2.10.
+
+  .. seealso:: :efun:`get_connection_charset`, :efun:`get_connection_charset`

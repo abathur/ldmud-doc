@@ -1,0 +1,860 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>guide to closures &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="guide to closures">
+<span id="lpc.guide to closures"></span><div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#Introduction" id="id4">Introduction</a></li>
+<li><a class="reference internal" href="#Overview and efun-closures" id="id5">OVERVIEW AND EFUN-CLOSURES</a></li>
+<li><a class="reference internal" href="#Lfun- and Lambda-Closures" id="id6">LFUN- AND LAMBDA-CLOSURES</a><ul>
+<li><a class="reference internal" href="#Lfun-Closures" id="id7">LFUN-CLOSURES</a></li>
+<li><a class="reference internal" href="#Inline Closures" id="id8">INLINE CLOSURES</a></li>
+<li><a class="reference internal" href="#Lambda-Closures" id="id9">LAMBDA-CLOSURES</a><ul>
+<li><a class="reference internal" href="#Advantages of Lambda Closures" id="id10">ADVANTAGES OF LAMBDA CLOSURES</a></li>
+<li><a class="reference internal" href="#Free Variables in Lambda-Closure Constructs" id="id11">FREE VARIABLES IN LAMBDA-CLOSURE CONSTRUCTS</a></li>
+<li><a class="reference internal" href="#Special Efun-Closures and Operator-Closures for Lambdas" id="id12">SPECIAL EFUN-CLOSURES AND OPERATOR-CLOSURES FOR LAMBDAS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Closures with Strange Names" id="id13">CLOSURES WITH STRANGE NAMES</a></li>
+<li><a class="reference internal" href="#Operator-Closures" id="id14">OPERATOR-CLOSURES</a></li>
+<li><a class="reference internal" href="#Variable-Closures" id="id15">VARIABLE-CLOSURES</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Examples" id="id16">EXAMPLES</a><ul>
+<li><a class="reference internal" href="#Lfun-Closure" id="id17">LFUN-CLOSURE</a></li>
+<li><a class="reference internal" href="#Lambda-Closure" id="id18">LAMBDA-CLOSURE</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="Introduction">
+<h2><a class="toc-backref" href="#id4">Introduction</a><a class="headerlink" href="#Introduction" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">fix pre-justified hyphens throughout this doc</p>
+</div>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">fix code indentation throughout</p>
+</div>
+<p>A closure is a pointer to a function. That means that it is data like an
+int or a string are. It may be assigned to a variable or given to anoth-
+er function as argument.</p>
+<div class="section" id="Overview and efun-closures">
+<span id="lpc.Overview and efun-closures"></span><h2><a class="toc-backref" href="#id5">OVERVIEW AND EFUN-CLOSURES</a><a class="headerlink" href="#Overview and efun-closures" title="Permalink to this headline">¶</a></h2>
+<p>To create a closure that points to an efun like write() you can write
+the name of the efun prepended with &#8220;hash-tick&#8221;: #&#8217;. #&#8217;write is a clo-
+sure that points to the efun write().</p>
+<p>I very often put parentheses around such a closure-notation because
+otherwise my editor gets confused by the hashmark: (#&#8217;write). This is
+especially of interest within lambda-closures (see below).</p>
+<p>A closure can be evaluated (which means that the function it points to
+is called) using the efuns funcall() or apply(), which also allow to
+give arguments to the function. Example:</p>
+<div class="highlight-c"><div class="highlight"><pre>funcall(#&#39;write,&quot;hello&quot;);
+</pre></div>
+</div>
+<p>This will result in the same as write(&#8220;hello&#8221;); alone. The string
+&#8220;hello&#8221; is given as first (and only) argument to the function the clo-
+sure #&#8217;write points to.</p>
+<p>The return value of the function the closure points to is returned by
+the efun funcall() or apply(). (Since write() always returns 0 the re-
+turn value of the example above will be 0.)</p>
+<p>What are closures good for? With closures you can make much more univer-
+sally usable functions. A good example is the function filter().
+It gets an array and a closure as arguments. Then it calls the function
+the closure points to for each element of the array:</p>
+<div class="highlight-c"><div class="highlight"><pre>filter(({ &quot;bla&quot;,&quot;foo&quot;,&quot;bar&quot; }),#&#39;write);
+</pre></div>
+</div>
+<p>This will call write(&#8220;bla&#8221;), write(&#8220;foo&#8221;) and write(&#8220;bar&#8221;) in any order;
+the order is undefined.
+(In the current implementation the given closure is evaluated for all
+elements from the first to the last, so the output will be &#8220;blafoobar&#8221;.)</p>
+<p>Furthermore the efun filter() examines the return value of each
+call of the function the closure points to (the return value of the
+write()s). If the value is true (not 0) then this element is put into
+another array which filter() builds up. If the return value is
+false (== 0) then this element is _not_ put into this array. When all
+calls are done the slowly built up array is returned. Thus,
+filter() filters from the given array all elements that the given
+closure evaluates &#8220;true&#8221; for and returns an array of those. (The array
+given to filter() itself is _not_ changed!)</p>
+<p>A more sensical example for filter would be this:</p>
+<div class="highlight-c"><div class="highlight"><pre>x = filter(users(),#&#39;query_is_wizard);
+</pre></div>
+</div>
+<p>users() is an efun that gets no arguments and returns an array of all
+logged in players (wizards and players). query_is_wizard() is a
+simul_efun that gets an object as first (and only) argument and returns
+true (1) if this object is a wizard and 0 otherwise.</p>
+<p>So, for each element of the array returned by users() the function
+query_is_wizard() is called and only those for which 1 was returned are
+collected into the result and then put into the variable x.</p>
+<p>We now have all logged in wizards stored as array in the variable x.</p>
+<p>Another example: We want to filter out all numbers that are greater than
+42 from the array a of integers:</p>
+<div class="highlight-c"><div class="highlight"><pre>x = filter(({ 10,50,30,70 }),#&#39;&gt;,42);
+</pre></div>
+</div>
+<p>(x will now be ({ 50,70 }).)</p>
+<p>Here two things are new: first: we create a closure that points to an
+operator; second: we use the possibility to give extra arguments to
+filter().</p>
+<p>Like all efuns the usual operators can be pointed to with a closure by
+prepending #&#8217; to them. funcall(#&#8217;&gt;,4,5) is exactly the same as (4&gt;5).</p>
+<p>The extra arguments given as third to last argument (as many as you
+like) to filter() are given as second to last argument to the
+function pointed to by the closure each time it is called.</p>
+<p>Thus we now call (({ 10,50,30,70 })[0]&gt;42), (({ 10,50,30,70 })[1]&gt;42) ...
+(which is (10&gt;42), (50&gt;42) ...) and return an array of all elements this
+returns true for and store it into x.</p>
+<p>If you want to create a closure to an efun of which you have the name
+stored in a string you can create such an efun-closure with the efun
+symbol_function():</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">symbol_function</span><span class="p">(</span><span class="s">&quot;write&quot;</span><span class="p">)</span> <span class="c1">// this will return #&#39;write</span>
+
+<span class="n">funcall</span><span class="p">(</span><span class="n">symbol_function</span><span class="p">(</span><span class="s">&quot;write&quot;</span><span class="p">),</span><span class="s">&quot;foobar&quot;</span><span class="p">);</span>  <span class="c1">// == write(&quot;foobar&quot;);</span>
+</pre></div>
+</div>
+<p>This function does not very often occur in normal code but it is very
+useful for tool-programming (eg the robe uses symbol_function() to allow
+you call any efun you give).</p>
+</div>
+<div class="section" id="Lfun- and Lambda-Closures">
+<span id="lpc.Lfun- and Lambda-Closures"></span><h2><a class="toc-backref" href="#id6">LFUN- AND LAMBDA-CLOSURES</a><a class="headerlink" href="#Lfun- and Lambda-Closures" title="Permalink to this headline">¶</a></h2>
+<p>Very often the possibilities closures to efuns offer are not sufficient
+for the purpose one has. In nearly all cases three possibilities exist in
+such cases: use an lfun- or inline-closure, or a lambda-closure.</p>
+<div class="section" id="Lfun-Closures">
+<span id="lpc.Lfun-Closures"></span><h3><a class="toc-backref" href="#id7">LFUN-CLOSURES</a><a class="headerlink" href="#Lfun-Closures" title="Permalink to this headline">¶</a></h3>
+<p>The first possibility is rather easy: like with the efun-closures you
+can create a pointer to a function in the same object you are by using
+the #&#8217; to prepend it to a function name of a function declared above.
+Example:</p>
+<div class="highlight-c"><div class="highlight"><pre>status foo(int x) {
+  return ((x*2) &gt; 42);
+}
+
+int *bar() {
+  return filter(({ 10,50,30,70 }),#&#39;foo);
+}
+</pre></div>
+</div>
+<p>Thus, #&#8217;foo is used like there was an efun of this name and doing the
+job that is done in foo().</p>
+</div>
+<div class="section" id="Inline Closures">
+<span id="lpc.Inline Closures"></span><h3><a class="toc-backref" href="#id8">INLINE CLOSURES</a><a class="headerlink" href="#Inline Closures" title="Permalink to this headline">¶</a></h3>
+<p>Inline closures are a variant of lfun closures, the difference being
+that the function text is written right where the closure is used,
+enclosed in a pair of &#8216;(:&#8217; and &#8216;:)&#8217;. The compiler will then take care
+of creating a proper lfun and lfun-closure. The arguments passed to
+such an inline closure are accessible by position: $1 would be the
+first argument, $2 the second, and so on. With this, the
+above example would read:</p>
+<div class="highlight-c"><div class="highlight"><pre>int * bar() {
+  return filter(({ 10,50,30,70 }), (: ($1 * 2) &gt; 42 :));
+}
+</pre></div>
+</div>
+<p>or alternatively:</p>
+<div class="highlight-c"><div class="highlight"><pre>int * bar() {
+  return filter(({ 10,50,30,70 }), (: return ($1 * 2) &gt; 42; :));
+}
+</pre></div>
+</div>
+<p>The difference between the two versions is that in the first form the text
+of the inline closure must be an expression only, whereas in the second
+form any legal statement is allowed. The compiler distinguishes the two
+forms by the last character before the &#8216;:)&#8217;: if it&#8217;s a &#8216;;&#8217; or &#8216;}&#8217;, the
+compiler treats the closure as statement(s), otherwise as expression.</p>
+<p>Inline closures may also nested, so that the following (not very useful)
+example is legal, too:</p>
+<div class="highlight-c"><div class="highlight"><pre>return filter( ({ 10, 50, 30, 70 })
+                   , (: string *s;
+                        s = map(users(), (: $1-&gt;query_name() :));
+                        return s[random(sizeof(s))] + ($1 * 2);
+                      :));
+</pre></div>
+</div>
+<p>The notation of inline closures is modelled after the MudOS functionals,
+but there are a few important differences in behaviour.</p>
+</div>
+<div class="section" id="Lambda-Closures">
+<span id="lpc.Lambda-Closures"></span><h3><a class="toc-backref" href="#id9">LAMBDA-CLOSURES</a><a class="headerlink" href="#Lambda-Closures" title="Permalink to this headline">¶</a></h3>
+<p>Lambda-Closures take the idea of &#8216;define it where you use it&#8217; one step
+further. On first glance they may look like inline closures with an uglier
+notation, but they offer a few increased possibilities. But first things
+first.</p>
+<p>The efun lambda() creates a function temporarily and returns a closure
+pointing to this function. lambda() therefor gets two arrays as
+arguments, the first is a list of all arguments the function shall expect
+and the second array is the code of the function (in a more or less
+complicated form; at least not in C- or LPC-syntax). The closure #&#8217;foo
+from the example above could be notated as lambda-closure:</p>
+<div class="highlight-c"><div class="highlight"><pre>lambda(({ &#39;x }),({ (#&#39;&gt;),
+                   ({ (#&#39;*),&#39;x,2 }),
+                   42
+                }))
+</pre></div>
+</div>
+<p>Now, the first argument is ({ &#8216;x }), an array of all arguments the
+function shall expect: 1 argument (called &#8216;x) is expected. Notice the
+strange notation for this argument with one single leading tick. Like
+The hash-tick to denote closures the leading tick is used to denote
+things called &#8220;symbols&#8221;. They do not differ much from strings and if
+you do not want to have a deeper look into closures you can leave it
+this way.</p>
+<p>The second argument is an array. The first element of such an array
+must be an efun- or an lfun-closure, the further elements are the
+arguments for the function this closure points to. If such an argu-
+ment is an array, it is treated alike; the first element must be a
+closure and the remaining elements are arguments (which of course
+also might be arrays ...).</p>
+<p>This leads to a problem: sometimes you want to give an array as an
+argument to a function. But arrays in an array given to lambda() are
+interpreted as code-arrays. To allow you to give an array as an argu-
+ment within an array given to lambda(), you can use the function
+quote() to make your array to a quoted array (a quoted array is for
+an array what a symbol is for a string):</p>
+<div class="highlight-c"><div class="highlight"><pre>lambda(0,({ (#&#39;sizeof),
+            quote(({ 10,50,30,70 }))
+         }))
+</pre></div>
+</div>
+<p>For array constants, you can also use a single quote to the same
+effect:</p>
+<div class="highlight-c"><div class="highlight"><pre>lambda(0,({ (#&#39;sizeof),
+            &#39;({ 10,50,30,70 })
+         }))
+</pre></div>
+</div>
+<p>This lambda-closure points to a function that will return 4 (it will
+call sizeof() for the array ({ 10,50,30,70 })). Another thing: if
+we want to create a function that expects no arguments, we can give
+an empty array as first argument to lambda() but we can give 0 as
+well to attain this. This is just an abbreviation.</p>
+<p>Lambda-closure constructs can become quite large and hard to read. The
+larger they become the harder the code is to read and you should avoid
+extreme cases. Very often the possibility to use an lfun or an inline
+instead of a large lambda shortens the code dramatically. Example:</p>
+<div class="highlight-c"><div class="highlight"><pre>status foo(object o) {
+  return environment(o)-&gt;query_level()&gt;WL_APPRENTICE;
+}
+
+x=filter(a,#&#39;foo);
+</pre></div>
+</div>
+<p>does the same as:</p>
+<div class="highlight-c"><div class="highlight"><pre>x=filter(a,lambda(({ &#39;o }),
+                        ({ (#&#39;&gt;),
+                           ({ (#&#39;call_other),
+                              ({ (#&#39;environment),&#39;o }),
+                              &quot;query_level&quot;
+                           }),
+                           WL_APPRENTICE
+                        })));
+</pre></div>
+</div>
+<p>(Note that the syntax with the arrow &#8220;-&gt;&#8221; for call_other()s cannot be
+used, #&#8217;-&gt; does not exist. You have to use #&#8217;call_other for this and
+give the name of the lfun to be called as a string.)</p>
+<p>This example also demonstrates the two disadvantages of lambda closures.
+First, they are very difficult to read, even for a simple example like
+this. Second, the lambda closure is re-created everytime the
+filter() is executed, even though the created code is always the
+same.</p>
+<p>&#8216;Why use lambdas at all then?&#8217; you may ask now. Well, read on.</p>
+<div class="section" id="Advantages of Lambda Closures">
+<span id="lpc.Advantages of Lambda Closures"></span><h4><a class="toc-backref" href="#id10">ADVANTAGES OF LAMBDA CLOSURES</a><a class="headerlink" href="#Advantages of Lambda Closures" title="Permalink to this headline">¶</a></h4>
+<p>The advantages of lambdas stem from the fact that they are created
+at runtime from normal arrays.</p>
+<p>This means that the behaviour of a lambda can be made dependant on data
+available only at runtime. For example:</p>
+<blockquote>
+<div>closure c;
+c = lambda(0, ({#&#8217;-, ({ #&#8217;time }), time() }) );</div></blockquote>
+<p>Whenever you now call this closure (&#8216;funcall(c)&#8217;) it will return the
+elapsed time since the closure was created.</p>
+<p>The second advantage of lambdas is that the arrays from which they
+are compiled can be constructed at runtime. Imagine a customizable prompt
+which can be configured to display the time, the environment, or both:</p>
+<div class="highlight-c"><div class="highlight"><pre>mixed code;
+
+code = ({ &quot;&gt; &quot; });
+if (user_wants_time)
+  code = ({ #&#39;+, ({ #&#39;ctime }), code });
+if (user_wants_environment)
+  code = ({ #&#39;+, ({#&#39;to_string, ({#&#39;environment, ({#&#39;this_player }) }) })
+               , code });
+set_prompt(lambda(0, code));
+</pre></div>
+</div>
+</div>
+<div class="section" id="Free Variables in Lambda-Closure Constructs">
+<span id="lpc.Free Variables in Lambda-Closure Constructs"></span><h4><a class="toc-backref" href="#id11">FREE VARIABLES IN LAMBDA-CLOSURE CONSTRUCTS</a><a class="headerlink" href="#Free Variables in Lambda-Closure Constructs" title="Permalink to this headline">¶</a></h4>
+<p>You can use local variables in lambda constructs without declaring
+them, just use them. The only limitation is that you at first have
+to assign something to them. Give them as symbols like you do with
+the arguments. This feature does not make much sense without the use
+of complexer flow controlling features described below.</p>
+<p>The closure #&#8217;= is used to assign a value to something (like the
+LPC-operator = is).</p>
+</div>
+<div class="section" id="Special Efun-Closures and Operator-Closures for Lambdas">
+<span id="lpc.Special Efun-Closures and Operator-Closures for Lambdas"></span><h4><a class="toc-backref" href="#id12">SPECIAL EFUN-CLOSURES AND OPERATOR-CLOSURES FOR LAMBDAS</a><a class="headerlink" href="#Special Efun-Closures and Operator-Closures for Lambdas" title="Permalink to this headline">¶</a></h4>
+<p>There are some special closures that are supposed to be used only
+within a lambda construct. With them you can create nearly all code
+you can with regular LPC-code like loops and conditions.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">#'?</span></code></dt>
+<dd><p class="first">acts like the &#8220;if&#8221; statement in LPC. The first argument is the
+condition, the second is the code to be executed if the condition
+returns true. The following arguments can also be such couples of
+code-arrays that state a condition and a possible result. If at
+the end there is a single argument, it is used as the else-case
+if no condition returned true:</p>
+<div class="last highlight-c"><div class="highlight"><pre>lambda(({ &#39;x }),({ (#&#39;?),             // if
+                   ({ (#&#39;&gt;),&#39;x,5 }),  //    (x &gt; 5)
+                   ({ (#&#39;*),&#39;x,2 }),  //       result is x * 2;
+                   ({ (#&#39;&lt;),&#39;x,-5 }), // else if (x &lt; -5)
+                   ({ (#&#39;/),&#39;x,2 }),  //    result is x/2;
+                   &#39;x                 // else result is x;
+                }))
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">#'?!</span></code></dt>
+<dd>is like the #&#8217;? but it negates all conditions after evaluation
+and thus is like an ifnot in LPC (if there were one).</dd>
+<dt><code class="docutils literal"><span class="pre">#',</span></code></dt>
+<dd><p class="first">(which looks a bit strange) is the equivalent of the comma-operator
+in LPC and says: evaluate all arguments and return the value of
+the last. It is used to do several things inside a lambda-closure:</p>
+<div class="last highlight-c"><div class="highlight"><pre>lambda(({ &#39;x }),({ (#&#39;,),  // two commas necessary!
+                           // one for the closure and one as
+                           // delimiter in the array
+                   ({ (#&#39;write),&quot;hello world!&quot; }),
+                   ({ (#&#39;say),&quot;Foobar.&quot; })
+                }))
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">#'while</span></code></dt>
+<dd><p class="first">acts like the LPC statement &#8220;while&#8221; and repeats executing one
+code-array while another returns true.
+#&#8217;while expects two or more arguments: the condition as first
+argument, then the result the whole expression shall have after
+the condition turns false (this is in many cases of no interest)
+and as third to last argument the body of the loop:</p>
+<div class="highlight-c"><div class="highlight"><pre>lambda(0,({ (#&#39;,),            // several things to do ...
+            ({ (#&#39;=),&#39;i,0 }),    // i is a local variable of this
+                                 // lambda-closure and is
+                                 // initialized with 0 now.
+            ({ (#&#39;while),
+               ({ (#&#39;&lt;),&#39;i,10 }),   // condition: i &lt; 10
+               42,                  // result is not interesting,
+                                    // but we must give one
+               ({ (#&#39;write),&#39;i }),  // give out i
+               ({ (#&#39;+=),&#39;i,1 })    // increase i
+            })
+         }))
+</pre></div>
+</div>
+<p class="last">The function this closure points to will give out the
+numbers from 0 to 9 and then return 42.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">#'do</span></code></dt>
+<dd><p class="first">is like the do-while statement in LPC and is very much like the
+#&#8217;while. The difference is that #&#8217;while tests the condition al-
+ready before the body is evaluated for the first time, this means
+that the body might not be evaluated even once. #&#8217;do evaluates
+the body first and then the condition, thus the body is evaluated
+at least one time.</p>
+<p>Furthermore, the arguments for #&#8217;do are changed in order. #&#8217;do
+expects as first to last but two the body of the loop, then the
+condition (as last-but-one&#8217;th argument) and the result value as
+last argument. So #&#8217;do must have at least two arguments: the
+condition and the result:</p>
+<div class="highlight-c"><div class="highlight"><pre>lambda(0,({ (#&#39;,),          // several things to do ...
+           ({ (#&#39;=),&#39;i,0 }),  // i is a local variable of this
+                              // lambda-closure and is initialized
+                              // with 0 now.
+           ({ (#&#39;do),
+              ({ (#&#39;write),&#39;i }),  // give out i
+              ({ (#&#39;+=),&#39;i,1 }),   // increase i
+              ({ (#&#39;&lt;),&#39;i,10 }),   // condition: i &lt; 10
+              42                   // result is not interesting
+           })
+        }))
+</pre></div>
+</div>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There is no #&#8217;for in LPC, you should use #&#8217;while for this.</p>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">#'foreach</span></code></dt>
+<dd><p class="first">is like the foreach() statement in LPC. It evaluates one or
+more bodies repeatedly for every value in a giving string, array
+or mapping. The result of the closure is 0.</p>
+<p>#&#8217;foreach expects two or more arguments:</p>
+<ul class="simple">
+<li>a single variable symbol, or an array with several variable
+symbols</li>
+<li>the value to iterate over</li>
+<li>zero or more bodes to evaluate in each iteration.</li>
+</ul>
+<p>The single values retrieved from the given value are assigned
+one after another to the variable(s), then the bodies are executed
+for each assignment:</p>
+<div class="last highlight-c"><div class="highlight"><pre>lambda(0, ({#&#39;foreach, &#39;o, ({#&#39;users})
+                          , ({#&#39;call_other, &#39;o, &quot;die&quot; })
+           }));
+
+lambda(0, ({#&#39;foreach, ({&#39;k, &#39;v}), ({ ...mapping...})
+                          , ({#&#39;printf, &quot;%O:%O\n&quot;, &#39;k, &#39;v })
+           }));
+</pre></div>
+</div>
+</dd>
+<dt><a href="#id1"><span class="problematic" id="id2">``</span></a>#&#8217;return ``</dt>
+<dd><p class="first">gets one argument and acts like the &#8220;return&#8221; statement in LPC
+in the function that is created by lambda(). It aborts the
+execution of this function and returns the argument:</p>
+<div class="highlight-c"><div class="highlight"><pre>lambda(0,({ (#&#39;while),// loop
+         1,        // condition is 1 ==&gt; endles loop
+         42,       // return value (which will never be used)
+         ({ (#&#39;write),&quot;grin&quot; }),
+         ({ (#&#39;?!),               // ifnot
+            ({ (#&#39;random),10 }),  //       (random(10))
+            ({ (#&#39;return),100 })  //   return 100;
+         })
+      }))
+</pre></div>
+</div>
+<p class="last">This function will enter an endles loop that will in each
+turn give out &#8220;grin&#8221; and if random(10) returns 0 (which will
+of course happen very soon) it will leave the function with
+&#8220;return 100&#8221;. The value 42 that is given as result of the
+loop would be returned if the condition would evaluate to 0
+which cannot be. (1 is never 0 ;-)</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">#'break</span></code></dt>
+<dd><p class="first">is used like the &#8220;break&#8221; statement in LPC and aborts the execution
+of loops and switches. It must not appear outside a loop or switch
+of the lambda closure itself, it cannot abort the execution of the
+function the closure points to!:</p>
+<div class="highlight-c"><div class="highlight"><pre>lambda(0,({ (#&#39;?),
+            ({ (#&#39;random),2 }),
+            ({ (#&#39;break) }), // this will cause the error
+                             // &quot;Unimplemented operator break
+                             // for lambda()&quot;
+            &quot;random was false!&quot;
+         }));
+</pre></div>
+</div>
+<p class="last">You can use ({ #&#8217;return,0 }) instead of ({ #&#8217;break }) in such
+cases.</p>
+</dd>
+<dt><span class="xref lpc lpc-any">#&#8217;continue</span></dt>
+<dd>is used like the &#8220;continue&#8221; statement in LPC and jumps to
+the end of the current loop and continues with the loop
+condition.</dd>
+<dt><code class="docutils literal"><span class="pre">#'default</span></code></dt>
+<dd><p class="first">may be used within a #&#8217;switch-construct but be careful!
+To call symbol_function(&#8220;default&#8221;) (which is done usually
+by tools that allow closure-creation) might crash the
+driver! So please do only use it within your LPC-files.</p>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This driver bug is fixed somewhere below <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;131">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>131</a>.</p>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">#'..</span></code></dt>
+<dd>may be used within a #&#8217;switch-construct but is not implemented
+yet (<a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;131">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>131</a>). But #&#8217;[..] works well instead of it.</dd>
+<dt><code class="docutils literal"><span class="pre">#'switch</span></code></dt>
+<dd><p class="first">is used to create closures which behave very much like the
+switch-construct in LPC. To understand the following you
+should already know the syntax and possibilities of the
+latter one (which is mightier than the C-version of switch).</p>
+<p>I will confront some LPC versions and the corresponding clo-
+sure versions below.</p>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">fix this section.</p>
+</div>
+<p>LPC:                  Closure:</p>
+<div class="last highlight-c"><div class="highlight"><pre>switch (x) {          lambda(0,({ (#&#39;switch), x,
+case 5:                           ({ 5 }),
+ return &quot;five&quot;;                  ({ (#&#39;return),&quot;five&quot; }),
+                                 (#&#39;,),
+case 6..9:                        ({ 6, (#&#39;[..]), 9 }),
+ return &quot;six to nine&quot;;           ({ (#&#39;return),
+                                    &quot;six to nine&quot; }),
+                                 (#&#39;,),
+case 1:                           ({ 1 }),
+ write(&quot;one&quot;);                   ({ (#&#39;write),&quot;one&quot; }),
+ // fall through                 (#&#39;,),
+case 2:                           ({ 2,
+case 10:                             10 }),
+ return &quot;two or ten&quot;;            ({ (#&#39;return),
+                                    &quot;two or ten&quot; }),
+                                 (#&#39;,),
+case 3..4:                        ({ 3, (#&#39;[..]), 4 }),
+ write(&quot;three to four&quot;);         ({ (#&#39;write),
+                                    &quot;three to four&quot; }),
+ break;  // leave switch         (#&#39;break),
+default:                          ({ (#&#39;default) }),
+ write(&quot;something else&quot;);        ({ (#&#39;write),
+                                    &quot;something else&quot; }),
+ break;                          (#&#39;break)
+}                              }))
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">#'&amp;&amp;</span></code></dt>
+<dd>evaluates the arguments from the first on and stops if one evaluates
+to 0 and returns 0. If none evaluates to 0 it returns the result of
+the last argument.</dd>
+<dt><code class="docutils literal"><span class="pre">#'||</span></code></dt>
+<dd>evaluates the arguments from the first on and stops if one evaluates
+to true (not 0) and returns it. If all evaluate to 0 it returns 0.</dd>
+<dt><code class="docutils literal"><span class="pre">#'catch</span></code></dt>
+<dd>executes the closure given as argument, but catches any
+runtime error (see <a class="reference internal" href="../efun/catch.html#lpc.catch" title="catch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">catch</span></code>(E)</a>). Optionally the symbols &#8216;nolog,
+&#8216;publish and &#8216;reserve may be given as additional arguments to
+modify the behaviour of the catch.</dd>
+<dt><code class="docutils literal"><span class="pre">#'sscanf</span></code></dt>
+<dd>acts similar to how a funcall would, but passes the third
+and following arguments as lvalues, that is, values which can
+be assigned to.</dd>
+<dt><code class="docutils literal"><span class="pre">#'=</span></code> and the <code class="docutils literal"><span class="pre">#'&lt;op&gt;=</span></code> variants</dt>
+<dd>are also special because the first
+argument has to be an lvalue.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="Closures with Strange Names">
+<span id="lpc.Closures with Strange Names"></span><h3><a class="toc-backref" href="#id13">CLOSURES WITH STRANGE NAMES</a><a class="headerlink" href="#Closures with Strange Names" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">#'negate</span></code></dt>
+<dd><p class="first">is the unary minus that returns -x for the argument x.:</p>
+<div class="highlight-c"><div class="highlight"><pre>map(({ 1,2,3 }),#&#39;negate)
+</pre></div>
+</div>
+<p class="last">This returns ({ -1,-2,-3 }).</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">#'[</span></code> is used for the things that in LPC are done with</dt>
+<dd><p class="first">the []-operator (it indexes an array or a mapping).</p>
+<p class="last">lambda(0,({ #&#8217;[,quote(({ 10,50,30,70 })),2 })) ==&gt; 30
+lambda(0,({ #&#8217;[,([ &#8220;x&#8221;:10;50, &#8220;y&#8221;:30;70 ]),&#8221;x&#8221;,1 })) ==&gt; 50</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">#'[&lt;</span></code></dt>
+<dd>is the same as #&#8217;[ but counts the elements from the
+end (like indexing with [] and the &#8220;&lt;&#8221;).</dd>
+<dt><code class="docutils literal"><span class="pre">#'[..]</span></code></dt>
+<dd>returns a subarray of the argument from the one
+given index to the other given index, both counted from the
+beginning of the array.</dd>
+</dl>
+<p><code class="docutils literal"><span class="pre">#'[..&lt;]</span></code>
+<code class="docutils literal"><span class="pre">#'[&lt;..]</span></code>
+<code class="docutils literal"><span class="pre">#'[&lt;..&lt;]</span></code></p>
+<blockquote>
+<div><p>same as above, but the indexes are counted from the end:</p>
+<div class="highlight-c"><div class="highlight"><pre>lambda(0,({ #&#39;[..&lt;],
+            quote(({ 0,1,2,3,4,5,6,7 })),2,3
+         }))
+</pre></div>
+</div>
+<p>This will return ({ 2,3,4,5 }).</p>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">#'[..</span></code>
+<code class="docutils literal"><span class="pre">#'[&lt;..</span></code></p>
+<blockquote>
+<div>same as above, but only the first index is given, the
+subarray will go till the end of the original (like with
+[x..]).</div></blockquote>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">#'({</span></code></dt>
+<dd><p class="first">is used to create arrays (as with ({ }) in LPC). All arguments
+become the elements of the array.:</p>
+<div class="highlight-c"><div class="highlight"><pre>lambda(0,({ #&#39;({,
+           ({ (#&#39;random),10 }),
+           ({ (#&#39;random),50 }),
+           ({ (#&#39;random),30 }),
+           ({ (#&#39;random),70 })
+        }))
+</pre></div>
+</div>
+<p class="last">This returns ({ random(10),random(50),random(30),random(70) }).</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">#'([</span></code></dt>
+<dd><p class="first">is used to create mappings out of single entries (with several values)
+like the ([ ]) in LPC. Very unusual is the fact that this closure gets
+arrays as argument that are not evaluated, although they are not
+quoted.:</p>
+<div class="highlight-c"><div class="highlight"><pre>lambda(0,({ #&#39;([,
+           ({ &quot;x&quot;,1,2,3 }),
+           ({ &quot;y&quot;,4,5,6 })
+        }));
+</pre></div>
+</div>
+<p>This returns <code class="docutils literal"><span class="pre">([</span> <span class="pre">&quot;x&quot;:</span> <span class="pre">1;2;3,</span> <span class="pre">&quot;y&quot;:</span> <span class="pre">4;5;6</span> <span class="pre">])</span></code>.</p>
+<p>However, the elements of the arrays are evaluated as lambda
+expressions, so if you want to create a mapping from values
+evaluated at call time, write them as lambda closures:</p>
+<div class="highlight-c"><div class="highlight"><pre>lambda(0, ({ #&#39;([, ({ 1, ({ #&#39;ctime }) }) }) )
+</pre></div>
+</div>
+<p>will return <code class="docutils literal"><span class="pre">([</span> <span class="pre">1:</span> <span class="pre">&lt;result</span> <span class="pre">of</span> <span class="pre">ctime()</span> <span class="pre">at</span> <span class="pre">call</span> <span class="pre">time&gt;</span> <span class="pre">])</span></code>.</p>
+<p>Arrays can be put into the mapping by quoting:</p>
+<div class="highlight-c"><div class="highlight"><pre>lambda(0, ({ #&#39;([, ({ 1, &#39;({ 2 }) }) }) )
+</pre></div>
+</div>
+<p class="last">will return <code class="docutils literal"><span class="pre">([</span> <span class="pre">1:</span> <span class="pre">({</span> <span class="pre">2</span> <span class="pre">})</span> <span class="pre">])</span></code></p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">#'[,]</span></code></dt>
+<dd><p class="first">is nearly the same as <code class="docutils literal"><span class="pre">#'[</span></code>. The only difference
+shows up if you want to index a mapping with a width
+greater than 1 (with more than just one value per
+key) directly with <a class="reference internal" href="../efun/funcall.html#lpc.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a>. Example:</p>
+<div class="highlight-c"><div class="highlight"><pre>funcall(#&#39;[,([ 0:1;2, 3:4;5 ]),0,1)
+</pre></div>
+</div>
+<p class="last">This will not work. Use <code class="docutils literal"><span class="pre">#'[,]</span></code> and it will
+work. If you want to use it in a lambda closure you
+do not have to use <code class="docutils literal"><span class="pre">#'[,]</span></code> and <code class="docutils literal"><span class="pre">#'[</span></code> will
+do fine. On the other hand, <code class="docutils literal"><span class="pre">#'[,]</span></code> cannot
+work with arrays, so in nearly all cases use <code class="docutils literal"><span class="pre">#'[</span></code>
+and just in the described special case, use <code class="docutils literal"><span class="pre">#'[,]</span></code>.
+This is a strange thing and I deem it a bug, so it
+might change in the future.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="Operator-Closures">
+<span id="lpc.Operator-Closures"></span><h3><a class="toc-backref" href="#id14">OPERATOR-CLOSURES</a><a class="headerlink" href="#Operator-Closures" title="Permalink to this headline">¶</a></h3>
+<p>Most of the closures that are used for things which are done by opera-
+tors are in fact not operator-closures but efun-closures. But there are
+a few which do not have the state of efun-closures but are called
+&#8220;operator-closures&#8221;. #&#8217;return is an example, a complete list of them is
+given below.</p>
+<p>These closures cannot be called directly using funcall() or apply() (or
+other efuns like filter()), but must appear only in lambda-con-
+structs.</p>
+<div class="highlight-c"><div class="highlight"><pre>funcall(#&#39;return,4);  // does not work! This will raise an
+                      // Uncallable-closure error.
+funcall(lambda(0,     // this is a correct example
+               ({ (#&#39;return),4 })
+              ));
+</pre></div>
+</div>
+<p>All operator-closures:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cp">#&#39;&amp;&amp;</span>
+<span class="cp">#&#39;||</span>
+<span class="cp">#&#39;,</span>
+<span class="cp">#&#39;?</span>
+<span class="cp">#&#39;?!</span>
+<span class="cp">#&#39;=</span>
+<span class="cp">#&#39;&lt;op&gt;=</span>
+<span class="cp">#&#39;++</span>
+<span class="cp">#&#39;--</span>
+<span class="cp">#&#39;break</span>
+<span class="cp">#&#39;catch</span>
+<span class="cp">#&#39;continue</span>
+<span class="cp">#&#39;default</span>
+<span class="cp">#&#39;do</span>
+<span class="cp">#&#39;foreach</span>
+<span class="cp">#&#39;return</span>
+<span class="cp">#&#39;sscanf</span>
+<span class="cp">#&#39;switch</span>
+<span class="cp">#&#39;while</span>
+<span class="cp">#&#39;({</span>
+<span class="cp">#&#39;([</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">#'..</span></code> is very likely to be an operator closure too, but since it is
+not implemented yet, I cannot say for sure.</p>
+</div>
+<div class="section" id="Variable-Closures">
+<span id="lpc.Variable-Closures"></span><h3><a class="toc-backref" href="#id15">VARIABLE-CLOSURES</a><a class="headerlink" href="#Variable-Closures" title="Permalink to this headline">¶</a></h3>
+<p>All object-global variables might be &#8220;closured&#8221; by prepending a #&#8217; to
+them to allow access and/or manipulation of them. So if your object has
+a global variable x you can use #&#8217;x within a closure.</p>
+<p>Normally you will treat those expressions like lfun-closures: put them
+into an array to get the value:</p>
+<p>Anybody who now calls <code class="docutils literal"><span class="pre">object-&gt;foo()</span></code> will get a closure which will,
+when evaluated, write the actual value of object&#8217;s global variable x.</p>
+<p>Variable closures do not accept arguments.</p>
+</div>
+</div>
+<div class="section" id="Examples">
+<span id="lpc.Examples"></span><h2><a class="toc-backref" href="#id16">EXAMPLES</a><a class="headerlink" href="#Examples" title="Permalink to this headline">¶</a></h2>
+<p>In this section I will give and explain some examples coming out of
+praxis. If the explanation seems to be in some cases too detailed this
+can be explained by the trial to allow the reader to read the examples
+section first ;-)</p>
+<div class="section" id="Lfun-Closure">
+<span id="lpc.Lfun-Closure"></span><h3><a class="toc-backref" href="#id17">LFUN-CLOSURE</a><a class="headerlink" href="#Lfun-Closure" title="Permalink to this headline">¶</a></h3>
+<p>An item with a complex long-description like a watch that shall always
+show the actual time will usually base upon the complex/item-class and
+give an lfun-closure as argument to the set_long()-method.</p>
+<div class="literal-block-wrapper container" id="watch-c">
+<div class="code-block-caption"><span class="caption-text">watch.c</span><a class="headerlink" href="#watch-c" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><div class="highlight"><pre>inherit &quot;complex/item&quot;;
+
+string my_long() {
+ return (&quot;The watch is small and has a strange otherworldly&quot;
+         &quot; aura about it.\n&quot;
+         &quot;The current time is: &quot;+ctime()+&quot;.\n&quot;);
+}
+
+void create() {
+ set_short(&quot;a little watch&quot;);
+ set_id(({ &quot;watch&quot;,&quot;little watch&quot; }));
+ set_long(#&#39;my_long);  // the lfun-closure to the lfun my_long()
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Lambda-Closure">
+<span id="lpc.Lambda-Closure"></span><h3><a class="toc-backref" href="#id18">LAMBDA-CLOSURE</a><a class="headerlink" href="#Lambda-Closure" title="Permalink to this headline">¶</a></h3>
+<p>The example from 3.1 can also be written using a lambda-closure.</p>
+<div class="literal-block-wrapper container" id="id3">
+<div class="code-block-caption"><span class="caption-text">watch.c</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><div class="highlight"><pre>inherit &quot;complex/item&quot;;
+
+void create() {
+ set_short(&quot;a little watch&quot;);
+ set_id(({ &quot;watch&quot;,&quot;little watch&quot; }));
+ set_long(lambda(0,({ (#&#39;+),
+                      &quot;The watch is small and has a strange&quot;
+                      &quot; otherworldly aura about it.\n&quot;
+                      &quot;The current time is: &quot;,
+                      ({ (#&#39;+),
+                         ({ (#&#39;ctime) }),
+                         &quot;.\n&quot;
+                      })
+                   })));
+}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">guide to closures</a><ul>
+<li><a class="reference internal" href="#Introduction">Introduction</a></li>
+<li><a class="reference internal" href="#Overview and efun-closures">OVERVIEW AND EFUN-CLOSURES</a></li>
+<li><a class="reference internal" href="#Lfun- and Lambda-Closures">LFUN- AND LAMBDA-CLOSURES</a><ul>
+<li><a class="reference internal" href="#Lfun-Closures">LFUN-CLOSURES</a></li>
+<li><a class="reference internal" href="#Inline Closures">INLINE CLOSURES</a></li>
+<li><a class="reference internal" href="#Lambda-Closures">LAMBDA-CLOSURES</a><ul>
+<li><a class="reference internal" href="#Advantages of Lambda Closures">ADVANTAGES OF LAMBDA CLOSURES</a></li>
+<li><a class="reference internal" href="#Free Variables in Lambda-Closure Constructs">FREE VARIABLES IN LAMBDA-CLOSURE CONSTRUCTS</a></li>
+<li><a class="reference internal" href="#Special Efun-Closures and Operator-Closures for Lambdas">SPECIAL EFUN-CLOSURES AND OPERATOR-CLOSURES FOR LAMBDAS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Closures with Strange Names">CLOSURES WITH STRANGE NAMES</a></li>
+<li><a class="reference internal" href="#Operator-Closures">OPERATOR-CLOSURES</a></li>
+<li><a class="reference internal" href="#Variable-Closures">VARIABLE-CLOSURES</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Examples">EXAMPLES</a><ul>
+<li><a class="reference internal" href="#Lfun-Closure">LFUN-CLOSURE</a></li>
+<li><a class="reference internal" href="#Lambda-Closure">LAMBDA-CLOSURE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/LPC/closure_guide.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

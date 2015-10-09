@@ -1,0 +1,10 @@
+SYNOPSIS (OPTIONAL)
+===================
+   void sl_close
+
+DESCRIPTION
+===========
+   Closes the SQLite database associated with the current object.
+
+   The function is available only if the driver is compiled with
+   SQLitesupport. In that case, __SQLITE__ is defined.

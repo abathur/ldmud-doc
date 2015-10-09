@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>shadow &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="shadow">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.shadow">
+object <code class="descname">shadow</code><span class="sig-paren">(</span>object<em>&nbsp;ob</em>, int<em>&nbsp;flag</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.shadow" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>If &lt;flag&gt; is non-zero the current object will shadow &lt;ob&gt;. If
+&lt;flag&gt; is 0, either 0 or the object that is shadowing &lt;ob&gt;
+will be returned.</p>
+<p>The calling object must be permitted by the master object to
+do the shadowing. In most installations, an object that
+defines the function query_prevent_shadow() to return 1
+can&#8217;t be shadowed, and the shadow() function will return 0
+instead of ob.</p>
+<p>shadow() also fails if: the calling object tries to shadow
+a function that was defined as &#8220;nomask&#8221;; the program was
+compiled with the #pragma no_shadow; or the calling
+object is already shadowing, being shadowed, or has an
+environment. Also, the target &lt;ob&gt; must not be shadowing
+another object.</p>
+<p>If an object A shadows an object B, every call_other() to B
+will be redirected to A. If object A has not defined the
+function, the call will be passed to B. There is only one
+object that can directly call functions in B with call_other(),
+and that is A. Not even object B can call_other() itself; the
+calls will still be redirected to object A. All normal (internal)
+function calls inside B will, however, remain internal to B.</p>
+<p>EXAMPLES
+With the three objects a.c, b.c and c.c</p>
+<blockquote>
+<div><p>&#8212; a.c &#8212;
+int fun() {</p>
+<blockquote>
+<div>debug_message(sprintf(&#8220;%O [a] fun()n&#8221;, this_object()));</div></blockquote>
+<p>}</p>
+<dl class="docutils">
+<dt>void fun3() {</dt>
+<dd>debug_message(sprintf(&#8220;%O [a] fun3()n&#8221;, this_object()));</dd>
+</dl>
+<p>}</p>
+<p>&#8212; b.c &#8212;
+int fun() {</p>
+<blockquote>
+<div>debug_message(sprintf(&#8220;%O [b] fun()n&#8221;, this_object()));
+find_object(&#8220;a&#8221;)-&gt;fun();</div></blockquote>
+<p>}
+void fun2() {</p>
+<blockquote>
+<div>debug_message(sprintf(&#8220;%O [b] fun2()n&#8221;, this_object()));
+find_object(&#8220;a&#8221;)-&gt;fun3();
+this_object()-&gt;fun3();</div></blockquote>
+<p>}</p>
+<p>void do_shadow(object target) { shadow(target, 1); }</p>
+<p>&#8212; c.c &#8212;
+int fun() {</p>
+<blockquote>
+<div>debug_message(sprintf(&#8220;%O [c] fun()n&#8221;, this_object()));
+find_object(&#8220;a&#8221;)-&gt;fun();</div></blockquote>
+<p>}
+void fun3() {</p>
+<blockquote>
+<div>debug_message(sprintf(&#8220;%O [c] fun3()n&#8221;, this_object()));</div></blockquote>
+<p>}
+void do_shadow(object target) { shadow(target, 1); }</p>
+</div></blockquote>
+<p>code like the following</p>
+<blockquote>
+<div><p>object a, b, c;</p>
+<p>a = load_object(&#8220;a&#8221;);
+b = load_object(&#8220;b&#8221;);
+c = load_object(&#8220;c&#8221;);
+b-&gt;do_shadow(a);
+c-&gt;do_shadow(a);
+debug_message(&#8220;&#8212; a-&gt;fun() &#8212;n&#8221;);
+a-&gt;fun();
+debug_message(&#8220;&#8212; b-&gt;fun() &#8212;n&#8221;);
+b-&gt;fun();
+debug_message(&#8220;&#8212; c-&gt;fun() &#8212;n&#8221;);
+c-&gt;fun();
+debug_message(&#8220;&#8212; b-&gt;fun2() &#8212;n&#8221;);
+b-&gt;fun2();</p>
+</div></blockquote>
+<p>produces this output:</p>
+<blockquote>
+<div>&#8212; a-&gt;fun() &#8212;
+/c [c] fun()
+/b [b] fun()
+/a [a] fun()
+&#8212; b-&gt;fun() &#8212;
+/c [c] fun()
+/b [b] fun()
+/a [a] fun()
+&#8212; c-&gt;fun() &#8212;
+/c [c] fun()
+/b [b] fun()
+/a [a] fun()
+&#8212; b-&gt;fun2() &#8212;
+/b [b] fun2()
+/a [a] fun3()
+/c [c] fun3()</div></blockquote>
+<p>Note that the first call in b::fun2() finds c::fun3() because,
+for calls originating from b to a, the driver assumes that all
+shadows beyond c have already had their chance. The second call,
+however, was to b itself, which the gamedriver recognized as being
+shadowed by c.</p>
+<p>Up to <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;46">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>46</a>, destructing a shadowed object also destructs
+all shadows. Since <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;47">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>47</a>, shadows may survive the
+destruction of the shadowee (unless the prepare_destruct() in
+the master object destructs them manually).</p>
+<p>Since LDMud 3.2.8, programs may protect themselves from being
+shadowed with the #pragma no_shadow.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="query_shadowing.html#lpc.query_shadowing" title="query_shadowing"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_shadowing</span></code>(E)</a>, <a class="reference internal" href="unshadow.html#lpc.unshadow" title="unshadow"><code class="xref lpc lpc-efun docutils literal"><span class="pre">unshadow</span></code>(E)</a>, <a class="reference internal" href="../master/query_allow_shadow.html#lpc.query_allow_shadow" title="query_allow_shadow"><code class="xref lpc lpc-master docutils literal"><span class="pre">query_allow_shadow</span></code>(M)</a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">shadow</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/shadow.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

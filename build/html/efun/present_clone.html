@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>PRELIMINARY
+.. efun:: object present_clone(string str)</p>
+<blockquote>
+<div>object present_clone(string str, int n)
+object present_clone(string str, object env)
+object present_clone(string str, object env, int n)
+object present_clone(object obj)
+object present_clone(object obj, int n)
+object present_clone(object obj, object env)
+object present_clone(object obj, object env, int n)</div></blockquote>
+<p>This efun searches the inventory of object &lt;env&gt; (default is
+this_object()) for an object with a specific blueprint.
+The blueprint can be specified either by name &lt;str&gt;, or as the same
+blueprint as of object &lt;obj&gt;. The matching criteria in both cases is
+the load_name().
+If &lt;n&gt; is given, the &lt;n&gt;th object in &lt;env&gt; is returned (if present),
+otherwise the first object matching &lt;str&gt; or &lt;obj&gt;.
+If no object in &lt;env&gt; matches the criteria, 0 is returned.</p>
+<p>For plain driver this name starts with a &#8216;/&#8217;, for COMPAT mode
+drivers it doesn&#8217;t.</p>
+<p>EXAMPLES
+Assume that object &#8216;env&#8217; contains the objects /obj/money#8,
+/std/weapon#9, /std/weapon#12 and /obj/key in the given order.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="77%" />
+<col width="23%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Function call</td>
+<td>returns</td>
+</tr>
+<tr class="row-even"><td>present_clone(&#8220;/obj/money&#8221;, env)
+present_clone(&#8220;/std/weapon#12&#8221;, env)
+present_clone(find_object(&#8220;/obj/money#14&#8221;), env)
+present_clone(&#8220;/obj/key#18&#8221;, env)
+present_clone(&#8220;/std/weapon#12&#8221;, env, 2)
+present_clone(&#8220;/std/weapon#12&#8221;, env, 3)</td>
+<td>/obj/money#8
+/std/weapon#9
+/obj/money#8
+/obj/key
+/std/weapon#12
+0</td>
+</tr>
+</tbody>
+</table>
+<p>REMARKS
+Note that in contrast to present(), this efun never searches
+in the environment of &lt;env&gt;.</p>
+<p>Introduced in 3.2.7.
+Searching for the &lt;n&gt;th object was added in 3.3.718.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="load_name.html#lpc.load_name" title="load_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">load_name</span></code>(E)</a>, <a class="reference internal" href="present.html#lpc.present" title="present"><code class="xref lpc lpc-efun docutils literal"><span class="pre">present</span></code>(E)</a></td>
+</tr>
+</tbody>
+</table>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/present_clone.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

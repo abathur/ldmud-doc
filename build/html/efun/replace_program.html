@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>replace_program &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="replace_program">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.replace_program">
+void <code class="descname">replace_program</code><a class="headerlink" href="#lpc.replace_program" title="Permalink to this definition">¶</a></dt>
+<dt>
+void <code class="descname">replace_program</code><span class="sig-paren">(</span>string<em>&nbsp;program</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>Substitutes a program with the inherited program &lt;program&gt;. If
+the object inherits only one program, the argument may be omitted
+and the efun will automatically select the one inherited program.</p>
+<p>This efun is useful if you consider the performance and memory
+consumption of the driver. A program which doesn&#8217;t need any additional
+variables and functions (except during creation) can call
+replace_program() to increase the function-cache hit-rate of the
+driver which decreases with the number of programs in the system.</p>
+<p>Rooms are a good example for the application of this function, as many
+rooms just consist of an inherit statement and the configure function.
+Any object can call replace_program() but looses all extra variables
+and functions which are not defined by the inherited program.</p>
+<p>When replace_program() takes effect, shadowing is stopped on
+the object since <a class="reference external" href="mailto:3&#46;2&#37;&#52;&#48;166">3<span>&#46;</span>2<span>&#64;</span>166</a>.</p>
+<p>It is not possible to replace the program of an object after (lambda)
+closures have been bound to it. It is of course possible to first
+replace the program and then bind lambda closures to it.</p>
+<p>The program replacement does not take place with the call to the efun,
+but is merely scheduled to be carried out at the end of the backend
+cycle. This may cause closures to have references to then vanished
+lfuns of the object. This poses no problem as long as these references
+are never executed after they became invalid.</p>
+<p>BUGS
+If the replacement program contains virtually inherited variables,
+it must be the first inherited program. Without this restriction,
+the wrong variables would survive the replacement process.</p>
+<p>LDMud 3.2.9 allowed to omit the argument if only one inherit
+exists.</p>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">replace_program</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/replace_program.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

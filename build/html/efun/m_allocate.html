@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>m_allocate &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="m_allocate">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dt id="lpc.m_allocate">
+mapping <code class="descname">m_allocate</code><span class="sig-paren">(</span>int<em>&nbsp;size</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.m_allocate" title="Permalink to this definition">¶</a></dt>
+<dt>
+mapping <code class="descname">m_allocate</code><span class="sig-paren">(</span>int<em>&nbsp;size</em>, int<em>&nbsp;width</em><span class="sig-paren">)</span></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>Reserve memory for a mapping.</p>
+<p>&lt;size&gt; is the number of entries (i.e. keys) to reserve, &lt;width&gt; is
+the number of data items per entry. If the optional width is
+omitted, 1 is used as default.</p>
+<p>This is useful only when you are going to construct a mapping
+whose approximate size you know beforehand, to save overhead on
+repeated memory allocations. If you don&#8217;t fill in data for all the
+allocated elements, any leftovers will be eventually freed some time
+later (see remark below).
+It is also useful if you want the mapping to have a certain width
+even if you don&#8217;t provide all the data items for the keys yet.</p>
+<p>If the goal is just to create an empty mapping with a certain
+width, the following notations can be used:</p>
+<p>([ ]) : creates an empty mapping of width 1.</p>
+<dl class="docutils">
+<dt>([:width ]) <span class="classifier-delimiter">:</span> <span class="classifier">creates an empty mapping the given &lt;width&gt;, where</span></dt>
+<dd>&lt;width&gt; can be any expression yielding an integer result. In
+fact this notation is compiled as &#8216;m_allocate(0, width)&#8217; .</dd>
+</dl>
+<p>EXAMPLES
+m_allocate(3, 7) -&gt; mapping with 7 values per key, and with space
+for 3 entries.</p>
+<p>([:2*3 ]) -&gt; same as m_allocate(0, 6)</p>
+<p>REMARKS
+Unused memory in the allocated mapping will be freed during the
+so-called compacting of the mapping. This is done during the
+data-cleanup or the garbage collection. The time between
+data-cleanups is configurable by configure_driver().</p>
+<p>Renamed from &#8216;allocate_mapping&#8217; in LDMud 3.2.6.
+The ([:width ]) notation was introduced in LDMud 3.2.9 / 3.3.208.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><span class="xref lpc lpc-lang">mappings</span>, <a class="reference internal" href="walk_mapping.html#lpc.walk_mapping" title="walk_mapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">walk_mapping</span></code>(E)</a>, <a class="reference internal" href="get_type_info.html#lpc.get_type_info" title="get_type_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_type_info</span></code>(E)</a>, <a class="reference internal" href="m_reallocate.html#lpc.m_reallocate" title="m_reallocate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_reallocate</span></code>(E)</a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">m_allocate</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/m_allocate.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,7 @@
+SYNOPSIS
+========
+   int structp(mixed arg)
+
+DESCRIPTION
+===========
+   Return 1 if <arg> is a struct.

@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mktime &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mktime">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dl class="include">
+<dt>
+#include &lt;time.h&gt;</dt>
+</dl>
+
+<dt id="lpc.mktime">
+int <code class="descname">mktime</code><span class="sig-paren">(</span>int<em>&nbsp;*ts</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.mktime" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<p>If the argument &lt;ts&gt; is an array with 9 elements (int) according to
+the result of local_time()/gm_time(), this function returns the number
+of seconds passed since the epoch (00:00:00 UTC, January 1, 1970).
+This can be used to store a date or time as an integer value or to
+compute differences betweens two different dates or times.</p>
+<dl class="docutils">
+<dt>The array &lt;ts&gt; has to have the following structure:</dt>
+<dd>int TM_SEC    (0):  seconds (0..59)
+int TM_MIN    (1):  minutes (0..59)
+int TM_HOUR   (2):  hours (0..23)
+int TM_MDAY   (3):  day of month (1..31)
+int TM_MON    (4):  day of year (0..11)
+int TM_YEAR   (5):  year (e.g. 2001)
+int TM_WDAY   (6):  day of week (0..6, sunday = 0)
+int TM_YDAY   (7):  day of year (0..365)
+inz TM_ISDST  (8):  TRUE: summer time is in effect.</dd>
+</dl>
+<p>TM_YDAY and TM_WDAY are ignored and can contain arbitrary
+integer values.</p>
+<p>EXAMPLES
+A date and time (user input) shall be stored as unix timestamp:
+// &#8220;Wed Oct 24 10:48:00 2007&#8221; corresponds to the returned time stamp:
+int unixtime = mktime( ({0, 48, 09, 24, 09, 2007, 0, 01, 0}) );</p>
+<p>Introduced in LDMud 3.3.718.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="ctime.html#lpc.ctime" title="ctime"><code class="xref lpc lpc-efun docutils literal"><span class="pre">ctime</span></code>(E)</a>, <a class="reference internal" href="gmtime.html#lpc.gmtime" title="gmtime"><code class="xref lpc lpc-efun docutils literal"><span class="pre">gmtime</span></code>(E)</a>, <code class="xref lpc lpc-efun docutils literal"><span class="pre">local_time</span></code>, <a class="reference internal" href="time.html#lpc.time" title="time"><code class="xref lpc lpc-efun docutils literal"><span class="pre">time</span></code>(E)</a>, <a class="reference internal" href="utime.html#lpc.utime" title="utime"><code class="xref lpc lpc-efun docutils literal"><span class="pre">utime</span></code>(E)</a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">mktime</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/mktime.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

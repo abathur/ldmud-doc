@@ -1,0 +1,16 @@
+SYNOPSIS
+========
+   int living(object ob)
+
+DESCRIPTION
+===========
+   Return true if ob is a living object (that is, enable_commands() has been
+   called from inside the ob). ob may be 0.
+
+USAGE
+=====
+   `living(this_player())`
+
+SEE ALSO
+========
+   enable_commands(E)

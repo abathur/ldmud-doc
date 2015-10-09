@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>This efun creates a JSON object from the given LPC variable and
+returns the object encoded as a LPC string. For container types like
+arrays, mappings and structs, this will be done recursively.</p>
+<p>Only the following LPC types are serialized. All other LPC types cause
+a  runtime error.
+&lt;int&gt;        -&gt; JSON int
+&lt;float&gt;      -&gt; JSON double
+&lt;string&gt;     -&gt; JSON string
+&lt;mapping&gt;    -&gt; JSON objects
+&lt;array&gt;      -&gt; JSON arrays
+&lt;struct&gt;     -&gt; JSON objects</p>
+<p>The function is available only if the driver is compiled with Iksemel
+support. In that case, __JSON__ is defined.</p>
+<p>LIMITATIONS
+Only mappings with a width of 1 value per key and only string keys
+can be serialized.
+64 bit wide integers can only be serialized losslessly on hosts with
+a 64 bit wide LPC int and json-c library newer than 0.90.</p>
+<p>BUGS
+__FLOAT_MIN__ is not serialized/parsed losslessly.</p>
+<p>EXAMPLES
+json_serialize(42)              -&gt; &#8220;42&#8221;
+json_serialize(42.0)            -&gt; &#8220;42.0&#8221;
+json_serialize(&#8220;hello worldn&#8221;) -&gt; &#8220;&#8221;hello world\n&#8221;&#8221;
+json_serialize(({1,2,3,4,5,6})) -&gt; &#8220;[ 1, 2, 3, 4, 5, 6 ]&#8221;
+json_serialize(([ &#8220;test 1&#8221;: 42, &#8220;test 2&#8221;: 42.0 ]))</p>
+<blockquote>
+<div>-&gt; &#8220;{ &#8220;test 2&#8221;: 42.000000, &#8220;test 1&#8221;: 42 }&#8221;</div></blockquote>
+<p>Added in LDMud 3.5.0</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><code class="xref lpc lpc-efun docutils literal"><span class="pre">json_parse</span></code></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/efun/json_serialize.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
