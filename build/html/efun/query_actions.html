@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>&lt;no title&gt; &mdash; LDMud UNRELEASED documentation</title>
+    <title>query_actions &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -36,7 +36,25 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>query_actions takes either an object or a filename as first
+  <div class="section" id="query_actions">
+<div class="section" id="SYNOPSIS">
+<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<dl class="efun">
+<dl class="include">
+<dt>
+#include &lt;commands.h&gt;</dt>
+<dt>
+#include &lt;sent.h&gt;</dt>
+</dl>
+
+<dt id="lpc.query_actions">
+mixed * <code class="descname">query_actions</code><span class="sig-paren">(</span>object<em>&nbsp;ob</em>, mixed<em>&nbsp;mask_or_verb</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.query_actions" title="Permalink to this definition">¶</a></dt>
+</dl>
+
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>query_actions takes either an object or a filename as first
 argument and a bitmask (int) or string as a second argument.
 If the second argument is a string, query_actions() will return
 an array containing information (see below) on the verb or
@@ -58,16 +76,11 @@ SENT_NO_SPACE     added with add_action (fun, AA_NOSPACE);
 SENT_MARKER       internal, won&#8217;t be in the returned array
 negative value: The verb given by the player has to match only</p>
 <blockquote>
-<div><p>the leading -&lt;value&gt; characters of the action&#8217;s verb.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="add_action.html#lpc.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action</span></code>(E)</a>, <a class="reference internal" href="../applied/init.html#lpc.init" title="init"><code class="xref lpc lpc-applied docutils literal"><span class="pre">init</span></code>(A)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div>the leading -&lt;value&gt; characters of the action&#8217;s verb.</div></blockquote>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="add_action.html#lpc.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action</span></code>(E)</a>, <a class="reference internal" href="../applied/init.html#lpc.init" title="init"><code class="xref lpc lpc-applied docutils literal"><span class="pre">init</span></code>(A)</a></p>
+</div>
+</div>
 
 
           </div>
@@ -87,7 +100,16 @@ negative value: The verb given by the player has to match only</p>
     Enter search terms or a module, class or function name.
     </p>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">query_actions</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
 </ul>
