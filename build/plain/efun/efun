@@ -71,7 +71,7 @@ DESCRIPTION
    - break_point
    - call_direct
    - call_direct_resolved
-   - (fun)
+   - call_other
    - call_out
    - call_out_info
    - call_resolved

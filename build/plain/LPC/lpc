@@ -11,6 +11,7 @@ DESCRIPTION
    as it is provided by Amylaar's parser/driver.
 
    - arrays
+   - ->
    - block
    - guide to closures
    - closures

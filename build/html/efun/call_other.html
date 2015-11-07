@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>(fun) &mdash; LDMud UNRELEASED documentation</title>
+    <title>call_other &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -36,7 +36,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="(fun)">
+  <div class="section" id="call_other">
 <div class="section" id="SYNOPSIS">
 <h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="efun" style="border-spacing:0;">
@@ -56,111 +56,61 @@ object<em>&nbsp;*ob</em>, </td><td>
 string<em>&nbsp;fun</em>, </td><td>
 mixed<em>&nbsp;arg</em>, </td><td>
 ...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
-<tr id="lpc.fun">
-<td>
-ob-&gt;</td><td>
-<code class="descname">fun</code></td><td><span class="sig-paren">(</span></td><td>
-mixed<em>&nbsp;arg</em>, </td><td>
-...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.fun" title="Permalink to this definition">¶</a></tr>
-<tr>
-<td>
-<code class="descname">ob-&gt;&#8221;fun&#8221; (mixed arg, ...)</code></td></tr>
-<tr id="lpc.(fun)">
-<td>
-ob-&gt;</td><td>
-<code class="descname">(fun)</code></td><td><span class="sig-paren">(</span></td><td>
-mixed<em>&nbsp;arg</em>, </td><td>
-...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.(fun)" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In LPC syntax <a class="reference internal" href="../LPC/arrow.html#lpc.-&gt;" title="-&gt;"><span class="xref lpc lpc-lang">-&gt;</span>(LPC)</a> is an alias for this efun. Because the syntax form is easier to read, <a class="reference internal" href="#lpc.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a> is rarely used directly in new code. See the syntax form&#8217;s documentation for usage notes.</p>
 </div>
+<p>Call a member function &lt;fun&gt; in another object &lt;ob&gt; with an the argument(s) &lt;arg...&gt;. Result is the value returned from the called function (or 0 for non-existing or void functions).</p>
+<p>Additionally the efun accepts an array of objects as &lt;ob&gt;: the function is called with the same arguments in all the given objects. The single results are collected in an array and yield the final result. Array elements can be objects or the names of existing objects; destructed objects and 0s will yield a &#8216;0&#8217; as result, but don&#8217;t cause an error.</p>
+<p>The object(s) can be given directly or via a string (i.e. its object_name). If it is given by a string and the object does not exist yet, it will be loaded.</p>
+<p>If ob::fun does not define a publicly accessible function, the efun will call the H_DEFAULT_METHOD hook if set. If the hook is not set or can&#8217;t resolve the call either, call_other() will return 0, which is indistinguishable from a function returning 0.</p>
+<p>Calls to the master object never use the H_DEFAULT_METHOD hook. To force non-default calls, the efun call_direct() can be used.</p>
+<p>&#8220;publicly accessible&#8221; means &#8220;public&#8221; when calling other objects, and &#8220;public&#8221; or &#8220;static&#8221; when calling this_object(). &#8220;private&#8221; and &#8220;protected&#8221; function can never be called with call_other().</p>
+<p>The return type of call_other() is &#8216;any&#8217; be default. However, if your LPC code uses #pragma strict_types, the return type is &#8216;unknown&#8217;, and the result of call_other() must be casted to the appropriate type before you can use it for anything.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>You may find calls to unlikely functions, especially in older code. For example:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="o">!</span><span class="nl">Compat</span><span class="p">:</span> <span class="n">call_other</span><span class="p">(</span><span class="s">&quot;/users/luser/thing&quot;</span><span class="p">,</span> <span class="s">&quot;???&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+ <span class="nl">Compat</span><span class="p">:</span> <span class="n">call_other</span><span class="p">(</span><span class="s">&quot;users/luser/thing&quot;</span><span class="p">,</span> <span class="s">&quot;???&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
 </div>
-<p>Call a member function &lt;fun&gt; in another object &lt;ob&gt; with an
-the argument(s) &lt;arg...&gt;. Result is the value returned from
-the called function (or 0 for non-existing or void functions).</p>
-<p>Additionally the efun accepts an array of objects as &lt;ob&gt;: the
-function is called with the same arguments in all the given objects.
-The single results are collected in an array and yield the final
-result.  Array elements can be objects or the names of existing
-objects; destructed objects and 0s will yield a &#8216;0&#8217; as result, but
-don&#8217;t cause an error.</p>
-<p>The object(s) can be given directly or via a string (i.e. its
-object_name). If it is given by a string and the object does not
-exist yet, it will be loaded.</p>
-<p>ob-&gt;fun(args) and &#8220;ob_name&#8221;-&gt;fun(args) is equivalent to
-call_other(ob, &#8220;fun&#8221;, args). Nowadays the ob_name string can
-also be a variable.</p>
-<p>ob-&gt;fun(args) and ob-&gt;&#8221;fun&#8221;(args) are equivalent to
-call_other(ob, &#8220;fun&#8221;, args). ob-&gt;(fun)(args) are equivalent
-to call_other(ob, fun, args) where fun is a runtime expression
-returning the function name.</p>
-<p>If ob::fun does not define a publicly accessible function, the
-efun will call the H_DEFAULT_METHOD hook if set. If the hook
-is not set or can&#8217;t resolve the call either, call_other()
-will return 0, which is indistinguishable from a function returning 0.</p>
-<p>Calls to the master object never use the H_DEFAULT_METHOD hook.
-To force non-default calls, the efun call_direct() can be used.</p>
-<p>&#8220;publicly accessible&#8221; means &#8220;public&#8221; when calling other objects,
-and &#8220;public&#8221; or &#8220;static&#8221; when calling this_object(). &#8220;private&#8221;
-and &#8220;protected&#8221; function can never be called with call_other().</p>
-<p>The return type of call_other() is &#8216;any&#8217; be default. However,
-if your LPC code uses #pragma strict_types, the return type is
-&#8216;unknown&#8217;, and the result of call_other() must be casted to
-the appropriate type before you can use it for anything.</p>
-<p>EXAMPLES
-// All the following statements call the lfun QueryProp()
-// in the current player with the argument P_SHORT.
-string str, fun;</p>
-<p>str = (string)call_other(this_player(), &#8220;QueryProp&#8221;, P_SHORT);
-fun = &#8220;QueryProp&#8221;;
-str = (string)call_other(this_player(), fun, P_SHORT);</p>
-<p>str = (string)this_player()-&gt;QueryProp(P_SHORT);
-str = (string)this_player()-&gt;&#8221;QueryProp&#8221;(P_SHORT);
-fun = &#8220;QueryProp&#8221;;
-str = (string)this_player()-&gt;(fun)(P_SHORT);</p>
-<p>You have to do explicit type casting because of the unknown
-return type, if you have set #pragma strict_types.</p>
-<p>// This statement calls the lfun short() in all interactive users
-// and stores the collected results in a variable.
-string <a href="#id1"><span class="problematic" id="id2">*</span></a>s;</p>
-<p>s = (string <a href="#id3"><span class="problematic" id="id4">*</span></a>)users()-&gt;short();</p>
-<dl class="docutils">
-<dt>!Compat: call_other(&#8220;/users/luser/thing&#8221;, &#8221;???&#8221;, 0);</dt>
-<dd>Compat: call_other(&#8220;users/luser/thing&#8221;, &#8221;???&#8221;, 0);</dd>
-</dl>
-<p>This looks a bit weird but it was used very often to just load
-the object by calling a not existing function like &#8221;???&#8221;.
-Fortunately nowadays there is an efun load_object() for this
-purpose.</p>
-<dl class="docutils">
-<dt>In LDMud 3.2.8 the following improvements were made:</dt>
-<dd><ul class="first last simple">
-<li>the forms x-&gt;&#8221;y&#8221;() and x-&gt;(y)() are recognized;</li>
-<li>the form x-&gt;y() no longer clashes with a local variable also
-called &#8220;y&#8221;;</li>
+<p class="last">This looks a bit weird but it was used very often to just load the object by calling a non-existing function like &#8221;???&#8221;. Fortunately nowadays there is an efun load_object() for this purpose.</p>
+</div>
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>First let&#8217;s do some setup:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">string</span> <span class="n">str</span><span class="p">,</span> <span class="n">fun</span><span class="p">;</span>
+<span class="n">fun</span> <span class="o">=</span> <span class="s">&quot;QueryProp&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Now we&#8217;ll use these variables with the basic <a class="reference internal" href="#lpc.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a>. Both of the following statements call the lfun <span class="xref lpc lpc-any">QueryProp()</span> in the current player object with a single argument, P_SHORT:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">str</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="n">call_other</span><span class="p">(</span><span class="n">this_player</span><span class="p">(),</span> <span class="s">&quot;QueryProp&quot;</span><span class="p">,</span> <span class="n">P_SHORT</span><span class="p">);</span>
+<span class="n">str</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="n">call_other</span><span class="p">(</span><span class="n">this_player</span><span class="p">(),</span> <span class="n">fun</span><span class="p">,</span> <span class="n">P_SHORT</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If you have set #pragma strict_types, you have to do explicit type casting because of the unknown return type.</p>
+<p>You can also pass <a class="reference internal" href="#lpc.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a> an array of objects, causing the function to be called for each object. The following statement calls the lfun <span class="xref lpc lpc-any">short()</span> in all interactive users and stores the result in an array of strings:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">string</span> <span class="o">*</span><span class="n">s</span><span class="p">;</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span> <span class="o">*</span><span class="p">)</span><span class="n">call_other</span><span class="p">(</span><span class="n">users</span><span class="p">(),</span> <span class="s">&quot;short&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; <ul>
 <li>a simul_efun call_other() also catches -&gt;() calls.</li>
 <li>call_other can be applied on arrays of objects.</li>
 </ul>
-</dd>
-</dl>
-<p>LDMud 3.2.10 made the call on arrays of objects configurable.
-LDMud 3.3.113 introduced the H_DEFAULT_METHOD hook.
-LDMud 3.5.0 made the call on arrays of objects non-optional.</p>
-<blockquote>
-<div><blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="call_direct.html#lpc.call_direct" title="call_direct"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_direct</span></code>(E)</a>, <a class="reference internal" href="call_direct_resolved.html#lpc.call_direct_resolved" title="call_direct_resolved"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_direct_resolved</span></code>(E)</a>, <a class="reference internal" href="call_resolved.html#lpc.call_resolved" title="call_resolved"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_resolved</span></code>(E)</a>, <a class="reference internal" href="../applied/create.html#lpc.create" title="create"><code class="xref lpc lpc-applied docutils literal"><span class="pre">create</span></code>(A)</a>,</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><a class="reference internal" href="../LPC/pragma.html#lpc.pragma" title="pragma"><span class="xref lpc lpc-lang">pragma</span>(LPC)</a>, <a class="reference internal" href="extern_call.html#lpc.extern_call" title="extern_call"><code class="xref lpc lpc-efun docutils literal"><span class="pre">extern_call</span></code>(E)</a>, <a class="reference internal" href="function_exists.html#lpc.function_exists" title="function_exists"><code class="xref lpc lpc-efun docutils literal"><span class="pre">function_exists</span></code>(E)</a>, <span class="xref lpc lpc-lang">functions</span>,
-<a class="reference internal" href="map_objects.html#lpc.map_objects" title="map_objects"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_objects</span></code>(E)</a></p>
-</div></blockquote>
+</li>
+<li><strong>change</strong> (<em>3.2.10</em>) &#8211; made the call on arrays of objects configurable.</li>
+<li><strong>changed</strong> (<em>3.3.113</em>) &#8211; the <a class="reference internal" href="../hook/default_method.html#lpc.H_DEFAULT_METHOD" title="H_DEFAULT_METHOD"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_DEFAULT_METHOD</span></code>(H)</a> hook was introduced.</li>
+<li><strong>changed</strong> (<em>3.5.0</em>) &#8211; made the call on arrays of objects non-optional.</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../LPC/arrow.html#lpc.-&gt;" title="-&gt;"><span class="xref lpc lpc-lang">-&gt;</span>(LPC)</a>, <a class="reference internal" href="call_direct.html#lpc.call_direct" title="call_direct"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_direct</span></code>(E)</a>, <a class="reference internal" href="call_direct_resolved.html#lpc.call_direct_resolved" title="call_direct_resolved"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_direct_resolved</span></code>(E)</a>, <a class="reference internal" href="call_resolved.html#lpc.call_resolved" title="call_resolved"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_resolved</span></code>(E)</a>, <a class="reference internal" href="../applied/create.html#lpc.create" title="create"><code class="xref lpc lpc-applied docutils literal"><span class="pre">create</span></code>(A)</a>, <a class="reference internal" href="../LPC/pragma.html#lpc.pragma" title="pragma"><span class="xref lpc lpc-lang">pragma</span>(LPC)</a>, <a class="reference internal" href="extern_call.html#lpc.extern_call" title="extern_call"><code class="xref lpc lpc-efun docutils literal"><span class="pre">extern_call</span></code>(E)</a>, <a class="reference internal" href="function_exists.html#lpc.function_exists" title="function_exists"><code class="xref lpc lpc-efun docutils literal"><span class="pre">function_exists</span></code>(E)</a>, <span class="xref lpc lpc-lang">functions</span>, <a class="reference internal" href="map_objects.html#lpc.map_objects" title="map_objects"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_objects</span></code>(E)</a></p>
+</div>
+</div>
 
 
           </div>
@@ -183,7 +133,7 @@ LDMud 3.5.0 made the call on arrays of objects non-optional.</p>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">(fun)</a><ul>
+<li><a class="reference internal" href="#">call_other</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
 </ul>

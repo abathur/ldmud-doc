@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>-&gt; &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="-&gt;">
+<span id="lpc.->"></span><div class="section" id="SYNTAX">
+<h2>SYNTAX<a class="headerlink" href="#SYNTAX" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">ob</span><span class="o">-&gt;</span><span class="n">fun</span> <span class="p">(</span><span class="n">mixed</span> <span class="n">arg</span><span class="p">,</span> <span class="p">...)</span>
+<span class="n">ob</span><span class="o">-&gt;</span><span class="s">&quot;fun&quot;</span> <span class="p">(</span><span class="n">mixed</span> <span class="n">arg</span><span class="p">,</span> <span class="p">...)</span>
+<span class="n">ob</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span> <span class="p">(</span><span class="n">mixed</span> <span class="n">arg</span><span class="p">,</span> <span class="p">...)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>The arrow syntax is equivalent to <a class="reference internal" href="../efun/call_other.html#lpc.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a>. This syntax document discusses how the arrow syntax relates to the efun version and gives basic examples; you should see <a class="reference internal" href="../efun/call_other.html#lpc.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a> for thorough documentation.</p>
+<p><span class="xref lpc lpc-any">ob-&gt;fun(args)</span> and <span class="xref lpc lpc-any">ob-&gt;&#8221;fun&#8221;(args)</span> are equivalent to <span class="xref lpc lpc-any">call_other(ob, &#8220;fun&#8221;, args)</span>. <span class="xref lpc lpc-any">ob-&gt;(fun)(args)</span> is equivalent to call_other(ob, fun, args) where fun is a runtime expression returning the function name.</p>
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>All of the following statements call the lfun <span class="xref lpc lpc-any">QueryProp()</span> in the current player object with a single argument, P_SHORT. First let&#8217;s do some setup:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">string</span> <span class="n">str</span><span class="p">,</span> <span class="n">fun</span><span class="p">;</span>
+<span class="n">fun</span> <span class="o">=</span> <span class="s">&quot;QueryProp&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Now we&#8217;ll use these variables with the basic <a class="reference internal" href="../efun/call_other.html#lpc.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a>:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">str</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="n">call_other</span><span class="p">(</span><span class="n">this_player</span><span class="p">(),</span> <span class="s">&quot;QueryProp&quot;</span><span class="p">,</span> <span class="n">P_SHORT</span><span class="p">);</span>
+<span class="n">str</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="n">call_other</span><span class="p">(</span><span class="n">this_player</span><span class="p">(),</span> <span class="n">fun</span><span class="p">,</span> <span class="n">P_SHORT</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>And here are three equivalent calls using the arrow syntax form (with the variables from above):</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">str</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="n">this_player</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">QueryProp</span><span class="p">(</span><span class="n">P_SHORT</span><span class="p">);</span>
+<span class="n">str</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="n">this_player</span><span class="p">()</span><span class="o">-&gt;</span><span class="s">&quot;QueryProp&quot;</span><span class="p">(</span><span class="n">P_SHORT</span><span class="p">);</span>
+
+<span class="n">str</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="n">this_player</span><span class="p">()</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">fun</span><span class="p">)(</span><span class="n">P_SHORT</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can also use the arrow form to call a function on each object in an array. The following statement calls the lfun <span class="xref lpc lpc-any">short()</span> in all interactive users and stores the result in an array of strings:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">string</span> <span class="o">*</span><span class="n">s</span><span class="p">;</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span> <span class="o">*</span><span class="p">)</span><span class="n">users</span><span class="p">()</span><span class="o">-&gt;</span><span class="kt">short</span><span class="p">();</span>
+</pre></div>
+</div>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; <ul>
+<li>the forms x-&gt;&#8221;y&#8221;() and x-&gt;(y)() are now recognized;</li>
+<li>the form x-&gt;y() no longer clashes with a local variable also called &#8220;y&#8221;;</li>
+<li>a simul_efun call_other() also catches -&gt;() calls.</li>
+</ul>
+</li>
+<li><strong>changed</strong> (<em>3.5.0</em>) &#8211; split documentation for the arrow &#8220;-&gt;&#8221; syntax from documentation for <a class="reference internal" href="../efun/call_other.html#lpc.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a></li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/call_other.html#lpc.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a>, <a class="reference internal" href="../efun/call_direct.html#lpc.call_direct" title="call_direct"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_direct</span></code>(E)</a>, <a class="reference internal" href="../efun/call_direct_resolved.html#lpc.call_direct_resolved" title="call_direct_resolved"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_direct_resolved</span></code>(E)</a>, <a class="reference internal" href="../efun/call_resolved.html#lpc.call_resolved" title="call_resolved"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_resolved</span></code>(E)</a>, <a class="reference internal" href="../applied/create.html#lpc.create" title="create"><code class="xref lpc lpc-applied docutils literal"><span class="pre">create</span></code>(A)</a>, <a class="reference internal" href="pragma.html#lpc.pragma" title="pragma"><span class="xref lpc lpc-lang">pragma</span>(LPC)</a>, <a class="reference internal" href="../efun/extern_call.html#lpc.extern_call" title="extern_call"><code class="xref lpc lpc-efun docutils literal"><span class="pre">extern_call</span></code>(E)</a>, <a class="reference internal" href="../efun/function_exists.html#lpc.function_exists" title="function_exists"><code class="xref lpc lpc-efun docutils literal"><span class="pre">function_exists</span></code>(E)</a>, <span class="xref lpc lpc-lang">functions</span>, <a class="reference internal" href="../efun/map_objects.html#lpc.map_objects" title="map_objects"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_objects</span></code>(E)</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">-&gt;</a><ul>
+<li><a class="reference internal" href="#SYNTAX">SYNTAX</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/LPC/arrow.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
