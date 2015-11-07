@@ -65,19 +65,10 @@ mixed<em>&nbsp;init_value</em></td><td colspan="1000" style="border:0;padding:0;
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Allocate an array of size elements. The number of elements
-must be &gt;= 0 and not bigger than a system maximum (usually
-1000).</p>
-<p>If &lt;init_value&gt; is given, all array elements will be set
-to this value (if &lt;init_value&gt; is an array or mapping, a shallow
-copy will be created for each element), otherwise they all will be 0.</p>
-<p>In the second form (using an array of sizes instead of one size),
-the efun will allocate a multidimensional array, that is an array
-of arrays.</p>
-<p>Note that this function is hardly needed anymore, because
-arrays can be added by the + operator, and can be constructed
-and initialized by the ({ }) operator. The functions only
-use is to construct big empty arrays.</p>
+<p>Allocate an array of size elements. The number of elements must be &gt;= 0 and not bigger than a system maximum (usually 1000).</p>
+<p>If &lt;init_value&gt; is given, all array elements will be set to this value (if &lt;init_value&gt; is an array or mapping, a shallow copy will be created for each element), otherwise they all will be 0.</p>
+<p>In the second form (using an array of sizes instead of one size), the efun will allocate a multidimensional array, that is an array of arrays.</p>
+<p>Note that this function is hardly needed anymore, because arrays can be added by the + operator, and can be constructed and initialized by the ({ }) operator. The functions only use is to construct big empty arrays.</p>
 <h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
 <p>string <a href="#id1"><span class="problematic" id="id2">*</span></a>buffer;
 buffer = allocate(50);
