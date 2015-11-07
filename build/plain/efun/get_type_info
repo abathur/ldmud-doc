@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   mixed get_type_info(mixed arg)
+   mixed get_type_info(mixed arg          )
    mixed get_type_info(mixed arg, int flag)
 
 DESCRIPTION

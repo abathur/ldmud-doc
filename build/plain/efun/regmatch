@@ -1,11 +1,10 @@
 SYNOPSIS
 ========
    #include <regexp.h>
-
-   string regmatch(string text, string pattern)
-   string regmatch(string text, string pattern, int opt)
-   string regmatch(string text, string pattern, int opt, int start)
-   string * regmatch(string text, string pattern, int opt)
+   string   regmatch(string text, string pattern                    )
+   string   regmatch(string text, string pattern, int opt           )
+   string   regmatch(string text, string pattern, int opt, int start)
+   string * regmatch(string text, string pattern, int opt           )
    string * regmatch(string text, string pattern, int opt, int start)
 
 DESCRIPTION

@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   int program_time
+   int program_time(         )
    int program_time(object ob)
 
 DESCRIPTION

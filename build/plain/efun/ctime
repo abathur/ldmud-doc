@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   string ctime(int clock)
+   string ctime(int clock  )
    string ctime(int *uclock)
 
 DESCRIPTION

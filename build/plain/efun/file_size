@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <files.h>
-
    int file_size(string file)
 
 DESCRIPTION

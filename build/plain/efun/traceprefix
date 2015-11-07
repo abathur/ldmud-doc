@@ -1,9 +1,8 @@
 SYNOPSIS
 ========
    #include <trace.h>
-
    string traceprefix(string prefix)
-   string traceprefix(int dummy)
+   string traceprefix(int dummy    )
 
 DESCRIPTION
 ===========

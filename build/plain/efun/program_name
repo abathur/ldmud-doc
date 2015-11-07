@@ -1,6 +1,6 @@
       SYNOPSIS
       --------
-         string program_name
+         string program_name(          )
          string program_name(object obj)
 
       DESCRIPTION-----------

@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <commands.h>
-
    mixed * command_stack(void)
 
 DESCRIPTION

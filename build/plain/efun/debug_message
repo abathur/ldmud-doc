@@ -1,8 +1,7 @@
 SYNOPSIS
 ========
    #include <debug_message.h>
-
-   void debug_message(string text)
+   void debug_message(string text           )
    void debug_message(string text, int flags)
 
 DESCRIPTION

@@ -1,7 +1,7 @@
 SYNOPSIS
 ========
    string extract(string str, int from, int to)
-   string extract(string str, int from)
+   string extract(string str, int from        )
 
 DESCRIPTION
 ===========

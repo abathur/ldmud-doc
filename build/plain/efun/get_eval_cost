@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   int get_eval_cost
+   int get_eval_cost()
 
 DESCRIPTION
 ===========

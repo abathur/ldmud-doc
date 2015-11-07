@@ -1,7 +1,7 @@
 SYNOPSIS
 ========
-   int save_object(string name [, int format])
-   string save_object([int format])
+   int    save_object(string name [, int format])
+   string save_object([int format]              )
 
 DESCRIPTION
 ===========

@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   unknown call_direct(object ob, string fun, mixed arg, ...)
+   unknown call_direct(object ob,  string fun, mixed arg, ...)
    unknown call_direct(object *ob, string fun, mixed arg, ...)
 
 DESCRIPTION

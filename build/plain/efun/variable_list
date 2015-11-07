@@ -2,7 +2,6 @@ SYNOPSIS
 ========
    #include <functionlist.h>
    #include <lpctypes.h>
-
    mixed * variable_list(object ob, int flags)
 
 DESCRIPTION

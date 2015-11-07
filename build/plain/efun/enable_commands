@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   void enable_commands
+   void enable_commands()
 
 DESCRIPTION
 ===========

@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   string md5_crypt(string str, int seed)
+   string md5_crypt(string str, int seed   )
    string md5_crypt(string str, string seed)
 
 DESCRIPTION

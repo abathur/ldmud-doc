@@ -1,7 +1,7 @@
 SYNOPSIS
 ========
    void reset(int arg)
-   void reset(void)
+   void reset(void   )
 
 DESCRIPTION
 ===========

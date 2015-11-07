@@ -1,8 +1,9 @@
 SYNOPSIS (OPTIONAL)
 ===================
-   int pg_connect(string conn, string fun)
+   int pg_connect(string conn, string fun                                     )
    int pg_connect(string conn, string fun, string|object obj, mixed extra, ...)
-   int pg_connect(string conn, closure cl, mixed extra, ...)
+   int pg_connect(string conn, closure cl, mixed extra,       ...
+   )
 
 DESCRIPTION
 ===========

@@ -1,7 +1,7 @@
 SYNOPSIS
 ========
    mapping map_indices(mapping m, string func, string|object ob, ...)
-   mapping map_indices(mapping m, closure cl, ...)
+   mapping map_indices(mapping m, closure cl,  ...                  )
 
 DESCRIPTION
 ===========

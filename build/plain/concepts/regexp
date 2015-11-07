@@ -100,38 +100,38 @@ DESCRIPTION
    -------
       The package is selected with these option flags:
 
-      RE_PCRE
+      RE_PCRE()
 
-      RE_TRADITIONAL
+      RE_TRADITIONAL()
 
       These flags are also used for the H_REGEXP_PACKAGE(H) driver
       hook.
 
       Traditional regular expressions understand one option:
 
-         RE_EXCOMPATIBLE
+         RE_EXCOMPATIBLE()
 
       PCRE understands these options:
 
-      RE_ANCHORED
+      RE_ANCHORED()
 
-      RE_CASELESS
+      RE_CASELESS()
 
-      RE_DOLLAR_ENDONLY
+      RE_DOLLAR_ENDONLY()
 
-      RE_DOTALL
+      RE_DOTALL()
 
-      RE_EXTENDED
+      RE_EXTENDED()
 
-      RE_MULTILINE
+      RE_MULTILINE()
 
-      RE_UNGREEDY
+      RE_UNGREEDY()
 
-      RE_NOTBOL
+      RE_NOTBOL()
 
-      RE_NOTEOL
+      RE_NOTEOL()
 
-      RE_NOTEMPTY
+      RE_NOTEMPTY()
 
 HISTORY
 -------

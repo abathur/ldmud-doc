@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   string expand_define(string name)
+   string expand_define(string name                 )
    string expand_define(string name, string arg, ...)
 
 DESCRIPTION

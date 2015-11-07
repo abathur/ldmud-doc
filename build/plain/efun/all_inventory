@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   object * all_inventory
+   object * all_inventory(         )
    object * all_inventory(object ob)
 
 DESCRIPTION

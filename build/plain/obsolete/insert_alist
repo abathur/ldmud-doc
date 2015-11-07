@@ -1,7 +1,7 @@
 SYNOPSIS (OPTIONAL)
 ===================
    mixed * insert_alist(mixed key, mixed data..., mixed * alist)
-   int insert_alist(mixed key, mixed * keys)
+   int     insert_alist(mixed key, mixed * keys                )
 
 DESCRIPTION
 ===========

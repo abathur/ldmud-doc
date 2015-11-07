@@ -1,7 +1,7 @@
 SYNOPSIS
 ========
    int send_imp(string host, int port, string message)
-   int send_imp(string host, int port, int * message)
+   int send_imp(string host, int port, int * message )
 
 DESCRIPTION
 ===========

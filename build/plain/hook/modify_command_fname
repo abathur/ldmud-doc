@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <sys/driver_hooks.h>
-
    set_driver_hook(H_MODIFY_COMMAND_FNAME, value)
 
 DESCRIPTION

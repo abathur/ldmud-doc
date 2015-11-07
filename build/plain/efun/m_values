@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   mixed * m_values(mapping map)
+   mixed * m_values(mapping map           )
    mixed * m_values(mapping map, int index)
 
 DESCRIPTION

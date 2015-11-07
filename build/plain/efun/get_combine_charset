@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <comm.h>
-
    mixed get_combine_charset(int mode)
 
 DESCRIPTION

@@ -1,16 +1,16 @@
 SYNOPSIS
 ========
-   mixed * map(mixed *arg, string func, string|object ob, mixed extra...)
-   mixed * map(mixed *arg, closure cl, mixed extra...)
-   mixed * map(mixed *arg, mapping m [, int idx])
-   mixed * map(struct arg, string func, string|object ob, mixed extra...)
-   mixed * map(struct arg, closure cl, mixed extra...)
-   mixed * map(struct arg, mapping m [, int idx])
-   mapping map(mapping arg, string func, string|object ob, mixed extra...)
-   mapping map(mapping arg, closure cl, mixed extra...)
-   string map(string arg, string func, string|object ob, mixed extra...)
-   string map(string arg, closure cl, mixed extra...)
-   string map(string arg, mapping m [, int idx])
+   mixed   * map(mixed *arg,  string func, string|object ob, mixed extra...)
+   mixed   * map(mixed *arg,  closure cl,  mixed extra...                  )
+   mixed   * map(mixed *arg,  mapping m [, int idx]                        )
+   mixed   * map(struct arg,  string func, string|object ob, mixed extra...)
+   mixed   * map(struct arg,  closure cl,  mixed extra...                  )
+   mixed   * map(struct arg,  mapping m [, int idx]                        )
+   mapping   map(mapping arg, string func, string|object ob, mixed extra...)
+   mapping   map(mapping arg, closure cl,  mixed extra...                  )
+   string    map(string arg,  string func, string|object ob, mixed extra...)
+   string    map(string arg,  closure cl,  mixed extra...                  )
+   string    map(string arg,  mapping m [, int idx]                        )
 
 DESCRIPTION
 ===========

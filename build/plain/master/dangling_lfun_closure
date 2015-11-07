@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   void dangling_lfun_closure
+   void dangling_lfun_closure()
 
 DESCRIPTION
 ===========

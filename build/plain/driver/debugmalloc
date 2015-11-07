@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   debugmalloc
+   debugmalloc()
 
 DESCRIPTION
 ===========

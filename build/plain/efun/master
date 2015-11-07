@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   object master
+   object master(             )
    object master(int dont_load)
 
 DESCRIPTION

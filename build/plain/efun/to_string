@@ -1,7 +1,7 @@
 SYNOPSIS
 ========
-   string to_string(mixed)
-   (string)<value>
+   string to_string      (mixed)
+          (string)<value>(     )
 
 DESCRIPTION
 ===========

@@ -1,8 +1,7 @@
 SYNOPSIS (OPTIONAL)
 ===================
    #include <pgsql.h>
-
-   int pg_query(string query)
+   int pg_query(string query           )
    int pg_query(string query, int flags)
 
 DESCRIPTION

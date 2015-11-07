@@ -1,9 +1,9 @@
 SYNOPSIS
 ========
-   string strftime
-   string strftime(string fmt)
-   string strftime(int clock)
-   string strftime(string fmt, int clock)
+   string strftime(                                    )
+   string strftime(string fmt                          )
+   string strftime(int clock                           )
+   string strftime(string fmt, int clock               )
    string strftime(string fmt, int clock, int localized)
 
 DESCRIPTION

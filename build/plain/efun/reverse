@@ -1,9 +1,9 @@
 SYNOPSIS
 ========
-   int reverse(int arg)
-   string  reverse(string arg)
-   mixed * reverse(mixed * arg)
-   mixed * reverse(mixed * & arg)
+   int      reverse(int arg      )
+   string   reverse(string arg   )
+   mixed  * reverse(mixed * arg  )
+   mixed  * reverse(mixed * & arg)
 
 DESCRIPTION
 ===========

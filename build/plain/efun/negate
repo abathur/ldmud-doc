@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   int negate(int)
+   int   negate(int  )
    float negate(float)
 
 DESCRIPTION

@@ -1,8 +1,7 @@
 SYNOPSIS
 ========
    #include <time.h>
-
-   int * gmtime(int clock)
+   int * gmtime(int clock  )
    int * gmtime(int *uclock)
 
 DESCRIPTION

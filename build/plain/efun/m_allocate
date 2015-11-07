@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   mapping m_allocate(int size)
+   mapping m_allocate(int size           )
    mapping m_allocate(int size, int width)
 
 DESCRIPTION

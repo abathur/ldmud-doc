@@ -1,7 +1,7 @@
 SYNOPSIS
 ========
    int rmember(mixed *array, mixed elem [, int start])
-   int rmember(string s, int elem [, int start])
+   int rmember(string s,     int elem [,   int start])
 
 DESCRIPTION
 ===========

@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <time.h>
-
    int mktime(int *ts)
 
 DESCRIPTION

@@ -1,10 +1,10 @@
 SYNOPSIS
 ========
-   int to_int(string)
-   int to_int(float)
-   int to_int(int)
-   int to_int(closure)
-   (int)<value>
+   int to_int      (string )
+   int to_int      (float  )
+   int to_int      (int    )
+   int to_int      (closure)
+       (int)<value>(       )
 
 DESCRIPTION
 ===========

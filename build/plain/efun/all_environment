@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   object * all_environment
+   object * all_environment(        )
    object * all_environment(object o)
 
 DESCRIPTION

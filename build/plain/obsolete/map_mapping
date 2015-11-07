@@ -1,7 +1,7 @@
 SYNOPSIS
 ========
    mapping map_mapping(mapping m, string func, string|object ob, ...)
-   mapping map_mapping(mapping m, closure cl, ...)
+   mapping map_mapping(mapping m, closure cl,  ...                  )
 
 DESCRIPTION
 ===========

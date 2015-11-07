@@ -1,6 +1,6 @@
 SYNOPSIS (OPTIONAL)
 ===================
-   void sl_close
+   void sl_close()
 
 DESCRIPTION
 ===========

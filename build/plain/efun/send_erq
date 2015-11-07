@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <erq.h>
-
    int send_erq(int request, string|int * data, closure callback)
 
 DESCRIPTION

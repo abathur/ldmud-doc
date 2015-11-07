@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   object environment(void)
+   object environment(void      )
    object environment(object obj)
    object environment(string obj)
 

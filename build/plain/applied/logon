@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   int logon(void)
+   int logon(void    )
    int logon(int flag)
 
 DESCRIPTION

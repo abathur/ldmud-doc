@@ -1,9 +1,9 @@
 SYNOPSIS
 ========
-   float to_float(int)
-   float to_float(string)
-   float to_float(float)
-   (float)<value>
+   float to_float      (int   )
+   float to_float      (string)
+   float to_float      (float )
+         (float)<value>(      )
 
 DESCRIPTION
 ===========

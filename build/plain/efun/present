@@ -1,11 +1,11 @@
 SYNOPSIS
 ========
-   object present(string str)
-   object present(string str, int n)
-   object present(string str, object env)
-   object present(string str, int n, object env)
-   object present(object ob)
-   object present(object ob, object env)
+   object present(string str                      )
+   object present(string str, int n               )
+   object present(string str, object env          )
+   object present(string str, int n,    object env)
+   object present(object ob                       )
+   object present(object ob,  object env          )
 
 DESCRIPTION
 ===========

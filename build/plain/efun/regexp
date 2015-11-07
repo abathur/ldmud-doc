@@ -1,8 +1,7 @@
 SYNOPSIS
 ========
    #include <regexp.h>
-
-   string * regexp(string *list, string pattern)
+   string * regexp(string *list, string pattern         )
    string * regexp(string *list, string pattern, int opt)
 
 DESCRIPTION

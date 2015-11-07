@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <comm.h>
-
    mixed get_connection_charset(int mode)
 
 DESCRIPTION

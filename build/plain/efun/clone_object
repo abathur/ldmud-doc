@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   object clone_object(string name)
+   object clone_object(string name    )
    object clone_object(object template)
 
 DESCRIPTION

@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   object * caller_stack
+   object * caller_stack(                   )
    object * caller_stack(int add_interactive)
 
 DESCRIPTION

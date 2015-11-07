@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <comm.h>
-
    int net_connect(string host, int port)
 
 DESCRIPTION

@@ -1,6 +1,6 @@
 SYNOPSIS (PRELIMINARY)
 ======================
-   void tls_refresh_certs
+   void tls_refresh_certs()
 
 DESCRIPTION
 ===========

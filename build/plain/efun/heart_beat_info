@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   object * heart_beat_info
+   object * heart_beat_info()
 
 DESCRIPTION
 ===========

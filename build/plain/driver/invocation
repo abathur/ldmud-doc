@@ -31,289 +31,233 @@ DESCRIPTION
    available if a certain compile-time option was enabled (typically in the
    source file config.h). The following options are recognized:
 
-   -P, --inherit <fd-number>
-      Inherit filedescriptor <fd-number> from the parent process as socket
-      tolisten for connections. Only available if compiled with MAXNUMPORTS.
+   ,  <fd-number>-P--inherit() Inherit filedescriptor <fd-number> from the
+   parent process as socket to listen for connections. Only available if
+   compiled with MAXNUMPORTS.
 
-   -u, --udp <portnumber>
-      Specify the <portnumber> for the UDP port, overriding the compiled-
-      indefault. Only available if compiled with CATCH_UDP_PORT.
+   ,  <portnumber>-u--udp() Specify the <portnumber> for the UDP port,
+   overriding the compiled-in default. Only available if compiled with
+   CATCH_UDP_PORT.
 
-   -D, --define <macro>[=<text>]
-      Add <macro> (optionally to be expanded to <text>) to the list
-      ofpredefined macros known by the LPC compiler.
+   ,  <macro>[=<text>]-D--define() Add <macro> (optionally to be expanded to
+   <text>) to the list of predefined macros known by the LPC compiler.
 
-   -E, --eval-cost <ticks>
-      Set the number of <ticks> available for one evaluation thread. If
-      0,execution is unlimited.
+   ,  <ticks>-E--eval-cost() Set the number of <ticks> available for one
+   evaluation thread. If 0, execution is unlimited.
 
-   -M, --master <filename>
-      Use <filename> for the master object.
+   ,  <filename>-M--master() Use <filename> for the master object.
 
-   -m, --mudlib <pathname>
-      Use <pathname> as the top directory of the mudlib.
+   ,  <pathname>-m--mudlib() Use <pathname> as the top directory of the
+   mudlib.
 
-   --debug-file <filename>
-      Log all debug output in <filename> instead of <mudlib>/<host>.debug.log.
+    <filename>--debug-file() Log all debug output in <filename> instead of
+   <mudlib>/<host>.debug.log .
 
-   --hostname <name>
-      Use <name> as hostname instead of what the system says.
+    <name>--hostname() Use <name> as hostname instead of what the system says.
 
-   --hostaddr <addr>
-      Use <addr> as address of this machine, instead of what the system
-      says.In particular this address will be used to open the driver ports.
+    <addr>--hostaddr() Use <addr> as address of this machine, instead of what
+   the system says. In particular this address will be used to open the driver
+   ports.
 
-   --no-compat
+   --no-compat()
 
-   --compat
-      Select the mode (plain or compat) of the driver. This choice does
-      notaffect the default name of the master object.
+   --compat() Select the mode (plain or compat) of the driver. This choice
+   does not affect the default name of the master object.
 
-   -d, --debug
-      Generate debug output; repeat the argument for even more output:
-         >= 1: log resets, clean ups, swaps, reception of urgend data,
-               telnet negotiation states.
+   , -d--debug() Generate debug output; repeat the argument for even more
+   output:>= 1: log resets, clean ups, swaps, reception of urgend data,telnet
+   negotiation states.check_a_lot_of_refcounts() on startup when swapping
+   ofvariables is disabled.>= 2: log all add_message()s, name lookup failures,
+   new players. >= 3: progress of garbage collection >= 4: even more junk from
+   garbage collection
 
-            check_a_lot_of_refcounts() on startup when swapping of
-               variables is disabled.
+   , -c--list-compiles() List the name of every compiled file on stderr.
 
-         >= 2: log all add_message()s, name lookup failures, new players.>=3:
-         progress of garbage collection >= 4: even more junk
-         fromgarbagecollection
+   , -e--no-preload() Pass a non-zero argument (the number of occurences of
+   this option) to master->preload(), which usually inhibits all preloads of
+   castles and other objects.
 
-   -c, --list-compiles
-      List the name of every compiled file on stderr.
+    <filename>--erq()
 
-   -e, --no-preload
-      Pass a non-zero argument (the number of occurences of this option)
-      tomaster->preload(), which usually inhibits all preloads of castles
-      andother objects.
+    "<filename> <erq args>"--erq() Use <filename> instead of 'erq' as the
+   basename of the ERQ executable. If the name starts with a '/', it is take
+   to be an absolute pathname, otherwise it is interpreted relative to
+   <bindir>. If not specified, 'erq' is used as the executable name.By
+   enclosing the argument value in quotes, it is possible to pass arguments
+   (e.g. --execdir) to the erq. These arguments however must not contain
+   embedded spaces.
 
-   --erq <filename>
+   , -N--no-erq() Don't start the erq demon (if it would be started at all).
 
-   --erq "<filename> <erq args>"
-      Use <filename> instead of 'erq' as the basename of the ERQ executable.
-      If the name starts with a '/', it is take to be an absolute pathname,
-      otherwise it is interpreted relative to <bindir>. If not specified,
-      'erq' is used as the executable name.
+    <seconds>--alarm-time() Set the granularity of call_out() and heartbeat
+   timing. Minimum value is 1.
 
-      By enclosing the argument value in quotes, it is possible to
-      passarguments (e.g. --execdir) to the erq. These arguments however must
-      notcontain embedded spaces.
+    <seconds>--heart-interval() Set the interval between two heartbeats.
+   Minimum value is 1.
 
-   -N, --no-erq
-      Don't start the erq demon (if it would be started at all).
+   --sync-heart() All heartbeats occur at the same time (modulo granularity).
 
-   --alarm-time <seconds>
-      Set the granularity of call_out() and heartbeat timing. Minimum value
-      is1.
+   --async-heart() Heartbeats occur when they are due (modulo granularity).
 
-   --heart-interval <seconds>
-      Set the interval between two heartbeats. Minimum value is 1.
+   , -t--no-heart() Disable heartbeats and call_outs.
 
-   --sync-heart
-      All heartbeats occur at the same time (modulo granularity).
+   ,  <word>-f--funcall() The lfun master->flag() is called with <word> as
+   argument before the gamedriver accepts netword connections.
 
-   --async-heart
-      Heartbeats occur when they are due (modulo granularity).
+    pcre | traditional--regexp() Select the default regexp package.
 
-   -t, --no-heart
-      Disable heartbeats and call_outs.
+    <size>--max-array() The maximum number of elements an array can hold. Set
+   to 0, arrays of any size are allowed.
 
-   -f, --funcall <word>
-      The lfun master->flag() is called with <word> as argument before
-      thegamedriver accepts netword connections.
+    <size>--max-mapping() The maximum number of elements a mapping can hold.
+   Set to 0, mappings of any size are allowed.
 
-   --regexp pcre | traditional
-      Select the default regexp package.
+    <size>--max-mapping-keys() The maximum number of entries a mapping can
+   hold. Set to 0, mappings of any size are allowed.
 
-   --max-array <size>
-      The maximum number of elements an array can hold. Set to 0, arrays ofany
-      size are allowed.
+    <size>--max-callouts() The maximum number of callouts at one time. Set to
+   0, any number is allowed.
 
-   --max-mapping <size>
-      The maximum number of elements a mapping can hold. Set to 0, mappings
-      ofany size are allowed.
+    <size>--max-bytes() The maximum number of bytes one
+   read_bytes()/write_bytes() call can handle. Set to 0, reads and writes of
+   any size are allowed.
 
-   --max-mapping-keys <size>
-      The maximum number of entries a mapping can hold. Set to 0, mappings
-      ofany size are allowed.
+    <size>--max-file() The maximum number of bytes one
+   read_file()/write_file() call can handle. Set to 0, reads and writes of any
+   size are allowed.
 
-   --max-callouts <size>
-      The maximum number of callouts at one time. Set to 0, any number
-      isallowed.
+    <size>n"--max-thread-pending() The maximum number of bytes to be kept
+   pending by the socket write thread. Set to 0, an unlimited amount of data
+   can be kept pending.This option is ignored if pthreads are not used.
 
-   --max-bytes <size>
-      The maximum number of bytes one read_bytes()/write_bytes() call
-      canhandle. Set to 0, reads and writes of any size are allowed.
+    <time>--cleanup-time() The idle time in seconds for an object before the
+   driver tries to clean it up. It should be substantially longer than the
+   reset time. A time <= 0 disables the cleanup mechanism.
 
-   --max-file <size>
-      The maximum number of bytes one read_file()/write_file() call canhandle.
-      Set to 0, reads and writes of any size are allowed.
+    <time>--reset-time() The time in seconds before an object is reset. A time
+   <= 0 disables the reset mechanism.
 
-   --max-thread-pending <size>n"
-      The maximum number of bytes to be kept pending by the socket write
-      thread. Set to 0, an unlimited amount of data can be kept pending.
+    <time>,  <time>-s--swap-time()
 
-      This option is ignored if pthreads are not used.
+    v<time>,  <time>-s--swap-variables() Time in seconds before an object (or
+   its variables) are swapped out. A time less or equal 0 disables swapping.
 
-   --cleanup-time <time>
-      The idle time in seconds for an object before the driver tries to
-      cleanit up. It should be substantially longer than the reset time. A
-      time <=0 disables the cleanup mechanism.
+    f<name>,  <name>-s--swap-file() Swap into file '<name>' instead of
+   '<mudlib>/LP_SWAP.<host>'.
 
-   --reset-time <time>
-      The time in seconds before an object is reset. A time <= 0 disables
-      thereset mechanism.
+    c, -s--swap-compact() Reuse free space in the swap file immediately.
+   Giving this option results in smaller, but also more fragmented swapfiles,
+   and the swap performance may degrade.
 
-   -s <time>, --swap-time <time>
+    <size>--hard-malloc-limit() Restrict total memory allocation to <size>
+   bytes. A <size> of 0 or 'unlimited' removes any restriction.
 
-   -s v<time>, --swap-variables <time>
-      Time in seconds before an object (or its variables) are swapped out.
-      Atime less or equal 0 disables swapping.
+    <size>--soft-malloc-limit() This value gives a soft limit of the allocated
+   memory (kind of low watermark). If this value is exceeded, the driver will
+   call low_memory() in the master to inform the mudlib about the
+   (potentially) developing low memory situation. A <size> of 0 or 'unlimited'
+   removes this threshold.
 
-   -s f<name>, --swap-file <name>
-      Swap into file '<name>' instead of '<mudlib>/LP_SWAP.<host>'.
+    <size>--min-malloc()
 
-   -s c, --swap-compact
-      Reuse free space in the swap file immediately. Giving this optionresults
-      in smaller, but also more fragmented swapfiles, and the swapperformance
-      may degrade.
+    <size>--min-small-malloc() Determine the sizes for the explicit initial
+   large resp. small chunk allocation. A size of 0 disables the explicit
+   initial allocations.
 
-   --hard-malloc-limit <size>
-      Restrict total memory allocation to <size> bytes. A <size> of 0
-      or'unlimited' removes any restriction.
+    u<size>,  <size>-r--reserve-user()
 
-   --soft-malloc-limit <size>
-      This value gives a soft limit of the allocated memory (kind of
-      lowwatermark). If this value is exceeded, the driver will call
-      low_memory()in the master to inform the mudlib about the (potentially)
-      developinglow memory situation. A <size> of 0 or 'unlimited' removes
-      thisthreshold.
+    m<size>,  <size>-r--reserve-master()
 
-   --min-malloc <size>
+    s<size>,  <size>-r--reserve-system() Reserve <size> amount of memory for
+   user/master/system allocations to be held until main memory runs out.
 
-   --min-small-malloc <size>
-      Determine the sizes for the explicit initial large resp. small
-      chunkallocation. A size of 0 disables the explicit initial allocations.
+   --filename-spaces()
 
-   -r u<size>, --reserve-user <size>
+   --no-filename-spaces() Allow/disallow the use of spaces in filenames.
 
-   -r m<size>, --reserve-master <size>
+   --strict-euids()
 
-   -r s<size>, --reserve-system <size>
-      Reserve <size> amount of memory for user/master/system allocations to
-      beheld until main memory runs out.
+   --no-strict-euids() Enable/disable the enforced use of euids.
 
-   --filename-spaces
+   --share-variables()
 
-   --no-filename-spaces
-      Allow/disallow the use of spaces in filenames.
 
-   --strict-euids
+   --init-variables() Select how clones initialize their variables:by sharing
+   the current values of their blueprintby initializing them afresh (using
+   __INIT()).
 
-   --no-strict-euids
-      Enable/disable the enforced use of euids.
+    <filename>--pidfile() Write the pid of the driver process into <filename>.
 
-   --share-variables
+    <pathname>--tls-key() Use <pathname> as the x509 keyfile, default is
+   'key.pem'. If relative, <pathname> is interpreted relative to <mudlib>.
 
-   --init-variables
-      Select how clones initialize their variables:
-         - by sharing the current values of their blueprint
-         - by initializing them afresh (using __INIT()).
+    <pathname>--tls-cert() Use <pathname> as the x509 certfile, default is
+   'cert.pem'. If relative, <pathname> is interpreted relative to <mudlib>.
 
-   --pidfile <filename>
-      Write the pid of the driver process into <filename>.
+    <pathname>--tls-crlfile() Use <pathname> as the filename holding your
+   certificate revocation lists. If relative, <pathname> is interpreted
+   relative to <mudlib>.
 
-   --tls-key <pathname>
-      Use <pathname> as the x509 keyfile, default is 'key.pem'. If
-      relative,<pathname> is interpreted relative to <mudlib>.
+    <pathname>--tls-crldirectory() Use <pathname> as the directory where your
+   certificate revocation lists reside. If relative, <pathname> is interpreted
+   relative to <mudlib>.
 
-   --tls-cert <pathname>
-      Use <pathname> as the x509 certfile, default is 'cert.pem'. If
-      relative,<pathname> is interpreted relative to <mudlib>.
+    <pathname>--tls-trustfile() Use <pathname> as the filename holding your
+   trusted PEM certificates. If relative, <pathname> is interpreted relative
+   to <mudlib>.
 
-   --tls-crlfile <pathname>
-      Use <pathname> as the filename holding your certificate revocationlists.
-      If relative, <pathname> is interpreted relative to <mudlib>.
+    <pathname>--tls-trustdirectory() Use <pathname> as the directory where
+   your trusted PEM certificates reside, default is '/etc/ssl/certs'. If
+   relative, <pathname> is interpreted relative to <mudlib>.
 
-   --tls-crldirectory <pathname>
-      Use <pathname> as the directory where your certificate revocation
-      listsreside. If relative, <pathname> is interpreted relative to
-      <mudlib>.
+    <filename>--wizlist-file()
 
-   --tls-trustfile <pathname>
-      Use <pathname> as the filename holding your trusted PEM certificates.
-      Ifrelative, <pathname> is interpreted relative to <mudlib>.
+   --no-wizlist-file() Read and save the wizlist in the named file (always
+   interpreted relative the mudlib); resp. don't read or save the wizlist.
 
-   --tls-trustdirectory <pathname>
-      Use <pathname> as the directory where your trusted PEM
-      certificatesreside, default is '/etc/ssl/certs'. If relative, <pathname>
-      isinterpreted relative to <mudlib>.
+    <filename>--gcollect-outfd() Garbage collector output (like a log of all
+   reclaimed memory blocks) is sent to <filename> (or inherited fd <num>)
+   instead of stderr. Only available if compiled with MALLOC_smalloc.
 
-   --wizlist-file <filename>
+   , --y--yydebug() Enable debugging of the LPC compiler. Only available if
+   compiled with YYDEBUG.
 
-   --no-wizlist-file
-      Read and save the wizlist in the named file (always interpreted
-      relativethe mudlib); resp. don't read or save the wizlist.
+    <filename>--randomdevice() Chooses the source of the seed for the random
+   number generator. Default is /dev/urandom, Fall-back if <filename> is not
+   readable is the system clock. If you want to seed the PRNG with a specific
+   seed, you can use a filename with the seed and give it here instead of
+   using --random-seed. (Note: the last one of --randominit and --random-seed
+   wins!)
 
-   --gcollect-outfd <filename>
-      Garbage collector output (like a log of all reclaimed memory blocks)
-      issent to <filename> (or inherited fd <num>) instead of stderr.
-      Onlyavailable if compiled with MALLOC_smalloc.
+    <num>--random-seed() Seed value for the random number generator. If not
+   given, the driver chooses a seed value on its own. This option is for
+   debugging.
 
-   --y, --yydebug
-      Enable debugging of the LPC compiler. Only available if compiled
-      withYYDEBUG.
+    <lvl>--check-state() Perform a regular simplistic check of the virtual
+   machine according to <lvl>:= 0: no check = 1: once per backend loop = 2: at
+   various points in the backend loopOnly available if compiled with DEBUG.
 
-   --randomdevice <filename>
-      Chooses the source of the seed for the random number generator.
-      Defaultis /dev/urandom, Fall-back if <filename> is not readable is the
-      systemclock. If you want to seed the PRNG with a specific seed, you can
-      use afilename with the seed and give it here instead of using --random-
-      seed.(Note: the last one of --randominit and --random-seed wins!)
+   --check-refcounts() Every backend cycle, all refcounts in the system are
+   checked. SLOW! Only available if compiled with DEBUG.
 
-   --random-seed <num>
-      Seed value for the random number generator. If not given, the
-      driverchooses a seed value on its own. This option is for debugging.
+    <num>--gobble-descriptors() <num> (more) filedescriptors are used up.
+   You'll know when you need it. Only available if compiled with DEBUG.
 
-   --check-state <lvl>
-      Perform a regular simplistic check of the virtual machine according to
-      <lvl>:
+   --check-strings() Every backend cycle, all shared strings in the system are
+   checked. SLOW! Only available if compiled with DEBUG and CHECK_STRINGS.
 
-         = 0: no check = 1: once per backend loop = 2: at various points
-         inthe backend loop
+   , -V--version() Print the version of the driver and exit.
 
-      Only available if compiled with DEBUG.
+   --options() Print the version and compilation options of the driver and
+   exit.
 
-   --check-refcounts
-      Every backend cycle, all refcounts in the system are checked. SLOW!
-      Onlyavailable if compiled with DEBUG.
+   , , -h-?--help() Display a command help and exit.
 
-   --gobble-descriptors <num>
-      <num> (more) filedescriptors are used up. You'll know when you need
-      it.Only available if compiled with DEBUG.
+   --longhelp() Display a long command help and exit.
 
-   --check-strings
-      Every backend cycle, all shared strings in the system are checked.
-      SLOW!Only available if compiled with DEBUG and CHECK_STRINGS.
-
-   -V, --version
-      Print the version of the driver and exit.
-
-   --options
-      Print the version and compilation options of the driver and exit.
-
-   -h, -?, --help
-      Display a command help and exit.
-
-   --longhelp
-      Display a long command help and exit.
-
-   --args <filename>
-      The driver reads and parses the given file and treats its contents as
-      ifgiven on the commandline right where the --args option occured. The
-      fileitself can again contain --args options.
+    <filename>--args() The driver reads and parses the given file and treats
+   its contents as if given on the commandline right where the --args option
+   occured. The file itself can again contain --args options.
 
    ARGUMENT PARSER
    ---------------

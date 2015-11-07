@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   int remove_action(int|string verb)
+   int remove_action(int|string verb           )
    int remove_action(int|string verb, object ob)
 
 DESCRIPTION

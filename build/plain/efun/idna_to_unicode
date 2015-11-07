@@ -1,7 +1,6 @@
 SYNOPSIS (OPTIONAL)
 ===================
    #include <idn.h>
-
    string idna_to_unicode(string name)
 
 DESCRIPTION

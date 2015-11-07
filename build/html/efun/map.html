@@ -39,32 +39,89 @@
   <div class="section" id="map">
 <div class="section" id="SYNOPSIS">
 <h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<dl class="efun">
-<dt id="lpc.map">
-mixed * <code class="descname">map</code><span class="sig-paren">(</span>mixed<em>&nbsp;*arg</em>, string<em>&nbsp;func</em>, string|object<em>&nbsp;ob</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.map" title="Permalink to this definition">¶</a></dt>
-<dt>
-mixed * <code class="descname">map</code><span class="sig-paren">(</span>mixed<em>&nbsp;*arg</em>, closure<em>&nbsp;cl</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span></dt>
-<dt>
-mixed * <code class="descname">map</code><span class="sig-paren">(</span>mixed<em>&nbsp;*arg</em>, mapping m<em>&nbsp;[</em>, int<em>&nbsp;idx]</em><span class="sig-paren">)</span></dt>
-<dt>
-mixed * <code class="descname">map</code><span class="sig-paren">(</span>struct<em>&nbsp;arg</em>, string<em>&nbsp;func</em>, string|object<em>&nbsp;ob</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span></dt>
-<dt>
-mixed * <code class="descname">map</code><span class="sig-paren">(</span>struct<em>&nbsp;arg</em>, closure<em>&nbsp;cl</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span></dt>
-<dt>
-mixed * <code class="descname">map</code><span class="sig-paren">(</span>struct<em>&nbsp;arg</em>, mapping m<em>&nbsp;[</em>, int<em>&nbsp;idx]</em><span class="sig-paren">)</span></dt>
-<dt>
-mapping <code class="descname">map</code><span class="sig-paren">(</span>mapping<em>&nbsp;arg</em>, string<em>&nbsp;func</em>, string|object<em>&nbsp;ob</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span></dt>
-<dt>
-mapping <code class="descname">map</code><span class="sig-paren">(</span>mapping<em>&nbsp;arg</em>, closure<em>&nbsp;cl</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span></dt>
-<dt>
-string <code class="descname">map</code><span class="sig-paren">(</span>string<em>&nbsp;arg</em>, string<em>&nbsp;func</em>, string|object<em>&nbsp;ob</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span></dt>
-<dt>
-string <code class="descname">map</code><span class="sig-paren">(</span>string<em>&nbsp;arg</em>, closure<em>&nbsp;cl</em>, mixed<em>&nbsp;extra...</em><span class="sig-paren">)</span></dt>
-<dt>
-string <code class="descname">map</code><span class="sig-paren">(</span>string<em>&nbsp;arg</em>, mapping m<em>&nbsp;[</em>, int<em>&nbsp;idx]</em><span class="sig-paren">)</span></dt>
-</dl>
-
-</div>
+<table class="efun" style="border-spacing:0;">
+<tr id="lpc.map">
+<td>
+mixed * </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
+mixed<em>&nbsp;*arg</em>, </td><td>
+string<em>&nbsp;func</em>, </td><td>
+string|object<em>&nbsp;ob</em>, </td><td>
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.map" title="Permalink to this definition">¶</a></tr>
+<tr>
+<td>
+mixed * </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
+mixed<em>&nbsp;*arg</em>, </td><td>
+closure<em>&nbsp;cl</em>, </td><td>
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<tr>
+<td>
+mixed * </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
+mixed<em>&nbsp;*arg</em>, </td><td>
+mapping m<em>&nbsp;[</em>, </td><td>
+int<em>&nbsp;idx]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<tr>
+<td>
+mixed * </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
+struct<em>&nbsp;arg</em>, </td><td>
+string<em>&nbsp;func</em>, </td><td>
+string|object<em>&nbsp;ob</em>, </td><td>
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<tr>
+<td>
+mixed * </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
+struct<em>&nbsp;arg</em>, </td><td>
+closure<em>&nbsp;cl</em>, </td><td>
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<tr>
+<td>
+mixed * </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
+struct<em>&nbsp;arg</em>, </td><td>
+mapping m<em>&nbsp;[</em>, </td><td>
+int<em>&nbsp;idx]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<tr>
+<td>
+mapping </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
+mapping<em>&nbsp;arg</em>, </td><td>
+string<em>&nbsp;func</em>, </td><td>
+string|object<em>&nbsp;ob</em>, </td><td>
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<tr>
+<td>
+mapping </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
+mapping<em>&nbsp;arg</em>, </td><td>
+closure<em>&nbsp;cl</em>, </td><td>
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<tr>
+<td>
+string </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
+string<em>&nbsp;arg</em>, </td><td>
+string<em>&nbsp;func</em>, </td><td>
+string|object<em>&nbsp;ob</em>, </td><td>
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<tr>
+<td>
+string </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
+string<em>&nbsp;arg</em>, </td><td>
+closure<em>&nbsp;cl</em>, </td><td>
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<tr>
+<td>
+string </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
+string<em>&nbsp;arg</em>, </td><td>
+mapping m<em>&nbsp;[</em>, </td><td>
+int<em>&nbsp;idx]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+</table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
 </div>

@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   void external_master_reload
+   void external_master_reload()
 
 DESCRIPTION
 ===========

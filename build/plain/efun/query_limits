@@ -1,8 +1,7 @@
 SYNOPSIS
 ========
    #include <rtlimits.h>
-
-   int * query_limits
+   int * query_limits(           )
    int * query_limits(int default)
 
 DESCRIPTION

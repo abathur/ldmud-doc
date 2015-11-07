@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   object previous_object
+   object previous_object(     )
    object previous_object(int i)
 
 DESCRIPTION

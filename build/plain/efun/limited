@@ -1,11 +1,10 @@
 SYNOPSIS
 ========
    #include <rtlimits.h>
-
-   mixed limited(closure fun)
-   mixed limited(closure fun, int tag, int value, ...)
-   mixed limited(closure fun, int *limits)
-   mixed limited(closure fun, int *limits, mixed *args)
+   mixed limited(closure fun                             )
+   mixed limited(closure fun, int tag,     int value, ...)
+   mixed limited(closure fun, int *limits                )
+   mixed limited(closure fun, int *limits, mixed *args   )
 
 DESCRIPTION
 ===========

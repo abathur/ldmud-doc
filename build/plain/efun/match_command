@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <commands.h>
-
    mixed * match_command(string command, object origin)
 
 DESCRIPTION

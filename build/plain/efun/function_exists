@@ -1,10 +1,9 @@
 SYNOPSIS
 ========
    #include <functionlist.h>
-
-   mixed function_exists(string str)
-   mixed function_exists(string str, int flags)
-   mixed function_exists(string str, object ob)
+   mixed function_exists(string str                      )
+   mixed function_exists(string str, int flags           )
+   mixed function_exists(string str, object ob           )
    mixed function_exists(string str, object ob, int flags)
 
 DESCRIPTION

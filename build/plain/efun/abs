@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   int abs(int arg)
+   int   abs(int arg  )
    float abs(float arg)
 
 DESCRIPTION

@@ -1,10 +1,9 @@
 SYNOPSIS
 ========
    #include <functionlist.h>
-
-   string variable_exists(string str)
-   string variable_exists(string str, int flags)
-   string variable_exists(string str, object ob)
+   string variable_exists(string str                      )
+   string variable_exists(string str, int flags           )
+   string variable_exists(string str, object ob           )
    string variable_exists(string str, object ob, int flags)
 
 DESCRIPTION

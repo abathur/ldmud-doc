@@ -4,9 +4,8 @@ SYNOPSIS
 SYNOPSIS
 ========
    #include <debug_info.h>
-
-   mixed debug_info(int flag)
-   mixed debug_info(int flag, mixed arg)
+   mixed debug_info(int flag                        )
+   mixed debug_info(int flag, mixed arg             )
    mixed debug_info(int flag, mixed arg2, mixed arg3)
 
 DESCRIPTION

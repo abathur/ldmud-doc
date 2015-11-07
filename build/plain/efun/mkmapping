@@ -1,7 +1,7 @@
 SYNOPSIS
 ========
    mapping mkmapping(mixed *arr1, mixed *arr2, ...)
-   mapping mkmapping(struct st)
+   mapping mkmapping(struct st                    )
 
 DESCRIPTION
 ===========

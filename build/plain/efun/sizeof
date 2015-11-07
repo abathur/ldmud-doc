@@ -1,8 +1,8 @@
 SYNOPSIS
 ========
-   int sizeof(mixed * val)
-   int sizeof(string  val)
-   int sizeof(mapping val)
+   int sizeof(mixed * val   )
+   int sizeof(string  val   )
+   int sizeof(mapping val   )
    int sizeof(struct xxx val)
 
 DESCRIPTION

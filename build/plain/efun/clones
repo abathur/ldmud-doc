@@ -1,7 +1,7 @@
 SYNOPSIS
 ========
-   object * clones
-   object * clones(int what)
+   object * clones(                              )
+   object * clones(int what                      )
    object * clones(string|object obj [, int what])
 
 DESCRIPTION

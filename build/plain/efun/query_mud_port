@@ -1,8 +1,8 @@
 SYNOPSIS
 ========
-   int query_mud_port(void)
+   int query_mud_port(void       )
    int query_mud_port(object user)
-   int query_mud_port(int num)
+   int query_mud_port(int num    )
 
 DESCRIPTION
 ===========

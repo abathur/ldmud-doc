@@ -1,9 +1,8 @@
 SYNOPSIS
 ========
    #include <rtlimits.h>
-
-   void set_limits(int tag, int value, ...)
-   void set_limits(int *limits)
+   void set_limits(int tag,   int value, ...)
+   void set_limits(int *limits              )
 
 DESCRIPTION
 ===========

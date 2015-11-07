@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   int remove_call_out(string fun)
+   int remove_call_out(string fun )
    int remove_call_out(closure fun)
 
 DESCRIPTION

@@ -1,6 +1,6 @@
 SYNOPSIS (PRELIMINARY)
 ======================
-   mixed * tls_check_certificate(object obj)
+   mixed * tls_check_certificate(object obj           )
    mixed * tls_check_certificate(object obj, int extra)
 
 DESCRIPTION

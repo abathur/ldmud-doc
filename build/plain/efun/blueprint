@@ -1,6 +1,6 @@
 SYNOPSIS (PRELIMINARY)
 ======================
-   object blueprint
+   object blueprint(                )
    object blueprint(string|object ob)
 
 DESCRIPTION

@@ -1,10 +1,9 @@
 SYNOPSIS
 ========
    #include <strings.h>
-
-   string trim(string s)
-   string trim(string s, int where)
-   string trim(string s, int where, int ch)
+   string trim(string s                      )
+   string trim(string s, int where           )
+   string trim(string s, int where, int ch   )
    string trim(string s, int where, string ch)
 
 DESCRIPTION

@@ -1,10 +1,10 @@
 SYNOPSIS
 ========
-   unknown call_other(object ob, string fun, mixed arg, ...)
-   unknown call_other(object *ob, string fun, mixed arg, ...)
-   ob->fun(mixed arg, ...)
-   ob->"fun" (mixed arg, ...)
-   ob->(fun)(mixed arg, ...)
+   unknown  call_other                (object ob,  string fun, mixed arg, ...)
+   unknown  call_other                (object *ob, string fun, mixed arg, ...)
+   ob     ->fun                       (mixed arg,  ...                       )
+            ob->"fun" (mixed arg, ...)(                                      )
+   ob     ->(fun)                     (mixed arg,  ...                       )
 
 DESCRIPTION
 ===========

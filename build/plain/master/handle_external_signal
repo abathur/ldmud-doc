@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <signals.h>
-
    int handle_external_signal(int signal)
 
 DESCRIPTION

@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   int interactive
+   int interactive(         )
    int interactive(object ob)
 
 DESCRIPTION

@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <configuration.h>
-
    void configure_interactive(object ob, int what, mixed data)
 
 DESCRIPTION

@@ -1,7 +1,7 @@
 SYNOPSIS
 ========
-   mixed unique_array(object *obarr, string|closure fun)
-   mixed unique_array(object *obarr, string|closure fun, mixed skip)
+   mixed unique_array(object *obarr, string|closure fun                            )
+   mixed unique_array(object *obarr, string|closure fun, mixed skip                )
    mixed unique_array(object *obarr, string|closure fun, mixed extra..., mixed
    skip)
 

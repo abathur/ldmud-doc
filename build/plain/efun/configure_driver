@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <configuration.h>
-
    void configure_driver(int what, mixed data)
 
 DESCRIPTION

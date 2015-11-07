@@ -1,6 +1,6 @@
 SYNOPSIS (OPTIONAL)
 ===================
-   int end_mccp_compress
+   int end_mccp_compress()
 
 DESCRIPTION
 ===========

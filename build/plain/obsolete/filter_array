@@ -1,8 +1,9 @@
 SYNOPSIS
 ========
-   mixed *filter_array(mixed *arr, string fun, string|object ob, mixed extra, ...)
-   mixed *filter_array(mixed *arr, closure cl, mixed extra, ...)
-   mixed *filter_array(mixed *arr, mapping map, mixed extra, ...)
+   mixed *filter_array(mixed *arr, string fun,  string|object ob, mixed extra, ...)
+   mixed *filter_array(mixed *arr, closure cl,  mixed extra,      ...             )
+   mixed *filter_array(mixed *arr, mapping map, mixed extra,      ...
+   )
 
 DESCRIPTION
 ===========

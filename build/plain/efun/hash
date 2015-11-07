@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <tls.h>
-
    string hash(int method, string arg [, int iterations ])
    string hash(int method, int *  arg [, int iterations ])
 

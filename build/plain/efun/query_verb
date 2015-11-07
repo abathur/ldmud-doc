@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   string query_verb(void)
+   string query_verb(void    )
    string query_verb(int flag)
 
 DESCRIPTION

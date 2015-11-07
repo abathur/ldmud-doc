@@ -2,7 +2,7 @@ SYNOPSIS
 ========
    mixed get_extra_wizinfo(object wiz)
    mixed get_extra_wizinfo(string wiz)
-   mixed get_extra_wizinfo(int wiz)
+   mixed get_extra_wizinfo(int wiz   )
 
 DESCRIPTION
 ===========

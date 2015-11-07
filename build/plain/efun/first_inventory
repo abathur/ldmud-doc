@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   object first_inventory
+   object first_inventory(         )
    object first_inventory(string ob)
    object first_inventory(object ob)
 

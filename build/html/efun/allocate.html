@@ -39,22 +39,32 @@
   <div class="section" id="allocate">
 <div class="section" id="SYNOPSIS">
 <h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<dl class="efun">
-<dt id="lpc.allocate">
-mixed * <code class="descname">allocate</code><span class="sig-paren">(</span>int<em>&nbsp;size</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.allocate" title="Permalink to this definition">¶</a></dt>
-<dt>
-mixed * <code class="descname">allocate</code><span class="sig-paren">(</span>int<em>&nbsp;size</em>, mixed<em>&nbsp;init_value</em><span class="sig-paren">)</span></dt>
-<dt>
-mixed * <code class="descname">allocate</code><span class="sig-paren">(</span>int<em>&nbsp;*sizes</em><span class="sig-paren">)</span></dt>
-<dt>
-mixed * <code class="descname">allocate</code><span class="sig-paren">(</span>int<em>&nbsp;*sizes</em>, mixed<em>&nbsp;init_value</em><span class="sig-paren">)</span></dt>
-</dl>
-
-</div>
+<table class="efun" style="border-spacing:0;">
+<tr id="lpc.allocate">
+<td>
+mixed * </td><td>
+<code class="descname">allocate</code></td><td><span class="sig-paren">(</span></td><td>
+int<em>&nbsp;size</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.allocate" title="Permalink to this definition">¶</a></tr>
+<tr>
+<td>
+mixed * </td><td>
+<code class="descname">allocate</code></td><td><span class="sig-paren">(</span></td><td>
+int<em>&nbsp;size</em>, </td><td>
+mixed<em>&nbsp;init_value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<tr>
+<td>
+mixed * </td><td>
+<code class="descname">allocate</code></td><td><span class="sig-paren">(</span></td><td>
+int<em>&nbsp;*sizes</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<tr>
+<td>
+mixed * </td><td>
+<code class="descname">allocate</code></td><td><span class="sig-paren">(</span></td><td>
+int<em>&nbsp;*sizes</em>, </td><td>
+mixed<em>&nbsp;init_value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+</table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
 <p>Allocate an array of size elements. The number of elements
 must be &gt;= 0 and not bigger than a system maximum (usually
 1000).</p>
@@ -68,27 +78,22 @@ of arrays.</p>
 arrays can be added by the + operator, and can be constructed
 and initialized by the ({ }) operator. The functions only
 use is to construct big empty arrays.</p>
-<p>EXAMPLES
-string <a href="#id1"><span class="problematic" id="id2">*</span></a>buffer;
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>string <a href="#id1"><span class="problematic" id="id2">*</span></a>buffer;
 buffer = allocate(50);
 buffer = allocate(50, &#8220;&#8221;);</p>
 <dl class="docutils">
 <dt>buffer = allocate( ({ 2, 3 }) )</dt>
 <dd>&#8211;&gt; ({ ({ 0, 0, 0 }), ({ 0, 0, 0 }) })</dd>
 </dl>
-<dl class="docutils">
-<dt>LDMud 3.2.9 added the initialization value and the multi-dimensional</dt>
-<dd><p class="first">allocation.</p>
-<table class="last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="sizeof.html#lpc.sizeof" title="sizeof"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sizeof</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added the initialization value and the multi-dimensional allocation.</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="sizeof.html#lpc.sizeof" title="sizeof"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sizeof</span></code>(E)</a></p>
+</div>
+</div>
 
 
           </div>

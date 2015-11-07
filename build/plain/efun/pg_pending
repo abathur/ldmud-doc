@@ -1,6 +1,6 @@
 SYNOPSIS (OPTIONAL)
 ===================
-   int pg_pending
+   int pg_pending(          )
    int pg_pending(object obj)
 
 DESCRIPTION

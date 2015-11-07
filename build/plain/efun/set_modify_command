@@ -2,7 +2,7 @@ SYNOPSIS
 ========
    object set_modify_command(object)
    object set_modify_command(string)
-   object set_modify_command(int)
+   object set_modify_command(int   )
 
 DESCRIPTION
 ===========

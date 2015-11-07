@@ -1,9 +1,8 @@
 SYNOPSIS
 ========
    #include <driver_hook.h>
-
    void set_driver_hook(int what, closure arg)
-   void set_driver_hook(int what, string arg)
+   void set_driver_hook(int what, string arg )
    void set_driver_hook(int what, string *arg)
 
 DESCRIPTION

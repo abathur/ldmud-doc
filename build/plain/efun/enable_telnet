@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   int enable_telnet(int num)
+   int enable_telnet(int num            )
    int enable_telnet(int num, object obj)
 
 DESCRIPTION

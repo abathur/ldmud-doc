@@ -1,6 +1,6 @@
 SYNOPSIS (DEPRECATED)
 =====================
-   int drop(void)
+   int drop(void        )
    int drop(int silently)
 
 DESCRIPTION

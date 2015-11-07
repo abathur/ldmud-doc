@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   int time
+   int time()
 
 DESCRIPTION
 ===========

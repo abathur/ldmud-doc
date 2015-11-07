@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   string file_name
+   string file_name(         )
    string file_name(object ob)
 
 DESCRIPTION

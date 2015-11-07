@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   int command(string str)
+   int command(string str           )
    int command(string str, object ob)
 
 DESCRIPTION

@@ -2,7 +2,6 @@ SYNOPSIS
 ========
    #include <struct_info.h>
    #include <lpctypes.h>
-
    mixed * struct_info(struct st, int what)
 
 DESCRIPTION

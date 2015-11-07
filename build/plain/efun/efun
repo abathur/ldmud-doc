@@ -222,6 +222,7 @@ DESCRIPTION
    - printf
    - process_string
    - program_time
+   - query_actions
    - query_command
    - query_editing
    - query_idle

@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   int strstr(string str, string str2)
+   int strstr(string str, string str2         )
    int strstr(string str, string str2, int pos)
 
 DESCRIPTION

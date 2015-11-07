@@ -1,6 +1,6 @@
 SYNOPSIS (OPTIONAL)
 ===================
-   int * query_mccp_stats
+   int * query_mccp_stats(             )
    int * query_mccp_stats(object player)
 
 DESCRIPTION

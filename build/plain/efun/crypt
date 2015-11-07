@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   string crypt(string str, int seed)
+   string crypt(string str, int seed   )
    string crypt(string str, string seed)
 
 DESCRIPTION

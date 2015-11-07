@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   mixed catch(expr, expr, ...)
+   mixed catch(expr, expr, ...            )
    mixed catch(expr, expr, ... ; modifiers)
 
 DESCRIPTION

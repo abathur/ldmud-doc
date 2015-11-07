@@ -1,6 +1,6 @@
 SYNOPSIS (OPTIONAL)
 ===================
-   int sl_insert_id
+   int sl_insert_id()
 
 DESCRIPTION
 ===========

@@ -53,388 +53,510 @@
 <p>Several preprocessor macros are pre-<code class="docutils literal"><span class="pre">#defined</span></code> by the parser to provide
 information about parser version, compile time options and parser invocation
 options:</p>
-<dl class="macro">
-<dt id="lpc.LPC3">
-<code class="descname">LPC3</code><a class="headerlink" href="#lpc.LPC3" title="Permalink to this definition">¶</a></dt>
-<dd><p>always defined.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__LDMUD__">
-<code class="descname">__LDMUD__</code><a class="headerlink" href="#lpc.__LDMUD__" title="Permalink to this definition">¶</a></dt>
-<dd><p>always defined.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__EUIDS__">
-<code class="descname">__EUIDS__</code><a class="headerlink" href="#lpc.__EUIDS__" title="Permalink to this definition">¶</a></dt>
-<dd><p>always (for compatibility).</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.COMPAT_FLAG">
-<code class="descname">COMPAT_FLAG</code><a class="headerlink" href="#lpc.COMPAT_FLAG" title="Permalink to this definition">¶</a></dt>
-<dt id="lpc.__COMPAT_MODE__">
-<code class="descname">__COMPAT_MODE__</code><a class="headerlink" href="#lpc.__COMPAT_MODE__" title="Permalink to this definition">¶</a></dt>
-<dd><p>defined if the driver runs in compat mode.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__STRICT_EUIDS__">
-<code class="descname">__STRICT_EUIDS__</code><a class="headerlink" href="#lpc.__STRICT_EUIDS__" title="Permalink to this definition">¶</a></dt>
-<dd><p>defined if strict euid usage is enforced.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__FILENAME_SPACES__">
-<code class="descname">__FILENAME_SPACES__</code><a class="headerlink" href="#lpc.__FILENAME_SPACES__" title="Permalink to this definition">¶</a></dt>
-<dd><p>defined if filenames may contain spaces.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__MASTER_OBJECT__">
-<code class="descname">__MASTER_OBJECT__</code><a class="headerlink" href="#lpc.__MASTER_OBJECT__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the name of the master object (in compat mode without leading &#8216;/&#8217;).</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__FILE__">
-<code class="descname">__FILE__</code><a class="headerlink" href="#lpc.__FILE__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the name of the compiled file (in compat mode without leading &#8216;/&#8217;).</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__LINE__">
-<code class="descname">__LINE__</code><a class="headerlink" href="#lpc.__LINE__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the current line number.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__FUNCTION__">
-<code class="descname">__FUNCTION__</code><a class="headerlink" href="#lpc.__FUNCTION__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the current function name.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__DIR__">
-<code class="descname">__DIR__</code><a class="headerlink" href="#lpc.__DIR__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the directory path of the compiled file (in compat mode without
+<table class="macro" style="border-spacing:0;">
+<tr id="lpc.LPC3">
+<td>
+</td><td>
+<code class="descname">LPC3</code></td><a class="headerlink" href="#lpc.LPC3" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>always defined.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__LDMUD__">
+<td>
+</td><td>
+<code class="descname">__LDMUD__</code></td><a class="headerlink" href="#lpc.__LDMUD__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>always defined.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__EUIDS__">
+<td>
+</td><td>
+<code class="descname">__EUIDS__</code></td><a class="headerlink" href="#lpc.__EUIDS__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>always (for compatibility).</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.COMPAT_FLAG">
+<td>
+</td><td>
+<code class="descname">COMPAT_FLAG</code></td><a class="headerlink" href="#lpc.COMPAT_FLAG" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.__COMPAT_MODE__">
+<td>
+</td><td>
+<code class="descname">__COMPAT_MODE__</code></td><a class="headerlink" href="#lpc.__COMPAT_MODE__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>defined if the driver runs in compat mode.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__STRICT_EUIDS__">
+<td>
+</td><td>
+<code class="descname">__STRICT_EUIDS__</code></td><a class="headerlink" href="#lpc.__STRICT_EUIDS__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>defined if strict euid usage is enforced.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__FILENAME_SPACES__">
+<td>
+</td><td>
+<code class="descname">__FILENAME_SPACES__</code></td><a class="headerlink" href="#lpc.__FILENAME_SPACES__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>defined if filenames may contain spaces.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__MASTER_OBJECT__">
+<td>
+</td><td>
+<code class="descname">__MASTER_OBJECT__</code></td><a class="headerlink" href="#lpc.__MASTER_OBJECT__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the name of the master object (in compat mode without leading &#8216;/&#8217;).</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__FILE__">
+<td>
+</td><td>
+<code class="descname">__FILE__</code></td><a class="headerlink" href="#lpc.__FILE__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the name of the compiled file (in compat mode without leading &#8216;/&#8217;).</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__LINE__">
+<td>
+</td><td>
+<code class="descname">__LINE__</code></td><a class="headerlink" href="#lpc.__LINE__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the current line number.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__FUNCTION__">
+<td>
+</td><td>
+<code class="descname">__FUNCTION__</code></td><a class="headerlink" href="#lpc.__FUNCTION__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the current function name.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__DIR__">
+<td>
+</td><td>
+<code class="descname">__DIR__</code></td><a class="headerlink" href="#lpc.__DIR__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the directory path of the compiled file (in compat mode without
 leading &#8216;/&#8217;).</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__PATH__">
-<code class="descname">__PATH__</code><span class="sig-paren">(</span>n<span class="sig-paren">)</span><a class="headerlink" href="#lpc.__PATH__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the directory path of the compiled file
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__PATH__">
+<td>
+</td><td>
+<code class="descname">__PATH__</code></td><td><span class="sig-paren">(</span></td><td>
+n</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.__PATH__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the directory path of the compiled file
 without the &lt;n&gt; trailing elements (in
 compat mode without leading &#8216;/&#8217;).</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__VERSION__">
-<code class="descname">__VERSION__</code><a class="headerlink" href="#lpc.__VERSION__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the version string of the driver.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__VERSION_MAJOR__">
-<code class="descname">__VERSION_MAJOR__</code><a class="headerlink" href="#lpc.__VERSION_MAJOR__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the major version number of the driver.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__VERSION_MINOR__">
-<code class="descname">__VERSION_MINOR__</code><a class="headerlink" href="#lpc.__VERSION_MINOR__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the minor version number of the driver.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__VERSION_MICRO__">
-<code class="descname">__VERSION_MICRO__</code><a class="headerlink" href="#lpc.__VERSION_MICRO__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the micro version number of the driver.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__VERSION_PATCH__">
-<code class="descname">__VERSION_PATCH__</code><a class="headerlink" href="#lpc.__VERSION_PATCH__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the patchlevel of the driver; a 0 here
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__VERSION__">
+<td>
+</td><td>
+<code class="descname">__VERSION__</code></td><a class="headerlink" href="#lpc.__VERSION__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the version string of the driver.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__VERSION_MAJOR__">
+<td>
+</td><td>
+<code class="descname">__VERSION_MAJOR__</code></td><a class="headerlink" href="#lpc.__VERSION_MAJOR__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the major version number of the driver.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__VERSION_MINOR__">
+<td>
+</td><td>
+<code class="descname">__VERSION_MINOR__</code></td><a class="headerlink" href="#lpc.__VERSION_MINOR__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the minor version number of the driver.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__VERSION_MICRO__">
+<td>
+</td><td>
+<code class="descname">__VERSION_MICRO__</code></td><a class="headerlink" href="#lpc.__VERSION_MICRO__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the micro version number of the driver.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__VERSION_PATCH__">
+<td>
+</td><td>
+<code class="descname">__VERSION_PATCH__</code></td><a class="headerlink" href="#lpc.__VERSION_PATCH__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the patchlevel of the driver; a 0 here
 means &#8216;no patchlevel&#8217;.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__VERSION_COMMITID__">
-<code class="descname">__VERSION_COMMITID__</code><a class="headerlink" href="#lpc.__VERSION_COMMITID__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the commit ID of the source of the driver
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__VERSION_COMMITID__">
+<td>
+</td><td>
+<code class="descname">__VERSION_COMMITID__</code></td><a class="headerlink" href="#lpc.__VERSION_COMMITID__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the commit ID of the source of the driver
 (attention it might be &lt;unknown&gt;, if the
 driver was not compiled from a git
 repository)</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__VERSION_LOCAL__">
-<code class="descname">__VERSION_LOCAL__</code><a class="headerlink" href="#lpc.__VERSION_LOCAL__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the (optional) LOCAL_LEVEL, the user has
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__VERSION_LOCAL__">
+<td>
+</td><td>
+<code class="descname">__VERSION_LOCAL__</code></td><a class="headerlink" href="#lpc.__VERSION_LOCAL__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the (optional) LOCAL_LEVEL, the user has
 defined.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__DOMAIN_NAME__">
-<code class="descname">__DOMAIN_NAME__</code><a class="headerlink" href="#lpc.__DOMAIN_NAME__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the domain the host is part of.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__HOST_IP_NUMBER__">
-<code class="descname">__HOST_IP_NUMBER__</code><a class="headerlink" href="#lpc.__HOST_IP_NUMBER__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the hosts IP number (as a string).</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__HOST_NAME__">
-<code class="descname">__HOST_NAME__</code><a class="headerlink" href="#lpc.__HOST_NAME__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the full hostname.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__MAX_RECURSION__">
-<code class="descname">__MAX_RECURSION__</code><a class="headerlink" href="#lpc.__MAX_RECURSION__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the max count of nested function calls
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__DOMAIN_NAME__">
+<td>
+</td><td>
+<code class="descname">__DOMAIN_NAME__</code></td><a class="headerlink" href="#lpc.__DOMAIN_NAME__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the domain the host is part of.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__HOST_IP_NUMBER__">
+<td>
+</td><td>
+<code class="descname">__HOST_IP_NUMBER__</code></td><a class="headerlink" href="#lpc.__HOST_IP_NUMBER__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the hosts IP number (as a string).</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__HOST_NAME__">
+<td>
+</td><td>
+<code class="descname">__HOST_NAME__</code></td><a class="headerlink" href="#lpc.__HOST_NAME__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the full hostname.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__MAX_RECURSION__">
+<td>
+</td><td>
+<code class="descname">__MAX_RECURSION__</code></td><a class="headerlink" href="#lpc.__MAX_RECURSION__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the max count of nested function calls
 (this is config.h:MAX_USER_TRACE).</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__MAX_EVAL_COST__">
-<code class="descname">__MAX_EVAL_COST__</code><a class="headerlink" href="#lpc.__MAX_EVAL_COST__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the max evaluation cost.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__RESET_TIME__">
-<code class="descname">__RESET_TIME__</code><a class="headerlink" href="#lpc.__RESET_TIME__" title="Permalink to this definition">¶</a></dt>
-<dd><p>default interval time between object
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__MAX_EVAL_COST__">
+<td>
+</td><td>
+<code class="descname">__MAX_EVAL_COST__</code></td><a class="headerlink" href="#lpc.__MAX_EVAL_COST__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the max evaluation cost.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__RESET_TIME__">
+<td>
+</td><td>
+<code class="descname">__RESET_TIME__</code></td><a class="headerlink" href="#lpc.__RESET_TIME__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>default interval time between object
 resets.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__CLEANUP_TIME__">
-<code class="descname">__CLEANUP_TIME__</code><a class="headerlink" href="#lpc.__CLEANUP_TIME__" title="Permalink to this definition">¶</a></dt>
-<dd><p>default interval time between object
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__CLEANUP_TIME__">
+<td>
+</td><td>
+<code class="descname">__CLEANUP_TIME__</code></td><a class="headerlink" href="#lpc.__CLEANUP_TIME__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>default interval time between object
 cleanups.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__ALARM_TIME__">
-<code class="descname">__ALARM_TIME__</code><a class="headerlink" href="#lpc.__ALARM_TIME__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the configured timing granularity.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__HEART_BEAT_INTERVAL__">
-<code class="descname">__HEART_BEAT_INTERVAL__</code><a class="headerlink" href="#lpc.__HEART_BEAT_INTERVAL__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the configured heartbeat time.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__SYNCHRONOUS_HEART_BEAT__">
-<code class="descname">__SYNCHRONOUS_HEART_BEAT__</code><a class="headerlink" href="#lpc.__SYNCHRONOUS_HEART_BEAT__" title="Permalink to this definition">¶</a></dt>
-<dd><p>defined if synchronous heartbeats are
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__ALARM_TIME__">
+<td>
+</td><td>
+<code class="descname">__ALARM_TIME__</code></td><a class="headerlink" href="#lpc.__ALARM_TIME__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the configured timing granularity.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__HEART_BEAT_INTERVAL__">
+<td>
+</td><td>
+<code class="descname">__HEART_BEAT_INTERVAL__</code></td><a class="headerlink" href="#lpc.__HEART_BEAT_INTERVAL__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the configured heartbeat time.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__SYNCHRONOUS_HEART_BEAT__">
+<td>
+</td><td>
+<code class="descname">__SYNCHRONOUS_HEART_BEAT__</code></td><a class="headerlink" href="#lpc.__SYNCHRONOUS_HEART_BEAT__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>defined if synchronous heartbeats are
 enabled.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__MAX_COMMAND_LENGTH__">
-<code class="descname">__MAX_COMMAND_LENGTH__</code><a class="headerlink" href="#lpc.__MAX_COMMAND_LENGTH__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the maximum length a command can have.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__EFUN_DEFINED__">
-<code class="descname">__EFUN_DEFINED__</code><span class="sig-paren">(</span>name<span class="sig-paren">)</span><a class="headerlink" href="#lpc.__EFUN_DEFINED__" title="Permalink to this definition">¶</a></dt>
-<dd><p>if the efun &#8216;name&#8217; exists, this
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__MAX_COMMAND_LENGTH__">
+<td>
+</td><td>
+<code class="descname">__MAX_COMMAND_LENGTH__</code></td><a class="headerlink" href="#lpc.__MAX_COMMAND_LENGTH__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the maximum length a command can have.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__EFUN_DEFINED__">
+<td>
+</td><td>
+<code class="descname">__EFUN_DEFINED__</code></td><td><span class="sig-paren">(</span></td><td>
+name</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.__EFUN_DEFINED__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>if the efun &#8216;name&#8217; exists, this
 macro evaluates to &#8221; 1 &#8221;, else to &#8221; 0 &#8221;.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__DRIVER_LOG__">
-<code class="descname">__DRIVER_LOG__</code><a class="headerlink" href="#lpc.__DRIVER_LOG__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the name of the default debug.log file
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__DRIVER_LOG__">
+<td>
+</td><td>
+<code class="descname">__DRIVER_LOG__</code></td><a class="headerlink" href="#lpc.__DRIVER_LOG__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the name of the default debug.log file
 (within the mudlib); undefined if a
 different name has been specified on the
 commandline.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__WIZLIST__">
-<code class="descname">__WIZLIST__</code><a class="headerlink" href="#lpc.__WIZLIST__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the name of the (mudlib) file from where
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__WIZLIST__">
+<td>
+</td><td>
+<code class="descname">__WIZLIST__</code></td><a class="headerlink" href="#lpc.__WIZLIST__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the name of the (mudlib) file from where
 the driver read the initial WIZLIST
 information. It is undefined if the driver
 was configured to not read the
 information.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__MAX_MALLOC__">
-<code class="descname">__MAX_MALLOC__</code><a class="headerlink" href="#lpc.__MAX_MALLOC__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the internal upper limit for total memory
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__MAX_MALLOC__">
+<td>
+</td><td>
+<code class="descname">__MAX_MALLOC__</code></td><a class="headerlink" href="#lpc.__MAX_MALLOC__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the internal upper limit for total memory
 usage.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__INT_MAX__">
-<code class="descname">__INT_MAX__</code><a class="headerlink" href="#lpc.__INT_MAX__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the largest integer number.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__INT_MIN__">
-<code class="descname">__INT_MIN__</code><a class="headerlink" href="#lpc.__INT_MIN__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the smallest integer number.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__FLOAT_MAX__">
-<code class="descname">__FLOAT_MAX__</code><a class="headerlink" href="#lpc.__FLOAT_MAX__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the largest (positive) float number.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__FLOAT_MIN__">
-<code class="descname">__FLOAT_MIN__</code><a class="headerlink" href="#lpc.__FLOAT_MIN__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the smallest (positive) float number.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__LPC_NOSAVE__">
-<code class="descname">__LPC_NOSAVE__</code><a class="headerlink" href="#lpc.__LPC_NOSAVE__" title="Permalink to this definition">¶</a></dt>
-<dd><p>always defined.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__LPC_STRUCTS__">
-<code class="descname">__LPC_STRUCTS__</code><a class="headerlink" href="#lpc.__LPC_STRUCTS__" title="Permalink to this definition">¶</a></dt>
-<dd><p>always defined.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__LPC_INLINE_CLOSURES__">
-<code class="descname">__LPC_INLINE_CLOSURES__</code><a class="headerlink" href="#lpc.__LPC_INLINE_CLOSURES__" title="Permalink to this definition">¶</a></dt>
-<dd><p>always defined.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__LPC_ARRAY_CALLS__">
-<code class="descname">__LPC_ARRAY_CALLS__</code><a class="headerlink" href="#lpc.__LPC_ARRAY_CALLS__" title="Permalink to this definition">¶</a></dt>
-<dd><p>always defined.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__BOOT_TIME__">
-<code class="descname">__BOOT_TIME__</code><a class="headerlink" href="#lpc.__BOOT_TIME__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the time() the driver was started.</p>
-</dd></dl>
-
-<p>If the ERQ is supported, the following macros are defined:</p>
-<dl class="macro">
-<dt id="lpc.__ERQ_MAX_SEND__">
-<code class="descname">__ERQ_MAX_SEND__</code><a class="headerlink" href="#lpc.__ERQ_MAX_SEND__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the max size of the send buffer.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__ERQ_MAX_REPLY__">
-<code class="descname">__ERQ_MAX_REPLY__</code><a class="headerlink" href="#lpc.__ERQ_MAX_REPLY__" title="Permalink to this definition">¶</a></dt>
-<dd><p>the max size of the reply buffer.</p>
-</dd></dl>
-
-<p>The following macros are defined if their associated package
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__INT_MAX__">
+<td>
+</td><td>
+<code class="descname">__INT_MAX__</code></td><a class="headerlink" href="#lpc.__INT_MAX__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the largest integer number.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__INT_MIN__">
+<td>
+</td><td>
+<code class="descname">__INT_MIN__</code></td><a class="headerlink" href="#lpc.__INT_MIN__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the smallest integer number.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__FLOAT_MAX__">
+<td>
+</td><td>
+<code class="descname">__FLOAT_MAX__</code></td><a class="headerlink" href="#lpc.__FLOAT_MAX__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the largest (positive) float number.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__FLOAT_MIN__">
+<td>
+</td><td>
+<code class="descname">__FLOAT_MIN__</code></td><a class="headerlink" href="#lpc.__FLOAT_MIN__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the smallest (positive) float number.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__LPC_NOSAVE__">
+<td>
+</td><td>
+<code class="descname">__LPC_NOSAVE__</code></td><a class="headerlink" href="#lpc.__LPC_NOSAVE__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>always defined.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__LPC_STRUCTS__">
+<td>
+</td><td>
+<code class="descname">__LPC_STRUCTS__</code></td><a class="headerlink" href="#lpc.__LPC_STRUCTS__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>always defined.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__LPC_INLINE_CLOSURES__">
+<td>
+</td><td>
+<code class="descname">__LPC_INLINE_CLOSURES__</code></td><a class="headerlink" href="#lpc.__LPC_INLINE_CLOSURES__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>always defined.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__LPC_ARRAY_CALLS__">
+<td>
+</td><td>
+<code class="descname">__LPC_ARRAY_CALLS__</code></td><a class="headerlink" href="#lpc.__LPC_ARRAY_CALLS__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>always defined.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__BOOT_TIME__">
+<td>
+</td><td>
+<code class="descname">__BOOT_TIME__</code></td><a class="headerlink" href="#lpc.__BOOT_TIME__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the time() the driver was started.</p>
+<td>
+</table><p>If the ERQ is supported, the following macros are defined:</p>
+<table class="macro" style="border-spacing:0;">
+<tr id="lpc.__ERQ_MAX_SEND__">
+<td>
+</td><td>
+<code class="descname">__ERQ_MAX_SEND__</code></td><a class="headerlink" href="#lpc.__ERQ_MAX_SEND__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the max size of the send buffer.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__ERQ_MAX_REPLY__">
+<td>
+</td><td>
+<code class="descname">__ERQ_MAX_REPLY__</code></td><a class="headerlink" href="#lpc.__ERQ_MAX_REPLY__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>the max size of the reply buffer.</p>
+<td>
+</table><p>The following macros are defined if their associated package
 has been compiled into the driver:</p>
-<dl class="macro">
-<dt id="lpc.__IDNA__">
-<code class="descname">__IDNA__</code><a class="headerlink" href="#lpc.__IDNA__" title="Permalink to this definition">¶</a></dt>
-<dd><p>support for IDNA.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__IPV6__">
-<code class="descname">__IPV6__</code><a class="headerlink" href="#lpc.__IPV6__" title="Permalink to this definition">¶</a></dt>
-<dd><p>support for IP v.6.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__MYSQL__">
-<code class="descname">__MYSQL__</code><a class="headerlink" href="#lpc.__MYSQL__" title="Permalink to this definition">¶</a></dt>
-<dd><p>support for mySQL.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__PGSQL__">
-<code class="descname">__PGSQL__</code><a class="headerlink" href="#lpc.__PGSQL__" title="Permalink to this definition">¶</a></dt>
-<dd><p>support for PostgreSQL.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__SQLITE__">
-<code class="descname">__SQLITE__</code><a class="headerlink" href="#lpc.__SQLITE__" title="Permalink to this definition">¶</a></dt>
-<dd><p>support for SQLite 3.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__XML_DOM__">
-<code class="descname">__XML_DOM__</code><a class="headerlink" href="#lpc.__XML_DOM__" title="Permalink to this definition">¶</a></dt>
-<dd><p>support for XML parsing.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__MCCP__">
-<code class="descname">__MCCP__</code><a class="headerlink" href="#lpc.__MCCP__" title="Permalink to this definition">¶</a></dt>
-<dd><p>support for MCCP.
+<table class="macro" style="border-spacing:0;">
+<tr id="lpc.__IDNA__">
+<td>
+</td><td>
+<code class="descname">__IDNA__</code></td><a class="headerlink" href="#lpc.__IDNA__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>support for IDNA.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__IPV6__">
+<td>
+</td><td>
+<code class="descname">__IPV6__</code></td><a class="headerlink" href="#lpc.__IPV6__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>support for IP v.6.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__MYSQL__">
+<td>
+</td><td>
+<code class="descname">__MYSQL__</code></td><a class="headerlink" href="#lpc.__MYSQL__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>support for mySQL.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__PGSQL__">
+<td>
+</td><td>
+<code class="descname">__PGSQL__</code></td><a class="headerlink" href="#lpc.__PGSQL__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>support for PostgreSQL.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__SQLITE__">
+<td>
+</td><td>
+<code class="descname">__SQLITE__</code></td><a class="headerlink" href="#lpc.__SQLITE__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>support for SQLite 3.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__XML_DOM__">
+<td>
+</td><td>
+<code class="descname">__XML_DOM__</code></td><a class="headerlink" href="#lpc.__XML_DOM__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>support for XML parsing.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__MCCP__">
+<td>
+</td><td>
+<code class="descname">__MCCP__</code></td><a class="headerlink" href="#lpc.__MCCP__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>support for MCCP.
 <a class="reference external" href="http://www.randomly.org/projects/MCCP">http://www.randomly.org/projects/MCCP</a></p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__ALISTS__">
-<code class="descname">__ALISTS__</code><a class="headerlink" href="#lpc.__ALISTS__" title="Permalink to this definition">¶</a></dt>
-<dd><p>support for alists.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__PCRE__">
-<code class="descname">__PCRE__</code><a class="headerlink" href="#lpc.__PCRE__" title="Permalink to this definition">¶</a></dt>
-<dd><p>support for PCRE (always defined).</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__TLS__">
-<code class="descname">__TLS__</code><a class="headerlink" href="#lpc.__TLS__" title="Permalink to this definition">¶</a></dt>
-<dd><p>support for TLS (internal).</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__GNUTLS__">
-<code class="descname">__GNUTLS__</code><a class="headerlink" href="#lpc.__GNUTLS__" title="Permalink to this definition">¶</a></dt>
-<dd><p>if __TLS__: TLS support provided by GnuTLS.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__OPENSSL__">
-<code class="descname">__OPENSSL__</code><a class="headerlink" href="#lpc.__OPENSSL__" title="Permalink to this definition">¶</a></dt>
-<dd><p>if __TLS__: TLS support provided by OpenSSL.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__GCRYPT__">
-<code class="descname">__GCRYPT__</code><a class="headerlink" href="#lpc.__GCRYPT__" title="Permalink to this definition">¶</a></dt>
-<dd><p>cryptographic routines provided by libgcrypt.</p>
-</dd></dl>
-
-<dl class="macro">
-<dt id="lpc.__DEPRECATED__">
-<code class="descname">__DEPRECATED__</code><a class="headerlink" href="#lpc.__DEPRECATED__" title="Permalink to this definition">¶</a></dt>
-<dd><p>support for obsolete and deprecated efuns.</p>
-</dd></dl>
-
-<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__ALISTS__">
+<td>
+</td><td>
+<code class="descname">__ALISTS__</code></td><a class="headerlink" href="#lpc.__ALISTS__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>support for alists.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__PCRE__">
+<td>
+</td><td>
+<code class="descname">__PCRE__</code></td><a class="headerlink" href="#lpc.__PCRE__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>support for PCRE (always defined).</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__TLS__">
+<td>
+</td><td>
+<code class="descname">__TLS__</code></td><a class="headerlink" href="#lpc.__TLS__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>support for TLS (internal).</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__GNUTLS__">
+<td>
+</td><td>
+<code class="descname">__GNUTLS__</code></td><a class="headerlink" href="#lpc.__GNUTLS__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>if __TLS__: TLS support provided by GnuTLS.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__OPENSSL__">
+<td>
+</td><td>
+<code class="descname">__OPENSSL__</code></td><a class="headerlink" href="#lpc.__OPENSSL__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>if __TLS__: TLS support provided by OpenSSL.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__GCRYPT__">
+<td>
+</td><td>
+<code class="descname">__GCRYPT__</code></td><a class="headerlink" href="#lpc.__GCRYPT__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>cryptographic routines provided by libgcrypt.</p>
+<td>
+</table><table class="macro" style="border-spacing:0;">
+<tr id="lpc.__DEPRECATED__">
+<td>
+</td><td>
+<code class="descname">__DEPRECATED__</code></td><a class="headerlink" href="#lpc.__DEPRECATED__" title="Permalink to this definition">¶</a></tr>
+<td>
+<p>support for obsolete and deprecated efuns.</p>
+<td>
+</table><h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><strong>introduced</strong> (<em>3.2.1</em>) &#8211; added __DOMAIN_NAME__, __HOST_IP_NUMBER__,
 __HOST_NAME__, __MAX_RECURSION__, __EFUN_DEFINED__().</li>

@@ -1,6 +1,6 @@
 SYNOPSIS (OPTIONAL)
 ===================
-   int query_mccp
+   int query_mccp(             )
    int query_mccp(object player)
 
 DESCRIPTION

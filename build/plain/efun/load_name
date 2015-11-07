@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   string load_name
+   string load_name(          )
    string load_name(object obj)
    string load_name(string obj)
 

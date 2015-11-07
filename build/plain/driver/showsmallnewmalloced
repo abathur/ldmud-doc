@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   showsmallnewmalloced
+   showsmallnewmalloced()
 
 DESCRIPTION
 ===========

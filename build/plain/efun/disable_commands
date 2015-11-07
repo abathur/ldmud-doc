@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   void disable_commands
+   void disable_commands()
 
 DESCRIPTION
 ===========

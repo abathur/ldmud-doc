@@ -1,9 +1,9 @@
 SYNOPSIS
 ========
-   status
-   status tables
-   status swap
-   status malloc
+   status       ()
+   status tables()
+   status swap  ()
+   status malloc()
 
 DESCRIPTION
 ===========

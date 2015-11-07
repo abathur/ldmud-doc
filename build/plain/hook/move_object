@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <sys/driver_hooks.h>
-
    set_driver_hook(H_MOVE_OBJECT0, value)
    set_driver_hook(H_MOVE_OBJECT1, value)
 

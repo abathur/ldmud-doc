@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   void shutdown
+   void shutdown(             )
    void shutdown(int exit_code)
 
 DESCRIPTION

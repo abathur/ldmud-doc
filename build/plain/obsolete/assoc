@@ -1,8 +1,8 @@
 SYNOPSIS (OPTIONAL)
 ===================
-   int assoc(mixed key, mixed *keys)
-   mixed assoc(mixed key, mixed *alist [, mixed fail])
-   mixed assoc(mixed key, mixed *keys, mixed *data [, mixed fail])
+   int   assoc(mixed key, mixed *keys                               )
+   mixed assoc(mixed key, mixed *alist [, mixed fail]               )
+   mixed assoc(mixed key, mixed *keys,    mixed *data [, mixed fail])
 
 DESCRIPTION
 ===========

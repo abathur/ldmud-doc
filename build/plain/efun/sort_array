@@ -1,10 +1,11 @@
 SYNOPSIS
 ========
-   mixed * sort_array(mixed *arr, string wrong_order)
-   mixed * sort_array(mixed *arr, string wrong_order, object|string ob)
+   mixed * sort_array(mixed *arr, string wrong_order                                  )
+   mixed * sort_array(mixed *arr, string wrong_order, object|string ob                )
    mixed * sort_array(mixed *arr, string wrong_order, object|string ob, mixed extra...)
-   mixed * sort_array(mixed *arr, closure cl)
-   mixed * sort_array(mixed *arr, closure cl, mixed extra...)
+   mixed * sort_array(mixed *arr, closure cl                                          )
+   mixed * sort_array(mixed *arr, closure cl,         mixed extra...
+   )
 
 DESCRIPTION
 ===========

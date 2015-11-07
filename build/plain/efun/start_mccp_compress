@@ -1,7 +1,6 @@
 SYNOPSIS (OPTIONAL)
 ===================
    #include <telnet.h>
-
    int start_mccp_compress(int telopt)
 
 DESCRIPTION

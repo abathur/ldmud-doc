@@ -2,7 +2,7 @@ SYNOPSIS
 ========
    closure symbol_variable(string arg)
    closure symbol_variable(symbol arg)
-   closure symbol_variable(int arg)
+   closure symbol_variable(int arg   )
 
 DESCRIPTION
 ===========

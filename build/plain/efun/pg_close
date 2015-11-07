@@ -1,6 +1,6 @@
 SYNOPSIS (OPTIONAL)
 ===================
-   void pg_close
+   void pg_close()
 
 DESCRIPTION
 ===========

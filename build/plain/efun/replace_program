@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   void replace_program
+   void replace_program(              )
    void replace_program(string program)
 
 DESCRIPTION

@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   int extern_call
+   int extern_call()
 
 DESCRIPTION
 ===========

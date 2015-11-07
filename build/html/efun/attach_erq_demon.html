@@ -39,18 +39,22 @@
   <div class="section" id="attach_erq_demon">
 <div class="section" id="SYNOPSIS">
 <h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<dl class="efun">
-<dt id="lpc.attach_erq_demon">
-int <code class="descname">attach_erq_demon</code><span class="sig-paren">(</span>object<em>&nbsp;ob</em>, int<em>&nbsp;do_close</em><span class="sig-paren">)</span><a class="headerlink" href="#lpc.attach_erq_demon" title="Permalink to this definition">¶</a></dt>
-<dt>
-int <code class="descname">attach_erq_demon</code><span class="sig-paren">(</span>string<em>&nbsp;obname</em>, int<em>&nbsp;do_close</em><span class="sig-paren">)</span></dt>
-</dl>
-
-</div>
+<table class="efun" style="border-spacing:0;">
+<tr id="lpc.attach_erq_demon">
+<td>
+int </td><td>
+<code class="descname">attach_erq_demon</code></td><td><span class="sig-paren">(</span></td><td>
+object<em>&nbsp;ob</em>, </td><td>
+int<em>&nbsp;do_close</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.attach_erq_demon" title="Permalink to this definition">¶</a></tr>
+<tr>
+<td>
+int </td><td>
+<code class="descname">attach_erq_demon</code></td><td><span class="sig-paren">(</span></td><td>
+string<em>&nbsp;obname</em>, </td><td>
+int<em>&nbsp;do_close</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+</table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
 <p>This privileged efun is to set/change the connection of the
 driver to the external erq demon, thus in effect changing the
 demons.</p>
@@ -69,22 +73,20 @@ function will fail unless &#8216;do_close&#8217; (default 0) is specified
 as 1 (or any other odd integer): then the old connection will
 be closed before attaching the new.
 The efun returns 1 on success, else 0.</p>
-<p>EXAMPLES
-To restart the (default) erq, write in
+<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>To restart the (default) erq, write in
 master.c::stale_erq(closure c):</p>
-<blockquote>
-<div>attach_erq_demon(&#8220;&#8221;, 0);</div></blockquote>
-<p>Introduced in <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;61">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>61</a>.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="send_erq.html#lpc.send_erq" title="send_erq"><code class="xref lpc lpc-efun docutils literal"><span class="pre">send_erq</span></code>(E)</a>, <a class="reference internal" href="../concepts/erq.html#lpc.erq" title="erq"><span class="xref lpc lpc-concept">erq</span></a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">attach_erq_demon</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</div>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>introduced</strong> (<em>3.2.1&#64;61</em>)</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="send_erq.html#lpc.send_erq" title="send_erq"><code class="xref lpc lpc-efun docutils literal"><span class="pre">send_erq</span></code>(E)</a>, <a class="reference internal" href="../concepts/erq.html#lpc.erq" title="erq"><span class="xref lpc lpc-concept">erq</span></a></p>
+</div>
+</div>
 
 
           </div>

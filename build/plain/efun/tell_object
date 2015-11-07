@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   void tell_object(object|string ob, string str)
+   void tell_object(object|string ob, string str                       )
    void tell_object(object|string ob, mixed *|mapping|struct|object msg)
 
 DESCRIPTION

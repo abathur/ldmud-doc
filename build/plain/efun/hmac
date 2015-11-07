@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <tls.h>
-
    string hmac(int method, string key, string arg)
    string hmac(int method, string key, int *  arg)
 

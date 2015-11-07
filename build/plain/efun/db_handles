@@ -1,6 +1,6 @@
 SYNOPSIS (OPTIONAL)
 ===================
-   int * db_handles
+   int * db_handles()
 
 DESCRIPTION
 ===========

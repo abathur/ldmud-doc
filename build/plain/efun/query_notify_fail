@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   mixed query_notify_fail
+   mixed query_notify_fail(        )
    mixed query_notify_fail(int flag)
 
 DESCRIPTION

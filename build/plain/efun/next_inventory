@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   object next_inventory
+   object next_inventory(         )
    object next_inventory(object ob)
 
 DESCRIPTION

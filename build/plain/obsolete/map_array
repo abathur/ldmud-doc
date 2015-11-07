@@ -1,7 +1,7 @@
 SYNOPSIS
 ========
    mixed *map_array(mixed *arr, string fun, string|object ob, mixed extra)
-   mixed *map_array(mixed *arr, closure cl, mixed extra)
+   mixed *map_array(mixed *arr, closure cl, mixed extra                  )
 
 DESCRIPTION
 ===========

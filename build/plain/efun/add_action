@@ -1,8 +1,7 @@
 SYNOPSIS
 ========
    #include <commands.h>
-
-   void add_action(string|closure fun, string cmd)
+   void add_action(string|closure fun, string cmd          )
    void add_action(string|closure fun, string cmd, int flag)
 
 DESCRIPTION

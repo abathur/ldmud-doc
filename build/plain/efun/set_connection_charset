@@ -2,7 +2,7 @@ SYNOPSIS
 ========
    void set_connection_charset(int *bitvector, int quote_iac)
    void set_connection_charset(string charset, int quote_iac)
-   void set_connection_charset(0, int quote_iac)
+   void set_connection_charset(0,              int quote_iac)
 
 DESCRIPTION
 ===========

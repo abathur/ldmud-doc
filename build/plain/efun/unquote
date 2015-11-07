@@ -1,7 +1,7 @@
 SYNOPSIS
 ========
-   mixed * unquote(quoted_array)
-   string|symbol unquote(symbol)
+   mixed  *        unquote(quoted_array)
+   string|  symbol unquote(symbol      )
 
 DESCRIPTION
 ===========

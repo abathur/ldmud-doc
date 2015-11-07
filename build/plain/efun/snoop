@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   object snoop(object snooper)
+   object snoop(object snooper                )
    object snoop(object snooper, object snoopee)
 
 DESCRIPTION

@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <trace.h>
-
    int trace(int traceflags)
 
 DESCRIPTION

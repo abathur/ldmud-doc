@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   void set_max_commands(int num)
+   void set_max_commands(int num            )
    void set_max_commands(int num, object obj)
 
 DESCRIPTION

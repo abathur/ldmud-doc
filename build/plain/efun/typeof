@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <lpctypes.h>
-
    int typeof(mixed)
 
 DESCRIPTION

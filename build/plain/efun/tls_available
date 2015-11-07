@@ -1,6 +1,6 @@
 SYNOPSIS (PRELIMINARY)
 ======================
-   int tls_available
+   int tls_available()
 
 DESCRIPTION
 ===========

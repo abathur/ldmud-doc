@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Listed herein are language incompatibilites between 3.3 and 3.5,
+that you should pay attention to when updating.</p>
+<ul>
+<li><p class="first">LPC features
++ structs are always supported.</p>
+<blockquote>
+<div><p>__LPC_STRUCTS__ is always defined.</p>
+</div></blockquote>
+<ul class="simple">
+<li>inline closures are always supported.
+__LPC_INLINE_CLOSURES__ is always defined.</li>
+<li>call-other on arrays is always supported.
+__LPC_ARRAY_CALLS__ is always defined.</li>
+<li>alists are no longer supported.
+__ALISTS__ was removed.</li>
+</ul>
+</li>
+<li><p class="first">sefun prefix:
+The 3.5 driver allows to explicitly call simul-efuns using a &#8216;sefun::&#8217;
+prefix, e.g. sefun::fun(). If a program has inherited another
+program with the name &#8220;sefun&#8221; and explicitly called inherited
+lfuns with that syntax, this won&#8217;t work anymore, because the
+driver now tries to find a simul-efun with that name.
+This also applies to symbol_function and closure literals (#&#8217;sefun::fun).</p>
+</li>
+<li><p class="first">ptmalloc keywords for debug_info():
+DID_MEM_MMAP, DID_MEM_MMAP_SIZE, DID_MEM_FREE_CHUNKS, DID_MEM_FFREE,
+DID_MEM_FFREE_SIZE, DID_MEM_MAX_ALLOCATED and DID_MEM_KEEP_COST were
+removed.</p>
+</li>
+<li><p class="first">Removed efuns:
++ The deprecated efuns cat() and tail() were removed. They can be</p>
+<blockquote>
+<div><p>easily and more flexibly replaced by sefuns, which are supplied with
+the driver in /mudlib/deprecated/. (#637, #228)</p>
+</div></blockquote>
+<ul class="simple">
+<li>The efun set_light() was removed. This includes the internal light
+state managment in the driver. The mudlib does a better and more
+flexible job at managing light in/from objects. (#775)</li>
+<li>The supporting efuns for alists were removed: insert_alist, order_alist,
+intersect_alist, assoc.</li>
+</ul>
+</li>
+<li><p class="first">New efuns:
++ json_parse() parses strings encoding a JSON object into an</p>
+<blockquote>
+<div><p>appropriate LPC value. (optional efun)</p>
+</div></blockquote>
+<ul class="simple">
+<li>json_serialize() converts a LPC value into an JSON object and
+serializes it as LPC string. (optional efun)</li>
+</ul>
+</li>
+<li><p class="first">Changed efuns:
++ call_other() and call_direct() now always accept an array of objects or</p>
+<blockquote>
+<div><p>strings (object names) as argument and call the function in all of these
+objects.</p>
+</div></blockquote>
+<ul class="simple">
+<li>object_info() does not report OIB_TOTAL_LIGHT any more, therefore the
+array OINFO_BASIC is one element shorter.</li>
+</ul>
+</li>
+<li><p class="first">Pragmas
++ The behaviour of the pragma combine_strings is mandatory, that means</p>
+<blockquote>
+<div><p>string literals concatenated by &#8216;+&#8217; will always be combined at
+compile-time. This pragmas and no_combine_strings are ignored. (#702)</p>
+</div></blockquote>
+<ul class="simple">
+<li>The behaviour of the pragma local_scopes is mandatory, that means
+that variables defined in a block always cease to exist after the end of
+the block. This pragma and no_local_scopes are ignored  (#702)</li>
+<li>The behaviour of the pragma verbose_errors is mandatory, the compiler will
+always give information about the context of an error.
+This pragma is ignored  (#702)</li>
+<li>The pragma warn_deprecated is now enabled by default. (#702)</li>
+</ul>
+</li>
+<li><p class="first">&#8216;deprecated&#8217; modifier
+The deprecated modifier can be used for lfuns (and sefuns) and global
+variables. Upon creating and closure to them or using/calling them the
+compiler will issue a warning. The same occurs in symbol_function(),
+symbol_variable() and call_other/call_direct/call_resolved().</p>
+</li>
+<li><p class="first">LPC types
++ the &#8216;float&#8217; type on 64 bit platforms (specifically LP64) has a higher</p>
+<blockquote>
+<div><p>precision and larger value ranges, because the driver uses the native
+&#8216;double&#8217; types of the host system to store them. On most host systems they
+conform to the IEEE 754 double precision floating point format.
+WARNING: If you want to save them losslessly with save_object/save_value(),</p>
+<blockquote>
+<div><p>you MUST use savefile format version 2 or higher!</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ul>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/3.3vs3.5/language.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

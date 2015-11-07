@@ -1,6 +1,6 @@
 SYNOPSIS
 ========
-   int clonep
+   int clonep(          )
    int clonep(object obj)
    int clonep(string obj)
    int clonep(mixed  arg)

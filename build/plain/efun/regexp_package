@@ -1,8 +1,7 @@
 SYNOPSIS
 ========
    #include <regexp.h>
-
-   int regexp_package
+   int regexp_package()
 
 DESCRIPTION
 ===========

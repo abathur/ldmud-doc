@@ -1,7 +1,6 @@
 SYNOPSIS (OPTIONAL)
 ===================
    #include <idn.h>
-
    string idna_stringprep(string str, int profile, int flags)
 
 DESCRIPTION

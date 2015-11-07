@@ -1,8 +1,8 @@
 SYNOPSIS
 ========
    int member(mixed *array, mixed elem [, int start])
-   int member(string s, int elem [, int start])
-   int member(mapping m, mixed key)
+   int member(string s,     int elem [,   int start])
+   int member(mapping m,    mixed key               )
 
 DESCRIPTION
 ===========

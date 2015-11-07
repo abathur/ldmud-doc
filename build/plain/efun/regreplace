@@ -1,7 +1,6 @@
 SYNOPSIS
 ========
    #include <regexp.h>
-
    string regreplace(string txt, string pattern, closure|string
    replacepattern, int flags)
 

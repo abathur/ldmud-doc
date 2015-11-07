@@ -1,6 +1,6 @@
 SYNOPSIS (OPTIONAL)
 ===================
-   void break_point
+   void break_point()
 
 DESCRIPTION
 ===========

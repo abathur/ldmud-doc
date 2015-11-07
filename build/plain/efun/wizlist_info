@@ -1,8 +1,7 @@
 SYNOPSIS
 ========
    #include <wizlist.h>
-
-   mixed * wizlist_info
+   mixed * wizlist_info()
 
 DESCRIPTION
 ===========

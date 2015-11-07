@@ -1,9 +1,9 @@
 SYNOPSIS
 ========
-   object to_object(string arg)
-   object to_object(closure arg)
-   object to_object(object arg)
-   (object)<value>
+   object to_object      (string arg )
+   object to_object      (closure arg)
+   object to_object      (object arg )
+          (object)<value>(           )
 
 DESCRIPTION
 ===========
