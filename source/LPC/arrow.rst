@@ -3,7 +3,7 @@
   ob->"fun" (mixed arg, ...)
   ob->(fun) (mixed arg, ...)
 
-  The arrow syntax is equivalent to :efun:`call_other`. This syntax document discusses how the arrow syntax relates to the efun version and gives basic examples; you should see :efun:`call_other` for thorough documentation.
+  The arrow operator is equivalent to :efun:`call_other`. This syntax document discusses how the arrow operator relates to the efun version and gives basic examples; you should see :efun:`call_other` for thorough documentation.
 
   `ob->fun(args)` and `ob->"fun"(args)` are equivalent to `call_other(ob, "fun", args)`. `ob->(fun)(args)` is equivalent to call_other(ob, fun, args) where fun is a runtime expression returning the function name.
 

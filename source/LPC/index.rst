@@ -1,35 +1,20 @@
-.. lang:: index
+.. lang:: []
   mixed arr[index]
   int str[index]
   mixed * arr[from .. to]
   string str[from .. to]
 
-  Return one element from a string/array (first form), or a
-  slice (substring resp. subarray) of the string/array (second form).
+  Return one element from a string/array (first form), or a slice (substring resp. subarray) of the string/array (second form).
 
-  The indexes <index>, <from> and <to> are numbered 0 to
-  strlen(str)-1 resp. sizeof(arr)-1 .
+  The indexes <index>, <from> and <to> are numbered 0 to strlen(str)-1 resp. sizeof(arr)-1 .
 
-  If an index is written '<value', the value is counted from the
-  end of the string/array and is numbered 1 to strlen(str) resp.
-  sizeof(arr).
+  If an index is written '<value', the value is counted from the end of the string/array and is numbered 1 to strlen(str) resp. sizeof(arr).
 
-  If an index is written '>value', the value is counted from the
-  end of the string/array if it is negative (starting with -1 for
-  the last element), and from the beginning if it is positive
-  (starting with 0 for the first element).
+  If an index is written '>value', the value is counted from the end of the string/array if it is negative (starting with -1 for the last element), and from the beginning if it is positive (starting with 0 for the first element).
 
-  If <from> is omitted, it defaults to the beginning of the
-  string/array.
-  If <to> is omitted, it defaults to the beginning of the
-  string/array.
+  If <from> is omitted, it defaults to the beginning of the string/array. If <to> is omitted, it defaults to the beginning of the string/array.
 
-  In the first form, the <index> must be within the bounds of
-  the string/array, or a runtime error occurs.
-  In the second form, the indexes will be fitted to the bounds
-  of the string/array. If <from> is greater than <to>, or both
-  outside the bounds, an empty string/array ("" resp. ({})) will
-  be returned.
+  In the first form, the <index> must be within the bounds of the string/array, or a runtime error occurs. In the second form, the indexes will be fitted to the bounds of the string/array. If <from> is greater than <to>, or both outside the bounds, an empty string/array ("" resp. ({})) will be returned.
 
   The closure notation is straightforward::
 

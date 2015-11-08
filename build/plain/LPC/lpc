@@ -24,7 +24,7 @@ DESCRIPTION
    - foreach
    - functions
    - if
-   - index
+   - []
    - inherit
    - intialisation
    - inline-closures
