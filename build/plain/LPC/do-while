@@ -1,14 +1,22 @@
-SYNTAX
-======
-      do { statement } while(expr);
+LANG
+====
+   do-while
 
 DESCRIPTION
 ===========
+      KEYWORD
+      =======
+      DESCRIPTION
+      ===========
+      SYNTAX
+      ======
+      DESCRIPTION
+      ===========
    Execute 'statment' until 'expr' evaulates to 0.
 
-   A 'break' in the 'statement' will terminate the loop. A 'continue' will
+   A 'break' in the 'statement' will terminate the loop. A 'continue' will 
    continue the execution from the beginning of the loop.
 
 SEE ALSO
 ========
-   *for*(LPC), *foreach*(LPC), *while*(LPC), *if*(LPC), *switch*(LPC)
+   `for`, `foreach`, `while`, `if`, `switch`

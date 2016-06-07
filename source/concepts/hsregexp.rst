@@ -1,43 +1,27 @@
 .. concept:: hsregexp
   :synopsis: Henry Spencer Regular Expressions
 
-  This document describes the regular expressions supported by the
-  implementation by Henry Spencer (the traditional package for
-  LPMud).
+  This document describes the regular expressions supported by the implementation by Henry Spencer (the traditional package for LPMud).
 
   .. subtopic:: OPTIONS
 
-    The following bitflag options modify the behaviour of the
-    regular expressions - both interpretation and actual matching.
+    The following bitflag options modify the behaviour of the regular expressions - both interpretation and actual matching.
 
     The efuns may understand additional options.
 
       RE_EXCOMPATIBLE
 
-    If this bit is set, the pattern is interpreted as the UNIX ed
-    editor would do it: () match literally, and the \( \) group
-    expressions.
+    If this bit is set, the pattern is interpreted as the UNIX ed editor would do it: () match literally, and the \( \) group expressions.
 
   .. subtopic:: REGULAR EXPRESSION DETAILS
 
-    A regular expression is a pattern that is matched against  a
-    subject string from left to right. Most characters stand for
-    themselves in a pattern, and match the corresponding charac-
-    ters in the subject. As a trivial example, the pattern
+    A regular expression is a pattern that is matched against a subject string from left to right. Most characters stand for themselves in a pattern, and match the corresponding characters in the subject. As a trivial example, the pattern
 
       The quick brown fox
 
-    matches a portion of a subject string that is  identical  to
-    itself.  The  power  of  regular  expressions comes from the
-    ability to include alternatives and repetitions in the  pat-
-    tern.  These  are encoded in the pattern by the use of meta-
-    characters, which do not stand for  themselves  but  instead
-    are interpreted in some special way.
+    matches a portion of a subject string that is identical to itself. The power of  regular expressions comes from the ability to include alternatives and repetitions in the pattern. These are encoded in the pattern by the use of metacharacters, which do not stand for themselves but instead are interpreted in some special way.
 
-    There are two different sets of meta-characters: those  that
-    are  recognized anywhere in the pattern except within square
-    brackets, and those that are recognized in square  brackets.
-    Outside square brackets, the meta-characters are as follows:
+    There are two different sets of metacharacters: those that are recognized anywhere in the pattern except within square brackets, and those that are recognized in square brackets. Outside square brackets, the metacharacters are as follows:
 
       .       Match any character.
 
@@ -75,15 +59,13 @@
       \c      match character c even if it's one of the special
               characters.
 
-  .. note:: The \< and \> metacharacters from Henry Spencers package
-    are not available in PCRE, but can be emulate with \b,
-    as required, also in conjunction with \W or \w.
+  .. note:: The \< and \> metacharacters from Henry Spencers package are not available in PCRE, but can be emulate with \b, as required, also in conjunction with \W or \w.
 
-  .. note:: In LDMud, backtracks are limited by the EVAL_COST runtime
-    limit, to avoid freezing the driver with a match
-    like regexp(({"=XX==================="}), "X(.+)+X").
+  .. note:: In LDMud, backtracks are limited by the EVAL_COST runtime limit, to avoid freezing the driver with a match like regexp(({"=XX==================="}), "X(.+)+X").
 
-  .. subtopic:: AUTHORS
+  .. lore::
+
+    Authors:
 
     - Mark H. Colburn, NAPS International (mark@jhereg.mn.org)
     - Henry Spencer, University of Torronto (henry@utzoo.edu)

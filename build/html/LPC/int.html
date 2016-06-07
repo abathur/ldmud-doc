@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>int &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="LPC" href="lpc.html" />
+    <link rel="next" title="lfuns" href="lfuns.html" />
+    <link rel="prev" title="inline-closures" href="inline-closures.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="int">
+<span id="lpc.int"></span><div class="section" id="TYPE">
+<h2>TYPE<a class="headerlink" href="#TYPE" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">int:</th><td class="field-body"><span class="first last">An integer.</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>An integer. Normally full 32 bits signed, yielding a range of at least -2,147,483,648 to 2,147,483,647. The exact available range is given by the predefined macros __INT_MIN__ and __INT_MAX__.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>Integer values can be specified in decimal, in sedecimal when preceeded by <code class="docutils literal"><span class="pre">0x</span></code> (e.g. <code class="docutils literal"><span class="pre">0x11</span></code>), binary when preceeded by <code class="docutils literal"><span class="pre">0b</span></code> (e.g. <code class="docutils literal"><span class="pre">0b00010001</span></code>), octal when preceeded by <code class="docutils literal"><span class="pre">0o</span></code> (e.g. <code class="docutils literal"><span class="pre">0o21</span></code>) and as character yielding the charset value for the character as the number to use (e.g. <code class="docutils literal"><span class="pre">'0'</span></code> yields <code class="docutils literal"><span class="pre">48</span></code> on ASCII machines).</p>
+<p>Character values are enclosed in single-quotes (<code class="docutils literal"><span class="pre">'</span></code>), with the sequence <code class="docutils literal"><span class="pre">'''</span></code> returning the single-quote itself. Instead of the literal character an escape-sequence can be written between the single-quotes:</p>
+<blockquote>
+<div></div></blockquote>
+<dl class="glossary docutils">
+<dt id="term-n"><code class="docutils literal"><span class="pre">\N</span></code></dt>
+<dd>the character code N in decimal</dd>
+<dt id="term-0xn"><code class="docutils literal"><span class="pre">\0xN</span></code></dt>
+<dd>the character code N in sedecimal</dd>
+<dt id="term-xn"><code class="docutils literal"><span class="pre">\xN</span></code></dt>
+<dd>the character code N in sedecimal</dd>
+<dt id="term-0on"><code class="docutils literal"><span class="pre">\0oN</span></code></dt>
+<dd>the character code N in octal</dd>
+<dt id="term-0bn"><code class="docutils literal"><span class="pre">\0bN</span></code></dt>
+<dd>the character code N in binary</dd>
+<dt id="term-a"><code class="docutils literal"><span class="pre">\a</span></code></dt>
+<dd>BEL (<code class="docutils literal"><span class="pre">0x07</span></code>)</dd>
+<dt id="term-b"><code class="docutils literal"><span class="pre">\b</span></code></dt>
+<dd>Backspace (<code class="docutils literal"><span class="pre">0x08</span></code>)</dd>
+<dt id="term-t"><code class="docutils literal"><span class="pre">\t</span></code></dt>
+<dd>Tab (<code class="docutils literal"><span class="pre">0x09</span></code>)</dd>
+<dt id="term-e"><code class="docutils literal"><span class="pre">\e</span></code></dt>
+<dd>Escape (<code class="docutils literal"><span class="pre">0x1b</span></code>)</dd>
+<dt id="term-9"><code class="docutils literal"><span class="pre">\n</span></code></dt>
+<dd>Newline (<code class="docutils literal"><span class="pre">0x0a</span></code>)</dd>
+<dt id="term-f"><code class="docutils literal"><span class="pre">\f</span></code></dt>
+<dd>Formfeed (<code class="docutils literal"><span class="pre">0x0c</span></code>)</dd>
+<dt id="term-r"><code class="docutils literal"><span class="pre">\r</span></code></dt>
+<dd>Carriage Return (<code class="docutils literal"><span class="pre">0x0d</span></code>)</dd>
+<dt id="term-other-character"><code class="docutils literal"><span class="pre">\&lt;other</span> <span class="pre">character&gt;</span></code></dt>
+<dd>the given character</dd>
+</dl>
+</div>
+<div class="section" id="glossary">
+<h3>SYNTAX<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
+<pre>
+<strong id="grammar-token-integer">integer       </strong> ::=  <a class="reference internal" href="#grammar-token-decimalinteger"><code class="xref docutils literal"><span class="pre">decimalinteger</span></code></a> | <a class="reference internal" href="#grammar-token-octinteger"><code class="xref docutils literal"><span class="pre">octinteger</span></code></a> | <a class="reference internal" href="#grammar-token-hexinteger"><code class="xref docutils literal"><span class="pre">hexinteger</span></code></a> | <a class="reference internal" href="#grammar-token-bininteger"><code class="xref docutils literal"><span class="pre">bininteger</span></code></a> | <a class="reference internal" href="#grammar-token-char"><code class="xref docutils literal"><span class="pre">char</span></code></a>
+<strong id="grammar-token-decimalinteger">decimalinteger</strong> ::=  <a class="reference internal" href="#grammar-token-nonzerodigit"><code class="xref docutils literal"><span class="pre">nonzerodigit</span></code></a> <a class="reference internal" href="#grammar-token-digit"><code class="xref docutils literal"><span class="pre">digit</span></code></a>* | &quot;0&quot;+
+<strong id="grammar-token-nonzerodigit">nonzerodigit  </strong> ::=  &quot;1&quot;...&quot;9&quot;
+<strong id="grammar-token-digit">digit         </strong> ::=  &quot;0&quot;...&quot;9&quot;
+<strong id="grammar-token-octinteger">octinteger    </strong> ::=  &quot;0&quot; (&quot;o&quot; | &quot;O&quot;) <a class="reference internal" href="#grammar-token-octdigit"><code class="xref docutils literal"><span class="pre">octdigit</span></code></a>+
+<strong id="grammar-token-hexinteger">hexinteger    </strong> ::=  &quot;0&quot; (&quot;x&quot; | &quot;X&quot;) <a class="reference internal" href="#grammar-token-hexdigit"><code class="xref docutils literal"><span class="pre">hexdigit</span></code></a>+
+<strong id="grammar-token-bininteger">bininteger    </strong> ::=  &quot;0&quot; (&quot;b&quot; | &quot;B&quot;) <a class="reference internal" href="#grammar-token-bindigit"><code class="xref docutils literal"><span class="pre">bindigit</span></code></a>+
+<strong id="grammar-token-octdigit">octdigit      </strong> ::=  &quot;0&quot;...&quot;7&quot;
+<strong id="grammar-token-hexdigit">hexdigit      </strong> ::=  <a class="reference internal" href="#grammar-token-digit"><code class="xref docutils literal"><span class="pre">digit</span></code></a> | &quot;a&quot;...&quot;f&quot; | &quot;A&quot;...&quot;F&quot;
+<strong id="grammar-token-bindigit">bindigit      </strong> ::=  &quot;0&quot; | &quot;1&quot;
+<strong id="grammar-token-char">char          </strong> ::=  &quot;'&quot; <code class="xref docutils literal"><span class="pre">unicode_char</span></code> &quot;'&quot;
+</pre>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="types.html#lpc.types" title="types"><code class="xref lpc lpc-lang docutils literal"><span class="pre">types</span></code></a>, <a class="reference internal" href="float.html#lpc.float" title="float"><code class="xref lpc lpc-type docutils literal"><span class="pre">float</span></code></a>, <a class="reference internal" href="string.html#lpc.string" title="string"><code class="xref lpc lpc-type docutils literal"><span class="pre">string</span></code></a>, <a class="reference internal" href="modifiers.html#lpc.public" title="public"><code class="xref lpc lpc-modifier docutils literal"><span class="pre">public</span></code></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">int</a><ul>
+<li><a class="reference internal" href="#TYPE">TYPE</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#glossary">SYNTAX</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="lpc.html">LPC</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/LPC/int.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

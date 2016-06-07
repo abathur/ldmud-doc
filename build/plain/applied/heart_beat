@@ -4,44 +4,48 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   This function will be called automatically every __HEART_BEAT_INTERVAL__
-   seconds. The driver will call the function directly in the object, even if
+   This function will be called automatically every __HEART_BEAT_INTERVAL__ 
+   seconds. The driver will call the function directly in the object, even if 
    the function is being shadowed.
 
-   The start and stop of heart beat is controlled by the efun
-   set_heart_beat(). Be careful not to have objects with heart beat running
+   The start and stop of heart beat is controlled by the efun 
+   set_heart_beat(). Be careful not to have objects with heart beat running 
    all the time, as it uses a lot of driver resources. If there is an error in
-   the heart beat routine, the heart beat will be turned off for this object
-   and the master function heart_beat_error() is called. If the call to the
-   master function returns a non-zero value, the heart beat will be turned
-   back on again.
+   the heart beat routine, the heart beat will be turned off for this object 
+   and heart_beat_error(M) is called. If the call to the master function 
+   returns a non-zero value, the heart beat will be turned back on again.
 
-   The function this_player() will return this object, but only if it is
-   living. Otherwise, this_player() will return 0.
+   The function `this_player()` will return this object, but only if it is 
+   living. Otherwise, `this_player()` will return 0.
 
-   Note that error messages will be given to the current user which will be
-   the object itself or nobody.
+   <!> Note:  
+     error messages will be given to the current user which will be the 
+     object itself or nobody.
 
-USAGE
-=====
-      object owner;
-      void create() {
-         ...
-         owner=this_player();
-         set_heart_beat(1);
-      }
-      void heart_beat() {
-         tell_object(owner, "Your heart goes: BUM BUM\n");
-      }
+   USAGE
+   =====
+      This tiny object has a heart_beat that messages its owner every time it 
+      is called:
 
-   We have to use tell_object() because write goes to the current user and
-   this can only be the object itself or nobody.
+         object owner;
+         void create() {
+           ...
+           owner=this_player();
+           set_heart_beat(1);
+         }
+         void heart_beat() {
+           tell_object(owner, "Your heart goes: BUM BUM\n");
+         }
+
+      We have to use tell_object() because write goes to the current user and 
+      this can only be the object itself or nobody.
 
 HISTORY
 =======
-   - **changed** (*3.3.687*) -- made the interval time configurable at
-     driver compile time (used to be 2 seconds fixed).
+   - changed (3.3.687) -- made the interval time configurable at driver 
+     compile time (used to be 2 seconds fixed).
 
 SEE ALSO
 ========
-   set_heart_beat(E), call_out(E), enable_commands(E), heart_beat_error(M)
+   set_heart_beat()(E), call_out()(E), enable_commands()(E), 
+   heart_beat_error(M)

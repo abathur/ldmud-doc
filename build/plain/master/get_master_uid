@@ -9,8 +9,8 @@ DESCRIPTION
 
 HISTORY
 =======
-   - **introduced** (*3.2.1@40*) -- replaces get_root_uid().
+   - introduced (3.2.1@40) -- replaces get_root_uid().
 
 SEE ALSO
 ========
-   get_bb_uid(M), get_master_uid(M), *uids*, creator_file(M), creator(E)
+   get_bb_uid(M), get_master_uid(M), uids(C), creator_file, creator()(E)

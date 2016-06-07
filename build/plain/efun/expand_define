@@ -5,12 +5,12 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Expands the macro <name> with the argument(s) <arg>... (default is one empty
-string ""). Result is the expanded macro, or 0 if there is no macro with that
+Expands the macro <name> with the argument(s) <arg>... (default is one empty 
+string ""). Result is the expanded macro, or 0 if there is no macro with that 
 name.
 
-This efun is applicable only while an object is compiled, therefore its usage
-is restricted to a few functions like the H_INCLUDE_DIRS driver hook, or the
+This efun is applicable only while an object is compiled, therefore its usage 
+is restricted to a few functions like the H_INCLUDE_DIRS driver hook, or the 
 masters runtime_error() function.
 
 EXAMPLES While compiling 'foo.c':
@@ -19,5 +19,5 @@ EXAMPLES While compiling 'foo.c':
 
 Introduced in 3.2.1@93.
 
-   See Also:
-      *hooks*, runtime_error(M)
+   See Also: 
+      `hooks`, runtime_error(M)

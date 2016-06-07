@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>valid_read &mdash; LDMud UNRELEASED documentation</title>
+    <title>master::valid_read() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,30 +24,35 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="master" href="master.html" />
+    <link rel="next" title="master::valid_seteuid()" href="valid_seteuid.html" />
+    <link rel="prev" title="master::valid_query_snoop()" href="valid_query_snoop.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="valid_read">
+  <div class="section">
 <div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="master" style="border-spacing:0;">
+<span id="valid_read"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr id="lpc.valid_read">
 <td>
-string </td><td>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
 <code class="descname">valid_read</code></td><td><span class="sig-paren">(</span></td><td>
-string<em>&nbsp;path</em>, </td><td>
-string<em>&nbsp;uid</em>, </td><td>
-string<em>&nbsp;func</em>, </td><td>
-object<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.valid_read" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;path</em>, </td><td>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;uid</em>, </td><td>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;func</em>, </td><td>
+<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.valid_read" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -75,14 +80,16 @@ valid_read() to be called:</p>
 <li>restore_object</li>
 <li>tail</li>
 </ul>
-<p>For efun:<a class="reference internal" href="../efun/restore_object.html#lpc.restore_object" title="restore_object"><span class="xref lpc lpc-any">restore_object</span>(E)</a>, the &lt;path&gt; passed is the filename as given
+<p>For efun:<a class="reference internal" href="../efun/restore_object.html#lpc.restore_object" title="restore_object"><code class="xref any lpc lpc-efun docutils literal"><span class="pre">restore_object</span></code>(E)</a>, the &lt;path&gt; passed is the filename as given
 in the efun call.</p>
 <p>This function is called in compat mode as well. If
 you need to be compatible with the old 2.4.5-mudlib, redirect
 these calls to the valid_read/valid_write in the user
 object.</p>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="valid_write.html#lpc.valid_write" title="valid_write"><code class="xref lpc lpc-master docutils literal"><span class="pre">valid_write</span></code>(M)</a>, <a class="reference internal" href="make_path_absolute.html#lpc.make_path_absolute" title="make_path_absolute"><code class="xref lpc lpc-master docutils literal"><span class="pre">make_path_absolute</span></code>(M)</a></p>
+</div>
 </div>
 </div>
 
@@ -100,22 +107,30 @@ object.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">valid_read</a><ul>
+<li><a class="reference internal" href="#">master::valid_read()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -125,10 +140,6 @@ object.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/master/valid_read.txt"

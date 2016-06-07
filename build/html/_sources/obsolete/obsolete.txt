@@ -1,4 +1,4 @@
-.. topic:: obsolete
+.. directory:: obsolete
 
   This directory contains descriptions for features removed from
   the game driver, since they can come in handy when reworking
@@ -10,4 +10,4 @@
 
     *
 
-  .. seealso:: :topic:`applied`, :topic:`efun`, :guide:`master`, :topic:`concepts`, :topic:`lpc`, :topic:`driver`
+  .. seealso:: :directory:`applied`, :directory:`concepts`, :directory:`driver`, :directory:`efun`, :directory:`hook`, :directory:`internals`, :directory:`LPC`, :directory:`master`

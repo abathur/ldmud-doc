@@ -26,11 +26,13 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="index.html" />
    
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -42,6 +44,8 @@
 
 <div class="genindex-jumpbox">
  <a href="#Symbols"><strong>Symbols</strong></a>
+ | <a href="#expr3``"><strong>expr3``</strong></a>
+ | <a href="#Symbols"><strong>Symbols</strong></a>
  | <a href="#_"><strong>_</strong></a>
  | <a href="#A"><strong>A</strong></a>
  | <a href="#B"><strong>B</strong></a>
@@ -52,6 +56,8 @@
  | <a href="#G"><strong>G</strong></a>
  | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
+ | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
@@ -70,6 +76,90 @@
 <h2 id="Symbols">Symbols</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="LPC/operators.html#term-38"><strong>! var</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/closure_guide.html#term-10"><strong>#&#39;([</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/closure_guide.html#term-9"><strong>#&#39;({</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/closure_guide.html#term"><strong>#&#39;[</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/closure_guide.html#term-11"><strong>#&#39;[,]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/closure_guide.html#term-7"><strong>#&#39;[..</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/closure_guide.html#term-4"><strong>#&#39;[..&lt;]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/closure_guide.html#term-3"><strong>#&#39;[..]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/closure_guide.html#term-2"><strong>#&#39;[&lt;</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/closure_guide.html#term-8"><strong>#&#39;[&lt;..</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/closure_guide.html#term-6"><strong>#&#39;[&lt;..&lt;]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/closure_guide.html#term-5"><strong>#&#39;[&lt;..]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/closure_guide.html#term-negate"><strong>#&#39;negate</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/preprocessor.html#lpc.#<directive>[ <arguments...>]">#&lt;directive&gt;[ &lt;arguments...&gt;](syntax)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-type-var"><strong>( type ) var</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-49"><strong>([ ])</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-41"><strong>({ type }) var</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term"><strong>({ })</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-var"><strong>++ var</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-37"><strong>- var</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-36"><strong>-- var</strong></a>
+  </dt>
+
       
   <dt>
     --alarm-time &lt;seconds&gt;
@@ -171,23 +261,23 @@
       </dl></dd>
       
   <dt>
-    --erq &#34;&lt;filename&gt; &lt;erq args&gt;&#34;
+    --erq &lt;filename&gt;, --erq &#34;&lt;filename&gt; &lt;erq args&gt;&#34;
   </dt>
 
       <dd><dl>
         
-  <dt><a href="driver/invocation.html#cmdoption-ldmud--erq">ldmud command line option</a>
+  <dt><a href="driver/invocation.html#cmdoption-ldmud--erq">ldmud command line option</a>, <a href="driver/invocation.html#cmdoption-ldmud--erq">[1]</a>
   </dt>
 
       </dl></dd>
       
   <dt>
-    --erq &lt;filename&gt;
+    --execdir &lt;dir&gt;
   </dt>
 
       <dd><dl>
         
-  <dt><a href="driver/invocation.html#cmdoption-ldmud--erq">ldmud command line option</a>
+  <dt><a href="concepts/erq.html#cmdoption--execdir">command line option</a>
   </dt>
 
       </dl></dd>
@@ -204,12 +294,23 @@
       </dl></dd>
       
   <dt>
-    --gcollect-outfd &lt;filename&gt;, &lt;num&gt;
+    --forked
   </dt>
 
       <dd><dl>
         
-  <dt><a href="driver/invocation.html#cmdoption-ldmud--gcollect-outfd">ldmud command line option</a>
+  <dt><a href="concepts/erq.html#cmdoption--forked">command line option</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt>
+    --gcollect-outfd &lt;filename&gt;, --gcollect-outfd &lt;num&gt;
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="driver/invocation.html#cmdoption-ldmud--gcollect-outfd">ldmud command line option</a>, <a href="driver/invocation.html#cmdoption-ldmud--gcollect-outfd">[1]</a>
   </dt>
 
       </dl></dd>
@@ -358,7 +459,7 @@
       </dl></dd>
       
   <dt>
-    --max-thread-pending &lt;size&gt;n&#34;
+    --max-thread-pending &lt;size&gt;
   </dt>
 
       <dd><dl>
@@ -444,6 +545,8 @@
   </dt>
 
       </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt>
     --pidfile &lt;filename&gt;
@@ -477,8 +580,6 @@
   </dt>
 
       </dl></dd>
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt>
     --regexp pcre | traditional
@@ -487,6 +588,17 @@
       <dd><dl>
         
   <dt><a href="driver/invocation.html#cmdoption-ldmud--regexp">ldmud command line option</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt>
+    --reserve-user &lt;size&gt;, --reserve-master &lt;size&gt;, --reserve-system &lt;size&gt;
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="driver/invocation.html#cmdoption-ldmud--reserve-user">ldmud command line option</a>
   </dt>
 
       </dl></dd>
@@ -531,6 +643,39 @@
       <dd><dl>
         
   <dt><a href="driver/invocation.html#cmdoption-ldmud--strict-euids">ldmud command line option</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt>
+    --swap-compact
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="driver/invocation.html#cmdoption-ldmud--swap-compact">ldmud command line option</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt>
+    --swap-file &lt;name&gt;
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="driver/invocation.html#cmdoption-ldmud--swap-file">ldmud command line option</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt>
+    --swap-time &lt;time&gt;, --swap-variables &lt;time&gt;
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="driver/invocation.html#cmdoption-ldmud--swap-time">ldmud command line option</a>
   </dt>
 
       </dl></dd>
@@ -634,7 +779,13 @@
 
       </dl></dd>
       
-  <dt><a href="LPC/arrow.html#lpc.->">-&gt;(lang)</a>
+  <dt><a href="LPC/arrow.html#lpc.->
+ob->fun (mixed arg, ...)
+ob->"fun" (mixed arg, ...)
+ob->(fun) (mixed arg, ...)">-&gt;
+ob-&gt;fun (mixed arg, ...)
+ob-&gt;&#34;fun&#34; (mixed arg, ...)
+ob-&gt;(fun) (mixed arg, ...)(operator)</a>
   </dt>
 
       
@@ -760,78 +911,23 @@
       </dl></dd>
       
   <dt>
-    -r m&lt;size&gt;,  --reserve-master &lt;size&gt;
+    -r u&lt;size&gt;, -r m&lt;size&gt;, -r s&lt;size&gt;
   </dt>
 
       <dd><dl>
         
-  <dt><a href="driver/invocation.html#cmdoption-ldmud-r">ldmud command line option</a>
+  <dt><a href="driver/invocation.html#cmdoption-ldmud-r">ldmud command line option</a>, <a href="driver/invocation.html#cmdoption-ldmud-r">[1]</a>, <a href="driver/invocation.html#cmdoption-ldmud-r">[2]</a>
   </dt>
 
       </dl></dd>
       
   <dt>
-    -r s&lt;size&gt;,  --reserve-system &lt;size&gt;
+    -s &lt;time&gt;, -s v&lt;time&gt;, -s f&lt;name&gt;, -s c
   </dt>
 
       <dd><dl>
         
-  <dt><a href="driver/invocation.html#cmdoption-ldmud-r">ldmud command line option</a>
-  </dt>
-
-      </dl></dd>
-      
-  <dt>
-    -r u&lt;size&gt;,  --reserve-user &lt;size&gt;
-  </dt>
-
-      <dd><dl>
-        
-  <dt><a href="driver/invocation.html#cmdoption-ldmud-r">ldmud command line option</a>
-  </dt>
-
-      </dl></dd>
-      
-  <dt>
-    -s &lt;time&gt;,  --swap-time &lt;time&gt;
-  </dt>
-
-      <dd><dl>
-        
-  <dt><a href="driver/invocation.html#cmdoption-ldmud-s">ldmud command line option</a>
-  </dt>
-
-      </dl></dd>
-      
-  <dt>
-    -s c,  --swap-compact
-  </dt>
-
-      <dd><dl>
-        
-  <dt><a href="driver/invocation.html#cmdoption-ldmud-s">ldmud command line option</a>
-  </dt>
-
-      </dl></dd>
-      
-  <dt>
-    -s f&lt;name&gt;,  --swap-file &lt;name&gt;
-  </dt>
-
-      <dd><dl>
-        
-  <dt><a href="driver/invocation.html#cmdoption-ldmud-s">ldmud command line option</a>
-  </dt>
-
-      </dl></dd>
-      
-  <dt>
-    -s v&lt;time&gt;,  --swap-variables &lt;time&gt;
-  </dt>
-
-      <dd><dl>
-        
-  <dt><a href="driver/invocation.html#cmdoption-ldmud-s">ldmud command line option</a>
+  <dt><a href="driver/invocation.html#cmdoption-ldmud-s">ldmud command line option</a>, <a href="driver/invocation.html#cmdoption-ldmud-s">[1]</a>, <a href="driver/invocation.html#cmdoption-ldmud-s">[2]</a>, <a href="driver/invocation.html#cmdoption-ldmud-s">[3]</a>
   </dt>
 
       </dl></dd>
@@ -869,7 +965,114 @@
 
       </dl></dd>
       
-  <dt><a href="LPC/index.html#lpc.[]">[](lang)</a>
+  <dt><a href="LPC/comments.html#lpc./* block comment text */
+// line comment text <end of line>">/* block comment text */
+// line comment text &lt;end of line&gt;(syntax)</a>
+  </dt>
+
+      
+  <dt>
+    [&lt;modifier&gt;...] [&lt;type&gt;] &lt;name&gt; ([&lt;argument&gt;...])
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/functions.html#lpc.[<modifier>...] [<type>] <name> ([<argument>...]);">(syntax)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="LPC/index.html#lpc.[]
+mixed arr[index]
+int str[index]
+mixed * arr[from .. to]
+string str[from .. to]">[]
+mixed arr[index]
+int str[index]
+mixed * arr[from .. to]
+string str[from .. to](operator)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/int.html#term-0bn"><strong>\0bN</strong></a>, <a href="LPC/string.html#term-0bn"><strong>[1]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/int.html#term-0on"><strong>\0oN</strong></a>, <a href="LPC/string.html#term-0on"><strong>[1]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/int.html#term-0xn"><strong>\0xN</strong></a>, <a href="LPC/string.html#term-0xn"><strong>[1]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/escape.html#lpc.\<escape_sequence>">\&lt;escape_sequence&gt;(syntax)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/int.html#term-other-character"><strong>\&lt;other character&gt;</strong></a>, <a href="LPC/string.html#term-other-character"><strong>[1]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/int.html#term-a"><strong>\a</strong></a>, <a href="LPC/string.html#term-a"><strong>[1]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/int.html#term-b"><strong>\b</strong></a>, <a href="LPC/string.html#term-b"><strong>[1]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/int.html#term-e"><strong>\e</strong></a>, <a href="LPC/string.html#term-e"><strong>[1]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/int.html#term-f"><strong>\f</strong></a>, <a href="LPC/string.html#term-f"><strong>[1]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/int.html#term-n"><strong>\N</strong></a>, <a href="LPC/string.html#term-n"><strong>[1]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/int.html#term-9"><strong>\n</strong></a>, <a href="LPC/string.html#term-9"><strong>[1]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/int.html#term-r"><strong>\r</strong></a>, <a href="LPC/string.html#term-r"><strong>[1]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/int.html#term-t"><strong>\t</strong></a>, <a href="LPC/string.html#term-t"><strong>[1]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/int.html#term-xn"><strong>\xN</strong></a>, <a href="LPC/string.html#term-xn"><strong>[1]</strong></a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="expr3``">expr3``</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="LPC/operators.html#term-15"><strong>``expr1 ? expr2</strong></a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="Symbols">Symbols</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="LPC/block.html#lpc.{[<statement>...]}">{[&lt;statement&gt;...]}(syntax)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="LPC/operators.html#term-39"><strong>~ var</strong></a>
   </dt>
 
   </dl></td>
@@ -895,10 +1098,6 @@
   </dt>
 
       
-  <dt><a href="driver/predefined.html#lpc.__COMPAT_MODE__">__COMPAT_MODE__(macro)</a>
-  </dt>
-
-      
   <dt><a href="driver/predefined.html#lpc.__DEPRECATED__">__DEPRECATED__(macro)</a>
   </dt>
 
@@ -915,7 +1114,7 @@
   </dt>
 
       
-  <dt><a href="driver/predefined.html#lpc.__EFUN_DEFINED__">__EFUN_DEFINED__(macro)</a>
+  <dt><a href="driver/predefined.html#lpc.__EFUN_DEFINED__(name)">__EFUN_DEFINED__(name)(macro)</a>
   </dt>
 
       
@@ -1049,7 +1248,7 @@
   </dt>
 
       
-  <dt><a href="driver/predefined.html#lpc.__PATH__">__PATH__(macro)</a>
+  <dt><a href="driver/predefined.html#lpc.__PATH__(n)">__PATH__(n)(macro)</a>
   </dt>
 
       
@@ -1151,6 +1350,10 @@
   </dt>
 
       
+  <dt><a href="obsolete/alists.html#lpc.alists">alists(concept)</a>
+  </dt>
+
+      
   <dt><a href="efun/all_environment.html#lpc.all_environment">all_environment(efun)</a>
   </dt>
 
@@ -1173,7 +1376,102 @@
   </dt>
 
       
-  <dt><a href="applied/applied.html#lpc.applied">applied(concept)</a>
+  <dt>
+    applied
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="applied/__INIT.html#lpc.__INIT">__INIT(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/add_weight.html#lpc.add_weight">add_weight(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/can_put_and_get.html#lpc.can_put_and_get">can_put_and_get(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/catch_msg.html#lpc.catch_msg">catch_msg(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/catch_tell.html#lpc.catch_tell">catch_tell(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/clean_up.html#lpc.clean_up">clean_up(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/create.html#lpc.create">create(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/drop.html#lpc.drop">drop(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/exit.html#lpc.exit">exit(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/get.html#lpc.get">get(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/heart_beat.html#lpc.heart_beat">heart_beat(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/id.html#lpc.id">id(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/init.html#lpc.init">init(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/logon.html#lpc.logon">logon(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/modify_command.html#lpc.modify_command">modify_command(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/parse_command_adjectiv_id_list.html#lpc.parse_command_adjectiv_id_list">parse_command_adjectiv_id_list(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/parse_command_id_list.html#lpc.parse_command_id_list">parse_command_id_list(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/parse_command_plural_id_list.html#lpc.parse_command_plural_id_list">parse_command_plural_id_list(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/prevent_insert.html#lpc.prevent_insert">prevent_insert(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/query_weight.html#lpc.query_weight">query_weight(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/remove.html#lpc.remove">remove(applied)</a>
+  </dt>
+
+        
+  <dt><a href="applied/reset.html#lpc.reset">reset(applied)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="applied/applied.html#lpc.applied">applied(directory)</a>
   </dt>
 
       
@@ -1185,7 +1483,11 @@
   </dt>
 
       
-  <dt><a href="LPC/arrays.html#lpc.arrays">arrays(concept)</a>
+  <dt><a href="LPC/arrays.html#lpc.arrays">arrays(lang)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/arrow.html#lpc.arrow">arrow(lang)</a>
   </dt>
 
       
@@ -1307,6 +1609,10 @@
   </dt>
 
       
+  <dt><a href="applied/clean_up.html#lpc.clean_up">clean_up(applied)</a>
+  </dt>
+
+      
   <dt><a href="efun/clear_bit.html#lpc.clear_bit">clear_bit(efun)</a>
   </dt>
 
@@ -1323,19 +1629,83 @@
   </dt>
 
       
+  <dt><a href="LPC/closures.html#lpc.closure">closure(type)</a>
+  </dt>
+
+      
   <dt><a href="efun/closurep.html#lpc.closurep">closurep(efun)</a>
   </dt>
 
       
-  <dt><a href="LPC/closures-example.html#lpc.closures example">closures example(concept)</a>
+  <dt><a href="LPC/closures-example.html#lpc.closures example">closures example(topic)</a>
   </dt>
 
       
-  <dt><a href="LPC/closures.html#lpc.closures">closures(concept)</a>
+  <dt><a href="LPC/closures.html#lpc.closures">closures(lang)</a>
+  </dt>
+
+      
+  <dt><a href="internals/codestyle.html#lpc.codestyle">codestyle(meta)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt>
+    command
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="driver/debugmalloc.html#lpc.debugmalloc">debugmalloc(command)</a>
+  </dt>
+
+        
+  <dt><a href="driver/dumpallobj.html#lpc.dumpallobj">dumpallobj(command)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/ed.html#lpc.ed">ed(command)</a>
+  </dt>
+
+        
+  <dt><a href="driver/malloc.html#lpc.malloc">malloc(command)</a>
+  </dt>
+
+        
+  <dt><a href="driver/opcdump.html#lpc.opcdump">opcdump(command)</a>
+  </dt>
+
+        
+  <dt><a href="driver/showsmallnewmalloced.html#lpc.showsmallnewmalloced">showsmallnewmalloced(command)</a>
+  </dt>
+
+        
+  <dt><a href="driver/status.html#lpc.status
+status tables
+status swap
+status malloc">status
+status tables
+status swap
+status malloc(command)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt>
+    command line option
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="concepts/erq.html#cmdoption--execdir">--execdir &lt;dir&gt;</a>
+  </dt>
+
+        
+  <dt><a href="concepts/erq.html#cmdoption--forked">--forked</a>
+  </dt>
+
+      </dl></dd>
       
   <dt><a href="efun/command.html#lpc.command">command(efun)</a>
   </dt>
@@ -1361,7 +1731,146 @@
   </dt>
 
       
-  <dt><a href="concepts/concepts.html#lpc.concepts">concepts(topic)</a>
+  <dt>
+    concept
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="master/initialisation.html#lpc.Initialization of the master object.">Initialization of the master object.(concept)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/alists.html#lpc.alists">alists(concept)</a>
+  </dt>
+
+        
+  <dt><a href="driver/architectures.html#lpc.architectures">architectures(concept)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/efuns.html#lpc.efuns">efuns(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/erq.html#lpc.erq">erq(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/files.html#lpc.files">files(concept)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/functions.html#lpc.functions">functions(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/hsregexp.html#lpc.hsregexp">hsregexp(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/imp.html#lpc.imp">imp(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/inheritance.html#lpc.inheritance">inheritance(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/initialisation.html#lpc.initialisation">initialisation(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/intermud.html#lpc.intermud">intermud(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/intermud.basic.html#lpc.intermud.basic">intermud.basic(concept)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/lfuns.html#lpc.lfuns">lfuns(concept)</a>
+  </dt>
+
+        
+  <dt><a href="driver/limitations.html#lpc.limitations">limitations(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/mccp.html#lpc.mccp">mccp(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/memory.html#lpc.memory">memory(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/mysql.html#lpc.mysql">mysql(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/native.html#lpc.native">native(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/negotiation.html#lpc.negotiation">negotiation(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/objects.html#lpc.objects">objects(concept)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/operators.html#lpc.operators">operators(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/overloading.html#lpc.overloading">overloading(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/pcre.html#lpc.pcre">pcre(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/pgsql.html#lpc.pgsql">pgsql(concept)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.predefined">predefined(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.regexp">regexp(concept)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/rxcache.doc.html#lpc.rxcache">rxcache(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/simul_efun.html#lpc.simul_efun">simul_efun(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/telnet.html#lpc.telnet">telnet(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/tls.html#lpc.tls">tls(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/uids.html#lpc.uids">uids(concept)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/unions.html#lpc.unions">unions(concept)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="concepts/concepts.html#lpc.concepts">concepts(directory)</a>
   </dt>
 
       
@@ -1478,8 +1987,6 @@
   <dt><a href="efun/debug_info.html#lpc.debug_info">debug_info(efun)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/debug_message.html#lpc.debug_message">debug_message(efun)</a>
   </dt>
@@ -1496,14 +2003,67 @@
   <dt><a href="efun/deep_inventory.html#lpc.deep_inventory">deep_inventory(efun)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="obsolete/define_include_dirs.html#lpc.define_include_dirs">define_include_dirs(master)</a>
+  </dt>
+
+      
+  <dt><a href="efun/efun.html#term-deprecated-or-obsolete"><strong>deprecated or obsolete</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/modifiers.html#lpc.deprecated">deprecated(modifier)</a>, <a href="LPC/modifiers.html#lpc.deprecated">[1]</a>
   </dt>
 
       
   <dt><a href="efun/destruct.html#lpc.destruct">destruct(efun)</a>
   </dt>
 
+      
+  <dt>
+    directory
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/lpc.html#lpc.LPC">LPC(directory)</a>
+  </dt>
+
+        
+  <dt><a href="applied/applied.html#lpc.applied">applied(directory)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/concepts.html#lpc.concepts">concepts(directory)</a>
+  </dt>
+
+        
+  <dt><a href="driver/driver.html#lpc.driver">driver(directory)</a>
+  </dt>
+
+        
+  <dt><a href="efun/efun.html#lpc.efun">efun(directory)</a>
+  </dt>
+
+        
+  <dt><a href="hook/hook.html#lpc.hook">hook(directory)</a>
+  </dt>
+
+        
+  <dt><a href="internals/internals.html#lpc.internals">internals(directory)</a>
+  </dt>
+
+        
+  <dt><a href="master/master.html#lpc.master">master(directory)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/obsolete.html#lpc.obsolete">obsolete(directory)</a>
+  </dt>
+
+      </dl></dd>
       
   <dt><a href="efun/disable_commands.html#lpc.disable_commands">disable_commands(efun)</a>
   </dt>
@@ -1513,11 +2073,76 @@
   </dt>
 
       
+  <dt>
+    do { statement } while(expr)
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/do-while.html#lpc.do { statement } while(expr);">(syntax)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="LPC/do-while.html#lpc.do">do(keyword)</a>
+  </dt>
+
+      
   <dt><a href="LPC/do-while.html#lpc.do-while">do-while(lang)</a>
   </dt>
 
       
-  <dt><a href="driver/driver.html#lpc.driver">driver(topic)</a>
+  <dt>
+    driver
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="concepts/erq.html#lpc.erq">erq(concept)</a>
+  </dt>
+
+        
+  <dt><a href="hook/hook.html#lpc.hook">hook(directory)</a>
+  </dt>
+
+        
+  <dt><a href="driver/invocation.html#lpc.invocation">invocation(driver)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/pgsql.html#lpc.pgsql">pgsql(concept)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.predefined">predefined(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.regexp">regexp(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/tls.html#lpc.tls">tls(concept)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/uids.html#lpc.uids">uids(concept)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt>
+    driver modes
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="concepts/native.html#lpc.native">native(concept)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="driver/driver.html#lpc.driver">driver(directory)</a>
   </dt>
 
       
@@ -1535,11 +2160,1394 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
+  <dt><a href="LPC/ed.html#lpc.ed">ed(command)</a>
+  </dt>
+
+      
   <dt><a href="efun/ed.html#lpc.ed">ed(efun)</a>
   </dt>
 
       
-  <dt><a href="efun/efun.html#lpc.efun">efun(topic)</a>
+  <dt>
+    efun
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="efun/abs.html#lpc.abs">abs(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/acos.html#lpc.acos">acos(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/add_action.html#lpc.add_action">add_action(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/add_verb.html#lpc.add_verb">add_verb(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/add_xverb.html#lpc.add_xverb">add_xverb(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/all_environment.html#lpc.all_environment">all_environment(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/all_inventory.html#lpc.all_inventory">all_inventory(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/allocate.html#lpc.allocate">allocate(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/allocate_mapping.html#lpc.allocate_mapping">allocate_mapping(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/and_bits.html#lpc.and_bits">and_bits(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/apply.html#lpc.apply">apply(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/asin.html#lpc.asin">asin(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/assoc.html#lpc.assoc">assoc(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/atan.html#lpc.atan">atan(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/atan2.html#lpc.atan2">atan2(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/attach_erq_demon.html#lpc.attach_erq_demon">attach_erq_demon(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/baseof.html#lpc.baseof">baseof(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/binary_message.html#lpc.binary_message">binary_message(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/bind_lambda.html#lpc.bind_lambda">bind_lambda(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/blueprint.html#lpc.blueprint">blueprint(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/break_point.html#lpc.break_point">break_point(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/call_direct.html#lpc.call_direct">call_direct(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/call_direct_resolved.html#lpc.call_direct_resolved">call_direct_resolved(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/call_other.html#lpc.call_other">call_other(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/call_out.html#lpc.call_out">call_out(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/call_out_info.html#lpc.call_out_info">call_out_info(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/call_resolved.html#lpc.call_resolved">call_resolved(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/caller_stack.html#lpc.caller_stack">caller_stack(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/caller_stack_depth.html#lpc.caller_stack_depth">caller_stack_depth(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/capitalize.html#lpc.capitalize">capitalize(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/cat.html#lpc.cat">cat(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/catch.html#lpc.catch">catch(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/ceil.html#lpc.ceil">ceil(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/clear_bit.html#lpc.clear_bit">clear_bit(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/clone_object.html#lpc.clone_object">clone_object(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/clonep.html#lpc.clonep">clonep(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/clones.html#lpc.clones">clones(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/closurep.html#lpc.closurep">closurep(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/command.html#lpc.command">command(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/command_stack.html#lpc.command_stack">command_stack(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/command_stack_depth.html#lpc.command_stack_depth">command_stack_depth(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/configure_driver.html#lpc.configure_driver">configure_driver(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/configure_interactive.html#lpc.configure_interactive">configure_interactive(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/convert_charset.html#lpc.convert_charset">convert_charset(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/copy.html#lpc.copy">copy(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/copy_bits.html#lpc.copy_bits">copy_bits(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/copy_file.html#lpc.copy_file">copy_file(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/copy_mapping.html#lpc.copy_mapping">copy_mapping(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/cos.html#lpc.cos">cos(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/count_bits.html#lpc.count_bits">count_bits(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/creator.html#lpc.creator">creator(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/crypt.html#lpc.crypt">crypt(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/ctime.html#lpc.ctime">ctime(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/db_affected_rows.html#lpc.db_affected_rows">db_affected_rows(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/db_close.html#lpc.db_close">db_close(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/db_coldefs.html#lpc.db_coldefs">db_coldefs(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/db_connect.html#lpc.db_connect">db_connect(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/db_conv_string.html#lpc.db_conv_string">db_conv_string(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/db_error.html#lpc.db_error">db_error(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/db_exec.html#lpc.db_exec">db_exec(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/db_fetch.html#lpc.db_fetch">db_fetch(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/db_handles.html#lpc.db_handles">db_handles(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/db_insert_id.html#lpc.db_insert_id">db_insert_id(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/debug_info.html#lpc.debug_info">debug_info(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/debug_message.html#lpc.debug_message">debug_message(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/deep_copy.html#lpc.deep_copy">deep_copy(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/deep_inventory.html#lpc.deep_inventory">deep_inventory(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/destruct.html#lpc.destruct">destruct(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/disable_commands.html#lpc.disable_commands">disable_commands(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/ed.html#lpc.ed">ed(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/efun308.html#lpc.efun308">efun308(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/enable_commands.html#lpc.enable_commands">enable_commands(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/enable_telnet.html#lpc.enable_telnet">enable_telnet(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/end_mccp_compress.html#lpc.end_mccp_compress">end_mccp_compress(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/environment.html#lpc.environment">environment(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/exec.html#lpc.exec">exec(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/execute_command.html#lpc.execute_command">execute_command(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/exp.html#lpc.exp">exp(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/expand_define.html#lpc.expand_define">expand_define(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/explode.html#lpc.explode">explode(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/export_uid.html#lpc.export_uid">export_uid(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/extern_call.html#lpc.extern_call">extern_call(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/extract.html#lpc.extract">extract(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/file_name.html#lpc.file_name">file_name(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/file_size.html#lpc.file_size">file_size(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/filter.html#lpc.filter">filter(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/filter_array.html#lpc.filter_array">filter_array(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/filter_indices.html#lpc.filter_indices">filter_indices(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/filter_mapping.html#lpc.filter_mapping">filter_mapping(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/filter_objects.html#lpc.filter_objects">filter_objects(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/find_call_out.html#lpc.find_call_out">find_call_out(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/find_input_to.html#lpc.find_input_to">find_input_to(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/find_object.html#lpc.find_object">find_object(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/first_inventory.html#lpc.first_inventory">first_inventory(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/floatp.html#lpc.floatp">floatp(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/floor.html#lpc.floor">floor(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/funcall.html#lpc.funcall">funcall(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/function_exists.html#lpc.function_exists">function_exists(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/functionlist.html#lpc.functionlist">functionlist(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/garbage_collection.html#lpc.garbage_collection">garbage_collection(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/get_combine_charset.html#lpc.get_combine_charset">get_combine_charset(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/get_connection_charset.html#lpc.get_connection_charset">get_connection_charset(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/get_dir.html#lpc.get_dir">get_dir(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/get_error_file.html#lpc.get_error_file">get_error_file(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/get_eval_cost.html#lpc.get_eval_cost">get_eval_cost(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/get_extra_wizinfo.html#lpc.get_extra_wizinfo">get_extra_wizinfo(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/get_max_commands.html#lpc.get_max_commands">get_max_commands(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/get_type_info.html#lpc.get_type_info">get_type_info(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/geteuid.html#lpc.geteuid">geteuid(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/getuid.html#lpc.getuid">getuid(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/gmtime.html#lpc.gmtime">gmtime(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/hash.html#lpc.hash">hash(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/heart_beat_info.html#lpc.heart_beat_info">heart_beat_info(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/hmac.html#lpc.hmac">hmac(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/idna_stringprep.html#lpc.idna_stringprep">idna_stringprep(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/idna_to_ascii.html#lpc.idna_to_ascii">idna_to_ascii(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/idna_to_unicode.html#lpc.idna_to_unicode">idna_to_unicode(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/implode.html#lpc.implode">implode(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/include_list.html#lpc.include_list">include_list(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/inherit_list.html#lpc.inherit_list">inherit_list(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/input_to.html#lpc.input_to">input_to(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/input_to_info.html#lpc.input_to_info">input_to_info(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/insert_alist.html#lpc.insert_alist">insert_alist(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/interactive.html#lpc.interactive">interactive(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/intersect_alist.html#lpc.intersect_alist">intersect_alist(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/intp.html#lpc.intp">intp(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/invert_bits.html#lpc.invert_bits">invert_bits(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/json_parse.html#lpc.json_parse">json_parse(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/json_serialize.html#lpc.json_serialize">json_serialize(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/lambda.html#lpc.lambda">lambda(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/last_bit.html#lpc.last_bit">last_bit(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/last_instructions.html#lpc.last_instructions">last_instructions(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/limited.html#lpc.limited">limited(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/living.html#lpc.living">living(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/load_name.html#lpc.load_name">load_name(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/load_object.html#lpc.load_object">load_object(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/localtime.html#lpc.localtime">localtime(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/log.html#lpc.log">log(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/lower_case.html#lpc.lower_case">lower_case(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/m_add.html#lpc.m_add">m_add(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/m_allocate.html#lpc.m_allocate">m_allocate(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/m_contains.html#lpc.m_contains">m_contains(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/m_delete.html#lpc.m_delete">m_delete(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/m_entry.html#lpc.m_entry">m_entry(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/m_indices.html#lpc.m_indices">m_indices(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/m_reallocate.html#lpc.m_reallocate">m_reallocate(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/m_sizeof.html#lpc.m_sizeof">m_sizeof(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/m_values.html#lpc.m_values">m_values(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/make_shared_string.html#lpc.make_shared_string">make_shared_string(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/map.html#lpc.map">map(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/map_array.html#lpc.map_array">map_array(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/map_indices.html#lpc.map_indices">map_indices(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/map_mapping.html#lpc.map_mapping">map_mapping(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/map_objects.html#lpc.map_objects">map_objects(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/mapping_contains.html#lpc.mapping_contains">mapping_contains(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/mappingp.html#lpc.mappingp">mappingp(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/master.html#lpc.master">master(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/match_command.html#lpc.match_command">match_command(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/max.html#lpc.max">max(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/md5.html#lpc.md5">md5(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/md5_crypt.html#lpc.md5_crypt">md5_crypt(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/member.html#lpc.member">member(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/member_array.html#lpc.member_array">member_array(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/min.html#lpc.min">min(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/mkdir.html#lpc.mkdir">mkdir(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/mkmapping.html#lpc.mkmapping">mkmapping(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/mktime.html#lpc.mktime">mktime(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/move_object.html#lpc.move_object">move_object(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/negate.html#lpc.negate">negate(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/net_connect.html#lpc.net_connect">net_connect(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/next_bit.html#lpc.next_bit">next_bit(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/next_inventory.html#lpc.next_inventory">next_inventory(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/notify_fail.html#lpc.notify_fail">notify_fail(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/object_info.html#lpc.object_info">object_info(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/object_name.html#lpc.object_name">object_name(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/object_time.html#lpc.object_time">object_time(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/objectp.html#lpc.objectp">objectp(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/or_bits.html#lpc.or_bits">or_bits(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/order_alist.html#lpc.order_alist">order_alist(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/parse_command.html#lpc.parse_command">parse_command(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/pg_close.html#lpc.pg_close">pg_close(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/pg_connect.html#lpc.pg_connect">pg_connect(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/pg_conv_string.html#lpc.pg_conv_string">pg_conv_string(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/pg_pending.html#lpc.pg_pending">pg_pending(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/pg_query.html#lpc.pg_query">pg_query(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/pointerp.html#lpc.pointerp">pointerp(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/pow.html#lpc.pow">pow(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/present.html#lpc.present">present(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/present_clone.html#lpc.present_clone">present_clone(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/previous_object.html#lpc.previous_object">previous_object(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/printf.html#lpc.printf">printf(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/process_string.html#lpc.process_string">process_string(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/program_name.html#lpc.program_name">program_name(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/program_time.html#lpc.program_time">program_time(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_actions.html#lpc.query_actions">query_actions(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_command.html#lpc.query_command">query_command(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_editing.html#lpc.query_editing">query_editing(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_idle.html#lpc.query_idle">query_idle(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/query_imp_port.html#lpc.query_imp_port">query_imp_port(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_input_pending.html#lpc.query_input_pending">query_input_pending(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_ip_name.html#lpc.query_ip_name">query_ip_name(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_ip_number.html#lpc.query_ip_number">query_ip_number(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_limits.html#lpc.query_limits">query_limits(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_load_average.html#lpc.query_load_average">query_load_average(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_mccp.html#lpc.query_mccp">query_mccp(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_mccp_stats.html#lpc.query_mccp_stats">query_mccp_stats(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_mud_port.html#lpc.query_mud_port">query_mud_port(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_notify_fail.html#lpc.query_notify_fail">query_notify_fail(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_once_interactive.html#lpc.query_once_interactive">query_once_interactive(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_shadowing.html#lpc.query_shadowing">query_shadowing(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_snoop.html#lpc.query_snoop">query_snoop(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_udp_port.html#lpc.query_udp_port">query_udp_port(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/query_verb.html#lpc.query_verb">query_verb(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/quote.html#lpc.quote">quote(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/raise_error.html#lpc.raise_error">raise_error(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/random.html#lpc.random">random(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/read_bytes.html#lpc.read_bytes">read_bytes(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/read_file.html#lpc.read_file">read_file(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/receive_imp.html#lpc.receive_imp">receive_imp(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/referencep.html#lpc.referencep">referencep(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/regexp.html#lpc.regexp">regexp(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/regexp_package.html#lpc.regexp_package">regexp_package(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/regexplode.html#lpc.regexplode">regexplode(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/regmatch.html#lpc.regmatch">regmatch(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/regreplace.html#lpc.regreplace">regreplace(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/remove_action.html#lpc.remove_action">remove_action(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/remove_call_out.html#lpc.remove_call_out">remove_call_out(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/remove_input_to.html#lpc.remove_input_to">remove_input_to(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/remove_interactive.html#lpc.remove_interactive">remove_interactive(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/rename.html#lpc.rename">rename(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/rename_object.html#lpc.rename_object">rename_object(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/replace_program.html#lpc.replace_program">replace_program(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/restore_object.html#lpc.restore_object">restore_object(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/restore_value.html#lpc.restore_value">restore_value(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/reverse.html#lpc.reverse">reverse(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/rm.html#lpc.rm">rm(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/rmdir.html#lpc.rmdir">rmdir(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/rmember.html#lpc.rmember">rmember(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/rusage.html#lpc.rusage">rusage(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/save_object.html#lpc.save_object">save_object(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/save_value.html#lpc.save_value">save_value(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/say.html#lpc.say">say(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/send_erq.html#lpc.send_erq">send_erq(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/send_imp.html#lpc.send_imp">send_imp(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/send_udp.html#lpc.send_udp">send_udp(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/set_auto_include_string.html#lpc.set_auto_include_string">set_auto_include_string(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_bit.html#lpc.set_bit">set_bit(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_buffer_size.html#lpc.set_buffer_size">set_buffer_size(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_combine_charset.html#lpc.set_combine_charset">set_combine_charset(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_connection_charset.html#lpc.set_connection_charset">set_connection_charset(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_driver_hook.html#lpc.set_driver_hook">set_driver_hook(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_environment.html#lpc.set_environment">set_environment(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_extra_wizinfo.html#lpc.set_extra_wizinfo">set_extra_wizinfo(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_extra_wizinfo_size.html#lpc.set_extra_wizinfo_size">set_extra_wizinfo_size(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_heart_beat.html#lpc.set_heart_beat">set_heart_beat(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_is_wizard.html#lpc.set_is_wizard">set_is_wizard(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/set_light.html#lpc.set_light">set_light(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_limits.html#lpc.set_limits">set_limits(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_max_commands.html#lpc.set_max_commands">set_max_commands(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_modify_command.html#lpc.set_modify_command">set_modify_command(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_next_reset.html#lpc.set_next_reset">set_next_reset(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_prompt.html#lpc.set_prompt">set_prompt(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_this_object.html#lpc.set_this_object">set_this_object(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/set_this_player.html#lpc.set_this_player">set_this_player(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/seteuid.html#lpc.seteuid">seteuid(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/sgn.html#lpc.sgn">sgn(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/sha1.html#lpc.sha1">sha1(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/shadow.html#lpc.shadow">shadow(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/shutdown.html#lpc.shutdown">shutdown(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/sin.html#lpc.sin">sin(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/sizeof.html#lpc.sizeof">sizeof(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/sl_close.html#lpc.sl_close">sl_close(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/sl_exec.html#lpc.sl_exec">sl_exec(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/sl_insert_id.html#lpc.sl_insert_id">sl_insert_id(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/sl_open.html#lpc.sl_open">sl_open(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/slice_array.html#lpc.slice_array">slice_array(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/snoop.html#lpc.snoop">snoop(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/sort_array.html#lpc.sort_array">sort_array(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/sprintf.html#lpc.sprintf">sprintf(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/sqrt.html#lpc.sqrt">sqrt(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/sscanf.html#lpc.sscanf">sscanf(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/start_mccp_compress.html#lpc.start_mccp_compress">start_mccp_compress(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/strftime.html#lpc.strftime">strftime(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/stringp.html#lpc.stringp">stringp(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/strlen.html#lpc.strlen">strlen(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/strrstr.html#lpc.strrstr">strrstr(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/strstr.html#lpc.strstr">strstr(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/struct_info.html#lpc.struct_info">struct_info(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/structp.html#lpc.structp">structp(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/swap.html#lpc.swap">swap(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/symbol_function.html#lpc.symbol_function">symbol_function(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/symbol_variable.html#lpc.symbol_variable">symbol_variable(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/symbolp.html#lpc.symbolp">symbolp(efun)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/tail.html#lpc.tail">tail(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/tan.html#lpc.tan">tan(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/tell_object.html#lpc.tell_object">tell_object(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/tell_room.html#lpc.tell_room">tell_room(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/terminal_colour.html#lpc.terminal_colour">terminal_colour(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/test_bit.html#lpc.test_bit">test_bit(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/this_interactive.html#lpc.this_interactive">this_interactive(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/this_object.html#lpc.this_object">this_object(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/this_player.html#lpc.this_player">this_player(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/throw.html#lpc.throw">throw(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/time.html#lpc.time">time(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/tls_available.html#lpc.tls_available">tls_available(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/tls_check_certificate.html#lpc.tls_check_certificate">tls_check_certificate(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/tls_deinit_connection.html#lpc.tls_deinit_connection">tls_deinit_connection(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/tls_error.html#lpc.tls_error">tls_error(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/tls_init_connection.html#lpc.tls_init_connection">tls_init_connection(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/tls_query_connection_info.html#lpc.tls_query_connection_info">tls_query_connection_info(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/tls_query_connection_state.html#lpc.tls_query_connection_state">tls_query_connection_state(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/tls_refresh_certs.html#lpc.tls_refresh_certs">tls_refresh_certs(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/to_array.html#lpc.to_array">to_array(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/to_float.html#lpc.to_float">to_float(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/to_int.html#lpc.to_int">to_int(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/to_object.html#lpc.to_object">to_object(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/to_string.html#lpc.to_string">to_string(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/to_struct.html#lpc.to_struct">to_struct(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/trace.html#lpc.trace">trace(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/traceprefix.html#lpc.traceprefix">traceprefix(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/transfer.html#lpc.transfer">transfer(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/transpose_array.html#lpc.transpose_array">transpose_array(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/trim.html#lpc.trim">trim(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/typeof.html#lpc.typeof">typeof(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/unbound_lambda.html#lpc.unbound_lambda">unbound_lambda(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/unique_array.html#lpc.unique_array">unique_array(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/unmkmapping.html#lpc.unmkmapping">unmkmapping(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/unquote.html#lpc.unquote">unquote(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/unshadow.html#lpc.unshadow">unshadow(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/upper_case.html#lpc.upper_case">upper_case(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/users.html#lpc.users">users(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/utime.html#lpc.utime">utime(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/variable_exists.html#lpc.variable_exists">variable_exists(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/variable_list.html#lpc.variable_list">variable_list(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/walk_mapping.html#lpc.walk_mapping">walk_mapping(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/widthof.html#lpc.widthof">widthof(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/wizlist_info.html#lpc.wizlist_info">wizlist_info(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/write.html#lpc.write">write(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/write_bytes.html#lpc.write_bytes">write_bytes(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/write_file.html#lpc.write_file">write_file(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/xml_generate.html#lpc.xml_generate">xml_generate(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/xml_parse.html#lpc.xml_parse">xml_parse(efun)</a>
+  </dt>
+
+        
+  <dt><a href="efun/xor_bits.html#lpc.xor_bits">xor_bits(efun)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="efun/efun.html#lpc.efun">efun(directory)</a>
   </dt>
 
       
@@ -1575,11 +3583,9 @@
   </dt>
 
       
-  <dt><a href="LPC/escape.html#lpc.escape">escape(concept)</a>
+  <dt><a href="LPC/escape.html#lpc.escape">escape(lang)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/exec.html#lpc.exec">exec(efun)</a>
   </dt>
@@ -1606,6 +3612,100 @@
 
       
   <dt><a href="efun/export_uid.html#lpc.export_uid">export_uid(efun)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-expr1-expr1"><strong>expr1 != expr1</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-33"><strong>expr1 % expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-20"><strong>expr1 &amp; expr2</strong></a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="LPC/operators.html#term-17"><strong>expr1 &amp;&amp; expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-32"><strong>expr1 * expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-30"><strong>expr1 + expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-expr1-expr2"><strong>expr1 , expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-31"><strong>expr1 - expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-34"><strong>expr1 / expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-25"><strong>expr1 &lt; expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-27"><strong>expr1 &lt;&lt; expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-26"><strong>expr1 &lt;= expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-21"><strong>expr1 == expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-23"><strong>expr1 &gt; expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-24"><strong>expr1 &gt;= expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-28"><strong>expr1 &gt;&gt; expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-29"><strong>expr1 &gt;&gt;&gt; expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-19"><strong>expr1 ^ expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-18"><strong>expr1 | expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-16"><strong>expr1 || expr2</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-expr1-name"><strong>expr1-&gt;name(...)</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-expr1-expr2-expr3"><strong>expr1[expr2..expr3]</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-44"><strong>expr1[expr2]</strong></a>
   </dt>
 
       
@@ -1666,8 +3766,6 @@
   <dt><a href="efun/find_input_to.html#lpc.find_input_to">find_input_to(efun)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/find_object.html#lpc.find_object">find_object(efun)</a>
   </dt>
@@ -1681,15 +3779,62 @@
   </dt>
 
       
+  <dt><a href="LPC/float.html#lpc.float">float(type)</a>
+  </dt>
+
+      
   <dt><a href="efun/floatp.html#lpc.floatp">floatp(efun)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/floor.html#lpc.floor">floor(efun)</a>
   </dt>
 
       
+  <dt>
+    for(&lt;init&gt;
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/for.html#lpc.for(<init>; <expr2>; <expr3>) statement;">&lt;expr2&gt;; &lt;expr3&gt;) statement;(syntax)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="LPC/for.html#lpc.for">for(keyword)</a>
+  </dt>
+
+      
   <dt><a href="LPC/for.html#lpc.for">for(lang)</a>
+  </dt>
+
+      
+  <dt>
+    foreach (&lt;var&gt; : &lt;expr&gt;) &lt;statement&gt;
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/foreach.html#lpc.foreach (<var> : <expr>) <statement>;
+foreach (<var>, <var2>, ... ,<varN> : <expr>) <statement>;
+foreach (<var> : <expr1> .. <expr2>) <statement>;
+foreach (<var>, <var2>, ... ,<varN> : <expr1>..<expr2> ) <statement>;
+/* MudOS compatibility only - not for new code: */
+foreach (<var> in <expr>) <statement>;
+foreach (<var>, <var2>, ... ,<varN> in <expr>) <statement>;">foreach (&lt;var&gt;, &lt;var2&gt;, ... ,&lt;varN&gt; : &lt;expr&gt;) &lt;statement&gt;;
+foreach (&lt;var&gt; : &lt;expr1&gt; .. &lt;expr2&gt;) &lt;statement&gt;;
+foreach (&lt;var&gt;, &lt;var2&gt;, ... ,&lt;varN&gt; : &lt;expr1&gt;..&lt;expr2&gt; ) &lt;statement&gt;;
+/* MudOS compatibility only - not for new code: */
+foreach (&lt;var&gt; in &lt;expr&gt;) &lt;statement&gt;;
+foreach (&lt;var&gt;, &lt;var2&gt;, ... ,&lt;varN&gt; in &lt;expr&gt;) &lt;statement&gt;;(syntax)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="LPC/foreach.html#lpc.foreach">foreach(keyword)</a>
   </dt>
 
       
@@ -1701,7 +3846,34 @@
   </dt>
 
       
+  <dt>
+    function &lt;returntype&gt; ( &lt;arguments&gt; ) : &lt;context&gt; { &lt;code&gt; }
+(: &lt;statements&gt;
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/inline-closures.html#lpc.function <returntype> ( <arguments> ) : <context> { <code> }
+(: <statements> ; <expr>, ... , <expr> :)">&lt;expr&gt;, ... , &lt;expr&gt; :)(syntax)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="LPC/inline-closures.html#lpc.function">function(keyword)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/functions.html#lpc.function_declaration
+[<modifier>...] [<type>] <name> ([<argument>...]) <block>">function_declaration
+[&lt;modifier&gt;...] [&lt;type&gt;] &lt;name&gt; ([&lt;argument&gt;...]) &lt;block&gt;(syntax)</a>
+  </dt>
+
+      
   <dt><a href="efun/function_exists.html#lpc.function_exists">function_exists(efun)</a>
+  </dt>
+
+      
+  <dt><a href="efun/functionlist.html#lpc.functionlist">functionlist(efun)</a>
   </dt>
 
       
@@ -1754,12 +3926,12 @@
   <dt><a href="efun/get_extra_wizinfo.html#lpc.get_extra_wizinfo">get_extra_wizinfo(efun)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="master/get_master_uid.html#lpc.get_master_uid">get_master_uid(master)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/get_max_commands.html#lpc.get_max_commands">get_max_commands(efun)</a>
   </dt>
@@ -1793,6 +3965,21 @@
   </dt>
 
       
+  <dt>
+    guide
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/mappings.html#lpc.A step-by-step introduction to mappings">A step-by-step introduction to mappings(guide)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/closure_guide.html#lpc.guide to closures">guide to closures(guide)</a>
+  </dt>
+
+      </dl></dd>
+      
   <dt><a href="LPC/closure_guide.html#lpc.guide to closures">guide to closures(guide)</a>
   </dt>
 
@@ -1803,7 +3990,15 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
+  <dt><a href="hook/hook.html#term-h-auto-include"><strong>H_AUTO_INCLUDE</strong></a>
+  </dt>
+
+      
   <dt><a href="hook/auto_include.html#lpc.H_AUTO_INCLUDE">H_AUTO_INCLUDE(hook)</a>
+  </dt>
+
+      
+  <dt><a href="hook/hook.html#term-h-clean-up"><strong>H_CLEAN_UP</strong></a>
   </dt>
 
       
@@ -1811,7 +4006,15 @@
   </dt>
 
       
+  <dt><a href="hook/hook.html#term-h-clone-uids"><strong>H_CLONE_UIDS</strong></a>
+  </dt>
+
+      
   <dt><a href="hook/clone_uids.html#lpc.H_CLONE_UIDS">H_CLONE_UIDS(hook)</a>
+  </dt>
+
+      
+  <dt><a href="hook/hook.html#term-h-command"><strong>H_COMMAND</strong></a>
   </dt>
 
       
@@ -1819,7 +4022,15 @@
   </dt>
 
       
+  <dt><a href="hook/hook.html#term-h-create-clone"><strong>H_CREATE_CLONE</strong></a>
+  </dt>
+
+      
   <dt><a href="hook/create_clone.html#lpc.H_CREATE_CLONE">H_CREATE_CLONE(hook)</a>
+  </dt>
+
+      
+  <dt><a href="hook/hook.html#term-h-create-ob"><strong>H_CREATE_OB</strong></a>
   </dt>
 
       
@@ -1827,7 +4038,15 @@
   </dt>
 
       
+  <dt><a href="hook/hook.html#term-h-create-super"><strong>H_CREATE_SUPER</strong></a>
+  </dt>
+
+      
   <dt><a href="hook/create_super.html#lpc.H_CREATE_SUPER">H_CREATE_SUPER(hook)</a>
+  </dt>
+
+      
+  <dt><a href="hook/hook.html#term-h-default-method"><strong>H_DEFAULT_METHOD</strong></a>
   </dt>
 
       
@@ -1835,7 +4054,15 @@
   </dt>
 
       
+  <dt><a href="hook/hook.html#term-h-default-prompt"><strong>H_DEFAULT_PROMPT</strong></a>
+  </dt>
+
+      
   <dt><a href="hook/default_prompt.html#lpc.H_DEFAULT_PROMPT">H_DEFAULT_PROMPT(hook)</a>
+  </dt>
+
+      
+  <dt><a href="hook/hook.html#term-h-erq-stop"><strong>H_ERQ_STOP</strong></a>
   </dt>
 
       
@@ -1843,7 +4070,15 @@
   </dt>
 
       
+  <dt><a href="hook/hook.html#term-h-include-dirs"><strong>H_INCLUDE_DIRS</strong></a>
+  </dt>
+
+      
   <dt><a href="hook/include_dirs.html#lpc.H_INCLUDE_DIRS">H_INCLUDE_DIRS(hook)</a>
+  </dt>
+
+      
+  <dt><a href="hook/hook.html#term-h-load-uids"><strong>H_LOAD_UIDS</strong></a>
   </dt>
 
       
@@ -1851,7 +4086,15 @@
   </dt>
 
       
+  <dt><a href="hook/hook.html#term-h-modify-command"><strong>H_MODIFY_COMMAND</strong></a>
+  </dt>
+
+      
   <dt><a href="hook/modify_command.html#lpc.H_MODIFY_COMMAND">H_MODIFY_COMMAND(hook)</a>
+  </dt>
+
+      
+  <dt><a href="hook/hook.html#term-h-modify-command-fname"><strong>H_MODIFY_COMMAND_FNAME</strong></a>
   </dt>
 
       
@@ -1859,17 +4102,33 @@
   </dt>
 
       
+  <dt><a href="hook/hook.html#term-h-move-object0"><strong>H_MOVE_OBJECT0</strong></a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
   <dt><a href="hook/move_object.html#lpc.H_MOVE_OBJECT0">H_MOVE_OBJECT0(hook)</a>
+  </dt>
+
+      
+  <dt><a href="hook/hook.html#term-h-move-object1"><strong>H_MOVE_OBJECT1</strong></a>
   </dt>
 
       
   <dt><a href="hook/move_object.html#lpc.H_MOVE_OBJECT1">H_MOVE_OBJECT1(hook)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="hook/hook.html#term-h-msg-discarded"><strong>H_MSG_DISCARDED</strong></a>
+  </dt>
+
       
   <dt><a href="hook/msg_discarded.html#lpc.H_MSG_DISCARDED">H_MSG_DISCARDED(hook)</a>
+  </dt>
+
+      
+  <dt><a href="hook/hook.html#term-h-no-ipc-slot"><strong>H_NO_IPC_SLOT</strong></a>
   </dt>
 
       
@@ -1877,7 +4136,23 @@
   </dt>
 
       
+  <dt><a href="hook/hook.html#term-h-noecho"><strong>H_NOECHO</strong></a>
+  </dt>
+
+      
+  <dt><a href="hook/no_echo.html#lpc.H_NOECHO">H_NOECHO(hook)</a>
+  </dt>
+
+      
+  <dt><a href="hook/hook.html#term-h-notify-fail"><strong>H_NOTIFY_FAIL</strong></a>
+  </dt>
+
+      
   <dt><a href="hook/notify_fail.html#lpc.H_NOTIFY_FAIL">H_NOTIFY_FAIL(hook)</a>
+  </dt>
+
+      
+  <dt><a href="hook/hook.html#term-h-print-prompt"><strong>H_PRINT_PROMPT</strong></a>
   </dt>
 
       
@@ -1889,7 +4164,15 @@
   </dt>
 
       
+  <dt><a href="hook/hook.html#term-h-reset"><strong>H_RESET</strong></a>
+  </dt>
+
+      
   <dt><a href="hook/reset.html#lpc.H_RESET">H_RESET(hook)</a>
+  </dt>
+
+      
+  <dt><a href="hook/hook.html#term-h-send-notify-fail"><strong>H_SEND_NOTIFY_FAIL</strong></a>
   </dt>
 
       
@@ -1897,7 +4180,11 @@
   </dt>
 
       
-  <dt><a href="hook/no_echo.html#lpc.H_TELNET_NEG">H_TELNET_NEG(hook)</a>, <a href="hook/telnet_neg.html#lpc.H_TELNET_NEG">[1]</a>
+  <dt><a href="hook/hook.html#term-h-telnet-neg"><strong>H_TELNET_NEG</strong></a>
+  </dt>
+
+      
+  <dt><a href="hook/telnet_neg.html#lpc.H_TELNET_NEG">H_TELNET_NEG(hook)</a>
   </dt>
 
       
@@ -1925,7 +4212,114 @@
   </dt>
 
       
-  <dt><a href="hook/hook.html#lpc.hooks">hooks(concept)</a>
+  <dt>
+    hook
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="hook/auto_include.html#lpc.H_AUTO_INCLUDE">H_AUTO_INCLUDE(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/clean_up.html#lpc.H_CLEAN_UP">H_CLEAN_UP(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/clone_uids.html#lpc.H_CLONE_UIDS">H_CLONE_UIDS(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/command.html#lpc.H_COMMAND">H_COMMAND(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/create_clone.html#lpc.H_CREATE_CLONE">H_CREATE_CLONE(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/create_ob.html#lpc.H_CREATE_OB">H_CREATE_OB(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/create_super.html#lpc.H_CREATE_SUPER">H_CREATE_SUPER(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/default_method.html#lpc.H_DEFAULT_METHOD">H_DEFAULT_METHOD(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/default_prompt.html#lpc.H_DEFAULT_PROMPT">H_DEFAULT_PROMPT(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/erq_stop.html#lpc.H_ERQ_STOP">H_ERQ_STOP(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/include_dirs.html#lpc.H_INCLUDE_DIRS">H_INCLUDE_DIRS(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/load_uids.html#lpc.H_LOAD_UIDS">H_LOAD_UIDS(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/modify_command.html#lpc.H_MODIFY_COMMAND">H_MODIFY_COMMAND(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/modify_command_fname.html#lpc.H_MODIFY_COMMAND_FNAME">H_MODIFY_COMMAND_FNAME(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/move_object.html#lpc.H_MOVE_OBJECT0">H_MOVE_OBJECT0(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/move_object.html#lpc.H_MOVE_OBJECT1">H_MOVE_OBJECT1(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/msg_discarded.html#lpc.H_MSG_DISCARDED">H_MSG_DISCARDED(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/no_echo.html#lpc.H_NOECHO">H_NOECHO(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/notify_fail.html#lpc.H_NOTIFY_FAIL">H_NOTIFY_FAIL(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/no_ipc_slot.html#lpc.H_NO_IPC_SLOT">H_NO_IPC_SLOT(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/print_prompt.html#lpc.H_PRINT_PROMPT">H_PRINT_PROMPT(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/regexp_package.html#lpc.H_REGEXP_PACKAGE">H_REGEXP_PACKAGE(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/reset.html#lpc.H_RESET">H_RESET(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/send_notify_fail.html#lpc.H_SEND_NOTIFY_FAIL">H_SEND_NOTIFY_FAIL(hook)</a>
+  </dt>
+
+        
+  <dt><a href="hook/telnet_neg.html#lpc.H_TELNET_NEG">H_TELNET_NEG(hook)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="hook/hook.html#lpc.hook">hook(directory)</a>
   </dt>
 
       
@@ -1943,6 +4337,10 @@
   </dt>
 
       
+  <dt><a href="LPC/operators.html#term-ident-name"><strong>ident::name(...)</strong></a>
+  </dt>
+
+      
   <dt><a href="efun/idna_stringprep.html#lpc.idna_stringprep">idna_stringprep(efun)</a>
   </dt>
 
@@ -1952,6 +4350,28 @@
 
       
   <dt><a href="efun/idna_to_unicode.html#lpc.idna_to_unicode">idna_to_unicode(efun)</a>
+  </dt>
+
+      
+  <dt>
+    if (expr1) statement1
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/if.html#lpc.if (expr1) statement1;
+else if (expr2) statement2;
+...
+else if (exprN) statementN;
+else statementX;">else if (expr2) statement2;
+...
+else if (exprN) statementN;
+else statementX;(syntax)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="LPC/if.html#lpc.if">if(keyword)</a>
   </dt>
 
       
@@ -1979,6 +4399,25 @@
   </dt>
 
       
+  <dt><a href="LPC/index.html#lpc.index">index(lang)</a>
+  </dt>
+
+      
+  <dt>
+    inherit &#34;&lt;path&gt;&#34;
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/inherit.html#lpc.inherit "<path>";">(syntax)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="LPC/inherit.html#lpc.inherit">inherit(keyword)</a>
+  </dt>
+
+      
   <dt><a href="LPC/inherit.html#lpc.inherit">inherit(lang)</a>
   </dt>
 
@@ -1998,12 +4437,20 @@
   <dt><a href="applied/init.html#lpc.init">init(applied)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="LPC/pragma.html#lpc.init_variables">init_variables(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="concepts/initialisation.html#lpc.initialisation">initialisation(concept)</a>
+  </dt>
+
       
   <dt><a href="master/initialisation.html#lpc.Initialization of the master object.">Initialization of the master object.(concept)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="LPC/inline-closures.html#lpc.inline-closures">inline-closures(lang)</a>
   </dt>
@@ -2021,6 +4468,42 @@
   </dt>
 
       
+  <dt><a href="master/master.html#term-int-privilege-violation-string-op-mixed-who-mixed-arg3-mixed-arg4"><strong>int privilege_violation (string op, mixed who, mixed arg3, mixed arg4)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-int-query-allow-shadow-object-victim"><strong>int query_allow_shadow (object victim)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-int-retrieve-ed-setup-object-who"><strong>int retrieve_ed_setup (object who)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-int-save-ed-setup-object-who-int-code"><strong>int save_ed_setup (object who, int code)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-int-valid-exec-string-name"><strong>int valid_exec (string name)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-int-valid-query-snoop-object-obj"><strong>int valid_query_snoop (object obj)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-int-valid-seteuid-object-obj-string-neweuid"><strong>int valid_seteuid (object obj, string neweuid)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-int-valid-snoop-object-snoopee-object-snooper"><strong>int valid_snoop (object snoopee, object snooper)</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/int.html#lpc.int">int(type)</a>
+  </dt>
+
+      
   <dt><a href="efun/interactive.html#lpc.interactive">interactive(efun)</a>
   </dt>
 
@@ -2033,7 +4516,7 @@
   </dt>
 
       
-  <dt><a href="internals/internals.html#lpc.internals">internals(topic)</a>
+  <dt><a href="internals/internals.html#lpc.internals">internals(directory)</a>
   </dt>
 
       
@@ -2041,11 +4524,15 @@
   </dt>
 
       
-  <dt><a href="LPC/initialisation.html#lpc.intialisation">intialisation(concept)</a>
+  <dt><a href="efun/intp.html#lpc.intp">intp(efun)</a>
   </dt>
 
       
-  <dt><a href="efun/intp.html#lpc.intp">intp(efun)</a>
+  <dt><a href="master/master.html#term-int-string-valid-read-string-path-string-euid-string-fun-object-caller"><strong>int|string valid_read (string path, string euid, string fun, object caller)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-int-string-valid-write-string-path-string-euid-string-fun-object-caller"><strong>int|string valid_write (string path, string euid, string fun, object caller)</strong></a>
   </dt>
 
       
@@ -2053,9 +4540,74 @@
   </dt>
 
       
-  <dt><a href="driver/invocation.html#lpc.invocation">invocation(concept)</a>
+  <dt><a href="driver/invocation.html#lpc.invocation">invocation(driver)</a>
   </dt>
 
+  </dl></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="efun/json_parse.html#lpc.json_parse">json_parse(efun)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="efun/json_serialize.html#lpc.json_serialize">json_serialize(efun)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt>
+    keyword
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/do-while.html#lpc.do">do(keyword)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/for.html#lpc.for">for(keyword)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/foreach.html#lpc.foreach">foreach(keyword)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/inline-closures.html#lpc.function">function(keyword)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/if.html#lpc.if">if(keyword)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/inherit.html#lpc.inherit">inherit(keyword)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/mappings.html#index-0">mapping</a>
+  </dt>
+
+        
+  <dt><a href="LPC/switch.html#lpc.switch">switch(keyword)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/while.html#lpc.while">while(keyword)</a>
+  </dt>
+
+      </dl></dd>
   </dl></td>
 </tr></table>
 
@@ -2066,6 +4618,97 @@
   <dt><a href="efun/lambda.html#lpc.lambda">lambda(efun)</a>
   </dt>
 
+      
+  <dt>
+    lang
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/arrays.html#lpc.arrays">arrays(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/arrow.html#lpc.arrow">arrow(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/block.html#lpc.block">block(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/closures.html#lpc.closures">closures(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/comments.html#lpc.comments">comments(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/do-while.html#lpc.do-while">do-while(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/escape.html#lpc.escape">escape(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/for.html#lpc.for">for(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/foreach.html#lpc.foreach">foreach(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/if.html#lpc.if">if(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/index.html#lpc.index">index(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/inherit.html#lpc.inherit">inherit(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/inline-closures.html#lpc.inline-closures">inline-closures(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/mappings.html#lpc.mappings">mappings(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/modifiers.html#lpc.modifiers">modifiers(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.pragma">pragma(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/preprocessor.html#lpc.preprocessor">preprocessor(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/references.html#lpc.references">references(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/switch.html#lpc.switch">switch(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/varargs.html#lpc.varargs">varargs(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/while.html#lpc.while">while(lang)</a>
+  </dt>
+
+      </dl></dd>
       
   <dt><a href="efun/last_bit.html#lpc.last_bit">last_bit(efun)</a>
   </dt>
@@ -2117,11 +4760,7 @@
   </dt>
 
         
-  <dt><a href="driver/invocation.html#cmdoption-ldmud--erq">--erq &#34;&lt;filename&gt; &lt;erq args&gt;&#34;</a>
-  </dt>
-
-        
-  <dt><a href="driver/invocation.html#cmdoption-ldmud--erq">--erq &lt;filename&gt;</a>
+  <dt><a href="driver/invocation.html#cmdoption-ldmud--erq">--erq &lt;filename&gt;, --erq &#34;&lt;filename&gt; &lt;erq args&gt;&#34;</a>, <a href="driver/invocation.html#cmdoption-ldmud--erq">[1]</a>
   </dt>
 
         
@@ -2129,7 +4768,7 @@
   </dt>
 
         
-  <dt><a href="driver/invocation.html#cmdoption-ldmud--gcollect-outfd">--gcollect-outfd &lt;filename&gt;, &lt;num&gt;</a>
+  <dt><a href="driver/invocation.html#cmdoption-ldmud--gcollect-outfd">--gcollect-outfd &lt;filename&gt;, --gcollect-outfd &lt;num&gt;</a>, <a href="driver/invocation.html#cmdoption-ldmud--gcollect-outfd">[1]</a>
   </dt>
 
         
@@ -2185,7 +4824,7 @@
   </dt>
 
         
-  <dt><a href="driver/invocation.html#cmdoption-ldmud--max-thread-pending">--max-thread-pending &lt;size&gt;n&#34;</a>
+  <dt><a href="driver/invocation.html#cmdoption-ldmud--max-thread-pending">--max-thread-pending &lt;size&gt;</a>
   </dt>
 
         
@@ -2233,6 +4872,10 @@
   </dt>
 
         
+  <dt><a href="driver/invocation.html#cmdoption-ldmud--reserve-user">--reserve-user &lt;size&gt;, --reserve-master &lt;size&gt;, --reserve-system &lt;size&gt;</a>
+  </dt>
+
+        
   <dt><a href="driver/invocation.html#cmdoption-ldmud--reset-time">--reset-time &lt;time&gt;</a>
   </dt>
 
@@ -2246,6 +4889,18 @@
 
         
   <dt><a href="driver/invocation.html#cmdoption-ldmud--strict-euids">--strict-euids</a>
+  </dt>
+
+        
+  <dt><a href="driver/invocation.html#cmdoption-ldmud--swap-compact">--swap-compact</a>
+  </dt>
+
+        
+  <dt><a href="driver/invocation.html#cmdoption-ldmud--swap-file">--swap-file &lt;name&gt;</a>
+  </dt>
+
+        
+  <dt><a href="driver/invocation.html#cmdoption-ldmud--swap-time">--swap-time &lt;time&gt;, --swap-variables &lt;time&gt;</a>
   </dt>
 
         
@@ -2333,31 +4988,11 @@
   </dt>
 
         
-  <dt><a href="driver/invocation.html#cmdoption-ldmud-r">-r m&lt;size&gt;,  --reserve-master &lt;size&gt;</a>
+  <dt><a href="driver/invocation.html#cmdoption-ldmud-r">-r u&lt;size&gt;, -r m&lt;size&gt;, -r s&lt;size&gt;</a>, <a href="driver/invocation.html#cmdoption-ldmud-r">[1]</a>, <a href="driver/invocation.html#cmdoption-ldmud-r">[2]</a>
   </dt>
 
         
-  <dt><a href="driver/invocation.html#cmdoption-ldmud-r">-r s&lt;size&gt;,  --reserve-system &lt;size&gt;</a>
-  </dt>
-
-        
-  <dt><a href="driver/invocation.html#cmdoption-ldmud-r">-r u&lt;size&gt;,  --reserve-user &lt;size&gt;</a>
-  </dt>
-
-        
-  <dt><a href="driver/invocation.html#cmdoption-ldmud-s">-s &lt;time&gt;,  --swap-time &lt;time&gt;</a>
-  </dt>
-
-        
-  <dt><a href="driver/invocation.html#cmdoption-ldmud-s">-s c,  --swap-compact</a>
-  </dt>
-
-        
-  <dt><a href="driver/invocation.html#cmdoption-ldmud-s">-s f&lt;name&gt;,  --swap-file &lt;name&gt;</a>
-  </dt>
-
-        
-  <dt><a href="driver/invocation.html#cmdoption-ldmud-s">-s v&lt;time&gt;,  --swap-variables &lt;time&gt;</a>
+  <dt><a href="driver/invocation.html#cmdoption-ldmud-s">-s &lt;time&gt;, -s v&lt;time&gt;, -s f&lt;name&gt;, -s c</a>, <a href="driver/invocation.html#cmdoption-ldmud-s">[1]</a>, <a href="driver/invocation.html#cmdoption-ldmud-s">[2]</a>, <a href="driver/invocation.html#cmdoption-ldmud-s">[3]</a>
   </dt>
 
         
@@ -2420,7 +5055,7 @@
   </dt>
 
       
-  <dt><a href="LPC/lpc.html#lpc.lpc">lpc(topic)</a>
+  <dt><a href="LPC/lpc.html#lpc.LPC">LPC(directory)</a>
   </dt>
 
       
@@ -2470,6 +5105,301 @@
   </dt>
 
       
+  <dt>
+    macro
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="driver/predefined.html#lpc.COMPAT_FLAG">COMPAT_FLAG(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.LPC3">LPC3(macro)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.RE_ANCHORED">RE_ANCHORED(macro)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.RE_CASELESS">RE_CASELESS(macro)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.RE_DOLLAR_ENDONLY">RE_DOLLAR_ENDONLY(macro)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.RE_DOTALL">RE_DOTALL(macro)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.RE_EXCOMPATIBLE">RE_EXCOMPATIBLE(macro)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.RE_EXTENDED">RE_EXTENDED(macro)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.RE_MULTILINE">RE_MULTILINE(macro)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.RE_NOTBOL">RE_NOTBOL(macro)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.RE_NOTEMPTY">RE_NOTEMPTY(macro)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.RE_NOTEOL">RE_NOTEOL(macro)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.RE_PCRE">RE_PCRE(macro)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.RE_TRADITIONAL">RE_TRADITIONAL(macro)</a>
+  </dt>
+
+        
+  <dt><a href="concepts/regexp.html#lpc.RE_UNGREEDY">RE_UNGREEDY(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__ALARM_TIME__">__ALARM_TIME__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__ALISTS__">__ALISTS__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__BOOT_TIME__">__BOOT_TIME__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__CLEANUP_TIME__">__CLEANUP_TIME__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__DEPRECATED__">__DEPRECATED__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__DIR__">__DIR__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__DOMAIN_NAME__">__DOMAIN_NAME__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__DRIVER_LOG__">__DRIVER_LOG__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__EFUN_DEFINED__(name)">__EFUN_DEFINED__(name)(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__ERQ_MAX_REPLY__">__ERQ_MAX_REPLY__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__ERQ_MAX_SEND__">__ERQ_MAX_SEND__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__EUIDS__">__EUIDS__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__FILENAME_SPACES__">__FILENAME_SPACES__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__FILE__">__FILE__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__FLOAT_MAX__">__FLOAT_MAX__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__FLOAT_MIN__">__FLOAT_MIN__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__FUNCTION__">__FUNCTION__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__GCRYPT__">__GCRYPT__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__GNUTLS__">__GNUTLS__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__HEART_BEAT_INTERVAL__">__HEART_BEAT_INTERVAL__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__HOST_IP_NUMBER__">__HOST_IP_NUMBER__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__HOST_NAME__">__HOST_NAME__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__IDNA__">__IDNA__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__INT_MAX__">__INT_MAX__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__INT_MIN__">__INT_MIN__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__IPV6__">__IPV6__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__LDMUD__">__LDMUD__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__LINE__">__LINE__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__LPC_ARRAY_CALLS__">__LPC_ARRAY_CALLS__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__LPC_INLINE_CLOSURES__">__LPC_INLINE_CLOSURES__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__LPC_NOSAVE__">__LPC_NOSAVE__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__LPC_STRUCTS__">__LPC_STRUCTS__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__MASTER_OBJECT__">__MASTER_OBJECT__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__MAX_COMMAND_LENGTH__">__MAX_COMMAND_LENGTH__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__MAX_EVAL_COST__">__MAX_EVAL_COST__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__MAX_MALLOC__">__MAX_MALLOC__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__MAX_RECURSION__">__MAX_RECURSION__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__MCCP__">__MCCP__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__MYSQL__">__MYSQL__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__OPENSSL__">__OPENSSL__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__PATH__(n)">__PATH__(n)(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__PCRE__">__PCRE__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__PGSQL__">__PGSQL__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__RESET_TIME__">__RESET_TIME__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__SQLITE__">__SQLITE__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__STRICT_EUIDS__">__STRICT_EUIDS__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__SYNCHRONOUS_HEART_BEAT__">__SYNCHRONOUS_HEART_BEAT__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__TLS__">__TLS__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__VERSION_COMMITID__">__VERSION_COMMITID__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__VERSION_LOCAL__">__VERSION_LOCAL__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__VERSION_MAJOR__">__VERSION_MAJOR__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__VERSION_MICRO__">__VERSION_MICRO__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__VERSION_MINOR__">__VERSION_MINOR__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__VERSION_PATCH__">__VERSION_PATCH__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__VERSION__">__VERSION__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__WIZLIST__">__WIZLIST__(macro)</a>
+  </dt>
+
+        
+  <dt><a href="driver/predefined.html#lpc.__XML_DOM__">__XML_DOM__(macro)</a>
+  </dt>
+
+      </dl></dd>
+      
   <dt><a href="master/make_path_absolute.html#lpc.make_path_absolute">make_path_absolute(master)</a>
   </dt>
 
@@ -2502,13 +5432,249 @@
   </dt>
 
       
+  <dt>
+    mapping
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/mappings.html#index-0">keyword</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="LPC/mappings.html#lpc.mapping">mapping(type)</a>
+  </dt>
+
+      
   <dt><a href="obsolete/mapping_contains.html#lpc.mapping_contains">mapping_contains(efun)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/mappingp.html#lpc.mappingp">mappingp(efun)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/mappings.html#lpc.mappings">mappings(lang)</a>
+  </dt>
+
+      
+  <dt>
+    master
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="master/compile_object.html#lpc.compile_object">compile_object(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/connect.html#lpc.connect">connect(master)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/creator_file.html#lpc.creator_file">creator_file(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/dangling_lfun_closure.html#lpc.dangling_lfun_closure">dangling_lfun_closure(master)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/define_include_dirs.html#lpc.define_include_dirs">define_include_dirs(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/disconnect.html#lpc.disconnect">disconnect(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/epilog.html#lpc.epilog">epilog(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/external_master_reload.html#lpc.external_master_reload">external_master_reload(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/flag.html#lpc.flag">flag(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/get_bb_uid.html#lpc.get_bb_uid">get_bb_uid(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/get_ed_buffer_save_file_name.html#lpc.get_ed_buffer_save_file_name">get_ed_buffer_save_file_name(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/get_master_uid.html#lpc.get_master_uid">get_master_uid(master)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/get_root_uid.html#lpc.get_root_uid">get_root_uid(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/get_simul_efun.html#lpc.get_simul_efun">get_simul_efun(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/get_wiz_name.html#lpc.get_wiz_name">get_wiz_name(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/handle_external_signal.html#lpc.handle_external_signal">handle_external_signal(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/heart_beat_error.html#lpc.heart_beat_error">heart_beat_error(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/inaugurate_master.html#lpc.inaugurate_master">inaugurate_master(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/include_file.html#lpc.include_file">include_file(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/inherit_file.html#lpc.inherit_file">inherit_file(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/log_error.html#lpc.log_error">log_error(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/low_memory.html#lpc.low_memory">low_memory(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/make_path_absolute.html#lpc.make_path_absolute">make_path_absolute(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/notify_shutdown.html#lpc.notify_shutdown">notify_shutdown(master)</a>
+  </dt>
+
+        
+  <dt><a href="obsolete/object_name.html#lpc.object_name">object_name(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/parse_command_adjectiv_id_list.html#lpc.parse_command_adjectiv_id_list">parse_command_adjectiv_id_list(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/parse_command_all_word.html#lpc.parse_command_all_word">parse_command_all_word(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/parse_command_id_list.html#lpc.parse_command_id_list">parse_command_id_list(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/parse_command_plural_id_list.html#lpc.parse_command_plural_id_list">parse_command_plural_id_list(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/parse_command_prepos_list.html#lpc.parse_command_prepos_list">parse_command_prepos_list(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/preload.html#lpc.preload">preload(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/prepare_destruct.html#lpc.prepare_destruct">prepare_destruct(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/printf_obj_name.html#lpc.printf_obj_name">printf_obj_name(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/privilege_violation.html#lpc.privilege_violation">privilege_violation(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/query_allow_shadow.html#lpc.query_allow_shadow">query_allow_shadow(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/quota_demon.html#lpc.quota_demon">quota_demon(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/reactivate_destructed_master.html#lpc.reactivate_destructed_master">reactivate_destructed_master(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/receive_udp.html#lpc.receive_udp">receive_udp(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/remove_player.html#lpc.remove_player">remove_player(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/retrieve_ed_setup.html#lpc.retrieve_ed_setup">retrieve_ed_setup(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/runtime_error.html#lpc.runtime_error">runtime_error(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/runtime_warning.html#lpc.runtime_warning">runtime_warning(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/save_ed_setup.html#lpc.save_ed_setup">save_ed_setup(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/slow_shut_down.html#lpc.slow_shut_down">slow_shut_down(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/stale_erq.html#lpc.stale_erq">stale_erq(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/valid_exec.html#lpc.valid_exec">valid_exec(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/valid_query_snoop.html#lpc.valid_query_snoop">valid_query_snoop(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/valid_read.html#lpc.valid_read">valid_read(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/valid_seteuid.html#lpc.valid_seteuid">valid_seteuid(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/valid_snoop.html#lpc.valid_snoop">valid_snoop(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/valid_trace.html#lpc.valid_trace">valid_trace(master)</a>
+  </dt>
+
+        
+  <dt><a href="master/valid_write.html#lpc.valid_write">valid_write(master)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="master/master.html#lpc.master">master(directory)</a>
   </dt>
 
       
@@ -2516,15 +5682,65 @@
   </dt>
 
       
-  <dt><a href="master/master.html#lpc.master">master(guide)</a>
-  </dt>
-
-      
   <dt><a href="efun/match_command.html#lpc.match_command">match_command(efun)</a>
   </dt>
 
       
+  <dt><a href="driver/limitations.html#term-max-number-of-struct-members-255"><strong>max number of struct members: 255</strong></a>
+  </dt>
+
+      
+  <dt><a href="driver/limitations.html#term-max-number-of-structs-per-program-usually-32767-short"><strong>max number of structs per program: usually 32767 (short)</strong></a>
+  </dt>
+
+      
   <dt><a href="efun/max.html#lpc.max">max(efun)</a>
+  </dt>
+
+      
+  <dt><a href="driver/limitations.html#term-max-size-of-single-large-block-in-slaballo-c-and-smalloc-c"><strong>max. size of single large block in slaballo.c and smalloc.c:</strong></a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="driver/limitations.html#term-maximum-clone-id-number-2-32-1"><strong>maximum clone ID number: 2^32-1</strong></a>
+  </dt>
+
+      
+  <dt><a href="driver/limitations.html#term-maximum-length-of-switch-256k-262143-bytes"><strong>maximum length of switch: 256k (262143 Bytes)</strong></a>
+  </dt>
+
+      
+  <dt><a href="driver/limitations.html#term-maximum-number-of-functions-in-a-program-65534"><strong>maximum number of functions in a program: 65534</strong></a>
+  </dt>
+
+      
+  <dt><a href="driver/limitations.html#term-maximum-number-of-programs-2-32-1"><strong>maximum number of programs: 2^32-1</strong></a>
+  </dt>
+
+      
+  <dt><a href="driver/limitations.html#term-maximum-number-of-simul-efuns-2048"><strong>maximum number of simul-efuns: 2048</strong></a>
+  </dt>
+
+      
+  <dt><a href="driver/limitations.html#term-maximum-offset-for-branches-32765-0x7ffd"><strong>maximum offset for branches: 32765 (0x7ffd)</strong></a>
+  </dt>
+
+      
+  <dt><a href="driver/limitations.html#term-maximum-program-length-1-mb-1048575-bytes"><strong>maximum program length: 1 MB (1048575 Bytes)</strong></a>
+  </dt>
+
+      
+  <dt><a href="driver/limitations.html#term-maximum-size-of-the-hash-table-for-identifiers-itable-32768"><strong>maximum size of the hash table for identifiers (ITABLE): 32768</strong></a>
+  </dt>
+
+      
+  <dt><a href="driver/limitations.html#term-maximum-size-of-the-hash-table-for-objects-otable-65536"><strong>maximum size of the hash table for objects (OTABLE): 65536</strong></a>
+  </dt>
+
+      
+  <dt><a href="driver/limitations.html#term-maximum-size-of-the-hash-table-for-shared-strings-htable-65536"><strong>maximum size of the hash table for shared strings (HTABLE): 65536</strong></a>
   </dt>
 
       
@@ -2552,7 +5768,46 @@
   </dt>
 
       
+  <dt>
+    meta
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="todo.html#lpc.Pending documentation improvements">Pending documentation improvements(meta)</a>
+  </dt>
+
+        
+  <dt><a href="internals/parsing-inline-closures.html#lpc.What happens when an inline closure is parsed">What happens when an inline closure is parsed(meta)</a>
+  </dt>
+
+        
+  <dt><a href="internals/codestyle.html#lpc.codestyle">codestyle(meta)</a>
+  </dt>
+
+      </dl></dd>
+      
   <dt><a href="efun/min.html#lpc.min">min(efun)</a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-mixed-heart-beat-error-object-culprit-string-err-string-prg-string-curobj-int-line"><strong>mixed heart_beat_error (object culprit, string err,string prg, string curobj, int line)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-mixed-include-file-string-file-string-compiled-file-int-sys-include"><strong>mixed include_file (string file, string compiled_file, int sys_include)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-mixed-inherit-file-string-file-string-compiled-file"><strong>mixed inherit_file (string file, string compiled_file)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-mixed-prepare-destruct-object-obj"><strong>mixed prepare_destruct (object obj)</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/mixed.html#lpc.mixed">mixed(type)</a>
   </dt>
 
       
@@ -2568,7 +5823,54 @@
   </dt>
 
       
-  <dt><a href="LPC/modifiers.html#lpc.modifiers">modifiers(concept)</a>
+  <dt>
+    modifier
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/modifiers.html#lpc.deprecated">deprecated(modifier)</a>, <a href="LPC/modifiers.html#lpc.deprecated">[1]</a>
+  </dt>
+
+        
+  <dt><a href="LPC/modifiers.html#lpc.nomask">nomask(modifier)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/modifiers.html#lpc.nosave">nosave(modifier)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/modifiers.html#lpc.private">private(modifier)</a>, <a href="LPC/modifiers.html#lpc.private">[1]</a>
+  </dt>
+
+        
+  <dt><a href="LPC/modifiers.html#lpc.protected">protected(modifier)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/modifiers.html#lpc.public">public(modifier)</a>, <a href="LPC/modifiers.html#lpc.public">[1]</a>
+  </dt>
+
+        
+  <dt><a href="LPC/modifiers.html#lpc.static">static(modifier)</a>, <a href="LPC/modifiers.html#lpc.static">[1]</a>
+  </dt>
+
+        
+  <dt><a href="LPC/modifiers.html#lpc.varargs">varargs(modifier)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/modifiers.html#lpc.virtual">virtual(modifier)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="LPC/modifiers.html#lpc.modifiers">modifiers(lang)</a>
+  </dt>
+
+      
+  <dt><a href="applied/modify_command.html#lpc.modify_command">modify_command(applied)</a>
   </dt>
 
       
@@ -2601,14 +5903,58 @@
   <dt><a href="efun/net_connect.html#lpc.net_connect">net_connect(efun)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/next_bit.html#lpc.next_bit">next_bit(efun)</a>
   </dt>
 
       
   <dt><a href="efun/next_inventory.html#lpc.next_inventory">next_inventory(efun)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.no_clone">no_clone(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.no_inherit">no_inherit(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.no_range_check">no_range_check(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.no_rtt_checks">no_rtt_checks(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.no_shadow">no_shadow(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.no_warn_deprecated">no_warn_deprecated(pragma)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="LPC/pragma.html#lpc.no_warn_empty_casts">no_warn_empty_casts(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.no_warn_function_inconsistent">no_warn_function_inconsistent(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.no_warn_missing_return">no_warn_missing_return(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/modifiers.html#lpc.nomask">nomask(modifier)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/modifiers.html#lpc.nosave">nosave(modifier)</a>
   </dt>
 
       
@@ -2619,12 +5965,40 @@
   <dt><a href="master/notify_shutdown.html#lpc.notify_shutdown">notify_shutdown(master)</a>
   </dt>
 
+      
+  <dt><a href="driver/limitations.html#term-number-of-context-variables-256-should-be-consistent-with-local"><strong>number of context variables: 256 (Should be consistent with local</strong></a>
+  </dt>
+
+      
+  <dt><a href="driver/limitations.html#term-number-of-global-variables-65536-f-identifier16"><strong>number of global variables: 65536 (F_IDENTIFIER16)</strong></a>
+  </dt>
+
+      
+  <dt><a href="driver/limitations.html#term-number-of-local-variables-256-f-push-local-variable-lvalue"><strong>number of local variables: 256 (F_PUSH_LOCAL_VARIABLE_LVALUE)</strong></a>
+  </dt>
+
+      
+  <dt><a href="driver/limitations.html#term-number-of-virtual-variables-255"><strong>number of virtual variables: 255</strong></a>
+  </dt>
+
   </dl></td>
 </tr></table>
 
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="master/master.html#term-object-compile-object-string-filename"><strong>object compile_object (string filename)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-object-connect"><strong>object connect ()</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/object.html#lpc.object">object(type)</a>
+  </dt>
+
       
   <dt><a href="efun/object_info.html#lpc.object_info">object_info(efun)</a>
   </dt>
@@ -2652,7 +6026,7 @@
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="obsolete/obsolete.html#lpc.obsolete">obsolete(topic)</a>
+  <dt><a href="obsolete/obsolete.html#lpc.obsolete">obsolete(directory)</a>
   </dt>
 
       
@@ -2660,7 +6034,40 @@
   </dt>
 
       
+  <dt>
+    operator
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/arrow.html#lpc.->
+ob->fun (mixed arg, ...)
+ob->"fun" (mixed arg, ...)
+ob->(fun) (mixed arg, ...)">-&gt;
+ob-&gt;fun (mixed arg, ...)
+ob-&gt;&#34;fun&#34; (mixed arg, ...)
+ob-&gt;(fun) (mixed arg, ...)(operator)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/index.html#lpc.[]
+mixed arr[index]
+int str[index]
+mixed * arr[from .. to]
+string str[from .. to]">[]
+mixed arr[index]
+int str[index]
+mixed * arr[from .. to]
+string str[from .. to](operator)</a>
+  </dt>
+
+      </dl></dd>
+      
   <dt><a href="LPC/operators.html#lpc.operators">operators(concept)</a>
+  </dt>
+
+      
+  <dt><a href="efun/efun.html#term-optional"><strong>optional</strong></a>
   </dt>
 
       
@@ -2722,6 +6129,14 @@
   </dt>
 
       
+  <dt><a href="LPC/pragma.html#lpc.pedantic">pedantic(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="todo.html#lpc.Pending documentation improvements">Pending documentation improvements(meta)</a>
+  </dt>
+
+      
   <dt><a href="efun/pg_close.html#lpc.pg_close">pg_close(efun)</a>
   </dt>
 
@@ -2745,8 +6160,6 @@
   <dt><a href="concepts/pgsql.html#lpc.pgsql">pgsql(concept)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/pointerp.html#lpc.pointerp">pointerp(efun)</a>
   </dt>
@@ -2755,12 +6168,125 @@
   <dt><a href="efun/pow.html#lpc.pow">pow(efun)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt>
+    pragma
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/pragma.html#lpc.init_variables">init_variables(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.no_clone">no_clone(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.no_inherit">no_inherit(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.no_range_check">no_range_check(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.no_rtt_checks">no_rtt_checks(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.no_shadow">no_shadow(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.no_warn_deprecated">no_warn_deprecated(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.no_warn_empty_casts">no_warn_empty_casts(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.no_warn_function_inconsistent">no_warn_function_inconsistent(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.no_warn_missing_return">no_warn_missing_return(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.pedantic">pedantic(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.range_check">range_check(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.rtt_checks">rtt_checks(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.save_types">save_types(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.set_code_window">set_code_window(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.share_variables">share_variables(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.show_code_window">show_code_window(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.sloppy">sloppy(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.strict_types">strict_types(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.strong_types">strong_types(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.warn_deprecated">warn_deprecated(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.warn_empty_casts">warn_empty_casts(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.warn_function_inconsistent">warn_function_inconsistent(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.warn_missing_return">warn_missing_return(pragma)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/pragma.html#lpc.weak_types">weak_types(pragma)</a>
+  </dt>
+
+      </dl></dd>
       
   <dt><a href="LPC/pragma.html#lpc.pragma">pragma(lang)</a>
   </dt>
 
       
   <dt><a href="driver/predefined.html#lpc.predefined">predefined(concept)</a>
+  </dt>
+
+      
+  <dt><a href="efun/efun.html#term-preliminary-or-experimental"><strong>preliminary or experimental</strong></a>
   </dt>
 
       
@@ -2772,11 +6298,15 @@
   </dt>
 
       
-  <dt><a href="LPC/preprocessor.html#lpc.preprocessor">preprocessor(concept)</a>
+  <dt><a href="LPC/preprocessor.html#lpc.preprocessor">preprocessor(lang)</a>
   </dt>
 
       
   <dt><a href="efun/present.html#lpc.present">present(efun)</a>
+  </dt>
+
+      
+  <dt><a href="efun/present_clone.html#lpc.present_clone">present_clone(efun)</a>
   </dt>
 
       
@@ -2796,6 +6326,10 @@
   </dt>
 
       
+  <dt><a href="LPC/modifiers.html#lpc.private">private(modifier)</a>, <a href="LPC/modifiers.html#lpc.private">[1]</a>
+  </dt>
+
+      
   <dt><a href="master/privilege_violation.html#lpc.privilege_violation">privilege_violation(master)</a>
   </dt>
 
@@ -2809,6 +6343,14 @@
 
       
   <dt><a href="efun/program_time.html#lpc.program_time">program_time(efun)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/modifiers.html#lpc.protected">protected(modifier)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/modifiers.html#lpc.public">public(modifier)</a>, <a href="LPC/modifiers.html#lpc.public">[1]</a>
   </dt>
 
   </dl></td>
@@ -2926,6 +6468,10 @@
   </dt>
 
       
+  <dt><a href="LPC/pragma.html#lpc.range_check">range_check(pragma)</a>
+  </dt>
+
+      
   <dt><a href="concepts/regexp.html#lpc.RE_ANCHORED">RE_ANCHORED(macro)</a>
   </dt>
 
@@ -3002,7 +6548,7 @@
   </dt>
 
       
-  <dt><a href="LPC/references.html#lpc.references">references(concept)</a>
+  <dt><a href="LPC/references.html#lpc.references">references(lang)</a>
   </dt>
 
       
@@ -3013,12 +6559,12 @@
   <dt><a href="efun/regexp.html#lpc.regexp">regexp(efun)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/regexp_package.html#lpc.regexp_package">regexp_package(efun)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/regexplode.html#lpc.regexplode">regexplode(efun)</a>
   </dt>
@@ -3100,6 +6646,10 @@
   </dt>
 
       
+  <dt><a href="LPC/pragma.html#lpc.rtt_checks">rtt_checks(pragma)</a>
+  </dt>
+
+      
   <dt><a href="master/runtime_error.html#lpc.runtime_error">runtime_error(master)</a>
   </dt>
 
@@ -3109,6 +6659,10 @@
 
       
   <dt><a href="efun/rusage.html#lpc.rusage">rusage(efun)</a>
+  </dt>
+
+      
+  <dt><a href="obsolete/rxcache.doc.html#lpc.rxcache">rxcache(concept)</a>
   </dt>
 
   </dl></td>
@@ -3123,6 +6677,10 @@
 
       
   <dt><a href="efun/save_object.html#lpc.save_object">save_object(efun)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.save_types">save_types(pragma)</a>
   </dt>
 
       
@@ -3155,6 +6713,10 @@
 
       
   <dt><a href="efun/set_buffer_size.html#lpc.set_buffer_size">set_buffer_size(efun)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.set_code_window">set_code_window(pragma)</a>
   </dt>
 
       
@@ -3238,6 +6800,14 @@
   </dt>
 
       
+  <dt><a href="LPC/pragma.html#lpc.share_variables">share_variables(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.show_code_window">show_code_window(pragma)</a>
+  </dt>
+
+      
   <dt><a href="driver/showsmallnewmalloced.html#lpc.showsmallnewmalloced">showsmallnewmalloced(command)</a>
   </dt>
 
@@ -3249,8 +6819,6 @@
   <dt><a href="concepts/simul_efun.html#lpc.simul_efun">simul_efun(concept)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/sin.html#lpc.sin">sin(efun)</a>
   </dt>
@@ -3279,6 +6847,12 @@
   <dt><a href="obsolete/slice_array.html#lpc.slice_array">slice_array(efun)</a>
   </dt>
 
+      
+  <dt><a href="LPC/pragma.html#lpc.sloppy">sloppy(pragma)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="master/slow_shut_down.html#lpc.slow_shut_down">slow_shut_down(master)</a>
   </dt>
@@ -3312,19 +6886,21 @@
   </dt>
 
       
-  <dt><a href="driver/status.html#lpc.status malloc">status malloc(command)</a>
+  <dt><a href="LPC/modifiers.html#lpc.static">static(modifier)</a>, <a href="LPC/modifiers.html#lpc.static">[1]</a>
   </dt>
 
       
-  <dt><a href="driver/status.html#lpc.status swap">status swap(command)</a>
+  <dt><a href="driver/status.html#lpc.status
+status tables
+status swap
+status malloc">status
+status tables
+status swap
+status malloc(command)</a>
   </dt>
 
       
-  <dt><a href="driver/status.html#lpc.status tables">status tables(command)</a>
-  </dt>
-
-      
-  <dt><a href="driver/status.html#lpc.status">status(command)</a>
+  <dt><a href="LPC/status.html#lpc.status">status(type)</a>
   </dt>
 
       
@@ -3332,11 +6908,79 @@
   </dt>
 
       
+  <dt><a href="LPC/pragma.html#lpc.strict_types">strict_types(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-string-epilog-int-eflag"><strong>string *epilog (int eflag)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-string-parse-command-adjectiv-id-list"><strong>string *parse_command_adjectiv_id_list ()</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-string-parse-command-id-list"><strong>string *parse_command_id_list ()</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-string-parse-command-plural-id-list"><strong>string *parse_command_plural_id_list ()</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-string-parse-command-prepos-list"><strong>string *parse_command_prepos_list ()</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-string-get-bb-uid"><strong>string get_bb_uid()</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-string-get-ed-buffer-save-file-name-string-file"><strong>string get_ed_buffer_save_file_name (string file)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-string-get-master-uid"><strong>string get_master_uid ()</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-string-get-wiz-name-string-file"><strong>string get_wiz_name (string file)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-string-make-path-absolute-string-str"><strong>string make_path_absolute (string str)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-string-object-name-object-obj-3-2-1-3-2-5"><strong>string object_name (object obj)      // 3.2.1 .. 3.2.5</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-string-parse-command-all-word"><strong>string parse_command_all_word()</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-string-printf-obj-name-object-obj-3-2-6-and-later"><strong>string printf_obj_name (object obj)  // 3.2.6 and later</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/string.html#lpc.string">string(type)</a>
+  </dt>
+
+      
   <dt><a href="efun/stringp.html#lpc.stringp">stringp(efun)</a>
   </dt>
 
       
+  <dt><a href="master/master.html#term-8"><strong>string|string * get_simul_efun ()</strong></a>, <a href="master/master.html#term-string-string-get-simul-efun"><strong>[1]</strong></a>
+  </dt>
+
+      
   <dt><a href="efun/strlen.html#lpc.strlen">strlen(efun)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.strong_types">strong_types(pragma)</a>
   </dt>
 
       
@@ -3348,6 +6992,10 @@
   </dt>
 
       
+  <dt><a href="LPC/structs.html#lpc.struct">struct(type)</a>
+  </dt>
+
+      
   <dt><a href="efun/struct_info.html#lpc.struct_info">struct_info(efun)</a>
   </dt>
 
@@ -3356,15 +7004,23 @@
   </dt>
 
       
-  <dt><a href="LPC/structs.html#lpc.structs">structs(concept)</a>
-  </dt>
-
-      
   <dt><a href="efun/swap.html#lpc.swap">swap(efun)</a>
   </dt>
 
       
+  <dt><a href="LPC/switch.html#lpc.switch (expr) block">switch (expr) block(syntax)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/switch.html#lpc.switch">switch(keyword)</a>
+  </dt>
+
+      
   <dt><a href="LPC/switch.html#lpc.switch">switch(lang)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/symbol.html#lpc.symbol">symbol(type)</a>
   </dt>
 
       
@@ -3379,6 +7035,101 @@
   <dt><a href="efun/symbolp.html#lpc.symbolp">symbolp(efun)</a>
   </dt>
 
+      
+  <dt>
+    syntax
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/preprocessor.html#lpc.#<directive>[ <arguments...>]">#&lt;directive&gt;[ &lt;arguments...&gt;](syntax)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/comments.html#lpc./* block comment text */
+// line comment text <end of line>">/* block comment text */
+// line comment text &lt;end of line&gt;(syntax)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/functions.html#lpc.[<modifier>...] [<type>] <name> ([<argument>...]);">[&lt;modifier&gt;...] [&lt;type&gt;] &lt;name&gt; ([&lt;argument&gt;...]);(syntax)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/escape.html#lpc.\<escape_sequence>">\&lt;escape_sequence&gt;(syntax)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/do-while.html#lpc.do { statement } while(expr);">do { statement } while(expr);(syntax)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/for.html#lpc.for(<init>; <expr2>; <expr3>) statement;">for(&lt;init&gt;; &lt;expr2&gt;; &lt;expr3&gt;) statement;(syntax)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/foreach.html#lpc.foreach (<var> : <expr>) <statement>;
+foreach (<var>, <var2>, ... ,<varN> : <expr>) <statement>;
+foreach (<var> : <expr1> .. <expr2>) <statement>;
+foreach (<var>, <var2>, ... ,<varN> : <expr1>..<expr2> ) <statement>;
+/* MudOS compatibility only - not for new code: */
+foreach (<var> in <expr>) <statement>;
+foreach (<var>, <var2>, ... ,<varN> in <expr>) <statement>;">foreach (&lt;var&gt; : &lt;expr&gt;) &lt;statement&gt;;
+foreach (&lt;var&gt;, &lt;var2&gt;, ... ,&lt;varN&gt; : &lt;expr&gt;) &lt;statement&gt;;
+foreach (&lt;var&gt; : &lt;expr1&gt; .. &lt;expr2&gt;) &lt;statement&gt;;
+foreach (&lt;var&gt;, &lt;var2&gt;, ... ,&lt;varN&gt; : &lt;expr1&gt;..&lt;expr2&gt; ) &lt;statement&gt;;
+/* MudOS compatibility only - not for new code: */
+foreach (&lt;var&gt; in &lt;expr&gt;) &lt;statement&gt;;
+foreach (&lt;var&gt;, &lt;var2&gt;, ... ,&lt;varN&gt; in &lt;expr&gt;) &lt;statement&gt;;(syntax)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/inline-closures.html#lpc.function <returntype> ( <arguments> ) : <context> { <code> }
+(: <statements> ; <expr>, ... , <expr> :)">function &lt;returntype&gt; ( &lt;arguments&gt; ) : &lt;context&gt; { &lt;code&gt; }
+(: &lt;statements&gt; ; &lt;expr&gt;, ... , &lt;expr&gt; :)(syntax)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/functions.html#lpc.function_declaration
+[<modifier>...] [<type>] <name> ([<argument>...]) <block>">function_declaration
+[&lt;modifier&gt;...] [&lt;type&gt;] &lt;name&gt; ([&lt;argument&gt;...]) &lt;block&gt;(syntax)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/if.html#lpc.if (expr1) statement1;
+else if (expr2) statement2;
+...
+else if (exprN) statementN;
+else statementX;">if (expr1) statement1;
+else if (expr2) statement2;
+...
+else if (exprN) statementN;
+else statementX;(syntax)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/inherit.html#lpc.inherit "<path>";">inherit &#34;&lt;path&gt;&#34;;(syntax)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/switch.html#lpc.switch (expr) block">switch (expr) block(syntax)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/unions.html#lpc.type|type
+<type|type>">type|type
+&lt;type|type&gt;(syntax)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/while.html#lpc.while (expr) statement;">while (expr) statement;(syntax)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/block.html#lpc.{[<statement>...]}">{[&lt;statement&gt;...]}(syntax)</a>
+  </dt>
+
+      </dl></dd>
   </dl></td>
 </tr></table>
 
@@ -3399,6 +7150,10 @@
 
       
   <dt><a href="efun/tell_room.html#lpc.tell_room">tell_room(efun)</a>
+  </dt>
+
+      
+  <dt><a href="concepts/telnet.html#lpc.telnet">telnet(concept)</a>
   </dt>
 
       
@@ -3453,12 +7208,12 @@
   <dt><a href="efun/tls_init_connection.html#lpc.tls_init_connection">tls_init_connection(efun)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/tls_query_connection_info.html#lpc.tls_query_connection_info">tls_query_connection_info(efun)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/tls_query_connection_state.html#lpc.tls_query_connection_state">tls_query_connection_state(efun)</a>
   </dt>
@@ -3492,6 +7247,21 @@
   </dt>
 
       
+  <dt>
+    topic
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/closures-example.html#lpc.closures example">closures example(topic)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/types.html#lpc.types">types(topic)</a>
+  </dt>
+
+      </dl></dd>
+      
   <dt><a href="efun/trace.html#lpc.trace">trace(efun)</a>
   </dt>
 
@@ -3512,11 +7282,87 @@
   </dt>
 
       
+  <dt>
+    type
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/arrays.html#lpc.arrays">arrays(lang)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/closures.html#lpc.closure">closure(type)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/float.html#lpc.float">float(type)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/int.html#lpc.int">int(type)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/mappings.html#lpc.mapping">mapping(type)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/mixed.html#lpc.mixed">mixed(type)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/object.html#lpc.object">object(type)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/status.html#lpc.status">status(type)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/string.html#lpc.string">string(type)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/structs.html#lpc.struct">struct(type)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/symbol.html#lpc.symbol">symbol(type)</a>
+  </dt>
+
+        
+  <dt><a href="LPC/void.html#lpc.void">void(type)</a>
+  </dt>
+
+      </dl></dd>
+      
   <dt><a href="efun/typeof.html#lpc.typeof">typeof(efun)</a>
   </dt>
 
       
-  <dt><a href="LPC/types.html#lpc.types">types(concept)</a>
+  <dt>
+    types
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/mappings.html#index-0">mapping</a>
+  </dt>
+
+        
+  <dt><a href="LPC/unions.html#lpc.unions">unions(concept)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="LPC/types.html#lpc.types">types(topic)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/unions.html#lpc.type|type
+<type|type>">type|type
+&lt;type|type&gt;(syntax)</a>
   </dt>
 
   </dl></td>
@@ -3593,8 +7439,6 @@
   <dt><a href="master/valid_snoop.html#lpc.valid_snoop">valid_snoop(master)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="master/valid_trace.html#lpc.valid_trace">valid_trace(master)</a>
   </dt>
@@ -3604,7 +7448,77 @@
   </dt>
 
       
-  <dt><a href="LPC/varargs.html#lpc.varargs">varargs(concept)</a>
+  <dt><a href="LPC/operators.html#term-11"><strong>var %= expr</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-13"><strong>var &amp;&amp;= expr</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-4"><strong>var &amp;= expr</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-10"><strong>var *= expr</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-42"><strong>var ++</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-2"><strong>var += expr</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-43"><strong>var --</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-3"><strong>var -= expr</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-12"><strong>var /= expr</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-7"><strong>var &lt;&lt;= expr</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-var-expr"><strong>var = expr</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-8"><strong>var &gt;&gt;= expr</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-9"><strong>var &gt;&gt;&gt;= expr</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-6"><strong>var ^= expr</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-5"><strong>var |= expr</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/operators.html#term-14"><strong>var ||= expr</strong></a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="LPC/varargs.html#lpc.varargs">varargs(lang)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/modifiers.html#lpc.varargs">varargs(modifier)</a>
   </dt>
 
       
@@ -3615,6 +7529,78 @@
   <dt><a href="efun/variable_list.html#lpc.variable_list">variable_list(efun)</a>
   </dt>
 
+      
+  <dt><a href="LPC/modifiers.html#lpc.virtual">virtual(modifier)</a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-dangling-lfun-closure"><strong>void dangling_lfun_closure ()</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-disconnect-object-obj"><strong>void disconnect (object obj)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-external-master-reload"><strong>void external_master_reload ()</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-flag-string-arg"><strong>void flag (string arg)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-inaugurate-master"><strong>void inaugurate_master ()</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-log-error-string-file-string-err-int-warn"><strong>void log_error (string file, string err, int warn)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-notify-shutdown"><strong>void notify_shutdown ()</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-preload-string-file"><strong>void preload (string file)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-quota-demon-void"><strong>void quota_demon (void)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-reactivate-destructed-master-int-removed"><strong>void reactivate_destructed_master (int removed)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-receive-imp-string-host-string-msg-int-port"><strong>void receive_imp (string host, string msg, int port)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-remove-player-object-user"><strong>void remove_player (object user)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-runtime-error-string-err-string-prg-string-curobj-int-line"><strong>void runtime_error (string err, string prg, string curobj, int line)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-runtime-warning-string-msg-string-curobj-string-prg-int-line"><strong>void runtime_warning (string msg, string curobj, string prg, int line)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-slow-shut-down-int-minutes"><strong>void slow_shut_down (int minutes)</strong></a>
+  </dt>
+
+      
+  <dt><a href="master/master.html#term-void-stale-erq-closure-callback"><strong>void stale_erq (closure callback)</strong></a>
+  </dt>
+
+      
+  <dt><a href="LPC/void.html#lpc.void">void(type)</a>
+  </dt>
+
   </dl></td>
 </tr></table>
 
@@ -3623,6 +7609,47 @@
   <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/walk_mapping.html#lpc.walk_mapping">walk_mapping(efun)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.warn_deprecated">warn_deprecated(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.warn_empty_casts">warn_empty_casts(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.warn_function_inconsistent">warn_function_inconsistent(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.warn_missing_return">warn_missing_return(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="LPC/pragma.html#lpc.weak_types">weak_types(pragma)</a>
+  </dt>
+
+      
+  <dt><a href="internals/parsing-inline-closures.html#lpc.What happens when an inline closure is parsed">What happens when an inline closure is parsed(meta)</a>
+  </dt>
+
+      
+  <dt>
+    while (expr) statement
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="LPC/while.html#lpc.while (expr) statement;">(syntax)</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="LPC/while.html#lpc.while">while(keyword)</a>
   </dt>
 
       
@@ -3637,8 +7664,6 @@
   <dt><a href="efun/wizlist_info.html#lpc.wizlist_info">wizlist_info(efun)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/write.html#lpc.write">write(efun)</a>
   </dt>
@@ -3656,6 +7681,16 @@
 
 <h2 id="X">X</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="efun/xml_generate.html#lpc.xml_generate">xml_generate(efun)</a>
+  </dt>
+
+      
+  <dt><a href="efun/xml_parse.html#lpc.xml_parse">xml_parse(efun)</a>
+  </dt>
+
+  </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="efun/xor_bits.html#lpc.xor_bits">xor_bits(efun)</a>
@@ -3679,13 +7714,18 @@
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="hook/hook.html">hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -3695,10 +7735,6 @@
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
     </div>
 

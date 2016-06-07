@@ -24,12 +24,17 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="concepts" href="concepts.html" />
+    <link rel="next" title="overloading" href="overloading.html" />
+    <link rel="prev" title="negotiation" href="negotiation.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -37,25 +42,18 @@
           <div class="body" role="main">
             
   <div class="section" id="objects">
-<div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<p id="lpc.objects">objects</p>
+<span id="lpc.objects"></span><div class="section" id="CONCEPT">
+<h2>CONCEPT<a class="headerlink" href="#CONCEPT" title="Permalink to this headline">¶</a></h2>
+<p>objects</p>
 </div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>An object consists of a collection of functions (also called
-&#8216;methods&#8217;) and data (variables) on which the functions operate.
-The only way to manipulate the data contained in an object is
-via one of the functions defined by the object.</p>
-<p>Every single thing in a mud is an object. Rooms are objects.
-Weapons are objects. Even your character is an object (a special
-kind of object called &#8220;interactive&#8221; but still an object in most
-every respect). Each object (except possibly virtual objects) in
-the mud is associated with some file written in LPC (in the mud&#8217;s
-directory structure) that describes how the object is to interact
-with the gamedriver and the rest of the objects in the mud.</p>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="files.html#lpc.files" title="files"><span class="xref lpc lpc-concept">files</span></a>, <a class="reference internal" href="inheritance.html#lpc.inheritance" title="inheritance"><span class="xref lpc lpc-concept">inheritance</span></a>, <a class="reference internal" href="../applied/create.html#lpc.create" title="create"><code class="xref lpc lpc-applied docutils literal"><span class="pre">create</span></code>(A)</a>, <a class="reference internal" href="../applied/reset.html#lpc.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a></p>
+<p>An object consists of a collection of functions (also called &#8216;methods&#8217;) and data (variables) on which the functions operate. The only way to manipulate the data contained in an object is via one of the functions defined by the object.</p>
+<p>Every single thing in a mud is an object. Rooms are objects. Weapons are objects. Even your character is an object (a special kind of object called &#8220;interactive&#8221; but still an object in most every respect). Each object (except possibly virtual objects) in the mud is associated with some file written in LPC (in the mud&#8217;s directory structure) that describes how the object is to interact with the gamedriver and the rest of the objects in the mud.</p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="files.html#lpc.files" title="files"><code class="xref lpc lpc-concept docutils literal"><span class="pre">files</span></code>(C)</a>, <a class="reference internal" href="inheritance.html#lpc.inheritance" title="inheritance"><code class="xref lpc lpc-concept docutils literal"><span class="pre">inheritance</span></code>(C)</a>, <a class="reference internal" href="../applied/create.html#lpc.create" title="create"><code class="xref lpc lpc-applied docutils literal"><span class="pre">create</span></code>(A)</a>, <a class="reference internal" href="../applied/reset.html#lpc.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a></p>
+</div>
 </div>
 </div>
 
@@ -73,22 +71,30 @@ with the gamedriver and the rest of the objects in the mud.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">objects</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#CONCEPT">CONCEPT</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -98,10 +104,6 @@ with the gamedriver and the rest of the objects in the mud.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/concepts/objects.txt"

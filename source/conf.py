@@ -15,6 +15,7 @@
 
 import sys
 import os
+import alabaster
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -22,6 +23,9 @@ import os
 #sys.path.insert(0, os.path.abspath('.'))
 
 # -- General configuration ------------------------------------------------
+#
+# TODO: figure out where to put this
+option_limit = 20
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
@@ -29,7 +33,7 @@ import os
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.ifconfig', 'sphinx.ext.todo'
+extensions = ['sphinx.ext.ifconfig', 'sphinx.ext.todo', 'alabaster'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -69,7 +73,7 @@ release = 'UNRELEASED'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = []
+exclude_patterns = ["*.index", "obsolete/*.de.rst"] #
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -107,10 +111,13 @@ html_theme = 'alabaster'
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-#html_theme_options = {}
+html_theme_options = {
+  # disabling powered_by to avoid pinned docs reporting a difference if version changes (one of most important parts of pinning is to be able to upgrade with confidence...)
+  "show_powered_by": "false"
+}
 
 # Add any paths that contain custom themes here, relative to this directory.
-#html_theme_path = []
+html_theme_path = [alabaster.get_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -131,7 +138,7 @@ html_theme = 'alabaster'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['../_static']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -333,6 +340,25 @@ epub_exclude_files = ['search.html']
 # If false, no index is generated.
 #epub_use_index = True
 todo_include_todos = True
+
+# To support flexible debugging without having to go manually hunt down relevant debug statements and enable them all, lddoc_develop_options is a dict of message types that may be enabled or disabled. Note: if any dev options are enabled, a non-optional test that compares output to some "pinned" docs will also be run. This test gives you some sense of whether changes to the extension have unintended effects on the output. Some options have specificity levels (from less to more).
+# OPTIONS:
+# doctrees: True|False
+#   prints resolved doctree for each parsed document
+# plaintext
+#   . critical writer debug
+# ref
+#   1 write debug
+#   2 resolve debug
+#
+#   messages for debugging the plaintext writer
+lddoc_develop_options = {
+  "doctrees": True,
+  "pinned": True,
+  "ref": 2,
+  "plaintext": 0,
+  "doxygen": False
+}
 
 
 def setup(app):

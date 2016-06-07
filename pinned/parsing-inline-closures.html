@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>What happens when an inline closure is parsed &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="internals" href="internals.html" />
+    <link rel="next" title="master" href="../master/master.html" />
+    <link rel="prev" title="codestyle" href="codestyle.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="What happens when an inline closure is parsed">
+<span id="lpc.What happens when an inline closure is parsed"></span><div class="section" id="META">
+<h2>META<a class="headerlink" href="#META" title="Permalink to this headline">¶</a></h2>
+<p>What happens when an inline closure is parsed</p>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">initially fairly conservative with what I&#8217;ve converted to an inline literal in case some of these should end up being xrefs of some sort; in any case, much more inline markup could be used here.</p>
+</div>
+<p>This short document tries to outline how scopes and variables are handled when parsing inline closures.</p>
+<p>Let&#8217;s take the following closure as an example:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="n">var</span><span class="p">;</span>
+
+<span class="n">function</span> <span class="kt">void</span><span class="p">(</span><span class="n">string</span> <span class="n">arg</span><span class="p">)</span> <span class="o">:</span> <span class="kt">int</span> <span class="n">ctx</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="n">ctx</span> <span class="o">+=</span> <span class="n">var</span> <span class="o">-</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>This closure might be a part of a code block, an initializer of a global variable or an initializer of a context variable of another closure.</p>
+<p>The example above has 4 block scopes in this order:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>The outer block scope with &#8216;var&#8217;.</li>
+<li>The context scope with &#8216;ctx&#8217;.</li>
+<li>The argument scope with &#8216;arg&#8217;.</li>
+<li>The inner block scope with &#8216;i&#8217;.</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>In each scope there may be three kinds of local variables (each one of them has .type = I_TYPE_LOCAL):</dt>
+<dd><ul class="first last simple">
+<li>real local ones:            .u.local.context &lt; 0</li>
+<li>explicit context variables: .u.local.context &gt;= 0 and .u.local.num &lt; 0</li>
+<li>implicit context variables: .u.local.context &gt;= 0 and .u.local.num &gt;= 0</li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">presentation of above works but isn&#8217;t terribly faithful to what original doc intends I don&#8217;t think</p>
+</div>
+<p>Each local variable will have an index on the stack relative to the stack frame of the function or inline closure, and each context variable will have an index into the closure&#8217;s context. So the variable counters will be reset in block 2 (context scope), because then the closure (with it&#8217;s own stack frame) will start. The block 2 (context) is first compiled as a part of the outer function and will then be transferred to the closure.</p>
+<p>The above example will introduce the following variables:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Outer function:</dt>
+<dd><ul class="first last simple">
+<li>&#8216;var&#8217;: A local variable in scope 1, index 0</li>
+<li>&#8216;ctx&#8217;: A local variable in scope 2, index 1</li>
+</ul>
+</dd>
+<dt>Inline closure:</dt>
+<dd><ul class="first last simple">
+<li>&#8216;arg&#8217;: A local variable in scope 3, index 0</li>
+<li>&#8216;i&#8217;:   A local variable in scope 4, index 1</li>
+<li>&#8216;ctx&#8217;: An explicit context variable in scope 2, context index 0</li>
+<li>&#8216;var&#8217;: An implicit context variable in scope 2, context index 1, variable index 1.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<p>The inline closure is parsed in 4 steps:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>After <code class="docutils literal"><span class="pre">function</span> <span class="pre">void</span></code> the inline closure information structure (inline_closure_t) is initialized. For each inline closure that was parsed within a normal function such a structure is put into the A_INLINE_CLOSURE memory area. When the normal function is finished, the program code of all these closures will be copied from these structures into the real program&#8217;s code block.</li>
+</ol>
+<blockquote>
+<div>Also, the context scope and the argument scope are initialized. The argument scope is the inner scope, because they are parsed next. The variable counter (current_number_of_locals) is reset to 0 (but the old value is saved in the scope structure).</div></blockquote>
+<ol class="loweralpha simple" start="2">
+<li>Then (string arg) will be parsed, the same as for normal functions. The variable names will be put into the innermost scope as local names.</li>
+<li>The context <code class="docutils literal"><span class="pre">:</span> <span class="pre">int</span> <span class="pre">ctx</span> <span class="pre">=</span> <span class="pre">42</span></code> will be parsed. The context arguments will be parsed as if they would belong to the outer scope. In fact, the compiler will issue bytecode to initialize them as local variables of the outer function and store their values there. The F_CONTEXT_CLOSURE bytecode will later copy these variables from this function into the closure as its context.</li>
+</ol>
+<blockquote>
+<div><p>In order for this to happen, scope 2 is initialized as it would belong to the outer function (its variable counter <code class="docutils literal"><span class="pre">first_local</span></code> is set to the counter of scope 1). Scope 3 will be ignored and marked inaccessible so that references to argument names are caught as errors. Then the context is parsed and the variables are not put into the topmost scope 3, but the one underneath it (scope 2).</p>
+<p>In the end, each variable in scope 2 is given a context index and stripped of its variable index, so that they become explicit context variables.</p>
+</div></blockquote>
+<ol class="loweralpha simple" start="4">
+<li>The block will be parsed. That&#8217;s done just like a normal function except that, wherever a local variable is used, the compiler calls check_for_context_local to see whether this variable belongs to an outer scope (block depth of the variable is below the initial block depth of the inline closure). If that is the case the compiler introduces a new context variable with the same name but in the context scope 2 of the inline variable. The index of the original variable is recorded in the .u.local.num field (it the original variable is also a context variable, CONTEXT_VARIABLE_BASE is added to its context index).</li>
+</ol>
+<blockquote>
+<div>After the block has been compiled, its bytecode will be moved into the A_INLINE_CLOSURE memory block (together with the line-number information). It will be copied back after the current function has been completed. Also, a bytecode is issued for each implicit variable to put the value from the original variable on the stack. These values will serve as arguments for the final F_CONTEXT_CLOSURE bytecode.</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">What happens when an inline closure is parsed</a><ul>
+<li><a class="reference internal" href="#META">META</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/internals/parsing-inline-closures.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

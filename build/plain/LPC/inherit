@@ -1,12 +1,21 @@
-SYNTAX
-======
-      inherit "<path>";
+LANG
+====
+   inherit
 
 DESCRIPTION
 ===========
-   The concept of inheritance and the inherit statement are explained in
-   detail in the man page for *inheritance*.
+      KEYWORD
+      =======
+      DESCRIPTION
+      ===========
+      SYNTAX
+      ======
+      DESCRIPTION
+      ===========
+   The inherit statement specifies that the present object will inherit 
+   functionality from the object at <path>. The concept of inheritance (and 
+   thus the inherit statement) is explained in detail in inheritance(C).
 
 SEE ALSO
 ========
-   *inheritance*
+   inheritance(C)

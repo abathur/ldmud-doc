@@ -4,9 +4,9 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Set the prompt given by the first argument for the interactive object
-   instead of the default prompt. If the second argument is omitted,
-   this_player() is used as default. The first arg can be a string or a
+   Set the prompt given by the first argument for the interactive object 
+   instead of the default prompt. If the second argument is omitted, 
+   this_player() is used as default. The first arg can be a string or a 
    closure.
 
    The result returned is the old prompt.
@@ -15,4 +15,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   *hooks*
+   `hooks`

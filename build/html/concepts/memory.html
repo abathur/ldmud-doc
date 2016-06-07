@@ -24,12 +24,17 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="concepts" href="concepts.html" />
+    <link rel="next" title="mysql" href="mysql.html" />
+    <link rel="prev" title="mccp" href="mccp.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -37,9 +42,9 @@
           <div class="body" role="main">
             
   <div class="section" id="memory">
-<div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" id="lpc.memory" rules="none">
+<span id="lpc.memory"></span><div class="section" id="CONCEPT">
+<h2>CONCEPT<a class="headerlink" href="#CONCEPT" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -54,48 +59,20 @@
 <p class="first admonition-title">Todo</p>
 <p class="last">This is out of date. Also document the relation with reset</p>
 </div>
+<div class="admonition misleading">
+<p class="first admonition-title">Misleading</p>
+<p class="last">This document is out of date.</p>
+</div>
 <p>(Collected from the Changelogs of the driver source)</p>
-<p>The swapping algorithm has been changed. A test is done for
-every object, comparing to a time stamp. If the object hasn&#8217;t
-been touched for a while, it could be subject for swapping.
-Here comes the new thing: the function &#8216;clean_up()&#8217; will be
-called in the object. If the object still remains, the old
-swapping algorithm will continue. That means that objects that
-would never be subject to swapping (cloned objects) now have a
-chance to self-destruct. It also means that rooms that
-contains no important data can self-destruct. Self-destruction
-saves more memory than swapping, as swapping only frees the
-program code, while self-destruction also frees the internal
-object representation.</p>
-<p>The call of clean_up() has been modified. There is a constant
-in config.h that defines how long time until clean_up is
-called in an object. This call is independent of reset() and
-swapping. It is recommended that the swapping time is
-something short, like 10 minutes to 30 minutes, while the time
-to clean_up is longer.</p>
-<p>Fixed several bugs in the swap/reset/clean_up logic.
-Recommended values are that the swap time is short (less than
-30 minutes), and that reset time is medium (aprox 60 minutes),
-and that time to clean_up is long (greater than 1.5h hours).
-Any feedback of how to best tune these values are welcome. The
-call of reset will be done once, and not yet again until the
-object has been touched. This enables reset&#8217;ed objects to stay
-swapped out. If you have a mudlib that has no objects that
-define &#8216;clean_up&#8217;, then you may better define this time as 0,
-which means never call clean_up (and thus never swap the
-object in needlessly). A well implemented usage of clean_up is
-better than the swap algorithm, as even cloned objects can be
-cleaned up and a self destruction is more efficient than
-swapping (memory wise).</p>
-<p>Changed mechanism of calling clean_up() slightly. Only objects
-that define the function will be called. And, only clean_up()
-that returns non-zero will be called again. This will minimize
-calls of clean_up(), while still costing little to maintain.</p>
-<p>clean_up() now gets a flag as argument, which will be non-zero
-if the the program of this object is used for inheritance by
-other objects.</p>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref lpc lpc-applied docutils literal"><span class="pre">clean_up</span></code>, <a class="reference internal" href="../master/slow_shut_down.html#lpc.slow_shut_down" title="slow_shut_down"><code class="xref lpc lpc-master docutils literal"><span class="pre">slow_shut_down</span></code>(M)</a>, <a class="reference internal" href="../master/quota_demon.html#lpc.quota_demon" title="quota_demon"><code class="xref lpc lpc-master docutils literal"><span class="pre">quota_demon</span></code>(M)</a>, <a class="reference internal" href="../master/low_memory.html#lpc.low_memory" title="low_memory"><code class="xref lpc lpc-master docutils literal"><span class="pre">low_memory</span></code>(M)</a>, <a class="reference internal" href="../driver/malloc.html#lpc.malloc" title="malloc"><code class="xref lpc lpc-driver docutils literal"><span class="pre">malloc</span></code></a>, <a class="reference internal" href="../efun/garbage_collection.html#lpc.garbage_collection" title="garbage_collection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">garbage_collection</span></code>(E)</a></p>
+<p>The swapping algorithm has been changed. A test is done for every object, comparing to a time stamp. If the object hasn&#8217;t been touched for a while, it could be subject for swapping. Here comes the new thing: the function <code class="xref any docutils literal"><span class="pre">clean_up()</span></code> will be called in the object. If the object still remains, the old swapping algorithm will continue. That means that objects that would never be subject to swapping (cloned objects) now have a chance to self-destruct. It also means that rooms that contains no important data can self-destruct. Self-destruction saves more memory than swapping, as swapping only frees the program code, while self-destruction also frees the internal object representation.</p>
+<p>The call of <code class="xref any docutils literal"><span class="pre">clean_up()</span></code> has been modified. There is a constant in <code class="file docutils literal"><span class="pre">config.h</span></code> that defines how long time until clean_up is called in an object. This call is independent of <code class="xref any docutils literal"><span class="pre">reset()</span></code> and swapping. It is recommended that the swapping time is something short, like 10 minutes to 30 minutes, while the time to <a class="reference internal" href="../hook/clean_up.html#lpc.clean_up" title="clean_up"><code class="xref any lpc lpc-hook docutils literal"><span class="pre">clean_up</span></code>(H)</a> is longer.</p>
+<p>Fixed several bugs in the swap/reset/clean_up logic. Recommended values are that the swap time is short (less than 30 minutes), and that reset time is medium (aprox 60 minutes), and that time to clean_up is long (greater than 1.5h hours). Any feedback of how to best tune these values are welcome. The call of reset will be done once, and not yet again until the object has been touched. This enables reset&#8217;ed objects to stay swapped out. If you have a mudlib that has no objects that define <a class="reference internal" href="../hook/clean_up.html#lpc.clean_up" title="clean_up"><code class="xref any lpc lpc-hook docutils literal"><span class="pre">clean_up</span></code>(H)</a>, then you may better define this time as 0, which means never call clean_up (and thus never swap the object in needlessly). A well implemented usage of clean_up is better than the swap algorithm, as even cloned objects can be cleaned up and a self destruction is more efficient than swapping (memory wise).</p>
+<p>Changed mechanism of calling <code class="xref any docutils literal"><span class="pre">clean_up()</span></code> slightly. Only objects that define the function will be called. And, only <code class="xref any docutils literal"><span class="pre">clean_up()</span></code> that returns non-zero will be called again. This will minimize calls of <code class="xref any docutils literal"><span class="pre">clean_up()</span></code>, while still costing little to maintain.</p>
+<p><code class="xref any docutils literal"><span class="pre">clean_up()</span></code> now gets a flag as argument, which will be non-zero if the the program of this object is used for inheritance by other objects.</p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../applied/clean_up.html#lpc.clean_up" title="clean_up"><code class="xref lpc lpc-applied docutils literal"><span class="pre">clean_up</span></code>(A)</a>, <a class="reference internal" href="../master/slow_shut_down.html#lpc.slow_shut_down" title="slow_shut_down"><code class="xref lpc lpc-master docutils literal"><span class="pre">slow_shut_down</span></code>(M)</a>, <a class="reference internal" href="../master/quota_demon.html#lpc.quota_demon" title="quota_demon"><code class="xref lpc lpc-master docutils literal"><span class="pre">quota_demon</span></code>(M)</a>, <a class="reference internal" href="../master/low_memory.html#lpc.low_memory" title="low_memory"><code class="xref lpc lpc-master docutils literal"><span class="pre">low_memory</span></code>(M)</a>, <code class="xref lpc lpc-driver docutils literal"><span class="pre">malloc</span></code>, <a class="reference internal" href="../efun/garbage_collection.html#lpc.garbage_collection" title="garbage_collection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">garbage_collection()</span></code>(E)</a></p>
+</div>
 </div>
 </div>
 
@@ -113,22 +90,30 @@ other objects.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">memory</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#CONCEPT">CONCEPT</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -138,10 +123,6 @@ other objects.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/concepts/memory.txt"

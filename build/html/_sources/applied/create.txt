@@ -1,26 +1,20 @@
 .. applied:: void create()
 
-  The H_CREATE_SUPER/_OB/_CLONE hooks define the function or closure
-  to be called when the driver creates a new object. In older
-  drivers this was hardwired to the lfun create(), and a lot of
-  hook implementations still follow this tradition.
+  .. todo:: ref/link the hooks below.
 
-  This function will be called only once on creation of the
-  object (this is when the object will be loaded or cloned).
-  Inside this function all major initialization can be done. The
-  current user and the previous object are defined but the
-  object has no environment.
+  The H_CREATE_SUPER/_OB/_CLONE hooks define the function or closure to be called when the driver creates a new object. In older drivers this was hardwired to the lfun create(), and a lot of hook implementations still follow this tradition.
+
+  This function will be called only once on creation of the object (this is when the object will be loaded or cloned). Inside this function all major initialization can be done. The current user and the previous object are defined but the object has no environment.
 
   .. usage::
-    object cloner;
-    void create() {
-       cloner=this_player();
-    }
 
-    Initialize the global variable to hold the one who
-    created/cloned the object.
+    Initialize the global variable to hold the one who created/cloned the object::
 
-    For 3.2.1, the mudlib may be programmed to call other lfuns
-    than create() on an objects creation.
+      object cloner;
+      void create() {
+        cloner=this_player();
+      }
+
+  :history 3.2.1 changed: the mudlib may be programmed to call other lfuns than `create()` on an object's creation.
 
   .. seealso:: :applied:`reset`, :applied:`init`, :applied:`__INIT`, :lang:`initialisation`, :concept:`hooks`, :concept:`native`

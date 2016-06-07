@@ -12,4 +12,4 @@
   You can of course do anything else with the passed strings -
   preloading is just the traditional task.
 
-  .. seealso:: :master:`epilog`, :master:`master`
+  .. seealso:: :master:`epilog`, :directory:`master`

@@ -4,19 +4,19 @@ SYNOPSIS (PRELIMINARY)
 
 DESCRIPTION
 ===========
-If the global TLS initialisation could not be set up, tls_is_available()
+If the global TLS initialisation could not be set up, tls_is_available() 
 returns 0, otherwise 1.
 
-It is not very useful to call any other tls_*-efun if this one returns 0,
+It is not very useful to call any other tls_*-efun if this one returns 0, 
 since there is no TLS-encryption available.
 
-Most likely the global initialisation failed due to a missing or unreadable
+Most likely the global initialisation failed due to a missing or unreadable 
 key resp. certificate-file.
 
 Introduced in LDMud 3.3.474 and later backported to 3.2.11.
 
-      See Also:
-         tls_init_connection(E), tls_deinit_connection(E),
+      See Also: 
+         tls_init_connection()(E), tls_deinit_connection()(E),
 
-   tls_query_connection_state(E),tls_query_connection_info(E),tls_check_certi
-   ficate(E),tls_refresh_certs(E)
+   tls_query_connection_state()(E), tls_query_connection_info()(E), 
+   tls_check_certificate()(E), tls_refresh_certs()(E)

@@ -6,8 +6,8 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Returns an array of the objects contained in the inventory of ob (or
-   this_object() if no arg given) and in the inventories of these objects,
+   Returns an array of the objects contained in the inventory of ob (or 
+   this_object() if no arg given) and in the inventories of these objects, 
    climbing down recursively.
 
    If <depth> is given and not 0, the result is limited as follows:
@@ -20,20 +20,21 @@ DESCRIPTION
 
    In this, level '1' is the inventory of <ob> itself.
 
-USAGE
-=====
-   Given the following inventory structure
+   USAGE
+   =====
+      Given the following inventory structure
 
-   ob +- ob1 +- ob2 |   >>`<<- ob21 |  ob3 |   >>`<<- ob31 +- ob4
+      ob +- ob1 +- ob2 |   >>`<<- ob21 |  ob3 |   >>`<<- ob31 +- ob4
 
-   deep_inventory(ob)     => ({ob1, ob2, ob3, ob4, ob21, ob31})
-   deep_inventory(ob, 1)  => ({ob1, ob2, ob3, ob4}) deep_inventory(ob, 2)  =>
-   ({ob1, ob2, ob3, ob4, ob21, ob31}) deep_inventory(ob, -2) => ({ob21, ob31})
+      deep_inventory(ob)     => ({ob1, ob2, ob3, ob4, ob21, ob31}) 
+      deep_inventory(ob, 1)  => ({ob1, ob2, ob3, ob4}) deep_inventory(ob, 2)  
+      => ({ob1, ob2, ob3, ob4, ob21, ob31}) deep_inventory(ob, -2) => ({ob21, 
+      ob31})
 
 HISTORY
 =======
-   - **changed** (*3.3.554*) -- added the <depth> parameter
+   - changed (3.3.554) -- added the <depth> parameter
 
 SEE ALSO
 ========
-   first_inventory(E), next_inventory(E), all_inventory(E)
+   first_inventory()(E), next_inventory()(E), all_inventory()(E)

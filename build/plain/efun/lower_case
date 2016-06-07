@@ -6,10 +6,10 @@ DESCRIPTION
 ===========
    Convert all characters in str to lower case, and return the new string.
 
-USAGE
-=====
-   `lower_case("Heya!") -> "heya!"`
+   USAGE
+   =====
+      `lower_case("Heya!") -> "heya!"`
 
 SEE ALSO
 ========
-   capitalize(E), upper_case(E)
+   capitalize()(E), upper_case()(E)

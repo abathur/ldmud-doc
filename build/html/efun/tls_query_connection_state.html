@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>tls_query_connection_state &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::tls_query_connection_state() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,27 +24,32 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="efun" href="efun.html" />
+    <link rel="next" title="efun::tls_refresh_certs()" href="tls_refresh_certs.html" />
+    <link rel="prev" title="efun::tls_query_connection_info()" href="tls_query_connection_info.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="tls_query_connection_state">
+  <div class="section">
 <div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS (PRELIMINARY)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="efun" style="border-spacing:0;">
+<span id="tls_query_connection_state"></span><h2>SYNOPSIS (PRELIMINARY)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr id="lpc.tls_query_connection_state">
 <td>
-int </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
 <code class="descname">tls_query_connection_state</code></td><td><span class="sig-paren">(</span></td><td>
-object<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.tls_query_connection_state" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.tls_query_connection_state" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -52,8 +57,10 @@ object<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:
 connection is TLS secured, 0 if it&#8217;s unsecured, and a negative number
 if the TLS connection is still being set-up.</p>
 <p>Introduced in LDMud 3.3.474 and later backported to 3.2.11.</p>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="tls_init_connection.html#lpc.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection</span></code>(E)</a>, <a class="reference internal" href="tls_deinit_connection.html#lpc.tls_deinit_connection" title="tls_deinit_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_deinit_connection</span></code>(E)</a>, <a class="reference internal" href="tls_error.html#lpc.tls_error" title="tls_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_error</span></code>(E)</a>, <a class="reference internal" href="tls_query_connection_info.html#lpc.tls_query_connection_info" title="tls_query_connection_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_info</span></code>(E)</a>, <a class="reference internal" href="tls_available.html#lpc.tls_available" title="tls_available"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_available</span></code>(E)</a>, <a class="reference internal" href="tls_check_certificate.html#lpc.tls_check_certificate" title="tls_check_certificate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_check_certificate</span></code>(E)</a>, <a class="reference internal" href="tls_refresh_certs.html#lpc.tls_refresh_certs" title="tls_refresh_certs"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_refresh_certs</span></code>(E)</a></p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="tls_init_connection.html#lpc.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection()</span></code>(E)</a>, <a class="reference internal" href="tls_deinit_connection.html#lpc.tls_deinit_connection" title="tls_deinit_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_deinit_connection()</span></code>(E)</a>, <a class="reference internal" href="tls_error.html#lpc.tls_error" title="tls_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_error()</span></code>(E)</a>, <a class="reference internal" href="tls_query_connection_info.html#lpc.tls_query_connection_info" title="tls_query_connection_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_info()</span></code>(E)</a>, <a class="reference internal" href="tls_available.html#lpc.tls_available" title="tls_available"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_available()</span></code>(E)</a>, <a class="reference internal" href="tls_check_certificate.html#lpc.tls_check_certificate" title="tls_check_certificate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_check_certificate()</span></code>(E)</a>, <a class="reference internal" href="tls_refresh_certs.html#lpc.tls_refresh_certs" title="tls_refresh_certs"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_refresh_certs()</span></code>(E)</a></p>
+</div>
 </div>
 </div>
 
@@ -71,22 +78,30 @@ if the TLS connection is still being set-up.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">tls_query_connection_state</a><ul>
+<li><a class="reference internal" href="#">efun::tls_query_connection_state()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (PRELIMINARY)</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -96,10 +111,6 @@ if the TLS connection is still being set-up.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/efun/tls_query_connection_state.txt"

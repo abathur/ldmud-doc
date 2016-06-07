@@ -8,4 +8,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   snoop(E), query_snoop(E), valid_query_snoop(M)
+   snoop()(E), query_snoop()(E), valid_query_snoop(M)

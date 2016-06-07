@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>function_exists &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::function_exists() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,48 +24,53 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="efun" href="efun.html" />
+    <link rel="next" title="efun::functionlist()" href="functionlist.html" />
+    <link rel="prev" title="efun::funcall()" href="funcall.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="function_exists">
+  <div class="section">
 <div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="efun" style="border-spacing:0;">
+<span id="function_exists"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;functionlist.h&gt;</tr>
 <tr id="lpc.function_exists">
 <td>
-mixed </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
 <code class="descname">function_exists</code></td><td><span class="sig-paren">(</span></td><td>
-string<em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.function_exists" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.function_exists" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-mixed </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
 <code class="descname">function_exists</code></td><td><span class="sig-paren">(</span></td><td>
-string<em>&nbsp;str</em>, </td><td>
-int<em>&nbsp;flags</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flags</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-mixed </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
 <code class="descname">function_exists</code></td><td><span class="sig-paren">(</span></td><td>
-string<em>&nbsp;str</em>, </td><td>
-object<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
+<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-mixed </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
 <code class="descname">function_exists</code></td><td><span class="sig-paren">(</span></td><td>
-string<em>&nbsp;str</em>, </td><td>
-object<em>&nbsp;ob</em>, </td><td>
-int<em>&nbsp;flags</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
+<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flags</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -103,10 +108,12 @@ information about static and protected functions in other objects.
 It is not possible to return information about private functions.</p>
 <p>If the function cannot be found (because it doesn&#8217;t exist or
 it is not visible to the caller), the result is 0.</p>
-<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">function_exists</span><span class="p">(</span><span class="s">&quot;create&quot;</span><span class="p">)</span>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">function_exists</span><span class="p">(</span><span class="s">&quot;create&quot;</span><span class="p">)</span>
 <span class="n">function_exists</span><span class="p">(</span><span class="s">&quot;create&quot;</span><span class="p">,</span> <span class="n">that_object</span><span class="p">,</span> <span class="n">NAME_HIDDEN</span><span class="o">|</span><span class="n">FEXISTS_ALL</span><span class="p">);</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -125,22 +132,30 @@ it is not visible to the caller), the result is 0.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">function_exists</a><ul>
+<li><a class="reference internal" href="#">efun::function_exists()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -150,10 +165,6 @@ it is not visible to the caller), the result is 0.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/efun/function_exists.txt"

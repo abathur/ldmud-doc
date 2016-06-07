@@ -1,6 +1,9 @@
 .. lang:: inline-closures
-  function <returntype> ( <arguments> ) : <context> { <code> }
-  (: <statements> ; <expr>, ... , <expr> :)
+
+  .. keyword:: function
+
+  .. syntax:: function <returntype> ( <arguments> ) : <context> { <code> }
+    (: <statements> ; <expr>, ... , <expr> :)
 
   Inline closures are a way to program closures which are
   compiled at the time an object is loaded, but can access
@@ -42,8 +45,7 @@
   in the closure::
 
     closure factory (int arg) {
-      return function int (int val) : int x = 2 * arg
-                                    { return val * x; };
+      return function int (int val) : int x = 2 * arg { return val * x; };
     }
 
     closure f = factory(2);
@@ -53,9 +55,7 @@
   without initialisation::
 
     closure factory (int arg) {
-      return function int (int val) : int y, x = 2 * arg;
-                                      int z
-                                    { return val * x; };
+      return function int (int val) : int y, x = 2 * arg; int z { return val * x; };
     }
 
   These explicite context variables are useful when the closures

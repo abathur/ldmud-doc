@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>applied::clean_up() &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="applied" href="applied.html" />
+    <link rel="next" title="applied::create()" href="create.html" />
+    <link rel="prev" title="applied::catch_tell()" href="catch_tell.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section">
+<div class="section" id="SYNOPSIS">
+<span id="clean_up"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
+<tr id="lpc.clean_up">
+<td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
+<code class="descname">clean_up</code></td><td><span class="sig-paren">(</span></td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;refcount</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.clean_up" title="Permalink to this definition">¶</a></tr>
+<tr>
+<td>
+<code class="descname">int &lt;closure&gt;(int ref, object ob)</code></td></tr>
+</table></div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">this may need to have the closure form above rmed (some others in directory have a similar issue); the problem is on the one hand that the applied directory isn&#8217;t equipped to handle them well, and on the other they are technically documenting the hook/closure forms and not strictly the apply, making everything really murky. Perhaps this is a structural problem because the applied concept is a relic, but the documentation attempts to bridge between the old/obsolete concept and the new versions of the same in hook. In this case, the &#8220;answer&#8221; might just be that applied needs to be removed, moved to obsolete, trimmed down to a single readme pointing to hooks, or trimmed down to a bunch of stubs pointing to the proper hook for handling the same behavior.</p>
+</div>
+<p>The hook H_CLEAN_UP defines a lfun or a closure used to clean up an object. In older drivers this was hardwired to the lfun <code class="xref any docutils literal"><span class="pre">clean_up()</span></code>.</p>
+<p>The function is applied by the driver when an object hasn&#8217;t been used for a long time, to give it a chance to self-destruct. The refcount &lt;ref&gt; passed as argument will be 0 for clone objects, 1 for a simple loaded object, and greater when the object is cloned or inherited by some existing object. It is recommended not to self_destruct the object when the reference count is greater than one.</p>
+<p>By convention, a refcount &lt; 0 is used if some other object asks the called object to clean_up.</p>
+<p>If the function is a closure, the second argument &lt;ob&gt; is the object to clean up.</p>
+<p>If the hook specifies a non-existing lfun, or if the call returns 0, no further attempt to clean up this object will be made.</p>
+<p>Returning a non-zero value is only recommended when the reason why the object can&#8217;t self-destruct is likely to vanish without the object being touched, that is, when no local function is called in it, (and in compat mode also when the object is not being moved around).</p>
+<p>A typical mud configuration defines the time to wait for clean_up() so long that you can assert reset() has been called since the object has been touched last time.</p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">below probably needs actual code, if the document stays and the hook isn&#8217;t already well-documented.</p>
+</div>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>A clone of <code class="xref any docutils literal"><span class="pre">/std/drink</span></code> defines <code class="xref any docutils literal"><span class="pre">clean_up()</span></code> to self-destruct if it is empty, not carried a living being and not touched for a long time.</p>
+<p>A room that inherits <code class="xref any docutils literal"><span class="pre">/std/room</span></code> defines <code class="xref any docutils literal"><span class="pre">clean_up()</span></code> to self-destruct if it is neither inherited nor used as a blueprint, is empty and was not entered for a long time.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.2.1</em>) &#8211; function no longer hardwired to the lfun clean_up().</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="reset.html#lpc.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a>, <a class="reference internal" href="heart_beat.html#lpc.heart_beat" title="heart_beat"><code class="xref lpc lpc-applied docutils literal"><span class="pre">heart_beat</span></code>(A)</a>, <a class="reference internal" href="../efun/call_out.html#lpc.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out()</span></code>(E)</a>, <a class="reference internal" href="../efun/destruct.html#lpc.destruct" title="destruct"><code class="xref lpc lpc-efun docutils literal"><span class="pre">destruct()</span></code>(E)</a>, <a class="reference internal" href="remove.html#lpc.remove" title="remove"><code class="xref lpc lpc-applied docutils literal"><span class="pre">remove</span></code>(A)</a>, <code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">applied::clean_up()</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/applied/clean_up.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

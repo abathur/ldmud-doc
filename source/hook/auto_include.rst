@@ -1,27 +1,15 @@
-.. ideal hook syntax prolly like
 .. hook:: H_AUTO_INCLUDE
 
   :arg string value: <text>
   :arg closure value: string <closure>(string base_file, string current_file, int sys_include)
 
-  Optional hook specifying a string to be included before the source of
-  every compiled LPC object. Hook setting can be a string or a closure.
-  If the setting is a string, it will be automatically included before
-  the source of every compiled LPC object.
+  Optional hook specifying a string to be included before the source of every compiled LPC object. Hook setting can be a string or a closure. If the setting is a string, it will be automatically included before the source of every compiled LPC object.
 
-  If the setting is a closure, it is called for every file
-  opened by the compiler. <base_file> will be the filename of
-  the compiled object, <current_file> the name of a file
-  included directly or indirectly by the <base_file>. When the
-  <base_file> itself is opened, <current_file> will be 0. For an
-  included file, <sys_include> will be TRUE if it is a <>-type
-  include.
+  If the setting is a closure, it is called for every file opened by the compiler. <base_file> will be the filename of the compiled object, <current_file> the name of a file included directly or indirectly by the <base_file>. When the <base_file> itself is opened, <current_file> will be 0. For an included file, <sys_include> will be TRUE if it is a <>-type include.
 
-  If the result from the call is a string, it will be included
-  before the actual text of the file.
+  If the result from the call is a string, it will be included before the actual text of the file.
 
-  In both cases, the string will be included as-is; in
-  particular no terminating '\n' will be added.
+  In both cases, the string will be included as-is; in particular no terminating '\n' will be added.
 
   .. history
 

@@ -10,9 +10,9 @@ DESCRIPTION
 
    The result has the first two characters as the seed.
 
-   If you want to let enter password information without echo, input_to() can
+   If you want to let enter password information without echo, input_to() can 
    be used with special argument.
 
 SEE ALSO
 ========
-   md5(E), md5_crypt(E), sha1(E), hash(E), hmac(E)
+   md5()(E), md5_crypt()(E), sha1()(E), hash()(E), hmac()(E)

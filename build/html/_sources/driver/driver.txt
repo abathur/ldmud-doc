@@ -1,4 +1,4 @@
-.. topic:: driver
+.. directory:: driver
 
   This directory contains descriptions of miscellaneous
   internals of Amylaar's version of the LPC parser/interpreter,
@@ -14,4 +14,5 @@
 
     *
 
-  .. seealso:: :efun:`efun`, :applied:`applied`, :concept:`concepts`, :master:`master`, :lang:`lpc`, :driver:`malloc`, :driver:`status`
+  .. seealso:: :directory:`applied`, :directory:`concepts`, :directory:`efun`, :directory:`hook`, :directory:`internals`, :directory:`LPC`, :directory:`master`, :directory:`obsolete`,
+    :command:`malloc`, :command:`status`

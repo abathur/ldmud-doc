@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>H_CLONE_UIDS &mdash; LDMud UNRELEASED documentation</title>
+    <title>hook::H_CLONE_UIDS() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,22 +24,27 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="hook" href="hook.html" />
+    <link rel="next" title="hook::H_COMMAND()" href="command.html" />
+    <link rel="prev" title="hook::H_CLEAN_UP()" href="clean_up.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="H_CLONE_UIDS">
+  <div class="section" id="lpc.clone_uids">
 <div class="section" id="SYNOPSIS">
-<span id="lpc.clone_uids"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="hook" style="border-spacing:0;">
+<span id="clone_uids"></span><span id="H_CLONE_UIDS"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;sys/driver_hooks.h&gt;</tr>
 <tr id="lpc.H_CLONE_UIDS">
@@ -55,34 +60,34 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>value</strong> (<em>closure</em>) &#8211; mixed &lt;closure&gt;(object blueprint, string objectname)</li>
+<li><strong>value</strong> (<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure"><em>closure</em></a>) &#8211; mixed &lt;closure&gt;(object blueprint, string objectname)</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p>Mandatory hooks to determine the uid and euid of cloned
-objects. Hook settings can be any closure.</p>
-<p>When an object is cloned, the H_CLONE_UIDS hook is called with
-the blueprint object as the first argument and the clone&#8217;s
-designated name as the second. The new object already exists,
-but has 0 uids.</p>
-<p>For the result, the following possibilities exist (&lt;num&gt; is
-a non-zero number, &lt;no-string&gt; is anything but a string):</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="s">&quot;&lt;uid&gt;&quot;</span>                    <span class="o">-&gt;</span> <span class="n">uid</span> <span class="o">=</span> <span class="s">&quot;&lt;uid&gt;&quot;</span><span class="p">,</span> <span class="n">euid</span> <span class="o">=</span> <span class="s">&quot;&lt;uid&gt;&quot;</span>
+<p>Mandatory hooks to determine the uid and euid of cloned objects. Hook settings can be any closure.</p>
+<p>When an object is cloned, the H_CLONE_UIDS hook is called with the blueprint object as the first argument and the clone&#8217;s designated name as the second. The new object already exists, but has 0 uids.</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">better markup for the literal blocks in this section</p>
+</div>
+<p>For the result, the following possibilities exist (&lt;num&gt; is a non-zero number, &lt;no-string&gt; is anything but a string):</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="s">&quot;&lt;uid&gt;&quot;</span>                    <span class="o">-&gt;</span> <span class="n">uid</span> <span class="o">=</span> <span class="s">&quot;&lt;uid&gt;&quot;</span><span class="p">,</span> <span class="n">euid</span> <span class="o">=</span> <span class="s">&quot;&lt;uid&gt;&quot;</span>
 <span class="p">({</span> <span class="s">&quot;&lt;uid&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;&lt;euid&gt;&quot;</span> <span class="p">})</span>    <span class="o">-&gt;</span> <span class="n">uid</span> <span class="o">=</span> <span class="s">&quot;&lt;uid&gt;&quot;</span><span class="p">,</span> <span class="n">euid</span> <span class="o">=</span> <span class="s">&quot;&lt;euid&gt;&quot;</span>
 <span class="p">({</span> <span class="s">&quot;&lt;uid&gt;&quot;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">no</span><span class="o">-</span><span class="n">string</span><span class="o">&gt;</span> <span class="p">})</span> <span class="o">-&gt;</span> <span class="n">uid</span> <span class="o">=</span> <span class="s">&quot;&lt;uid&gt;&quot;</span><span class="p">,</span> <span class="n">euid</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<p>If strict-euids is not active, the following results are
-possible, too:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">num</span><span class="o">&gt;</span>                      <span class="o">-&gt;</span> <span class="n">uid</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">euid</span> <span class="o">=</span> <span class="mi">0</span>
+<p>If strict-euids is not active, the following results are possible, too:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">num</span><span class="o">&gt;</span>                      <span class="o">-&gt;</span> <span class="n">uid</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">euid</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="p">({</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">&gt;</span><span class="p">,</span> <span class="s">&quot;&lt;euid&gt;&quot;</span> <span class="p">})</span>      <span class="o">-&gt;</span> <span class="n">uid</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">euid</span> <span class="o">=</span> <span class="s">&quot;&lt;euid&gt;&quot;</span>
 <span class="p">({</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">no</span><span class="o">-</span><span class="n">string</span><span class="o">&gt;</span> <span class="p">})</span>   <span class="o">-&gt;</span> <span class="n">uid</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">euid</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="hook.html#lpc.hooks" title="hooks"><span class="xref lpc lpc-concept">hooks</span></a>, <a class="reference internal" href="../concepts/uids.html#lpc.uids" title="uids"><span class="xref lpc lpc-concept">uids</span></a>, <a class="reference internal" href="load_uids.html#lpc.load_uids" title="load_uids"><code class="xref lpc lpc-hook docutils literal"><span class="pre">load_uids</span></code>(H)</a></p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code>, <a class="reference internal" href="../concepts/uids.html#lpc.uids" title="uids"><code class="xref lpc lpc-concept docutils literal"><span class="pre">uids</span></code>(C)</a>, <a class="reference internal" href="load_uids.html#lpc.load_uids" title="load_uids"><code class="xref lpc lpc-hook docutils literal"><span class="pre">load_uids</span></code>(H)</a></p>
+</div>
 </div>
 </div>
 
@@ -100,22 +105,30 @@ possible, too:</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">H_CLONE_UIDS</a><ul>
+<li><a class="reference internal" href="#">hook::H_CLONE_UIDS()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -125,10 +138,6 @@ possible, too:</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/hook/clone_uids.txt"

@@ -13,10 +13,7 @@
   The function raises a privilege_violation ("enable_telnet", obj, num)
   if <num> is >= 0. If the privilege is denied, the call is ignored.
 
-  .. warning:: Careless use of this efun can cause great confusion for both
-  driver and clients! The efun exists mainly to support PSYCmuve, and
-  may vanish if a more consistent way of handling network connections
-  is introduced.
+  .. warning:: Careless use of this efun can cause great confusion for both driver and clients! The efun exists mainly to support PSYCmuve, and may vanish if a more consistent way of handling network connections is introduced.
 
 .. history
   :history 3.2.10 introduced:

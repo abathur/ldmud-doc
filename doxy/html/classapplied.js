@@ -1,0 +1,25 @@
+var classapplied =
+[
+    [ "__INIT", "classapplied.html#a4ceee10cd3736db3a1c1f6c062e5d894", null ],
+    [ "add_weight", "classapplied.html#a8cec8ec81cb7af8d65f18f84cf745f0f", null ],
+    [ "can_put_and_get", "classapplied.html#a4b5d45018717363600be57c0400c37dc", null ],
+    [ "catch_msg", "classapplied.html#a2986863e0a744404e160c79ac4dafd32", null ],
+    [ "catch_tell", "classapplied.html#a7694f52f199ec3698af091accf6e6f22", null ],
+    [ "create", "classapplied.html#ae2ee59f7cc16ee42559c87e81c433039", null ],
+    [ "drop", "classapplied.html#aeeb7272aff0993df78210e757b04a22a", null ],
+    [ "exit", "classapplied.html#a63712f943dedf5462e71cb90720d95a6", null ],
+    [ "get", "classapplied.html#a84a9cd93622aa531274dd4c027f006ce", null ],
+    [ "heart_beat", "classapplied.html#ac6da9e44029c67ea80ffa494d9328384", null ],
+    [ "id", "classapplied.html#a9c09256888ad9f9ce5cd49a5e45cbe8e", null ],
+    [ "init", "classapplied.html#a02fd73d861ef2e4aabb38c0c9ff82947", null ],
+    [ "int< closure >", "classapplied.html#a6c063e979b2a10e56192d57d80a2b70b", null ],
+    [ "logon", "classapplied.html#a6b064bd51c85a6644ac5d38ae5276815", null ],
+    [ "modify_command", "classapplied.html#aa37d0dc9721bb3d7bea7a357b3e2ff42", null ],
+    [ "parse_command_adjectiv_id_list", "classapplied.html#aeef76ec3482275715f0af24eafb09649", null ],
+    [ "parse_command_id_list", "classapplied.html#aa95d2b4af5b6a6d8742b39e1e451845a", null ],
+    [ "parse_command_plural_id_list", "classapplied.html#a5940fe8d0b1e7948651a69a87ca48374", null ],
+    [ "prevent_insert", "classapplied.html#a60fb09d965441f9502f358d6d10e043c", null ],
+    [ "query_weight", "classapplied.html#a1bce9b016a6d9bd6f9044722d43f7792", null ],
+    [ "remove", "classapplied.html#acb2aa7bd8fd0c69f05f71907fd17b74c", null ],
+    [ "reset", "classapplied.html#a3aea9deb2a0bfea9ff05a898f4822e31", null ]
+];

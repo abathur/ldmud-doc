@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>default_method &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="hook" href="hook.html" />
+    <link rel="next" title="default_prompt" href="default_prompt.html" />
+    <link rel="prev" title="create_super" href="create_super.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="lpc.default_method">
+<div class="section" id="SYNOPSIS">
+<span id="default_method"></span><span id="H_DEFAULT_METHOD"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
+<div class="line">#include &lt;sys/driver_hooks.h&gt;</div>
+<tr id="lpc.H_DEFAULT_METHOD">
+<td>
+<code class="descname">set_driver_hook</code></td><td><span class="sig-paren">(</span></td><td>
+<em>H_DEFAULT_METHOD</em>, </td><td>
+<em>value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.H_DEFAULT_METHOD" title="Permalink to this definition">¶</a></tr>
+</table></div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>value</strong> (<a class="reference internal" href="../LPC/string.html#lpc.string" title="string"><em>string</em></a>) &#8211; int &lt;name&gt;(mixed &amp; result, string fun, varargs args)</li>
+<li><strong>value</strong> (<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure"><em>closure</em></a>) &#8211; int &lt;closure&gt;(mixed &amp; result, object ob, string fun, varargs args)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Optional hook to provide default implementation for unresolved calls. Hook setting can be any closure, or the name of the function to call in the object.</p>
+<p>This hook is called whenever a call_other(), call_resolved() or call_out() on named function (as opposed to a closure) couldn&#8217;t be resolved. The hook has then the opportunity to provide a default implementation.</p>
+<p>Exempt from this behaviour are calls to the master object, to simul-efuns, and calls done with call_direct() and call_direct_resolved().</p>
+<p>If the hook is the name of an lfun, it is called in the target object; otherwise if it is a closure, the target object is passed as parameter &lt;ob&gt;.</p>
+<p>The other parameters passed are the name &lt;fun&gt; of the called function, the arguments &lt;args&gt; passed to the call (if any), and a reference &lt;result&gt; to a variable for the call result.</p>
+<p>If the hook can resolve the call, it has to return the call result in &lt;result&gt; and 1 as function result.</p>
+<p>If the hook can not (or doesn&#8217;t want to) resolve the call, it has to return 0.</p>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>introduced</strong> (<em>3.3.113</em>) &#8211; allowed static functions to be given by name.</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">default_method</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/hook/default_method.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -5,15 +5,15 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-DESCRIPTION Append the string <str> to the file <file>. Returns 1 for success
+DESCRIPTION Append the string <str> to the file <file>. Returns 1 for success 
 and 0 if any failure occured.
 
-If <flags> is 1, the file is removed first; thus making the 'append'
+If <flags> is 1, the file is removed first; thus making the 'append' 
 effectively an 'overwrite'. Default for <flags> is 0.
 
 LDMud 3.3.523 added the <flags> parameter.
 
-      See Also:
-         file_size(E), write_bytes(E), write_file(E), read_file(E),
+      See Also: 
+         file_size()(E), write_bytes()(E), write_file()(E), read_file()(E),
 
-   read_bytes(E), rm(E), get_dir(E)
+   read_bytes()(E), rm()(E), get_dir()(E)

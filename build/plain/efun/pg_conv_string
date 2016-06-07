@@ -4,16 +4,16 @@ SYNOPSIS (OPTIONAL)
 
 DESCRIPTION
 ===========
-Convert the string <str> into a string that is correctly interpretated for
+Convert the string <str> into a string that is correctly interpretated for 
 usage as a string in pg_query(), e.g. ' is replaced with ' and so on.
 
-The function is available only if the driver is compiled with PostgreSQL
+The function is available only if the driver is compiled with PostgreSQL 
 support. In that case, __PGSQL__ is defined.
 
 The efun triggers a privilege violation ("pgsql", "pg_connect").
 
 Added in 3.3.708.
 
-   See Also:
-      *pgsql*, pg_query(E), pg_pending(E),
-      pg_conv_string(E),pg_close(E),privilege_violation(M)
+   See Also: 
+      pgsql(C), pg_query()(E), pg_pending()(E), pg_conv_string()(E), 
+      pg_close()(E), privilege_violation(M)

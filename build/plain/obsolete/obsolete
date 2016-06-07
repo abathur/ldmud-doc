@@ -1,43 +1,46 @@
-SYNOPSIS
-========
+DIRECTORY
+=========
    obsolete
 
 DESCRIPTION
 ===========
-   This directory contains descriptions for features removed from the game
+   This directory contains descriptions for features removed from the game 
    driver, since they can come in handy when reworking old LPC code.
 
-   - add_verb
-   - add_xverb
-   - allocate_mapping
-   - assoc
-   - cat
-   - copy_mapping
-   - creator_file
-   - define_include_dirs
-   - efun308
-   - extract
-   - file_name
-   - filter_array
-   - filter_mapping
-   - get_root_uid
-   - insert_alist
-   - intersect_alist
-   - m_sizeof
-   - map_array
-   - map_mapping
-   - mapping_contains
-   - member_array
-   - object_name
-   - order_alist
-   - query_imp_port
-   - receive_imp
-   - send_imp
-   - set_auto_include_string
-   - set_light
-   - slice_array
-   - tail
+   - efun::add_verb()
+   - efun::add_xverb()
+   - alists
+   - efun::allocate_mapping()
+   - efun::assoc()
+   - efun::cat()
+   - efun::copy_mapping()
+   - master::creator_file()
+   - master::define_include_dirs()
+   - efun::efun308()
+   - efun::extract()
+   - efun::file_name()
+   - efun::filter_array()
+   - efun::filter_mapping()
+   - master::get_root_uid()
+   - efun::insert_alist()
+   - efun::intersect_alist()
+   - efun::m_sizeof()
+   - efun::map_array()
+   - efun::map_mapping()
+   - efun::mapping_contains()
+   - efun::member_array()
+   - master::object_name()
+   - efun::order_alist()
+   - efun::query_imp_port()
+   - efun::receive_imp()
+   - rxcache
+   - efun::send_imp()
+   - efun::set_auto_include_string()
+   - efun::set_light()
+   - efun::slice_array()
+   - efun::tail()
 
 SEE ALSO
 ========
-   **applied**, **efun**, master, **concepts**, **lpc**, **driver**
+   applied(A), concepts(C), driver(D), efun(E), hook(H), internals(I), 
+   LPC(LPC), master(M)

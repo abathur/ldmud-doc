@@ -1,7 +1,9 @@
 .. lang:: inherit
-  inherit "<path>";
 
-  The concept of inheritance and the inherit statement are
-  explained in detail in the man page for :concept:`inheritance`.
+  .. keyword:: inherit
+
+  .. syntax:: inherit "<path>";
+
+  The inherit statement specifies that the present object will inherit functionality from the object at <path>. The concept of inheritance (and thus the inherit statement) is explained in detail in :concept:`inheritance`.
 
   .. seealso:: :concept:`inheritance`

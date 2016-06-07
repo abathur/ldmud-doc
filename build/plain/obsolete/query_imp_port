@@ -8,12 +8,12 @@ DESCRIPTION
 
 HISTORY
 =======
-   - **changed** (*3.2.9*) -- renamed this efun to query_udp_port(). This
+   - changed (3.2.9) -- renamed this efun to query_udp_port(). This 
      version
 
-   is available if the driver is compiled with USE_DEPRECATED. :history 3.3
+   is available if the driver is compiled with USE_DEPRECATED. :history 3.3 
    removed:
 
 SEE ALSO
 ========
-   send_udp(E), receive_udp(M)
+   send_udp()(E), receive_udp(M)

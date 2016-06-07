@@ -8,8 +8,8 @@ DESCRIPTION
 
 HISTORY
 =======
-   - **changed** (*3.2.9*) -- added integers as arguments
+   - changed (3.2.9) -- added integers as arguments
 
 SEE ALSO
 ========
-   exp(E), pow(E)
+   exp()(E), pow()(E)

@@ -24,12 +24,17 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="concepts" href="concepts.html" />
+    <link rel="next" title="regexp" href="regexp.html" />
+    <link rel="prev" title="pcre" href="pcre.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -37,9 +42,9 @@
           <div class="body" role="main">
             
   <div class="section" id="pgsql">
-<div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" id="lpc.pgsql" rules="none">
+<span id="lpc.pgsql"></span><div class="section" id="CONCEPT">
+<h2>CONCEPT<a class="headerlink" href="#CONCEPT" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -50,25 +55,13 @@
 </div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>On hosts with the PostgreSQL package installed, the driver can be
-configured to interface with the PostgreSQL database. If that is done,
-the driver defines the macro <a class="reference internal" href="../driver/predefined.html#lpc.__PGSQL__" title="__PGSQL__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__PGSQL__</span></code></a> for LPC programs and
-activates a number of related efuns.</p>
-<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>The interface to the PostgreSQL database is implemented
-through the concept of a controlling object: when opening a
-database connection, the LPC code has to provide a callback
-function. The object this function is bound to is the
-controlling object: all queries to the database will be issued
-by this object, and the responses will be sent to the callback
-function.</p>
-<p>The interface is also asynchronous: the pg_query() efun just
-queues the query with the database connection, and returns
-immediately. When the database has finished working the query,
-the callback function is called with the results.</p>
-<p>The callback function can be defined by name or by closure,
-and can be defined with extra parameters:</p>
-<div class="highlight-c"><div class="highlight"><pre>#include &lt;pgsql.h&gt;
+<p>On hosts with the PostgreSQL package installed, the driver can be configured to interface with the PostgreSQL database. If that is done, the driver defines the macro <a class="reference internal" href="../driver/predefined.html#lpc.__PGSQL__" title="__PGSQL__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__PGSQL__</span></code></a> for LPC programs and activates a number of related efuns.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>The interface to the PostgreSQL database is implemented through the concept of a controlling object: when opening a database connection, the LPC code has to provide a callback function. The object this function is bound to is the controlling object: all queries to the database will be issued by this object, and the responses will be sent to the callback function.</p>
+<p>The interface is also asynchronous: the pg_query() efun just queues the query with the database connection, and returns immediately. When the database has finished working the query, the callback function is called with the results.</p>
+<p>The callback function can be defined by name or by closure, and can be defined with extra parameters:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span>#include &lt;pgsql.h&gt;
 
 void &lt;callback&gt;(int type, mixed ret, int id [, mixed extra...])
 
@@ -112,25 +105,30 @@ void &lt;callback&gt;(int type, mixed ret [, mixed extra...])
                     &lt;ret&gt; is a dummy string.
 </pre></div>
 </div>
+</div>
 <div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
 <p class="last">the above section should probably use more semantic markup instead of just being a big literal block</p>
 </div>
-<div class="section" id="security">
-<span id="lpc.security"></span><h3>SECURITY<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h3>
-<p>All SQL efuns (unless execute by the master or the simul-efun object)
-trigger a privilege_violation (&#8220;pgsql&#8221;, &#8220;&lt;efun_name&gt;&#8221;). If a more
-finegrained control is desired, overload the individual efuns with a
-nomask simul-efun.</p>
+<div class="section" id="glossary">
+<h3>SECURITY<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
+<p>All SQL efuns (unless execute by the master or the simul-efun object) trigger a privilege_violation (&#8220;pgsql&#8221;, &#8220;&lt;efun_name&gt;&#8221;). If a more fine-grained control is desired, overload the individual efuns with a nomask simul_efun.</p>
 </div>
-<th class="field-name">Author:</th><td class="field-body">Florian Heinz and others.</td>
-<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><strong>introduced</strong> (<em>3.3.445</em>)</li>
 <li><strong>changed</strong> (<em>3.3.640</em>) &#8211; added a privilege_violation() call for each efun.</li>
 </ul>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="mysql.html#lpc.mysql" title="mysql"><span class="xref lpc lpc-concept">mysql</span></a>, <a class="reference internal" href="../efun/pg_connect.html#lpc.pg_connect" title="pg_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_connect</span></code>(E)</a>, <a class="reference internal" href="../efun/pg_conv_string.html#lpc.pg_conv_string" title="pg_conv_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_conv_string</span></code>(E)</a>, <a class="reference internal" href="../efun/pg_query.html#lpc.pg_query" title="pg_query"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_query</span></code>(E)</a>, <a class="reference internal" href="../efun/pg_pending.html#lpc.pg_pending" title="pg_pending"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_pending</span></code>(E)</a>, <a class="reference internal" href="../efun/pg_close.html#lpc.pg_close" title="pg_close"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_close</span></code>(E)</a>, <a class="reference internal" href="../master/privilege_violation.html#lpc.privilege_violation" title="privilege_violation"><code class="xref lpc lpc-master docutils literal"><span class="pre">privilege_violation</span></code>(M)</a></p>
+</div>
+<div class="section" id="LORE">
+<h2>LORE<a class="headerlink" href="#LORE" title="Permalink to this headline">¶</a></h2>
+<p>Authored by Florian Heinz and others.</p>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="mysql.html#lpc.mysql" title="mysql"><code class="xref lpc lpc-concept docutils literal"><span class="pre">mysql</span></code>(C)</a>, <a class="reference internal" href="../efun/pg_connect.html#lpc.pg_connect" title="pg_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_connect()</span></code>(E)</a>, <a class="reference internal" href="../efun/pg_conv_string.html#lpc.pg_conv_string" title="pg_conv_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_conv_string()</span></code>(E)</a>, <a class="reference internal" href="../efun/pg_query.html#lpc.pg_query" title="pg_query"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_query()</span></code>(E)</a>, <a class="reference internal" href="../efun/pg_pending.html#lpc.pg_pending" title="pg_pending"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_pending()</span></code>(E)</a>, <a class="reference internal" href="../efun/pg_close.html#lpc.pg_close" title="pg_close"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_close()</span></code>(E)</a>, <a class="reference internal" href="../master/privilege_violation.html#lpc.privilege_violation" title="privilege_violation"><code class="xref lpc lpc-master docutils literal"><span class="pre">privilege_violation</span></code>(M)</a></p>
+</div>
 </div>
 </div>
 
@@ -148,25 +146,34 @@ nomask simul-efun.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">pgsql</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#CONCEPT">CONCEPT</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
-<li><a class="reference internal" href="#security">SECURITY</a></li>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#glossary">SECURITY</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#LORE">LORE</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -176,10 +183,6 @@ nomask simul-efun.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/concepts/pgsql.txt"

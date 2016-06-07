@@ -1,8 +1,5 @@
-.. topic:: concepts
-  :synopsis: sigh
-
-  This directory contains man pages about basic concepts of the
-  LPC language as it is provided by Amylaars parser/interpreter.
+.. directory:: concepts
+  :synopsis: This directory contains man pages about basic concepts of the LPC language as it is provided by Amylaars parser/interpreter.
 
   .. toctree::
     :maxdepth: 1
@@ -10,4 +7,4 @@
 
     *
 
-  .. seealso:: :driver:`driver`, :efun:`efun`, :applied:`applied`, :master:`master`, :lang:`lpc`
+  .. seealso:: :directory:`applied`, :directory:`driver`, :directory:`efun`, :directory:`hook`, :directory:`internals`, :directory:`LPC`, :directory:`master`, :directory:`obsolete`

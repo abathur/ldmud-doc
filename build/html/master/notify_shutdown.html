@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>notify_shutdown &mdash; LDMud UNRELEASED documentation</title>
+    <title>master::notify_shutdown() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,27 +24,32 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="master" href="master.html" />
+    <link rel="next" title="master::parse_command_adjectiv_id_list()" href="parse_command_adjectiv_id_list.html" />
+    <link rel="prev" title="master::make_path_absolute()" href="make_path_absolute.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="notify_shutdown">
+  <div class="section">
 <div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="master" style="border-spacing:0;">
+<span id="notify_shutdown"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr id="lpc.notify_shutdown">
 <td>
-varargs void </td><td>
+varargs <a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
 <code class="descname">notify_shutdown</code></td><td><span class="sig-paren">(</span></td><td>
-string<em>&nbsp;crash_reason</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.notify_shutdown" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;crash_reason</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.notify_shutdown" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -65,13 +70,17 @@ The following crash reasons are defined:</p>
 <ul class="simple">
 <li>&#8220;Fatal Error&#8221;: an internal sanity check failed.</li>
 </ul>
-<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added the &lt;crash_reason&gt; argument and that the
 function is called for a crash at all.</li>
 </ul>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="slow_shut_down.html#lpc.slow_shut_down" title="slow_shut_down"><code class="xref lpc lpc-master docutils literal"><span class="pre">slow_shut_down</span></code>(M)</a>, <a class="reference internal" href="remove_player.html#lpc.remove_player" title="remove_player"><code class="xref lpc lpc-master docutils literal"><span class="pre">remove_player</span></code>(M)</a>,</p>
+</div>
 </div>
 </div>
 
@@ -89,22 +98,31 @@ function is called for a crash at all.</li>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">notify_shutdown</a><ul>
+<li><a class="reference internal" href="#">master::notify_shutdown()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -114,10 +132,6 @@ function is called for a crash at all.</li>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/master/notify_shutdown.txt"

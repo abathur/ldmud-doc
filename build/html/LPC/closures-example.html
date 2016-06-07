@@ -24,12 +24,17 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="LPC" href="lpc.html" />
+    <link rel="next" title="comments" href="comments.html" />
+    <link rel="prev" title="closures" href="closures.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -37,143 +42,120 @@
           <div class="body" role="main">
             
   <div class="section" id="closures example">
-<div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<p id="lpc.closures example">closures example</p>
+<span id="lpc.closures example"></span><div class="section" id="TOPIC">
+<h2>TOPIC<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<p>closures example</p>
 </div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>This document contains small examples of the usage of
-(lambda-)closures. For technical details see the <span class="xref lpc lpc-lang">closures</span>
-doc. For hints when to use which type of closure, see the end
-of this doc.</p>
-<p>Many Muds use &#8216;details&#8217; to add more flavour. &#8216;Details&#8217; are
-items which can be looked at, but are not implemented as own
-objects, but instead simulated by the environment.
-Lets assume that the function</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">AddDetail</span><span class="p">(</span><span class="n">string</span> <span class="n">keyword</span><span class="p">,</span> <span class="n">string</span><span class="o">|</span><span class="n">closure</span> <span class="n">desc</span><span class="p">)</span>
+<p>This document contains small examples of the usage of (lambda-)closures. For technical details see the <a class="reference internal" href="closures.html#lpc.closures" title="closures"><code class="xref lpc lpc-lang docutils literal"><span class="pre">closures</span></code>(LPC)</a> doc. For hints when to use which type of closure, see the end of this doc.</p>
+<p>Many Muds use &#8216;details&#8217; to add more flavour. &#8216;Details&#8217; are items which can be looked at, but are not implemented as own objects, but instead simulated by the environment. Lets assume that the function</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">AddDetail</span><span class="p">(</span><span class="n">string</span> <span class="n">keyword</span><span class="p">,</span> <span class="n">string</span><span class="o">|</span><span class="n">closure</span> <span class="n">desc</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>adds the detail &#8216;keyword&#8217; to the room, which, when look at,
-returns the string &#8216;desc&#8217; resp. the result of the execution of
-closure &#8216;desc&#8217; as the detail description to the player.</p>
-<p>Now imagine that one wants to equip a room with magic runes,
-which read as &#8216;Hello &lt;playername&gt;!n&#8221; when looked at.
-Obviously</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">AddDetail</span><span class="p">(</span><span class="s">&quot;runes&quot;</span><span class="p">,</span> <span class="n">sprintf</span><span class="p">(</span> <span class="s">&quot;Hello %s!</span><span class="se">\n</span><span class="s">&quot;</span>
-                          <span class="p">,</span> <span class="n">this_player</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">QueryName</span><span class="p">()));</span>
+<p>adds the detail &#8216;keyword&#8217; to the room, which, when look at, returns the string &#8216;desc&#8217; resp. the result of the execution of closure &#8216;desc&#8217; as the detail description to the player.</p>
+<p>Now imagine that one wants to equip a room with magic runes, which read as &#8216;Hello &lt;playername&gt;!n&#8221; when looked at. Obviously</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">AddDetail</span><span class="p">(</span><span class="s">&quot;runes&quot;</span><span class="p">,</span> <span class="n">sprintf</span><span class="p">(</span><span class="s">&quot;Hello %s!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">this_player</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">QueryName</span><span class="p">()));</span>
 </pre></div>
 </div>
-<p>is not sufficient, as the &#8216;this_player()&#8217; is executed to early
-and just once: for the player loading the room.</p>
-<p>The solution is to use closures. First, the solution using
-lfun-closures:</p>
-<div class="highlight-c"><div class="highlight"><pre>private string _detail_runes () {
+<p>is not sufficient, as the &#8216;this_player()&#8217; is executed to early and just once: for the player loading the room.</p>
+<p>The solution is to use closures. First, the solution using lfun-closures:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span>private string _detail_runes () {
   return sprintf(&quot;Hello %s!\n&quot;, this_player()-&gt;QueryName());
 }
-  ...
+...
 AddDetail(&quot;runes&quot;, #&#39;_detail_runes);
 </pre></div>
 </div>
 <p>or with an inline closure:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">AddDetail</span><span class="p">(</span><span class="s">&quot;runes&quot;</span>
-         <span class="p">,</span> <span class="p">(</span><span class="o">:</span> <span class="n">sprintf</span><span class="p">(</span><span class="s">&quot;Hello %s!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">this_player</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">QueryName</span><span class="p">())</span> <span class="o">:</span><span class="p">)</span>
-         <span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">AddDetail</span><span class="p">(</span>
+  <span class="s">&quot;runes&quot;</span><span class="p">,</span>
+  <span class="p">(</span><span class="o">:</span> <span class="n">sprintf</span><span class="p">(</span><span class="s">&quot;Hello %s!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">this_player</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">QueryName</span><span class="p">())</span> <span class="o">:</span><span class="p">)</span>
+<span class="p">);</span>
 </pre></div>
 </div>
 <p>Simple? Here is the same code, this time as lambda-closure:</p>
-<div class="highlight-c"><div class="highlight"><pre>AddDetail( &quot;runes&quot;
-         , lambda(0
-           , ({#&#39;sprintf, &quot;Hello %s!\n&quot;
-                        , ({#&#39;call_other, ({#&#39;this_player})
-                                        , &quot;QueryName&quot; })
-             })
-         ));
+<div class="highlight-c"><div class="highlight"><pre><span></span>AddDetail(
+  &quot;runes&quot;,
+  lambda(
+    0,
+    ({
+      #&#39;sprintf,
+      &quot;Hello %s!\n&quot;,
+      ({#&#39;call_other, ({#&#39;this_player}), &quot;QueryName&quot; })
+    })
+  )
+);
 </pre></div>
 </div>
-<p>Why the extra ({ }) around &#8216;#&#8217;this_player&#8217;? #&#8217;this_player
-alone is just a symbol, symbolizing the efun this_player(),
-but call_other() needs an object as first argument. Therefore,
-the #&#8217;this_player has to be interpreted as function to
-evaluate, which is enforced by enclosing it in ({ }). The same
-reason also dictates the enclosing of the whole #&#8217;call_other
-expression into ({ }).
-Note also the missing #&#8217;return: it is not needed. The result
-of a lambda-closure is the last value computed.</p>
-<p>Another example: Task is to reduce the HP of every living in a
-room by 10, unless the result would be negative.
-Selecting all livings in a room is simply:</p>
-<div class="highlight-c"><div class="highlight"><pre>filter(all_inventory(room), #&#39;living)
+<p>Why the extra ({ }) around &#8216;#&#8217;this_player&#8217;? #&#8217;this_player alone is just a symbol, symbolizing the efun this_player(), but call_other() needs an object as first argument. Therefore, the #&#8217;this_player has to be interpreted as function to evaluate, which is enforced by enclosing it in ({ }). The same reason also dictates the enclosing of the whole #&#8217;call_other expression into ({ }). Note also the missing #&#8217;return: it is not needed. The result of a lambda-closure is the last value computed.</p>
+<p>Another example: Task is to reduce the HP of every living in a room by 10, unless the result would be negative. Selecting all livings in a room is simply:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span>filter(all_inventory(room), #&#39;living)
 </pre></div>
 </div>
-<p>The tricky part is to reduce the HP. Again, first the
-lfun-closure solution:</p>
-<div class="highlight-c"><div class="highlight"><pre>private _reduce_hp (object liv) {
+<p>The tricky part is to reduce the HP. Again, first the lfun-closure solution:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span>private _reduce_hp (object liv) {
   int hp;
   hp = liv-&gt;QueryHP();
-  if (hp &gt; 10)
+  if (hp &gt; 10){
     liv-&gt;SetHP(hp-10);
+  }
 }
 ...
 
-map( filter(all_inventory(room), #&#39;living)
-         , #&#39;_reduce_hp)
+map( filter(all_inventory(room), #&#39;living), #&#39;_reduce_hp)
 </pre></div>
 </div>
 <p>or as an inline closure:</p>
-<div class="highlight-c"><div class="highlight"><pre>map( filter(all_inventory(room), #&#39;living)
-         , (: int hp;
-              hp = liv-&gt;QueryHP();
-              if (hp &gt; 10)
-                liv-&gt;SetHP(hp - 10);
-            :) );
+<div class="highlight-c"><div class="highlight"><pre><span></span>map(
+  filter(all_inventory(room), #&#39;living),
+  (:
+    int hp;
+    hp = liv-&gt;QueryHP();
+    if (hp &gt; 10){
+      liv-&gt;SetHP(hp - 10);
+    }
+  :)
+);
 </pre></div>
 </div>
-<p>Both filter() and map() pass the actual array item
-being filtered/mapped as first argument to the closure.</p>
+<p>Both filter() and map() pass the actual array item being filtered/mapped as first argument to the closure.</p>
 <p>Now, the lambda-closure solution:</p>
-<div class="highlight-c"><div class="highlight"><pre>map( filter(all_inventory(room), #&#39;living)
-, lambda( ({ &#39;liv })
-  , ({#&#39;, , ({#&#39;=, &#39;hp, ({#&#39;call_other, &#39;liv, &quot;QueryHP&quot; }) })
-          , ({#&#39;?, ({#&#39;&gt;, &#39;hp, 10 })
-                 , ({#&#39;call_other, &#39;liv, &quot;SetHP&quot;
-                                 , ({#&#39;-, &#39;hp, 10 })
-                   })
-            })
+<div class="highlight-c"><div class="highlight"><pre><span></span>map(
+  filter(all_inventory(room), #&#39;living),
+  lambda(
+    ({ &#39;liv }),
+    ({
+      #&#39;, , // not obvious if this is one arg or two?
+      ({ #&#39;=, &#39;hp, ({#&#39;call_other, &#39;liv, &quot;QueryHP&quot; }) }),
+      ({
+        #&#39;?,
+        ({#&#39;&gt;, &#39;hp, 10 }),
+        ({ #&#39;call_other, &#39;liv, &quot;SetHP&quot;, ({#&#39;-, &#39;hp, 10 }) })
+      })
     })
   ) // of lambda()
 );
 </pre></div>
 </div>
-<p>It is worthy to point out how local variables like &#8216;hp&#8217; are
-declared in a lambda-closure: not at all. They are just used
-by writing their symbol &#8216;hp . Same applies to the closures
-parameter &#8216;liv .</p>
-<p>The lambda-closure solution is not recommended for three
-reasons: it is complicated, does not use the powers of
-lambda(), and the lambda() is recompiled every time this
-statement is executed!</p>
-<p>So far, lambda-closures seem to be just complicated, and in
-fact: they are. Their powers lie elsewhere.</p>
-<p>Imagine a computation, like for skill resolution, which
-involves two object properties multiplied with factors and
-then added.</p>
+<p>It is worthy to point out how local variables like &#8216;hp&#8217; are declared in a lambda-closure: not at all. They are just used by writing their symbol &#8216;hp . Same applies to the closures parameter &#8216;liv .</p>
+<p>The lambda-closure solution is not recommended for three reasons: it is complicated, does not use the powers of lambda(), and the lambda() is recompiled every time this statement is executed!</p>
+<p>So far, lambda-closures seem to be just complicated, and in fact: they are. Their powers lie elsewhere.</p>
+<p>Imagine a computation, like for skill resolution, which involves two object properties multiplied with factors and then added.</p>
 <p>The straightforward solution would be a function like:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="nf">Compute</span> <span class="p">(</span><span class="n">object</span> <span class="n">obj</span><span class="p">,</span> <span class="n">string</span> <span class="n">stat1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">factor1</span>
-                       <span class="p">,</span> <span class="n">string</span> <span class="n">stat2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">factor2</span><span class="p">)</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">Compute</span> <span class="p">(</span><span class="n">object</span> <span class="n">obj</span><span class="p">,</span> <span class="n">string</span> <span class="n">stat1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">factor1</span><span class="p">,</span> <span class="n">string</span> <span class="n">stat2</span><span class="p">,</span>
+  <span class="kt">int</span> <span class="n">factor2</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="k">return</span>   <span class="n">call_other</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s">&quot;Query&quot;</span><span class="o">+</span><span class="n">stat1</span><span class="p">)</span> <span class="o">*</span> <span class="n">factor1</span>
-         <span class="o">+</span> <span class="n">call_other</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s">&quot;Query&quot;</span><span class="o">+</span><span class="n">stat2</span><span class="p">)</span> <span class="o">*</span> <span class="n">factor2</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="n">call_other</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s">&quot;Query&quot;</span><span class="o">+</span><span class="n">stat1</span><span class="p">)</span> <span class="o">*</span> <span class="n">factor1</span> <span class="o">+</span>
+    <span class="n">call_other</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s">&quot;Query&quot;</span><span class="o">+</span><span class="n">stat2</span><span class="p">)</span> <span class="o">*</span> <span class="n">factor2</span>
+  <span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Each call to Compute() involves several operations (computing
-the function names and resolving the call_other()s) which in
-fact need to be done just once. Using lambda-closures, one can
-construct and compile a piece of code which behaves like a
-Compute() tailored for a specific stat/factor combination:</p>
-<div class="highlight-c"><div class="highlight"><pre>closure ConstructCompute (object obj, string stat1, int factor1
-                                    , string stat2, int factor2)
+<p>Each call to Compute() involves several operations (computing the function names and resolving the call_other()s) which in fact need to be done just once. Using lambda-closures, one can construct and compile a piece of code which behaves like a Compute() tailored for a specific stat/factor combination:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span>closure ConstructCompute (object obj, string stat1, int factor1,
+  string stat2, int factor2)
 {
   mixed code;
 
@@ -182,16 +164,16 @@ Compute() tailored for a specific stat/factor combination:</p>
   // lfun &#39;Query&lt;stat1&gt;&#39;, speeding up later calls.
   // Note again the extra ({ }) around the created symbol.
 
-  code = ({#&#39;*, ({ symbol_function(&quot;Query&quot;+stat1, obj) })
-              , factor1 });
+  code = ({#&#39;*, ({ symbol_function(&quot;Query&quot;+stat1, obj) }), factor1 });
 
   // Construct the second multiplication, and the addition
   // of both terms.
 
-  code = ({#&#39;+, code
-              , ({#&#39;*, ({ symbol_function(&quot;Query&quot;+stat2, obj) })
-                     , factor2 })
-         });
+  code = ({
+    #&#39;+,
+    code,
+    ({#&#39;*, ({ symbol_function(&quot;Query&quot;+stat2, obj) }), factor2 })
+  });
 
   // Compile the code and return the generated closure.
   return lambda(0, code);
@@ -199,33 +181,22 @@ Compute() tailored for a specific stat/factor combination:</p>
 </pre></div>
 </div>
 <p>Once the closure is compiled,</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">str_dex_fun</span> <span class="o">=</span> <span class="n">ConstructCompute</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s">&quot;Str&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&quot;Dex&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">str_dex_fun</span> <span class="o">=</span> <span class="n">ConstructCompute</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s">&quot;Str&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&quot;Dex&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>it can be used with a simple &#8216;funcall(str_dex_fun)&#8217;.</p>
-<div class="section" id="When to use which closure?">
-<span id="lpc.When to use which closure?"></span><h3>WHEN TO USE WHICH CLOSURE?<a class="headerlink" href="#When to use which closure?" title="Permalink to this headline">¶</a></h3>
-<p>First, a closure is only then useful if it needn&#8217;t to live any
-longer than the object defining it. Reason: when the defining
-object gets destructed, the closure will vanish, too.</p>
-<p>Efun-, lfun- and inline closures should be used where useful, as they
-mostly do the job and are easy to read. The disadvantage of lfun- and
-inline closures is that they make a replace_program() impossible
-- but since such objects tend to not being replaceable at all, this is
-no real loss.</p>
-<p>Lambda closures are needed if the actions of the closure are
-heavily depending on some data available only at runtime, like
-the actual inventory of a certain player.</p>
-<p>If you use lfun-closures and find yourself shoving around
-runtime data in arguments or (gasp!) global variables, it is
-time to think about using a lambda-closure, compiling the
-value hard into it.</p>
-<p>The disadvantages of lambda closures are clear: they are damn
-hard to read, and each lambda() statement requires extra time to
-compile the closure.</p>
+<div class="section" id="glossary">
+<h3>WHEN TO USE WHICH CLOSURE?<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
+<p>First, a closure is only then useful if it needn&#8217;t to live any longer than the object defining it. Reason: when the defining object gets destructed, the closure will vanish, too.</p>
+<p>Efun-, lfun- and inline closures should be used where useful, as they mostly do the job and are easy to read. The disadvantage of lfun- and inline closures is that they make a replace_program() impossible - but since such objects tend to not being replaceable at all, this is no real loss.</p>
+<p>Lambda closures are needed if the actions of the closure are heavily depending on some data available only at runtime, like the actual inventory of a certain player.</p>
+<p>If you use lfun-closures and find yourself shoving around runtime data in arguments or (gasp!) global variables, it is time to think about using a lambda-closure, compiling the value hard into it.</p>
+<p>The disadvantages of lambda closures are clear: they are damn hard to read, and each lambda() statement requires extra time to compile the closure.</p>
 </div>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><span class="xref lpc lpc-lang">closures</span>, <span class="xref lpc lpc-lang">closure_guide</span>, <a href="#id1"><span class="problematic" id="id2">:subtopic:`closures-abstract`</span></a></p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="closures.html#lpc.closures" title="closures"><code class="xref lpc lpc-lang docutils literal"><span class="pre">closures</span></code>(LPC)</a>, <code class="xref lpc lpc-guide docutils literal"><span class="pre">closure_guide</span></code>, <a href="#id1"><span class="problematic" id="id2">:subtopic:`closures-abstract`</span></a></p>
+</div>
 </div>
 </div>
 
@@ -243,25 +214,31 @@ compile the closure.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">closures example</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#TOPIC">TOPIC</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
-<li><a class="reference internal" href="#When to use which closure?">WHEN TO USE WHICH CLOSURE?</a></li>
+<li><a class="reference internal" href="#glossary">WHEN TO USE WHICH CLOSURE?</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="lpc.html">LPC</a></li>
 </ul>
 
 
@@ -271,10 +248,6 @@ compile the closure.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/LPC/closures-example.txt"

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>&lt;no title&gt; &mdash; LDMud UNRELEASED documentation</title>
+    <title>rxcache &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,19 +24,76 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="obsolete" href="obsolete.html" />
+    <link rel="next" title="efun::send_imp()" href="send_imp.html" />
+    <link rel="prev" title="efun::receive_imp()" href="receive_imp.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  
+  <div class="section" id="rxcache">
+<span id="lpc.rxcache"></span><div class="section" id="CONCEPT">
+<h2>CONCEPT (OBSOLETE)<a class="headerlink" href="#CONCEPT" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">rxcache:</th><td class="field-body"><span class="first last">regular expression cache</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>The rxcache acts as a wrapper around the regcomp() function
+in the regexp module. It keeps track of the recently compiled
+regular expression and stores both the expression string and
+regexp&#8217;s internal representation. If an expression is found
+among the stored ones, the rxcache returns the stored internal
+representation compiled earlier.</p>
+<p>The interface is through the function regcomp_cache() which
+takes the same parameters as regcomp(). However, since the
+compiled expression is stored and managed by rxcache, the
+caller of regcomp_cache() must not deallocate the compiled
+expression after use.</p>
+<p>The expressions are stored in a fixed size table, with entries
+indexed by a hash over the pattern string. The table holds
+RXCACHE_TABLE entries, and every entry can hold RXCACHE_CHAIN
+expressions. Upon a hash collision, one of the stored expressions
+is removed (and deallocated) using a round-robin selection.
+This behaviour may not be optimal, but on the other hand
+eventually deallocates expressions which are no longer used.
+The two <a href="#id1"><span class="problematic" id="id2">RXCACHE_</span></a> values are defined in config.h.</p>
+<p>Initial tests showed an acceleration of the regexp _setup_
+phase by factor 4. However, since the actual matching is as
+fast as before, the net savings will be lower.</p>
+<p>To install the rxcache, apply the diff file (use parameter
+&#8216;-p1&#8217; with patch) and reconfigure and recompile the driver.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Lars Duening; 17. Apr 1998
+Written 1998 by Lars Duening.
+Share and Enjoy!&#64;</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.2</em>) &#8211; Fully integrated into the driver</li>
+</ul>
+</div>
+</div>
+</div>
+
 
           </div>
         </div>
@@ -51,13 +108,30 @@
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">rxcache</a><ul>
+<li><a class="reference internal" href="#CONCEPT">CONCEPT (OBSOLETE)</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -67,10 +141,6 @@
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/obsolete/rxcache.doc.txt"

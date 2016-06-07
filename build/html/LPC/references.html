@@ -24,12 +24,17 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="LPC" href="lpc.html" />
+    <link rel="next" title="status" href="status.html" />
+    <link rel="prev" title="preprocessor" href="preprocessor.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -37,9 +42,9 @@
           <div class="body" role="main">
             
   <div class="section" id="references">
-<div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<p id="lpc.references">references</p>
+<span id="lpc.references"></span><div class="section" id="LANG">
+<h2>LANG<a class="headerlink" href="#LANG" title="Permalink to this headline">¶</a></h2>
+<p>references</p>
 </div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -52,27 +57,28 @@ The caller has to pass references explicitely; this is done by
 prefixing an lvalue with &#8216;&amp;&#8217; .</p>
 <p>To pass a reference to an element of an array, you have to
 enclose the indexed lvalue in round brackets.</p>
-<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-c"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">assign</span><span class="p">(</span><span class="n">mixed</span> <span class="n">destination</span><span class="p">,</span> <span class="n">mixed</span> <span class="n">source</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">destination</span> <span class="o">=</span> <span class="n">source</span><span class="p">;</span>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">assign</span><span class="p">(</span><span class="n">mixed</span> <span class="n">destination</span><span class="p">,</span> <span class="n">mixed</span> <span class="n">source</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">destination</span> <span class="o">=</span> <span class="n">source</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="nf">extract_number</span><span class="p">(</span><span class="kt">int</span> <span class="n">destination</span><span class="p">,</span> <span class="n">string</span> <span class="n">source</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">sscanf</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="n">destination</span><span class="p">);</span>
+  <span class="n">sscanf</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="n">destination</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-    <span class="kt">float</span> <span class="n">f</span><span class="p">;</span>
-    <span class="n">mixed</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">f</span><span class="p">;</span>
+  <span class="n">mixed</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span>
 
-    <span class="n">extract_number</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">,</span> <span class="s">&quot;42 palantirs&quot;</span><span class="p">);</span>
-    <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="n">f</span><span class="p">,</span> <span class="mf">3.141592653589793</span><span class="p">);</span>
-    <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="p">({</span> <span class="n">i</span><span class="p">,</span> <span class="n">f</span> <span class="p">}));</span>
-    <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">&lt;</span><span class="mf">0.</span><span class="p">.</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">]),</span> <span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s">&quot;sink&quot;</span><span class="p">,</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="s">&quot;y&quot;</span><span class="p">,</span><span class="s">&quot;x&quot;</span><span class="p">}));</span>
-    <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span> <span class="sc">&#39;w&#39;</span><span class="p">);</span>
-    <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">]),</span> <span class="sc">&#39;g&#39;</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%O&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">));</span>
+  <span class="n">extract_number</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">,</span> <span class="s">&quot;42 palantirs&quot;</span><span class="p">);</span>
+  <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="n">f</span><span class="p">,</span> <span class="mf">3.141592653589793</span><span class="p">);</span>
+  <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="p">({</span> <span class="n">i</span><span class="p">,</span> <span class="n">f</span> <span class="p">}));</span>
+  <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">&lt;</span><span class="mf">0.</span><span class="p">.</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">]),</span> <span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s">&quot;sink&quot;</span><span class="p">,</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="s">&quot;y&quot;</span><span class="p">,</span><span class="s">&quot;x&quot;</span><span class="p">}));</span>
+  <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span> <span class="sc">&#39;w&#39;</span><span class="p">);</span>
+  <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">]),</span> <span class="sc">&#39;g&#39;</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%O&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">));</span>
 <span class="p">}</span>
 
 <span class="p">({</span> <span class="cm">/* sizeof() == 9 */</span>
@@ -87,6 +93,7 @@ enclose the indexed lvalue in round brackets.</p>
   <span class="s">&quot;x&quot;</span>
 <span class="p">})</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -105,22 +112,30 @@ enclose the indexed lvalue in round brackets.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">references</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#LANG">LANG</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="lpc.html">LPC</a></li>
 </ul>
 
 
@@ -130,10 +145,6 @@ enclose the indexed lvalue in round brackets.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/LPC/references.txt"

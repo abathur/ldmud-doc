@@ -4,18 +4,18 @@ SYNOPSIS (DEPRECATED)
 
 DESCRIPTION
 ===========
-   In compat mode, this function is used by the efun transfer().
+   In compat mode, this function is used by transfer()(E).
 
-   Define this function in objects that are neither living nor rooms if you
+   Define this function in objects that are neither living nor rooms if you 
    want to make it possible to put something into current object.
 
-   Return true if ok, otherwise 0. That means that default is that it is not
+   Return true if ok, otherwise 0. That means that default is that it is not 
    possible to put something into an object.
 
 HISTORY
 =======
-   - **deprecated** (*3.3*) -- because transfer() has been deprecated.
+   - deprecated (3.3) -- because transfer()(E) has been deprecated.
 
 SEE ALSO
 ========
-   transfer(E), prevent_insert(A)
+   transfer()(E), prevent_insert(A)

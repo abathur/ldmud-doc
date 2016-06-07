@@ -1,5 +1,8 @@
 .. lang:: switch
-  switch (expr) block
+
+  .. keyword:: switch
+
+  .. syntax:: switch (expr) block
 
   Branch to the case label in statement that matches expr.
   If no matching case label is found (by value or by type),
@@ -47,8 +50,10 @@
         case 33 : write("You hear a voice whispering: "+random_hint());
         /* fall through */
         case 34 :
-          write("While you didn't pay attention, a water demon "
-                "snatches a coin out of your purse!\n");
+          write(
+            "While you didn't pay attention, a water demon "
+            "snatches a coin out of your purse!\n"
+          );
           this_player()->add_money(-1);
           break;
         default : write "You hear some strange noises\n"; break;

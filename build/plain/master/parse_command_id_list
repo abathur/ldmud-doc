@@ -4,15 +4,15 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Used by parse_command(). Return an array of common singular 'thing' ids in
+   Used by parse_command(). Return an array of common singular 'thing' ids in 
    the installation's native language.
 
-USAGE
-=====
-      string *parse_command_id_list() {
-          return ({ "one", "thing" });
-      }
+   USAGE
+   =====
+         string *parse_command_id_list() {
+             return ({ "one", "thing" });
+         }
 
 SEE ALSO
 ========
-   parse_command(E)
+   parse_command()(E)

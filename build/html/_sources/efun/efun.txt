@@ -1,58 +1,107 @@
-.. topic:: efun
+.. directory:: efun
 
-  This directory contains descriptions for the efuns of LDMud 3.3.
+  This directory contains descriptions for the efuns of LDMud.
 
   These are functions that are supplied by the driver and can be
   called by any LPC object (somewhat similar to system calls in the
   C library).
 
-  There a few kinds of efuns:
+  .. todo:: in theory this information could probably be massaged for doxygen such that it documents the "efun" class
 
-  'optional'
-    A mud's maintainer is free to deactivate these efuns when
-    compiling the driver:
+  .. todo:: below language calls these 'kinds' but they're really 'statuses', and there might be a smart way to link these (at least in the HTML docs) with the actual status on individual docs. IIRC we use these for more than just efuns, so it might be best to have a meta page with a list of document statuses/explanations, link all of the actual statuses there, and then link these items to those members.
 
-    - assoc()
-    - break_point()
-    - db_*()
-    - insert_alist()
-    - intersect_alist()
-    - parse_command()
-    - process_string()
-    - rusage()
-    - set_is_wizard()
-    - transfer()
-    - tls_available()
-    - tls_check_certificate()
-    - tls_deinit_connection()
-    - tls_error()
-    - tls_init_connection()
-    - tls_query_connection_info()
-    - tls_query_connection_state()
-    - tls_refresh_certs()
-    - xml_generate()
-    - xml_parse()
+  .. enumerate::
+    :synopsis: There a few kinds of efuns:
 
-  'preliminary' or 'experimental'
-    The behaviour of these efuns is not fixed yet, and may change
-    with further releases:
+    *optional*
+      A mud's maintainer is free to deactivate these efuns when
+      compiling the driver:
 
-    - tls_*()
-    - xml_generate()
-    - xml_parse()
+      - :efun:`assoc`
+      - :efun:`break_point`
+      - :efun:`db_affected_rows`
+      - :efun:`db_close`
+      - :efun:`db_coldefs`
+      - :efun:`db_connect`
+      - :efun:`db_conv_string`
+      - :efun:`db_error`
+      - :efun:`db_exec`
+      - :efun:`db_fetch`
+      - :efun:`db_handles`
+      - :efun:`db_insert_id`
+      - :efun:`insert_alist`
+      - :efun:`intersect_alist`
+      - :efun:`parse_command`
+      - :efun:`process_string`
+      - :efun:`rusage`
+      - :efun:`set_is_wizard`
+      - :efun:`transfer`
+      - :efun:`tls_available`
+      - :efun:`tls_check_certificate`
+      - :efun:`tls_deinit_connection`
+      - :efun:`tls_error`
+      - :efun:`tls_init_connection`
+      - :efun:`tls_query_connection_info`
+      - :efun:`tls_query_connection_state`
+      - :efun:`tls_refresh_certs`
+      - :efun:`xml_generate`
+      - :efun:`xml_parse`
 
-  'deprecated' or 'obsolete'
-    These efuns should no longer be used, they are merely provided
-    for backwards compatibility:
+      .. todo:: failed refs for assoc, insert_alist and intersect_alist above
 
-    - make_shared_string()
-    - md5()
-    - sha1()
+      alt approach:
 
-  .. toctree::
-    :maxdepth: 1
-    :glob:
+      .. toctree::
+        :maxdepth: 1
+        :glob:
 
-    *
+        assoc.rst
+        break_point.rst
+        db_*
+        insert_alist
+        intersect_alist
+        parse_command
+        process_string
+        rusage
+        set_is_wizard
+        transfer
+        tls_*
+        xml_*
 
-  .. seealso:: :lang:`efuns`, :applied:`applied`, :master:`master`, :lang:`lpc`, :concept:`concepts`, :driver:`driver`
+      .. todo:: decide between the brief/less-explicit alt-approach, and the explicit approaches above... One advantage of the explicit approach is that breakages in it reveal when documents have moved or gone away and haven't been properly rooted out. That said, it can still easily miss new documents (i.e., we add some TLS efun).
+
+      .. todo:: should JSON funcs be here?
+
+    *preliminary* or *experimental*
+      The behaviour of these efuns is not fixed yet, and may change
+      with further releases:
+
+      - :efun:`tls_available`
+      - :efun:`tls_check_certificate`
+      - :efun:`tls_deinit_connection`
+      - :efun:`tls_error`
+      - :efun:`tls_init_connection`
+      - :efun:`tls_query_connection_info`
+      - :efun:`tls_query_connection_state`
+      - :efun:`tls_refresh_certs`
+      - :efun:`xml_generate`
+      - :efun:`xml_parse`
+
+    *deprecated* or *obsolete*
+      These efuns should no longer be used, they are merely provided
+      for backwards compatibility:
+
+      - :efun:`make_shared_string`
+      - :efun:`md5`
+      - :efun:`sha1`
+
+  .. subtopic:: efun index
+
+    .. toctree::
+      :maxdepth: 1
+      :glob:
+
+      *
+
+  .. seealso:: :concept:`efuns`,
+    :directory:`applied`, :directory:`concepts`, :directory:`driver`, :directory:`hook`, :directory:`internals`, :directory:`LPC`, :directory:`master`, :directory:`obsolete`

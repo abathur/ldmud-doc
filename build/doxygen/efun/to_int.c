@@ -1,0 +1,36 @@
+public class efun {
+   /**
+    * @synopsis{
+    * int to_int(string)
+    * int to_int(float)
+    * int to_int(int)
+    * int to_int(closure)
+    * (int)<value>()
+    * }
+    * 
+   **/
+   (int)<value>();
+}
+DESCRIPTION
+Floats are truncated to integer values; strings with leading
+digits are converted to integers up to the first non-digit;
+lfun-closures are converted into their function index (not
+adjusted for inheritance); variable closure are converted
+into their variable index; integers are just returned.
+
+Regarding floats, it is important to keep rounding effects
+in mind: to_int(3.1*10.0) does not return 31, but instead 30,
+because internally the result of the multiplication is 30.999999.
+
+The function supports the '0x', '0o' and '0b' base prefixes.
+
+BUGS
+The cast notation only works if the precise type of <value>
+is known at compile-time. This will not be fixed - use the
+function form instead.
+
+Introduced in 3.2.1@2.
+LDMud 3.2.11/3.3.611 added support for the base prefixes.
+
+   See Also: 
+      efun::to_string(), efun::sscanf()

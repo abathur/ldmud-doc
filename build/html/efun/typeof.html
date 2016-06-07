@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>typeof &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::typeof() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,40 +24,49 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="efun" href="efun.html" />
+    <link rel="next" title="efun::unbound_lambda()" href="unbound_lambda.html" />
+    <link rel="prev" title="efun::trim()" href="trim.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="typeof">
+  <div class="section">
 <div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="efun" style="border-spacing:0;">
+<span id="typeof"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;lpctypes.h&gt;</tr>
 <tr id="lpc.typeof">
 <td>
-int </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
 <code class="descname">typeof</code></td><td><span class="sig-paren">(</span></td><td>
-mixed</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.typeof" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.typeof" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
 <p>Returns a code for the type of the argument, as defined in
 &lt;lpctypes.h&gt;.</p>
-<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><strong>introduced</strong> (<em>3.2&#64;63</em>)</li>
 </ul>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="get_type_info.html#lpc.get_type_info" title="get_type_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_type_info</span></code>(E)</a>, <a class="reference internal" href="intp.html#lpc.intp" title="intp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">intp</span></code>(E)</a>, <a class="reference internal" href="objectp.html#lpc.objectp" title="objectp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">objectp</span></code>(E)</a>, <a class="reference internal" href="floatp.html#lpc.floatp" title="floatp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">floatp</span></code>(E)</a>, <a class="reference internal" href="pointerp.html#lpc.pointerp" title="pointerp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pointerp</span></code>(E)</a>, <a class="reference internal" href="closurep.html#lpc.closurep" title="closurep"><code class="xref lpc lpc-efun docutils literal"><span class="pre">closurep</span></code>(E)</a>, <a class="reference internal" href="symbolp.html#lpc.symbolp" title="symbolp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">symbolp</span></code>(E)</a>, <a class="reference internal" href="stringp.html#lpc.stringp" title="stringp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">stringp</span></code>(E)</a>, <a class="reference internal" href="mappingp.html#lpc.mappingp" title="mappingp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mappingp</span></code>(E)</a></p>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="get_type_info.html#lpc.get_type_info" title="get_type_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_type_info()</span></code>(E)</a>, <a class="reference internal" href="intp.html#lpc.intp" title="intp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">intp()</span></code>(E)</a>, <a class="reference internal" href="objectp.html#lpc.objectp" title="objectp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">objectp()</span></code>(E)</a>, <a class="reference internal" href="floatp.html#lpc.floatp" title="floatp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">floatp()</span></code>(E)</a>, <a class="reference internal" href="pointerp.html#lpc.pointerp" title="pointerp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pointerp()</span></code>(E)</a>, <a class="reference internal" href="closurep.html#lpc.closurep" title="closurep"><code class="xref lpc lpc-efun docutils literal"><span class="pre">closurep()</span></code>(E)</a>, <a class="reference internal" href="symbolp.html#lpc.symbolp" title="symbolp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">symbolp()</span></code>(E)</a>, <a class="reference internal" href="stringp.html#lpc.stringp" title="stringp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">stringp()</span></code>(E)</a>, <a class="reference internal" href="mappingp.html#lpc.mappingp" title="mappingp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mappingp()</span></code>(E)</a></p>
+</div>
 </div>
 </div>
 
@@ -75,22 +84,31 @@ mixed</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">typeof</a><ul>
+<li><a class="reference internal" href="#">efun::typeof()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -100,10 +118,6 @@ mixed</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/efun/typeof.txt"

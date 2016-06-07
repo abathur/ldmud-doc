@@ -24,12 +24,17 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="concepts" href="concepts.html" />
+    <link rel="next" title="imp" href="imp.html" />
+    <link rel="prev" title="files" href="files.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -37,9 +42,9 @@
           <div class="body" role="main">
             
   <div class="section" id="hsregexp">
-<div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" id="lpc.hsregexp" rules="none">
+<span id="lpc.hsregexp"></span><div class="section" id="CONCEPT">
+<h2>CONCEPT<a class="headerlink" href="#CONCEPT" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -50,38 +55,22 @@
 </div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>This document describes the regular expressions supported by the
-implementation by Henry Spencer (the traditional package for
-LPMud).</p>
-<div class="section" id="OPTIONS">
-<span id="lpc.OPTIONS"></span><h3>OPTIONS<a class="headerlink" href="#OPTIONS" title="Permalink to this headline">¶</a></h3>
-<p>The following bitflag options modify the behaviour of the
-regular expressions - both interpretation and actual matching.</p>
+<p>This document describes the regular expressions supported by the implementation by Henry Spencer (the traditional package for LPMud).</p>
+<div class="section" id="glossary">
+<h3>OPTIONS<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
+<p>The following bitflag options modify the behaviour of the regular expressions - both interpretation and actual matching.</p>
 <p>The efuns may understand additional options.</p>
 <blockquote>
 <div>RE_EXCOMPATIBLE</div></blockquote>
-<p>If this bit is set, the pattern is interpreted as the UNIX ed
-editor would do it: () match literally, and the ( ) group
-expressions.</p>
+<p>If this bit is set, the pattern is interpreted as the UNIX ed editor would do it: () match literally, and the ( ) group expressions.</p>
 </div>
-<div class="section" id="REGULAR EXPRESSION DETAILS">
-<span id="lpc.REGULAR EXPRESSION DETAILS"></span><h3>REGULAR EXPRESSION DETAILS<a class="headerlink" href="#REGULAR EXPRESSION DETAILS" title="Permalink to this headline">¶</a></h3>
-<p>A regular expression is a pattern that is matched against  a
-subject string from left to right. Most characters stand for
-themselves in a pattern, and match the corresponding charac-
-ters in the subject. As a trivial example, the pattern</p>
+<div class="section" id="glossary">
+<h3>REGULAR EXPRESSION DETAILS<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
+<p>A regular expression is a pattern that is matched against a subject string from left to right. Most characters stand for themselves in a pattern, and match the corresponding characters in the subject. As a trivial example, the pattern</p>
 <blockquote>
 <div>The quick brown fox</div></blockquote>
-<p>matches a portion of a subject string that is  identical  to
-itself.  The  power  of  regular  expressions comes from the
-ability to include alternatives and repetitions in the  pat-
-tern.  These  are encoded in the pattern by the use of meta-
-characters, which do not stand for  themselves  but  instead
-are interpreted in some special way.</p>
-<p>There are two different sets of meta-characters: those  that
-are  recognized anywhere in the pattern except within square
-brackets, and those that are recognized in square  brackets.
-Outside square brackets, the meta-characters are as follows:</p>
+<p>matches a portion of a subject string that is identical to itself. The power of  regular expressions comes from the ability to include alternatives and repetitions in the pattern. These are encoded in the pattern by the use of metacharacters, which do not stand for themselves but instead are interpreted in some special way.</p>
+<p>There are two different sets of metacharacters: those that are recognized anywhere in the pattern except within square brackets, and those that are recognized in square brackets. Outside square brackets, the metacharacters are as follows:</p>
 <blockquote>
 <div><p>.       Match any character.</p>
 <p>^       Match begin of line.</p>
@@ -115,18 +104,15 @@ Outside square brackets, the meta-characters are as follows:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The &lt; and &gt; metacharacters from Henry Spencers package
-are not available in PCRE, but can be emulate with b,
-as required, also in conjunction with W or w.</p>
+<p class="last">The &lt; and &gt; metacharacters from Henry Spencers package are not available in PCRE, but can be emulate with b, as required, also in conjunction with W or w.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In LDMud, backtracks are limited by the EVAL_COST runtime
-limit, to avoid freezing the driver with a match
-like regexp(({&#8220;=XX===================&#8221;}), &#8220;X(.+)+X&#8221;).</p>
+<p class="last">In LDMud, backtracks are limited by the EVAL_COST runtime limit, to avoid freezing the driver with a match like regexp(({&#8220;=XX===================&#8221;}), &#8220;X(.+)+X&#8221;).</p>
 </div>
-<div class="section" id="AUTHORS">
-<span id="lpc.AUTHORS"></span><h3>AUTHORS<a class="headerlink" href="#AUTHORS" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="LORE">
+<h2>LORE<a class="headerlink" href="#LORE" title="Permalink to this headline">¶</a></h2>
+<p>Authors:</p>
 <ul class="simple">
 <li>Mark H. Colburn, NAPS International (<a class="reference external" href="mailto:mark&#37;&#52;&#48;jhereg&#46;mn&#46;org">mark<span>&#64;</span>jhereg<span>&#46;</span>mn<span>&#46;</span>org</a>)</li>
 <li>Henry Spencer, University of Torronto (<a class="reference external" href="mailto:henry&#37;&#52;&#48;utzoo&#46;edu">henry<span>&#64;</span>utzoo<span>&#46;</span>edu</a>)</li>
@@ -134,8 +120,10 @@ like regexp(({&#8220;=XX===================&#8221;}), &#8220;X(.+)+X&#8221;).</p
 <li>Ian Phillipps</li>
 </ul>
 </div>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="regexp.html#lpc.regexp" title="regexp"><span class="xref lpc lpc-concept">regexp</span></a>, <a class="reference internal" href="pcre.html#lpc.pcre" title="pcre"><span class="xref lpc lpc-concept">pcre</span></a></p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="regexp.html#lpc.regexp" title="regexp"><code class="xref lpc lpc-concept docutils literal"><span class="pre">regexp</span></code>(C)</a>, <a class="reference internal" href="pcre.html#lpc.pcre" title="pcre"><code class="xref lpc lpc-concept docutils literal"><span class="pre">pcre</span></code>(C)</a></p>
+</div>
 </div>
 </div>
 
@@ -153,27 +141,33 @@ like regexp(({&#8220;=XX===================&#8221;}), &#8220;X(.+)+X&#8221;).</p
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">hsregexp</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#CONCEPT">CONCEPT</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
-<li><a class="reference internal" href="#OPTIONS">OPTIONS</a></li>
-<li><a class="reference internal" href="#REGULAR EXPRESSION DETAILS">REGULAR EXPRESSION DETAILS</a></li>
-<li><a class="reference internal" href="#AUTHORS">AUTHORS</a></li>
+<li><a class="reference internal" href="#glossary">OPTIONS</a></li>
+<li><a class="reference internal" href="#glossary">REGULAR EXPRESSION DETAILS</a></li>
+<li><a class="reference internal" href="#LORE">LORE</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -183,10 +177,6 @@ like regexp(({&#8220;=XX===================&#8221;}), &#8220;X(.+)+X&#8221;).</p
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/concepts/hsregexp.txt"

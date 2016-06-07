@@ -4,7 +4,7 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Returns the number of values per key of mapping <map>. If <map> is 0, the
+   Returns the number of values per key of mapping <map>. If <map> is 0, the 
    result is 0.
 
 EXAMPLES

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>map_array &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::map_array() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,37 +24,42 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="obsolete" href="obsolete.html" />
+    <link rel="next" title="efun::map_mapping()" href="map_mapping.html" />
+    <link rel="prev" title="efun::m_sizeof()" href="m_sizeof.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="map_array">
+  <div class="section">
 <div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="efun" style="border-spacing:0;">
+<span id="map_array"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr id="lpc.map_array">
 <td>
-mixed *</td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> *</td><td>
 <code class="descname">map_array</code></td><td><span class="sig-paren">(</span></td><td>
-mixed<em>&nbsp;*arr</em>, </td><td>
-string<em>&nbsp;fun</em>, </td><td>
-string|object<em>&nbsp;ob</em>, </td><td>
-mixed<em>&nbsp;extra</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.map_array" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;*arr</em>, </td><td>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;fun</em>, </td><td>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.map_array" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-mixed *</td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> *</td><td>
 <code class="descname">map_array</code></td><td><span class="sig-paren">(</span></td><td>
-mixed<em>&nbsp;*arr</em>, </td><td>
-closure<em>&nbsp;cl</em>, </td><td>
-mixed<em>&nbsp;extra</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;*arr</em>, </td><td>
+<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;cl</em>, </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -70,10 +75,11 @@ will be returned.</p>
 <p>The extra argument is optional and must not be a protected reference
 like &amp;(i[0]). If &lt;ob&gt; is omitted, or neither a string nor an object,
 it defaults to this_object().</p>
-<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
 <p>This will create an array holding all uids of the current
 users:</p>
-<div class="highlight-c"><div class="highlight"><pre>string ask_for_uid(object obj) {
+<div class="highlight-c"><div class="highlight"><pre><span></span>string ask_for_uid(object obj) {
    return getuid(obj);
 }
 
@@ -86,14 +92,19 @@ void func() {
 }
 </pre></div>
 </div>
-<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><strong>changed</strong> (<em>3.2.6</em>) &#8211; obsoleted by map().</li>
 <li><strong>changed</strong> (<em>3.2.9</em>) &#8211; not available if driver is compiled without USE_DEPRECATED.</li>
 <li><strong>removed</strong> (<em>3.3</em>)</li>
 </ul>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../efun/filter.html#lpc.filter" title="filter"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter</span></code>(E)</a>, <a class="reference internal" href="../efun/filter_objects.html#lpc.filter_objects" title="filter_objects"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter_objects</span></code>(E)</a>, <a class="reference internal" href="assoc.html#lpc.assoc" title="assoc"><code class="xref lpc lpc-efun docutils literal"><span class="pre">assoc</span></code>(E)</a>, <a class="reference internal" href="intersect_alist.html#lpc.intersect_alist" title="intersect_alist"><code class="xref lpc lpc-efun docutils literal"><span class="pre">intersect_alist</span></code>(E)</a>, <a class="reference internal" href="insert_alist.html#lpc.insert_alist" title="insert_alist"><code class="xref lpc lpc-efun docutils literal"><span class="pre">insert_alist</span></code>(E)</a>, <a class="reference internal" href="../efun/map.html#lpc.map" title="map"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map</span></code>(E)</a>, <a class="reference internal" href="../efun/map_objects.html#lpc.map_objects" title="map_objects"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_objects</span></code>(E)</a>, <a class="reference internal" href="../efun/member.html#lpc.member" title="member"><code class="xref lpc lpc-efun docutils literal"><span class="pre">member</span></code>(E)</a>, <a class="reference internal" href="order_alist.html#lpc.order_alist" title="order_alist"><code class="xref lpc lpc-efun docutils literal"><span class="pre">order_alist</span></code>(E)</a>, <a class="reference internal" href="../efun/sort_array.html#lpc.sort_array" title="sort_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sort_array</span></code>(E)</a>, <a class="reference internal" href="../efun/unique_array.html#lpc.unique_array" title="unique_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">unique_array</span></code>(E)</a></p>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/filter.html#lpc.filter" title="filter"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter()</span></code>(E)</a>, <a class="reference internal" href="../efun/filter_objects.html#lpc.filter_objects" title="filter_objects"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter_objects()</span></code>(E)</a>, <a class="reference internal" href="assoc.html#lpc.assoc" title="assoc"><code class="xref lpc lpc-efun docutils literal"><span class="pre">assoc()</span></code>(E)</a>, <a class="reference internal" href="intersect_alist.html#lpc.intersect_alist" title="intersect_alist"><code class="xref lpc lpc-efun docutils literal"><span class="pre">intersect_alist()</span></code>(E)</a>, <a class="reference internal" href="insert_alist.html#lpc.insert_alist" title="insert_alist"><code class="xref lpc lpc-efun docutils literal"><span class="pre">insert_alist()</span></code>(E)</a>, <a class="reference internal" href="../efun/map.html#lpc.map" title="map"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map()</span></code>(E)</a>, <a class="reference internal" href="../efun/map_objects.html#lpc.map_objects" title="map_objects"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_objects()</span></code>(E)</a>, <a class="reference internal" href="../efun/member.html#lpc.member" title="member"><code class="xref lpc lpc-efun docutils literal"><span class="pre">member()</span></code>(E)</a>, <a class="reference internal" href="order_alist.html#lpc.order_alist" title="order_alist"><code class="xref lpc lpc-efun docutils literal"><span class="pre">order_alist()</span></code>(E)</a>, <a class="reference internal" href="../efun/sort_array.html#lpc.sort_array" title="sort_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sort_array()</span></code>(E)</a>, <a class="reference internal" href="../efun/unique_array.html#lpc.unique_array" title="unique_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">unique_array()</span></code>(E)</a></p>
+</div>
 </div>
 </div>
 
@@ -111,22 +122,32 @@ void func() {
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">map_array</a><ul>
+<li><a class="reference internal" href="#">efun::map_array()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -136,10 +157,6 @@ void func() {
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/obsolete/map_array.txt"

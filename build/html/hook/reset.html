@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>H_RESET &mdash; LDMud UNRELEASED documentation</title>
+    <title>hook::H_RESET() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,22 +24,27 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="hook" href="hook.html" />
+    <link rel="next" title="hook::H_SEND_NOTIFY_FAIL()" href="send_notify_fail.html" />
+    <link rel="prev" title="hook::H_REGEXP_PACKAGE()" href="regexp_package.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="H_RESET">
+  <div class="section" id="lpc.reset">
 <div class="section" id="SYNOPSIS">
-<span id="lpc.reset"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="hook" style="border-spacing:0;">
+<span id="reset"></span><span id="H_RESET"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;sys/driver_hooks.h&gt;</tr>
 <tr id="lpc.H_RESET">
@@ -55,36 +60,31 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>value</strong> (<em>closure</em>) &#8211; void|int &lt;closure&gt; ( void )</li>
-<li><strong>value</strong> (<em>string</em>) &#8211; void &lt;name&gt;(1)</li>
+<li><strong>value</strong> (<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure"><em>closure</em></a>) &#8211; void|int &lt;closure&gt; ( void )</li>
+<li><strong>value</strong> (<a class="reference internal" href="../LPC/string.html#lpc.string" title="string"><em>string</em></a>) &#8211; void &lt;name&gt;(1)</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p>Optional hook to reset an object. Hook setting can be unbound
-lambda closures, or the name of the function (static or public)
-to call in the object.</p>
-<p>If the hook is a closure, it is bound to the object to be
-reset and called with no argument.</p>
-<p>If the result of this call is a positive number, it is used as
-the interval to wait before the next reset(). If the result
-is 0, the default interval computed from TIME_TO_RESET is
-used. If the result is a negative number, the object will not
-be reset again, unless directed otherwise by set_next_reset().</p>
-<p>If the hook is defined as the name of an lfun in the object,
-it is called in the object with 1 as argument, and any result
-is ignored. In this call the previous_object() is the object
-initiating the reset. If the function does not exist, the
-object won&#8217;t be reset again.</p>
-<p>Note that an object is only reset by call to this hook if it
-has been used since the last reset.</p>
-<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Optional hook to reset an object. Hook setting can be unbound lambda closures, or the name of the function (static or public) to call in the object.</p>
+<p>If the hook is a closure, it is bound to the object to be reset and called with no argument.</p>
+<p>If the result of this call is a positive number, it is used as the interval to wait before the next reset(). If the result is 0, the default interval computed from TIME_TO_RESET is used. If the result is a negative number, the object will not be reset again, unless directed otherwise by set_next_reset().</p>
+<p>If the hook is defined as the name of an lfun in the object, it is called in the object with 1 as argument, and any result is ignored. In this call the previous_object() is the object initiating the reset. If the function does not exist, the object won&#8217;t be reset again.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">an object is only reset by call to this hook if it has been used since the last reset.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><strong>changed</strong> (<em>3.2.10</em>) &#8211; allowed static functions to be given by name.</li>
 </ul>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="hook.html#lpc.hooks" title="hooks"><span class="xref lpc lpc-concept">hooks</span></a></p>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code></p>
+</div>
 </div>
 </div>
 
@@ -102,22 +102,31 @@ has been used since the last reset.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">H_RESET</a><ul>
+<li><a class="reference internal" href="#">hook::H_RESET()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -127,10 +136,6 @@ has been used since the last reset.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/hook/reset.txt"

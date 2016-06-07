@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>insert_alist &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::insert_alist() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,35 +24,40 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="obsolete" href="obsolete.html" />
+    <link rel="next" title="efun::intersect_alist()" href="intersect_alist.html" />
+    <link rel="prev" title="master::get_root_uid()" href="get_root_uid.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="insert_alist">
+  <div class="section">
 <div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS (OPTIONAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="efun" style="border-spacing:0;">
+<span id="insert_alist"></span><h2>SYNOPSIS (OPTIONAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr id="lpc.insert_alist">
 <td>
-mixed * </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
 <code class="descname">insert_alist</code></td><td><span class="sig-paren">(</span></td><td>
-mixed<em>&nbsp;key</em>, </td><td>
-mixed<em>&nbsp;data...</em>, </td><td>
-mixed *<em>&nbsp;alist</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.insert_alist" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;key</em>, </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;data...</em>, </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> *<em>&nbsp;alist</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.insert_alist" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-int </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
 <code class="descname">insert_alist</code></td><td><span class="sig-paren">(</span></td><td>
-mixed<em>&nbsp;key</em>, </td><td>
-mixed *<em>&nbsp;keys</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;key</em>, </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> *<em>&nbsp;keys</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -80,12 +85,16 @@ be valid after the next call to insert_alist().</p>
 s is a very small constant (for block move);</p>
 <p>The function is available only if the driver is compiled with
 alist support. In that case, __ALISTS__ is defined.</p>
-<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><strong>changed</strong> (<em>3.3</em>) &#8211; made this an optional efun.</li>
 </ul>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><span class="xref lpc lpc-lang">alists</span>, <a class="reference internal" href="assoc.html#lpc.assoc" title="assoc"><code class="xref lpc lpc-efun docutils literal"><span class="pre">assoc</span></code>(E)</a>, <a class="reference internal" href="order_alist.html#lpc.order_alist" title="order_alist"><code class="xref lpc lpc-efun docutils literal"><span class="pre">order_alist</span></code>(E)</a></p>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref lpc lpc-lang docutils literal"><span class="pre">alists</span></code>, <a class="reference internal" href="assoc.html#lpc.assoc" title="assoc"><code class="xref lpc lpc-efun docutils literal"><span class="pre">assoc()</span></code>(E)</a>, <a class="reference internal" href="order_alist.html#lpc.order_alist" title="order_alist"><code class="xref lpc lpc-efun docutils literal"><span class="pre">order_alist()</span></code>(E)</a></p>
+</div>
 </div>
 </div>
 
@@ -103,22 +112,31 @@ alist support. In that case, __ALISTS__ is defined.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">insert_alist</a><ul>
+<li><a class="reference internal" href="#">efun::insert_alist()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (OPTIONAL)</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -128,10 +146,6 @@ alist support. In that case, __ALISTS__ is defined.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/obsolete/insert_alist.txt"

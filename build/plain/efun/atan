@@ -10,4 +10,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   atan2(E), sin(E), cos(E), tan(E), asin(E), acos(E)
+   atan2()(E), sin()(E), cos()(E), tan()(E), asin()(E), acos()(E)

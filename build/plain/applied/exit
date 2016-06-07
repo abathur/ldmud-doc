@@ -4,18 +4,20 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   This function was used in compat mode drivers in context with moving
-   objects. Nowadays objects are moved by means of the H_MOVE_OBJECT0/1 hooks,
+   This function was used in compat mode drivers in context with moving 
+   objects. Nowadays objects are moved by means of the move_object(H) hooks, 
    and use of this lfun is up to the mudlib.
 
-   This function was called in the old environment everytime a living object
+   This function was called in the old environment everytime a living object 
    ob leaves it.
 
-   The function this_player() will return a random value, don't use it at this
-   point.
+   Todo: the following should probably be explained better than it is
 
-   Warning: Using this function is EXTREMELY dangerous. A single bug, and
-     you are forever (i.e. until the next reboot occurs) caught in the room.
+   this_player()(E) will return a random value, don't use it at this point.
+
+   <!> Warning:  
+     An error in this function will leave the player stranded in the current
+     room until the next reboot.
 
 SEE ALSO
 ========

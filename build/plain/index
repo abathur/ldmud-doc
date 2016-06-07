@@ -1,6 +1,8 @@
 Welcome to lddoc's documentation!
 =================================
-The LDMud documentation is organized in chapters that are stored in separate
+Todo: there isn't actually an other/other.rst file
+
+The LDMud documentation is organized in chapters that are stored in separate 
 directories described below.
 
 `applied/`: 
@@ -13,8 +15,7 @@ directories described below.
    some info about internal operation of the driver
 
 `efun/`: 
-   the "system calls" of LPC .. efun.de/    german translations of the efun/
-   manpages.
+   the "system calls" of LPC
 
 `hooks/`: 
    the driver hooks
@@ -31,35 +32,45 @@ directories described below.
 `other/`: 
    other useful MUD-related documents
 
+Todo: above lists don't include the new "internals" directory, yet.
+
+Todo: need to figure out how to integrate the efun.de copy (which I also have 
+yet to convert) `efun.de/    german translations of the efun/ manpages.`
+
 A reference to foo(X) means the function foo as descibed in chapter X, where X
 is one of:
 
-   A:
+   A: 
       for applied
 
-   C:
+   C: 
       for concepts
 
-   D:
+   D: 
       for driver
 
-   E:
+   E: 
       for efun
 
-   H:
+   H: 
       for hook
 
-   LPC:
+   LPC: 
       for LPC
 
-   M:
+   M: 
       for master
 
-   O:
+   O: 
       for obsolete
 
-   OTHER:
+   OTHER: 
       for other
+
+   Todo: I for internal? SE for simul_efun; I had a note for S as well--
+   perhaps that's SYS? dunno.
+
+   Todo: add history, info on doc format?
 
 Indices and tables
 ==================

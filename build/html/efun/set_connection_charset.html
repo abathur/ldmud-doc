@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>set_connection_charset &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::set_connection_charset() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,40 +24,45 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="efun" href="efun.html" />
+    <link rel="next" title="efun::set_driver_hook()" href="set_driver_hook.html" />
+    <link rel="prev" title="efun::set_combine_charset()" href="set_combine_charset.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="set_connection_charset">
+  <div class="section">
 <div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="efun" style="border-spacing:0;">
+<span id="set_connection_charset"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr id="lpc.set_connection_charset">
 <td>
-void </td><td>
+<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
 <code class="descname">set_connection_charset</code></td><td><span class="sig-paren">(</span></td><td>
-int<em>&nbsp;*bitvector</em>, </td><td>
-int<em>&nbsp;quote_iac</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.set_connection_charset" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;*bitvector</em>, </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;quote_iac</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.set_connection_charset" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-void </td><td>
+<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
 <code class="descname">set_connection_charset</code></td><td><span class="sig-paren">(</span></td><td>
-string<em>&nbsp;charset</em>, </td><td>
-int<em>&nbsp;quote_iac</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;charset</em>, </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;quote_iac</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-void </td><td>
+<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
 <code class="descname">set_connection_charset</code></td><td><span class="sig-paren">(</span></td><td>
 0, </td><td>
-int<em>&nbsp;quote_iac</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;quote_iac</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -86,7 +91,7 @@ LDMud 3.2.10 added the ability to reset the charset to the default.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="get_connection_charset.html#lpc.get_connection_charset" title="get_connection_charset"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_connection_charset</span></code>(E)</a>, <a class="reference internal" href="binary_message.html#lpc.binary_message" title="binary_message"><code class="xref lpc lpc-efun docutils literal"><span class="pre">binary_message</span></code>(E)</a>, <a class="reference internal" href="set_combine_charset.html#lpc.set_combine_charset" title="set_combine_charset"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_combine_charset</span></code>(E)</a></td>
+<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="get_connection_charset.html#lpc.get_connection_charset" title="get_connection_charset"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_connection_charset()</span></code>(E)</a>, <a class="reference internal" href="binary_message.html#lpc.binary_message" title="binary_message"><code class="xref lpc lpc-efun docutils literal"><span class="pre">binary_message()</span></code>(E)</a>, <a class="reference internal" href="set_combine_charset.html#lpc.set_combine_charset" title="set_combine_charset"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_combine_charset()</span></code>(E)</a></td>
 </tr>
 </tbody>
 </table>
@@ -106,22 +111,27 @@ LDMud 3.2.10 added the ability to reset the charset to the default.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">set_connection_charset</a><ul>
+<li><a class="reference internal" href="#">efun::set_connection_charset()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -131,10 +141,6 @@ LDMud 3.2.10 added the ability to reset the charset to the default.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/efun/set_connection_charset.txt"

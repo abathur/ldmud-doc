@@ -11,9 +11,9 @@ DESCRIPTION
 
 HISTORY
 =======
-   - **changed** (*3.2.1*) -- added 'hostport' argument
-   - **changed** (*3.2.9*) -- renamed to receive_udp() from receive_imp().
+   - changed (3.2.1) -- added 'hostport' argument
+   - changed (3.2.9) -- renamed to receive_udp() from receive_imp().
 
 SEE ALSO
 ========
-   send_udp(E), query_udp_port(E)
+   send_udp()(E), query_udp_port()(E)

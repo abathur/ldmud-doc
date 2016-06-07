@@ -1,107 +1,76 @@
 .. concept:: negotiation
   :synopsis: Telnet Negotiations
 
-  The telnet protocol is used to control textbased connections
-  between a client (the 'telnet' program or a mud client) and a
-  server (the game driver). Most of the options offered by the
-  protocol are optional and need to be negotiated between the
-  client and the server. Consequently, and due to their
-  specialized nature, mud clients don't have to support the full
-  telnet option feature set.
+  .. todo:: needs rewrite with multiple semantic structures to replace tables and such.
 
-  For the server to find out if a client supports the telnet
-  protocol at all, one good approach is to issue a simple,
-  commonly used telnet command to the client. If the client reaction
-  conforms to the protocol (or sends telnet commands itself), the
-  mud can continue to negotiate further options. If the client
-  does not react, the mud can safely refrain from further
-  negotiations.
+  The telnet protocol is used to control textbased connections between a client (the 'telnet' program or a mud client) and a server (the game driver). Most of the options offered by the protocol are optional and need to be negotiated between the client and the server. Consequently, and due to their specialized nature, mud clients don't have to support the full telnet option feature set.
 
-  The following list is a more or less comprehensive overview of
-  the telnet related RFCs (available for example on
-  http://www.faqs.org/rfcs):
+  For the server to find out if a client supports the telnet protocol at all, one good approach is to issue a simple, commonly used telnet command to the client. If the client reaction conforms to the protocol (or sends telnet commands itself), the mud can continue to negotiate further options. If the client does not react, the mud can safely refrain from further negotiations.
 
-   RFC Title                                              rel. Code
+  The following list is a more or less comprehensive overview of the telnet related RFCs (available for example on http://www.faqs.org/rfcs)::
 
-   495 TELNET Protocol Specification
-   513 Comments on the new TELNET specifications
-   559 Comments on the new TELNET Protocol and its Implem
-   595 Some Thoughts in Defense of the TELNET Go-Ahead
-   596 Second Thoughts on Telnet Go-Ahead
-   652 Telnet Output Carriage-Return Disposition Option   NAOCRD     10
-   653 Telnet Output Horizontal Tabstops Option           NAOHTS     11
-   654 Telnet Output Horizontal Tab Disposition Option    NAOHTD     12
-   655 Telnet Output Formfeed Disposition Option          NAOFFD     13
-   656 Telnet Output Vertical Tabstops Option             NAOVTS     14
-   657 Telnet Output Vertical Tab Disposition Option      NAOVTD     15
-   658 Telnet Output Linefeed Disposition                 NAOLFD     16
-   698 Telnet Extended Ascii Option                       X-ASCII    17
-   727 Telnet Logout Option                               LOGOUT     18
-   728 A Minor Pitfall in the Telnet Protocol
-   735 Revised TELNET Byte Macro Option                   BM         19
-   749 Telnet SUPDUP-OUTPUT Option                        SUPDUP     22
-   764 Telnet Protocol Specification
-   779 Telnet SEND-LOCATION Option                        SENDLOC    23
-   818 The Remote User Telnet Service
-   854 Telnet Protocol Specification
-   855 Telnet Option Specifications
-   856 Telnet Binary Transmission                         BINARY      0
-   857 Telnet Echo Option                                 ECHO        1
-   858 Telnet Suppress Go Ahead Option                    SGA         3
-   859 Telnet Status Option                               STATUS      5
-   860 Telnet Timing Mark Option                          TM          6
-   861 Telnet Extended Options - List Option              EXOPL     255
-   884 Telnet Terminal Type Option                        TTYPE      24
-   885 Telnet End of Record Option                        EOR        25
-   930 Telnet Terminal Type Option                        TTYPE      24
-   933 Output Marking Telnet Option                       OUTMRK     27
-   946 Telnet Terminal Location Number Option             TTYLOC     28
-  1043 Telnet Data Entry Terminal Option DODIIS Implement DET        20
-  1053 Telnet X.3 PAD Option                              X.3-PAD    30
-  1073 Telnet Window Size Option                          NAWS       31
-  1079 Telnet Terminal Speed Option                       TSPEED     32
-  1080 Telnet Remote Flow Control Option                  FLOWCTRL   33
-  1091 Telnet Terminal-Type Option                        TTYPE      24
-  1096 Telnet X Display Location Option                   XDISPLOC   35
-  1116 Telnet Linemode Option                             LINEMODE   34
-  1143 The Q Method of Implementing TELNET Option Negotia
-  1184 Telnet Linemode Option                             LINEMODE   34
-  1372 Telnet Remote Flow Control Option                  FLOWCTRL   33
-  1408 Telnet Environment Option                          ENVIRON    36
-  1571 Telnet Environment Option Interoperability Issues
-  1572 Telnet Environment Option                          NEWENV     39
-  2066 Telnet Charset Option                              CHARSET    42
-  2217 Telnet Com Port Control Option                     COMPORT    44
-  2877 5250 Telnet Enhancements
+    RFC Title                                              rel. Code
 
-  All negotiations start with the special character IAC which is
-  defined in /usr/include/arpa/telnet.h (or in
-  src/driver/telnet.h for 3.2(.1)) and has the decimal value of
-  255. Negotiations are based on different telnetoptions (their
-  values are defined in telnet.h too). Before a negotiation can
-  start the client and the server have to agree that they
-  support the option. This works in the following way:
+    495 TELNET Protocol Specification
+    513 Comments on the new TELNET specifications
+    559 Comments on the new TELNET Protocol and its Implem
+    595 Some Thoughts in Defense of the TELNET Go-Ahead
+    596 Second Thoughts on Telnet Go-Ahead
+    652 Telnet Output Carriage-Return Disposition Option   NAOCRD     10
+    653 Telnet Output Horizontal Tabstops Option           NAOHTS     11
+    654 Telnet Output Horizontal Tab Disposition Option    NAOHTD     12
+    655 Telnet Output Formfeed Disposition Option          NAOFFD     13
+    656 Telnet Output Vertical Tabstops Option             NAOVTS     14
+    657 Telnet Output Vertical Tab Disposition Option      NAOVTD     15
+    658 Telnet Output Linefeed Disposition                 NAOLFD     16
+    698 Telnet Extended Ascii Option                       X-ASCII    17
+    727 Telnet Logout Option                               LOGOUT     18
+    728 A Minor Pitfall in the Telnet Protocol
+    735 Revised TELNET Byte Macro Option                   BM         19
+    749 Telnet SUPDUP-OUTPUT Option                        SUPDUP     22
+    764 Telnet Protocol Specification
+    779 Telnet SEND-LOCATION Option                        SENDLOC    23
+    818 The Remote User Telnet Service
+    854 Telnet Protocol Specification
+    855 Telnet Option Specifications
+    856 Telnet Binary Transmission                         BINARY      0
+    857 Telnet Echo Option                                 ECHO        1
+    858 Telnet Suppress Go Ahead Option                    SGA         3
+    859 Telnet Status Option                               STATUS      5
+    860 Telnet Timing Mark Option                          TM          6
+    861 Telnet Extended Options - List Option              EXOPL     255
+    884 Telnet Terminal Type Option                        TTYPE      24
+    885 Telnet End of Record Option                        EOR        25
+    930 Telnet Terminal Type Option                        TTYPE      24
+    933 Output Marking Telnet Option                       OUTMRK     27
+    946 Telnet Terminal Location Number Option             TTYLOC     28
+    1043 Telnet Data Entry Terminal Option DODIIS Implement DET        20
+    1053 Telnet X.3 PAD Option                              X.3-PAD    30
+    1073 Telnet Window Size Option                          NAWS       31
+    1079 Telnet Terminal Speed Option                       TSPEED     32
+    1080 Telnet Remote Flow Control Option                  FLOWCTRL   33
+    1091 Telnet Terminal-Type Option                        TTYPE      24
+    1096 Telnet X Display Location Option                   XDISPLOC   35
+    1116 Telnet Linemode Option                             LINEMODE   34
+    1143 The Q Method of Implementing TELNET Option Negotia
+    1184 Telnet Linemode Option                             LINEMODE   34
+    1372 Telnet Remote Flow Control Option                  FLOWCTRL   33
+    1408 Telnet Environment Option                          ENVIRON    36
+    1571 Telnet Environment Option Interoperability Issues
+    1572 Telnet Environment Option                          NEWENV     39
+    2066 Telnet Charset Option                              CHARSET    42
+    2217 Telnet Com Port Control Option                     COMPORT    44
+    2877 5250 Telnet Enhancements
 
-  If a client wants to send something to the server it has to
-  send 'IAC WILL option' (For terminaltype negotation this would
-  be the 3 bytes 255,251,24; again, check telnet.h) to confirm
-  that it is able to do that. If the server is supporting that
-  option and wants to receive something it sends 'IAC DO option'
-  (255,253,option)
+  All negotiations start with the special character IAC which is defined in /usr/include/arpa/telnet.h (or in src/driver/telnet.h for 3.2(.1)) and has the decimal value of 255. Negotiations are based on different telnetoptions (their values are defined in telnet.h too). Before a negotiation can start the client and the server have to agree that they support the option. This works in the following way:
 
-  If one side is receiving an 'IAC WILL option' and has not yet
-  sent with DO or DONT it has to respond with either 'IAC DO
-  option' if it will support this negotiation or 'IAC DONT
-  option' if it won't.
+  If a client wants to send something to the server it has to send 'IAC WILL option' (For terminaltype negotation this would be the 3 bytes 255,251,24; again, check telnet.h) to confirm that it is able to do that. If the server is supporting that option and wants to receive something it sends 'IAC DO option' (255,253,option)
 
-  If one side is receiving an 'IAC DO option' and has not yet
-  sent a WILL or WONT it has to reply with either 'IAC WILL
-  option' if it supports the option or 'IAC WONT option' if not.
+  If one side is receiving an 'IAC WILL option' and has not yet sent with DO or DONT it has to respond with either 'IAC DO option' if it will support this negotiation or 'IAC DONT option' if it won't.
 
-  A small example: Lets assume we want to negotiate
-  terminaltype. (TELOPT_TTYPE with value 24). client is the
-  telnet executable on the playerside, the server is the
-  gamedriver.
+  If one side is receiving an 'IAC DO option' and has not yet sent a WILL or WONT it has to reply with either 'IAC WILL option' if it supports the option or 'IAC WONT option' if not.
+
+  A small example: Lets assume we want to negotiate terminaltype. (TELOPT_TTYPE with value 24). client is the telnet executable on the playerside, the server is the gamedriver.
 
           client                        server
       IAC WILL TTYPE
@@ -111,26 +80,9 @@
                                      IAC DO TTYPE
       IAC WILL TTYPE
 
-  After this we are ready to transfer the terminaltype from the
-  client to the server as explained below.
-
-  Now we are ready to start the real negotiations. I explain the
+  After this we are ready to transfer the terminaltype from the client to the server as explained below.
   3 options I have currently implemented.
-
-  First TerminalType aka TTYPE aka 24 aka TELOPT_TTYPE assuming
   the client and the server have exchanged WILL/DO.
-
-  The server is now free to send 'IAC SB TELOPT_TTYPE
-  TELQUAL_SEND IAC SE' which will be replied with 'IAC SB
-  TELOPT_TTYPE TELQUAL_IS terminaltype IAC SE' where
-  terminaltype is a non-zero terminated string (it's terminated
-  by the IAC) (For values look up telnet.h) AND switch the
-  client's terminalemulation to 'terminaltype'. terminaltype is
-  case-insensitive. terminal-type may be UNKNOWN. The server may
-  repeat the SEND request and the client will respond with the
-  next preferred terminaltype. If this is the same as the
-  previous received, it marks the end of the list of
-  terminaltypes. The next SEND request will start the
   terminaltypes from the beginning.
 
   Example: (we have exchanged WILL/DO already)
@@ -152,34 +104,14 @@
 
   Next important option is NAWS (31) or WindowSizeNegotiation.
 
-  This one is a bit easier than terminaltype. After having
-  received a IAC DO NAWS from the server, the client will reply
-  with IAC WILL NAWS and immediately after that send IAC SB NAWS
-  columns_high columns_low lines_high lines_low IAC SE where
-  xx_low refers to the lowbyte of xx and xx_high refers to the
-  highbyte of xx. This will be automagically resent at every
-  windowresize (when the client gets a SIGWINCH for example) or
-  at your request with 'IAC SB NAWS SEND IAC SE'.
+  This one is a bit easier than terminaltype. After having received a IAC DO NAWS from the server, the client will reply with IAC WILL NAWS and immediately after that send IAC SB NAWS columns_high columns_low lines_high lines_low IAC SE where xx_low refers to the lowbyte of xx and xx_high refers to the highbyte of xx. This will be automagically resent at every windowresize (when the client gets a SIGWINCH for example) or at your request with 'IAC SB NAWS SEND IAC SE'.
 
   Example: (WILL/DO exchanged)
           client                                server
   IAC SB NAWS 0 80 0 24 IAC SE         /* the standard vt100 windowsize */
                                        /* no reply */
 
-  And, a bit less important but most complex, the LINEMODE (34)
-  option. It was implemented it due to the fact, that
-  some weird DOS telnets would not work otherwise. Implemented
-  are only the absolute basic feature, which is the actual
-  switching the telnet to linemode. After exchanging WILL/DO the
-  server sends a modechange request to the client using IAC SB
-  LINEMODE LM_MODE MODE_EDIT IAC SE, which should turn on local
-  commandline-editing for the client. If a client supports
-  LINEMODE it HAS to support this modechange. The client will
-  reply with IAC SB LINEMODE LM_MODE MODE_EDIT|MODE_ACK IAC SE
-  (x|y is bitwise or). That's it for linemode. (You will perhaps
-  receive other IAC SB LINEMODEs with other LM_xxx ... you may
-  ignore them. (At least IRIX 5.x sends IAC SB LINEMODE LM_SLC
-  .... IAC SE which declares the local characterset.)).
+  And, a bit less important but most complex, the LINEMODE (34) option. It was implemented it due to the fact, that some weird DOS telnets would not work otherwise. Implemented are only the absolute basic feature, which is the actual switching the telnet to linemode. After exchanging WILL/DO the server sends a modechange request to the client using IAC SB LINEMODE LM_MODE MODE_EDIT IAC SE, which should turn on local commandline-editing for the client. If a client supports LINEMODE it HAS to support this modechange. The client will reply with IAC SB LINEMODE LM_MODE MODE_EDIT|MODE_ACK IAC SE (x|y is bitwise or). That's it for linemode. (You will perhaps receive other IAC SB LINEMODEs with other LM_xxx ... you may ignore them. (At least IRIX 5.x sends IAC SB LINEMODE LM_SLC .... IAC SE which declares the local characterset.)).
 
   Example: (WILL/DO negotiated)
 
@@ -189,11 +121,7 @@
   IAC SB LINEMODE LM_MODE
     MODE_EDIT|MODE_ACK IAC SE
 
-  Note: The option is more interesting than it looks here. For
-    example it supports a mixed mode between linemode and
-    charactermode, flushing the input at certain characters (at
-    ESC or TAB for shell-like commandline completition). We suggest
-    reading RFC 1184.
+  .. note:: The option is more interesting than it looks here. For example it supports a mixed mode between linemode and charactermode, flushing the input at certain characters (at ESC or TAB for shell-like commandline completition). We suggest reading RFC 1184.
 
   You might be interested in TELOPT_XDISPLAYLOC and TELOPT_ENVIRON too.
 
@@ -204,11 +132,9 @@
       telopts_dont[TELOPT_XXX] = reply_h_telnet_neg;
       telopts_will[TELOPT_XXX] = reply_h_telnet_neg;
       telopts_wont[TELOPT_XXX] = reply_h_telnet_neg;
-     for every telnet negotiation you want to use.
-     Do not overwrite the TELOPT_ECHO and TELOPT_SGA hooks.
+     for every telnet negotiation you want to use. Do not overwrite the TELOPT_ECHO and TELOPT_SGA hooks.
 
-     Alternatively, set the driver hook H_NOECHO in master.c:
-     this diverts _all_ telnet data into the mudlib.
+     Alternatively, set the driver hook H_NOECHO in master.c: this diverts _all_ telnet data into the mudlib.
 
   1. Add a new driver hook to master.c just below the others.
           set_driver_hook(H_TELNET_NEG,"telnet_neg"),
@@ -217,19 +143,7 @@
   3. define a function
 
           void telnet_neg(int cmd, int option, int * optargs)
-
-     in your interactive objects (login.c , shells, player.c or
-     whereever). And note, in ALL objects, through which a
-     player is handed through (in TAPPMud these are login.c and
-     player.c). [Ok, master.c is interactive for a very short
-     time too, but it won't accept input, will it?]
-     'cmd' will be TELCMD_xxxx (see telnet.h), 'option' one of
-     TELOPT_xxxx and 'optargs' will be an array of ints (bytes in
-     fact) when 'cmd' is SB.
-     Parse 'cmd'/'option' and reply with appropiate answers
-     using binary_message() (appropiate meaning sending the
-     right DO/DONT/WILL/WONT if not sent before and using the SB
-     return values).
+    in your interactive objects (login.c, shells, player.c or whereever). And note, in ALL objects, through which a player is handed through (in TAPPMud these are login.c and player.c). [Ok, master.c is interactive for a very short time too, but it won't accept input, will it?] 'cmd' will be TELCMD_xxxx (see telnet.h), 'option' one of TELOPT_xxxx and 'optargs' will be an array of ints (bytes in fact) when 'cmd' is SB. Parse 'cmd'/'option' and reply with appropiate answers using binary_message() (appropiate meaning sending the right DO/DONT/WILL/WONT if not sent before and using the SB return values).
   3.1. Send IAC DO TTYPE IAC DO NAWS IAC DO LINEMODE at the
      first time you can do it (before cat()ing /WELCOME perhaps).
   3.2. Note all sent and received WILL/WONT/DO/DONT options for
@@ -245,72 +159,44 @@
      NAWS, unknown or vt100 for no terminaltype)
 
   The WILL/WONT/DO/DONT data is best saved in a mapping looking
-  like this:
-    ([ "received": ([ option1: DO_DONT_OR_0;WILL_WONT_OR_0, ... ])
-     , "sent"    : ([ option1: DO_DONT_OR_0;WILL_WONT_OR_0, ... ])
+  like this::
+
+    ([
+      "received": ([ option1: DO_DONT_OR_0;WILL_WONT_OR_0, ... ]),
+      "sent"    : ([ option1: DO_DONT_OR_0;WILL_WONT_OR_0, ... ])
     ])
 
-  (Ok, it can be done better. But not without confusing *me*
-  more.)
+  (Ok, it can be done better. But not without confusing *me* more.)
 
   Before sending anything check
     TN["sent"][option,0_if_do_dont_or_1_if_will_wont]
-  so you don't enter endless loops, save network traffic and the
-  like.
+  so you don't enter endless loops, save network traffic and the like.
 
-  The windowsize is best saved in the players environment
-  variables so that he can modify them later on. (Or in two
-  integers in the player object...). Use for these values is
-  clear I think.
+  The windowsize is best saved in the players environment variables so that he can modify them later on. (Or in two integers in the player object...). Use for these values is clear I think.
 
-  The terminaltypes received using above mentioned method are
-  best stored in an array. The actual set terminaltype is best
-  stored in an environment variable where the player can modify
-  it. Upon modifying it the IAC SB TTYPE SEND IAC SE cycle
-  should be started to match the emulation to the entered new
-  terminaltype. You then may use data retrieved from
-  /etc/termcap (man 5 termcap) or /usr/lib/terminfo/*/* (SysVID,
-  man 5 terminfo) to implement terminalcontrol codes dependend
-  on the terminaltype. /etc/termcap may prove to be the easiest
-  way tough /usr/lib/terminfo/*/* is the newer (and better) SysV
-  way of doing it.
+  The terminaltypes received using above mentioned method are best stored in an array. The actual set terminaltype is best stored in an environment variable where the player can modify it. Upon modifying it the IAC SB TTYPE SEND IAC SE cycle should be started to match the emulation to the entered new terminaltype. You then may use data retrieved from /etc/termcap (man 5 termcap) or /usr/lib/terminfo/*/* (SysVID, man 5 terminfo) to implement terminalcontrol codes dependend on the terminaltype. /etc/termcap may prove to be the easiest way tough /usr/lib/terminfo/*/* is the newer (and better) SysV way of doing it.
 
-  [Anyone got a description of the internal terminfo format for
-  me? -Marcus]
+  .. [Anyone got a description of the internal terminfo format for me? -Marcus]
 
-  LINEMODE replies may be left alone if only using the mode
-  change to MODE_EDIT
+  LINEMODE replies may be left alone if only using the mode change to MODE_EDIT
 
   Some statistics about what clients support telnet negotiations:
 
-  Tinyfugue and some other mudclients usually do not support
-  negotiations.
+  Tinyfugue and some other mudclients usually do not support negotiations.
 
-  Except for TF, which supports the Telnet End-Of-Record option
-  as marker for the end of the prompt. So if you send IAC EOR
-  after every prompt, it will print the prompt always in the
-  input window. (Do not forget to negotiate that. First IAC WILL
-  TELOPT_EOR/wait for IAC DO TELOPT_EOR). Newer versions of
-  TF will support NAWS and there will be a patch for TTYPE
-  negotiation available soon.
+  Except for TF, which supports the Telnet End-Of-Record option as marker for the end of the prompt. So if you send IAC EOR after every prompt, it will print the prompt always in the input window. (Do not forget to negotiate that. First IAC WILL TELOPT_EOR/wait for IAC DO TELOPT_EOR). Newer versions of TF will support NAWS and there will be a patch for TTYPE negotiation available soon.
 
-  All telnets able to do negotiations I've encountered support
-  the TTYPE option.
-  HP9.x,Irix5.x,Linux,EP/IX,CUTELNET/NCSATELNET (Novell) and
-  perhaps more support NAWS.
+  All telnets able to do negotiations I've encountered support the TTYPE option.
+  HP9.x,Irix5.x,Linux,EP/IX,CUTELNET/NCSATELNET (Novell) and perhaps more support NAWS.
   At least Irix5.x,Linux,CU/NCSATELNET support LINEMODE.
-  SUN does not support NAWS and LINEMODE neither in SunOS 4.1.3
-  nor in Solaris 2.3.
+  SUN does not support NAWS and LINEMODE neither in SunOS 4.1.3 nor in Solaris 2.3.
 
-  For getting RFCs you can for example use
-  ftp://ftp.uni-erlangen.de/pub/doc/rfc/
+  For getting RFCs you can for example use ftp://ftp.uni-erlangen.de/pub/doc/rfc/
 
-  .. subtopic:: BUGS
+  .. misleading:: Not all aspects of the options are mentioned to keep this doc at a reasonable size. Refer to the RFCs to get more confused.
 
-  Not all aspects of the options are mentioned to keep this doc
-  at a reasonable size. Refer to the RFCs to get more confused.
+  .. lore::
 
-  .. subtopic:: CREDITS
+    CREDITS::
 
-  Provided by Marcus@TAPPMud (Marcus Meissner,
-  <msmeissn@cip.informatik.uni-erlangen.de>).
+      Provided by Marcus@TAPPMud (Marcus Meissner, <msmeissn@cip.informatik.uni-erlangen.de>).

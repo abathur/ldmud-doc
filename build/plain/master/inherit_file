@@ -15,8 +15,8 @@ DESCRIPTION
          The name given in the inherit directive.
 
       compiled_file
-         The object file which is just compiled. (compat: name
-         givenwithoutleading "/")
+         The object file which is just compiled. (compat: name given without 
+         leading "/")
 
    Result:
 
@@ -24,16 +24,16 @@ DESCRIPTION
          use the given filename as it is.
 
       `<path>`
-         the full absolute pathname of the file to inherit, without
-         parentdirparts ("/../"). Leading slashes ("/") are ignored.
+         the full absolute pathname of the file to inherit, without parentdir 
+         parts ("/../"). Leading slashes ("/") are ignored.
 
       else
          The inherit directive is not legal.
 
 HISTORY
 =======
-   - **introduced** (*3.2.8*)
+   - introduced (3.2.8)
 
 SEE ALSO
 ========
-   *hooks*, include_file(M)
+   `hooks`, include_file(M)

@@ -9,12 +9,12 @@ Return which regexp package is used by default:
 
    RE_TRADITIONAL: traditional regexps RE_PCRE:        PCRE
 
-As the package can be selected at runtime through the REGEXP_PACKAGE driver
+As the package can be selected at runtime through the REGEXP_PACKAGE driver 
 hook, there is no good way to determine the package at LPC compile time. Match
-the pattern <pattern> (interpreted according to <opt> if given) against all
+the pattern <pattern> (interpreted according to <opt> if given) against all 
 strings in list, and return a new array with all strings that matched.
 
-If there is an error in the regular expression, a runtime error will be
+If there is an error in the regular expression, a runtime error will be 
 raised.
 
 EXAMPLES string strs; string pattern;
@@ -31,12 +31,13 @@ if (strs = regexp(({"please, help me Sir John."}), pattern)) {
 
 }
 
-The regular expression will test the given string (which is packed into an
+The regular expression will test the given string (which is packed into an 
 array) if there is something like "help ... me" inside of it.
 
 Introduced in LDMud 3.3.634.
 
-      See Also:
-         regexp(E), regexplode(E), regmatch(E), regreplace(E), sscanf(E),
+      See Also: 
+         regexp()(E), regexplode()(E), regmatch()(E), regreplace()(E), 
+         sscanf()(E),
 
-   *regexp*, regexp_package(H)
+   regexp(C), regexp_package(H)

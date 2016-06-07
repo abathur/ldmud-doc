@@ -9,4 +9,4 @@
 
   After this function, :master:`inaugurate_master` will be applied again.
 
-  .. seealso:: :efun:`destruct`, :master:`inaugurate_master`, :master:`master`
+  .. seealso:: :efun:`destruct`, :master:`inaugurate_master`, :directory:`master`

@@ -24,12 +24,17 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="LPC" href="lpc.html" />
+    <link rel="next" title="index" href="index.html" />
+    <link rel="prev" title="functions" href="functions.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -37,10 +42,31 @@
           <div class="body" role="main">
             
   <div class="section" id="if">
-<span id="lpc.if"></span><div class="section" id="SYNTAX">
-<h2>SYNTAX<a class="headerlink" href="#SYNTAX" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-c"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">expr1</span><span class="p">)</span> <span class="n">statement1</span><span class="p">;</span>
-<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">expr2</span><span class="p">)</span> <span class="n">statement2</span><span class="p">;</span>
+<div class="section" id="LANG">
+<h2>LANG<a class="headerlink" href="#LANG" title="Permalink to this headline">¶</a></h2>
+<p>if</p>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="if">
+<span id="lpc.if"></span><div class="section" id="KEYWORD">
+<h4>KEYWORD<a class="headerlink" href="#KEYWORD" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h4>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="if (expr1) statement1; else if (expr2) statement2; ... else if (exprN) statementN; else statementX;">
+<span id="lpc.if (expr1) statement1;
+else if (expr2) statement2;
+...
+else if (exprN) statementN;
+else statementX;"></span><div class="section" id="SYNTAX">
+<h4>SYNTAX<a class="headerlink" href="#SYNTAX" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">expr2</span><span class="p">)</span> <span class="n">statement2</span><span class="p">;</span>
 <span class="p">...</span>
 <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">exprN</span><span class="p">)</span> <span class="n">statementN</span><span class="p">;</span>
 <span class="k">else</span> <span class="n">statementX</span><span class="p">;</span>
@@ -48,33 +74,28 @@
 </div>
 </div>
 <div class="section" id="DESCRIPTION">
-<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>The if() statement implements the conditional execution of statements.
-The expressions &#8216;expr1&#8217; .. &#8216;exprN&#8217; are evaluate in the order they
-appear until one of the expressions returns non-0 (&#8216;true&#8217;). At that
-point, the statement associated with the expression is executed, and
-the program continues after the if() statement. If none of the
-expressions evaluate to &#8216;true&#8217;, the statementX in the &#8216;else&#8217;-branch
-is executed.</p>
-<p>Both the &#8216;else if&#8217; branches and the &#8216;else&#8217; branch are optional, and
-there can be any number of &#8216;else if&#8217; branches - but there must be one
-&#8216;if&#8217; branch, and the branches must be in the order given above.</p>
-<p>Any &#8216;else&#8217; or &#8216;else if&#8217; always relates to the immediately preceeding
-&#8216;if&#8217; resp. &#8216;else if&#8217; conditional. This means that:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<h4>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<p>The if() statement implements the conditional execution of statements. The expressions &#8216;expr1&#8217; .. &#8216;exprN&#8217; are evaluate in the order they appear until one of the expressions returns non-0 (&#8216;true&#8217;). At that point, the statement associated with the expression is executed, and the program continues after the if() statement. If none of the expressions evaluate to &#8216;true&#8217;, the statementX in the &#8216;else&#8217;-branch is executed.</p>
+<p>Both the &#8216;else if&#8217; branches and the &#8216;else&#8217; branch are optional, and there can be any number of &#8216;else if&#8217; branches - but there must be one &#8216;if&#8217; branch, and the branches must be in the order given above.</p>
+<p>Any &#8216;else&#8217; or &#8216;else if&#8217; always relates to the immediately preceeding &#8216;if&#8217; resp. &#8216;else if&#8217; conditional. This means that:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="n">do_b</span><span class="p">;</span>
 <span class="k">else</span> <span class="n">do_c</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>is interpreted as:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="n">do_b</span><span class="p">;</span>
   <span class="k">else</span>   <span class="n">do_c</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="for.html#lpc.for" title="for"><span class="xref lpc lpc-lang">for</span>(LPC)</a>, <a class="reference internal" href="foreach.html#lpc.foreach" title="foreach"><span class="xref lpc lpc-lang">foreach</span>(LPC)</a>, <a class="reference internal" href="do-while.html#lpc.do-while" title="do-while"><span class="xref lpc lpc-lang">do-while</span>(LPC)</a>, <a class="reference internal" href="while.html#lpc.while" title="while"><span class="xref lpc lpc-lang">while</span>(LPC)</a>, <a class="reference internal" href="switch.html#lpc.switch" title="switch"><span class="xref lpc lpc-lang">switch</span>(LPC)</a></p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref lpc lpc-lang docutils literal"><span class="pre">for</span></code>, <code class="xref lpc lpc-lang docutils literal"><span class="pre">foreach</span></code>, <a class="reference internal" href="do-while.html#lpc.do-while" title="do-while"><code class="xref lpc lpc-lang docutils literal"><span class="pre">do-while</span></code>(LPC)</a>, <code class="xref lpc lpc-lang docutils literal"><span class="pre">while</span></code>, <code class="xref lpc lpc-lang docutils literal"><span class="pre">switch</span></code></p>
+</div>
 </div>
 </div>
 
@@ -92,22 +113,44 @@ there can be any number of &#8216;else if&#8217; branches - but there must be on
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">if</a><ul>
+<li><a class="reference internal" href="#LANG">LANG</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#if">if</a><ul>
+<li><a class="reference internal" href="#KEYWORD">KEYWORD</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#if (expr1) statement1; else if (expr2) statement2; ... else if (exprN) statementN; else statementX;">if (expr1) statement1;
+else if (expr2) statement2;
+...
+else if (exprN) statementN;
+else statementX;</a><ul>
 <li><a class="reference internal" href="#SYNTAX">SYNTAX</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="lpc.html">LPC</a></li>
 </ul>
 
 
@@ -117,10 +160,6 @@ there can be any number of &#8216;else if&#8217; branches - but there must be on
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/LPC/if.txt"

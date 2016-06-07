@@ -1,4 +1,6 @@
-.. concept:: varargs
+.. lang:: varargs
+
+  .. commenting out for now .. modifier:: varargs
 
   A function uses "varargs", short for "variable arguments", if
   it intentionally may be called with less or more arguments
@@ -61,9 +63,6 @@
   defines a function which may be called with any number of
   arguments.
 
-  .. history
-  The possibility to pass more arguments than formally specified
-  was introduced in 3.2.1@132. Before, the excess arguments were
-  silently ignored.
+  :history 3.2.1@132 introduced: The possibility to pass more arguments than formally specified was introduced. Before, the excess arguments were silently ignored.
 
   .. seealso:: :lang:`pragma`, :efun:`apply`, :lang:`modifiers`

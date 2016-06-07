@@ -5,7 +5,7 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Remove next pending call-out for function <fun> in the current object, resp.
+Remove next pending call-out for function <fun> in the current object, resp. 
 the next pending call-out for closure <fun>. The time left is returned.
 
 -1 is returned if there were no call-outs pending to this function.
@@ -16,5 +16,5 @@ while (remove_call_out("MyTimer") != -1) /* continue >>*<</ ;
 
 Removing a call_out to a closure was introduced in 3.2.1@45.
 
-   See Also:
-      call_out(E), call_out_info(E), find_call_out(E)
+   See Also: 
+      call_out()(E), call_out_info()(E), find_call_out()(E)

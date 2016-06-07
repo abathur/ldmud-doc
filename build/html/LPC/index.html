@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>[] &mdash; LDMud UNRELEASED documentation</title>
+    <title>index &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,22 +24,38 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="LPC" href="lpc.html" />
+    <link rel="next" title="inherit" href="inherit.html" />
+    <link rel="prev" title="if" href="if.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="[]">
-<span id="lpc.[]"></span><div class="section" id="SYNTAX">
-<h2>SYNTAX<a class="headerlink" href="#SYNTAX" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">mixed</span> <span class="n">arr</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+  <div class="section" id="index">
+<span id="lpc.index"></span><div class="section" id="LANG">
+<h2>LANG<a class="headerlink" href="#LANG" title="Permalink to this headline">¶</a></h2>
+<p>index</p>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="[] mixed arr[index] int str[index] mixed * arr[from .. to] string str[from .. to]">
+<span id="lpc.[]
+mixed arr[index]
+int str[index]
+mixed * arr[from .. to]
+string str[from .. to]"></span><div class="section" id="OPERATOR">
+<h4>OPERATOR<a class="headerlink" href="#OPERATOR" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">mixed</span> <span class="n">arr</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
 <span class="kt">int</span> <span class="n">str</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
 <span class="n">mixed</span> <span class="o">*</span> <span class="n">arr</span><span class="p">[</span><span class="n">from</span> <span class="p">..</span> <span class="n">to</span><span class="p">]</span>
 <span class="n">string</span> <span class="n">str</span><span class="p">[</span><span class="n">from</span> <span class="p">..</span> <span class="n">to</span><span class="p">]</span>
@@ -47,7 +63,9 @@
 </div>
 </div>
 <div class="section" id="DESCRIPTION">
-<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<h4>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
 <p>Return one element from a string/array (first form), or a slice (substring resp. subarray) of the string/array (second form).</p>
 <p>The indexes &lt;index&gt;, &lt;from&gt; and &lt;to&gt; are numbered 0 to strlen(str)-1 resp. sizeof(arr)-1 .</p>
 <p>If an index is written &#8216;&lt;value&#8217;, the value is counted from the end of the string/array and is numbered 1 to strlen(str) resp. sizeof(arr).</p>
@@ -55,7 +73,7 @@
 <p>If &lt;from&gt; is omitted, it defaults to the beginning of the string/array. If &lt;to&gt; is omitted, it defaults to the beginning of the string/array.</p>
 <p>In the first form, the &lt;index&gt; must be within the bounds of the string/array, or a runtime error occurs. In the second form, the indexes will be fitted to the bounds of the string/array. If &lt;from&gt; is greater than &lt;to&gt;, or both outside the bounds, an empty string/array (&#8220;&#8221; resp. ({})) will be returned.</p>
 <p>The closure notation is straightforward:</p>
-<div class="highlight-c"><div class="highlight"><pre>[index]      -&gt; ({&#39;#[,      arr, index })
+<div class="highlight-c"><div class="highlight"><pre><span></span>[index]      -&gt; ({&#39;#[,      arr, index })
 [&lt;index]     -&gt; ({&#39;#[&lt;,     arr, index })
 [&gt;index]     -&gt; ({&#39;#[&gt;,     arr, index })
 [from..to]   -&gt; ({&#39;#[..],   arr, from, to })
@@ -69,8 +87,9 @@
 [&gt;from..&gt;to] -&gt; ({&#39;#[&gt;..&gt;], arr, from, to })
 </pre></div>
 </div>
-<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">foo</span> <span class="o">=</span> <span class="p">({</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">});</span>         <span class="n">str</span> <span class="o">=</span> <span class="s">&quot;test&quot;</span><span class="p">;</span>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">foo</span> <span class="o">=</span> <span class="p">({</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">});</span>         <span class="n">str</span> <span class="o">=</span> <span class="s">&quot;test&quot;</span><span class="p">;</span>
 
 <span class="n">foo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>     <span class="o">-&gt;</span> <span class="mi">1</span>                 <span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="sc">&#39;e&#39;</span> <span class="o">==</span> <span class="mi">101</span>
 <span class="n">foo</span><span class="p">[</span><span class="mf">1..2</span><span class="p">]</span>  <span class="o">-&gt;</span> <span class="p">({</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">})</span>        <span class="n">str</span><span class="p">[</span><span class="mf">1..2</span><span class="p">]</span>  <span class="o">-&gt;</span> <span class="s">&quot;es&quot;</span>
@@ -90,6 +109,7 @@
 </div>
 </div>
 </div>
+</div>
 
 
           </div>
@@ -105,22 +125,39 @@
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">[]</a><ul>
-<li><a class="reference internal" href="#SYNTAX">SYNTAX</a></li>
+<li><a class="reference internal" href="#">index</a><ul>
+<li><a class="reference internal" href="#LANG">LANG</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#[] mixed arr[index] int str[index] mixed * arr[from .. to] string str[from .. to]">[]
+mixed arr[index]
+int str[index]
+mixed * arr[from .. to]
+string str[from .. to]</a><ul>
+<li><a class="reference internal" href="#OPERATOR">OPERATOR</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="lpc.html">LPC</a></li>
 </ul>
 
 
@@ -130,10 +167,6 @@
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/LPC/index.txt"

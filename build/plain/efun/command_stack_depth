@@ -8,8 +8,8 @@ DESCRIPTION
 
 HISTORY
 =======
-   - **introduced** (*3.2.7*)
+   - introduced (3.2.7)
 
 SEE ALSO
 ========
-   command(E), command_stack(E)
+   command()(E), command_stack()(E)

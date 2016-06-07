@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>init &mdash; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="applied" href="applied.html" />
+    <link rel="next" title="logon" href="logon.html" />
+    <link rel="prev" title="id" href="id.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section">
+<div class="section" id="SYNOPSIS">
+<span id="init"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
+<tr id="lpc.init">
+<td>
+<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
+<code class="descname">init</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.init" title="Permalink to this definition">¶</a></tr>
+</table></div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../hook/move_object.html#lpc.move_object" title="move_object"><code class="xref lpc lpc-hook docutils literal"><span class="pre">move_object</span></code>(H)</a> implements the details of moving objects. In older drivers, <a class="reference internal" href="#lpc.init" title="init"><code class="xref lpc lpc-applied docutils literal"><span class="pre">init</span></code>(A)</a> was called to handle the adding of actions, and a lot of hook implementations still follow this tradition.</p>
+<p>The main purpose of this function is to publish the commands an object implements to other, living objects. Traditionally, whenever a living object enters the vicinity of another object, init() is called in the latter and this_player() will point to the former object. This happens mutually should both objects happen to be living.</p>
+<p>Or more formally:</p>
+<ul class="simple">
+<li>If the object O that moves is marked as living then first call <code class="xref lpc lpc-any docutils literal"><span class="pre">init()</span></code> of the destination object D with <code class="xref lpc lpc-any docutils literal"><span class="pre">this_player()</span></code> set to O.</li>
+<li>Then apply the two following rules for each object C inside D:<ul>
+<li>If C is marked as living then call <code class="xref lpc lpc-any docutils literal"><span class="pre">O-&gt;init()</span></code> with <code class="xref lpc lpc-any docutils literal"><span class="pre">this_player()</span></code> set to C.</li>
+<li>If O is marked as living then call <code class="xref lpc lpc-any docutils literal"><span class="pre">C-&gt;init()</span></code> with <code class="xref lpc lpc-any docutils literal"><span class="pre">this_player()</span></code> set to O.</li>
+</ul>
+</li>
+<li>Finally, if D is marked as living then call <code class="xref lpc lpc-any docutils literal"><span class="pre">O-&gt;init()</span></code>, with <code class="xref lpc lpc-any docutils literal"><span class="pre">this_player()</span></code> set to D.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">commands defined in the player object for the player should not be defined in init(), as these commands would be added to _other_ players whenever they happen to be nearby. Instead use a separate function (&#8220;add_player_commands()&#8221; or so) which is called during the creation of the player.</p>
+</div>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>(This example assumes a traditional implementation of the movement handling)</p>
+<p>Lets say we have a object structure of living (l1 and l2) and non living objects (n1 and n2) as the following:</p>
+<ul class="simple">
+<li>l1<ul>
+<li>n1</li>
+<li>l2</li>
+<li>n2</li>
+</ul>
+</li>
+</ul>
+<p>If we now move another living object l3 into l1, the call sequence of the init() functions looks like this:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">l1</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">()</span>  <span class="c1">//first init() of the destination will be called</span>
+<span class="n">n1</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">()</span>  <span class="c1">//now iterate through the inventory of the destination</span>
+<span class="n">l3</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">()</span>
+<span class="n">l2</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">()</span>
+<span class="n">n2</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">()</span>
+<span class="n">l3</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">()</span>  <span class="c1">//finally call init() of the object that has been moved</span>
+</pre></div>
+</div>
+</div>
+<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.2.1</em>) &#8211; the actual move handling became part of the object library, so a given installation may implement any other scheme of calling <code class="xref lpc lpc-any docutils literal"><span class="pre">init()</span></code>.</li>
+</ul>
+<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/add_action.html#lpc.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action()</span></code>(E)</a>, <a class="reference internal" href="../efun/set_environment.html#lpc.set_environment" title="set_environment"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_environment()</span></code>(E)</a>, <a class="reference internal" href="../efun/environment.html#lpc.environment" title="environment"><code class="xref lpc lpc-efun docutils literal"><span class="pre">environment()</span></code>(E)</a>, <a class="reference internal" href="../efun/move_object.html#lpc.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object()</span></code>(E)</a>, <code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">init</a><ul>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/applied/init.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

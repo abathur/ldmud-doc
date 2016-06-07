@@ -5,16 +5,16 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Arguments:
-      - **value** (*int*) -- 0
-      - **value** (*string*) -- <msg>
+   Arguments: 
+      - value (int(LPC)) -- 0
+      - value (string(LPC)) -- <msg>
 
-   Optional hook specifying the message given to logins rejected due to space
+   Optional hook specifying the message given to logins rejected due to space 
    limitations (MAX_PLAYER). Hook setting has to be string.
 
-   If set to 0, the default message "Lpmud is full. Come back later." is
+   If set to 0, the default message "Lpmud is full. Come back later." is 
    issued.
 
 SEE ALSO
 ========
-   *hooks*
+   `hooks`

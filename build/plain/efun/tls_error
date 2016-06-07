@@ -4,5 +4,5 @@ SYNOPSIS (PRELIMINARY)
 
 DESCRIPTION
 ===========
-   tls_error() returns a string describing the error behind the error
-   number<errorno>.
+   tls_error() returns a string describing the error behind the error number 
+   <errorno>.

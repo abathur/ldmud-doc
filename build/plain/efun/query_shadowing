@@ -4,5 +4,5 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   The function returns the object which <obj> is currently shadowing, or 0
-   if<obj> is not a shadow.
+   The function returns the object which <obj> is currently shadowing, or 0 if
+   <obj> is not a shadow.

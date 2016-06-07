@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>logon &mdash; LDMud UNRELEASED documentation</title>
+    <title>applied::logon() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,55 +24,55 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="applied" href="applied.html" />
+    <link rel="next" title="applied::modify_command()" href="modify_command.html" />
+    <link rel="prev" title="applied::init()" href="init.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="logon">
+  <div class="section">
 <div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="applied" style="border-spacing:0;">
+<span id="logon"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr id="lpc.logon">
 <td>
-int </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
 <code class="descname">logon</code></td><td><span class="sig-paren">(</span></td><td>
-void</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.logon" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.logon" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-int </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
 <code class="descname">logon</code></td><td><span class="sig-paren">(</span></td><td>
-int<em>&nbsp;flag</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flag</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>When the driver created a new connection (either by accepting
-it or by creating it with net_connect()) and bound it to an
-object, it then calls logon() in that object.</p>
-<p>The method should return 0 on failure, and everything else on
-success.</p>
-<p>If the driver attempted to create a connection in the
-background and failed, it will call logon(-1) in the intended
-object to inform the mudlib about the failure.</p>
-<p>If the master attempted a secure connection in <a class="reference internal" href="../master/connect.html#lpc.connect" title="connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">connect</span></code>(M)</a> and
-did not set an explicit TLS callback, the call to logon() won&#8217;t
-happen until the TLS handshake is complete. If the master set
-a TLS callback, that will be executed in place of logon().</p>
-<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>When the driver created a new connection (either by accepting it or by creating it with <a class="reference internal" href="../efun/net_connect.html#lpc.net_connect" title="net_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">net_connect()</span></code>(E)</a>) and bound it to an object, it then calls <code class="xref any docutils literal"><span class="pre">logon()</span></code> in that object.</p>
+<p>The method should return 0 on failure, and everything else on success.</p>
+<p>If the driver attempted to create a connection in the background and failed, it will call <code class="xref any docutils literal"><span class="pre">logon(-1)</span></code> in the intended object to inform the mudlib about the failure.</p>
+<p>If the master attempted a secure connection in <code class="xref lpc lpc-efun docutils literal"><span class="pre">connect()</span></code> and did not set an explicit TLS callback, the call to <code class="xref any docutils literal"><span class="pre">logon()</span></code> won&#8217;t happen until the TLS handshake is complete. If the master set a TLS callback, that will be executed in place of <code class="xref any docutils literal"><span class="pre">logon()</span></code>.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><strong>changed</strong> (<em>3.2.10</em>) &#8211; added the extended meaning for net_connect().</li>
-<li><strong>changed</strong> (<em>3.2.13/3.3.713</em>) &#8211; streamlined the handling of secure connections
-during logon.</li>
+<li><strong>changed</strong> (<em>3.2.10</em>) &#8211; added the extended meaning for <a class="reference internal" href="../efun/net_connect.html#lpc.net_connect" title="net_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">net_connect()</span></code>(E)</a>.</li>
+<li><strong>changed</strong> (<em>3.2.13/3.3.713</em>) &#8211; streamlined the handling of secure connections during logon.</li>
 </ul>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../master/connect.html#lpc.connect" title="connect"><code class="xref lpc lpc-master docutils literal"><span class="pre">connect</span></code>(M)</a>, <a class="reference internal" href="../efun/net_connect.html#lpc.net_connect" title="net_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">net_connect</span></code>(E)</a>, <a class="reference internal" href="../efun/exec.html#lpc.exec" title="exec"><code class="xref lpc lpc-efun docutils literal"><span class="pre">exec</span></code>(E)</a>, <a class="reference internal" href="../efun/tls_init_connection.html#lpc.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection</span></code>(E)</a></p>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../master/connect.html#lpc.connect" title="connect"><code class="xref lpc lpc-master docutils literal"><span class="pre">connect</span></code>(M)</a>, <a class="reference internal" href="../efun/net_connect.html#lpc.net_connect" title="net_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">net_connect()</span></code>(E)</a>, <a class="reference internal" href="../efun/exec.html#lpc.exec" title="exec"><code class="xref lpc lpc-efun docutils literal"><span class="pre">exec()</span></code>(E)</a>, <a class="reference internal" href="../efun/tls_init_connection.html#lpc.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection()</span></code>(E)</a></p>
+</div>
 </div>
 </div>
 
@@ -90,22 +90,31 @@ during logon.</li>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">logon</a><ul>
+<li><a class="reference internal" href="#">applied::logon()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -115,10 +124,6 @@ during logon.</li>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/applied/logon.txt"

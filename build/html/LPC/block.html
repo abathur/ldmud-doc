@@ -24,12 +24,17 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="LPC" href="lpc.html" />
+    <link rel="next" title="guide to closures" href="closure_guide.html" />
+    <link rel="prev" title="arrow" href="arrow.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -37,23 +42,25 @@
           <div class="body" role="main">
             
   <div class="section" id="block">
-<span id="lpc.block"></span><div class="section" id="SYNTAX">
-<h2>SYNTAX<a class="headerlink" href="#SYNTAX" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-c"><div class="highlight"><pre><span class="p">{</span>
-  <span class="p">...</span>
-<span class="p">}</span>
+<span id="lpc.block"></span><div class="section" id="LANG">
+<h2>LANG<a class="headerlink" href="#LANG" title="Permalink to this headline">¶</a></h2>
+<p>block</p>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="{[&lt;statement&gt;...]}">
+<span id="lpc.{[<statement>...]}"></span><div class="section" id="SYNTAX">
+<h4>SYNTAX<a class="headerlink" href="#SYNTAX" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-c"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="DESCRIPTION">
-<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>A block is a special statment, that begins with &#8216;{&#8216;, contains
-a list of statements, and ends with &#8216;}&#8217;.</p>
-<p>The block may define local variables. If for a variable no
-initialisation is given, the variable is initialised to 0 every
-time the block is entered. Otherwise, the initialisation
-expression is evaluated and its result assigned to the variable
-everytime the block is entered.</p>
+<h4>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<p>A block is a special statment, that begins with &#8216;{&#8216;, contains a list of statements, and ends with &#8216;}&#8217;.</p>
+<p>The block may define local variables. If for a variable no initialisation is given, the variable is initialised to 0 every time the block is entered. Otherwise, the initialisation expression is evaluated and its result assigned to the variable everytime the block is entered.</p>
 <p>Example definitions are:</p>
 <blockquote>
 <div><p>int i;
@@ -62,27 +69,27 @@ int k = 3 * j, l;</p>
 <p>Here, i and l are both initialised to 0; j is initialised
 to 3, and k is initialised to 9 (3 * j).</p>
 </div></blockquote>
-<p>Local variables defined in a block are visible only until the
-end of the block. Definitions in an inner block hide definitions in
-outer blocks.</p>
-<p>Up to 3.2.7 local variables were visible (from their point of
-definition) in the whole function. That is, code like:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="k">do</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">res</span><span class="p">;</span>
-
-    <span class="n">res</span> <span class="o">=</span> <span class="p">...</span>
+<p>Local variables defined in a block are visible only until the end of the block. Definitions in an inner block hide definitions in outer blocks.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Up to 3.2.7 local variables were visible (from their point of definition) in the whole function. That is, code like:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">res</span><span class="p">;</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="p">...</span>
 <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">res</span> <span class="o">==</span> <span class="mi">5</span><span class="p">);</span>
 <span class="n">write</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>was perfectly legal. It is no longer, as &#8216;res&#8217; ceases to exist
-with the closing &#8216;}&#8217; of the while().</p>
-<p>Up to 3.5.0 you could get this old behaviour back with the
-#pragma no_local_scopes and switch it off again with
-#pragma local_scopes.</p>
-<p>Since 3.5.0 it is not possible to disable the local scope behaviour.</p>
-<p>Up to 3.2.8, local variables could not be initialised in their
-definition.</p>
+<p class="last">was perfectly legal. It is no longer, as &#8216;res&#8217; ceases to exist with the closing &#8216;}&#8217; of the while().</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>changed</strong> (<em>3.2.7</em>) &#8211; local variables were visible (from their point of definition) within the containing function scope; now they will cease to exist when any containing block is closed</li>
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; local variables can now be <a class="reference internal" href="../concepts/initialisation.html#lpc.initialisation" title="initialisation"><code class="xref lpc lpc-concept docutils literal"><span class="pre">initialised</span></code>(C)</a> when they are defined</li>
+<li><strong>changed</strong> (<em>3.5.0</em>) &#8211; it is no longer possible to disable local scope behavior</li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -100,22 +107,35 @@ definition.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">block</a><ul>
+<li><a class="reference internal" href="#LANG">LANG</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#{[&lt;statement&gt;...]}">{[&lt;statement&gt;...]}</a><ul>
 <li><a class="reference internal" href="#SYNTAX">SYNTAX</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="lpc.html">LPC</a></li>
 </ul>
 
 
@@ -125,10 +145,6 @@ definition.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/LPC/block.txt"

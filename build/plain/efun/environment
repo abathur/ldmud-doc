@@ -6,7 +6,7 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Returns the surrounding object of obj, which may be given by name. If no
+Returns the surrounding object of obj, which may be given by name. If no 
 argument is given, it returns the surrounding of the current object.
 
 Destructed objects do not have an environment.
@@ -15,6 +15,6 @@ EXAMPLES object room; room = environment(this_player());
 
 This will return the current room you are in.
 
-   See Also:
-      first_inventory(E),
-      next_inventory(E),all_inventory(E),all_environment(E)
+   See Also: 
+      first_inventory()(E), next_inventory()(E), all_inventory()(E), 
+      all_environment()(E)

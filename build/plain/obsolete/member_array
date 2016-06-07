@@ -8,13 +8,13 @@ DESCRIPTION
    Returns the index of the first occurence of item in array arr, or occurence
    of a character in a string. If not found, then -1 is returned.
 
-   If you want to search through an alist, use assoc() because member_array()
+   If you want to search through an alist, use assoc() because member_array() 
    is good for unsorted but assoc() is faster for sorted arrays.
 
 HISTORY
 =======
-   - **removed** (*3.3*) -- superseded by efun:*member*(E)
+   - removed (3.3) -- superseded by efun:member
 
 SEE ALSO
 ========
-   member(E), *alists*, *mappings*, assoc(E), slice_array(E)
+   member()(E), `alists`, mappings(LPC), assoc(), slice_array()

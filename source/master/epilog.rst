@@ -10,4 +10,4 @@
   "no object to preload". The resulting strings will be passed
   one at a time as arguments to preload().
 
-  .. seealso:: :master:`preload`, :master:`master`
+  .. seealso:: :master:`preload`, :directory:`master`

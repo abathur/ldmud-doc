@@ -4,13 +4,13 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   This efun is needed to create copies of mappings instead of just passing a
+   This efun is needed to create copies of mappings instead of just passing a 
    reference, like adding/subtraction from a mapping do.
 
 HISTORY
 =======
-   - **removed** (*3.3*) -- superseded by copy(E)
+   - removed (3.3) -- superseded by copy()(E)
 
 SEE ALSO
 ========
-   *mappings*, copy(E)
+   mappings(LPC), copy()(E)

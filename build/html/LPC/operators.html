@@ -24,12 +24,17 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="LPC" href="lpc.html" />
+    <link rel="next" title="pragma" href="pragma.html" />
+    <link rel="prev" title="object" href="object.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -37,78 +42,67 @@
           <div class="body" role="main">
             
   <div class="section" id="operators">
-<div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<p id="lpc.operators">operators</p>
+<span id="lpc.operators"></span><div class="section" id="CONCEPT">
+<h2>CONCEPT<a class="headerlink" href="#CONCEPT" title="Permalink to this headline">¶</a></h2>
+<p>operators</p>
 </div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>These are the operators availailable in LPC. They are listed
-in the order of precedence (low priority first):</p>
-<dl class="glossary docutils">
+<p>These are the operators availailable in LPC. They are listed in the order of precedence (low priority first):</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">probably want to document all of these with a <code class="xref any docutils literal"><span class="pre">..</span> <span class="pre">operator::</span></code> directive</p>
+</div>
+<div class="section" id="glossary">
+<dl class="docutils">
 <dt id="term-expr1-expr2"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">,</span> <span class="pre">expr2</span></code></dt>
-<dd>Evaluate &#8216;expr1&#8217; and then &#8216;expr2&#8217;. The
-returned value is the result of &#8216;expr2&#8217;. The
-returned value of &#8216;expr1&#8217; is thrown away.</dd>
+<dd>Evaluate &#8216;expr1&#8217; and then &#8216;expr2&#8217;. The returned value is the result of &#8216;expr2&#8217;. The returned value of &#8216;expr1&#8217; is thrown away.</dd>
 <dt id="term-var-expr"><code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">expr</span></code></dt>
-<dd>Evaluate &#8216;expr&#8217;, and assign the value to
-&#8216;var&#8217;. The new value of &#8216;var&#8217; is the result.</dd>
+<dd>Evaluate &#8216;expr&#8217;, and assign the value to &#8216;var&#8217;. The new value of &#8216;var&#8217; is the result.</dd>
 <dt id="term-2"><code class="docutils literal"><span class="pre">var</span> <span class="pre">+=</span> <span class="pre">expr</span></code></dt>
-<dd>Assign the value of &#8216;expr&#8217; + &#8216;var&#8217; to &#8216;var&#8217;.
-This is mostly equivalent to &#8220;var = var + expr&#8221;.</dd>
-<dt id="term-3"><span id="term-4"></span><span id="term-5"></span><span id="term-6"></span><span id="term-7"></span><span id="term-8"></span><span id="term-9"></span><span id="term-10"></span><span id="term-11"></span><span id="term-12"></span><span id="term-13"></span><span id="term-14"></span><code class="docutils literal"><span class="pre">var</span> <span class="pre">-=</span> <span class="pre">expr</span></code><br /><code class="docutils literal"><span class="pre">var</span> <span class="pre">&amp;=</span> <span class="pre">expr</span></code><br /><code class="docutils literal"><span class="pre">var</span> <span class="pre">|=</span> <span class="pre">expr</span></code><br /><code class="docutils literal"><span class="pre">var</span> <span class="pre">^=</span> <span class="pre">expr</span></code><br /><code class="docutils literal"><span class="pre">var</span> <span class="pre">&lt;&lt;=</span> <span class="pre">expr</span></code><br /><code class="docutils literal"><span class="pre">var</span> <span class="pre">&gt;&gt;=</span> <span class="pre">expr</span></code><br /><code class="docutils literal"><span class="pre">var</span> <span class="pre">&gt;&gt;&gt;=</span> <span class="pre">expr</span></code><br /><code class="docutils literal"><span class="pre">var</span> <span class="pre">*=</span> <span class="pre">expr</span></code><br /><code class="docutils literal"><span class="pre">var</span> <span class="pre">%=</span> <span class="pre">expr</span></code><br /><code class="docutils literal"><span class="pre">var</span> <span class="pre">/=</span> <span class="pre">expr</span></code><br /><code class="docutils literal"><span class="pre">var</span> <span class="pre">&amp;&amp;=</span> <span class="pre">expr</span></code><br /><code class="docutils literal"><span class="pre">var</span> <span class="pre">||=</span> <span class="pre">expr</span></code></dt>
+<dd>Assign the value of &#8216;expr&#8217; + &#8216;var&#8217; to &#8216;var&#8217;. This is mostly equivalent to &#8220;var = var + expr&#8221;.</dd>
+<dt id="term-3"><code class="docutils literal"><span class="pre">var</span> <span class="pre">-=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-4"><code class="docutils literal"><span class="pre">var</span> <span class="pre">&amp;=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-5"><code class="docutils literal"><span class="pre">var</span> <span class="pre">|=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-6"><code class="docutils literal"><span class="pre">var</span> <span class="pre">^=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-7"><code class="docutils literal"><span class="pre">var</span> <span class="pre">&lt;&lt;=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-8"><code class="docutils literal"><span class="pre">var</span> <span class="pre">&gt;&gt;=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-9"><code class="docutils literal"><span class="pre">var</span> <span class="pre">&gt;&gt;&gt;=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-10"><code class="docutils literal"><span class="pre">var</span> <span class="pre">*=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-11"><code class="docutils literal"><span class="pre">var</span> <span class="pre">%=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-12"><code class="docutils literal"><span class="pre">var</span> <span class="pre">/=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-13"><code class="docutils literal"><span class="pre">var</span> <span class="pre">&amp;&amp;=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-14"><code class="docutils literal"><span class="pre">var</span> <span class="pre">||=</span> <span class="pre">expr</span></code></dt>
 <dd>Similar to &#8216;+=&#8217; above.</dd>
-<dt id="term-expr1-expr2-expr3"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">?</span> <span class="pre">expr2</span> <span class="pre">:</span> <span class="pre">expr3</span></code></dt>
-<dd>Evaluates &#8216;expr1&#8217; and branches according to
-its truth value. If it is true, the &#8216;expr2&#8217; is
-evaluated and returned as result, else
-&#8216;expr3&#8217;.</dd>
+<dt id="term-15"><a href="#id1"><span class="problematic" id="id2">``</span></a>expr1 ? expr2</dt>
+<dd>Evaluates &#8216;expr1&#8217; and branches according to its truth value. If it is true, the &#8216;expr2&#8217; is evaluated and returned as result, else &#8216;expr3&#8217;.</dd>
 <dt id="term-16"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">||</span> <span class="pre">expr2</span></code></dt>
-<dd>The result is true if &#8216;expr1&#8217; or &#8216;expr2&#8217; is
-true. &#8216;expr2&#8217; is not evaluated if &#8216;expr1&#8217; was
-true.</dd>
+<dd>The result is true if &#8216;expr1&#8217; or &#8216;expr2&#8217; is true. &#8216;expr2&#8217; is not evaluated if &#8216;expr1&#8217; was true.</dd>
 <dt id="term-17"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&amp;&amp;</span> <span class="pre">expr2</span></code></dt>
-<dd>The result is true i &#8216;expr1&#8217; and &#8216;expr2&#8217; is
-true. &#8216;expr2&#8217; is not evaluated if &#8216;expr1&#8217; was
-false.</dd>
+<dd>The result is true i &#8216;expr1&#8217; and &#8216;expr2&#8217; is true. &#8216;expr2&#8217; is not evaluated if &#8216;expr1&#8217; was false.</dd>
 <dt id="term-18"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">|</span> <span class="pre">expr2</span></code></dt>
-<dd>The result is the bitwise or of &#8216;expr1&#8217; and
-&#8216;expr2&#8217;.
-For arrays, the union set is computed: all elements
-from &lt;expr1&gt; plus all those from &lt;expr2&gt; which
-are not in &lt;expr1&gt;.</dd>
+<dd><p class="first">The result is the bitwise or of &#8216;expr1&#8217; and &#8216;expr2&#8217;.</p>
+<p class="last">For arrays, the union set is computed: all elements from &lt;expr1&gt; plus all those from &lt;expr2&gt; which are not in &lt;expr1&gt;.</p>
+</dd>
 <dt id="term-19"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">^</span> <span class="pre">expr2</span></code></dt>
-<dd>The result is the bitwise xor of &#8216;expr1&#8217; and
-&#8216;expr2&#8217;.
-For arrays, the symmetric difference is computed:
-all elements from &lt;expr1&gt; which are not in &lt;expr2&gt;,
-plus all those from &lt;expr2&gt; which are not in &lt;expr1&gt;.</dd>
+<dd><p class="first">The result is the bitwise xor of &#8216;expr1&#8217; and &#8216;expr2&#8217;.</p>
+<p class="last">For arrays, the symmetric difference is computed: all elements from &lt;expr1&gt; which are not in &lt;expr2&gt;, plus all those from &lt;expr2&gt; which are not in &lt;expr1&gt;.</p>
+</dd>
 <dt id="term-20"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&amp;</span> <span class="pre">expr2</span></code></dt>
-<dd><p class="first">The result is the bitwise and of &#8216;expr1&#8217; and
-&#8216;expr2&#8217;.</p>
-<p>For arrays and strings, the intersection set
-(all elements resp. characters from expr1 which
-which are also in the expr2) is computed.
-Note: &#8220;aab&#8221; &amp; &#8220;a&#8221; -&gt; &#8220;aa&#8221;</p>
-<blockquote>
-<div>but  ({ &#8216;a&#8217;,&#8217;a&#8217;,&#8217;b&#8217; }) &amp; ({ &#8216;a&#8217; }) -&gt; ({ &#8216;a&#8217; })</div></blockquote>
-<p>Eventually the array behaviour will be changed
-to match the string behaviour.</p>
-<p>Intersecting an array with a mapping is equivalent
-to intersecting the array with the indices of the
-mapping: array &amp; mapping = array &amp; m_indices(mapping)</p>
-<p class="last">Mappings can be intersected with another mapping
-or an array. The resulting mapping holds all
-those entries from the first mapping, which are
-also mentioned in the second mapping (as index)
-resp. in the array.</p>
+<dd><p class="first">The result is the bitwise and of &#8216;expr1&#8217; and &#8216;expr2&#8217;.</p>
+<p>For arrays and strings, the intersection set (all elements resp. characters from expr1 which which are also in the expr2) is computed.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p><code class="docutils literal"><span class="pre">&quot;aab&quot;</span> <span class="pre">&amp;</span> <span class="pre">&quot;a&quot;</span> <span class="pre">-&gt;</span> <span class="pre">&quot;aa&quot;</span></code> but <code class="docutils literal"><span class="pre">({</span> <span class="pre">'a','a','b'</span> <span class="pre">})</span> <span class="pre">&amp;</span> <span class="pre">({</span> <span class="pre">'a'</span> <span class="pre">})</span> <span class="pre">-&gt;</span> <span class="pre">({</span> <span class="pre">'a'</span> <span class="pre">})</span></code></p>
+<p class="last">Eventually the array behaviour will be changed to match the string behaviour, so you shouldn&#8217;t rely on the array behavior in the interim.</p>
+</div>
+<p>Intersecting an array with a mapping is equivalent to intersecting the array with the indices of the mapping: array &amp; mapping = array &amp; m_indices(mapping)</p>
+<p class="last">Mappings can be intersected with another mapping or an array. The resulting mapping holds all those entries from the first mapping, which are also mentioned in the second mapping (as index) resp. in the array.</p>
 </dd>
 <dt id="term-21"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">==</span> <span class="pre">expr2</span></code></dt>
-<dd>Compare values. Valid for strings, numbers,
-objects and closures.</dd>
+<dd>Compare values. Valid for strings, numbers, objects and closures.</dd>
 <dt id="term-expr1-expr1"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">!=</span> <span class="pre">expr1</span></code></dt>
-<dd>Compare values. Valid for strings, numbers,
-objects and closures.</dd>
+<dd>Compare values. Valid for strings, numbers, objects and closures.</dd>
 <dt id="term-23"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&gt;</span> <span class="pre">expr2</span></code></dt>
 <dd>Valid for strings and numbers.</dd>
 <dt id="term-24"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&gt;=</span> <span class="pre">expr2</span></code></dt>
@@ -118,52 +112,25 @@ objects and closures.</dd>
 <dt id="term-26"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&lt;=</span> <span class="pre">expr2</span></code></dt>
 <dd>Valid for strings and numbers.</dd>
 <dt id="term-27"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&lt;&lt;</span> <span class="pre">expr2</span></code></dt>
-<dd>Shift &#8216;expr1&#8217; left by &#8216;expr2&#8217; bits; the sign
-bit is not preserved.</dd>
+<dd>Shift &#8216;expr1&#8217; left by &#8216;expr2&#8217; bits; the sign bit is not preserved.</dd>
 <dt id="term-28"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&gt;&gt;</span> <span class="pre">expr2</span></code></dt>
-<dd>Shift &#8216;expr1&#8217; right by &#8216;expr2&#8217; bits.
-This shift preserves the sign of &#8216;expr1&#8217;.</dd>
+<dd>Shift &#8216;expr1&#8217; right by &#8216;expr2&#8217; bits. This shift preserves the sign of &#8216;expr1&#8217;.</dd>
 <dt id="term-29"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">expr2</span></code></dt>
-<dd>Shift &#8216;expr1&#8217; right by &#8216;expr2&#8217; bits.
-This shift does not preserve the sign of &#8216;expr1&#8217;,
-instead it shifts in 0 bits.</dd>
+<dd>Shift &#8216;expr1&#8217; right by &#8216;expr2&#8217; bits. This shift does not preserve the sign of &#8216;expr1&#8217;, instead it shifts in 0 bits.</dd>
 <dt id="term-30"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">+</span> <span class="pre">expr2</span></code></dt>
-<dd>Add &#8216;expr1&#8217; and &#8216;expr2&#8217;. If numbers, then
-arithmetic addition is used. If one of the
-expressions are a string, then that string is
-concatenated with the other value.
-If the expressions are arrays, the result is
-the right array appended to the left.
-If the expressions are mappings of equal width,
-the result is merger of the two mappings. If one
-key exists in both mappings, the element from the
-right mapping appears in the result. If the two
-mappings are of different width, the result is
-&lt;expr1&gt; if non-empty, and &lt;expr2&gt; otherwise.</dd>
+<dd>Add &#8216;expr1&#8217; and &#8216;expr2&#8217;. If numbers, then arithmetic addition is used. If one of the expressions are a string, then that string is concatenated with the other value. If the expressions are arrays, the result is the right array appended to the left. If the expressions are mappings of equal width, the result is merger of the two mappings. If one key exists in both mappings, the element from the right mapping appears in the result. If the two mappings are of different width, the result is &lt;expr1&gt; if non-empty, and &lt;expr2&gt; otherwise.</dd>
 <dt id="term-31"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">-</span> <span class="pre">expr2</span></code></dt>
-<dd>Subtract &#8216;expr2&#8217; from &#8216;expr1&#8217;. Valid for
-numbers, strings, arrays, mappings.
-For arrays and strings, all occurences of the
-elements resp. characters in &#8216;expr2&#8217; are removed
-from &#8216;expr1&#8217;, and the result is returned.
-For mapping, all occurances of elemens in &#8216;expr1&#8217;
-which have a matching key in &#8216;expr2&#8217; are removed, and
-the result is returned.</dd>
+<dd>Subtract &#8216;expr2&#8217; from &#8216;expr1&#8217;. Valid for numbers, strings, arrays, mappings. For arrays and strings, all occurences of the elements resp. characters in &#8216;expr2&#8217; are removed from &#8216;expr1&#8217;, and the result is returned. For mapping, all occurances of elemens in &#8216;expr1&#8217; which have a matching key in &#8216;expr2&#8217; are removed, and the result is returned.</dd>
 <dt id="term-32"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">*</span> <span class="pre">expr2</span></code></dt>
-<dd>Multiply &#8216;expr1&#8217; with &#8216;expr2&#8217;.
-If strings or arrays are multiplied with a number
-(zero or positive), the result is a repetition of the
-original string or array.</dd>
+<dd>Multiply &#8216;expr1&#8217; with &#8216;expr2&#8217;. If strings or arrays are multiplied with a number (zero or positive), the result is a repetition of the original string or array.</dd>
 <dt id="term-33"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">%</span> <span class="pre">expr2</span></code></dt>
 <dd>The modulo operator of numeric arguments.</dd>
 <dt id="term-34"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">/</span> <span class="pre">expr2</span></code></dt>
 <dd>Integer division.</dd>
 <dt id="term-var"><code class="docutils literal"><span class="pre">++</span> <span class="pre">var</span></code></dt>
-<dd>Increment the value of variable &#8216;var&#8217;, and
-return the new value.</dd>
+<dd>Increment the value of variable &#8216;var&#8217;, and return the new value.</dd>
 <dt id="term-36"><code class="docutils literal"><span class="pre">--</span> <span class="pre">var</span></code></dt>
-<dd>Decrement the value of variable &#8216;var&#8217;, and
-return the new value.</dd>
+<dd>Decrement the value of variable &#8216;var&#8217;, and return the new value.</dd>
 <dt id="term-37"><code class="docutils literal"><span class="pre">-</span> <span class="pre">var</span></code></dt>
 <dd>Compute the negative value of &#8216;var&#8217;.</dd>
 <dt id="term-38"><code class="docutils literal"><span class="pre">!</span> <span class="pre">var</span></code></dt>
@@ -171,71 +138,46 @@ return the new value.</dd>
 <dt id="term-39"><code class="docutils literal"><span class="pre">~</span> <span class="pre">var</span></code></dt>
 <dd>The boolean &#8216;not&#8217; of an integer.</dd>
 <dt id="term-type-var"><code class="docutils literal"><span class="pre">(</span> <span class="pre">type</span> <span class="pre">)</span> <span class="pre">var</span></code></dt>
-<dd><p class="first">Return the value of &lt;var&gt; converted to &lt;type&gt;.
-&lt;type&gt; can be &#8216;string&#8217;, &#8216;int&#8217;, &#8216;object&#8217;, &#8216;float&#8217;
-or &#8216;int*&#8217;. &lt;var&gt; must be of a specific type
-for a conversion to take place; if &lt;var&gt; is &#8216;mixed&#8217;
-or unknown, the cast is purely declarative.
-Also, if the declared type of &lt;var&gt; is that of &lt;type&gt;,
-the value is not changed.</p>
-<p>NB. The literal number 0 is of unknown type, as
-it doubles as &#8216;not initialized&#8217; for strings, objects,
-and arrays.</p>
-<p class="last">The operator acts like the efuns
-to_string(), to_int(), to_object(), to_float()
-and to_array(). It is advisable to use the
-efuns directly instead of the cast.</p>
+<dd><p class="first">Return the value of &lt;var&gt; converted to &lt;type&gt;. &lt;type&gt; can be &#8216;string&#8217;, &#8216;int&#8217;, &#8216;object&#8217;, &#8216;float&#8217; or &#8216;int*&#8217;. &lt;var&gt; must be of a specific type for a conversion to take place; if &lt;var&gt; is &#8216;mixed&#8217; or unknown, the cast is purely declarative. Also, if the declared type of &lt;var&gt; is that of &lt;type&gt;, the value is not changed.</p>
+<p>NB. The literal number 0 is of unknown type, as it doubles as &#8216;not initialized&#8217; for strings, objects, and arrays.</p>
+<p class="last">The operator acts like the efuns to_string(), to_int(), to_object(), to_float() and to_array(). It is advisable to use the efuns directly instead of the cast.</p>
 </dd>
 <dt id="term-41"><code class="docutils literal"><span class="pre">({</span> <span class="pre">type</span> <span class="pre">})</span> <span class="pre">var</span></code></dt>
-<dd>&lt;var&gt; is now assumed to have the type &lt;type&gt;.
-This is purely declarative, the actual value
-of &lt;var&gt; is not changed.</dd>
+<dd>&lt;var&gt; is now assumed to have the type &lt;type&gt;. This is purely declarative, the actual value of &lt;var&gt; is not changed.</dd>
 <dt id="term-42"><code class="docutils literal"><span class="pre">var</span> <span class="pre">++</span></code></dt>
-<dd>Increment the value of variable &#8216;var&#8217;, and
-return the old value.</dd>
+<dd>Increment the value of variable &#8216;var&#8217;, and return the old value.</dd>
 <dt id="term-43"><code class="docutils literal"><span class="pre">var</span> <span class="pre">--</span></code></dt>
-<dd>Decrement the value of variable &#8216;var&#8217;, and
-return the old value.</dd>
+<dd>Decrement the value of variable &#8216;var&#8217;, and return the old value.</dd>
 <dt id="term-44"><code class="docutils literal"><span class="pre">expr1[expr2]</span></code></dt>
-<dd>The array or mapping given by &#8216;expr1&#8217; is
-indexed by &#8216;expr2&#8217;.</dd>
-<dt id="term-45"><code class="docutils literal"><span class="pre">expr1[expr2..expr3]</span></code></dt>
-<dd>Extracts a
-piece from an array or string.
-expr2 or expr3 may be omitted, default is the begin
-or end of expr1.
-Negative numbers for expr2 or expr3
-mean <a href="#id1"><span class="problematic" id="id2">``</span></a>count from before the beginning&#8217;&#8216;, i.e.
-foo[-2..-1] is an empty array or string.
-foo[&lt;2..&lt;1] gives the 2nd and last element of
-the array resp. chars of the string.</dd>
+<dd>The array or mapping given by &#8216;expr1&#8217; is indexed by &#8216;expr2&#8217;.</dd>
+<dt id="term-expr1-expr2-expr3"><code class="docutils literal"><span class="pre">expr1[expr2..expr3]</span></code></dt>
+<dd>Extracts a piece from an array or string. expr2 or expr3 may be omitted, default is the begin or end of expr1. Negative numbers for expr2 or expr3 mean <code class="docutils literal"><span class="pre">count</span> <span class="pre">from</span> <span class="pre">before</span> <span class="pre">the</span> <span class="pre">beginning</span></code>, i.e. foo[-2..-1] is an empty array or string. foo[&lt;2..&lt;1] gives the 2nd and last element of the array resp. chars of the string.</dd>
 <dt id="term-expr1-name"><code class="docutils literal"><span class="pre">expr1-&gt;name(...)</span></code></dt>
-<dd>The symbolic form of call_other(). &#8216;expr1&#8217;
-gives either an object or a string which is
-used as the file_name of an object, and calls
-the function &#8216;name&#8217; in this object.</dd>
+<dd>The symbolic form of call_other(). &#8216;expr1&#8217; gives either an object or a string which is used as the file_name of an object, and calls the function &#8216;name&#8217; in this object.</dd>
 <dt id="term-ident-name"><code class="docutils literal"><span class="pre">ident::name(...)</span></code></dt>
-<dd>Call the inherited function &#8216;name&#8217; with the
-given parameters in the parent &#8216;ident&#8217;.
-&#8216;ident&#8217; may be given as string containing the
-full pathname, or as identifier containing the
-pure basename.
-If &#8216;ident&#8217; is omitted, the last inherited
-function of this &#8216;name&#8217; is called.</dd>
+<dd>Call the inherited function &#8216;name&#8217; with the given parameters in the parent &#8216;ident&#8217;. &#8216;ident&#8217; may be given as string containing the full pathname, or as identifier containing the pure basename. If &#8216;ident&#8217; is omitted, the last inherited function of this &#8216;name&#8217; is called.</dd>
 <dt id="term"><code class="docutils literal"><span class="pre">({</span> <span class="pre">})</span></code></dt>
 <dd>Array constructor.</dd>
 <dt id="term-49"><code class="docutils literal"><span class="pre">([</span> <span class="pre">])</span></code></dt>
 <dd>Mapping constructor.</dd>
 </dl>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The closure operators are not described here.</p>
 </div>
-<p>LDMud 3.2.9 added &#8216;&gt;&gt;&gt;&#8217;, &#8216;&gt;&gt;&gt;=&#8217;, &#8216;&amp;&amp;=&#8217; and &#8216;||=&#8217;.
-LDMud 3.2.10 extended &#8216;&amp;&#8217; to mappings.
-LDMud 3.3 extended &#8216;|&#8217; and &#8216;^&#8217; to arrays.</p>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><span class="xref lpc lpc-lang">arrays</span>, <span class="xref lpc lpc-lang">alists</span>, <span class="xref lpc lpc-lang">mappings</span>, <span class="xref lpc lpc-lang">closures</span></p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>modified</strong> (<em>3.2.9</em>) &#8211; added &#8216;&gt;&gt;&gt;&#8217;, &#8216;&gt;&gt;&gt;=&#8217;, &#8216;&amp;&amp;=&#8217; and &#8216;||=&#8217;.</li>
+<li><strong>modified</strong> (<em>3.2.10</em>) &#8211; extended &#8216;&amp;&#8217; to mappings.</li>
+<li><strong>modified</strong> (<em>3.3</em>) &#8211; extended &#8216;|&#8217; and &#8216;^&#8217; to arrays.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="arrays.html#lpc.arrays" title="arrays"><code class="xref lpc lpc-lang docutils literal"><span class="pre">arrays</span></code>(LPC)</a>, <code class="xref lpc lpc-lang docutils literal"><span class="pre">alists</span></code>, <a class="reference internal" href="mappings.html#lpc.mappings" title="mappings"><code class="xref lpc lpc-lang docutils literal"><span class="pre">mappings</span></code>(LPC)</a>, <a class="reference internal" href="closures.html#lpc.closures" title="closures"><code class="xref lpc lpc-lang docutils literal"><span class="pre">closures</span></code>(LPC)</a></p>
+</div>
 </div>
 </div>
 
@@ -253,22 +195,174 @@ LDMud 3.3 extended &#8216;|&#8217; and &#8216;^&#8217; to arrays.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">operators</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#CONCEPT">CONCEPT</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#glossary"><dl class="docutils">
+<dt id="term-expr1-expr2"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">,</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">Evaluate &#8216;expr1&#8217; and then &#8216;expr2&#8217;. The returned value is the result of &#8216;expr2&#8217;. The returned value of &#8216;expr1&#8217; is thrown away.</p>
+</dd>
+<dt id="term-var-expr"><code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">expr</span></code></dt>
+<dd><p class="first last">Evaluate &#8216;expr&#8217;, and assign the value to &#8216;var&#8217;. The new value of &#8216;var&#8217; is the result.</p>
+</dd>
+<dt id="term-2"><code class="docutils literal"><span class="pre">var</span> <span class="pre">+=</span> <span class="pre">expr</span></code></dt>
+<dd><p class="first last">Assign the value of &#8216;expr&#8217; + &#8216;var&#8217; to &#8216;var&#8217;. This is mostly equivalent to &#8220;var = var + expr&#8221;.</p>
+</dd>
+<dt id="term-3"><code class="docutils literal"><span class="pre">var</span> <span class="pre">-=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-4"><code class="docutils literal"><span class="pre">var</span> <span class="pre">&amp;=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-5"><code class="docutils literal"><span class="pre">var</span> <span class="pre">|=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-6"><code class="docutils literal"><span class="pre">var</span> <span class="pre">^=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-7"><code class="docutils literal"><span class="pre">var</span> <span class="pre">&lt;&lt;=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-8"><code class="docutils literal"><span class="pre">var</span> <span class="pre">&gt;&gt;=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-9"><code class="docutils literal"><span class="pre">var</span> <span class="pre">&gt;&gt;&gt;=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-10"><code class="docutils literal"><span class="pre">var</span> <span class="pre">*=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-11"><code class="docutils literal"><span class="pre">var</span> <span class="pre">%=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-12"><code class="docutils literal"><span class="pre">var</span> <span class="pre">/=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-13"><code class="docutils literal"><span class="pre">var</span> <span class="pre">&amp;&amp;=</span> <span class="pre">expr</span></code></dt>
+<dt id="term-14"><code class="docutils literal"><span class="pre">var</span> <span class="pre">||=</span> <span class="pre">expr</span></code></dt>
+<dd><p class="first last">Similar to &#8216;+=&#8217; above.</p>
+</dd>
+<dt id="term-15">``expr1 ? expr2</dt>
+<dd><p class="first last">Evaluates &#8216;expr1&#8217; and branches according to its truth value. If it is true, the &#8216;expr2&#8217; is evaluated and returned as result, else &#8216;expr3&#8217;.</p>
+</dd>
+<dt id="term-16"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">||</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">The result is true if &#8216;expr1&#8217; or &#8216;expr2&#8217; is true. &#8216;expr2&#8217; is not evaluated if &#8216;expr1&#8217; was true.</p>
+</dd>
+<dt id="term-17"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&amp;&amp;</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">The result is true i &#8216;expr1&#8217; and &#8216;expr2&#8217; is true. &#8216;expr2&#8217; is not evaluated if &#8216;expr1&#8217; was false.</p>
+</dd>
+<dt id="term-18"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">|</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first">The result is the bitwise or of &#8216;expr1&#8217; and &#8216;expr2&#8217;.</p>
+<p class="last">For arrays, the union set is computed: all elements from &lt;expr1&gt; plus all those from &lt;expr2&gt; which are not in &lt;expr1&gt;.</p>
+</dd>
+<dt id="term-19"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">^</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first">The result is the bitwise xor of &#8216;expr1&#8217; and &#8216;expr2&#8217;.</p>
+<p class="last">For arrays, the symmetric difference is computed: all elements from &lt;expr1&gt; which are not in &lt;expr2&gt;, plus all those from &lt;expr2&gt; which are not in &lt;expr1&gt;.</p>
+</dd>
+<dt id="term-20"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&amp;</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first">The result is the bitwise and of &#8216;expr1&#8217; and &#8216;expr2&#8217;.</p>
+<p>For arrays and strings, the intersection set (all elements resp. characters from expr1 which which are also in the expr2) is computed.</p>
+<div class="warning admonition">
+<p class="first admonition-title">Warning</p>
+<p><code class="docutils literal"><span class="pre">&quot;aab&quot;</span> <span class="pre">&amp;</span> <span class="pre">&quot;a&quot;</span> <span class="pre">-&gt;</span> <span class="pre">&quot;aa&quot;</span></code> but <code class="docutils literal"><span class="pre">({</span> <span class="pre">'a','a','b'</span> <span class="pre">})</span> <span class="pre">&amp;</span> <span class="pre">({</span> <span class="pre">'a'</span> <span class="pre">})</span> <span class="pre">-&gt;</span> <span class="pre">({</span> <span class="pre">'a'</span> <span class="pre">})</span></code></p>
+<p class="last">Eventually the array behaviour will be changed to match the string behaviour, so you shouldn&#8217;t rely on the array behavior in the interim.</p>
+</div>
+<p>Intersecting an array with a mapping is equivalent to intersecting the array with the indices of the mapping: array &amp; mapping = array &amp; m_indices(mapping)</p>
+<p class="last">Mappings can be intersected with another mapping or an array. The resulting mapping holds all those entries from the first mapping, which are also mentioned in the second mapping (as index) resp. in the array.</p>
+</dd>
+<dt id="term-21"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">==</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">Compare values. Valid for strings, numbers, objects and closures.</p>
+</dd>
+<dt id="term-expr1-expr1"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">!=</span> <span class="pre">expr1</span></code></dt>
+<dd><p class="first last">Compare values. Valid for strings, numbers, objects and closures.</p>
+</dd>
+<dt id="term-23"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&gt;</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">Valid for strings and numbers.</p>
+</dd>
+<dt id="term-24"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&gt;=</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">Valid for strings and numbers.</p>
+</dd>
+<dt id="term-25"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&lt;</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">Valid for strings and numbers.</p>
+</dd>
+<dt id="term-26"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&lt;=</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">Valid for strings and numbers.</p>
+</dd>
+<dt id="term-27"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&lt;&lt;</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">Shift &#8216;expr1&#8217; left by &#8216;expr2&#8217; bits; the sign bit is not preserved.</p>
+</dd>
+<dt id="term-28"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&gt;&gt;</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">Shift &#8216;expr1&#8217; right by &#8216;expr2&#8217; bits. This shift preserves the sign of &#8216;expr1&#8217;.</p>
+</dd>
+<dt id="term-29"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">Shift &#8216;expr1&#8217; right by &#8216;expr2&#8217; bits. This shift does not preserve the sign of &#8216;expr1&#8217;, instead it shifts in 0 bits.</p>
+</dd>
+<dt id="term-30"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">+</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">Add &#8216;expr1&#8217; and &#8216;expr2&#8217;. If numbers, then arithmetic addition is used. If one of the expressions are a string, then that string is concatenated with the other value. If the expressions are arrays, the result is the right array appended to the left. If the expressions are mappings of equal width, the result is merger of the two mappings. If one key exists in both mappings, the element from the right mapping appears in the result. If the two mappings are of different width, the result is &lt;expr1&gt; if non-empty, and &lt;expr2&gt; otherwise.</p>
+</dd>
+<dt id="term-31"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">-</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">Subtract &#8216;expr2&#8217; from &#8216;expr1&#8217;. Valid for numbers, strings, arrays, mappings. For arrays and strings, all occurences of the elements resp. characters in &#8216;expr2&#8217; are removed from &#8216;expr1&#8217;, and the result is returned. For mapping, all occurances of elemens in &#8216;expr1&#8217; which have a matching key in &#8216;expr2&#8217; are removed, and the result is returned.</p>
+</dd>
+<dt id="term-32"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">*</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">Multiply &#8216;expr1&#8217; with &#8216;expr2&#8217;. If strings or arrays are multiplied with a number (zero or positive), the result is a repetition of the original string or array.</p>
+</dd>
+<dt id="term-33"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">%</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">The modulo operator of numeric arguments.</p>
+</dd>
+<dt id="term-34"><code class="docutils literal"><span class="pre">expr1</span> <span class="pre">/</span> <span class="pre">expr2</span></code></dt>
+<dd><p class="first last">Integer division.</p>
+</dd>
+<dt id="term-var"><code class="docutils literal"><span class="pre">++</span> <span class="pre">var</span></code></dt>
+<dd><p class="first last">Increment the value of variable &#8216;var&#8217;, and return the new value.</p>
+</dd>
+<dt id="term-36"><code class="docutils literal"><span class="pre">--</span> <span class="pre">var</span></code></dt>
+<dd><p class="first last">Decrement the value of variable &#8216;var&#8217;, and return the new value.</p>
+</dd>
+<dt id="term-37"><code class="docutils literal"><span class="pre">-</span> <span class="pre">var</span></code></dt>
+<dd><p class="first last">Compute the negative value of &#8216;var&#8217;.</p>
+</dd>
+<dt id="term-38"><code class="docutils literal"><span class="pre">!</span> <span class="pre">var</span></code></dt>
+<dd><p class="first last">Compute the logical &#8216;not&#8217; of an integer.</p>
+</dd>
+<dt id="term-39"><code class="docutils literal"><span class="pre">~</span> <span class="pre">var</span></code></dt>
+<dd><p class="first last">The boolean &#8216;not&#8217; of an integer.</p>
+</dd>
+<dt id="term-type-var"><code class="docutils literal"><span class="pre">(</span> <span class="pre">type</span> <span class="pre">)</span> <span class="pre">var</span></code></dt>
+<dd><p class="first">Return the value of &lt;var&gt; converted to &lt;type&gt;. &lt;type&gt; can be &#8216;string&#8217;, &#8216;int&#8217;, &#8216;object&#8217;, &#8216;float&#8217; or &#8216;int*&#8217;. &lt;var&gt; must be of a specific type for a conversion to take place; if &lt;var&gt; is &#8216;mixed&#8217; or unknown, the cast is purely declarative. Also, if the declared type of &lt;var&gt; is that of &lt;type&gt;, the value is not changed.</p>
+<p>NB. The literal number 0 is of unknown type, as it doubles as &#8216;not initialized&#8217; for strings, objects, and arrays.</p>
+<p class="last">The operator acts like the efuns to_string(), to_int(), to_object(), to_float() and to_array(). It is advisable to use the efuns directly instead of the cast.</p>
+</dd>
+<dt id="term-41"><code class="docutils literal"><span class="pre">({</span> <span class="pre">type</span> <span class="pre">})</span> <span class="pre">var</span></code></dt>
+<dd><p class="first last">&lt;var&gt; is now assumed to have the type &lt;type&gt;. This is purely declarative, the actual value of &lt;var&gt; is not changed.</p>
+</dd>
+<dt id="term-42"><code class="docutils literal"><span class="pre">var</span> <span class="pre">++</span></code></dt>
+<dd><p class="first last">Increment the value of variable &#8216;var&#8217;, and return the old value.</p>
+</dd>
+<dt id="term-43"><code class="docutils literal"><span class="pre">var</span> <span class="pre">--</span></code></dt>
+<dd><p class="first last">Decrement the value of variable &#8216;var&#8217;, and return the old value.</p>
+</dd>
+<dt id="term-44"><code class="docutils literal"><span class="pre">expr1[expr2]</span></code></dt>
+<dd><p class="first last">The array or mapping given by &#8216;expr1&#8217; is indexed by &#8216;expr2&#8217;.</p>
+</dd>
+<dt id="term-expr1-expr2-expr3"><code class="docutils literal"><span class="pre">expr1[expr2..expr3]</span></code></dt>
+<dd><p class="first last">Extracts a piece from an array or string. expr2 or expr3 may be omitted, default is the begin or end of expr1. Negative numbers for expr2 or expr3 mean <code class="docutils literal"><span class="pre">count</span> <span class="pre">from</span> <span class="pre">before</span> <span class="pre">the</span> <span class="pre">beginning</span></code>, i.e. foo[-2..-1] is an empty array or string. foo[&lt;2..&lt;1] gives the 2nd and last element of the array resp. chars of the string.</p>
+</dd>
+<dt id="term-expr1-name"><code class="docutils literal"><span class="pre">expr1-&gt;name(...)</span></code></dt>
+<dd><p class="first last">The symbolic form of call_other(). &#8216;expr1&#8217; gives either an object or a string which is used as the file_name of an object, and calls the function &#8216;name&#8217; in this object.</p>
+</dd>
+<dt id="term-ident-name"><code class="docutils literal"><span class="pre">ident::name(...)</span></code></dt>
+<dd><p class="first last">Call the inherited function &#8216;name&#8217; with the given parameters in the parent &#8216;ident&#8217;. &#8216;ident&#8217; may be given as string containing the full pathname, or as identifier containing the pure basename. If &#8216;ident&#8217; is omitted, the last inherited function of this &#8216;name&#8217; is called.</p>
+</dd>
+<dt id="term"><code class="docutils literal"><span class="pre">({</span> <span class="pre">})</span></code></dt>
+<dd><p class="first last">Array constructor.</p>
+</dd>
+<dt id="term-49"><code class="docutils literal"><span class="pre">([</span> <span class="pre">])</span></code></dt>
+<dd><p class="first last">Mapping constructor.</p>
+</dd>
+</dl>
+</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="lpc.html">LPC</a></li>
 </ul>
 
 
@@ -278,10 +372,6 @@ LDMud 3.3 extended &#8216;|&#8217; and &#8216;^&#8217; to arrays.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/LPC/operators.txt"

@@ -1,5 +1,8 @@
 .. lang:: while
-  while (expr) statement;
+
+  .. keyword:: while
+
+  .. syntax:: while (expr) statement;
 
   While 'expr' evaluates to non 0, execute statement.
 

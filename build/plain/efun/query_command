@@ -10,22 +10,22 @@ DESCRIPTION
    after stripping trailing spaces.
 
    query_command() returns 0 when invoked by a function which was started by a
-   call_out or the heart beat.  Also when a user logs in query_command()
+   call_out or the heart beat.  Also when a user logs in query_command() 
    returns 0.
 
-USAGE
-=====
-   void init() {
-      ... add_action("sing","sing"); ...
+   USAGE
+   =====
+      void init() {
+         ... add_action("sing","sing"); ...
 
-   } int sing(string str) {
+      } int sing(string str) {
 
-      write("Your command was:"+query_command()+"n"); return 1;
+         write("Your command was:"+query_command()+"n"); return 1;
 
-   }
+      }
 
-   When ever you type "sing ..." you get "Your command was: sing ...".
+      When ever you type "sing ..." you get "Your command was: sing ...".
 
 SEE ALSO
 ========
-   add_action(E), query_verb(E)
+   add_action()(E), query_verb()(E)

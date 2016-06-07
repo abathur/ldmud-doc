@@ -4,10 +4,10 @@ SYNOPSIS (OPTIONAL)
 
 DESCRIPTION
 ===========
-   This efun must be called inside an interactive player and stops the
+   This efun must be called inside an interactive player and stops the 
    compression of the driver -> client traffic.
 
    Returns non-zero on success, and zero on a failure.
 
-   Available only if the driver is compiled with MCCP enabled; __MCCP__
-   isdefined in that case.
+   Available only if the driver is compiled with MCCP enabled; __MCCP__ is 
+   defined in that case.

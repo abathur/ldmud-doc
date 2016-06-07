@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>trim &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::trim() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,49 +24,54 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="efun" href="efun.html" />
+    <link rel="next" title="efun::typeof()" href="typeof.html" />
+    <link rel="prev" title="efun::transpose_array()" href="transpose_array.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="trim">
+  <div class="section">
 <div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="efun" style="border-spacing:0;">
+<span id="trim"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;strings.h&gt;</tr>
 <tr id="lpc.trim">
 <td>
-string </td><td>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
 <code class="descname">trim</code></td><td><span class="sig-paren">(</span></td><td>
-string<em>&nbsp;s</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.trim" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;s</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.trim" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-string </td><td>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
 <code class="descname">trim</code></td><td><span class="sig-paren">(</span></td><td>
-string<em>&nbsp;s</em>, </td><td>
-int<em>&nbsp;where</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;s</em>, </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;where</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-string </td><td>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
 <code class="descname">trim</code></td><td><span class="sig-paren">(</span></td><td>
-string<em>&nbsp;s</em>, </td><td>
-int<em>&nbsp;where</em>, </td><td>
-int<em>&nbsp;ch</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;s</em>, </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;where</em>, </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;ch</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-string </td><td>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
 <code class="descname">trim</code></td><td><span class="sig-paren">(</span></td><td>
-string<em>&nbsp;s</em>, </td><td>
-int<em>&nbsp;where</em>, </td><td>
-string<em>&nbsp;ch</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;s</em>, </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;where</em>, </td><td>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;ch</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -79,11 +84,13 @@ If &lt;ch&gt; is not given, it defaults to the whitespace &#8221; t&#8221;.</p>
 <div>TRIM_LEFT  (1):      remove the leading characters
 TRIM_RIGHT (2):      remove the trailing characters
 TRIM_BOTH  (3 or 0): remove both leading and trailing characters</div></blockquote>
-<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">trim</span><span class="p">(</span><span class="s">&quot;   1234   &quot;</span><span class="p">)</span>                  <span class="o">--&gt;</span> <span class="s">&quot;1234&quot;</span>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">trim</span><span class="p">(</span><span class="s">&quot;   1234   &quot;</span><span class="p">)</span>                  <span class="o">--&gt;</span> <span class="s">&quot;1234&quot;</span>
 <span class="n">trim</span><span class="p">(</span><span class="s">&quot;   1234   &quot;</span><span class="p">,</span> <span class="n">TRIM_RIGHT</span><span class="p">)</span>      <span class="o">--&gt;</span> <span class="s">&quot;   1234&quot;</span>
 <span class="n">trim</span><span class="p">(</span><span class="s">&quot;   1234   &quot;</span><span class="p">,</span> <span class="n">TRIM_BOTH</span><span class="p">,</span> <span class="s">&quot; 1&quot;</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="s">&quot;234&quot;</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -102,22 +109,30 @@ TRIM_BOTH  (3 or 0): remove both leading and trailing characters</div></blockquo
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">trim</a><ul>
+<li><a class="reference internal" href="#">efun::trim()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -127,10 +142,6 @@ TRIM_BOTH  (3 or 0): remove both leading and trailing characters</div></blockquo
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/efun/trim.txt"

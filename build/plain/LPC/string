@@ -1,0 +1,68 @@
+TYPE
+====
+   string
+
+DESCRIPTION
+===========
+   Strings in lpc are true strings, not arrays of characters as in C (and not 
+   pointers to strings). Strings are mutable -- that is, the contents of a 
+   string can be modified as needed.
+
+   The text of a string is written between double-quotes ("). A string can 
+   written over several lines when the lineends are escaped (like a macro), 
+   however a better solution is to write one string per line and let the 
+   gamedriver concatenate them.
+
+   String text typically consists of literal characters, but escape-sequences 
+   can be used instead of characters:
+
+      Todo: see above
+
+   `\N`
+      the character code N in decimal
+
+   `\0xN`
+      the character code N in sedecimal
+
+   `\xN`
+      the character code N in sedecimal
+
+   `\0oN`
+      the character code N in octal
+
+   `\0bN`
+      the character code N in binary
+
+   `\a`
+      BEL (`0x07`)
+
+   `\b`
+      Backspace (`0x08`)
+
+   `\t`
+      Tab (`0x09`)
+
+   `\e`
+      Escape (`0x1b`)
+
+   `\n`
+      Newline (`0x0a`)
+
+   `\f`
+      Formfeed (`0x0c`)
+
+   `\r`
+      Carriage Return (`0x0d`)
+
+   `\<other character>`
+      the given character
+
+   Adjacent string literals are automatically concatenated by the driver when 
+   the LPC program is compiled. String literals joined with '+' are 
+   concatenated by the LPC compiler as well.
+
+   Todo: syntax section
+
+SEE ALSO
+========
+   types(LPC)

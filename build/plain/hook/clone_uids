@@ -5,18 +5,20 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Arguments:
-      - **value** (*closure*) -- mixed <closure>(object blueprint, string
+   Arguments: 
+      - value (closure(LPC)) -- mixed <closure>(object blueprint, string 
         objectname)
 
-   Mandatory hooks to determine the uid and euid of cloned objects. Hook
+   Mandatory hooks to determine the uid and euid of cloned objects. Hook 
    settings can be any closure.
 
-   When an object is cloned, the H_CLONE_UIDS hook is called with the
-   blueprint object as the first argument and the clone's designated name as
+   When an object is cloned, the H_CLONE_UIDS hook is called with the 
+   blueprint object as the first argument and the clone's designated name as 
    the second. The new object already exists, but has 0 uids.
 
-   For the result, the following possibilities exist (<num> is a non-zero
+   Todo: better markup for the literal blocks in this section
+
+   For the result, the following possibilities exist (<num> is a non-zero 
    number, <no-string> is anything but a string):
 
       "<uid>"                    -> uid = "<uid>", euid = "<uid>"
@@ -31,4 +33,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   *hooks*, *uids*, load_uids(H)
+   `hooks`, uids(C), load_uids(H)

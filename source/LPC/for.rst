@@ -1,16 +1,12 @@
 .. lang:: for
-  for(init; expr2; expr3) statement;
 
-  Execute <init> once. Then, while <expr2> returns a non-zero
-  value, execute <statement>. Every time <statement> has been
-  executed, or a 'continue' statement has been executed, execute
-  <expr3> before next loop.
+  .. keyword:: for
 
-  <init> is usually a series of one or more expressions (remember
-  that assignments are expressions, too), separated by commas.
-  Additionally it is also allowed to define new local variables
-  here and assign them an initial value. The scope of such variables
-  is the whole for statement.
+  .. syntax:: for(<init>; <expr2>; <expr3>) statement;
+
+  Execute <init> once. Then, while <expr2> returns a non-zero value, execute <statement>. Every time <statement> has been executed, or a 'continue' statement has been executed, execute <expr3> before next loop.
+
+  <init> is usually a series of one or more expressions (remember that assignments are expressions, too), separated by commas. Additionally it is also allowed to define new local variables here and assign them an initial value. The scope of such variables is the whole for statement.
 
   .. usage::
 
@@ -26,8 +22,6 @@
       for (int i; ...      : no value assigned
       for (int i += 4; ... : only plain assignments allowed
 
-    A 'break' in the 'statement' will terminate the loop. A
-    'continue' will continue the execution from the beginning of
-    the loop.
+    A 'break' in the 'statement' will terminate the loop. A 'continue' will continue the execution from the beginning of the loop.
 
   .. seealso:: :lang:`foreach`, :lang:`if`, do-while(LPC), :lang:`while`, :lang:`switch`

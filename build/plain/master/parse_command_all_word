@@ -4,15 +4,15 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Used by parse_command(). Return the word for "all" in the installation's
+   Used by parse_command(). Return the word for "all" in the installation's 
    native language.
 
-USAGE
-=====
-      string parse_command_all_word() {
-          return "all";
-      }
+   USAGE
+   =====
+         string parse_command_all_word() {
+             return "all";
+         }
 
 SEE ALSO
 ========
-   parse_command(E)
+   parse_command()(E)

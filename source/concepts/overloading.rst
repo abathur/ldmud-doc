@@ -1,25 +1,12 @@
 .. concept:: overloading
 
-  This concept is strongly connected with the concept of inheritance.
-  A function is called 'overloaded' if it is defined more than once
-  in an object. This can happen if the object inherits other objects
-  which have defined a function with the same name.
+  This concept is strongly connected with the concept of inheritance. A function is called 'overloaded' if it is defined more than once in an object. This can happen if the object inherits other objects which have defined a function with the same name.
 
-  Usually the overloading is wanted and intended by the inheriting
-  object to change the behaviour of the function it overloads.
-  To call the overloaded functions from the overloading object the
-  ::-operator is used.
+  Usually the overloading is wanted and intended by the inheriting object to change the behaviour of the function it overloads. To call the overloaded functions from the overloading object the ::-operator is used.
 
-  From outside the object only one of the functions can be called
-  via call_other() or the like; this will be the topmost of all
-  overloaded functions.
+  From outside the object only one of the functions can be called via :efun:`call_other` or the like; this will be the topmost of all overloaded functions.
 
-  Normally an overloading function is declared the same way as the
-  overloaded function, this means it has the same number and types
-  of arguments. If an object wants to change the behaviour of the
-  function in a way that it can get more arguments than the original
-  function, it has to use the modifier 'varargs' or a compiler error
-  will be raised.
+  Normally an overloading function is declared the same way as the overloaded function, this means it has the same number and types of arguments. If an object wants to change the behaviour of the function in a way that it can get more arguments than the original function, it has to use the modifier 'varargs' or a compiler error will be raised.
 
   .. usage::
 
@@ -42,7 +29,6 @@
         write("C");
       }
 
-    To call ``"players/alfe/c"->foo()`` will now result in the output of
-    ABC.
+    A call to ``"players/alfe/c"->foo()`` will now result in the output of ABC.
 
   .. seealso:: :lang:`modifiers`, :concept:`inheritance`, :lang:`functions`

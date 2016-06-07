@@ -1,16 +1,8 @@
 .. applied:: void catch_msg(mixed *|struct|mapping|object msg, object obj)
 
-  When say(), tell_room() or tell_object() are used with a
-  non-string as message, the value will be passed to catch_msg()
-  in all living objects that can hear it, instead of writing to
-  the user resp. sending to catch_tell(). This can be used to
-  implement communication protocols between livings. The second
-  argument denotes the object that has sent the message.
+  When :efun:`say`, :efun:`tell_room` or :efun:`tell_object` are used with a non-string as message, the value will be passed to :applied:`catch_msg` in all living objects that can hear it, instead of writing to the user resp. sending to :applied:`catch_tell`. This can be used to implement communication protocols between livings. The second argument denotes the object that has sent the message.
 
-  .. history
-  :history 3.2.11 changed: added tell_object() to the efuns calling this
-    lfun for symmetry reasons.
-  :history 3.3.686 changed: added the use of a mapping/struct/object as message
-    value.
+  :history 3.2.11 changed: added `tell_object()` to the efuns calling this lfun for symmetry reasons.
+  :history 3.3.686 changed: added the use of a mapping/struct/object as message value.
 
   .. seealso:: :efun:`say`, :efun:`tell_room`, :applied:`catch_tell`

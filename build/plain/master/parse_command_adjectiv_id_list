@@ -4,15 +4,15 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Used by parse_command(). Return an array of common adjectives in the
+   Used by parse_command(). Return an array of common adjectives in the 
    installation's native language.
 
-USAGE
-=====
-      string * parse_command_adjectiv_id_list() {
-          return ({ "iffish" });
-      }
+   USAGE
+   =====
+         string * parse_command_adjectiv_id_list() {
+             return ({ "iffish" });
+         }
 
 SEE ALSO
 ========
-   parse_command(E)
+   parse_command()(E)

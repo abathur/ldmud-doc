@@ -4,7 +4,7 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Query the mapping <map> for the entry for <key> and return all its values in
+Query the mapping <map> for the entry for <key> and return all its values in 
 one array.
 
 If <map> does not contain <key>, 0 is returned.
@@ -17,5 +17,5 @@ m_entry(m, 0) -> 0 m_entry(m, 1) -> ({ "foo", -1 })
 
 Introduced in LDMud 3.2.10.
 
-   See Also:
-      m_add(E), m_contains(E), *mappings*, member(E)
+   See Also: 
+      m_add()(E), m_contains()(E), mappings(LPC), member()(E)

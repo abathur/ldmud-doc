@@ -10,4 +10,4 @@
 .. history
   :history 3.3.344 introduced:
 
-.. seealso:: :efun:`structp`, :lang:`structs`
+  .. seealso:: :efun:`structp`, :lang:`structs`

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>H_NO_IPC_SLOT &mdash; LDMud UNRELEASED documentation</title>
+    <title>hook::H_NO_IPC_SLOT() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,22 +24,27 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="hook" href="hook.html" />
+    <link rel="next" title="hook::H_NOTIFY_FAIL()" href="notify_fail.html" />
+    <link rel="prev" title="hook::H_NOECHO()" href="no_echo.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="H_NO_IPC_SLOT">
+  <div class="section" id="lpc.no_ipc_slot">
 <div class="section" id="SYNOPSIS">
-<span id="lpc.no_ipc_slot"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="hook" style="border-spacing:0;">
+<span id="no_ipc_slot"></span><span id="H_NO_IPC_SLOT"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;sys/driver_hooks.h&gt;</tr>
 <tr id="lpc.H_NO_IPC_SLOT">
@@ -55,20 +60,19 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>value</strong> (<em>int</em>) &#8211; 0</li>
-<li><strong>value</strong> (<em>string</em>) &#8211; &lt;msg&gt;</li>
+<li><strong>value</strong> (<a class="reference internal" href="../LPC/int.html#lpc.int" title="int"><em>int</em></a>) &#8211; 0</li>
+<li><strong>value</strong> (<a class="reference internal" href="../LPC/string.html#lpc.string" title="string"><em>string</em></a>) &#8211; &lt;msg&gt;</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p>Optional hook specifying the message given to logins
-rejected due to space limitations (MAX_PLAYER).
-Hook setting has to be string.</p>
-<p>If set to 0, the default message &#8220;Lpmud is full. Come back
-later.&#8221; is issued.</p>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="hook.html#lpc.hooks" title="hooks"><span class="xref lpc lpc-concept">hooks</span></a></p>
+<p>Optional hook specifying the message given to logins rejected due to space limitations (MAX_PLAYER). Hook setting has to be string.</p>
+<p>If set to 0, the default message &#8220;Lpmud is full. Come back later.&#8221; is issued.</p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code></p>
+</div>
 </div>
 </div>
 
@@ -86,22 +90,30 @@ later.&#8221; is issued.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">H_NO_IPC_SLOT</a><ul>
+<li><a class="reference internal" href="#">hook::H_NO_IPC_SLOT()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -111,10 +123,6 @@ later.&#8221; is issued.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/hook/no_ipc_slot.txt"

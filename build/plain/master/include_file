@@ -15,8 +15,8 @@ DESCRIPTION
          The name given in the #include directive.
 
       compiled_file
-         The object file which is just compiled. (compat: name given
-         withoutleading "/")
+         The object file which is just compiled. (compat: name given without 
+         leading "/")
 
       sys_include
          TRUE for #include <> directives.
@@ -24,15 +24,15 @@ DESCRIPTION
    Result:
 
       `0`
-         use the normal include filename generation (""-includes are used
-         asthey are, <>-includes are handled according to H_INCLUDE_DIRS).
+         use the normal include filename generation (""-includes are used as 
+         they are, <>-includes are handled according to H_INCLUDE_DIRS).
 
       `<path>`
-         the full absolute pathname of the file to include, without
-         parentdirparts ("/../"). Leading slashes ("/") may be omitted.
+         the full absolute pathname of the file to include, without parentdir 
+         parts ("/../"). Leading slashes ("/") may be omitted.
 
       else
          The include directive is not legal.
 
-   If the function does not generate a valid pathname, the driver will nexttry
-   to resolve the include using the H_INCLUDE_DIRS hook.
+   If the function does not generate a valid pathname, the driver will next 
+   try to resolve the include using the H_INCLUDE_DIRS hook.

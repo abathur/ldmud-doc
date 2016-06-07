@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slow_shut_down &mdash; LDMud UNRELEASED documentation</title>
+    <title>master::slow_shut_down() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,27 +24,32 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="master" href="master.html" />
+    <link rel="next" title="master::stale_erq()" href="stale_erq.html" />
+    <link rel="prev" title="master::save_ed_setup()" href="save_ed_setup.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="slow_shut_down">
+  <div class="section">
 <div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="master" style="border-spacing:0;">
+<span id="slow_shut_down"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr id="lpc.slow_shut_down">
 <td>
-void </td><td>
+<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
 <code class="descname">slow_shut_down</code></td><td><span class="sig-paren">(</span></td><td>
-int<em>&nbsp;minutes</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.slow_shut_down" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;minutes</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.slow_shut_down" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -81,8 +86,10 @@ is initiated. If the garbage collection recycles enough memory
 (either true garbage or by the aid of the quota_demon) to
 reallocate the areas, all is fine, else the system shut down
 is invoked by a call to this function.</p>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="quota_demon.html#lpc.quota_demon" title="quota_demon"><code class="xref lpc lpc-master docutils literal"><span class="pre">quota_demon</span></code>(M)</a>, <a class="reference internal" href="notify_shutdown.html#lpc.notify_shutdown" title="notify_shutdown"><code class="xref lpc lpc-master docutils literal"><span class="pre">notify_shutdown</span></code>(M)</a>, <a class="reference internal" href="../efun/shutdown.html#lpc.shutdown" title="shutdown"><code class="xref lpc lpc-efun docutils literal"><span class="pre">shutdown</span></code>(E)</a>, <a class="reference internal" href="../driver/malloc.html#lpc.malloc" title="malloc"><code class="xref lpc lpc-driver docutils literal"><span class="pre">malloc</span></code></a>, <a class="reference internal" href="../concepts/memory.html#lpc.memory" title="memory"><span class="xref lpc lpc-concept">memory</span></a>, <a class="reference internal" href="low_memory.html#lpc.low_memory" title="low_memory"><code class="xref lpc lpc-master docutils literal"><span class="pre">low_memory</span></code>(M)</a></p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="quota_demon.html#lpc.quota_demon" title="quota_demon"><code class="xref lpc lpc-master docutils literal"><span class="pre">quota_demon</span></code>(M)</a>, <a class="reference internal" href="notify_shutdown.html#lpc.notify_shutdown" title="notify_shutdown"><code class="xref lpc lpc-master docutils literal"><span class="pre">notify_shutdown</span></code>(M)</a>, <a class="reference internal" href="../efun/shutdown.html#lpc.shutdown" title="shutdown"><code class="xref lpc lpc-efun docutils literal"><span class="pre">shutdown()</span></code>(E)</a>, <code class="xref lpc lpc-driver docutils literal"><span class="pre">malloc</span></code>, <a class="reference internal" href="../concepts/memory.html#lpc.memory" title="memory"><code class="xref lpc lpc-concept docutils literal"><span class="pre">memory</span></code>(C)</a>, <a class="reference internal" href="low_memory.html#lpc.low_memory" title="low_memory"><code class="xref lpc lpc-master docutils literal"><span class="pre">low_memory</span></code>(M)</a></p>
+</div>
 </div>
 </div>
 
@@ -100,22 +107,30 @@ is invoked by a call to this function.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">slow_shut_down</a><ul>
+<li><a class="reference internal" href="#">master::slow_shut_down()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -125,10 +140,6 @@ is invoked by a call to this function.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/master/slow_shut_down.txt"

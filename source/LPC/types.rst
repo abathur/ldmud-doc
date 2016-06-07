@@ -1,174 +1,47 @@
-.. concept:: types
+.. topic:: types
 
   Variables can have the following types:
 
-  .. todo:: all of these should link to manual pages, yeah?
+  :type:`int`
+    An integer.
 
-  int
-    An integer. Normally full 32 bits signed, yielding a
-    range of at least -2,147,483,648 to 2,147,483,647. The
-    exact available range is given by the predefined
-    macros __INT_MIN__ and __INT_MAX__.
+  :type:`string`
+    A text string.
 
-    Integer values can be specified in decimal, in
-    sedecimal when preceeded by '0x' (e.g. 0x11), binary
-    when preceeded by '0b' (e.g. 0b00010001), octal when
-    preceeded by '0o' (e.g. 0o21) and as character
-    yielding the charset value for the character as the number
-    to use (e.g. '0' yields 48 on ASCII machines).
+  :type:`status`
+    .. obsolete:: status was planned to be an optimized boolean format, but this was never actually implemented. status does work; however, since it is only an alias for type 'int', just use int.
 
-    Character values are enclosed in single-quotes ('),
-    with the sequence ''' returning the single-quote
-    itself. Instead of the literal character an
-    escape-sequence can be written between the
-    single-quotes:
+  :type:`object`
+    Pointer to an object. Objects are always passed by reference.
 
-    .. todo:: there are multiple things I hate about this: these definitions are roughly duplicating :concept:`escape` and it would instead be most-ideal to have a directive/role that could either link us to those defs or reproduce them locally, a definition list is a really airy/verbose markup element to use for such brief definitions, this list is duplicated *again* in the string section below; I'm roughly talking about having small topical glossaries that can be included or linked, I guess.
+  :lang:`arrays`
+    Pointer to a vector of values, which could also be an alist. Arrays take the form ({ n1, n2, n3 }) and may contain any type or a mix of types. Arrays are always passed by reference. Note that the size of arrays in LPC, unlike most programming languages, CAN be changed at run-time.
 
-    ``\N``
-      the character code N in decimal
+  :lang:`mappings`
+    An 'associative array' consisting of values indexed by keys. The indices can be any kind of datatype. Mappings take the form ([ key1: value1, key2: value2 ]). By default, mappings are passed by reference.
 
-    ``\0xN``
-      the character code N in sedecimal
+  :lang:`closures`
+    References to executable code, both to local functions, efuns and to functions compiled at run-time ("lambda closures").
 
-    ``\xN``
-      the character code N in sedecimal
+  :type:`symbol`
+    Identifier names, which in essence are quoted strings. They are used to compute lambda closures, e.g. instead of ({..., 'ident, ... }) you can write declare a 'symbol' variable foo, compute a value for it, and then create the closure as ({ ..., foo, ... })
 
-    ``\0oN``
-      the character code N in octal
+  :type:`float`
+    A floating-point number.
 
-    ``\0bN``
-      the character code N in binary
+  :type:`mixed`
+    A variable allowed to take a value of any type (int, string, object, array, mapping, float or closure).
 
-    ``\a``
-      BEL (``0x07``)
+  :type:`struct`
+    A collection of values. See :type:`struct`.
 
-    ``\b``
-      Backspace (``0x08``)
-
-    ``\t``
-      Tab (``0x09``)
-
-    ``\e``
-      Escape (``0x1b``)
-
-    ``\n``
-      Newline (``0x0a``)
-
-    ``\f``
-      Formfeed (``0x0c``)
-
-    ``\r``
-      Carriage Return (``0x0d``)
-
-    ``\<other character>``
-      the given character
-
-  status
-    OUTDATED - status was planned to be an optimized
-    boolean format, but this was never actually
-    implemented. status does work; however, since it
-    is only an alias for type 'int', just use int.
-
-  string
-    Strings in lpc are true strings, not arrays of characters
-    as in C (and not pointers to strings). Strings are
-    mutable -- that is, the contents of a string can be
-    modified as needed.
-
-    The text of a string is written between double-quotes
-    ("). A string can written over several lines when the
-    lineends are escaped (like a macro), however a better
-    solution is to write one string per line and let the
-    gamedriver concatenate them.
-
-    String text typically consists of literal characters,
-    but escape-sequences can be used instead of
-    characters:
-
-      .. todo:: see above
-
-      \<CR>     : Carriage Return (0x0d)
-      \<CR><LF> : ignored
-      \<LF>     : ignored
-      \<LF><CR> : ignored
-
-      \N   : the character code N in decimal
-      \0xN : the character code N in sedecimal
-      \xN  : the character code N in sedecimal
-      \0oN : the character code N in octal
-      \0bN : the character code N in binary
-      \a   : BEL (0x07)
-      \b   : Backspace (0x08)
-      \t   : Tab (0x09)
-      \e   : Escape (0x1b)
-      \n   : Newline (0x0a)
-      \f   : Formfeed (0x0c)
-      \r   : Carriage Return (0x0d)
-      \"   : The double quote (")
-      \<other character>: the given character
-
-    Adjacent string literals are automatically
-    concatenated by the driver when the LPC program is
-    compiled. String literals joined with '+' are
-    concatenated by the LPC compiler as well.
-
-  object
-    Pointer to an object. Objects are always passed by
-    reference.
-
-  array
-    Pointer to a vector of values, which could also
-    be an alist. Arrays take the form ({ n1, n2, n3 })
-    and may contain any type or a mix of types. Arrays
-    are always passed by reference. Note that the size
-    of arrays in LPC, unlike most programming languages,
-    CAN be changed at run-time.
-
-  mapping
-    An 'associative array' consisting of values indexed by
-    keys. The indices can be any kind of datatype.
-    Mappings take the form ([ key1: value1, key2: value2 ]).
-    By default, mappings are passed by reference.
-
-  closure
-    References to executable code, both to local
-    functions, efuns and to functions compiled at
-    run-time ("lambda closures").
-
-  symbol
-    Identifier names, which in essence are quoted strings.
-    They are used to compute lambda closures, e.g. instead
-    of ({..., 'ident, ... }) you can write declare a
-    'symbol' variable foo, compute a value for it, and then
-    create the closure as ({ ..., foo, ... })
-
-  float
-    A floating point number in the absolute range
-    __FLOAT_MIN__ to __FLOAT_MAX__ (typically 1e-38 to 1e+38).
-    Floating point numbers are signified by a '.'
-    appearing, e.g. '1' is integer 1, but '1.' is
-    floating-point 1 .
-
-  mixed
-    A variable allowed to take a value of any type (int,
-    string, object, array, mapping, float or closure).
-
-  struct
-    A collection of values. See :lang:`structs`.
-
-  union
-    A range of types, either of which the variable
-    can contain at runtime. See :lang:`unions`.
+  :concept:`unions`
+    A range of types, either of which the variable can contain at runtime. See :lang:`unions`.
 
   All uninitialized variables have the value 0.
 
-  The type of a variable is really only for documentation. Unless
-  you define #pragma strong_types or rtt_checks, variables can
-  actually be of any type and has no effect at all on the program.
-  However, it's extremely bad style to declare one type but use
-  another, so please try to avoid this.
+  The type of a variable is really only for documentation. Unless you define #pragma strong_types or rtt_checks, variables can actually be of any type and has no effect at all on the program. However, it's extremely bad style to declare one type but use another, so please try to avoid this.
 
-  A pointer to a destructed object will always have the value 0.
+  .. todo:: I think the above needs to shift in 3.5
 
-  .. seealso:: :lang:`alists`, :lang:`arrays`, :lang:`mappings`, :lang:`closures`, :lang:`structs`, :lang:`unions`, :efun:`typeof`, :efun:`get_type_info`, :lang:`inheritance`, :lang:`pragma`, :lang:`modifiers`, :lang:`escape`
+  .. seealso:: :lang:`arrays`, :lang:`mappings`, :lang:`closures`, :type:`struct`, :concept:`unions`, :efun:`typeof`, :efun:`get_type_info`, :concept:`inheritance`, :lang:`pragma`, :lang:`modifiers`, :lang:`escape`

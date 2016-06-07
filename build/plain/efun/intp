@@ -8,5 +8,5 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   clonep(E), closurep(E), floatp(E), mappingp(E), objectp(E), referencep(E),
-   pointerp(E), stringp(E), symbolp(E), structp(E)
+   clonep()(E), closurep()(E), floatp()(E), mappingp()(E), objectp()(E), 
+   referencep()(E), pointerp()(E), stringp()(E), symbolp()(E), structp()(E)

@@ -4,15 +4,15 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Used by parse_command(). Return an array of common prepositions in the
+   Used by parse_command(). Return an array of common prepositions in the 
    installation's native language.
 
-USAGE
-=====
-      string *parse_command_prepos_list() {
-          return ({ "in", "on", "under", "behind", "beside" });
-      }
+   USAGE
+   =====
+         string *parse_command_prepos_list() {
+             return ({ "in", "on", "under", "behind", "beside" });
+         }
 
 SEE ALSO
 ========
-   parse_command(E)
+   parse_command()(E)

@@ -1,4 +1,4 @@
-.. concept:: references
+.. lang:: references
 
   Call by reference can be used to have a function that passes
   more than one value to the caller, without using arrays that
@@ -17,25 +17,25 @@
     ::
 
       void assign(mixed destination, mixed source) {
-          destination = source;
+        destination = source;
       }
 
       void extract_number(int destination, string source) {
-          sscanf(source, "%d", destination);
+        sscanf(source, "%d", destination);
       }
 
       void test() {
-          int i;
-          float f;
-          mixed *a;
+        int i;
+        float f;
+        mixed *a;
 
-          extract_number(&i, "42 palantirs");
-          assign(&f, 3.141592653589793);
-          assign(&a, ({ i, f }));
-          assign(&(a[<0..<1]), ({1,2,3,"sink","x","y","x"}));
-          assign(&(a[5][0]), 'w');
-          assign(&(a[5][<1]), 'g');
-          printf("%O", a));
+        extract_number(&i, "42 palantirs");
+        assign(&f, 3.141592653589793);
+        assign(&a, ({ i, f }));
+        assign(&(a[<0..<1]), ({1,2,3,"sink","x","y","x"}));
+        assign(&(a[5][0]), 'w');
+        assign(&(a[5][<1]), 'g');
+        printf("%O", a));
       }
 
       ({ /* sizeof() == 9 */

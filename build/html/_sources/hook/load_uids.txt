@@ -2,22 +2,19 @@
 
   :arg closure value: mixed <closure> (string objectname)
 
-  Mandatory hooks to determine the uid and euid of loaded or
-  cloned objects. Hook settings can be any closure.
+  Mandatory hooks to determine the uid and euid of loaded or cloned objects. Hook settings can be any closure.
 
-  When an object is newly loaded, the H_LOAD_UIDS hook is called
-  with the object name as argument. The new object already
-  exists, but has 0 uids.
+  When an object is newly loaded, the H_LOAD_UIDS hook is called with the object name as argument. The new object already exists, but has 0 uids.
 
-  For the result, the following possibilities exist (<num> is
-  a non-zero number, <no-string> is anything but a string)::
+  .. todo:: better markup structures to replace the literal blocks in this document
+
+  For the result, the following possibilities exist (<num> is a non-zero number, <no-string> is anything but a string)::
 
     "<uid>"                    -> uid = "<uid>", euid = "<uid>"
     ({ "<uid>", "<euid>" })    -> uid = "<uid>", euid = "<euid>"
     ({ "<uid>", <no-string> }) -> uid = "<uid>", euid = 0
 
-  If strict-euids is not active, the following results are
-  possible, too::
+  If strict-euids is not active, the following results are possible, too::
 
     <num>                      -> uid = 0, euid = 0
     ({ <num>, "<euid>" })      -> uid = 0, euid = "<euid>"

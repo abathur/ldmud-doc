@@ -2,12 +2,14 @@
 
   Return all adjectives associated with this object.
 
-  Used by parse_command().
+  Used by :efun:`parse_command`.
 
   .. usage::
 
-    string * parse_command_adjectiv_id_list() {
-        return ({ "iffish" });
-    }
+    To return an array containing a single adjective::
+
+      string * parse_command_adjectiv_id_list() {
+          return ({ "iffish" });
+      }
 
   .. seealso:: :efun:`parse_command`

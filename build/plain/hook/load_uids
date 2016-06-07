@@ -5,16 +5,19 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Arguments:
-      - **value** (*closure*) -- mixed <closure> (string objectname)
+   Arguments: 
+      - value (closure(LPC)) -- mixed <closure> (string objectname)
 
-   Mandatory hooks to determine the uid and euid of loaded or cloned objects.
+   Mandatory hooks to determine the uid and euid of loaded or cloned objects. 
    Hook settings can be any closure.
 
-   When an object is newly loaded, the H_LOAD_UIDS hook is called with the
+   When an object is newly loaded, the H_LOAD_UIDS hook is called with the 
    object name as argument. The new object already exists, but has 0 uids.
 
-   For the result, the following possibilities exist (<num> is a non-zero
+   Todo: better markup structures to replace the literal blocks in this 
+   document
+
+   For the result, the following possibilities exist (<num> is a non-zero 
    number, <no-string> is anything but a string):
 
       "<uid>"                    -> uid = "<uid>", euid = "<uid>"
@@ -29,4 +32,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   *hooks*, *uids*, clone_uids(H)
+   `hooks`, uids(C), clone_uids(H)

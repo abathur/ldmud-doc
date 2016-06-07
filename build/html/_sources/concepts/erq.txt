@@ -2,53 +2,27 @@
   :synopsis: External Request Demon
   :topic: driver
 
-  Up to version 3.2.1@61, LPMud utilized two external programs
-  in an ad-hoc manner to solve problems: the 'hname' program to
-  resolve IP addresses into meaningful hostnames, and the
-  'indent' program to properly indent LPC files. In version
-  3.2.1@61 both functions were united in a generalized 'erq'
-  process, to which additional functions may be attached.
-  Unfortunately it was never documented by Amylaar, so the
-  information presented here had to be reverse engineered
-  from the sources - better take it with a grain of salt.
+  Up to version 3.2.1@61, LPMud utilized two external programs in an ad-hoc manner to solve problems: the 'hname' program to resolve IP addresses into meaningful hostnames, and the 'indent' program to properly indent LPC files. In version 3.2.1@61 both functions were united in a generalized 'erq' process, to which additional functions may be attached. Unfortunately it was never documented by Amylaar, so the information presented here had to be reverse engineered from the sources - better take it with a grain of salt.
 
-  The erq feature is available if the driver is compiled with
-  ERQ_DEMON defined (in config.h).
+  The erq feature is available if the driver is compiled with ERQ_DEMON defined (in config.h).
 
-  When the driver starts up, it tries to fork off the program
-  'BINDIR/erq --forked <other args>' (with BINDIR defined in
-  the Makefile). If this succeeds, the erq may talk with
-  the driver through stdin and stdout (piped through AF_UNIX
-  sockets). The erq has to signal its successfull start by
-  writing the character '1' back to the driver.
+  When the driver starts up, it tries to fork off the program 'BINDIR/erq --forked <other args>' (with BINDIR defined in the Makefile). If this succeeds, the erq may talk with the driver through stdin and stdout (piped through AF_UNIX sockets). The erq has to signal its successfull start by writing the character '1' back to the driver.
 
   The erq has to understand these commandline arguments:
 
-    --forked: explained above
-    --execdir <dir>: The directory where the callable executables
-              can be found. If not specified, ERQ_DIR is used.
-              <dir> must not end in a '/' and should be absolute.
+  .. option:: --forked
 
-  At runtime, the erq may be changed/removed from within the
-  mudlib using the efun attach_erq_demon(). This efun is given
-  an interactive object as argument, and takes the connection
-  away(!) from this object and stores it as the erq connection
-  to use (an old erq connection is closed first). The object
-  (which is now no longer is interactive) is then no longer
-  needed, but may continue to exist. The erq attached this way
-  of course has to use the sockets it opened to communicate
-  with the driver.
+    explained above
 
-  Most of the communication between erq and driver is going to
-  be initiated by the driver (the erq has to look up the
-  hostnames for given IP addresses), but using the efun
-  send_erq() the mudlib may talk with the erq as well.
+  .. option:: --execdir <dir>
 
-  The communication between driver and erq is done using
-  messages of specified structures and constants (defined in
-  util/erq.h resp. sys/erq.h). The 'int32's are signed integers
-  of four byte length, and are sent with the MSByte first.
-  Every message must be sent atomically!
+    The directory where the callable executables can be found. If not specified, ERQ_DIR is used. <dir> must not end in a '/' and should be absolute.
+
+  At runtime, the erq may be changed/removed from within the mudlib using the efun attach_erq_demon(). This efun is given an interactive object as argument, and takes the connection away(!) from this object and stores it as the erq connection to use (an old erq connection is closed first). The object (which is now no longer is interactive) is then no longer needed, but may continue to exist. The erq attached this way of course has to use the sockets it opened to communicate with the driver.
+
+  Most of the communication between erq and driver is going to be initiated by the driver (the erq has to look up the hostnames for given IP addresses), but using the efun send_erq() the mudlib may talk with the erq as well.
+
+  The communication between driver and erq is done using messages of specified structures and constants (defined in util/erq.h resp. sys/erq.h). The 'int32's are signed integers of four byte length, and are sent with the MSByte first. Every message must be sent atomically!
 
   The head of the messages is always the same::
 
@@ -57,11 +31,7 @@
       int32  handle;  /* Identification number */
     }
 
-  The 'handle' number is set by the driver (do not make
-  assumptions about its value) and is used to associated the erq
-  responses with the pending requests. This way the erq is free
-  to respond in an order different to those of the incoming
-  requests.
+  The 'handle' number is set by the driver (do not make assumptions about its value) and is used to associated the erq responses with the pending requests. This way the erq is free to respond in an order different to those of the incoming requests.
 
   The messages send to the erq follow this symbolic format::
 
@@ -72,12 +42,9 @@
       char   data[0];
     }
 
-  The 'request' denotes which service is requested from the erq,
-  the size and content of 'data' depends on the requested
-  service.
+  The 'request' denotes which service is requested from the erq, the size and content of 'data' depends on the requested service.
 
-  The answer message from the erq to the driver (if there is one
-  at all) may have two forms::
+  The answer message from the erq to the driver (if there is one at all) may have two forms::
 
     struct from_erq_msg {
       int32  msglen;
@@ -92,49 +59,19 @@
       char         data[0];
     }
 
-  The replied data from the erq is stored in 'data', which size
-  and content depends on the request answered. The answer is
-  identified by 'header.handle'. Normally, one request results
-  in just one response sent by the erq using struct from_erq_msg,
-  so the handle is recycled after this response.
+  The replied data from the erq is stored in 'data', which size and content depends on the request answered. The answer is identified by 'header.handle'. Normally, one request results in just one response sent by the erq using struct from_erq_msg, so the handle is recycled after this response.
 
-  Shall the erq send several responses (or break one response
-  into several parts), the struct from_erq_keep_msg has to be
-  used for all but the last response - this message with its
-  included special handle keeps the real handle alive.
+  Shall the erq send several responses (or break one response into several parts), the struct from_erq_keep_msg has to be used for all but the last response - this message with its included special handle keeps the real handle alive.
 
+  Mudlib generated erq-calls specify the 'request' and the 'data' to be sent, and receive the 'data' replied. When dealing with spawned programs, the first byte of the returned 'data' determines the content type of the received message. The actual 'data' which the lpc programs get to see is sent and retrieved as arrays of byte integers (integers in the range of 0..255).
 
-  Mudlib generated erq-calls specify the 'request' and the
-  'data' to be sent, and receive the 'data' replied. When
-  dealing with spawned programs, the first byte of the returned
-  'data' determines the content type of the received message.
-  The actual 'data' which the lpc programs get to see is sent
-  and retrieved as arrays of byte integers (integers in the
-  range of 0..255).
+  The actual interface between erq demon and driver is limited to the general message formats and the hostname lookup mechanism. The driver is meant to withstand erq demon failures at least in a garbage-in garbage-out fashion. You could add new requests to the erq demon, or write your own from scratch, without changing the driver.
 
+  Currently five services are predefined in the supplied erq-demon (util/erq.c in the driver source archive): looking up a hostname, execution, forking or spawning an external program, authentification of a connection, and handling of external UDP/TCP connections. As mentioned above, only the hostname-lookup is a true must.
 
-  The actual interface between erq demon and driver is limited
-  to the general message formats and the hostname lookup
-  mechanism. The driver is meant to withstand erq demon failures
-  at least in a garbage-in garbage-out fashion. You could add
-  new requests to the erq demon, or write your own from scratch,
-  without changing the driver.
+  For a program to be executable for erq, it must be placed in or below ERQ_DIR (defined in config.h). On most unix systems, it is possible to use a symlink instead of the whole program if you want a standard binary. You could even symlink entire directories like /usr/sbin, but chances are you make a big security hole this way :-)
 
-
-  Currently five services are predefined in the supplied
-  erq-demon (util/erq.c in the driver source archive): looking
-  up a hostname, execution, forking or spawning an external
-  program, authentification of a connection, and handling of
-  external UDP/TCP connections. As mentioned above, only the
-  hostname-lookup is a true must.
-
-  For a program to be executable for erq, it must be placed in
-  or below ERQ_DIR (defined in config.h). On most unix systems,
-  it is possible to use a symlink instead of the whole program
-  if you want a standard binary. You could even symlink entire
-  directories like /usr/sbin, but chances are you make a big
-  security hole this way :-)
-
+  .. todo:: need a good way to document these ERQ options. Whatever I ultimately name our 'glossary' directive might be useful... return to this later.
 
   Hostname lookup:
 
@@ -143,8 +80,7 @@
     :data recv: struct in_addr.s_addr addr // the resolved address
                char[]                name // the hostname (if any)
 
-    If the sent address can't be resolved, just the address is
-    to be returned. The string need not be 0-terminated.
+    If the sent address can't be resolved, just the address is to be returned. The string need not be 0-terminated.
 
 
   Hostname lookup:
@@ -153,65 +89,53 @@
     :data sent: char[]                name // the name to resolve
     :data recv: struct in_addr.s_addr addr // the resolved address
 
-    If the sent address can't be resolved, no data is returned (the
-    driver will get a message with just the header).
+    If the sent address can't be resolved, no data is returned (the driver will get a message with just the header).
 
 
   Hostname lookup - IPv6:
 
-    :request  : ERQ_RLOOKUPV6
+    :request: ERQ_RLOOKUPV6
     :data sent: char[] addr  // the address to resolve
     :data recv: char[] data  // the resolved name
 
-    If the address could be resolved, the returned data is a string,
-    with exactly one space, in the form "<addr> <name>". <addr> is
-    the address passed to the erq, <name> is the hostname of the
-    address or, if there is no reverse-IPv6 entry for <addr>, the
-    IPv6 address which may or may not be different from <addr>.
+    If the address could be resolved, the returned data is a string, with exactly one space, in the form "<addr> <name>". <addr> is the address passed to the erq, <name> is the hostname of the address or, if there is no reverse-IPv6 entry for <addr>, the IPv6 address which may or may not be different from <addr>.
 
-    If the address can not be resolved, the returned data is
-    an error message without a space (currently, just "invalid-format"
-    and "out-of-memory" are returned).
+    If the address can not be resolved, the returned data is an error message without a space (currently, just "invalid-format" and "out-of-memory" are returned).
 
 
   Execute/Fork program:
 
-    :request  : ERQ_EXECUTE/ERQ_FORK
+    :request: ERQ_EXECUTE/ERQ_FORK
     :data sent: char[] command  // the command to execute
-    :data recv: char   status = CHILD_FREE
-                char   rc       // the success/error code
-                char   info     // additional information
+    :data recv:
+      ::
 
-    The erq executes the sent command using the execv().
-    The erq does the processing of the command line arguments
-    (which must not contain '\') and checks the validity of the
-    command (it must not start with '/' nor contain '..'), which
-    is interpreted relative to ERQ_DIR.
-    The external program is executed from a fork()ed instance of
-    the erq, however, with ERQ_EXECUTE the erq waits until the
-    external program finished before replying its response, with
-    ERQ_FORK the response is immediately sent back.
+        char   status = CHILD_FREE
+        char   rc       // the success/error code
+        char   info     // additional information
+
+    The erq executes the sent command using the execv(). The erq does the processing of the command line arguments (which must not contain '\') and checks the validity of the command (it must not start with '/' nor contain '..'), which is interpreted relative to ERQ_DIR. The external program is executed from a fork()ed instance of the erq, however, with ERQ_EXECUTE the erq waits until the external program finished before replying its response, with ERQ_FORK the response is immediately sent back.
 
     Possible return codes are:
-      ERQ_OK         : Operation succeeded.
-      ERQ_E_ARGLENGTH: Too long command.
-      ERQ_E_ARGFORMAT: Illegal argument given (contains '\');
-      ERQ_E_ARGNUMBER: Too much arguments (>= 96).
-      ERQ_E_ILLEGAL  : Command from outside ERQ_DIR requested.
-      ERQ_E_PATHLEN  : Commandpath too long.
-      ERQ_E_FORKFAIL : Command could not be forked;
-                       info holds the errno value.
+      :ERQ_OK: Operation succeeded.
+      :ERQ_E_ARGLENGTH: Too long command.
+      :ERQ_E_ARGFORMAT: Illegal argument given (contains '\');
+      :ERQ_E_ARGNUMBER: Too much arguments (>= 96).
+      :ERQ_E_ILLEGAL: Command from outside ERQ_DIR requested.
+      :ERQ_E_PATHLEN: Commandpath too long.
+      :ERQ_E_FORKFAIL: Command could not be forked; info holds the errno value.
 
     ERQ_EXECUTE features some more return codes:
-      ERQ_OK         : Operation succeeded, <info> holds the exit status.
-      ERQ_SIGNALED   : Command terminated the signal <info>.
-      ERQ_E_NOTFOUND : No process found to wait() for.
-      ERQ_E_UNKNOWN  : Unknown exit condition from wait().
+
+      :ERQ_OK: Operation succeeded, <info> holds the exit status.
+      :ERQ_SIGNALED: Command terminated the signal <info>.
+      :ERQ_E_NOTFOUND: No process found to wait() for.
+      :ERQ_E_UNKNOWN: Unknown exit condition from wait().
 
 
   Spawn program:
 
-    :request  : ERQ_SPAWN
+    :request: ERQ_SPAWN
     :data sent: char[] command  // the command to execute
     :data recv: Spawn failed:
                 char   rc       // the error code (see ERQ_FORK)
@@ -220,21 +144,12 @@
                 char   rc = ERQ_OK
                 char[] ticket        // the spawn ticket.
 
-    The erq executes the sent command as if given an ERQ_FORK
-    command, but returns additional information about the
-    started process to allow further communication.
-    In contrast to ERQ_FORK, ERQ_SPAWNED processes may be
-    controlled via ERQ_KILL, receive data from the mud via
-    ERQ_SEND on their stdin, and output from their stdout/stderr
-    is sent back to the mud.
-    The spawned process is identified by its <ticket> (don't
-    make any assumptions about its length or content), the transaction
-    itself by <handle>.
+    The erq executes the sent command as if given an ERQ_FORK command, but returns additional information about the started process to allow further communication. In contrast to ERQ_FORK, ERQ_SPAWNED processes may be controlled via ERQ_KILL, receive data from the mud via ERQ_SEND on their stdin, and output from their stdout/stderr is sent back to the mud. The spawned process is identified by its <ticket> (don't make any assumptions about its length or content), the transaction itself by <handle>.
 
 
   Send data to spawned program:
 
-    request  : ERQ_SEND
+    request: ERQ_SEND
     data sent: char[]  ticket // the addressed process ticket.
                char[]  text   // the text to send.
     data recv: char    rc     // the success/error code.
@@ -258,13 +173,12 @@
       ERQ_E_UNKNOWN   : The error with code <info> happened
                         while sending the data.
 
-   Amylaar-erq doesn't try to re-send the remaining data after
-   a ERQ_E_INCOMPLETE, so there will never be an ERQ_OK.
+   Amylaar-erq doesn't try to re-send the remaining data after a ERQ_E_INCOMPLETE, so there will never be an ERQ_OK.
 
 
   Send a signal to a spawned program:
 
-    request  : ERQ_KILL
+    request: ERQ_KILL
     data sent: char[]  ticket // the addressed process ticket
                int32   signal // the signal to send
     data recv: char    rc     // the success/error code
@@ -282,9 +196,7 @@
     data recv: char   out_or_err  // type of text output
                char[] text        // text output by child process
 
-    The child process controlled by the erq did output <text>
-    on stdout (<out_or_err> == ERQ_STDOUT) resp. on stderr
-    (<out_or_err> == ERQ_STDERR).
+    The child process controlled by the erq did output <text> on stdout (<out_or_err> == ERQ_STDOUT) resp. on stderr (<out_or_err> == ERQ_STDERR).
 
 
   Exit notifications from spawned programs:
@@ -293,6 +205,7 @@
                char   info        // additional information.
 
     The child process controlled by the erq did terminate.
+
     Possible exit codes are:
       ERQ_EXITED    : Process exited with status <info>.
       ERQ_SIGNALED  : Process terminated by signal <info>.
@@ -311,17 +224,11 @@
 
     data recv: char[]             reply  // the data received by authd
 
-    The erq attempts to connect the authd on the remote system
-    and to verify the connection between the remote port and the
-    mud port. The latter will normally be the port number of the
-    socket on besides of the gamedriver, retrievable by
-    query_ip_number().
+    The erq attempts to connect the authd on the remote system and to verify the connection between the remote port and the mud port. The latter will normally be the port number of the socket on besides of the gamedriver, retrievable by query_ip_number().
 
-    The answer from the authd (one line of text) if there is any
-    is returned as result.
+    The answer from the authd (one line of text) if there is any is returned as result.
 
-    The second form of the ERQ_AUTH command is recognized by
-    the xerq as alternative.
+    The second form of the ERQ_AUTH command is recognized by the xerq as alternative.
 
 
   Open an UDP port:
@@ -335,8 +242,8 @@
                char   rc = ERQ_OK
                char[] ticket  // the connection ticket.
 
-    The erq opens an UDP-port on the host machine with the given
-    port number.
+    The erq opens an UDP-port on the host machine with the given port number.
+
     Possible exit codes are:
       ERQ_OK          : Operation succeeded.
       ERQ_E_ARGLENGTH : The port number given does not consist
@@ -346,8 +253,7 @@
       ERQ_E_UNKNOWN   : Error <info> occured in one of the system
                         calls done to open the port.
 
-    Once the port is open, it is treated as if is just another
-    spawned program.
+    Once the port is open, it is treated as if is just another spawned program.
 
 
   Send data over an UDP port:
@@ -360,8 +266,7 @@
     data recv: char   rc     // the success/error code.
                int32  info   // opt: additional info.
 
-    The <text> is sent from our port <ticket> to the network
-    address <addr>, port <port>.
+    The <text> is sent from our port <ticket> to the network address <addr>, port <port>.
 
     Possible return codes are:
       ERQ_OK          : Operation succeeded, no <info> is replied.
@@ -384,8 +289,7 @@
                int32   signal // the signal to send (ignored)
     data recv: char    rc = ERQ_OK
 
-    The port <ticket> is closed. The <signal> must be sent, but
-    its value is ignored.
+    The port <ticket> is closed. The <signal> must be sent, but its value is ignored.
 
 
   Data received over an UDP connection:
@@ -395,8 +299,7 @@
                struct addr.sin_port  port    // port of sender
                char[]                text    // data received
 
-    The UPD port controlled by the erq did receive <text> over
-    the network from the sender at <addr>, reply port number <port>.
+    The UPD port controlled by the erq did receive <text> over the network from the sender at <addr>, reply port number <port>.
 
 
   Open a TCP port to listen for connections:
@@ -412,6 +315,7 @@
 
     The erq opens a TCP-port on the host machine with the given
     port number to listen for connections.
+
     Possible exit codes are:
       ERQ_OK          : Operation succeeded.
       ERQ_E_ARGLENGTH : The port number given does not consist
@@ -421,8 +325,7 @@
       ERQ_E_UNKNOWN   : Error <info> occured in one of the system
                         calls done to open the port.
 
-    Once the port is open, it is treated as if is just another
-    spawned program.
+    Once the port is open, it is treated as if is just another spawned program.
 
 
   Open a TCP port:
@@ -437,8 +340,8 @@
                char   rc = ERQ_OK
                char[] ticket  // the connection ticket.
 
-    The erq opens a TCP-port on the host machine and tries to connect
-    it to the address <ip>:<port>.
+    The erq opens a TCP-port on the host machine and tries to connect it to the address <ip>:<port>.
+
     Possible exit codes are:
       ERQ_OK          : Operation succeeded.
       ERQ_E_ARGLENGTH : The port number given does not consist
@@ -448,8 +351,7 @@
       ERQ_E_UNKNOWN   : Error <info> occured in one of the system
                         calls done to open the port.
 
-    Once the port is open, it is treated as if is just another
-    spawned program.
+    Once the port is open, it is treated as if is just another spawned program.
 
 
   Send data over a TCP connection:
@@ -460,8 +362,7 @@
     data recv: char    rc     // the success/error code.
                int32   info   // opt: additional info.
 
-    The <text> is sent to the stdin of the spawned process
-    identified by <ticket>.
+    The <text> is sent to the stdin of the spawned process identified by <ticket>.
 
     Possible return codes are:
       ERQ_OK          : Operation succeeded, no <info> is replied.
@@ -512,8 +413,7 @@
 
     data recv: char    out_or_err = ERQ_STDOUT
 
-    The TCP 'listen' port controlled by the erq received
-    a connection request.
+    The TCP 'listen' port controlled by the erq received a connection request.
 
 
   Accept a pending connections:
@@ -529,9 +429,8 @@
                struct addr.sin_port  port  // remote side's port
                char[]                ticket  // the new ticket.
 
-    The erq accepts a new connection on an accept-TCP-port, creates
-    a child and ticket for it, and returns its ticket together with
-    the remote's side <ip>:<port> number (in network byte order).
+    The erq accepts a new connection on an accept-TCP-port, creates a child and ticket for it, and returns its ticket together with the remote's side <ip>:<port> number (in network byte order).
+
     Possible exit codes are:
       ERQ_OK          : Operation succeeded.
       ERQ_E_ARGLENGTH : The port number given does not consist
@@ -542,14 +441,11 @@
       ERQ_E_UNKNOWN   : Error <info> occured in one of the system
                         calls done to open the port.
 
-    Once the port is open, it is treated as if it is just another
-    spawned program.
+    Once the port is open, it is treated as if it is just another spawned program.
 
   .. usage::
 
-    Assume you have a script 'welcome-mail' to send a welcome mail
-    to a new player. Put this script into the directory for the callable
-    executables, then you can use it like this::
+    Assume you have a script 'welcome-mail' to send a welcome mail to a new player. Put this script into the directory for the callable executables, then you can use it like this::
 
       void erq_response(mixed * data)
       {
@@ -569,7 +465,6 @@
   :history 3.2.1@82 changed: added ERQ_SEND, ERQ_SPAWN, ERQ_KILL
   :history 3.2.1@98 changed: added ERQ_OPEN_UDP, ERQ_OPEN_TCP, ERQ_LIST
   :history 3.2.8 changed: added ERQ_RLOOKUPV6
-  :history 3.2.9 changed: added the '--execdir' argument to erq, and the ERQ_OK
-    after ERQ_E_INCOMPLETE protocol.
+  :history 3.2.9 changed: added the '--execdir' argument to erq, and the ERQ_OK after ERQ_E_INCOMPLETE protocol.
 
-  .. seealso:: :efun:`attach_erq_demon`, :efun:`send_erq`, :master:`stale_erq`, :rfc: 931, :efun:`query_ip_number`
+  .. seealso:: :efun:`attach_erq_demon`, :efun:`send_erq`, :master:`stale_erq`, :rfc:` 931`, :efun:`query_ip_number`

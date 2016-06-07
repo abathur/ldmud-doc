@@ -1,53 +1,39 @@
 .. concept:: mccp
   :synopsis: The Mud Client Compression Protocol
 
-  Information and code taken from the MCCP Homepage
-  http://www.randomly.org/projects/MCCP/
+  Information and code taken from the MCCP Homepage http://www.randomly.org/projects/MCCP/
 
-  MCCP is implemented as a Telnet option [RFC854, RFC855]. The server
-  and client negotiate the use of MCCP as they would any other telnet
-  option. Once agreement has been reached on the use of the option,
-  option subnegotiation is used to determine acceptable compression
-  methods to use, and to indicate the start of a compressed data stream.
+  MCCP is implemented as a Telnet option [RFC854, RFC855]. The server and client negotiate the use of MCCP as they would any other telnet option. Once agreement has been reached on the use of the option, option subnegotiation is used to determine acceptable compression methods to use, and to indicate the start of a compressed data stream.
 
-  If the driver is compiled with MCCP Support there is a
-  define __MCCP__.
+  If the driver is compiled with MCCP Support there is a define __MCCP__.
 
-  The driver currently supports both versions of mccp. If your mud
-  has a H_NOECHO hook you have to find out if the client supports
-  mccp. Without this hook you still have to start neogotiation.
+  The driver currently supports both versions of mccp. If your mud has a H_NOECHO hook you have to find out if the client supports mccp. Without this hook you still have to start neogotiation.
 
-  All sub-negotiation is done by the efuns start_mccp_compress() and
-  end_mccp_compress() whether you have this hook or not.
+  All sub-negotiation is done by the efuns start_mccp_compress() and end_mccp_compress() whether you have this hook or not.
 
-  Notice: when the client uses compressions all binary_message calls
-          are executed with flag=3. This is because writing to the
-          socket would disturb zlib stream.
+  .. note:: when the client uses compressions all binary_message calls are executed with flag=3. This is because writing to the socket would disturb zlib stream.
 
   mccp-efuns:
 
-    start_mccp_compress(int telopt) (only needed with H_NOECHO)
-    end_mccp_compress(int telopt)   (only needed with H_NOECHO)
-    query_mccp(object player)
-    query_mccp_stats(object player)
+    - :efun:`start_mccp_compress(int telopt) <start_mccp_compress>` (only needed with H_NOECHO)
+    - :efun:`end_mccp_compress(int telopt) <end_mccp_compress>`   (only needed with H_NOECHO)
+    - :efun:`query_mccp(object player) <query_mccp>`
+    - :efun:`query_mccp_stats(object player) <query_mccp_stats>`
 
-  Initiating MCCP without H_NOECHO hook:
+  Initiating MCCP without H_NOECHO hook::
 
     if(!query_mccp()){
       binary_message(({ IAC, WILL, TELOPT_COMPRESS2 }),1)
       binary_message(({ IAC, WILL, TELOPT_COMPRESS }),1)
     }
 
-    the driver will parse the clients answers and start compression.
-    (The connection might already be compressed, because although the
-     documentation says clients should not negotiate from themselves,
-     zmud e.g. does.)
+  the driver will parse the clients answers and start compression. (The connection might already be compressed, because although the documentation says clients should not negotiate from themselves, zmud e.g. does.)
 
-    You can start and stop compression manually by efuns
-    when you are sure client supports compression :)
+  You can start and stop compression manually by efuns when you are sure client supports compression :)
 
+  .. todo:: something more semantic or at least w/ better presentation than a literal here?
 
-  Initiating MCCP compression with H_NOECHO hook:
+  Initiating MCCP compression with H_NOECHO hook::
 
     If your mudlib uses the H_NOECHO driver-hook you decided to do
     all the negotiation by yourself:
@@ -88,7 +74,9 @@
     start_mccp_compress(TELOPT_COMPRESS). ( you could start it without
     checking but some players would protest :) )
 
-  :author: Bastian Hoyer (dafire@ff.mud.de) (some text taken from project page)
+  .. lore::
+
+    - author: Bastian Hoyer (dafire@ff.mud.de) (some text taken from project page)
 
   :history 3.3.447 introduced:
   :history 3.2.10 backported:

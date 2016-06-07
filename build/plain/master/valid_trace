@@ -6,7 +6,7 @@ DESCRIPTION
 ===========
    Check if the interactive user is allowed to use tracing.
 
-   The argument <what> denotes the action for which permission is to be
+   The argument <what> denotes the action for which permission is to be 
    checked, <arg> is the argument given to the traceing efun:
 
    +---------------+-------------------------------------------+
@@ -21,4 +21,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   trace(E), showsmallnewmalloced, malloc, status, *memory*
+   trace()(E), `showsmallnewmalloced`, `malloc`, `status`, memory(C)

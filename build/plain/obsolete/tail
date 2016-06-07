@@ -9,9 +9,9 @@ DESCRIPTION
 
 HISTORY
 =======
-   - **deprecated** (*3.3.720*)
-   - **removed** (*3.5.0*)
+   - deprecated (3.3.720)
+   - removed (3.5.0)
 
 SEE ALSO
 ========
-   ed(E)
+   ed()(E)

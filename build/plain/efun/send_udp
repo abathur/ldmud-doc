@@ -11,15 +11,15 @@ The efun causes the privilege violation ("send_udp").
 
 Returns 1 on success, 0 on failure.
 
-Note: On some machines a failed send_udp() will not be registered until the
-next send_udp() - the latter one might return '0' even if itself was
+Note: On some machines a failed send_udp() will not be registered until the 
+next send_udp() - the latter one might return '0' even if itself was 
 successful.
 
-BUGS If the <host> is given as a fully qualified name (instead of an IP
+BUGS If the <host> is given as a fully qualified name (instead of an IP 
 address), the execution will block until the name is resolved.
 
 LDMud 3.2.9 renamed this efun from send_imp(), and also changed the
    privilege violation string and the apply names.
 
-   See Also:
-      query_udp_port(E), receive_udp(M)
+   See Also: 
+      query_udp_port()(E), receive_udp(M)

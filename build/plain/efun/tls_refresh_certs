@@ -7,16 +7,16 @@ DESCRIPTION
 Reload the certificates and certificate revocation information.
 
 If there are no key and certificate files to be found, this efun will keep the
-current keys and certificates, to keep TLS working. CAs and CRLs are cleared
+current keys and certificates, to keep TLS working. CAs and CRLs are cleared 
 and reloaded in any case.
 
-Note that when using GnuTLS a call to tls_refresh_certs() while a connection
+Note that when using GnuTLS a call to tls_refresh_certs() while a connection 
 is in the middle of a TLS handshake might cause an incorrect key to be used.
 
 Introduced in LDMud 3.3.714/3.2.15.
 
-      See Also:
-         tls_init_connection(E), tls_deinit_connection(E), tls_error(E),
+      See Also: 
+         tls_init_connection()(E), tls_deinit_connection()(E), tls_error()(E),
 
-   tls_query_connection_state(E),tls_query_connection_info(E),tls_available(E
-   ), tls_check_certificate(E),mudlib/psyc-tls.c
+   tls_query_connection_state()(E), tls_query_connection_info()(E), 
+   tls_available()(E), tls_check_certificate()(E), mudlib/psyc-tls.c

@@ -9,16 +9,18 @@
 
   In the second form (using an array of sizes instead of one size), the efun will allocate a multidimensional array, that is an array of arrays.
 
-  Note that this function is hardly needed anymore, because arrays can be added by the + operator, and can be constructed and initialized by the ({ }) operator. The functions only use is to construct big empty arrays.
+  .. obsolete:: this function is hardly needed anymore, because arrays can be added by the + operator, and can be constructed and initialized by the ({ }) operator. The functions only use is to construct big empty arrays.
 
   .. usage::
 
-    string *buffer;
-    buffer = allocate(50);
-    buffer = allocate(50, "");
+    ::
 
-    buffer = allocate( ({ 2, 3 }) )
-      --> ({ ({ 0, 0, 0 }), ({ 0, 0, 0 }) })
+      string *buffer;
+      buffer = allocate(50);
+      buffer = allocate(50, "");
+
+      buffer = allocate( ({ 2, 3 }) )
+        --> ({ ({ 0, 0, 0 }), ({ 0, 0, 0 }) })
 
   :history 3.2.9 changed: added the initialization value and the multi-dimensional allocation.
 

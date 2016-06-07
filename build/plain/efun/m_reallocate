@@ -4,19 +4,19 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Create a new mapping with <width> values per key and fill it with the values
-from mapping <m>. If <m> has less than <width> values per key, the extra
-values in the result are set to 0. If <m> has more values per key, the extra
+Create a new mapping with <width> values per key and fill it with the values 
+from mapping <m>. If <m> has less than <width> values per key, the extra 
+values in the result are set to 0. If <m> has more values per key, the extra 
 values are ignored.
 
 The mapping <m> is not changed.
 
 EXAMPLES mapping m = ([ "foo":1;2;3, "bar":4;5;6 ])
 
-m_reallocate(m, 1) --> returns ([ "foo":1,       "bar:4 ]) m_reallocate(m, 4)
+m_reallocate(m, 1) --> returns ([ "foo":1,       "bar:4 ]) m_reallocate(m, 4) 
 --> returns ([ "foo":1;2;3;0, "bar:4;5;6;0 ])
 
 Introduced in LDMud 3.2.6, suggested by Tubmud.
 
-   See Also:
-      m_allocate(E), m_values(E), widthof(E)
+   See Also: 
+      m_allocate()(E), m_values()(E), widthof()(E)

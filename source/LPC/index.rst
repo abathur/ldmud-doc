@@ -1,8 +1,10 @@
-.. lang:: []
-  mixed arr[index]
-  int str[index]
-  mixed * arr[from .. to]
-  string str[from .. to]
+.. lang:: index
+
+  .. operator:: []
+    mixed arr[index]
+    int str[index]
+    mixed * arr[from .. to]
+    string str[from .. to]
 
   Return one element from a string/array (first form), or a slice (substring resp. subarray) of the string/array (second form).
 

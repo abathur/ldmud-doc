@@ -2,54 +2,26 @@
   :synopsis: Regular Expressions
   :topic: driver
 
-  LDMud supports both the traditional regular expressions as
-  implemented by Henry Spencer ("HS" or "traditional"), and
-  optionally the Perl-compatible regular expressions by Philip
-  Hazel ("PCRE").
+  LDMud supports both the traditional regular expressions as implemented by Henry Spencer ("HS" or "traditional"), and optionally the Perl-compatible regular expressions by Philip Hazel ("PCRE").
 
-  Both packages can be used concurrently, with the selection
-  being made through extra option flags argument to the efuns.
-  One of the two packages can be selected at compile time, by
-  commandline argument, and by driver hook to be the default
-  package.
+  Both packages can be used concurrently, with the selection being made through extra option flags argument to the efuns. One of the two packages can be selected at compile time, by commandline argument, and by driver hook to be the default package.
 
-  If the host system does not supply PCREs at compile-time, they
-  will not be availablea in the driver.
+  If the host system does not supply PCREs at compile-time, they will not be availablea in the driver.
 
-  The packages differ in the expressivity of their expressions
-  (PCRE offering more options that Henry Spencer's package),
-  though they both implement the common subset outlined below.
+  The packages differ in the expressivity of their expressions (PCRE offering more options that Henry Spencer's package), though they both implement the common subset outlined below.
 
-  All regular expression efuns take an additional options
-  parameter, which is a an number composed of bitflags, and is
-  used to modify the exact behaviour of the expression
-  evaluation. In addition, certain efuns may accept additional
-  specific options.
+  All regular expression efuns take an additional options parameter, which is a an number composed of bitflags, and is used to modify the exact behaviour of the expression evaluation. In addition, certain efuns may accept additional specific options.
 
   For details, refer to the detailed manpages:
 
   * :concept:`hsregexp` for the Henry Spencer package
   * :concept:`pcre` for the PCRE package
 
-
   .. subtopic:: REGULAR EXPRESSION DETAILS
 
-    A regular expression is a pattern that is matched against a
-    subject string from left to right. Most characters stand for
-    themselves in a pattern, and match the corresponding charac-
-    ters in the subject. As a trivial example, the pattern
+    A regular expression is a pattern that is matched against a subject string from left to right. Most characters stand for themselves in a pattern, and match the corresponding characters in the subject. As a trivial example, the pattern `The quick brown fox` matches a portion of a subject string that is identical to itself. The power of regular expressions comes from the ability to include alternatives and repetitions in the pattern. These are encoded in the pattern by the use of metacharacters, which do not stand for themselves but instead are interpreted in some special way.
 
-      The quick brown fox
-
-    matches a portion of a subject string that is identical to
-    itself. The power of regular expressions comes from the
-    ability to include alternatives and repetitions in the pat-
-    tern. These are encoded in the pattern by the use of meta-
-    characters, which do not stand for themselves but instead
-    are interpreted in some special way.
-
-    The following metacharacters are 'universal' in that both regexp
-    packages understand them in the same way:
+    The following metacharacters are 'universal' in that both regexp packages understand them in the same way:
 
     .. list-table::
       :widths: 10 90
@@ -130,12 +102,11 @@
     .. macro:: RE_PCRE
     .. macro:: RE_TRADITIONAL
 
-    These flags are also used for the :hook:`H_REGEXP_PACKAGE` driver
-    hook.
+    These flags are also used for :hook:`H_REGEXP_PACKAGE`.
 
     Traditional regular expressions understand one option:
 
-      .. macro:: RE_EXCOMPATIBLE
+    .. macro:: RE_EXCOMPATIBLE
 
     PCRE understands these options:
 

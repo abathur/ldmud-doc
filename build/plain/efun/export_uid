@@ -4,5 +4,5 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Set the uid of object ob to the current object's effective uid. It is
-   onlypossible when object ob has an effective uid of 0.
+   Set the uid of object ob to the current object's effective uid. It is only 
+   possible when object ob has an effective uid of 0.

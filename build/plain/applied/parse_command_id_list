@@ -10,4 +10,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   parse_command(E), `parse_command_pural_id_list`
+   parse_command()(E), `parse_command_pural_id_list`

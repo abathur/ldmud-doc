@@ -24,12 +24,17 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="concepts" href="concepts.html" />
+    <link rel="next" title="negotiation" href="negotiation.html" />
+    <link rel="prev" title="mysql" href="mysql.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -37,9 +42,9 @@
           <div class="body" role="main">
             
   <div class="section" id="native">
-<div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" id="lpc.native" rules="none">
+<span id="lpc.native"></span><div class="section" id="CONCEPT">
+<h2>CONCEPT<a class="headerlink" href="#CONCEPT" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -50,166 +55,88 @@
 </div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>During the evolution of LPMud there has been a hiatus as the
-old driver became too restricting for the demands of modern
-muds: it did a lot of things the mudlib could do better or
-completely different. Removing these things from the driver
-weren&#8217;t a problem, but to keep compatible with the existing
-mudlibs (namely the well-known 2.4.5 lib), it was possible to
-undo these changes. First by setting a runtime option, then
-by compiling the driver either in &#8216;compat&#8217; or in &#8216;native&#8217; mode.</p>
-<p>Starting with 3.2.1, the distinction between compat and native
-mode is more and more transferred into the mudlib, with the
-future goal of having a modeless driver.</p>
-<p>Starting with 3.2.7, native mode no longer exists as such,
-only &#8216;plain&#8217; (quasi a superset of &#8216;native&#8217; and &#8216;compat&#8217;)
-and &#8216;compat&#8217; mode, and since 3.2.9 the mode selection can be
-made via commandline option.</p>
-<p>The main mode of the driver is determined at compile time
-by preprocessor symbols to be defined/undefined in config.h:</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">partial rewrite using a few semantic structures</p>
+</div>
+<p>During the evolution of LPMud there has been a hiatus as the old driver became too restricting for the demands of modern muds: it did a lot of things the mudlib could do better or completely different. Removing these things from the driver weren&#8217;t a problem, but to keep compatible with the existing mudlibs (namely the well-known 2.4.5 lib), it was possible to undo these changes. First by setting a runtime option, then by compiling the driver either in &#8216;compat&#8217; or in &#8216;native&#8217; mode.</p>
+<p>Starting with 3.2.1, the distinction between compat and native mode is more and more transferred into the mudlib, with the future goal of having a modeless driver.</p>
+<p>Starting with 3.2.7, native mode no longer exists as such, only &#8216;plain&#8217; (quasi a superset of &#8216;native&#8217; and &#8216;compat&#8217;) and &#8216;compat&#8217; mode, and since 3.2.9 the mode selection can be made via commandline option.</p>
+<p>The main mode of the driver is determined at compile time by preprocessor symbols to be defined/undefined in config.h:</p>
 <blockquote>
 <div><dl class="docutils">
 <dt>COMPAT_MODE: when defined, the compat mode specifics are activated</dt>
 <dd>by default.</dd>
 </dl>
 </div></blockquote>
-<p>Additional modifications can be achieved by the specification
-of commandline arguments (most of them have a default setting
-entry in config.h as well):</p>
+<p>Additional modifications can be achieved by the specification of commandline arguments (most of them have a default setting entry in config.h as well):</p>
 <blockquote>
 <div>strict-euids: when active, euid usage is enforced.
 compat:       when active, the compat mode is used.</div></blockquote>
-<p>Following is the description of the changes (de) activated by
-these defines. A shorthand notation is used: &#8216;compat&#8217; means
-&#8216;if compat mode is active&#8217; and &#8216;!compat&#8217; means &#8216;if
-compat mode is not active&#8217;, etc.</p>
+<p>Following is the description of the changes (de) activated by these defines. A shorthand notation is used: &#8216;compat&#8217; means &#8216;if compat mode is active&#8217; and &#8216;!compat&#8217; means &#8216;if compat mode is not active&#8217;, etc.</p>
 <dl class="docutils">
 <dt>Predefined Preprocessor Symbols</dt>
-<dd>If compat, the symbols COMPAT_FLAG and __COMPAT_MODE__ are
-defined for all LPC programs.
-If strict-euids, the symbol __STRICT_EUIDS__ is defined
-for all LPC programs.
-For compatibility reasons, the symbol __EUIDS__ is defined
-for all LPC programs all the time.</dd>
+<dd>If compat, the symbols COMPAT_FLAG and __COMPAT_MODE__ are defined for all LPC programs.
+If strict-euids, the symbol __STRICT_EUIDS__ is defined for all LPC programs.
+For compatibility reasons, the symbol __EUIDS__ is defined for all LPC programs all the time.</dd>
 <dt>Preloading Of Objects</dt>
-<dd>The driver has the possibility to preload objects before the
-game is actually opened to the world. This is done by
-calling master-&gt;epilog(), which has to return 0 or an array.
-If its an array, its elements (as long as they are strings)
-are given one by one as argument to master-&gt;preload() which
-may now preload the objects (or do anything else).</dd>
+<dd>The driver has the possibility to preload objects before the game is actually opened to the world. This is done by calling master-&gt;epilog(), which has to return 0 or an array. If its an array, its elements (as long as they are strings) are given one by one as argument to master-&gt;preload() which may now preload the objects (or do anything else).</dd>
 <dt>Initialisation Of Objects</dt>
-<dd><p class="first">It is task of the mudlib (through the driver hooks) to call
-the initialisation lfuns in newly created objects. The
-following table shows the traditional calls:</p>
-<blockquote>
-<div><blockquote>
-<div>mode        : init call : reset call</div></blockquote>
-<blockquote>
-<div><p>!compat &amp; !native :  create() :  reset(1)
-!compat &amp;  native :  create() :  reset()</p>
-<blockquote>
-<div>compat &amp; !native :  reset(0) :  reset(1)
-compat &amp;  native :  reset(0) :  reset(1)</div></blockquote>
-</div></blockquote>
-</div></blockquote>
-<p class="last">If INITIALIZATION_BY___INIT was defined, the lfun __INIT()
-is called first on creation to initialize the objects
-variables.</p>
+<dd><p class="first">It is task of the mudlib (through the driver hooks) to call the initialisation lfuns in newly created objects. The following table shows the traditional calls:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span>       <span class="nl">mode</span>        <span class="p">:</span> <span class="n">init</span> <span class="nl">call</span> <span class="p">:</span> <span class="n">reset</span> <span class="n">call</span>
+<span class="o">--------------------------------------------</span>
+ <span class="o">!</span><span class="n">compat</span> <span class="o">&amp;</span> <span class="o">!</span><span class="nl">native</span> <span class="p">:</span>  <span class="n">create</span><span class="p">()</span> <span class="o">:</span>  <span class="n">reset</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+ <span class="o">!</span><span class="n">compat</span> <span class="o">&amp;</span>  <span class="nl">native</span> <span class="p">:</span>  <span class="n">create</span><span class="p">()</span> <span class="o">:</span>  <span class="n">reset</span><span class="p">()</span>
+  <span class="n">compat</span> <span class="o">&amp;</span> <span class="o">!</span><span class="nl">native</span> <span class="p">:</span>  <span class="n">reset</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">:</span>  <span class="n">reset</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">compat</span> <span class="o">&amp;</span>  <span class="nl">native</span> <span class="p">:</span>  <span class="n">reset</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">:</span>  <span class="n">reset</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">If INITIALIZATION_BY___INIT was defined, the lfun __INIT() is called first on creation to initialize the objects variables.</p>
 </dd>
 <dt>Movement Of Objects</dt>
-<dd><p class="first">The efun move_object() is implemented in the mudlib through
-driver hooks and the set_environment() efun.
-move_object() itself exists just for convenience and
-compatibility.</p>
-<p>In original native mode, move_object() could applied only to
-this_object() as the object to move, and it called the lfun
-exit() in the old environment if in compat mode. As a side
-effect, the lfun exit() may not be target of add_action()s
-in compat mode.</p>
-<p class="last">In compat mode, objects may be moved using the transfer()
-efun. It does make assumptions about the design of the
-mudlib, though, as it calls the lfuns query_weight(),
-can_put_and_get(), get(), prevent_insert() and add_weight().</p>
+<dd><p class="first">The efun move_object() is implemented in the mudlib through driver hooks and the set_environment() efun. move_object() itself exists just for convenience and compatibility.</p>
+<p>In original native mode, move_object() could applied only to this_object() as the object to move, and it called the lfun exit() in the old environment if in compat mode. As a side effect, the lfun exit() may not be target of add_action()s in compat mode.</p>
+<p class="last">In compat mode, objects may be moved using the transfer() efun. It does make assumptions about the design of the mudlib, though, as it calls the lfuns query_weight(), can_put_and_get(), get(), prevent_insert() and add_weight().</p>
 </dd>
 <dt>Efuns In General</dt>
 <dd><dl class="first last docutils">
 <dt>creator(), transfer()</dt>
-<dd>These exist only in compat mode (creator() is
-identical with getuid()).</dd>
+<dd>These exist only in compat mode (creator() is identical with getuid()).</dd>
 <dt>object_name(), function_exists()</dt>
-<dd>In !compat mode, the returned filenames start with a
-leading &#8216;/&#8217;, in compat mode they don&#8217;t.</dd>
+<dd>In !compat mode, the returned filenames start with a leading &#8216;/&#8217;, in compat mode they don&#8217;t.</dd>
 <dt>parse_command()</dt>
-<dd>This command exists in two versions: the old is used with
-compat, the new with !compat. However,
-SUPPLY_PARSE_COMMAND must be defined in config.h in both
-cases (this efun is not very useful at all).</dd>
+<dd>This command exists in two versions: the old is used with compat, the new with !compat. However, SUPPLY_PARSE_COMMAND must be defined in config.h in both cases (this efun is not very useful at all).</dd>
 <dt>process_string()</dt>
-<dd>If this_object() doesn&#8217;t exist, it defaults to this_player()
-and receives the backbone uid (returned by master-&gt;get_bb_uid())
-as euid. If strict-euids, this uid must not be 0.</dd>
+<dd>If this_object() doesn&#8217;t exist, it defaults to this_player() and receives the backbone uid (returned by master-&gt;get_bb_uid()) as euid. If strict-euids, this uid must not be 0.</dd>
 </dl>
 </dd>
 <dt>Userids and Effective Userids</dt>
-<dd><p class="first">This is probably the most important difference between the
-modes.</p>
-<p>LPMud always had userids (uids) attributing the objects,
-though they were called &#8216;creator names&#8217; in compat mode.
-Internally, the compat mode uses the &#8216;creator names&#8217; as
-(e)uid.</p>
-<p>With the introduction of native/plain mode, additionally
-&#8216;effective userids&#8217; (euids) were introduced to improve
-security handling (which was only a partial success).
-The hardcoded handling of euids and uids was quite complex
-and too mudlib-insensitive, so most of it got moved from the
-driver into the mudlib with 3.2.1.</p>
-<p>In strict-euids mode, only objects with a non-zero euid may load
-or create new objects.</p>
+<dd><p class="first">This is probably the most important difference between the modes.</p>
+<p>LPMud always had userids (uids) attributing the objects, though they were called &#8216;creator names&#8217; in compat mode. Internally, the compat mode uses the &#8216;creator names&#8217; as (e)uid.</p>
+<p>With the introduction of native/plain mode, additionally &#8216;effective userids&#8217; (euids) were introduced to improve security handling (which was only a partial success). The hardcoded handling of euids and uids was quite complex and too mudlib-insensitive, so most of it got moved from the driver into the mudlib with 3.2.1.</p>
+<p>In strict-euids mode, only objects with a non-zero euid may load or create new objects.</p>
 <p>&#8212; In Detail &#8212;</p>
 <blockquote class="last">
 <div><dl class="docutils">
 <dt>Userids of the Master</dt>
-<dd><p class="first">The master&#8217;s (e)uid is determined by a call to
-master-&gt;get_master_uid().</p>
-<dl class="docutils">
-<dt>In strict-euids mode, the result has to be a string,</dt>
-<dd>otherwise the driver won&#8217;t start up at all. If the result is
-valid it is set as the master&#8217;s uid and euid.</dd>
-<dt>In !strict-euids mode, the result may be any value: 0 or a</dt>
-<dd>string are treated as the uid to set, a non-zero integer
-leads to the use of the uid set in the default &#8216;global&#8217;
-wizlist entry, and any other value defaults to 0.
-The euid is either set to the returned string (if any),
-or to 0.</dd>
-</dl>
-<p class="last">The master&#8217;s uid is determined only on startup this way;
-at runtime the uids of a reloaded master determined as
-for every object by a call to the appropriate driver
-hooks.</p>
+<dd><p class="first">The master&#8217;s (e)uid is determined by a call to master-&gt;get_master_uid().</p>
+<p>In strict-euids mode, the result has to be a string, otherwise the driver won&#8217;t start up at all. If the result is valid it is set as the master&#8217;s uid and euid.</p>
+<p>In !strict-euids mode, the result may be any value: 0 or a string are treated as the uid to set, a non-zero integer leads to the use of the uid set in the default &#8216;global&#8217; wizlist entry, and any other value defaults to 0. The euid is either set to the returned string (if any), or to 0.</p>
+<p class="last">The master&#8217;s uid is determined only on startup this way; at runtime the uids of a reloaded master determined as for every object by a call to the appropriate driver hooks.</p>
 </dd>
 <dt>Userids of New Objects</dt>
-<dd><p class="first">To determine the (e)uids for a new object (loaded or
-inherited, or cloned), the appropriate driver hook is
-evaluated (H_LOAD_UIDS, H_CLONE_UIDS) and the result set
-as (e)uid. The result may be a single value, in which case the
-euid is set to 0, or an array ({ uid, euid }).</p>
-<dl class="last docutils">
-<dt>In strict-euids mode, both uid and euid must be 0 or a string,</dt>
-<dd>any other value causes the load/clone to fail.</dd>
-<dt>In !strict-euids mode, the uid (however returned) may also be</dt>
-<dd>a non-zero integer to use the uid of the global
-wizlist entry as uid. The euid is then
-set to either 0 or the second entry of the returned
-array if it&#8217;s a string.</dd>
-</dl>
+<dd><p class="first">To determine the (e)uids for a new object (loaded or inherited, or cloned), the appropriate driver hook is evaluated (H_LOAD_UIDS, H_CLONE_UIDS) and the result set as (e)uid. The result may be a single value, in which case the euid is set to 0, or an array ({ uid, euid }).</p>
+<p>In strict-euids mode, both uid and euid must be 0 or a string, any other value causes the load/clone to fail.</p>
+<p class="last">In !strict-euids mode, the uid (however returned) may also be a non-zero integer to use the uid of the global wizlist entry as uid. The euid is then set to either 0 or the second entry of the returned array if it&#8217;s a string.</p>
 </dd>
 </dl>
 </div></blockquote>
 </dd>
 </dl>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../hook/hook.html#lpc.hooks" title="hooks"><span class="xref lpc lpc-concept">hooks</span></a>, <a class="reference internal" href="uids.html#lpc.uids" title="uids"><span class="xref lpc lpc-concept">uids</span></a>, <a class="reference internal" href="../efun/move_object.html#lpc.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object</span></code>(E)</a>, <span class="xref lpc lpc-lang">initialisation</span></p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code>, <a class="reference internal" href="uids.html#lpc.uids" title="uids"><code class="xref lpc lpc-concept docutils literal"><span class="pre">uids</span></code>(C)</a>, <a class="reference internal" href="../efun/move_object.html#lpc.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object()</span></code>(E)</a>, <code class="xref lpc lpc-lang docutils literal"><span class="pre">initialisation</span></code></p>
+</div>
 </div>
 </div>
 
@@ -227,22 +154,30 @@ array if it&#8217;s a string.</dd>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">native</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#CONCEPT">CONCEPT</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -252,10 +187,6 @@ array if it&#8217;s a string.</dd>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/concepts/native.txt"

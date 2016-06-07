@@ -1,6 +1,6 @@
-.. guide:: master
+.. directory:: master
 
-  .. todo:: directory thing re: html/plain
+  .. todo:: this doc is referenced from 4 docs in this folder (epilog, flag, preload, reactivate_destructed_master), which makes me wonder if they _all_ should, if we should have an automagic backref of some sort, if none should, etc.
 
   This directory contains descriptions for the functions that
   LDMud expects to find in the master object (similar to lfuns,
@@ -19,9 +19,7 @@
   search include files (read: they must be specified with full
   path).
 
-  .. note:: you can inherit, but the file will be
-  loaded then before the master, which isn't good for most
-  files.
+  .. note:: you can inherit, but the file will be loaded then before the master, which isn't good for most files.
 
   .. subtopic:: system startup
 
@@ -74,17 +72,18 @@
     .. todo:: the below was tagged "Security hint" in our docs; it might be nice to either have a separate directive for security issues, or be able to supply a type/category option to the other admonitions (i.e., use directives like note, warning, hint, tip, but be able to supply a :category: security, etc.)
 
     .. admonition:: Security hint
+
       most of these functions are not useful to be
       called directly from other objects and can be made private or
       static. Unlike create(), these functions that are applied to
       the master object are found by the interpreter even if not
       publicly accessible.
 
-    .. todo:: this is another case where being able to pull part of this from the target would be nice; I wonder if a :role:`ref` can be magicked into an expansion based on the target? If nothing else, make these into links
+    .. todo:: this is another case where being able to pull part of this from the target would be nice; I wonder if a ``:role:`ref``` can be magicked into an expansion based on the synopses declared in the target? If nothing else, can use the link feature (``:master:`void inaugurate master() <inaugurate_master>``` or whatnot.)
 
-    .. subtopic:: Initialisation
+    .. enumerate:: Initialisation
 
-      void inaugurate_master ()
+      :master:`void inaugurate_master () <inaugurate_master>`
         Perform mudlib specific setup of the master.
 
       string get_master_uid ()
@@ -106,10 +105,11 @@
       void reactivate_destructed_master (int removed)
         Reactivate a formerly destructed master.
 
-      string|string * get_simul_efun ()
+      ``string|string * get_simul_efun ()``
+      :master:`string|string * get_simul_efun () <get_simul_efun>`
         Load the simul_efun object and return one or more paths of it.
 
-    .. subtopic:: Handling of user connections
+    .. enumerate:: Handling of user connections
 
       object connect ()
         Handle the request for a new connection.
@@ -123,7 +123,7 @@
       void stale_erq (closure callback)
         Notify the loss of the erq demon.
 
-    .. subtopic:: Runtime support
+    .. enumerate:: Runtime support
 
       object compile_object (string filename)
         Compile a virtual object.
@@ -156,7 +156,7 @@
       void notify_shutdown ()
         Notify the master about an immediate shutdown.
 
-    .. subtopic:: Error handling
+    .. enumerate:: Error handling
 
       void dangling_lfun_closure ()
         Handle a dangling lfun-closure.
@@ -164,8 +164,7 @@
       void log_error (string file, string err, int warn)
         Announce a compiler-time error or warning.
 
-      mixed heart_beat_error (object culprit, string err,
-                              string prg, string curobj, int line)
+      mixed heart_beat_error (object culprit, string err,string prg, string curobj, int line)
         Announce an error in the heart_beat() function.
 
       void runtime_error (string err, string prg, string curobj, int line)
@@ -174,7 +173,7 @@
       void runtime_warning (string msg, string curobj, string prg, int line)
         Announce a runtime warning.
 
-    .. subtopic:: Security and Permissions
+    .. enumerate:: Security and Permissions
 
       int privilege_violation (string op, mixed who, mixed arg3, mixed arg4)
         Validate the execution of a privileged operation.
@@ -193,7 +192,7 @@
       int valid_snoop (object snoopee, object snooper)
         Validate the start/stop of a snoop.
 
-    .. subtopic:: Userids and depending security
+    .. enumerate:: Userids and depending security
 
       string get_bb_uid()
         Return the string to be used as root-uid.
@@ -205,7 +204,7 @@
       int|string valid_write (string path, string euid, string fun, object caller)
         Validate a reading/writing file operation.
 
-    .. subtopic:: ed() support
+    .. enumerate:: ed() support
 
       string make_path_absolute (string str)
         Absolutize a relative filename given to the editor.
@@ -219,7 +218,7 @@
       string get_ed_buffer_save_file_name (string file)
         Return a filename for the ed buffer to be saved into.
 
-    .. subtopic:: parse_command() support (!compat, SUPPLY_PARSE_COMMAND defined)
+    .. enumerate:: parse_command() support (!compat, SUPPLY_PARSE_COMMAND defined)
 
       .. todo:: make the last half of the title some sort of addendum/annotation
 
@@ -247,4 +246,4 @@
 
       *
 
-  .. seealso:: :topic:`efun`, :topic:`applied`, :topic:`concepts`, :topic:`driver`, :topic:`lpc`
+  .. seealso:: :directory:`applied`, :directory:`concepts`, :directory:`driver`, :directory:`efun`, :directory:`hook`, :directory:`internals`, :directory:`LPC`, :directory:`obsolete`

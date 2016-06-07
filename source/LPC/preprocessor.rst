@@ -1,4 +1,9 @@
-.. concept:: preprocessor
+.. lang:: preprocessor
+
+  .. syntax:: #<directive>[ <arguments...>]
+
+    .. preprocessor: "#" `directive`
+    .. directive: include | define | if | ifdef | ifndef | else | elif | endif | undef
 
   The LPC driver understands the following preprocessor
   directives:

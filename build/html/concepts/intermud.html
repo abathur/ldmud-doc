@@ -24,12 +24,17 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="concepts" href="concepts.html" />
+    <link rel="next" title="intermud.basic" href="intermud.basic.html" />
+    <link rel="prev" title="initialisation" href="initialisation.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -37,9 +42,9 @@
           <div class="body" role="main">
             
   <div class="section" id="intermud">
-<div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" id="lpc.intermud" rules="none">
+<span id="lpc.intermud"></span><div class="section" id="CONCEPT">
+<h2>CONCEPT<a class="headerlink" href="#CONCEPT" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -50,51 +55,32 @@
 </div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>There are several intermud protocols which define how (players on)
-different muds can communicate with each other. The protocols are
-in general not muddriver or mudlib dependant, though the number of
-implementations is limited.</p>
-<p>This text is about the rather old widely spread &#8216;Zebedee Intermud&#8217;,
-which is also called &#8216;Intermud 2&#8217; although it differs quite a lot
-from the real Intermud 2 protocol.</p>
-<p>Full information on the newer Intermud 3 could be found on the
-web at <a class="reference external" href="http://www.imaginary.com/protocols/intermud3.html">http://www.imaginary.com/protocols/intermud3.html</a> so there
-is no discussion here - the following is just about Zebedee Intermud
-(aka Intermud 2).</p>
-<p>Zebedee Intermud communication is handled by the /secure/inetd
-object, originally written by Nostradamus for Zebedee with some
-extensions that are discussed in <span class="xref lpc lpc-concept">inetd</span>. How the data is
-actually sent across the network is described in intermud.basic(C).</p>
-<div class="section" id="SERVICES">
-<span id="lpc.SERVICES"></span><h3>SERVICES<a class="headerlink" href="#SERVICES" title="Permalink to this headline">¶</a></h3>
-<p>Note that the fields &#8220;NAME&#8221; and &#8220;UDP_PORT&#8221; should be present in
-every message. Very common are the fields &#8220;ID&#8221; (used whenever an
-reply is expected) and &#8220;SND&#8221; (the sender: he should receive the
-reply). These fields will not be mentioned in the list below.</p>
-<p>Request types are listed on the leftmost row (e.g. &#8220;REQ=channel&#8221;),
-associated header are listed indented.</p>
+<p>There are several intermud protocols which define how (players on) different muds can communicate with each other. The protocols are in general not muddriver or mudlib dependant, though the number of implementations is limited.</p>
+<p>This text is about the rather old widely spread &#8216;Zebedee Intermud&#8217;, which is also called &#8216;Intermud 2&#8217; although it differs quite a lot from the real Intermud 2 protocol.</p>
+<p>Full information on the newer Intermud 3 could be found on the web at <a class="reference external" href="http://www.imaginary.com/protocols/intermud3.html">http://www.imaginary.com/protocols/intermud3.html</a> so there is no discussion here - the following is just about Zebedee Intermud (aka Intermud 2).</p>
+<p>Zebedee Intermud communication is handled by the /secure/inetd object, originally written by Nostradamus for Zebedee with some extensions that are discussed in <code class="xref lpc lpc-concept docutils literal"><span class="pre">inetd</span></code>. How the data is actually sent across the network is described in intermud.basic(C).</p>
+<div class="section" id="glossary">
+<h3>SERVICES<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h3>
+<p>Note that the fields &#8220;NAME&#8221; and &#8220;UDP_PORT&#8221; should be present in every message. Very common are the fields &#8220;ID&#8221; (used whenever an reply is expected) and &#8220;SND&#8221; (the sender: he should receive the reply). These fields will not be mentioned in the list below.</p>
+<p>Request types are listed on the leftmost row (e.g. &#8220;REQ=channel&#8221;), associated header are listed indented.</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">another big option section that suggests existing semantic markup may be insufficient.</p>
+</div>
 <dl class="docutils">
 <dt>&#8220;channel&#8221;</dt>
-<dd><p class="first">The channel-request is used for sending a message on any
-channel. The &#8220;CMD&#8221; field is optional and may be omitted for
-normal messages. Note that you should not send an history or
-list request to _all_ known muds!</p>
+<dd><p class="first">The channel-request is used for sending a message on any channel. The &#8220;CMD&#8221; field is optional and may be omitted for normal messages. Note that you should not send an history or list request to _all_ known muds!</p>
 <dl class="last docutils">
 <dt>&#8220;CHANNEL&#8221;</dt>
-<dd>The channel on which a message is send (the standard
-channels are &#8220;intermud&#8221;, &#8220;intercode&#8221;, &#8220;interadm&#8221;, &#8220;d-chat&#8221;,
-&#8220;d-code&#8221; and &#8220;d-adm&#8221;; on the d-channels German is spoken)</dd>
+<dd>The channel on which a message is send (the standard channels are &#8220;intermud&#8221;, &#8220;intercode&#8221;, &#8220;interadm&#8221;, &#8220;d-chat&#8221;, &#8220;d-code&#8221; and &#8220;d-adm&#8221;; on the d-channels German is spoken)</dd>
 <dt>&#8220;DATA&#8221;</dt>
 <dd>The message to be send (not used with history/list request)</dd>
 <dt>&#8220;CMD&#8221;</dt>
-<dd><p class="first">The body of this header may be:
+<dd>The body of this header may be:
 &#8220;&#8221;        for normal intermud messages,
 &#8220;emote&#8221;   if the message is an emote/gemote,
-&#8220;history&#8221; for an history request: the last 20 lines of</p>
-<blockquote>
-<div>this channel will be shown.</div></blockquote>
-<p class="last">&#8220;list&#8221;    to list all remote users listening to this channel</p>
-</dd>
+&#8220;history&#8221; for an history request: the last 20 lines of this channel will be shown.
+&#8220;list&#8221;    to list all remote users listening to this channel</dd>
 <dt>&#8220;EMOTE&#8221;     (optional)</dt>
 <dd>The body is 1 if the message is an emote.
 The body is 2 if the message is a gemote.</dd>
@@ -108,43 +94,46 @@ The body is 2 if the message is a gemote.</dd>
 </dl>
 </dd>
 <dt>&#8220;locate&#8221;</dt>
-<dd><p class="first">Check whether a certain player is logged on at a remote mud.
-This request is usually send to all known muds at the same time.</p>
+<dd><p class="first">Check whether a certain player is logged on at a remote mud. This request is usually send to all known muds at the same time.</p>
 <dl class="last docutils">
 <dt>&#8220;user&#8221;</dt>
-<dd>Name of the person who requests the information.
-This is used by the sending mud only and has to be included
-in the reply.</dd>
+<dd>Name of the person who requests the information. This is used by the sending mud only and has to be included in the reply.</dd>
 <dt>&#8220;vbs&#8221;</dt>
-<dd>The verbose option has only two pre-defined values:
-1 Even report when the result was negative
-2 Don&#8217;t do timeouts, but keep waiting
-This is used by the sending mud only and has to be included
-in the reply.</dd>
+<dd><p class="first">The verbose option has only two pre-defined values:</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">1:</th><td class="field-body">Even report when the result was negative</td>
+</tr>
+<tr class="field-even field"><th class="field-name">2:</th><td class="field-body">Don&#8217;t do timeouts, but keep waiting</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>This is used by the sending mud only and has to be included in the reply.</p>
+<dl class="last docutils">
 <dt>&#8220;fnd&#8221;</dt>
-<dd>The found option is only used in the reply and it&#8217;s value
-is either 1 (success) or 0 (failure). The absence of a
-found parameter indicates failure as well.</dd>
+<dd>The found option is only used in the reply and it&#8217;s value is either 1 (success) or 0 (failure). The absence of a found parameter indicates failure as well.</dd>
 <dt>&#8220;DATA&#8221;</dt>
 <dd>The player to find.</dd>
 </dl>
 </dd>
+</dl>
+</dd>
 <dt>&#8220;man&#8221;</dt>
-<dd><p class="first">Retreive a manual page from a remote mud. Many muds don&#8217;t
-support this feature...</p>
+<dd><p class="first">Retreive a manual page from a remote mud. Many muds don&#8217;t support this feature...</p>
 <dl class="last docutils">
 <dt>&#8220;DATA&#8221;</dt>
 <dd>The name of the requested manual page</dd>
 </dl>
 </dd>
 <dt>&#8220;mail&#8221;</dt>
-<dd><p class="first">An extension to the standard protocol, by <a class="reference external" href="mailto:Alvin&#37;&#52;&#48;Sushi">Alvin<span>&#64;</span>Sushi</a>. This is
-used to send mails from one mud to another.</p>
+<dd><p class="first">An extension to the standard protocol, by <a class="reference external" href="mailto:Alvin&#37;&#52;&#48;Sushi">Alvin<span>&#64;</span>Sushi</a>. This is used to send mails from one mud to another.</p>
 <dl class="last docutils">
 <dt>&#8220;udpm_status&#8221;</dt>
-<dd>This field should only be used in the reply and indicates
-how mail is handled. Currently there are four pre-defined
-values for the status field:
+<dd>This field should only be used in the reply and indicates how mail is handled. Currently there are four pre-defined values for the status field:
 0 time out
 1 delivered ok
 2 unknown player
@@ -152,9 +141,7 @@ values for the status field:
 <dt>&#8220;udpm_writer&#8221;</dt>
 <dd>Name of the person who wrote this mail</dd>
 <dt>&#8220;udpm_spool_name&#8221;</dt>
-<dd>Should be returned as sent, this value is used to remove
-the mail from the spool directory after it has been
-delivered (or refused)</dd>
+<dd>Should be returned as sent, this value is used to remove the mail from the spool directory after it has been delivered (or refused)</dd>
 <dt>&#8220;udpm_subject&#8221;</dt>
 <dd>Subject of the mail message</dd>
 <dt>&#8220;DATA&#8221;</dt>
@@ -162,13 +149,9 @@ delivered (or refused)</dd>
 </dl>
 </dd>
 <dt>&#8220;ping&#8221;</dt>
-<dd>A ping request has only the standard fields, the reply is
-usually a short string like &#8221; is alive.&#8221;</dd>
+<dd>A ping request has only the standard fields, the reply is usually a short string like &#8221; is alive.&#8221;</dd>
 <dt>&#8220;query&#8221;</dt>
-<dd><p class="first">Get standard information about another mud. This is the only
-command of which the reply may not include a load of rubbish,
-but should only hold the requested information, so that it can
-be parsed by the server.</p>
+<dd><p class="first">Get standard information about another mud. This is the only command of which the reply may not include a load of rubbish, but should only hold the requested information, so that it can be parsed by the server.</p>
 <dl class="last docutils">
 <dt>&#8220;DATA&#8221;</dt>
 <dd><p class="first">The following queries are pretty much standard:
@@ -196,20 +179,15 @@ be parsed by the server.</p>
 <dt>&#8220;DATA&#8221;</dt>
 <dd>A human-readable string, containing the reply to a given query</dd>
 <dt>&#8220;RCPNT&#8221;</dt>
-<dd>The same name as in the &#8220;SND&#8221; field or the query; Usually
-this is the name of the player who initiated the query</dd>
+<dd>The same name as in the &#8220;SND&#8221; field or the query; Usually this is the name of the player who initiated the query</dd>
 <dt>&#8220;QUERY&#8221;</dt>
-<dd>This field is only used in a response to a &#8220;query&#8221; request
-and should be equal to the &#8220;DATA&#8221; field of that request</dd>
+<dd>This field is only used in a response to a &#8220;query&#8221; request and should be equal to the &#8220;DATA&#8221; field of that request</dd>
 <dt>&#8220;vbs&#8221;</dt>
-<dd>This field is only used in a response to a &#8220;locate&#8221; request
-and should be equal to the &#8220;vbs&#8221; field of that request</dd>
+<dd>This field is only used in a response to a &#8220;locate&#8221; request and should be equal to the &#8220;vbs&#8221; field of that request</dd>
 <dt>&#8220;user&#8221;</dt>
-<dd>This field is only used in a response to a &#8220;locate&#8221; request
-and should be equal to the &#8220;user&#8221; field of that request</dd>
+<dd>This field is only used in a response to a &#8220;locate&#8221; request and should be equal to the &#8220;user&#8221; field of that request</dd>
 <dt>&#8220;fnd&#8221;</dt>
-<dd>This field is only used in a response to a &#8220;locate&#8221; request
-and should be 1 if the player was located and 0 otherwise</dd>
+<dd>This field is only used in a response to a &#8220;locate&#8221; request and should be 1 if the player was located and 0 otherwise</dd>
 </dl>
 </dd>
 <dt>&#8220;tell&#8221;</dt>
@@ -220,9 +198,7 @@ and should be 1 if the player was located and 0 otherwise</dd>
 <dt>&#8220;DATA&#8221;</dt>
 <dd>Whatever you wish to say to this person</dd>
 </dl>
-<p>Optional emote-tos are handles are also handled as tells, so
-muds without emote-to support display them as reasonable readable
-tell message.</p>
+<p>Optional emote-tos are handles are also handled as tells, so muds without emote-to support display them as reasonable readable tell message.</p>
 <dl class="last docutils">
 <dt>&#8220;RCPNT&#8221;</dt>
 <dd>Name of the player to whom you are talking</dd>
@@ -231,24 +207,14 @@ tell message.</p>
 &#8220;emote&#8221;   if the message is an emote
 &#8220;gemote&#8221;  if the message is a genitiv emote</dd>
 <dt>&#8220;DATA&#8221;</dt>
-<dd>The text to be emoted prepended with &#8220;*&#8221; and appended
-with &#8220;* &#8221;. If you display the emote you have to cut the
-stars off. Muds that do not process emote-tos display the
-emote as tell message with the stars as indication of
-the message&#8217;s emote meaning.</dd>
+<dd>The text to be emoted prepended with &#8220;*&#8221; and appended with &#8220;* &#8221;. If you display the emote you have to cut the stars off. Muds that do not process emote-tos display the emote as tell message with the stars as indication of the message&#8217;s emote meaning.</dd>
 </dl>
 </dd>
 <dt>&#8220;who&#8221;</dt>
-<dd><p class="first">List the people that are active on a remote mud. The anwer
-usually contains some active information about the players,
-like titles, levels or age.</p>
+<dd><p class="first">List the people that are active on a remote mud. The anwer usually contains some active information about the players, like titles, levels or age.</p>
 <dl class="last docutils">
 <dt>&#8220;DATA&#8221;</dt>
-<dd><p class="first">Not supported by many muds. Introduced August 1997.
-Additional switch(es) (blanc separated) that change the
-appearence of the resulting list. The switches normally
-resemble the switches used inside of that mud for the &#8216;who&#8217;
-command.  Typical values include:
+<dd><p class="first">Not supported by many muds. Introduced August 1997. Additional switch(es) (blanc separated) that change the appearence of the resulting list. The switches normally resemble the switches used inside of that mud for the &#8216;who&#8217; command.  Typical values include:
 &#8220;short&#8221; &#8220;s&#8221; &#8220;-short&#8221; &#8220;-s&#8221; &#8220;kurz&#8221;:</p>
 <blockquote>
 <div>Return a concise listing.</div></blockquote>
@@ -261,13 +227,18 @@ command.  Typical values include:
 </dd>
 </dl>
 </div>
-<div class="section" id="AUTHOR">
-<span id="lpc.AUTHOR"></span><h3>AUTHOR<a class="headerlink" href="#AUTHOR" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="LORE">
+<h2>LORE<a class="headerlink" href="#LORE" title="Permalink to this headline">¶</a></h2>
+<p>AUTHOR:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">Information</span> <span class="n">taken</span> <span class="n">from</span> <span class="n">Outerspaces</span> <span class="n">documentation</span> <span class="n">to</span> <span class="n">be</span> <span class="n">found</span>
+<span class="n">on</span> <span class="nl">http</span><span class="p">:</span><span class="c1">//mud.stack.nl/intermud/</span>
+</pre></div>
 </div>
-<p>Information taken from Outerspaces documentation to be found
-on <a class="reference external" href="http://mud.stack.nl/intermud/">http://mud.stack.nl/intermud/</a></p>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><span class="xref lpc lpc-concept">inetd</span>, intermud.basic(C), <a class="reference internal" href="imp.html#lpc.imp" title="imp"><span class="xref lpc lpc-concept">imp</span></a></p>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref lpc lpc-concept docutils literal"><span class="pre">inetd</span></code>, intermud.basic(C), <a class="reference internal" href="imp.html#lpc.imp" title="imp"><code class="xref lpc lpc-concept docutils literal"><span class="pre">imp</span></code>(C)</a></p>
+</div>
 </div>
 </div>
 
@@ -285,26 +256,32 @@ on <a class="reference external" href="http://mud.stack.nl/intermud/">http://mud
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">intermud</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#CONCEPT">CONCEPT</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
-<li><a class="reference internal" href="#SERVICES">SERVICES</a></li>
-<li><a class="reference internal" href="#AUTHOR">AUTHOR</a></li>
+<li><a class="reference internal" href="#glossary">SERVICES</a></li>
+<li><a class="reference internal" href="#LORE">LORE</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -314,10 +291,6 @@ on <a class="reference external" href="http://mud.stack.nl/intermud/">http://mud
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/concepts/intermud.txt"

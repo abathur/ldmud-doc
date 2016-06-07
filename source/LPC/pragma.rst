@@ -1,46 +1,57 @@
 .. lang:: pragma
-  #pragma <name>
-  #pragma <name>[, <name>...]
+
+  .. .. syntax:: #pragma <name>
+    #pragma <name>[, <name>...]
 
   The preprocessor directive #pragma can be used to select
   several compilation options. Multiple options can be selected
   in one #pragma directive by separating them with commas.
 
-  no_clone
+  .. pragma:: no_clone
+
     The blueprint object can't be cloned.
 
-  no_inherit
+  .. pragma:: no_inherit
+
     The program can't be inherited.
 
-  no_shadow
+  .. pragma:: no_shadow
+
     The program can't be shadowed (similar to declaring
     all functions as 'nomask').
 
-  init_variables
+  .. pragma:: init_variables
+
     Clone variables are initialized by __INIT().
 
-  share_variables
+  .. pragma:: share_variables
+
     Clone variables are initialized from the
     blueprint.
 
-  weak_types
+  .. pragma:: weak_types
+
     no type checking (this is the default).
 
-  strict_types
+  .. pragma:: strict_types
+
     all functions must be declared with argument
     prototypes, and the return values of call_other() must
     be casted.
 
-  strong_types
+  .. pragma:: strong_types
+
     all functions must be declared with complete
     types of return value and parameters.
 
-  save_types
+  .. pragma:: save_types
+
     the declaration data is kept after compilation and
     checked at runtime. This is important for type-safe
     inheritance.
 
-  rtt_checks
+  .. pragma:: rtt_checks
+
     runtime checks during execution of this program will be
     enabled. The interpreter will check for correct datatypes of
     arguments on function calls. (Later it will include checks
@@ -50,40 +61,50 @@
     strong_types/strict_types is seriously recommended.
     This pragma implicitly enables save_types as well.
 
-  no_rtt_checks
+  .. pragma:: no_rtt_checks
+
     disable runtime type checks for this program (default).
 
-  pedantic
+  .. pragma:: pedantic
+
     Certain warnings are treated as errors:
     - failure to pass enough arguments to simul efuns
 
-  sloppy
+  .. pragma:: sloppy
+
     Turns off pedantic (the default).
 
-  range_check
+  .. pragma:: range_check
+
     Use of questionable ranges (ranges of negative sizes,
     or with bounds beyond the array's size) cause a runtime
     warning.
 
-  no_range_check
+  .. pragma:: no_range_check
+
     Turns off range_check (the default).
 
-  warn_deprecated
+  .. pragma:: warn_deprecated
+
     Use of deprecated efuns or indexing operations
     causes the compiler to issue a warning (the default).
 
-  no_warn_deprecated
+  .. pragma:: no_warn_deprecated
+
     Turns off warn_deprecated.
 
-  warn_empty_casts
+  .. pragma:: warn_empty_casts
+
     A cast of a value to its own type generates
     a warning (the default). Exception are casts to type
     'mixed'.
 
-  no_warn_empty_casts
+  .. pragma:: no_warn_empty_casts
+
     Turns off warn_empty_casts.
 
-  warn_missing_return
+  .. pragma:: warn_missing_return
+
     Warn if a value-returning function is missing
     a return statement (the default). If possible, the driver
     will try to detect this at compile time; otherwise a runtime
@@ -91,16 +112,19 @@
     The check applies only to functions with a declared return
     type other than 'void'.
 
-  no_warn_missing_return
+  .. pragma:: no_warn_missing_return
+
     Turn off warn_missing_return.
 
-  warn_function_inconsistent
+  .. pragma:: warn_function_inconsistent
+
     If an inherited function is
     overloaded with inconsistent return types or arguments,
     a warning is generated; or if pragma_pedantic is in effect,
     an error. By default this is active.
 
-  no_warn_function_inconsistent
+  .. pragma:: no_warn_function_inconsistent
+
     An inherited function can
     be overloaded with inconsistent return types or arguments,
     as long as pragma_pedantic is not in effect.
@@ -118,12 +142,14 @@
   The following two pragmas are available if the driver was
   compiled with DEBUG and TRACE_CODE options:
 
-  set_code_window
+  .. pragma:: set_code_window
+
     Sets an offset to the current program writing
     position. Use this BEFORE a piece of code where you
     want to check to what bytecodes it is compiled.
 
-  show_code_window
+  .. pragma:: show_code_window
+
     shows some bytes starting at or near the
     last point set_code_window was called.
 

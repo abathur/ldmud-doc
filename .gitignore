@@ -1,0 +1,7 @@
+*.bak
+build/doctrees/*
+*.sublime-*
+__pycache__
+doxylog
+*.DS_Store
+doxy/xml*

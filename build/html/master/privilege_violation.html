@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>privilege_violation &mdash; LDMud UNRELEASED documentation</title>
+    <title>master::privilege_violation() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,31 +24,36 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="master" href="master.html" />
+    <link rel="next" title="master::query_allow_shadow()" href="query_allow_shadow.html" />
+    <link rel="prev" title="master::printf_obj_name()" href="printf_obj_name.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="privilege_violation">
+  <div class="section">
 <div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="master" style="border-spacing:0;">
+<span id="privilege_violation"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr id="lpc.privilege_violation">
 <td>
-int </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
 <code class="descname">privilege_violation</code></td><td><span class="sig-paren">(</span></td><td>
-string<em>&nbsp;op</em>, </td><td>
-mixed<em>&nbsp;who</em>, </td><td>
-mixed<em>&nbsp;arg</em>, </td><td>
-mixed<em>&nbsp;arg2</em>, </td><td>
-mixed<em>&nbsp;arg3</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.privilege_violation" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;op</em>, </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;who</em>, </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;arg</em>, </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;arg2</em>, </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;arg3</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.privilege_violation" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -146,7 +151,8 @@ The xxx_extra_wizinfo operations are necessary for a proper
 wizlist and should therefore be restricted to admins.
 All other operations are potential sources for direct security
 breaches - any use of them should be scrutinized closely.</p>
-<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><strong>changed</strong> (<em>3.2.10</em>) &#8211; added the &#8220;enable_telnet&#8221;, &#8220;net_connect&#8221;,
 &#8220;set_max_commands&#8221; and &#8220;variable_list&#8221; violations.</li>
@@ -155,8 +161,11 @@ and &#8220;set_limits&#8221;.</li>
 <li><strong>changed</strong> (<em>3.2.11/3.3.640</em>) &#8211; added the &#8220;mysql&#8221; violation.</li>
 <li><strong>changed</strong> (<em>3.3.717</em>) &#8211; added the &#8220;sqlite_pragma&#8221; violation.</li>
 </ul>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../efun/net_connect.html#lpc.net_connect" title="net_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">net_connect</span></code>(E)</a>, <a class="reference internal" href="../efun/send_erq.html#lpc.send_erq" title="send_erq"><code class="xref lpc lpc-efun docutils literal"><span class="pre">send_erq</span></code>(E)</a>, <a class="reference internal" href="../efun/set_this_object.html#lpc.set_this_object" title="set_this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_this_object</span></code>(E)</a>, <a class="reference internal" href="../efun/rename_object.html#lpc.rename_object" title="rename_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rename_object</span></code>(E)</a>, <a class="reference internal" href="../concepts/simul_efun.html#lpc.simul_efun" title="simul_efun"><span class="xref lpc lpc-concept">simul_efun</span></a>, <a class="reference internal" href="../efun/call_out_info.html#lpc.call_out_info" title="call_out_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out_info</span></code>(E)</a>, <a class="reference internal" href="../efun/shadow.html#lpc.shadow" title="shadow"><code class="xref lpc lpc-efun docutils literal"><span class="pre">shadow</span></code>(E)</a>, <a class="reference internal" href="../efun/add_action.html#lpc.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action</span></code>(E)</a>, <a class="reference internal" href="../efun/bind_lambda.html#lpc.bind_lambda" title="bind_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">bind_lambda</span></code>(E)</a>, <a class="reference internal" href="../efun/send_udp.html#lpc.send_udp" title="send_udp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">send_udp</span></code>(E)</a>, <a class="reference internal" href="../efun/input_to.html#lpc.input_to" title="input_to"><code class="xref lpc lpc-efun docutils literal"><span class="pre">input_to</span></code>(E)</a>, <a class="reference internal" href="../efun/execute_command.html#lpc.execute_command" title="execute_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">execute_command</span></code>(E)</a>, <a class="reference internal" href="../efun/variable_list.html#lpc.variable_list" title="variable_list"><code class="xref lpc lpc-efun docutils literal"><span class="pre">variable_list</span></code>(E)</a>, <a class="reference internal" href="../efun/enable_telnet.html#lpc.enable_telnet" title="enable_telnet"><code class="xref lpc lpc-efun docutils literal"><span class="pre">enable_telnet</span></code>(E)</a>, <a class="reference internal" href="../concepts/mysql.html#lpc.mysql" title="mysql"><span class="xref lpc lpc-concept">mysql</span></a></p>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/net_connect.html#lpc.net_connect" title="net_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">net_connect()</span></code>(E)</a>, <a class="reference internal" href="../efun/send_erq.html#lpc.send_erq" title="send_erq"><code class="xref lpc lpc-efun docutils literal"><span class="pre">send_erq()</span></code>(E)</a>, <a class="reference internal" href="../efun/set_this_object.html#lpc.set_this_object" title="set_this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_this_object()</span></code>(E)</a>, <a class="reference internal" href="../efun/rename_object.html#lpc.rename_object" title="rename_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rename_object()</span></code>(E)</a>, <a class="reference internal" href="../concepts/simul_efun.html#lpc.simul_efun" title="simul_efun"><code class="xref lpc lpc-concept docutils literal"><span class="pre">simul_efun</span></code>(C)</a>, <a class="reference internal" href="../efun/call_out_info.html#lpc.call_out_info" title="call_out_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out_info()</span></code>(E)</a>, <a class="reference internal" href="../efun/shadow.html#lpc.shadow" title="shadow"><code class="xref lpc lpc-efun docutils literal"><span class="pre">shadow()</span></code>(E)</a>, <a class="reference internal" href="../efun/add_action.html#lpc.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action()</span></code>(E)</a>, <a class="reference internal" href="../efun/bind_lambda.html#lpc.bind_lambda" title="bind_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">bind_lambda()</span></code>(E)</a>, <a class="reference internal" href="../efun/send_udp.html#lpc.send_udp" title="send_udp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">send_udp()</span></code>(E)</a>, <a class="reference internal" href="../efun/input_to.html#lpc.input_to" title="input_to"><code class="xref lpc lpc-efun docutils literal"><span class="pre">input_to()</span></code>(E)</a>, <a class="reference internal" href="../efun/execute_command.html#lpc.execute_command" title="execute_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">execute_command()</span></code>(E)</a>, <a class="reference internal" href="../efun/variable_list.html#lpc.variable_list" title="variable_list"><code class="xref lpc lpc-efun docutils literal"><span class="pre">variable_list()</span></code>(E)</a>, <a class="reference internal" href="../efun/enable_telnet.html#lpc.enable_telnet" title="enable_telnet"><code class="xref lpc lpc-efun docutils literal"><span class="pre">enable_telnet()</span></code>(E)</a>, <a class="reference internal" href="../concepts/mysql.html#lpc.mysql" title="mysql"><code class="xref lpc lpc-concept docutils literal"><span class="pre">mysql</span></code>(C)</a></p>
+</div>
 </div>
 </div>
 
@@ -174,22 +183,31 @@ and &#8220;set_limits&#8221;.</li>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">privilege_violation</a><ul>
+<li><a class="reference internal" href="#">master::privilege_violation()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -199,10 +217,6 @@ and &#8220;set_limits&#8221;.</li>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/master/privilege_violation.txt"

@@ -1,15 +1,15 @@
 Welcome to lddoc's documentation!
 =================================
 
-.. |t_applied| replace:: :concept:`applied`
-.. |t_concepts| replace:: :topic:`concepts`
-.. |t_driver| replace:: :topic:`driver`
-.. |t_efun| replace:: :topic:`efun`
-.. |t_hooks| replace:: :concept:`hooks`
-.. |t_LPC| replace:: :topic:`lpc`
-.. |t_master| replace:: :guide:`master`
-.. |t_obsolete| replace:: :topic:`obsolete`
-.. |t_other| replace:: :topic:`other`
+.. |t_applied| replace:: :directory:`applied`
+.. |t_concepts| replace:: :directory:`concepts`
+.. |t_driver| replace:: :directory:`driver`
+.. |t_efun| replace:: :directory:`efun`
+.. |t_hooks| replace:: :directory:`hook`
+.. |t_LPC| replace:: :directory:`LPC`
+.. |t_master| replace:: :directory:`master`
+.. |t_obsolete| replace:: :directory:`obsolete`
+.. |t_other| replace:: :directory:`other`
 .. |t_loc| replace:: linked
 
 .. |f_applied| replace:: :file:`applied/`
@@ -23,6 +23,8 @@ Welcome to lddoc's documentation!
 .. |f_other| replace:: :file:`other/`
 .. |f_loc| replace:: stored in separate directories described
 
+.. todo:: there isn't actually an other/other.rst file
+
 The LDMud documentation is organized in chapters that are |f_loc| below.
 
 .. only:: plain
@@ -31,7 +33,6 @@ The LDMud documentation is organized in chapters that are |f_loc| below.
   :|f_concepts|: general concepts of LPMUD and LPC
   :|f_driver|: some info about internal operation of the driver
   :|f_efun|: the "system calls" of LPC
-        .. efun.de/    german translations of the efun/ manpages.
   :|f_hooks|: the driver hooks
   :|f_LPC|: about parts of the LPC language
   :|f_master|: lfuns that are applied to the master object only
@@ -44,12 +45,15 @@ The LDMud documentation is organized in chapters that are |f_loc| below.
   :|t_concepts|: general concepts of LPMUD and LPC
   :|t_driver|: some info about internal operation of the driver
   :|t_efun|: the "system calls" of LPC
-        .. efun.de/    german translations of the efun/ manpages.
   :|t_hooks|: the driver hooks
   :|t_LPC|: about parts of the LPC language
   :|t_master|: lfuns that are applied to the master object only
   :|t_obsolete|: docs for features removed from the driver
   :|t_other|: other useful MUD-related documents
+
+.. todo:: above lists don't include the new "internals" directory, yet.
+
+.. todo:: need to figure out how to integrate the efun.de copy (which I also have yet to convert) ``efun.de/    german translations of the efun/ manpages.``
 
 A reference to foo(X) means the function foo as descibed in chapter X, where X is one of:
 
@@ -62,16 +66,25 @@ A reference to foo(X) means the function foo as descibed in chapter X, where X i
   :M: for master
   :O: for obsolete
   :OTHER: for other
-  .. SE, S,
 
-  .. add history, info on doc format...
+  .. todo:: I for internal? SE for simul_efun; I had a note for S as well--perhaps that's SYS? dunno.
+
+  .. todo:: add history, info on doc format?
 
 .. toctree::
   :titlesonly:
   :maxdepth: 1
   :hidden:
 
+  applied/applied.rst
+  concepts/concepts.rst
+  driver/driver.rst
+  efun/efun.rst
   hook/hook.rst
+  internals/internals.rst
+  master/master.rst
+  obsolete/obsolete.rst
+  LPC/lpc.rst
 
 
 Indices and tables

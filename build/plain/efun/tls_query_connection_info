@@ -5,16 +5,16 @@ SYNOPSIS (PRELIMINARY)
 
 DESCRIPTION
 ===========
-   If <ob> does not have a TLS connection, if the connection is still being
+   If <ob> does not have a TLS connection, if the connection is still being 
    set-up, or if <ob> is not interactive, the efun returns 0.
 
-   If <ob> has a TLS connection, tls_query_connection_info() returns an array
+   If <ob> has a TLS connection, tls_query_connection_info() returns an array 
    that contains some parameters of <ob>'s connection:
 
-      int|string [TLS_CIPHER]: the cipher used int        [TLS_COMP]:
-      thecompression used int        [TLS_KX]:     the key-exchange used
-      int[TLS_MAC]:    the digest algorithm used int|string [TLS_PROT]:
-      theprotocol used
+      int|string [TLS_CIPHER]: the cipher used int        [TLS_COMP]:   the 
+      compression used int        [TLS_KX]:     the key-exchange used int
+      [TLS_MAC]:    the digest algorithm used int|string [TLS_PROT]:
+      the protocol used
 
    To translate these numbers into strings, <tls.h> offers a number of macros:
 

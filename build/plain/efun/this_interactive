@@ -4,9 +4,9 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   this_interactive() returns the current interactive object, if any (i.e.,
+   this_interactive() returns the current interactive object, if any (i.e., 
    the one who hit the RETURN key).
 
 SEE ALSO
 ========
-   this_player(E), previous_object(E), interactive(E), living(E)
+   this_player()(E), previous_object()(E), interactive()(E), living()(E)

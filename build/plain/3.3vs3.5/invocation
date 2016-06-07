@@ -1,13 +1,13 @@
-Some command-line flags were renamed to match the LPC defines they define
+Some command-line flags were renamed to match the LPC defines they define 
 (#704):
 
 - --heart-interval -> --heart-beat-interval
-- --sync-heart
+- --sync-heart     
   -> --synchronous-heart-beat
 
-- --async-heart
+- --async-heart     
   -> --asynchronous-heart-beat
 
-- --no-heart
+- --no-heart     
   -> --no-timers
 

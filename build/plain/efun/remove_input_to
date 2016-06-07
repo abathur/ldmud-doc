@@ -8,10 +8,10 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Remove a pending input_to from the interactive <player> object. If the
+Remove a pending input_to from the interactive <player> object. If the 
 optional <fun> is not given, the most recently added input_to is removed.
 
-If the optional <fun> is given, the efun tries to find and remove the most
+If the optional <fun> is given, the efun tries to find and remove the most 
 recently added input_to matching the <fun> argument:
 
    - <fun> is a string: the input_to functionname has to match
@@ -23,7 +23,7 @@ recently added input_to matching the <fun> argument:
         have to match
 
 
-Return 1 on success, or 0 on failure (no input_to found, object is not
+Return 1 on success, or 0 on failure (no input_to found, object is not 
 interactive or has no input_to pending).
 
 EXAMPLES Remove all pending input_to from the current user, if any.
@@ -32,5 +32,6 @@ EXAMPLES Remove all pending input_to from the current user, if any.
 
 Introduced in LDMud 3.2.9 / 3.3.119.
 
-   See Also:
-      input_to(E), find_input_to(E), input_to_info(E),query_input_pending(E)
+   See Also: 
+      input_to()(E), find_input_to()(E), input_to_info()(E), 
+      query_input_pending()(E)

@@ -7,24 +7,23 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   This privileged efun sets the driver hook 'what' (values are defined in
-   <driver_hook.h>) to 'arg'. The exact meanings and types of 'arg' depend of
+   This privileged efun sets the driver hook 'what' (values are defined in 
+   <driver_hook.h>) to 'arg'. The exact meanings and types of 'arg' depend of 
    the hook set. To remove a hook, set 'arg' to 0.
 
    These hooks exist:
 
-   Todo: should this just link to the other list where these are more
+   Todo: should this just link to the other list where these are more 
    thoroughly defined? Does this list have any information the others don't?
 
    H_MOVE_OBJECT0 H_MOVE_OBJECT1
 
-      arg: unbound lambda Mandatory hooks implementing the move_object()
-      efun.
+      arg: unbound lambda Mandatory hooks implementing the move_object() efun.
 
    H_LOAD_UIDS H_CLONE_UIDS
 
-      arg: unbound lambda or lfun closure Mandatory hooks to determine
-      the(e)uid of new objects.
+      arg: unbound lambda or lfun closure Mandatory hooks to determine the 
+      (e)uid of new objects.
 
    H_CREATE_SUPER H_CREATE_OB H_CREATE_CLONE H_RESET H_CLEAN_UP
 
@@ -34,59 +33,57 @@ DESCRIPTION
       Optional hooks for creation/reset/clean up-actions.
 
    H_DEFAULT_METHOD
-      arg: lambda closure, lfun closure, function name. Optional hook
-      fordefault method implementation.
+      arg: lambda closure, lfun closure, function name. Optional hook for 
+      default method implementation.
 
    H_DEFAULT_PROMPT
-      arg: lambda closure, lfun closure, prompt string. Optional hook for
-      thedefault command prompt.
+      arg: lambda closure, lfun closure, prompt string. Optional hook for the 
+      default command prompt.
 
    H_PRINT_PROMPT
-      arg: lambda closure, lfun closure, function name. Optional hook to
-      printthe command prompt.
+      arg: lambda closure, lfun closure, function name. Optional hook to print
+      the command prompt.
 
    H_MODIFY_COMMAND
-      arg: lambda closure, lfun closure, function name, mapping Optional
-      hookfor modifying player commands before the parser sees them.
+      arg: lambda closure, lfun closure, function name, mapping Optional hook 
+      for modifying player commands before the parser sees them.
 
    H_NOTIFY_FAIL
-      arg: lambda closure, lfun closure, string. Mandatory hook to
-      generatethe default message if an entered command couldn't be parsed
-      and nonotify_fail() command is in effect.
+      arg: lambda closure, lfun closure, string. Mandatory hook to generate 
+      the default message if an entered command couldn't be parsed and no 
+      notify_fail() command is in effect.
 
    H_SEND_NOTIFY_FAIL
-      arg: lambda closure, lfun closure, string. Optional hook to deliver
-      thenotify fail message from a failed command.
+      arg: lambda closure, lfun closure, string. Optional hook to deliver the 
+      notify fail message from a failed command.
 
    H_NO_IPC_SLOT
-      arg: string. Optional hook specifying the 'sorry' messages if logins
-      arerejected due to fullness of the mud.
+      arg: string. Optional hook specifying the 'sorry' messages if logins are
+      rejected due to fullness of the mud.
 
    H_INCLUDE_DIRS
-      arg: lambda closure, lfun closure, string array. Semi-mandatory
-      hookspecifying the directories where <>-type include files are
-      searched.
+      arg: lambda closure, lfun closure, string array. Semi-mandatory hook 
+      specifying the directories where <>-type include files are searched.
 
    H_AUTO_INCLUDE
-      arg: lambda closure, lfun closure, string Optional hook to specify
-      astring to be included before the source of every compiled LPC
-      object.
+      arg: lambda closure, lfun closure, string Optional hook to specify a 
+      string to be included before the source of every compiled LPC object.
 
    H_TELNET_NEG
-      arg: lambda closure, lfun closure, string. Optional hook to specifiy
-      howto perform a single telnet negotiation.
+      arg: lambda closure, lfun closure, string. Optional hook to specifiy how
+      to perform a single telnet negotiation.
 
    H_NOECHO
-      arg: lambda closure, lfun closure, string. Optional hook to specifiy
-      howto perform the telnet actions to switch the echo mode (used for
-      e.g.password input_to()s).
+      arg: lambda closure, lfun closure, string. Optional hook to specifiy how
+      to perform the telnet actions to switch the echo mode (used for e.g. 
+      password input_to()s).
 
    H_ERQ_STOP
-      arg: lambda closure, lfun closure. Optional hook to notify the
-      mudlibabout the termination of the erq demon.
+      arg: lambda closure, lfun closure. Optional hook to notify the mudlib 
+      about the termination of the erq demon.
 
    H_MSG_DISCARDED
-      arg: lambda closure, lfun closure, string Optional hook to specify
-      amessage or take other measures when a message had to be discarded.
+      arg: lambda closure, lfun closure, string Optional hook to specify a 
+      message or take other measures when a message had to be discarded.
 
-   See *hooks* for a detailed discussion.
+   See `hooks` for a detailed discussion.

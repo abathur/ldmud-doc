@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>tls_check_certificate &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::tls_check_certificate() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,33 +24,38 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="efun" href="efun.html" />
+    <link rel="next" title="efun::tls_deinit_connection()" href="tls_deinit_connection.html" />
+    <link rel="prev" title="efun::tls_available()" href="tls_available.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="tls_check_certificate">
+  <div class="section">
 <div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS (PRELIMINARY)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="efun" style="border-spacing:0;">
+<span id="tls_check_certificate"></span><h2>SYNOPSIS (PRELIMINARY)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr id="lpc.tls_check_certificate">
 <td>
-mixed * </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
 <code class="descname">tls_check_certificate</code></td><td><span class="sig-paren">(</span></td><td>
-object<em>&nbsp;obj</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.tls_check_certificate" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;obj</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.tls_check_certificate" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-mixed * </td><td>
+<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
 <code class="descname">tls_check_certificate</code></td><td><span class="sig-paren">(</span></td><td>
-object<em>&nbsp;obj</em>, </td><td>
-int<em>&nbsp;extra</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;obj</em>, </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;extra</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -63,14 +68,14 @@ up and running.</p>
 <p>Otherwise, the result is an array with these values:</p>
 <blockquote>
 <div><dl class="docutils">
-<dt>int [0] <span class="classifier-delimiter">:</span> <span class="classifier">Result code of SSL_get_verify_result (see &#8216;man 1 verify&#8217;</span></dt>
-<dd>subsection DIAGNOSTICS for possible values).</dd>
-<dt>array [1] <span class="classifier-delimiter">:</span> <span class="classifier">Array with 3*n entries of extra x509 data.</span></dt>
-<dd><dl class="first last docutils">
+<dt>int [0]</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">Result code of SSL_get_verify_result (see &#8216;man 1 verify&#8217;</span><dd>subsection DIAGNOSTICS for possible values).</dd>
+<dt>array [1]</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">Array with 3*n entries of extra x509 data.</span><dd><dl class="first last docutils">
 <dt>Structure is:</dt>
 <dd><dl class="first docutils">
-<dt>3*i <span class="classifier-delimiter">:</span> <span class="classifier">numerical form of object name,</span></dt>
-<dd>e.g. &#8220;2.5.4.3&#8221;</dd>
+<dt>3*i</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">numerical form of object name,</span><dd>e.g. &#8220;2.5.4.3&#8221;</dd>
 <dt>3*i + 1: long or short name if available,</dt>
 <dd>e.g. &#8220;commonName&#8221;</dd>
 </dl>
@@ -78,8 +83,8 @@ up and running.</p>
 </dd>
 </dl>
 </dd>
-<dt>array [2] <span class="classifier-delimiter">:</span> <span class="classifier">If &lt;extra&gt; is set:</span></dt>
-<dd><p class="first">array with 3*n entries of x509 extension data
+<dt>array [2]</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">If &lt;extra&gt; is set:</span><dd><p class="first">array with 3*n entries of x509 extension data
 data structure is:
 3*i    : numerical form of extension name
 3*i + 1: long or short name of extension</p>
@@ -114,22 +119,27 @@ data structure is:
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">tls_check_certificate</a><ul>
+<li><a class="reference internal" href="#">efun::tls_check_certificate()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (PRELIMINARY)</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -139,10 +149,6 @@ data structure is:
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/efun/tls_check_certificate.txt"

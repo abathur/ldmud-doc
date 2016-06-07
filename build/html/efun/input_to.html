@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>input_to &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::input_to() &mdash; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,43 +24,48 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
+    <link rel="up" title="efun" href="efun.html" />
+    <link rel="next" title="efun::input_to_info()" href="input_to_info.html" />
+    <link rel="prev" title="efun::inherit_list()" href="inherit_list.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="input_to">
+  <div class="section">
 <div class="section" id="SYNOPSIS">
-<h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
-<table class="efun" style="border-spacing:0;">
+<span id="input_to"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;input_to.h&gt;</tr>
 <tr id="lpc.input_to">
 <td>
-void </td><td>
+<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
 <code class="descname">input_to</code></td><td><span class="sig-paren">(</span></td><td>
-string|closure<em>&nbsp;fun</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.input_to" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;fun</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.input_to" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-void </td><td>
+<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
 <code class="descname">input_to</code></td><td><span class="sig-paren">(</span></td><td>
-string|closure<em>&nbsp;fun</em>, </td><td>
-int<em>&nbsp;flag</em>, </td><td>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;fun</em>, </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flag</em>, </td><td>
 ...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-void </td><td>
+<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
 <code class="descname">input_to</code></td><td><span class="sig-paren">(</span></td><td>
-string|closure<em>&nbsp;fun</em>, </td><td>
-int<em>&nbsp;flag</em>, </td><td>
-string|closure<em>&nbsp;prompt</em>, </td><td>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;fun</em>, </td><td>
+<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flag</em>, </td><td>
+<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;prompt</em>, </td><td>
 ...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
@@ -135,7 +140,8 @@ of this option is privileged.</dd>
 </div></blockquote>
 <p>The optional trailing args will be passed as second and
 subsequent args to the function fun.</p>
-<h2 id="USAGE">USAGE<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>void func() {</dt>
 <dd><p class="first">...
@@ -190,6 +196,7 @@ void func3() { ... }</p>
 <p>This code will result in the functions being called in the order
 func(), func1(), func2(), func3(); and not func(), func1(), func3(),
 func2().</p>
+</div>
 <p>BUGS
 In charmode, it is not possible to receive the NUL character
 and pass it to the mudlib: internally the NUL character has
@@ -211,22 +218,30 @@ magical properties.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">input_to</a><ul>
+<li><a class="reference internal" href="#">efun::input_to()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hooks</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
 </ul>
 
 
@@ -236,10 +251,6 @@ magical properties.</p>
     </div>
     <div class="footer">
       &copy;good question.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
       
       |
       <a href="../_sources/efun/input_to.txt"

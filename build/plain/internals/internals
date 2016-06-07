@@ -1,12 +1,18 @@
-SYNOPSIS
-========
+DIRECTORY
+=========
    internals
 
 DESCRIPTION
 ===========
-   No one knows.
+   This directory contains documentation on style, procedures and concepts 
+   useful for those working directly on LDMud.
 
-   - Language
-   - Style
-   - Commenting
+   Todo: I just made this description up, if someone wants to change it. :)
+
+   - codestyle
    - What happens when an inline closure is parsed
+
+SEE ALSO
+========
+   applied(A), concepts(C), driver(D), efun(E), hook(H), LPC(LPC), master(M), 
+   obsolete

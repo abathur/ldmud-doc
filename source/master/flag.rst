@@ -38,4 +38,4 @@
         write("master: Unknown flag "+arg+"\n");
       }
 
-  .. seealso:: :master:`master`
+  .. seealso:: :directory:`master`
