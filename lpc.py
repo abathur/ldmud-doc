@@ -732,6 +732,10 @@ class LPCFunction(LPCObject):
 		"""Override to set no id; we'll set it later/conditionally in the parse."""
 		return nodes.section()
 
+	def get_title(self, name):
+		return CrouchingTitle(text="{0}::{1}()".format(self.objtype, name))
+
+
 	def _parse_synopsis_syntax(self, synopsis_node, out_node):
 		"""Parse synopsis into a set of synopsis nodes, which should get appended to the parent synopsis_node."""
 
@@ -758,7 +762,7 @@ class LPCFunction(LPCObject):
 			if docname and docname not in self.names:
 				synopsis_node["ids"].append(docname)  # need the funcname
 				# out_node += CrouchingTitle(text=docname)
-				out_node += CrouchingTitle(text="{0}::{1}()".format(self.objtype, signame))
+				out_node += self.get_title(signame)
 				self.names.append(docname)
 				if not self.noindex:
 					# only add target and index entry if this is the first
@@ -770,7 +774,7 @@ class LPCFunction(LPCObject):
 
 			if signame not in self.names:
 				synopsis_node["ids"].append(signame)  # need the funcname
-				out_node += CrouchingTitle(text="{0}::{1}()".format(self.objtype, signame))
+				out_node += self.get_title(signame)
 				self.names.append(signame)
 				if not self.noindex:
 					# only add target and index entry if this is the first description of the object with this name in this desc block
@@ -835,6 +839,9 @@ class LPCHook(LPCFunction):
 
 	def get_includes(self):
 		return ["<sys/driver_hooks.h>"] + super().get_includes()
+
+	def get_title(self, name):
+		return CrouchingTitle(text=name)
 
 
 class LPCApplied(LPCFunction):

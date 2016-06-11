@@ -5,5 +5,5 @@ var searchData=
   ['opcdump',['opcdump',['../driver_driver_opcdump.html',1,'driver_driver_driver']]],
   ['object',['object',['../driver_LPC_object.html',1,'driver_LPC_lpc']]],
   ['operators',['operators',['../driver_LPC_operators.html',1,'driver_todo']]],
-  ['obsolete',['obsolete',['../driver_obsolete_obsolete.html',1,'']]]
+  ['obsolete',['obsolete',['../driver_obsolete_obsolete.html',1,'index']]]
 ];

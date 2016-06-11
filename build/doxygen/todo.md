@@ -114,15 +114,15 @@ todo {#driver_todo}
 
 (The @subpage driver_hook_no_echo#index-1 "original entry" is located in /home/lddoc/source/hook/no_echo.rst, line 14.)
 
-(The @subpage driver_index#index-0 "original entry" is located in /home/lddoc/source/index.rst, line 26.)
+(The @subpage driver_index#index-0 "original entry" is located in /home/lddoc/source/index.rst, line 37.)
 
-(The @subpage driver_index#index-1 "original entry" is located in /home/lddoc/source/index.rst, line 54.)
+(The @subpage driver_index#index-1 "original entry" is located in /home/lddoc/source/index.rst, line 83.)
 
-(The @subpage driver_index#index-2 "original entry" is located in /home/lddoc/source/index.rst, line 56.)
+(The @subpage driver_index#index-2 "original entry" is located in /home/lddoc/source/index.rst, line 85.)
 
-(The @subpage driver_index#index-3 "original entry" is located in /home/lddoc/source/index.rst, line 70.)
+(The @subpage driver_index#index-3 "original entry" is located in /home/lddoc/source/index.rst, line 99.)
 
-(The @subpage driver_index#index-4 "original entry" is located in /home/lddoc/source/index.rst, line 72.)
+(The @subpage driver_index#index-4 "original entry" is located in /home/lddoc/source/index.rst, line 101.)
 
 (The @subpage driver_internals_codestyle#index-0 "original entry" is located in /home/lddoc/source/internals/codestyle.rst, line 34.)
 

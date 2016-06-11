@@ -5,10 +5,9 @@ var searchData=
   ['initialisation',['initialisation',['../driver_concepts_initialisation.html',1,'driver_concepts_concepts']]],
   ['intermud',['intermud',['../driver_concepts_intermud.html',1,'driver_todo']]],
   ['invocation',['invocation',['../driver_driver_invocation.html',1,'driver_todo']]],
-  ['include_5fdirs',['include_dirs',['../driver_hook_include_dirs.html',1,'']]],
+  ['include_5fdirs',['include_dirs',['../driver_hook_include_dirs.html',1,'driver_hook_hook']]],
   ['internals',['internals',['../driver_internals_internals.html',1,'driver_todo']]],
   ['if',['if',['../driver_LPC_if.html',1,'driver_LPC_lpc']]],
-  ['index',['index',['../driver_LPC_index.html',1,'driver_LPC_lpc']]],
   ['inherit',['inherit',['../driver_LPC_inherit.html',1,'driver_LPC_lpc']]],
   ['inline_2dclosures',['inline-closures',['../driver_LPC_inline-closures.html',1,'driver_LPC_lpc']]],
   ['int',['int',['../driver_LPC_int.html',1,'driver_LPC_lpc']]],
@@ -33,6 +32,5 @@ var searchData=
   ['intersect_5falist',['intersect_alist',['../classefun.html#ac85fcca7da3146c9750ccfd1c95bc935',1,'efun']]],
   ['intp',['intp',['../classefun.html#aae25e47ee6526e8297fa3d9c822a22be',1,'efun']]],
   ['invert_5fbits',['invert_bits',['../classefun.html#af7671dc7d914e3ae12a1a15e0139cb6a',1,'efun']]],
-  ['intermud_2ebasic_20_7b_23driver_5fconcepts_5fintermud_2ebasic_7d',['intermud.basic {#driver_concepts_intermud.basic}',['../md_concepts_intermud_8basic.html',1,'']]],
-  ['index',['index',['../md_index.html',1,'']]]
+  ['intermud_2ebasic_20_7b_23driver_5fconcepts_5fintermud_2ebasic_7d',['intermud.basic {#driver_concepts_intermud.basic}',['../md_concepts_intermud_8basic.html',1,'']]]
 ];

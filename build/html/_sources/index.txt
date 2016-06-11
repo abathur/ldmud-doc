@@ -23,11 +23,24 @@ Welcome to lddoc's documentation!
 .. |f_other| replace:: :file:`other/`
 .. |f_loc| replace:: stored in separate directories described
 
+.. |d_applied| replace:: @subpage driver_applied_applied "applied"
+.. |d_concepts| replace:: @subpage driver_concepts_concepts "concepts"
+.. |d_driver| replace:: @subpage driver_driver_driver "driver"
+.. |d_efun| replace:: @subpage driver_efun_efun "efun"
+.. |d_hooks| replace:: @subpage driver_hook_hook "hook"
+.. |d_LPC| replace:: @subpage driver_LPC_lpc "LPC"
+.. |d_master| replace:: @subpage driver_master_master "master"
+.. |d_obsolete| replace:: @subpage driver_obsolete_obsolete "obsolete"
+.. |d_other| replace:: @subpage driver_other_other "other"
+.. |d_loc| replace:: linked
+
 .. todo:: there isn't actually an other/other.rst file
 
-The LDMud documentation is organized in chapters that are |f_loc| below.
+
 
 .. only:: plain
+
+  The LDMud documentation is organized in chapters that are |f_loc| below.
 
   :|f_applied|: member functions (lfuns) that the driver applies to objects
   :|f_concepts|: general concepts of LPMUD and LPC
@@ -41,6 +54,8 @@ The LDMud documentation is organized in chapters that are |f_loc| below.
 
 .. only:: html
 
+  The LDMud documentation is organized in chapters that are |t_loc| below.
+
   :|t_applied|: member functions (lfuns) that the driver applies to objects
   :|t_concepts|: general concepts of LPMUD and LPC
   :|t_driver|: some info about internal operation of the driver
@@ -50,6 +65,20 @@ The LDMud documentation is organized in chapters that are |f_loc| below.
   :|t_master|: lfuns that are applied to the master object only
   :|t_obsolete|: docs for features removed from the driver
   :|t_other|: other useful MUD-related documents
+
+.. only:: doxygen
+
+  The LDMud documentation is organized in chapters that are |d_loc| below.
+
+  :|d_applied|: member functions (lfuns) that the driver applies to objects
+  :|d_concepts|: general concepts of LPMUD and LPC
+  :|d_driver|: some info about internal operation of the driver
+  :|d_efun|: the "system calls" of LPC
+  :|d_hooks|: the driver hooks
+  :|d_LPC|: about parts of the LPC language
+  :|d_master|: lfuns that are applied to the master object only
+  :|d_obsolete|: docs for features removed from the driver
+  :|d_other|: other useful MUD-related documents
 
 .. todo:: above lists don't include the new "internals" directory, yet.
 

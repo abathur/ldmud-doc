@@ -16,7 +16,6 @@ var driver_LPC_lpc =
     [ "foreach", "driver_LPC_foreach.html", null ],
     [ "functions", "driver_LPC_functions.html", null ],
     [ "if", "driver_LPC_if.html", null ],
-    [ "index", "driver_LPC_index.html", null ],
     [ "inherit", "driver_LPC_inherit.html", null ],
     [ "inline-closures", "driver_LPC_inline-closures.html", null ],
     [ "int", "driver_LPC_int.html", null ],

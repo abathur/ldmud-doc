@@ -1,4 +1,4 @@
-SYNOPSIS (OPTIONAL, EXPERIMENTAL)
+SYNOPSIS (EXPERIMENTAL, OPTIONAL)
 =================================
    mixed json_parse(string jsonstring)
 

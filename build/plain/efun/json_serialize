@@ -1,4 +1,4 @@
-SYNOPSIS (OPTIONAL, EXPERIMENTAL)
+SYNOPSIS (EXPERIMENTAL, OPTIONAL)
 =================================
    string json_serialize(mixed <data>)
 

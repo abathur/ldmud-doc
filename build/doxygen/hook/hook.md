@@ -74,30 +74,30 @@ Optional hook to notify the mudlib about the termination of the erq demon.
 @ref driver_hook_msg_discarded "H_MSG_DISCARDED"
 Optional hook to specify a message or take other measures when a message had to be discarded.
 
-- hook::H_AUTO_INCLUDE()
-- hook::H_CLEAN_UP()
-- hook::H_CLONE_UIDS()
-- hook::H_COMMAND()
-- hook::H_CREATE_CLONE()
-- hook::H_CREATE_OB()
-- hook::H_CREATE_SUPER()
-- hook::H_DEFAULT_METHOD()
-- hook::H_DEFAULT_PROMPT()
-- hook::H_ERQ_STOP()
-- hook::H_INCLUDE_DIRS()
-- hook::H_LOAD_UIDS()
-- hook::H_MODIFY_COMMAND()
-- hook::H_MODIFY_COMMAND_FNAME()
-- hook::H_MOVE_OBJECT0()
-- hook::H_MSG_DISCARDED()
-- hook::H_NOECHO()
-- hook::H_NO_IPC_SLOT()
-- hook::H_NOTIFY_FAIL()
-- hook::H_PRINT_PROMPT()
-- hook::H_REGEXP_PACKAGE()
-- hook::H_RESET()
-- hook::H_SEND_NOTIFY_FAIL()
-- hook::H_TELNET_NEG()
+- @subpage driver_hook_auto_include "H_AUTO_INCLUDE"
+- @subpage driver_hook_clean_up "H_CLEAN_UP"
+- @subpage driver_hook_clone_uids "H_CLONE_UIDS"
+- @subpage driver_hook_command "H_COMMAND"
+- @subpage driver_hook_create_clone "H_CREATE_CLONE"
+- @subpage driver_hook_create_ob "H_CREATE_OB"
+- @subpage driver_hook_create_super "H_CREATE_SUPER"
+- @subpage driver_hook_default_method "H_DEFAULT_METHOD"
+- @subpage driver_hook_default_prompt "H_DEFAULT_PROMPT"
+- @subpage driver_hook_erq_stop "H_ERQ_STOP"
+- @subpage driver_hook_include_dirs "H_INCLUDE_DIRS"
+- @subpage driver_hook_load_uids "H_LOAD_UIDS"
+- @subpage driver_hook_modify_command "H_MODIFY_COMMAND"
+- @subpage driver_hook_modify_command_fname "H_MODIFY_COMMAND_FNAME"
+- @subpage driver_hook_move_object "H_MOVE_OBJECT0"
+- @subpage driver_hook_msg_discarded "H_MSG_DISCARDED"
+- @subpage driver_hook_no_echo "H_NOECHO"
+- @subpage driver_hook_no_ipc_slot "H_NO_IPC_SLOT"
+- @subpage driver_hook_notify_fail "H_NOTIFY_FAIL"
+- @subpage driver_hook_print_prompt "H_PRINT_PROMPT"
+- @subpage driver_hook_regexp_package "H_REGEXP_PACKAGE"
+- @subpage driver_hook_reset "H_RESET"
+- @subpage driver_hook_send_notify_fail "H_SEND_NOTIFY_FAIL"
+- @subpage driver_hook_telnet_neg "H_TELNET_NEG"
 
 @history{
 introduced (3.2.1) -- the hooks concept

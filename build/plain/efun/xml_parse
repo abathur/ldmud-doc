@@ -1,4 +1,4 @@
-SYNOPSIS (OPTIONAL, EXPERIMENTAL)
+SYNOPSIS (EXPERIMENTAL, OPTIONAL)
 =================================
    #include <xml.h>
    mixed * xml_parse(string xml)

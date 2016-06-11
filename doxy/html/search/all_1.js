@@ -17,9 +17,9 @@ var searchData=
   ['atan',['atan',['../classefun.html#a0b28d79466130f759e16240979e44f0d',1,'efun']]],
   ['atan2',['atan2',['../classefun.html#a11e580e05e7a7739cc880834099778b1',1,'efun']]],
   ['attach_5ferq_5fdemon',['attach_erq_demon',['../classefun.html#a5576cf9792eb99b7cb6fb45d3a95e478',1,'efun']]],
-  ['applied',['applied',['../driver_applied_applied.html',1,'']]],
+  ['applied',['applied',['../driver_applied_applied.html',1,'index']]],
   ['architectures',['architectures',['../driver_driver_architectures.html',1,'driver_driver_driver']]],
-  ['auto_5finclude',['auto_include',['../driver_hook_auto_include.html',1,'']]],
+  ['auto_5finclude',['auto_include',['../driver_hook_auto_include.html',1,'driver_hook_hook']]],
   ['arrays',['arrays',['../driver_LPC_arrays.html',1,'driver_LPC_lpc']]],
   ['arrow',['arrow',['../driver_LPC_arrow.html',1,'driver_LPC_lpc']]],
   ['alists',['alists',['../driver_obsolete_alists.html',1,'driver_obsolete_obsolete']]]

@@ -1,4 +1,4 @@
-SYNOPSIS (OPTIONAL, EXPERIMENTAL)
+SYNOPSIS (EXPERIMENTAL, OPTIONAL)
 =================================
    #include <xml.h>
    string xml_generate(mixed *xml)

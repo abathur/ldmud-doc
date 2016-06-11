@@ -109,30 +109,30 @@ DESCRIPTION
       Optional hook to specify a message or take other measures when a message
       had to be discarded.
 
-   - hook::H_AUTO_INCLUDE()
-   - hook::H_CLEAN_UP()
-   - hook::H_CLONE_UIDS()
-   - hook::H_COMMAND()
-   - hook::H_CREATE_CLONE()
-   - hook::H_CREATE_OB()
-   - hook::H_CREATE_SUPER()
-   - hook::H_DEFAULT_METHOD()
-   - hook::H_DEFAULT_PROMPT()
-   - hook::H_ERQ_STOP()
-   - hook::H_INCLUDE_DIRS()
-   - hook::H_LOAD_UIDS()
-   - hook::H_MODIFY_COMMAND()
-   - hook::H_MODIFY_COMMAND_FNAME()
-   - hook::H_MOVE_OBJECT0()
-   - hook::H_MSG_DISCARDED()
-   - hook::H_NOECHO()
-   - hook::H_NO_IPC_SLOT()
-   - hook::H_NOTIFY_FAIL()
-   - hook::H_PRINT_PROMPT()
-   - hook::H_REGEXP_PACKAGE()
-   - hook::H_RESET()
-   - hook::H_SEND_NOTIFY_FAIL()
-   - hook::H_TELNET_NEG()
+   - H_AUTO_INCLUDE
+   - H_CLEAN_UP
+   - H_CLONE_UIDS
+   - H_COMMAND
+   - H_CREATE_CLONE
+   - H_CREATE_OB
+   - H_CREATE_SUPER
+   - H_DEFAULT_METHOD
+   - H_DEFAULT_PROMPT
+   - H_ERQ_STOP
+   - H_INCLUDE_DIRS
+   - H_LOAD_UIDS
+   - H_MODIFY_COMMAND
+   - H_MODIFY_COMMAND_FNAME
+   - H_MOVE_OBJECT0
+   - H_MSG_DISCARDED
+   - H_NOECHO
+   - H_NO_IPC_SLOT
+   - H_NOTIFY_FAIL
+   - H_PRINT_PROMPT
+   - H_REGEXP_PACKAGE
+   - H_RESET
+   - H_SEND_NOTIFY_FAIL
+   - H_TELNET_NEG
 
 HISTORY
 =======
