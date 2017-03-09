@@ -6,8 +6,8 @@ SYNOPSIS
 DESCRIPTION
 ===========
    Arguments: 
-      - value (string(LPC)) -- <prompt>
-      - value (closure(LPC)) -- string <closure>()
+      - value (string) -- <prompt> 
+      - value (closure) -- string <closure>() 
 
    Optional hook for the command prompt. If this hook is not used, the driver 
    will use "> " as the command prompt.
@@ -22,4 +22,4 @@ HISTORY
 
 SEE ALSO
 ========
-   `hooks`, print_prompt(H)
+   hook(H), print_prompt(H)

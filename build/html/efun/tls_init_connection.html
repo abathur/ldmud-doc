@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::tls_init_connection() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::tls_init_connection() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::tls_query_connection_info()" href="tls_query_connection_info.html" />
     <link rel="prev" title="efun::tls_error()" href="tls_error.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -43,63 +45,60 @@
             
   <div class="section">
 <div class="section" id="SYNOPSIS">
-<span id="tls_init_connection"></span><h2>SYNOPSIS (PRELIMINARY)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<span id="tls_init_connection"></span><h2>SYNOPSIS (EXPERIMENTAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.tls_init_connection">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">tls_init_connection</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.tls_init_connection" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.tls_init_connection">
+<!--[lpc.efun.tls_init_connection]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">tls_init_connection</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.tls_init_connection" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">tls_init_connection</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;fun</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;fob</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">tls_init_connection</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+object<em>&nbsp;ob</em>, </td><td id="id3">
+string<em>&nbsp;fun</em>, </td><td id="id4">
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a>|object<em>&nbsp;fob</em>, </td><td id="id5">
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">tls_init_connection</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;fun</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">tls_init_connection</code></td><td><span class="sig-paren">(</span></td><td id="id6">
+object<em>&nbsp;ob</em>, </td><td id="id7">
+closure<em>&nbsp;fun</em>, </td><td id="id8">
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>tls_init_connection() tries to start a TLS-secured connection to
-the interactive object &lt;ob&gt; (or this_object() if &lt;ob&gt; is not given).</p>
+<p>Tries to start a TLS-secured connection to the interactive object <a class="reference internal" href="#efun/tls_init_connection.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> (or <code class="docutils literal"><span class="pre">this_object()</span></code> if <a class="reference internal" href="#efun/tls_init_connection.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is not given).</p>
 <dl class="docutils">
 <dt>Result:</dt>
-<dd><dl class="first docutils">
-<dt>errorcode &lt; 0: unsuccessful, use tls_error() to get a useful</dt>
-<dd>description of the error</dd>
-<dt>number &gt; 0</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">the secure connection is still being set up in the</span><dd>background</dd>
-</dl>
-<p class="last">number == 0  : the secure connection is active.</p>
-</dd>
+<dd>errorcode &lt; 0: unsuccessful, use tls_error() to get a useful description of the error
+number &gt; 0   : the secure connection is still being set up in the background
+number == 0  : the secure connection is active.</dd>
 </dl>
 <p>OpenSSL only:</p>
 <blockquote>
-<div>If the callback &lt;fun&gt;/&lt;fun&gt;:&lt;fob&gt; is specified, it will be called
-once the fate of the secure connection has been determined. The
-first argument will be the return code from the handshake
-(errorcode &lt; 0 on failure, or 0 on success), followed by the
-interactive object &lt;ob&gt; and any &lt;extra&gt; arguments.</div></blockquote>
-<p>If the TLS setup fails, it is not necessary to call
-tls_deinit_connection().</p>
-<p>IMPORTANT: During the TLS handshake nothing else must be sent
-to the client! For the most cases (TLS-capable clients logging in)
-this means that the TLS handshake is the first and only thing the
-client gets to see while the handshake is in progress.</p>
-<p>The driver automatically suppresses the printing of the prompt
-while the TLS handshake is in progress.</p>
-<p>If tls_init_connection() is called in the master::connect() function,
-the driver will either call the set callback in place of logon(), or
-if no callback has been set, delay the call of logon() until the
-state of the connection is clear.</p>
+<div>If the callback &lt;fun&gt;/&lt;fun&gt;:&lt;fob&gt; is specified, it will be called once the fate of the secure connection has been determined. The first argument will be the return code from the handshake (errorcode &lt; 0 on failure, or 0 on success), followed by the interactive object <a class="reference internal" href="#efun/tls_init_connection.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> and any <a class="reference internal" href="#efun/tls_init_connection.arg.extra" title="extra"><code class="xref lpc lpc-arg docutils literal"><span class="pre">extra</span></code></a> arguments.</div></blockquote>
+<p>If the TLS setup fails, it is not necessary to call <a class="reference internal" href="tls_deinit_connection.html#lpc.efun.tls_deinit_connection" title="tls_deinit_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_deinit_connection</span></code>(E)</a>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">During the TLS handshake nothing else must be sent to the client! For the most cases (TLS-capable clients logging in) this means that the TLS handshake is the first and only thing the client gets to see while the handshake is in progress.</p>
+</div>
+<p>The driver automatically suppresses the printing of the prompt while the TLS handshake is in progress.</p>
+<p>If <a class="reference internal" href="#lpc.efun.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection</span></code>(E)</a> is called in the <a class="reference internal" href="../master/connect.html#lpc.master.connect" title="connect"><code class="xref lpc lpc-master docutils literal"><span class="pre">connect</span></code>(M)</a> function, the driver will either call the set callback in place of <a class="reference internal" href="../applied/logon.html#lpc.applied.logon" title="logon"><code class="xref lpc lpc-applied docutils literal"><span class="pre">logon</span></code>(A)</a>, or if no callback has been set, delay the call of <a class="reference internal" href="../applied/logon.html#lpc.applied.logon" title="logon"><code class="xref lpc lpc-applied docutils literal"><span class="pre">logon</span></code>(A)</a> until the state of the connection is clear.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.474</em>)</li>
+<li><strong>backported</strong> (<em>3.2.11</em>)</li>
+<li><strong>changed</strong> (<em>3.2.13/3.3.713</em>) &#8211; streamlined the handling of secure connections during logon.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="tls_deinit_connection.html#lpc.efun.tls_deinit_connection" title="tls_deinit_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_deinit_connection</span></code>(E)</a>, <a class="reference internal" href="tls_error.html#lpc.efun.tls_error" title="tls_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_error</span></code>(E)</a>, <a class="reference internal" href="tls_query_connection_state.html#lpc.efun.tls_query_connection_state" title="tls_query_connection_state"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_state</span></code>(E)</a>,:efun:<a class="reference internal" href="tls_query_connection_info.html"><span class="doc">efun::tls_query_connection_info()</span></a>, <a class="reference internal" href="tls_available.html#lpc.efun.tls_available" title="tls_available"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_available</span></code>(E)</a>,:efun:<a class="reference internal" href="tls_check_certificate.html"><span class="doc">efun::tls_check_certificate()</span></a>, <a class="reference internal" href="tls_refresh_certs.html#lpc.efun.tls_refresh_certs" title="tls_refresh_certs"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_refresh_certs</span></code>(E)</a>, <a class="reference internal" href="../master/connect.html#lpc.master.connect" title="connect"><code class="xref lpc lpc-master docutils literal"><span class="pre">connect</span></code>(M)</a><a class="reference internal" href="../applied/logon.html#lpc.applied.logon" title="logon"><code class="xref lpc lpc-applied docutils literal"><span class="pre">logon</span></code>(A)</a></p>
+</div>
 </div>
 </div>
 
@@ -112,8 +111,8 @@ state of the connection is clear.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -122,22 +121,25 @@ state of the connection is clear.</p>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">efun::tls_init_connection()</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (PRELIMINARY)</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (EXPERIMENTAL)</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -149,7 +151,7 @@ state of the connection is clear.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/tls_init_connection.txt"
+      <a href="../_sources/efun/tls_init_connection.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

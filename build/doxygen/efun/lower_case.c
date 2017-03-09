@@ -1,14 +1,14 @@
 public class efun {
    /**
-    * Convert all characters in str to lower case, and return the
-    * new string.
+    * Convert all characters in str to lower case, and return the new string.
     * 
     * @synopsis{
     * string lower_case(string str)
     * }
     * 
     * @usage{
-    * lower_case("Heya!") -> "heya!"
+    * `lower_case("Heya!") // returns "heya!"`
+    * 
     * }
     * 
     * @see efun::capitalize(), efun::upper_case()

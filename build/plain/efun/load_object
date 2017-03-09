@@ -4,19 +4,26 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Load the object from the file <name> (which can not be empty) and return it. 
-If the object already exists, just return it.
+   Load the object from the file name(E) (which can not be empty) and return 
+   it. If the object already exists, just return it.
 
-This efun can be used only to load blueprints - for clones, use the efun 
-clone_object().
+   This efun can be used only to load blueprints; for clones, use 
+   clone_object(E).
 
-If strict euids are enforced, the cloning object must have a non-zero euid.
+   If strict euids are enforced, the cloning object must have a non-zero euid.
 
-EXAMPLES // Update and reload the standard player object 
-destruct(find_object("/std/player")); load_object("/std/player");
+   USAGE
+   =====
+      Update and reload the standard player object:
 
-Introduced in LDMud 3.2.6. LDMud 3.3.716/3.4.3 requires that the <name> is not
-empty.
+         destruct(find_object("/std/player"));
+         load_object("/std/player");
 
-   See Also: 
-      clone_object()(E)
+HISTORY
+=======
+   - introduced (3.2.6)
+   - changed (3.3.716) -- requires that name(E) is not empty.
+
+SEE ALSO
+========
+   clone_object(E)

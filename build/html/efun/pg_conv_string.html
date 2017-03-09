@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::pg_conv_string() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::pg_conv_string() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::pg_pending()" href="pg_pending.html" />
     <link rel="prev" title="efun::pg_connect()" href="pg_connect.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,33 +47,29 @@
 <div class="section" id="SYNOPSIS">
 <span id="pg_conv_string"></span><h2>SYNOPSIS (OPTIONAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.pg_conv_string">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">pg_conv_string</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.pg_conv_string" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.pg_conv_string">
+<!--[lpc.efun.pg_conv_string]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">pg_conv_string</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.pg_conv_string" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<p>Convert the string &lt;str&gt; into a string that is correctly interpretated
-for usage as a string in pg_query(), e.g. &#8216; is replaced with &#8216; and so
-on.</p>
-<p>The function is available only if the driver is compiled with
-PostgreSQL support. In that case, __PGSQL__ is defined.</p>
+<p>Convert the string <a class="reference internal" href="#efun/pg_conv_string.arg.str" title="str"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str</span></code></a> into a string that is correctly interpretated for usage as a string in <a class="reference internal" href="pg_query.html#lpc.efun.pg_query" title="pg_query"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_query</span></code>(E)</a>, e.g. <code class="docutils literal"><span class="pre">'</span></code> is replaced with <code class="docutils literal"><span class="pre">\'</span></code> and so on.</p>
+<p>The function is available only if the driver is compiled with PostgreSQL support. In that case, <a class="reference internal" href="../topics/predefined.html#lpc.macro.__PGSQL__" title="__PGSQL__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__PGSQL__</span></code></a> is defined.</p>
 <p>The efun triggers a privilege violation (&#8220;pgsql&#8221;, &#8220;pg_connect&#8221;).</p>
-<p>Added in 3.3.708.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="../concepts/pgsql.html#lpc.pgsql" title="pgsql"><code class="xref lpc lpc-concept docutils literal"><span class="pre">pgsql</span></code>(C)</a>, <a class="reference internal" href="pg_query.html#lpc.pg_query" title="pg_query"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_query()</span></code>(E)</a>, <a class="reference internal" href="pg_pending.html#lpc.pg_pending" title="pg_pending"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_pending()</span></code>(E)</a>, <a class="reference internal" href="#lpc.pg_conv_string" title="pg_conv_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_conv_string()</span></code>(E)</a>, <a class="reference internal" href="pg_close.html#lpc.pg_close" title="pg_close"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_close()</span></code>(E)</a>, <a class="reference internal" href="../master/privilege_violation.html#lpc.privilege_violation" title="privilege_violation"><code class="xref lpc lpc-master docutils literal"><span class="pre">privilege_violation</span></code>(M)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.708</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a href="#id2"><span class="problematic" id="id3">:concept:`pgsql`</span></a>, <a class="reference internal" href="pg_query.html#lpc.efun.pg_query" title="pg_query"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_query</span></code>(E)</a>, <a class="reference internal" href="pg_pending.html#lpc.efun.pg_pending" title="pg_pending"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_pending</span></code>(E)</a>, <a class="reference internal" href="#lpc.efun.pg_conv_string" title="pg_conv_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_conv_string</span></code>(E)</a>, <a class="reference internal" href="pg_close.html#lpc.efun.pg_close" title="pg_close"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_close</span></code>(E)</a>, <a class="reference internal" href="../master/privilege_violation.html#lpc.master.privilege_violation" title="privilege_violation"><code class="xref lpc lpc-master docutils literal"><span class="pre">privilege_violation</span></code>(M)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -82,8 +80,8 @@ PostgreSQL support. In that case, __PGSQL__ is defined.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -93,21 +91,24 @@ PostgreSQL support. In that case, __PGSQL__ is defined.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::pg_conv_string()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (OPTIONAL)</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -119,7 +120,7 @@ PostgreSQL support. In that case, __PGSQL__ is defined.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/pg_conv_string.txt"
+      <a href="../_sources/efun/pg_conv_string.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

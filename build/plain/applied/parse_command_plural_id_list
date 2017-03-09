@@ -7,10 +7,10 @@ DESCRIPTION
    Return the plural names of this object.
 
    If this function doesn't exist, the parser tries to pluralize the names 
-   returned by parse_command_id_list().
+   returned by parse_command_id_list(A).
 
-   Used by parse_command()(E).
+   Used by parse_command(E).
 
 SEE ALSO
 ========
-   parse_command()(E), parse_command_id_list(A)
+   parse_command(E), parse_command_id_list(A)

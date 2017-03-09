@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::tls_refresh_certs() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::tls_refresh_certs() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::xml_generate()" href="xml_generate.html" />
     <link rel="prev" title="efun::tls_query_connection_state()" href="tls_query_connection_state.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -43,39 +45,33 @@
             
   <div class="section">
 <div class="section" id="SYNOPSIS">
-<span id="tls_refresh_certs"></span><h2>SYNOPSIS (PRELIMINARY)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<span id="tls_refresh_certs"></span><h2>SYNOPSIS (EXPERIMENTAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.tls_refresh_certs">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">tls_refresh_certs</code></td><a class="headerlink" href="#lpc.tls_refresh_certs" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.tls_refresh_certs">
+<!--[lpc.efun.tls_refresh_certs]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">tls_refresh_certs</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.tls_refresh_certs" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
 <p>Reload the certificates and certificate revocation information.</p>
-<p>If there are no key and certificate files to be found, this efun
-will keep the current keys and certificates, to keep TLS working.
-CAs and CRLs are cleared and reloaded in any case.</p>
-<p>Note that when using GnuTLS a call to tls_refresh_certs()
-while a connection is in the middle of a TLS handshake might
-cause an incorrect key to be used.</p>
-<p>Introduced in LDMud 3.3.714/3.2.15.</p>
-<blockquote>
-<div><blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="tls_init_connection.html#lpc.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection()</span></code>(E)</a>, <a class="reference internal" href="tls_deinit_connection.html#lpc.tls_deinit_connection" title="tls_deinit_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_deinit_connection()</span></code>(E)</a>, <a class="reference internal" href="tls_error.html#lpc.tls_error" title="tls_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_error()</span></code>(E)</a>,</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><a class="reference internal" href="tls_query_connection_state.html#lpc.tls_query_connection_state" title="tls_query_connection_state"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_state()</span></code>(E)</a>, <a class="reference internal" href="tls_query_connection_info.html#lpc.tls_query_connection_info" title="tls_query_connection_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_info()</span></code>(E)</a>,
-<a class="reference internal" href="tls_available.html#lpc.tls_available" title="tls_available"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_available()</span></code>(E)</a>, <a class="reference internal" href="tls_check_certificate.html#lpc.tls_check_certificate" title="tls_check_certificate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_check_certificate()</span></code>(E)</a>, mudlib/psyc-tls.c</p>
-</div></blockquote>
+<p>If there are no key and certificate files to be found, this efun will keep the current keys and certificates, to keep TLS working. CAs and CRLs are cleared and reloaded in any case.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">when using GnuTLS, a call to <a class="reference internal" href="#lpc.efun.tls_refresh_certs" title="tls_refresh_certs"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_refresh_certs</span></code>(E)</a> while a connection is in the middle of a TLS handshake might cause an incorrect key to be used.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.714/3.2.15</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="tls_init_connection.html#lpc.efun.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection</span></code>(E)</a>, <a class="reference internal" href="tls_deinit_connection.html#lpc.efun.tls_deinit_connection" title="tls_deinit_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_deinit_connection</span></code>(E)</a>, <a class="reference internal" href="tls_error.html#lpc.efun.tls_error" title="tls_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_error</span></code>(E)</a>, <a class="reference internal" href="tls_query_connection_state.html#lpc.efun.tls_query_connection_state" title="tls_query_connection_state"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_state</span></code>(E)</a>, <a class="reference internal" href="tls_query_connection_info.html#lpc.efun.tls_query_connection_info" title="tls_query_connection_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_info</span></code>(E)</a>, <a class="reference internal" href="tls_available.html#lpc.efun.tls_available" title="tls_available"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_available</span></code>(E)</a>, <a class="reference internal" href="tls_check_certificate.html#lpc.efun.tls_check_certificate" title="tls_check_certificate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_check_certificate</span></code>(E)</a>, mudlib/psyc-tls.c</p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -86,8 +82,8 @@ cause an incorrect key to be used.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -96,22 +92,25 @@ cause an incorrect key to be used.</p>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">efun::tls_refresh_certs()</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (PRELIMINARY)</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (EXPERIMENTAL)</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -123,7 +122,7 @@ cause an incorrect key to be used.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/tls_refresh_certs.txt"
+      <a href="../_sources/efun/tls_refresh_certs.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

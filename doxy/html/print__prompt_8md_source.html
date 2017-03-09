@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: hook/print_prompt.md Source File</title>
+<title>LDMud: hook/print_prompt.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('print__prompt_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,33 +100,35 @@ $(document).ready(function(){initNavTree('print__prompt_8md.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;print_prompt {#driver_hook_print_prompt}</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;========================================</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;Optional hook to print the current command prompt. If <span class="keyword">this</span> hook is not set, the driver will just print the prompt to the user.</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;@headerfile &lt;sys/driver_hooks.h&gt;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;The hook is called with the prompt <span class="keywordtype">string</span> as single argument and has to print the prompt, e.g. <span class="keyword">using</span> write() or binary_message().</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;If the hook is a <span class="keywordtype">string</span>, it is the name of an lfun in the command giver. If the hook is a closure, it is called with the command giver as previous <span class="keywordtype">object</span>.</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;@synopsis{</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;set_driver_hook(H_PRINT_PROMPT, value)</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;}</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;@headerfile &lt;sys/driver_hooks.h&gt;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;@synopsis{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;set_driver_hook(H_PRINT_PROMPT, value)</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;@history{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;introduced (3.3.163)</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;@see @ref driver_hook_default_prompt <span class="stringliteral">&quot;default_prompt&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;Arguments: </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;- value (@ref driver_LPC_string <span class="stringliteral">&quot;string&quot;</span>) -- void &lt;name&gt;(<span class="keywordtype">string</span> prompt).</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;- value (@ref driver_LPC_closures <span class="stringliteral">&quot;closure&quot;</span>) -- void &lt;closure&gt;(<span class="keywordtype">string</span> prompt)</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;@param value void &lt;name&gt;(<span class="keywordtype">string</span> prompt).</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;@param value void &lt;closure&gt;(<span class="keywordtype">string</span> prompt)</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;Optional hook to print the current command prompt. If <span class="keyword">this</span> hook is not set, the driver will just print the prompt to the user.</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;The hook is called with the prompt <span class="keywordtype">string</span> as single argument and has to print the prompt, e.g. <span class="keyword">using</span> <a class="code" href="classefun.html#afacd7cdaff7309a4b579f4c14db53662">efun::write</a>() or <a class="code" href="classefun.html">efun</a>::binary_message().</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;If the hook is a <span class="keywordtype">string</span>, it is the name of an lfun in the command giver. If the hook is a closure, it is called with the command giver as previous <span class="keywordtype">object</span>.</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;@history{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;introduced (3.3.163)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;@see @ref driver_hook_overview <span class="stringliteral">&quot;hook&quot;</span>, @ref driver_hook_default_prompt <span class="stringliteral">&quot;default_prompt&quot;</span></div>
+<div class="ttc" id="classefun_html_afacd7cdaff7309a4b579f4c14db53662"><div class="ttname"><a href="classefun.html#afacd7cdaff7309a4b579f4c14db53662">efun.write</a></div><div class="ttdeci">void write(mixed msg)</div><div class="ttdoc">Write out something to the current user. </div></div>
+<div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>print_prompt.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:10 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

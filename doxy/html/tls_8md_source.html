@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: concepts/tls.md Source File</title>
+<title>LDMud: topics/tls.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('tls_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,41 +95,41 @@ $(document).ready(function(){initNavTree('tls_8md.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">concepts/tls.md</div>  </div>
+<div class="title">topics/tls.md</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;tls {#driver_concepts_tls}</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;==========================</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;TLS stands <span class="keywordflow">for</span> Transport Layer Security which is the successor of the well known SSL (Secure Socket Layer). Both techniques provide a way to authenticate and encrypt the data send through a network connection.</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;transport layer security {#driver_topics_tls}</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;=============================================</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;TLS provides a way to authenticate and encrypt the data send through a network connection. TLS, which stands <span class="keywordflow">for</span> Transport Layer Security, is the successor of the well known SSL (Secure Socket Layer).</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;By enabling TLS during compilation of the driver you can provide a secure channel into the mud to your players.</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;In difference to other solutions as <span class="stringliteral">&quot;sslwrap&quot;</span> or <span class="stringliteral">&quot;stunnel&quot;</span> the driver integrated approach has the advantage that the mud sees the real IP of the player, not the IP of the local mud host.</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;@par misleading:This manpage might be not quite up to date with the implementation.</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;@par misleading: This manpage might be not quite up to date with the implementation.</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;@usage{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;To use TLS configure your driver with --enable-tls option. After starting your driver you have five <span class="keyword">new</span> efuns (tls_init_connection(), tls_deinit_connection(), tls_error(), tls_query_connection_info(), tls_query_connection_state()).</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;You can <span class="keywordflow">switch</span> on TLS by calling tls_init_connection(). This can happen in three ways:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;in telnet_neg</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;Advantage of <span class="keyword">this</span> method is that you can offer TLS on a normal mud port. If you have a limited number of ports <span class="keyword">this</span> can become important. The TLS connection will be started by the client with help of telnet option STARTTLS. Currently there are no mudclients that support <span class="keyword">this</span> method.</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;You will have to implement the telnet option STARTTLS (46) for this method. The draft for this can be found here: http:<span class="comment">//www.ietf.org/proceedings/99mar/I-D/draft-ietf-tn3270e-telnet-tls-01.txt Call tls_init_connection() to initiate the TLS handshake.</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;in connect</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;To use TLS configure your driver with `--enable-tls option`. After starting your driver you have five <span class="keyword">new</span> efuns (<a class="code" href="classefun.html#a8b5de31f232caee7f2bdfb50e9a626ec">efun::tls_init_connection</a>(), <a class="code" href="classefun.html#a640eca286d6cfbc9d0f9f40f7b31269d">efun::tls_deinit_connection</a>(), <a class="code" href="classefun.html#ab298aabbd06837fdab935ae82260e51f">efun::tls_error</a>(), <a class="code" href="classefun.html#a8fff6671c194e17e8d07f03256faf626">efun::tls_query_connection_info</a>(), <a class="code" href="classefun.html#a1d9e28db0cff9d02318184eb56aafdba">efun::tls_query_connection_state</a>()).</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;You can <span class="keywordflow">switch</span> on TLS by calling <a class="code" href="classefun.html#a8b5de31f232caee7f2bdfb50e9a626ec">efun::tls_init_connection</a>(). This can happen in three ways:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;1. in @ref driver_hook_telnet_neg <span class="stringliteral">&quot;telnet_neg&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;Advantage of <span class="keyword">this</span> method is that you can offer TLS on a normal mud port. If you have a limited number of ports <span class="keyword">this</span> can become important. The TLS connection will be started by the client with help of telnet option STARTTLS. Currently there are no mudclients that support <span class="keyword">this</span> method.</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;You will have to implement the telnet option STARTTLS (46) for this method. The draft for this can be found here: @subpage driver_http:__www.ietf.org_proceedings_99mar_I-D_draft-ietf-tn3270e-telnet-tls-01.txt &quot;http:<span class="comment">//www.ietf.org/proceedings/99mar/I-D/draft-ietf-tn3270e-telnet-tls-01.txt&quot; Call efun::tls_init_connection() to initiate the TLS handshake.</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;Todo</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;evaluate whether we can/if it&#39;s worth rendering references to a <a class="code" href="classmaster.html">master</a> func as <a class="code" href="classmaster.html">master</a>-&gt;function()</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;Advantage of this method is that your users can connect with any program that supports TLS/SSL. Examples are telnet-ssl, sslwrap or stunnel. Disadvantage is that you have to spend a dedicated port for this.</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;You have to call tls_init_connection() as first command after the player connected (normally in master_ob-&gt;connect())</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;in an interactive <span class="keywordtype">object</span> using a callback.</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;This method is similar to method (1), but not limited to telnet: it is useful for implementing protocols that use STARTTLS like SMTP or IMAP. tls_init_connection() can be called at any time by the interactive <span class="keywordtype">object</span>.</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;2. in <a class="code" href="classmaster.html">master</a>::connect()</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;Advantage of this method is that your users can connect with any program that supports TLS/SSL. Examples are telnet-ssl, sslwrap or stunnel. Disadvantage is that you have to spend a dedicated port for this.</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;You have to call <a class="code" href="classefun.html">efun</a>::tls_init_connection() as first command after the player connected (normally in <a class="code" href="classmaster.html">master</a>::connect()).</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;3. in an interactive <span class="keywordtype">object</span> using a callback.</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;This method is similar to method (1), but not limited to telnet: it is useful for implementing protocols that use STARTTLS like SMTP or IMAP. <a class="code" href="classefun.html">efun</a>::tls_init_connection() can be called at any time by the interactive <span class="keywordtype">object</span>.</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;You must not write to the connection after calling this <a class="code" href="classefun.html">efun</a> until the callback is executed (the prompt will be supressed automatically during this time).</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;You must not write to the connection after calling this <a class="code" href="classefun.html">efun</a> until the callback is executed (the prompt will be supressed automatically during this time).</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;To test your code, you can use the openssl binary. openssl s_client -connect host:port should display your certificate and anything you write after the callback is executed. If you encounter the error message SSL3_GET_RECORD: wrong version number you&#39;re probably writing to the connection while you should not.</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;To test your code, you can use the openssl binary. `openssl s_client -connect host:port` should display your certificate and anything you write after the callback is executed. If you encounter the error message `SSL3_GET_RECORD: wrong version number` you&#39;re probably writing to the connection while you should not.</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;@history{</div>
@@ -139,15 +138,20 @@ $(document).ready(function(){initNavTree('tls_8md.html','');});
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;@see <a class="code" href="classefun.html">efun</a>::tls_available(), <a class="code" href="classefun.html">efun</a>::tls_check_certificate(), <a class="code" href="classefun.html">efun</a>::tls_deinit_connection(), <a class="code" href="classefun.html">efun</a>::tls_error(), <a class="code" href="classefun.html">efun</a>::tls_init_connection(), <a class="code" href="classefun.html">efun</a>::tls_query_connection_info(), <a class="code" href="classefun.html">efun</a>::tls_query_connection_state(), <a class="code" href="classefun.html">efun</a>::tls_refresh_certs()</div>
+<div class="ttc" id="classefun_html_a8b5de31f232caee7f2bdfb50e9a626ec"><div class="ttname"><a href="classefun.html#a8b5de31f232caee7f2bdfb50e9a626ec">efun.tls_init_connection</a></div><div class="ttdeci">int tls_init_connection(object ob, closure fun, mixed extra...)</div><div class="ttdoc">Tries to start a TLS-secured connection to the interactive object ob (or this_object() if ob is not g...</div></div>
+<div class="ttc" id="classefun_html_a8fff6671c194e17e8d07f03256faf626"><div class="ttname"><a href="classefun.html#a8fff6671c194e17e8d07f03256faf626">efun.tls_query_connection_info</a></div><div class="ttdeci">int * tls_query_connection_info(object ob)</div><div class="ttdoc">If ob does not have a TLS connection, if the connection is still being set-up, or if ob is not intera...</div></div>
+<div class="ttc" id="classefun_html_a1d9e28db0cff9d02318184eb56aafdba"><div class="ttname"><a href="classefun.html#a1d9e28db0cff9d02318184eb56aafdba">efun.tls_query_connection_state</a></div><div class="ttdeci">int tls_query_connection_state(object ob)</div><div class="ttdoc">Returns a positive number if ob connection is TLS secured, 0 if it&#39;s unsecured, and a negative number...</div></div>
+<div class="ttc" id="classefun_html_ab298aabbd06837fdab935ae82260e51f"><div class="ttname"><a href="classefun.html#ab298aabbd06837fdab935ae82260e51f">efun.tls_error</a></div><div class="ttdeci">string tls_error(int errorno)</div><div class="ttdoc">Returns a string describing the error behind the error number errorno. </div></div>
 <div class="ttc" id="classmaster_html"><div class="ttname"><a href="classmaster.html">master</a></div><div class="ttdef"><b>Definition:</b> <a href="compile__object_8c_source.html#l00001">compile_object.c:1</a></div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
+<div class="ttc" id="classefun_html_a640eca286d6cfbc9d0f9f40f7b31269d"><div class="ttname"><a href="classefun.html#a640eca286d6cfbc9d0f9f40f7b31269d">efun.tls_deinit_connection</a></div><div class="ttdeci">void tls_deinit_connection(object ob)</div><div class="ttdoc">Shuts down a TLS connection to the interactive object ob (or this_object() if ob is not given) but th...</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>tls.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:07 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:24 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

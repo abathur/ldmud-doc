@@ -1,0 +1,200 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Mud Client Compression Protocol &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="memory swapping" href="memory.html" />
+    <link rel="prev" title="limitations" href="limitations.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="MCCP">
+<span id="The Mud Client Compression Protocol"></span><span id="lpc.topic.MCCP"></span><span id="lpc.topic.The Mud Client Compression Protocol"></span><div class="section" id="TOPIC">
+<h2>TOPIC<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+The Mud Client Compression Protocol</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Information and code taken from the <a class="reference internal" href="#lpc.topic.MCCP" title="MCCP"><code class="xref lpc lpc-topic docutils literal"><span class="pre">MCCP</span></code></a> Homepage <a class="reference external" href="http://www.randomly.org/projects/MCCP/">http://www.randomly.org/projects/MCCP/</a></p>
+<p><a class="reference internal" href="#lpc.topic.MCCP" title="MCCP"><code class="xref lpc lpc-topic docutils literal"><span class="pre">MCCP</span></code></a> is implemented as a Telnet option [RFC854, RFC855]. The server and client negotiate the use of <a class="reference internal" href="#lpc.topic.MCCP" title="MCCP"><code class="xref lpc lpc-topic docutils literal"><span class="pre">MCCP</span></code></a> as they would any other telnet option. Once agreement has been reached on the use of the option, option subnegotiation is used to determine acceptable compression methods to use, and to indicate the start of a compressed data stream.</p>
+<p>If the driver is compiled with <a class="reference internal" href="#lpc.topic.MCCP" title="MCCP"><code class="xref lpc lpc-topic docutils literal"><span class="pre">MCCP</span></code></a> Support there is a define <a class="reference internal" href="predefined.html#lpc.macro.__MCCP__" title="__MCCP__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__MCCP__</span></code></a>.</p>
+<p>The driver currently supports both versions of mccp. If your mud has a <a class="reference internal" href="../hook/no_echo.html#lpc.hook.H_NOECHO" title="H_NOECHO"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_NOECHO</span></code>(H)</a> hook you have to find out if the client supports mccp. Without this hook you still have to start neogotiation.</p>
+<p>All sub-negotiation is done by <a class="reference internal" href="../efun/start_mccp_compress.html#lpc.efun.start_mccp_compress" title="start_mccp_compress"><code class="xref lpc lpc-efun docutils literal"><span class="pre">start_mccp_compress</span></code>(E)</a> and <a class="reference internal" href="../efun/end_mccp_compress.html#lpc.efun.end_mccp_compress" title="end_mccp_compress"><code class="xref lpc lpc-efun docutils literal"><span class="pre">end_mccp_compress</span></code>(E)</a> whether you have this hook or not.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">when the client uses compressions all binary_message calls are executed with flag=3. This is because writing to the socket would disturb zlib stream.</p>
+</div>
+<p>mccp-efuns:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../efun/start_mccp_compress.html#lpc.efun.start_mccp_compress" title="start_mccp_compress"><code class="xref lpc lpc-efun docutils literal"><span class="pre">start_mccp_compress(int</span> <span class="pre">telopt)</span></code>(E)</a> (only needed with <a class="reference internal" href="../hook/no_echo.html#lpc.hook.H_NOECHO" title="H_NOECHO"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_NOECHO</span></code>(H)</a>)</li>
+<li><a class="reference internal" href="../efun/end_mccp_compress.html#lpc.efun.end_mccp_compress" title="end_mccp_compress"><code class="xref lpc lpc-efun docutils literal"><span class="pre">end_mccp_compress(int</span> <span class="pre">telopt)</span></code>(E)</a>   (only needed with <a class="reference internal" href="../hook/no_echo.html#lpc.hook.H_NOECHO" title="H_NOECHO"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_NOECHO</span></code>(H)</a>)</li>
+<li><a class="reference internal" href="../efun/query_mccp.html#lpc.efun.query_mccp" title="query_mccp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_mccp(object</span> <span class="pre">player)</span></code>(E)</a></li>
+<li><a class="reference internal" href="../efun/query_mccp_stats.html#lpc.efun.query_mccp_stats" title="query_mccp_stats"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_mccp_stats(object</span> <span class="pre">player)</span></code>(E)</a></li>
+</ul>
+</div></blockquote>
+<p>Initiating <a class="reference internal" href="#lpc.topic.MCCP" title="MCCP"><code class="xref lpc lpc-topic docutils literal"><span class="pre">MCCP</span></code></a> without <a class="reference internal" href="../hook/no_echo.html#lpc.hook.H_NOECHO" title="H_NOECHO"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_NOECHO</span></code>(H)</a> hook:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">query_mccp</span><span class="p">()){</span>
+  <span class="n">binary_message</span><span class="p">(({</span> <span class="n">IAC</span><span class="p">,</span> <span class="n">WILL</span><span class="p">,</span> <span class="n">TELOPT_COMPRESS2</span> <span class="p">}),</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">binary_message</span><span class="p">(({</span> <span class="n">IAC</span><span class="p">,</span> <span class="n">WILL</span><span class="p">,</span> <span class="n">TELOPT_COMPRESS</span> <span class="p">}),</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>the driver will parse the client&#8217;s answers and start compression. (The connection might already be compressed, because although the documentation says clients should not negotiate from themselves, zmud e.g. does.)</p>
+<p>You can start and stop compression manually by efuns when you are sure client supports compression :)</p>
+<p>Initiating <a class="reference internal" href="#lpc.topic.MCCP" title="MCCP"><code class="xref lpc lpc-topic docutils literal"><span class="pre">MCCP</span></code></a> compression with <a class="reference internal" href="../hook/no_echo.html#lpc.hook.H_NOECHO" title="H_NOECHO"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_NOECHO</span></code>(H)</a> hook:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>If your mudlib uses the :hook:`H_NOECHO` driver-hook you decided to do
+all the negotiation by yourself:
+
+Server Commands
+IAC WILL COMPRESS  indicates the sender supports version 1 of the
+                   protocol, and is willing to compress data it sends.
+
+IAC WILL COMPRESS2 indicates the sender supports version 2, and is
+                   willing to compress data it sends.
+
+IAC WONT COMPRESS  indicates the sender refuses to compress data using
+                   version 1.
+
+IAC WONT COMPRESS2 indicates the sender refuses to compress data
+                   using version 2.
+
+Client Commands
+IAC DO COMPRESS    indicates the sender supports version 1 of the
+                   protocol, and is willing to decompress data
+                   received.
+
+IAC DO COMPRESS2   indicates the sender supports version 2 or above,
+                   and is willing to decompress data received.
+
+IAC DONT COMPRESS  indicates the sender refuses to support version 1.
+                   If compression was previously negotiated and is
+                   currently being used, the server should terminate
+                   compression.
+
+IAC DONT COMPRESS2 indicates the sender refuses to support version 2.
+                   If compression was previously negotiated and is
+                   currently being used, the server should terminate
+                   compression
+
+After you found out whether the client supports mccp or not you can
+start compression with start_mccp_compress(TELOPT_COMPRESS2) or
+start_mccp_compress(TELOPT_COMPRESS). ( you could start it without
+checking but some players would protest :) )
+</pre></div>
+</div>
+<div class="section" id="LORE">
+<h2>LORE<a class="headerlink" href="#LORE" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>author: Bastian Hoyer (<a class="reference external" href="mailto:dafire&#37;&#52;&#48;ff&#46;mud&#46;de">dafire<span>&#64;</span>ff<span>&#46;</span>mud<span>&#46;</span>de</a>) (some text taken from project page)</li>
+</ul>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.447</em>)</li>
+<li><strong>backported</strong> (<em>3.2.10</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/start_mccp_compress.html#lpc.efun.start_mccp_compress" title="start_mccp_compress"><code class="xref lpc lpc-efun docutils literal"><span class="pre">start_mccp_compress</span></code>(E)</a>, <a class="reference internal" href="../efun/end_mccp_compress.html#lpc.efun.end_mccp_compress" title="end_mccp_compress"><code class="xref lpc lpc-efun docutils literal"><span class="pre">end_mccp_compress</span></code>(E)</a>, <a class="reference internal" href="../efun/query_mccp.html#lpc.efun.query_mccp" title="query_mccp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_mccp</span></code>(E)</a>, <a class="reference internal" href="../efun/query_mccp_stats.html#lpc.efun.query_mccp_stats" title="query_mccp_stats"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_mccp_stats</span></code>(E)</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The Mud Client Compression Protocol</a><ul>
+<li><a class="reference internal" href="#TOPIC">TOPIC</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#LORE">LORE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/topics/mccp.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

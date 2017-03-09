@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::save_value() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::save_value() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::say()" href="say.html" />
     <link rel="prev" title="efun::save_object()" href="save_object.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,45 +47,46 @@
 <div class="section" id="SYNOPSIS">
 <span id="save_value"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.save_value">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">save_value</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.save_value" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.save_value">
+<!--[lpc.efun.save_value]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">save_value</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+mixed<em>&nbsp;value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.save_value" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">save_value</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;value</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;format</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">save_value</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+mixed<em>&nbsp;value</em>, </td><td id="id3">
+int<em>&nbsp;format</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Encode the &lt;value&gt; into a string suitable for restoration with
-restore_value() and return it.</p>
-<p>The optional &lt;format&gt; argument determines the format of the savefile
-to be written:</p>
+<p>Encode the <a class="reference internal" href="#efun/save_value.arg.value" title="value"><code class="xref lpc lpc-arg docutils literal"><span class="pre">value</span></code></a> into a string suitable for restoration with <a class="reference internal" href="restore_value.html#lpc.efun.restore_value" title="restore_value"><code class="xref lpc lpc-efun docutils literal"><span class="pre">restore_value</span></code>(E)</a> and return it.</p>
+<p>The optional <a class="reference internal" href="#efun/save_value.arg.format" title="format"><code class="xref lpc lpc-arg docutils literal"><span class="pre">format</span></code></a> argument determines the format of the savefile to be written:</p>
 <blockquote>
 <div><dl class="docutils">
 <dt>-1: use the driver&#8217;s native format (default).</dt>
-<dd><p class="first">0: original format, used by Amylaar LPMud and LDMud &lt;= 3.2.8 .
-1: LDMud &gt;= 3.2.9: no-lambda closures, symbols, quoted arrays</p>
-<blockquote>
-<div>can be saved.</div></blockquote>
-<dl class="last docutils">
-<dt>2: LDMUd &gt;= 3.5.0: floats are stored in a different way, which is</dt>
-<dd>more compact and can store the new floats losslessly.</dd>
-</dl>
-</dd>
+<dd>0: original format, used by Amylaar LPMud and LDMud &lt;= 3.2.8 .
+1: LDMud &gt;= 3.2.9: no-lambda closures, symbols, quoted arrays can be saved.
+2: LDMUd &gt;= 3.5.0: floats are stored in a different way, which is more compact and can store the new floats losslessly.</dd>
 </dl>
 </div></blockquote>
 <p>It is recommended to use version 2 or higher.</p>
-<p>The created string consists of two lines, each terminated with
-a newline character: the first line describes the format used to
-save the value in the &#8216;#x:y&#8217; notation; the second line is the
-representation of the value itself.</p>
-<p>The format of the encoded value and of the format line matches
-the format used by save_object() and restore_object().</p>
+<p>The created string consists of two lines, each terminated with a newline character: the first line describes the format used to save the value in the <code class="docutils literal"><span class="pre">#x:y</span></code> notation; the second line is the representation of the value itself.</p>
+<p>The format of the encoded value and of the format line matches the format used by <a class="reference internal" href="save_object.html#lpc.efun.save_object" title="save_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">save_object</span></code>(E)</a> and <a class="reference internal" href="restore_object.html#lpc.efun.restore_object" title="restore_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">restore_object</span></code>(E)</a>.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.8</em>)</li>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added restoring of non-lambda closures, symbols, and quoted arrays, using a new savefile format version 1.</li>
+<li><strong>changed</strong> (<em>3.2.10</em>) &#8211; added the <a class="reference internal" href="#efun/save_value.arg.format" title="format"><code class="xref lpc lpc-arg docutils literal"><span class="pre">format</span></code></a> argument.</li>
+<li><strong>changed</strong> (<em>3.5.0</em>) &#8211; added the possibility to restore version 2 with its higher float precision.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="restore_value.html#lpc.efun.restore_value" title="restore_value"><code class="xref lpc lpc-efun docutils literal"><span class="pre">restore_value</span></code>(E)</a>, <a class="reference internal" href="restore_object.html#lpc.efun.restore_object" title="restore_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">restore_object</span></code>(E)</a>, <a class="reference internal" href="save_object.html#lpc.efun.save_object" title="save_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">save_object</span></code>(E)</a></p>
+</div>
 </div>
 </div>
 
@@ -96,8 +99,8 @@ the format used by save_object() and restore_object().</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -107,21 +110,24 @@ the format used by save_object() and restore_object().</p>
   <ul>
 <li><a class="reference internal" href="#">efun::save_value()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -133,7 +139,7 @@ the format used by save_object() and restore_object().</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/save_value.txt"
+      <a href="../_sources/efun/save_value.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/random.c Source File</title>
+<title>LDMud: efun/random.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('random_8c_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,25 +100,20 @@ $(document).ready(function(){initNavTree('random_8c_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * int random(int n)</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * Returns a number in the random range [0 .. n-1].</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * The random number generator is proven to deliver an equal distribution of numbers over a big range, with no repetition of number sequences for a long time. The downside of these (desirable) qualities is that when generating numbers in a small range over short time, certain numbers will appear far more often than others.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classefun.html#a46d5867364460af09487db7fb71e9574">random</a>(int n);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;Returns a number in the random range [0 .. n-1].</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;The random number generator is proven to deliver an equal distribution</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;of numbers over a big range, with no repetition of number sequences</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordflow">for</span> a <span class="keywordtype">long</span> time. The downside of these (desirable) qualities is that</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;when generating numbers in a small range over <span class="keywordtype">short</span> time, certain</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;numbers will appear far more often than others.</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;The only solution is the implementation of a special simul_efun which</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;takes special steps to implement an equal distribution over small</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;ranges and <span class="keywordtype">short</span> times.</div>
-<div class="ttc" id="classefun_html_a46d5867364460af09487db7fb71e9574"><div class="ttname"><a href="classefun.html#a46d5867364460af09487db7fb71e9574">efun.random</a></div><div class="ttdeci">int random(int n)</div></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * The only solution is the implementation of a special simul_efun which takes special steps to implement an equal distribution over small ranges and short times.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * int random(int n)</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classefun.html#a46d5867364460af09487db7fb71e9574">random</a>(int n);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
+<div class="ttc" id="classefun_html_a46d5867364460af09487db7fb71e9574"><div class="ttname"><a href="classefun.html#a46d5867364460af09487db7fb71e9574">efun.random</a></div><div class="ttdeci">int random(int n)</div><div class="ttdoc">Returns a number in the random range [0 . </div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -127,7 +121,7 @@ $(document).ready(function(){initNavTree('random_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>random.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:09 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:22 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

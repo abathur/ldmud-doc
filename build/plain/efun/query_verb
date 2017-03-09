@@ -6,32 +6,41 @@ SYNOPSIS
 DESCRIPTION
 ===========
    Return the verb of the current command, of 0 if not executing from a 
-   command. If <flag> is 0 or not given, the verb as given by the user is 
+   command. If flag(E) is 0 or not given, the verb as given by the user is 
    returned (this is the first word from the line input by the player, up to 
-   but not including the first space or lineend). If <flag> is non-0, the verb
-   as specified in the add_action() statement is returned.
+   but not including the first space or lineend). If flag(E) is non-0, the 
+   verb as specified in the add_action(E) statement is returned.
 
    USAGE
    =====
-      void init() {
-         ... add_action("sing","sing"); add_action("sing","chant", 1); ...
+      When the user is in the presence of an object defined as:
 
-      } int sing(string str) {
+         void init() {
+            ...
+            add_action("sing","sing");
+            add_action("sing","chant", 1);
+            ...
+         }
+         int sing(string str) {
+            write("Your command was: "+query_verb()+(str ? str : "")+"\n");
+            write("The action verb was: "+query_verb(1)+(str ? str : "")+"\n");
+            return 1;
+         }
 
-         write("Your command was: "+query_verb()+(str ? str : "")+"n"); 
-         write("The action verb was: "+query_verb(1)+(str ? str : "")+"n"); 
-         return 1;
+      the command 'sing ...' will print:
 
-      }
+         Your command was: sing
+         The action verb was: sing
 
-      The command 'sing ...' will print:
-         Your command was: sing The action verb was: sing
+      the command 'chant ...' will print:
 
-      The command 'chant ...' will print:
-         Your command was: chant The action verb was: chant
+         Your command was: chant
+         The action verb was: chant
 
-      The command 'chantit ...' will print:
-         Your command was: chantit The action verb was: chant
+      and the command 'chantit ...' will print:
+
+         Your command was: chantit
+         The action verb was: chant
 
 HISTORY
 =======
@@ -39,4 +48,4 @@ HISTORY
 
 SEE ALSO
 ========
-   add_action()(E), query_command()(E)
+   add_action(E), query_command(E)

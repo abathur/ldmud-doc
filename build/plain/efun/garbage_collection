@@ -6,50 +6,56 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Tell the parser to initiate a garbage collection after the current execution 
-ended. Depending on the type of memory allocator used, this GC is more less 
-thorough.
+   Tell the parser to initiate a garbage collection after the current 
+   execution ended. Depending on the type of memory allocator used, this GC is
+   more less thorough.
 
-If the 'smalloc' memory allocator is used, the GC produces output to a log 
-file. The default name of the log file is specified at program start, but can 
-be modified at runtime:
+   If the 'smalloc' memory allocator is used, the GC produces output to a log 
+   file. The default name of the log file is specified at program start, but 
+   can be modified at runtime:
 
-   With the <filename> argument a log file for the GC output different from 
-   the default log file can be specified.
+   - With the filename(E) argument a log file for the GC output different 
+     from the default log file can be specified.
+   - If flag(E) is not given or 0, the output from the next and only the 
+     next GC will go into the log file. If the file already exists, the new 
+     output will be appended.
+   - If flag(E) is 1, the filename(E) will be used as the new default log 
+     file for all following GCs. If the file already exists, it will be 
+     overwritten from the start.
 
-   If <flag> is not given or 0, the output from the next and only the next GC 
-   will go into the log file. If the file already exists, the new output will 
-   be appended.
+   If a different memory allocator is used, the GC does not produce output and
+   the filename(E) and flag(E) arguments are ignored.
 
-   If <flag> is 1, the <filename> will be used as the new default log file for
-   all following GCs. If the file already exists, it will be overwritten from
-   the start.
+   Calling this efun causes a privilege_violation.
 
-If a different memory allocator is used, the GC does not produce output and 
-the <filename> and <flag> arguments are ignored.
+   USAGE
+   =====
+      The following examples demonstrate how the flag affects logging 
+      behavior:
 
-Calling this efun causes a privilege_violation.
+         garbage_collection()
+         // GC occurs -> logs into default file
 
-EXAMPLES garbage_collection()
+         garbage_collection("/GCLOG")
+         // GC occurs -> logs into "/GCLOG"
 
-   [ GC occurs -> logs into default file ]
+         garbage_collection("/GCLOG", 1)
+         // GC occurs -> logs into "/GCLOG", sets default log to "/GCLOG"
 
-garbage_collection("/GCLOG")
-   [ GC occurs -> logs into "/GCLOG" ]
+         garbage_collection("/GCLOG")
+         garbage_collection("/GCLOG2")
+         // GC occurs -> logs into "/GCLOG"
 
-garbage_collection("/GCLOG", 1)
-   [ GC occurs -> logs into "/GCLOG", sets default log to "/GCLOG" ]
+         garbage_collection("/GCLOG", 1)
+         garbage_collection("/GCLOG2")
+         // GC occurs -> logs into "/GCLOG2", sets default log to "/GCLOG"
 
-garbage_collection("/GCLOG") garbage_collection("/GCLOG2")
+HISTORY
+=======
+   - changed (3.2.9) -- adds the filename(E) argument.
+   - changed (3.3.209) -- adds the flag(E) argument.
+   - changed (3.5.0) -- made the efun privileged.
 
-   [ GC occurs -> logs into "/GCLOG" ]
-
-garbage_collection("/GCLOG", 1) garbage_collection("/GCLOG2")
-
-   [ GC occurs -> logs into "/GCLOG2", sets default log to "/GCLOG" ]
-
-LDMud 3.2.9 added the <filename> argument. LDMud 3.3.209 added the <flag> 
-argument. LDMUd 3.5.0 made the efun privileged.
-
-   See Also: 
-      rusage()(E), valid_write(M), privilege_violation(M)
+SEE ALSO
+========
+   rusage(E), valid_write(M), privilege_violation(M)

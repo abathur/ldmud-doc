@@ -6,35 +6,43 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Returns an array of the objects contained in the inventory of ob (or 
-   this_object() if no arg given) and in the inventories of these objects, 
-   climbing down recursively.
+   Returns an array of the objects contained in the inventory of ob(E) 
+   (or `this_object()` if no arg given) and in the inventories of these 
+   objects, climbing down recursively.
 
-   If <depth> is given and not 0, the result is limited as follows:
+   If depth(E) is given and not 0, the result is limited as follows:
 
-      <depth> > 0: Only the objects in the first <depth> levels of
-         inventory are returned.
+   depth(E) > 0
+      Only the objects in the first depth(E) levels of inventory are returned.
 
-      <depth> < 0: Only the objects in level -<depth> of inventory are
-         returned.
+   depth(E) < 0
+      Only the objects in level -depth(E) of inventory are returned.
 
-   In this, level '1' is the inventory of <ob> itself.
+   In this, level '1' is the inventory of ob(E) itself.
 
    USAGE
    =====
-      Given the following inventory structure
+      Consider the following nested inventory structure:
 
-      ob +- ob1 +- ob2 |   >>`<<- ob21 |  ob3 |   >>`<<- ob31 +- ob4
+      - ob
+        - ob1
+        - ob2
+          - ob21
+        - ob3
+          - ob31
+        - ob4
 
-      deep_inventory(ob)     => ({ob1, ob2, ob3, ob4, ob21, ob31}) 
-      deep_inventory(ob, 1)  => ({ob1, ob2, ob3, ob4}) deep_inventory(ob, 2)  
-      => ({ob1, ob2, ob3, ob4, ob21, ob31}) deep_inventory(ob, -2) => ({ob21, 
-      ob31})
+      Given this structure, deep_inventory(E) would return:
+
+         deep_inventory(ob)     // ({ob1, ob2, ob3, ob4, ob21, ob31})
+         deep_inventory(ob, 1)  // ({ob1, ob2, ob3, ob4})
+         deep_inventory(ob, 2)  // ({ob1, ob2, ob3, ob4, ob21, ob31})
+         deep_inventory(ob, -2) // ({ob21, ob31})
 
 HISTORY
 =======
-   - changed (3.3.554) -- added the <depth> parameter
+   - changed (3.3.554) -- added the depth(E) parameter
 
 SEE ALSO
 ========
-   first_inventory()(E), next_inventory()(E), all_inventory()(E)
+   first_inventory(E), next_inventory(E), all_inventory(E)

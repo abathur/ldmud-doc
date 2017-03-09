@@ -1,10 +1,10 @@
 public class efun {
    /**
-    * Returns the size of the file in bytes.
+    * Return: 
+    * - `FSIZE_NOFILE` (-1) : indicates that the file either does not exist, or that it is not readable for the calling object/user.
+    * - `FSIZE_DIR` (-2) : indicates that it is a directory.
     * 
-    * Size FSIZE_NOFILE (-1) indicates that the file either does not exist,
-    * or that it is not readable for the calling object/user.
-    * Size FSIZE_DIR (-2) indicates that it is a directory.
+    * Returns the size of the file in bytes.
     * 
     * @headerfile <files.h>
     * 

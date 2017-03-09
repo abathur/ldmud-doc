@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: LPC/closures-example.md Source File</title>
+<title>LDMud: syntax/closures-example.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('closures-example_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,12 +95,12 @@ $(document).ready(function(){initNavTree('closures-example_8md.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">LPC/closures-example.md</div>  </div>
+<div class="title">syntax/closures-example.md</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;closures-example {#driver_LPC_closures-example}</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;===============================================</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;This document contains small examples of the usage of (lambda-)closures. For technical details see the @ref driver_LPC_closures &quot;closures&quot; doc. For hints when to use which type of closure, see the end of this doc.</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;closures example {#driver_syntax_closures-example}</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;==================================================</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;This document contains small examples of the usage of (lambda-)closures. For technical details see the @ref driver_syntax_closures &quot;closure&quot; doc. For hints when to use which type of closure, see the end of this doc.</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;Many Muds use &#39;details&#39; to add more flavour. &#39;Details&#39; are items which can be looked at, but are not implemented as own objects, but instead simulated by the environment. Lets assume that the function</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
@@ -111,13 +110,13 @@ $(document).ready(function(){initNavTree('closures-example_8md.html','');});
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;~~~</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;adds the detail <span class="stringliteral">&#39;keyword&#39;</span> to the room, which, when look at, returns the <span class="keywordtype">string</span> <span class="stringliteral">&#39;desc&#39;</span> resp. the result of the execution of closure <span class="stringliteral">&#39;desc&#39;</span> as the detail description to the player.</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;Now imagine that one wants to equip a room with magic runes, which read as <span class="stringliteral">&#39;Hello &lt;playername&gt;!n&quot; when looked at. Obviously</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;Now imagine that one wants to equip a room with magic runes, which read as `<span class="stringliteral">&#39;Hello &lt;playername&gt;!\n&quot;` when looked at. Obviously</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="stringliteral"></span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="stringliteral">~~~{.c}</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="stringliteral">AddDetail(&quot;runes&quot;, sprintf(&quot;Hello %s!\n&quot;, this_player()-&gt;QueryName()));</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="stringliteral"></span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="stringliteral">~~~</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="stringliteral">is not sufficient, as the &#39;</span>this_player()<span class="stringliteral">&#39; is executed to early and just once: for the player loading the room.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="stringliteral">is not sufficient, as the `this_player()` is executed to early and just once: for the player loading the room.</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="stringliteral"></span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="stringliteral">The solution is to use closures. First, the solution using lfun-closures:</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="stringliteral"></span></div>
@@ -154,7 +153,7 @@ $(document).ready(function(){initNavTree('closures-example_8md.html','');});
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;~~~</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;Why the extra ({ }) around <span class="charliteral">&#39;#&#39;</span>this_player<span class="stringliteral">&#39;? #&#39;</span>this_player alone is just a symbol, symbolizing the <a class="code" href="classefun.html">efun</a> this_player(), but call_other() needs an <span class="keywordtype">object</span> as first argument. Therefore, the <span class="preprocessor">#&#39;this_player has to be interpreted as function to evaluate, which is enforced by enclosing it in ({ }). The same reason also dictates the enclosing of the whole #&#39;call_other expression into ({ }). Note also the missing #&#39;return: it is not needed. The result of a lambda-closure is the last value computed.</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;Why the extra `({ })` around `#<span class="stringliteral">&#39;this_player`? `#&#39;</span>this_player` alone is just a symbol, symbolizing <a class="code" href="classefun.html#a23dc6aa65a7477371df722a647b661af">efun::this_player</a>(), but <a class="code" href="classefun.html#a14431f7de9bcc796d309ac6f3193f5d4">efun::call_other</a>() needs an <span class="keywordtype">object</span> as first argument. Therefore, the `<span class="preprocessor">#&#39;this_player` has to be interpreted as function to evaluate, which is enforced by enclosing it in `({ })`. The same reason also dictates the enclosing of the whole `#&#39;call_other` expression into `({ })`. Note also the missing `#&#39;return`: it is not needed. The result of a lambda-closure is the last value computed.</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;Another example: Task is to reduce the HP of every living in a room by 10, unless the result would be negative. Selecting all livings in a room is simply:</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
@@ -192,7 +191,7 @@ $(document).ready(function(){initNavTree('closures-example_8md.html','');});
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;);</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;~~~</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;Both filter() and map() pass the actual array item being filtered/mapped as first argument to the closure.</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;Both <a class="code" href="classefun.html#ac5e7282ed029a438608ee96f18052e33">efun::filter</a>() and <a class="code" href="classefun.html">efun</a>::map() pass the actual array item being filtered/mapped as first argument to the closure.</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;Now, the lambda-closure solution:</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
@@ -216,7 +215,7 @@ $(document).ready(function(){initNavTree('closures-example_8md.html','');});
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;~~~</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;It is worthy to point out how local variables like <span class="stringliteral">&#39;hp&#39;</span> are declared in a lambda-closure: not at all. They are just used by writing their symbol <span class="stringliteral">&#39;hp . Same applies to the closures parameter &#39;</span>liv .</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;The lambda-closure solution is not recommended <span class="keywordflow">for</span> three reasons: it is complicated, does not use the powers of lambda(), and the lambda() is recompiled every time this statement is executed!</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;The lambda-closure solution is not recommended <span class="keywordflow">for</span> three reasons: it is complicated, does not use the powers of <a class="code" href="classefun.html#a4ef2926c525dcf7e7d339d3f424b18a9">efun::lambda</a>(), and the <a class="code" href="classefun.html#a4ef2926c525dcf7e7d339d3f424b18a9">efun::lambda</a>() is recompiled every time this statement is executed!</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;So far, lambda-closures seem to be just complicated, and in fact: they are. Their powers lie elsewhere.</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
@@ -235,7 +234,7 @@ $(document).ready(function(){initNavTree('closures-example_8md.html','');});
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;~~~</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;Each call to Compute() involves several operations (computing the function names and resolving the call_other()s) which in fact need to be done just once. Using lambda-closures, one can construct and compile a piece of code which behaves like a Compute() tailored for a specific stat/factor combination:</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;Each call to `Compute()` involves several operations (computing the <span class="keyword">function</span> names and resolving each <a class="code" href="classefun.html#a14431f7de9bcc796d309ac6f3193f5d4">efun::call_other</a>()) which in fact need to be done just once. Using lambda-closures, one can construct and compile a piece of code which behaves like a `Compute()` tailored for a specific stat/factor combination:</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;~~~{.c}</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;closure ConstructCompute (<span class="keywordtype">object</span> obj, <span class="keywordtype">string</span> stat1, <span class="keywordtype">int</span> factor1,</div>
@@ -270,21 +269,26 @@ $(document).ready(function(){initNavTree('closures-example_8md.html','');});
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="stringliteral">str_dex_fun = ConstructCompute(obj, &quot;Str&quot;, 10, &quot;Dex&quot;, 90);</span></div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="stringliteral"></span></div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="stringliteral">~~~</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="stringliteral">it can be used with a simple &#39;</span>funcall(str_dex_fun)<span class="stringliteral">&#39;.</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="stringliteral">it can be used with a simple `funcall(str_dex_fun)`.</span></div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="stringliteral">## WHEN TO USE WHICH CLOSURE? #</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="stringliteral">## When to use which closure? #</span></div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="stringliteral"></span></div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="stringliteral">First, a closure is only then useful if it needn&#39;</span>t to live any longer than the <span class="keywordtype">object</span> defining it. Reason: when the defining <span class="keywordtype">object</span> gets destructed, the closure will vanish, too.</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;Efun-, lfun- and <span class="keyword">inline</span> closures should be used where useful, as they mostly <span class="keywordflow">do</span> the job and are easy to read. The disadvantage of lfun- and <span class="keyword">inline</span> closures is that they make a replace_program() impossible - but since such objects tend to not being replaceable at all, this is no real loss.</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;Efun-, lfun- and <span class="keyword">inline</span> closures should be used where useful, as they mostly <span class="keywordflow">do</span> the job and are easy to read. The disadvantage of lfun- and <span class="keyword">inline</span> closures is that they make a <a class="code" href="classefun.html#a0dc3b4d26c35f8eeae78a2cc913dfa07">efun::replace_program</a>() impossible - but since such objects tend to not being replaceable at all, this is no real loss.</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;Lambda closures are needed if the actions of the closure are heavily depending on some data available only at runtime, like the actual inventory of a certain player.</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;If you use lfun-closures and find yourself shoving around runtime data in arguments or (gasp!) global variables, it is time to think about using a lambda-closure, compiling the value hard into it.</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;The disadvantages of lambda closures are clear: they are damn hard to read, and each lambda() statement requires extra time to compile the closure.</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;The disadvantages of lambda closures are clear: they are damn hard to read, and each <a class="code" href="classefun.html">efun</a>::lambda() statement requires extra time to compile the closure.</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;@see @ref driver_LPC_closures &quot;closures&quot;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;@see @ref driver_syntax_closures &quot;closure&quot;, @ref driver_syntax_closure_guide &quot;closures&quot;</div>
+<div class="ttc" id="classefun_html_ac5e7282ed029a438608ee96f18052e33"><div class="ttname"><a href="classefun.html#ac5e7282ed029a438608ee96f18052e33">efun.filter</a></div><div class="ttdeci">mapping filter(mapping arg, closure cl, mixed extra...)</div><div class="ttdoc">Call the function &lt;ob&gt;-&gt;&lt;func&gt;() resp. </div></div>
+<div class="ttc" id="classefun_html_a0dc3b4d26c35f8eeae78a2cc913dfa07"><div class="ttname"><a href="classefun.html#a0dc3b4d26c35f8eeae78a2cc913dfa07">efun.replace_program</a></div><div class="ttdeci">void replace_program(string program)</div><div class="ttdoc">Substitutes a program with the inherited program program. </div></div>
+<div class="ttc" id="classefun_html_a23dc6aa65a7477371df722a647b661af"><div class="ttname"><a href="classefun.html#a23dc6aa65a7477371df722a647b661af">efun.this_player</a></div><div class="ttdeci">object this_player(void)</div><div class="ttdoc">Return the current command giver. </div></div>
+<div class="ttc" id="classefun_html_a14431f7de9bcc796d309ac6f3193f5d4"><div class="ttname"><a href="classefun.html#a14431f7de9bcc796d309ac6f3193f5d4">efun.call_other</a></div><div class="ttdeci">unknown call_other(object  *ob, string fun, mixed arg,...)</div></div>
+<div class="ttc" id="classefun_html_a4ef2926c525dcf7e7d339d3f424b18a9"><div class="ttname"><a href="classefun.html#a4ef2926c525dcf7e7d339d3f424b18a9">efun.lambda</a></div><div class="ttdeci">closure lambda(mixed  *arr, mixed)</div><div class="ttdoc">Constructs a lambda closure, like lambda function in LISP. </div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -292,7 +296,7 @@ $(document).ready(function(){initNavTree('closures-example_8md.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>closures-example.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:10 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

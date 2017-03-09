@@ -1,7 +1,6 @@
 public class efun {
    /**
-    * Make a directory named path. Return 1 for success and 0 for
-    * failure.
+    * Make a directory named path. Return 1 for success and 0 for failure.
     * 
     * @synopsis{
     * int mkdir(string path)

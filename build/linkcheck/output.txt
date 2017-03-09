@@ -1,0 +1,4 @@
+admin/install.rst:127: [redirected with Found] http://mantis.ldmud.eu/mantis/ to http://mantis.ldmud.eu/mantis/my_view_page.php
+admin/install.rst:179: [redirected permanently] https://github.com/ldmud/ldmud.git to https://github.com/ldmud/ldmud
+topics/intermud.rst:8: [broken] http://www.imaginary.com/protocols/intermud3.html: 404 Client Error: Not Found
+topics/tls.rst:22: [redirected with Found] http://www.ietf.org/proceedings/99mar/I-D/draft-ietf-tn3270e-telnet-tls-01.txt to http://www.ietf.org/proceedings/44/I-D/draft-ietf-tn3270e-telnet-tls-01.txt

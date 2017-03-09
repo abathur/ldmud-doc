@@ -1,0 +1,174 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>varargs &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="void" href="void.html" />
+    <link rel="prev" title="union" href="unions.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="varargs">
+<span id="lpc.keyword.varargs"></span><div class="section" id="KEYWORD">
+<h2>KEYWORD<a class="headerlink" href="#KEYWORD" title="Permalink to this headline">¶</a></h2>
+<strong>Keyword</strong><pre class="literal-block">
+<strong>varargs function:
+</strong>    [ modifier ] [ <span class="highlighted">varargs</span> ] [ return type ] function( args...)
+    <span class="highlighted">varargs</span> void fun (string arg1, int arg2, int arg3)
+<strong>
+varargs parameter:
+</strong>    (... <span class="highlighted">varargs</span> [type...] argname)
+    void fun (string arg1, int arg2, <span class="highlighted">varargs</span> int * arg3)
+</pre>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>A function uses &#8220;varargs&#8221; (short for &#8220;variable arguments&#8221;) so that it can be called with less or more arguments than formally specified.</p>
+<p>The proper order to define a function call is:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="n">modifier</span> <span class="p">]</span> <span class="p">[</span> <span class="n">varargs</span> <span class="p">]</span> <span class="p">[</span> <span class="k">return</span> <span class="n">type</span> <span class="p">]</span> <span class="kt">function</span><span class="p">(</span> <span class="n">args</span><span class="p">...)</span>
+</pre></div>
+</div>
+<p>Any other order will result in an error.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>Given a function definition like this:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">fun</span> <span class="p">(</span><span class="kt">string</span> <span class="n">arg1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">arg2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">arg3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">fun()</span></code> has to be called with exactly three parameters: one string and two integers.</p>
+<p>If the function is defined as:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">varargs</span> <span class="kt">void</span> <span class="n">fun</span> <span class="p">(</span><span class="kt">string</span> <span class="n">arg1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">arg2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">arg3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>it is possible to call the function with just arg1, or arg1 and arg2. The remaining unspecified arguments (arg2 and arg3, resp. arg3) are in these cases assumed to be 0.</p>
+<p>To pass _more_ arguments than specified, the function&#8217;s last parameter must be defined as:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">fun</span> <span class="p">(</span><span class="kt">string</span> <span class="n">arg1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">varargs</span> <span class="kt">int</span> <span class="o">*</span> <span class="n">arg3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This allows <code class="docutils literal"><span class="pre">fun()</span></code> to be called with two or more arguments. These &#8220;extra&#8221; arguments (in this case, all but the first two) are collected into an array which is then passed as arg3. For example:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">fun</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="c1">// arg3 == ({ })</span>
+<span class="n">fun</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>    <span class="c1">// arg3 == ({ 2 })</span>
+<span class="n">fun</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">// arg3 == ({ 2, 3 })</span>
+</pre></div>
+</div>
+<p>The type of the varargs argument must be an array of the expected type (int*, object*, string*, ...). Only integers are allowed in the above example, but you could accept arguments of any kind by defining the parameter as &#8216;varargs mixed&#8217; or &#8216;varargs mixed*&#8217;.</p>
+<p>There are two ways to &#8216;flatten&#8217; the received argument array in your own function calls. You can use <a class="reference internal" href="../efun/apply.html#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a>; e.g.:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>apply(#&#39;call_out, &quot;bar&quot;, 1, arg3)
+</pre></div>
+</div>
+<p>or the &#8216;flatten arguments&#8217; operator:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">call_out</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">arg3</span><span class="p">...)</span>
+</pre></div>
+</div>
+<p>The two varargs variants can of course be combined to define a function which may be called with any number of arguments:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">varargs</span> <span class="kt">void</span> <span class="n">fun</span> <span class="p">(</span><span class="kt">string</span> <span class="n">arg1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">varargs</span> <span class="kt">int</span><span class="o">*</span> <span class="n">arg3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.1&#64;132</em>) &#8211; Added ability to pass more arguments than formally specified (previously, excess arguments were silently ignored).</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="pragma.html#lpc.syntax.pragma" title="pragma"><code class="xref lpc lpc-syntax docutils literal"><span class="pre">pragma</span></code></a>, <a class="reference internal" href="../efun/apply.html#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a>, <a class="reference internal" href="modifiers.html#lpc.syntax.modifiers" title="modifiers"><code class="xref lpc lpc-syntax docutils literal"><span class="pre">modifiers</span></code></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">varargs</a><ul>
+<li><a class="reference internal" href="#KEYWORD">KEYWORD</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/varargs.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

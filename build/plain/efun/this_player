@@ -7,7 +7,7 @@ DESCRIPTION
    Return the current command giver. This can be an interactive user or 
    another living object (like an npc).
 
-   If called from inside the heart_beat() of a non-living object, 0 will be 
+   If called from inside the heart_beat(A) of a non-living object, 0 will be 
    returned.
 
    USAGE
@@ -18,4 +18,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   this_object()(E), previous_object()(E), interactive()(E), living()(E)
+   this_object(E), previous_object(E), interactive(E), living(E)

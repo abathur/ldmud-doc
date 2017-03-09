@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: move_object</title>
+<title>LDMud: move_object</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('driver_hook_move_object.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,24 +98,27 @@ $(document).ready(function(){initNavTree('driver_hook_move_object.html','');});
 <div class="title">move_object </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Mandatory hooks to implement the efun void move_object(). Hook setting must be an unbound lambda closure.</p>
-<p>Upon call, the hook has to perform the move itself (by using set_environment()) and all depending actions (like the calls to init() to add actions).</p>
-<p>The difference lies in the binding of the set hook prior to the call: the H_MOVE_OBJECT0 closure is bound to the current object, the H_MOVE_OBJECT1 to 'item'.</p>
-<p>If both hooks are set, H_MOVE_OBJECT0 is ignored.</p>
-<dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_MOVE_OBJECT0, value)</div>
+<div class="textblock"><dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_MOVE_OBJECT0, value)</div>
 <div class="line">set_driver_hook(H_MOVE_OBJECT1, value)</div>
 </div><!-- fragment --></dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classefun.html#abe35f52e64f6dbd29684c3b780b6a985">efun::move_object()</a>, <a class="el" href="classefun.html#af10a6a3226140343c43ee7b4d0c4878b" title="The item is moved into its new environment env, which may be 0. ">efun::set_environment()</a> Arguments:<ul>
-<li>value (<a class="el" href="driver_LPC_closures.html">closure</a>) &ndash; void &lt;closure&gt;(object item, object dest) </li>
-</ul>
-</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>void &lt;closure&gt;(object item, object dest)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Mandatory hooks to implement the efun void <a class="el" href="classefun.html#a4190a089c412b88e938a4a34865e8366" title="The item, which can be an object_name or an object, is moved into it&#39;s new environment dest...">efun::move_object()</a>. Hook setting must be an unbound lambda closure.</p>
+<p>Upon call, the hook has to perform the move itself (by using <a class="el" href="classefun.html#af10a6a3226140343c43ee7b4d0c4878b" title="The item is moved into its new environment env, which may be 0. ">efun::set_environment()</a>) and all depending actions (like the calls to <a class="el" href="classapplied.html#a02fd73d861ef2e4aabb38c0c9ff82947" title="move_object implements the details of moving objects. ">applied::init()</a> to add actions).</p>
+<p>The difference lies in the binding of the set hook prior to the call: the H_MOVE_OBJECT0 closure is bound to the current object, the H_MOVE_OBJECT1 to 'item'.</p>
+<p>If both hooks are set, H_MOVE_OBJECT0 is ignored.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classefun.html#a4190a089c412b88e938a4a34865e8366" title="The item, which can be an object_name or an object, is moved into it&#39;s new environment dest...">efun::move_object()</a>, <a class="el" href="classefun.html#af10a6a3226140343c43ee7b4d0c4878b" title="The item is moved into its new environment env, which may be 0. ">efun::set_environment()</a>, <a class="el" href="driver_hook_overview.html">hook</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">index</a></li><li class="navelem"><a class="el" href="driver_hook_hook.html">hook</a></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:11 for Tsunami by
+    <li class="navelem"><a class="el" href="driver_hook_overview.html">Driver-supported hooks</a></li>
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:24 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

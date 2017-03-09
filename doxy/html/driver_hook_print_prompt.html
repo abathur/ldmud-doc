@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: print_prompt</title>
+<title>LDMud: print_prompt</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('driver_hook_print_prompt.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,25 +98,28 @@ $(document).ready(function(){initNavTree('driver_hook_print_prompt.html','');});
 <div class="title">print_prompt </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Optional hook to print the current command prompt. If this hook is not set, the driver will just print the prompt to the user.</p>
-<p>The hook is called with the prompt string as single argument and has to print the prompt, e.g. using write() or binary_message().</p>
-<p>If the hook is a string, it is the name of an lfun in the command giver. If the hook is a closure, it is called with the command giver as previous object.</p>
-<dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_PRINT_PROMPT, value)</div>
+<div class="textblock"><dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_PRINT_PROMPT, value)</div>
 </div><!-- fragment --></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>void &lt;name&gt;(string prompt). </td></tr>
+    <tr><td class="paramname">value</td><td>void &lt;closure&gt;(string prompt)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Optional hook to print the current command prompt. If this hook is not set, the driver will just print the prompt to the user.</p>
+<p>The hook is called with the prompt string as single argument and has to print the prompt, e.g. using <a class="el" href="classefun.html#afacd7cdaff7309a4b579f4c14db53662" title="Write out something to the current user. ">efun::write()</a> or <a class="el" href="classefun.html#a969d03a0a9e5b5ff3c6a969a0db7a9c0" title="Flush output and send output directly with write without IAC quoting. ">efun::binary_message()</a>.</p>
+<p>If the hook is a string, it is the name of an lfun in the command giver. If the hook is a closure, it is called with the command giver as previous object.</p>
 <dl class="section user"><dt>History:</dt><dd><div class="fragment"><div class="line">introduced (3.3.163)</div>
 </div><!-- fragment --></dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_hook_default_prompt.html">default_prompt</a> Arguments:<ul>
-<li>value (<a class="el" href="driver_LPC_string.html">string</a>) &ndash; void &lt;name&gt;(string prompt).</li>
-<li>value (<a class="el" href="driver_LPC_closures.html">closure</a>) &ndash; void &lt;closure&gt;(string prompt) </li>
-</ul>
-</dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_hook_overview.html">hook</a>, <a class="el" href="driver_hook_default_prompt.html">default_prompt</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">index</a></li><li class="navelem"><a class="el" href="driver_hook_hook.html">hook</a></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:11 for Tsunami by
+    <li class="navelem"><a class="el" href="driver_hook_overview.html">Driver-supported hooks</a></li>
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:24 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

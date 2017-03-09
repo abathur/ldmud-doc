@@ -1,9 +1,8 @@
 public class efun {
    /**
-    * Disable this object to use commands normally accessible to
-    * users.
+    * Disable this object to use commands normally accessible to users.
     * 
-    * This is the opposite to the efun enable_commands().
+    * This is the opposite of efun::enable_commands().
     * 
     * @synopsis{
     * void disable_commands()

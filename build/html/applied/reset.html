@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>applied::reset() &mdash; LDMud UNRELEASED documentation</title>
+    <title>applied::reset() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,15 +18,16 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="applied" href="applied.html" />
-    <link rel="next" title="concepts" href="../concepts/concepts.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="External functions" href="../efun/overview.html" />
     <link rel="prev" title="applied::remove()" href="remove.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,35 +47,35 @@
 <div class="section" id="SYNOPSIS">
 <span id="reset"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.reset">
-<td>
+<tr id="lpc.applied.reset">
+<!--[lpc.applied.reset]--><td>
 <em style="color:# AAA;margin-right:20px;">compat mode</em></td><td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">reset</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;arg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.reset" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">reset</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+int<em>&nbsp;arg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.applied.reset" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
 <em style="color:# AAA;margin-right:20px;">native mode</em></td><td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">reset</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">reset</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+void</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>The H_RESET hook defines the function or closure to be called when the driver needs to reset an object. In older drivers this was hardwired to the lfun reset(), and a lot of hook implementations still follow this tradition.</p>
-<p>In compat mode, reset() was called with arg 0 after the object was compiled, and with arg != 0 every once in a while. In native mode, create() is called after compiling, and reset() is called without arguments every once in a while.</p>
-<p>So, if the argument is zero, the parser is running in compat mode, and reset() may call your create() code. If create() is called, you&#8217;re on the new version and reset() is not called for object creation. You may call reset() from create() and vice versa, but make sure they do not call each other recursively on either type of driver.</p>
-<p>reset() will be called only in objects that have been used since the last call to reset(), i.e. a function in them was called (other than reset() or clean_up()), or it was moved around.</p>
+<p>The <a class="reference internal" href="../hook/reset.html#lpc.hook.H_RESET" title="H_RESET"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_RESET</span></code>(H)</a> hook defines the function or closure to be called when the driver needs to reset an object. In older drivers this was hardwired to the lfun <a class="reference internal" href="#lpc.applied.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a>, and a lot of hook implementations still follow this tradition.</p>
+<p>In compat mode, <a class="reference internal" href="#lpc.applied.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a> was called with arg 0 after the object was compiled, and with arg != 0 every once in a while. In native mode, <a class="reference internal" href="create.html#lpc.applied.create" title="create"><code class="xref lpc lpc-applied docutils literal"><span class="pre">create</span></code>(A)</a> is called after compiling, and <a class="reference internal" href="#lpc.applied.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a> is called without arguments every once in a while.</p>
+<p>So, if the argument is zero, the parser is running in compat mode, and <a class="reference internal" href="#lpc.applied.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a> may call your <a class="reference internal" href="create.html#lpc.applied.create" title="create"><code class="xref lpc lpc-applied docutils literal"><span class="pre">create</span></code>(A)</a> code. If <a class="reference internal" href="create.html#lpc.applied.create" title="create"><code class="xref lpc lpc-applied docutils literal"><span class="pre">create</span></code>(A)</a> is called, you&#8217;re on the new version and <a class="reference internal" href="#lpc.applied.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a> is not called for object creation. You may call <a class="reference internal" href="#lpc.applied.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a> from <a class="reference internal" href="create.html#lpc.applied.create" title="create"><code class="xref lpc lpc-applied docutils literal"><span class="pre">create</span></code>(A)</a> and vice versa, but make sure they do not call each other recursively on either type of driver.</p>
+<p><a class="reference internal" href="#lpc.applied.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a> will be called only in objects that have been used since the last call to <a class="reference internal" href="#lpc.applied.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a>, i.e. a function in them was called (other than <a class="reference internal" href="#lpc.applied.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a> or <a class="reference internal" href="clean_up.html#lpc.applied.clean_up" title="clean_up"><code class="xref lpc lpc-applied docutils literal"><span class="pre">clean_up</span></code>(A)</a>), or it was moved around.</p>
 <p>This function can be used to reset the state of the object or do some checks or what ever. The game wouldn&#8217;t be fun if no challenges remained.</p>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><strong>changed</strong> (<em>3.2.1</em>) &#8211; the mudlib can be programmed to call an other lfun than <a class="reference internal" href="#lpc.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a> to reset an object with <a class="reference internal" href="../hook/reset.html#lpc.reset" title="reset"><code class="xref lpc lpc-hook docutils literal"><span class="pre">reset</span></code>(H)</a></li>
+<ul>
+<li><strong>changed</strong> (<em>3.2.1</em>) &#8211; the mudlib can be programmed to call an other lfun than <a class="reference internal" href="#lpc.applied.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a> to reset an object with <a class="reference internal" href="../hook/reset.html#lpc.hook.reset" title="reset"><code class="xref lpc lpc-hook docutils literal"><span class="pre">reset</span></code>(H)</a></li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="clean_up.html#lpc.clean_up" title="clean_up"><code class="xref lpc lpc-applied docutils literal"><span class="pre">clean_up</span></code>(A)</a>, <a class="reference internal" href="heart_beat.html#lpc.heart_beat" title="heart_beat"><code class="xref lpc lpc-applied docutils literal"><span class="pre">heart_beat</span></code>(A)</a>, <a class="reference internal" href="../efun/call_out.html#lpc.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out()</span></code>(E)</a>, <a class="reference internal" href="create.html#lpc.create" title="create"><code class="xref lpc lpc-applied docutils literal"><span class="pre">create</span></code>(A)</a>, <a class="reference internal" href="__INIT.html#lpc.__INIT" title="__INIT"><code class="xref lpc lpc-applied docutils literal"><span class="pre">__INIT</span></code>(A)</a>, <a class="reference internal" href="../hook/reset.html#lpc.reset" title="reset"><code class="xref lpc lpc-hook docutils literal"><span class="pre">reset</span></code>(H)</a>, <code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code>, <code class="xref lpc lpc-master docutils literal"><span class="pre">initialisation</span></code>, <a class="reference internal" href="../concepts/native.html#lpc.native" title="native"><code class="xref lpc lpc-concept docutils literal"><span class="pre">native</span></code>(C)</a></p>
+<p><a class="reference internal" href="clean_up.html#lpc.applied.clean_up" title="clean_up"><code class="xref lpc lpc-applied docutils literal"><span class="pre">clean_up</span></code>(A)</a>, <a class="reference internal" href="heart_beat.html#lpc.applied.heart_beat" title="heart_beat"><code class="xref lpc lpc-applied docutils literal"><span class="pre">heart_beat</span></code>(A)</a>, <a class="reference internal" href="../efun/call_out.html#lpc.efun.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out</span></code>(E)</a>, <a class="reference internal" href="create.html#lpc.applied.create" title="create"><code class="xref lpc lpc-applied docutils literal"><span class="pre">create</span></code>(A)</a>, <a class="reference internal" href="__INIT.html#lpc.applied.__INIT" title="__INIT"><code class="xref lpc lpc-applied docutils literal"><span class="pre">__INIT</span></code>(A)</a>, <a class="reference internal" href="../hook/reset.html#lpc.hook.reset" title="reset"><code class="xref lpc lpc-hook docutils literal"><span class="pre">reset</span></code>(H)</a>, <a class="reference internal" href="../hook/overview.html#lpc.overview.hook" title="hook"><code class="xref lpc lpc-overview docutils literal"><span class="pre">hook</span></code></a>, <a class="reference internal" href="../master/initialisation.html#lpc.topic.initialisation" title="initialisation"><code class="xref lpc lpc-topic docutils literal"><span class="pre">initialisation</span></code></a>, <a href="#id3"><span class="problematic" id="id4">:concept:`native`</span></a></p>
 </div>
 </div>
 </div>
@@ -87,8 +89,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -108,15 +110,14 @@
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -128,7 +129,7 @@
       &copy;good question.
       
       |
-      <a href="../_sources/applied/reset.txt"
+      <a href="../_sources/applied/reset.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

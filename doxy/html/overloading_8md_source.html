@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: concepts/overloading.md Source File</title>
+<title>LDMud: topics/overloading.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('overloading_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,11 +95,11 @@ $(document).ready(function(){initNavTree('overloading_8md.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">concepts/overloading.md</div>  </div>
+<div class="title">topics/overloading.md</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;overloading {#driver_concepts_overloading}</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;==========================================</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;overloading {#driver_topics_overloading}</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;========================================</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;This concept is strongly connected with the concept of inheritance. A <span class="keyword">function</span> is called <span class="stringliteral">&#39;overloaded&#39;</span> <span class="keywordflow">if</span> it is defined more than once in an <span class="keywordtype">object</span>. This can happen <span class="keywordflow">if</span> the <span class="keywordtype">object</span> inherits other objects which have defined a <span class="keyword">function</span> with the same name.</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;Usually the overloading is wanted and intended by the inheriting <span class="keywordtype">object</span> to change the behaviour of the <span class="keyword">function</span> it overloads. To call the overloaded functions from the overloading <span class="keywordtype">object</span> the ::-<span class="keyword">operator</span> is used.</div>
@@ -111,23 +110,36 @@ $(document).ready(function(){initNavTree('overloading_8md.html','');});
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;@usage{</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;File /players/alfe/a.c:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;foo() { <a class="code" href="classefun.html#afacd7cdaff7309a4b579f4c14db53662">write</a>(<span class="stringliteral">&quot;A&quot;</span>); }</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;File /players/alfe/b.c:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;foo() { <a class="code" href="classefun.html#afacd7cdaff7309a4b579f4c14db53662">write</a>(<span class="stringliteral">&quot;B&quot;</span>); }</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;File /players/alfe/c.c:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;inherit <span class="stringliteral">&quot;players/alfe/a&quot;</span>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;inherit <span class="stringliteral">&quot;players/alfe/b&quot;</span>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;foo() { <a class="code" href="classefun.html#afacd7cdaff7309a4b579f4c14db53662">write</a>(<span class="stringliteral">&quot;A&quot;</span>); }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;~~~</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;File /players/alfe/b.c:</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;foo() {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  a::foo();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  b::foo();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <a class="code" href="classefun.html#afacd7cdaff7309a4b579f4c14db53662">write</a>(<span class="stringliteral">&quot;C&quot;</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;A call to <span class="stringliteral">&quot;players/alfe/c&quot;</span>-&gt;foo() will now result in the output of ABC.</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;@see @ref driver_LPC_modifiers <span class="stringliteral">&quot;modifiers&quot;</span>, @ref driver_concepts_inheritance <span class="stringliteral">&quot;inheritance&quot;</span></div>
-<div class="ttc" id="classefun_html_afacd7cdaff7309a4b579f4c14db53662"><div class="ttname"><a href="classefun.html#afacd7cdaff7309a4b579f4c14db53662">efun.write</a></div><div class="ttdeci">void write(mixed msg)</div></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;foo() { <a class="code" href="classefun.html#afacd7cdaff7309a4b579f4c14db53662">write</a>(<span class="stringliteral">&quot;B&quot;</span>); }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;~~~</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;File /players/alfe/c.c:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;inherit <span class="stringliteral">&quot;players/alfe/a&quot;</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;inherit <span class="stringliteral">&quot;players/alfe/b&quot;</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;foo() {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  a::foo();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  b::foo();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="classefun.html#afacd7cdaff7309a4b579f4c14db53662">write</a>(<span class="stringliteral">&quot;C&quot;</span>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;~~~</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;A call to `<span class="stringliteral">&quot;players/alfe/c&quot;</span>-&gt;foo()` will now result in the output of ABC.</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;@see @ref driver_syntax_modifiers <span class="stringliteral">&quot;modifiers&quot;</span>, @ref driver_syntax_functions <span class="stringliteral">&quot;functions&quot;</span></div>
+<div class="ttc" id="classefun_html_afacd7cdaff7309a4b579f4c14db53662"><div class="ttname"><a href="classefun.html#afacd7cdaff7309a4b579f4c14db53662">efun.write</a></div><div class="ttdeci">void write(mixed msg)</div><div class="ttdoc">Write out something to the current user. </div></div>
 <div class="ttc" id="classefun_html_a14431f7de9bcc796d309ac6f3193f5d4"><div class="ttname"><a href="classefun.html#a14431f7de9bcc796d309ac6f3193f5d4">efun.call_other</a></div><div class="ttdeci">unknown call_other(object  *ob, string fun, mixed arg,...)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -135,7 +147,7 @@ $(document).ready(function(){initNavTree('overloading_8md.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>overloading.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:07 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::notify_fail() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::notify_fail() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::object_info()" href="object_info.html" />
     <link rel="prev" title="efun::next_inventory()" href="next_inventory.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,51 +47,49 @@
 <div class="section" id="SYNOPSIS">
 <span id="notify_fail"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.notify_fail">
+<tr id="lpc.efun.notify_fail">
+<!--[lpc.efun.notify_fail]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">notify_fail</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.notify_fail" title="Permalink to this definition">¶</a></tr>
+<tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">notify_fail</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.notify_fail" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">notify_fail</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+closure<em>&nbsp;cl</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Store <a class="reference internal" href="#efun/notify_fail.arg.str" title="str"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str</span></code></a> as the error message given instead of the default message &#8220;What ?&#8221;. The result is always 0.</p>
+<p>If a closure is given, it is executed to return the error message string, but not before all attempts to execute the commandline failed (read: not at the time of the call to <a class="reference internal" href="#lpc.efun.notify_fail" title="notify_fail"><code class="xref lpc lpc-efun docutils literal"><span class="pre">notify_fail</span></code>(E)</a>). The closure receives as argument the original commandgiver; usually it is identical to <code class="docutils literal"><span class="pre">this_player()</span></code>, unless <a class="reference internal" href="../hook/modify_command.html#lpc.hook.H_MODIFY_COMMAND" title="H_MODIFY_COMMAND"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_MODIFY_COMMAND</span></code>(H)</a> changed that.</p>
+<p>If <a class="reference internal" href="#lpc.efun.notify_fail" title="notify_fail"><code class="xref lpc lpc-efun docutils literal"><span class="pre">notify_fail</span></code>(E)</a> is called more than once for this command, only the last call will be used. However, calls to <a class="reference internal" href="#lpc.efun.notify_fail" title="notify_fail"><code class="xref lpc lpc-efun docutils literal"><span class="pre">notify_fail</span></code>(E)</a> in nested commands have no effect on this command.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>The idea of this function is to give better error messages instead of simply &#8216;What ?&#8217;.</p>
+<p>A naive to write a message when a simple command fails is:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">write</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Unfortunately, this message will print before other objects get a chance to evaluate the verb. It is better to use:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="nf">notify_fail</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This way, the driver only prints a single failure message&#8211;and only if the verb fails all of the objects that get a chance to handle it.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.6</em>) &#8211; return type from void to int.</li>
+<li><strong>changed</strong> (<em>3.2.7</em>) &#8211; notify-fail settings are saved over nested commands, and NPCs can see their notify-fail messages.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="add_action.html#lpc.efun.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action</span></code>(E)</a>, <a class="reference internal" href="command.html#lpc.efun.command" title="command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">command</span></code>(E)</a>, <a class="reference internal" href="query_verb.html#lpc.efun.query_verb" title="query_verb"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_verb</span></code>(E)</a>, <a class="reference internal" href="query_command.html#lpc.efun.query_command" title="query_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_command</span></code>(E)</a>, <a class="reference internal" href="query_notify_fail.html#lpc.efun.query_notify_fail" title="query_notify_fail"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_notify_fail</span></code>(E)</a>, <a class="reference internal" href="../hook/overview.html#lpc.overview.hook" title="hook"><code class="xref lpc lpc-overview docutils literal"><span class="pre">hook</span></code></a></p>
 </div>
 </div>
-<p>int notify_fail(closure cl)</p>
-<p>DESCRIPTION
-Store str as the error message given instead of the default
-message <a href="#id1"><span class="problematic" id="id2">``</span></a>What ?&#8217;&#8216;. The result is always 0.</p>
-<p>If a closure is given, it is executed to return the error
-message string, but not before all attempts to execute the
-commandline failed (read: not at the time of the call to
-notify_fail()). The closure receives as argument the original
-commandgiver; usually it is identical to this_player(), unless
-the modify_cmd hook changed that.</p>
-<p>If notify_fail() is called more than once for this command, only the
-last call will be used. However, calls to notify_fail() in nested
-commands have no effect on this command.</p>
-<p>The idea of this function is to give better error messages
-instead of simply &#8216;What ?&#8217;.</p>
-<dl class="docutils">
-<dt>It is also better to use</dt>
-<dd>return notify_fail(message);</dd>
-<dt>instead of</dt>
-<dd>write(message); return 1;</dd>
-</dl>
-<p>Other objects will get the chance to evaluate the verb.</p>
-<p>Returntype changed in LDMud 3.2.6 from void to int.
-Since LDMud 3.2.7, notify-fail settings are saved over nested
-commands, and NPCs can see their notify-fail messages.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="add_action.html#lpc.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action()</span></code>(E)</a>, <a class="reference internal" href="command.html#lpc.command" title="command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">command()</span></code>(E)</a>, <a class="reference internal" href="query_verb.html#lpc.query_verb" title="query_verb"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_verb()</span></code>(E)</a>, <a class="reference internal" href="query_command.html#lpc.query_command" title="query_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_command()</span></code>(E)</a>, <a class="reference internal" href="query_notify_fail.html#lpc.query_notify_fail" title="query_notify_fail"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_notify_fail()</span></code>(E)</a>, <code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+</div>
 
 
           </div>
@@ -100,8 +100,8 @@ commands, and NPCs can see their notify-fail messages.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -111,21 +111,25 @@ commands, and NPCs can see their notify-fail messages.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::notify_fail()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -137,7 +141,7 @@ commands, and NPCs can see their notify-fail messages.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/notify_fail.txt"
+      <a href="../_sources/efun/notify_fail.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

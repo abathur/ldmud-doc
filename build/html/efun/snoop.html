@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::snoop() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::snoop() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::sort_array()" href="sort_array.html" />
     <link rel="prev" title="efun::sl_open()" href="sl_open.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,46 +47,30 @@
 <div class="section" id="SYNOPSIS">
 <span id="snoop"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.snoop">
-<td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">snoop</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;snooper</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.snoop" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.snoop">
+<!--[lpc.efun.snoop]--><td>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">snoop</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;snooper</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.snoop" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">snoop</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;snooper</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;snoopee</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">snoop</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+object<em>&nbsp;snooper</em>, </td><td id="id3">
+object<em>&nbsp;snoopee</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Starts a snoop from <a class="reference internal" href="#efun/snoop.arg.snooper" title="snooper"><code class="xref lpc lpc-arg docutils literal"><span class="pre">snooper</span></code></a> on <a class="reference internal" href="#efun/snoop.arg.snoopee" title="snoopee"><code class="xref lpc lpc-arg docutils literal"><span class="pre">snoopee</span></code></a>, or if <a class="reference internal" href="#efun/snoop.arg.snoopee" title="snoopee"><code class="xref lpc lpc-arg docutils literal"><span class="pre">snoopee</span></code></a> is not given, terminates any snoop from <a class="reference internal" href="#efun/snoop.arg.snooper" title="snooper"><code class="xref lpc lpc-arg docutils literal"><span class="pre">snooper</span></code></a>.</p>
+<p>Return <a class="reference internal" href="#efun/snoop.arg.snoopee" title="snoopee"><code class="xref lpc lpc-arg docutils literal"><span class="pre">snoopee</span></code></a> on success, or 0 for a failure (including snooping loops).</p>
+<p>The snoop is checked with the master object for validity. It will also fail if a snoop would result in a recursive snoop action.</p>
+<p><a class="reference internal" href="#efun/snoop.arg.snooper" title="snooper"><code class="xref lpc lpc-arg docutils literal"><span class="pre">snooper</span></code></a> can be an interactive player or an object. If it is an interactive player, the snooped text is prepended with a &#8216;%&#8217; and sent directly to the player&#8217;s connection. If <a class="reference internal" href="#efun/snoop.arg.snooper" title="snooper"><code class="xref lpc lpc-arg docutils literal"><span class="pre">snooper</span></code></a> is an object, the snooped text is sent in two calls to the object&#8217;s <a class="reference internal" href="../applied/catch_tell.html#lpc.applied.catch_tell" title="catch_tell"><code class="xref lpc lpc-applied docutils literal"><span class="pre">catch_tell</span></code>(A)</a> lfun: the first call passes just the &#8220;%&#8221; (plus the prompt if the object changed it), the second the actual text.</p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="query_snoop.html#lpc.efun.query_snoop" title="query_snoop"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_snoop</span></code>(E)</a>, <a class="reference internal" href="../applied/catch_tell.html#lpc.applied.catch_tell" title="catch_tell"><code class="xref lpc lpc-applied docutils literal"><span class="pre">catch_tell</span></code>(A)</a></p>
 </div>
 </div>
-<p>Starts a snoop from &#8216;snooper&#8217; on &#8216;snoopee&#8217;, or if &#8216;snoopee&#8217; is not
-given, terminates any snoop from &#8216;snooper&#8217;.</p>
-<p>Return &lt;snoopee&gt; on success, or 0 for a failure (including snooping
-loops).</p>
-<p>The snoop is checked with the master object for validity.  It
-will also fail if a snoop would result in a recursive snoop
-action.</p>
-<p>&lt;snooper&gt; can be an interactive player or an object. If it is
-an interactive player, the snooped text is prepended with a
-&#8216;%&#8217; and sent directly to the player&#8217;s connection. If &lt;snooper&gt;
-is an object, the snooped text is sent in two calls to the
-object&#8217;s catch_tell() lfun: the first call passes just the
-&#8220;%&#8221; (plus the prompt if the object changed it), the second the
-actual text.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="query_snoop.html#lpc.query_snoop" title="query_snoop"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_snoop()</span></code>(E)</a>, <a class="reference internal" href="../applied/catch_tell.html#lpc.catch_tell" title="catch_tell"><code class="xref lpc lpc-applied docutils literal"><span class="pre">catch_tell</span></code>(A)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+</div>
 
 
           </div>
@@ -95,8 +81,8 @@ actual text.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -106,21 +92,23 @@ actual text.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::snoop()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -132,7 +120,7 @@ actual text.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/snoop.txt"
+      <a href="../_sources/efun/snoop.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

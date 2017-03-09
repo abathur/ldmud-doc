@@ -1,11 +1,10 @@
 public class efun {
    /**
-    * Convert string <name> from UTF-8 to idna representation (8z punycode).
+    * Convert string \p name from UTF-8 to idna representation (8z punycode).
     * 
     * If an error occurs, an exception is thrown.
     * 
-    * The efun is available only if the system supports libidn - in
-    * that case __IDNA__ is defined.
+    * The efun is available only if the system supports libidn - in that case @ref driver_topics_predefined "__IDNA__" is defined.
     * 
     * @headerfile <idn.h>
     * 

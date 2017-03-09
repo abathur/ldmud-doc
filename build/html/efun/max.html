@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::max() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::max() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::md5()" href="md5.html" />
     <link rel="prev" title="efun::match_command()" href="match_command.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,52 +47,53 @@
 <div class="section" id="SYNOPSIS">
 <span id="max"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.max">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>    </td><td>
-<code class="descname">max</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;arg</em>, </td><td>
-...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.max" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.max">
+<!--[lpc.efun.max]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a>    </td><td>
+<code class="descname">max</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;arg</em>, </td><td id="id2">
+...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.max" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>    </td><td>
-<code class="descname">max</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;*arg_array</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a>    </td><td>
+<code class="descname">max</code></td><td><span class="sig-paren">(</span></td><td id="id3">
+string<em>&nbsp;*arg_array</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a>|<a class="reference internal" href="../LPC/float.html#lpc.float" title="float">float</a> </td><td>
-<code class="descname">max</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a>|<a class="reference internal" href="../LPC/float.html#lpc.float" title="float">float</a><em>&nbsp;arg</em>, </td><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a>|<a class="reference internal" href="../syntax/float.html#lpc.type.float" title="float">float</a> </td><td>
+<code class="descname">max</code></td><td><span class="sig-paren">(</span></td><td id="id4">
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a>|float<em>&nbsp;arg</em>, </td><td id="id5">
 ...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a>|<a class="reference internal" href="../LPC/float.html#lpc.float" title="float">float</a> </td><td>
-<code class="descname">max</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a>|<a class="reference internal" href="../LPC/float.html#lpc.float" title="float">float</a><em>&nbsp;*arg_array</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a>|<a class="reference internal" href="../syntax/float.html#lpc.type.float" title="float">float</a> </td><td>
+<code class="descname">max</code></td><td><span class="sig-paren">(</span></td><td id="id6">
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a>|float<em>&nbsp;*arg_array</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Determaxe the maximum value of the arguments and return it. If <a class="reference internal" href="#lpc.efun.max" title="max"><code class="xref lpc lpc-efun docutils literal"><span class="pre">max</span></code>(E)</a> is called with an array (which must not be empty) as only argument, it returns the maximum value of the array contents.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                     <span class="c1">// returns 1</span>
+<span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>                <span class="c1">// returns 1.1</span>
+<span class="n">max</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">)</span>          <span class="c1">// returns &quot;foo&quot;</span>
+<span class="n">max</span><span class="p">(</span> <span class="p">({</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span> <span class="p">})</span> <span class="p">)</span>  <span class="c1">// returns &quot;foo&quot;</span>
+</pre></div>
 </div>
 </div>
-<p>Determaxe the maximum value of the &lt;arg&gt;uments and return it.
-If max() is called with an array (which must not be empty) as only
-argument, it returns the maximum value of the array contents.</p>
-<p>EXAMPLES
-max(1)                     - returns 1
-max(1, 1.1)                - returns 1.1
-max(&#8220;foo&#8221;, &#8220;bar&#8221;)          - returns &#8220;foo&#8221;
-max( ({ &#8220;foo&#8221;, &#8220;bar&#8221; }) )  - returns &#8220;foo&#8221;</p>
-<p>Introduced in LDMud 3.2.9.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="min.html#lpc.min" title="min"><code class="xref lpc lpc-efun docutils literal"><span class="pre">min()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.9</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="min.html#lpc.efun.min" title="min"><code class="xref lpc lpc-efun docutils literal"><span class="pre">min</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -101,8 +104,8 @@ max( ({ &#8220;foo&#8221;, &#8220;bar&#8221; }) )  - returns &#8220;foo&#8221;</
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -112,21 +115,25 @@ max( ({ &#8220;foo&#8221;, &#8220;bar&#8221; }) )  - returns &#8220;foo&#8221;</
   <ul>
 <li><a class="reference internal" href="#">efun::max()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -138,7 +145,7 @@ max( ({ &#8220;foo&#8221;, &#8220;bar&#8221; }) )  - returns &#8220;foo&#8221;</
       &copy;good question.
       
       |
-      <a href="../_sources/efun/max.txt"
+      <a href="../_sources/efun/max.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

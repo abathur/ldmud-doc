@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::bind_lambda() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::bind_lambda() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::blueprint()" href="blueprint.html" />
     <link rel="prev" title="efun::binary_message()" href="binary_message.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,29 +47,26 @@
 <div class="section" id="SYNOPSIS">
 <span id="bind_lambda"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.bind_lambda">
-<td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a> </td><td>
-<code class="descname">bind_lambda</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.bind_lambda" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.bind_lambda">
+<!--[lpc.efun.bind_lambda]--><td>
+<a class="reference internal" href="../syntax/closures.html#lpc.type.closure" title="closure">closure</a> </td><td>
+<code class="descname">bind_lambda</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+closure, </td><td id="id2">
+object<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.bind_lambda" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Binds an unbound lambda closure to an object and return it.
-The efun can also be used to rebind an efun-, simul-efun
-or operator closure to a different object.</p>
-<p>If the optional argument ob is not this_object(), the privilege
-violation (&#8220;bind_lambda&#8221;, this_object(), ob) occurs.</p>
+<p>Binds an unbound lambda closure to an object and return it. The efun can also be used to rebind an efun, simul-efun or operator closure to a different object.</p>
+<p>If the optional argument ob is not <code class="docutils literal"><span class="pre">this_object()</span></code>, the privilege violation <code class="docutils literal"><span class="pre">(&quot;bind_lambda&quot;,</span> <span class="pre">this_object(),</span> <span class="pre">ob)</span></code> occurs.</p>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><strong>introduced</strong> (<em>3.2&#64;82</em>)</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="lambda.html#lpc.lambda" title="lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">lambda()</span></code>(E)</a>, <a class="reference internal" href="unbound_lambda.html#lpc.unbound_lambda" title="unbound_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">unbound_lambda()</span></code>(E)</a>, <a class="reference internal" href="apply.html#lpc.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply()</span></code>(E)</a>, <a class="reference internal" href="funcall.html#lpc.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall()</span></code>(E)</a>, <a class="reference internal" href="../LPC/closures.html#lpc.closures" title="closures"><code class="xref lpc lpc-lang docutils literal"><span class="pre">closures</span></code>(LPC)</a></p>
+<p><a class="reference internal" href="lambda.html#lpc.efun.lambda" title="lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">lambda</span></code>(E)</a>, <a class="reference internal" href="unbound_lambda.html#lpc.efun.unbound_lambda" title="unbound_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">unbound_lambda</span></code>(E)</a>, <a class="reference internal" href="apply.html#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a>, <a class="reference internal" href="funcall.html#lpc.efun.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a>, <a class="reference internal" href="../syntax/closures.html#lpc.type.closure" title="closure"><code class="xref lpc lpc-type docutils literal"><span class="pre">closure</span></code></a></p>
 </div>
 </div>
 </div>
@@ -81,8 +80,8 @@ violation (&#8220;bind_lambda&#8221;, this_object(), ob) occurs.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -102,15 +101,14 @@ violation (&#8220;bind_lambda&#8221;, this_object(), ob) occurs.</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -122,7 +120,7 @@ violation (&#8220;bind_lambda&#8221;, this_object(), ob) occurs.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/bind_lambda.txt"
+      <a href="../_sources/efun/bind_lambda.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

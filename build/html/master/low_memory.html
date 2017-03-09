@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>master::low_memory() &mdash; LDMud UNRELEASED documentation</title>
+    <title>master::low_memory() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="master" href="master.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="master::make_path_absolute()" href="make_path_absolute.html" />
     <link rel="prev" title="master::log_error()" href="log_error.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,76 +47,63 @@
 <div class="section" id="SYNOPSIS">
 <span id="low_memory"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.low_memory">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">low_memory</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;what</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;limitvalue</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;memory</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;reservestate</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.low_memory" title="Permalink to this definition">¶</a></tr>
+<tr>
+#include &lt;rtlimits.h&gt;</tr>
+<tr id="lpc.master.low_memory">
+<!--[lpc.master.low_memory]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">low_memory</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+int<em>&nbsp;what</em>, </td><td id="id2">
+int<em>&nbsp;limitvalue</em>, </td><td id="id3">
+int<em>&nbsp;memory</em>, </td><td id="id4">
+int<em>&nbsp;reservestate</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.master.low_memory" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>This efun is called when there is a (potential) low-memory situation.
-Two different limits for the amount of allocated memory can be
-configured: a soft limit and a hard limit. If the soft limit is
-exceeded, the driver calls low_memory() but does nothing else.
-If the hard limit is exceeded, the driver calls low_memory() as well,
-but initiates a garbage collection directly after the call. The efun
-is called as well directly before a user-initiated garbage collection
-is started.</p>
-<p>&lt;what&gt; denotes the type of limit which was exceeded:</p>
+<p>This efun is called when there is a (potential) low-memory situation. Two different limits for the amount of allocated memory can be configured: a soft limit and a hard limit. If the soft limit is exceeded, the driver calls <a class="reference internal" href="#lpc.master.low_memory" title="low_memory"><code class="xref lpc lpc-master docutils literal"><span class="pre">low_memory</span></code>(M)</a> but does nothing else. If the hard limit is exceeded, the driver calls <a class="reference internal" href="#lpc.master.low_memory" title="low_memory"><code class="xref lpc lpc-master docutils literal"><span class="pre">low_memory</span></code>(M)</a> as well, but initiates a garbage collection directly after the call. The efun is called as well directly before a user-initiated garbage collection is started.</p>
+<p><a class="reference internal" href="#master/low_memory.arg.what" title="what"><code class="xref lpc lpc-arg docutils literal"><span class="pre">what</span></code></a> denotes the type of limit which was exceeded:</p>
 <ul>
-<li><p class="first">NO_MALLOC_LIMIT_EXCEEDED   (0)</p>
-<p>No limit was exceeded, but a garbage collection was requested by a
-call to garbage_collection() and it will begin right after
-low_memory() returns.</p>
+<li><p class="first"><code class="xref lpc lpc-macro docutils literal"><span class="pre">NO_MALLOC_LIMIT_EXCEEDED</span></code>   (0)</p>
+<p>No limit was exceeded, but a garbage collection was requested by a call to <a class="reference internal" href="../efun/garbage_collection.html#lpc.efun.garbage_collection" title="garbage_collection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">garbage_collection</span></code>(E)</a> and it will begin right after <a class="reference internal" href="#lpc.master.low_memory" title="low_memory"><code class="xref lpc lpc-master docutils literal"><span class="pre">low_memory</span></code>(M)</a> returns.</p>
 </li>
-<li><p class="first">SOFT_MALLOC_LIMIT_EXCEEDED (1)</p>
+<li><p class="first"><code class="xref lpc lpc-macro docutils literal"><span class="pre">SOFT_MALLOC_LIMIT_EXCEEDED</span></code> (1)</p>
 <p>The soft limit was exceeded.</p>
 </li>
-<li><p class="first">HARD_MALLOC_LIMIT_EXCEEDED (2)</p>
-<p>The hard limit was exceeded. A garbage collection will begin right
-after low_memory() returns.</p>
+<li><p class="first"><code class="xref lpc lpc-macro docutils literal"><span class="pre">HARD_MALLOC_LIMIT_EXCEEDED</span></code> (2)</p>
+<p>The hard limit was exceeded. A garbage collection will begin right after <a class="reference internal" href="#lpc.master.low_memory" title="low_memory"><code class="xref lpc lpc-master docutils literal"><span class="pre">low_memory</span></code>(M)</a> returns.</p>
 </li>
 </ul>
-<p>&lt;limit&gt; specifies the numerical value of the limit which was exceeded.
-It is 0 in case of NO_MALLOC_LIMIT_EXCEEDED.</p>
-<p>&lt;memory&gt; specifies the amount of allocated memory right now.</p>
-<p>&lt;reservestate&gt; specifies the current state of the memory reserves of
-the driver. The states of the 3 different reserves are OR&#8217;ed together.</p>
+<p><a class="reference internal" href="#master/low_memory.arg.limitvalue" title="limitvalue"><code class="xref lpc lpc-arg docutils literal"><span class="pre">limitvalue</span></code></a> specifies the numerical value of the limit which was exceeded. It is 0 in case of <code class="xref lpc lpc-macro docutils literal"><span class="pre">NO_MALLOC_LIMIT_EXCEEDED</span></code>.</p>
+<p><a class="reference internal" href="#master/low_memory.arg.memory" title="memory"><code class="xref lpc lpc-arg docutils literal"><span class="pre">memory</span></code></a> specifies the amount of allocated memory right now.</p>
+<p><a class="reference internal" href="#master/low_memory.arg.reservestate" title="reservestate"><code class="xref lpc lpc-arg docutils literal"><span class="pre">reservestate</span></code></a> specifies the current state of the memory reserves of the driver. The states of the 3 different reserves are OR&#8217;ed together.</p>
 <ul>
-<li><p class="first">USER_RESERVE_AVAILABLE   (1)</p>
+<li><p class="first"><code class="xref lpc lpc-macro docutils literal"><span class="pre">USER_RESERVE_AVAILABLE</span></code>   (1)</p>
 <p>The user reserve is available.</p>
 </li>
-<li><p class="first">MASTER_RESERVE_AVAILABLE (2)</p>
+<li><p class="first"><code class="xref lpc lpc-macro docutils literal"><span class="pre">MASTER_RESERVE_AVAILABLE</span></code> (2)</p>
 <p>The master reserve is available.</p>
 </li>
-<li><p class="first">SYSTEM_RESERVE_AVAILABLE (4)</p>
+<li><p class="first"><code class="xref lpc lpc-macro docutils literal"><span class="pre">SYSTEM_RESERVE_AVAILABLE</span></code> (4)</p>
 <p>The system reserve is available.</p>
 </li>
 </ul>
-<p>This efun might be used to inform users about the garbage collection
-and the expected long lag.</p>
-<p>Another possibility is to initiate a garbage collection deliberately
-at a suitable time (e.g. during the following night) after the soft
-limit was hit.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">This efun might be used to inform users about the garbage collection and the expected long lag. Another possibility is to initiate a garbage collection deliberately at a suitable time (e.g. during the following night) after the soft limit was hit.</p>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If in a low_memory condition when the memory reserves have been
-used already and they could not be re-allocated after a garbage collection
-slow_shut_down() is called instead of calling this function again.</p>
+<p class="last">If in a low_memory condition when the memory reserves have been used already and they could not be re-allocated after a garbage collection <a class="reference internal" href="slow_shut_down.html#lpc.master.slow_shut_down" title="slow_shut_down"><code class="xref lpc lpc-master docutils literal"><span class="pre">slow_shut_down</span></code>(M)</a> is called instead of calling this function again.</p>
 </div>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><strong>introduced</strong> (<em>3.3.719</em>)</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../efun/debug_info.html#lpc.debug_info" title="debug_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">debug_info()</span></code>(E)</a>, <a class="reference internal" href="../efun/garbage_collection.html#lpc.garbage_collection" title="garbage_collection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">garbage_collection()</span></code>(E)</a>, <a class="reference internal" href="slow_shut_down.html#lpc.slow_shut_down" title="slow_shut_down"><code class="xref lpc lpc-master docutils literal"><span class="pre">slow_shut_down</span></code>(M)</a>, <a class="reference internal" href="../concepts/memory.html#lpc.memory" title="memory"><code class="xref lpc lpc-concept docutils literal"><span class="pre">memory</span></code>(C)</a>, <code class="xref lpc lpc-driver docutils literal"><span class="pre">malloc</span></code></p>
+<p><a class="reference internal" href="../efun/debug_info.html#lpc.efun.debug_info" title="debug_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">debug_info</span></code>(E)</a>, <a class="reference internal" href="../efun/garbage_collection.html#lpc.efun.garbage_collection" title="garbage_collection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">garbage_collection</span></code>(E)</a>, <a class="reference internal" href="slow_shut_down.html#lpc.master.slow_shut_down" title="slow_shut_down"><code class="xref lpc lpc-master docutils literal"><span class="pre">slow_shut_down</span></code>(M)</a>, <a href="#id5"><span class="problematic" id="id6">:concept:`memory`</span></a></p>
 </div>
 </div>
 </div>
@@ -128,8 +117,8 @@ slow_shut_down() is called instead of calling this function again.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -149,15 +138,14 @@ slow_shut_down() is called instead of calling this function again.</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -169,7 +157,7 @@ slow_shut_down() is called instead of calling this function again.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/master/low_memory.txt"
+      <a href="../_sources/master/low_memory.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

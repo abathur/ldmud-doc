@@ -1,7 +1,6 @@
 META
 ====
    codestyle
-
 DESCRIPTION
 ===========
    The LPMud gamedriver is by nature the result of the cooperative work of 
@@ -21,7 +20,7 @@ DESCRIPTION
    Any reader of the "real programmers don't write comments"-school of thought
    is asked to take his or her incompetence elsewhere.
 
-   LANGUAGE
+   Language
    ========
       The language is ISO Standard C (also known as 'C89' or 'ANSI C'). Common
       compiler extensions or features from the new C99 standard are permitted
@@ -52,11 +51,8 @@ DESCRIPTION
         unavoidable, comment it clearly and if possible add a test to raise a 
         compile or runtime error if the assumption is not met.
 
-   STYLE
+   Style
    =====
-      Todo: the paragraphs in this subtopic read like bullet points and should
-      probably be converted.
-
       All modules (.c-files) have to have their interface in an accompanying 
       .h-file. The header file must be guarded against repeated inclusion with
       the normal:
@@ -154,11 +150,7 @@ DESCRIPTION
       structure of the program becomes obvious without much conscious 
       thought. ]
 
-      Todo: is the above a comment a meta comment on the entire section, or a 
-      comment on starting lines with a syntactical marker? What's an 
-      appropriate translation of the brackets it uses
-
-   COMMENTING
+   Commenting
    ==========
       The comments also follow the idea of giving strong visual clues of how 
       the program is structured.

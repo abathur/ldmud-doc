@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::exec() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::exec() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::execute_command()" href="execute_command.html" />
     <link rel="prev" title="efun::environment()" href="environment.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,51 +47,42 @@
 <div class="section" id="SYNOPSIS">
 <span id="exec"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.exec">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">exec</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;new</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;old</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.exec" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.exec">
+<!--[lpc.efun.exec]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">exec</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;new</em>, </td><td id="id2">
+object<em>&nbsp;old</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.exec" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<p>exec() switches the connection from the interactive object old
-to the object new. If the new object is also interactive, it&#8217;s
-connection will be transferred to the old object, thus
-exchaning the two connections between the object. If the new
-object is not interactive, the old will not be interactive
-anymore after the exec call succeeded.</p>
+<p>Switches the connection from the interactive object old to the object new. If the new object is also interactive, it&#8217;s connection will be transferred to the old object, thus exchaning the two connections between the object. If the new object is not interactive, the old will not be interactive anymore after the exec call succeeded.</p>
 <p>The result is 1 on success, and 0 on failure.</p>
-<p>exec() is used to load different &#8220;user objects&#8221; or to reconnect
-link dead users.</p>
-<p>To provide security mechanisms, the interpreter calls
-master-&gt;valid_exec(current_program, new, old), which must
-return anything other than 0 to allow this exec() invocation.</p>
-<p>After the exec(), if arg 2 was this_player(), this_player()
-becomes arg 1, else vice versa. Ditto for this_interactive().</p>
-<p>Take care when writing a simul-efun around exec(): the
-&#8216;current_program&#8217; passed to the valid_exec() function will be
-that of the simul-efun object. To get around this, use
-bind_lambda() to bind #&#8217;exec to the real object and funcall()
-the resulting closure.</p>
-<p>EXAMPLES
-ob = clone_object(&#8220;std/player&#8221;);
-exec(ob, this_object());
-destruct(this_object());</p>
-<p>LDMud 3.2.9 added the switchover of this_interactive().</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="../master/connect.html#lpc.connect" title="connect"><code class="xref lpc lpc-master docutils literal"><span class="pre">connect</span></code>(M)</a>, <a class="reference internal" href="../master/disconnect.html#lpc.disconnect" title="disconnect"><code class="xref lpc lpc-master docutils literal"><span class="pre">disconnect</span></code>(M)</a>, <a class="reference internal" href="../applied/logon.html#lpc.logon" title="logon"><code class="xref lpc lpc-applied docutils literal"><span class="pre">logon</span></code>(A)</a>, <a class="reference internal" href="interactive.html#lpc.interactive" title="interactive"><code class="xref lpc lpc-efun docutils literal"><span class="pre">interactive()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<p><a class="reference internal" href="#lpc.efun.exec" title="exec"><code class="xref lpc lpc-efun docutils literal"><span class="pre">exec</span></code>(E)</a> is used to load different &#8220;user objects&#8221; or to reconnect link dead users.</p>
+<p>To provide security mechanisms, the interpreter calls <code class="docutils literal"><span class="pre">master-&gt;valid_exec(current_program,</span> <span class="pre">new,</span> <span class="pre">old)</span></code>, which must return anything other than 0 to allow this <a class="reference internal" href="#lpc.efun.exec" title="exec"><code class="xref lpc lpc-efun docutils literal"><span class="pre">exec</span></code>(E)</a> invocation.</p>
+<p>After the <a class="reference internal" href="#lpc.efun.exec" title="exec"><code class="xref lpc lpc-efun docutils literal"><span class="pre">exec</span></code>(E)</a>, if arg 2 was <code class="docutils literal"><span class="pre">this_player()</span></code>, <code class="docutils literal"><span class="pre">this_player()</span></code> becomes arg 1, else vice versa. Ditto for <code class="docutils literal"><span class="pre">this_interactive()</span></code>.</p>
+<p>Take care when writing a simul-efun around <a class="reference internal" href="#lpc.efun.exec" title="exec"><code class="xref lpc lpc-efun docutils literal"><span class="pre">exec</span></code>(E)</a>: the &#8216;current_program&#8217; passed to the <a class="reference internal" href="../master/valid_exec.html#lpc.master.valid_exec" title="valid_exec"><code class="xref lpc lpc-master docutils literal"><span class="pre">valid_exec</span></code>(M)</a> function will be that of the simul-efun object. To get around this, use <a class="reference internal" href="bind_lambda.html#lpc.efun.bind_lambda" title="bind_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">bind_lambda</span></code>(E)</a> to bind <code class="docutils literal"><span class="pre">#'exec</span></code> to the real object and <a class="reference internal" href="funcall.html#lpc.efun.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a> the resulting closure.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>To create a new player object, switch the connection to it, and destruct the previous object:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">ob</span> <span class="o">=</span> <span class="n">clone_object</span><span class="p">(</span><span class="s">&quot;std/player&quot;</span><span class="p">);</span>
+<span class="n">exec</span><span class="p">(</span><span class="n">ob</span><span class="p">,</span> <span class="n">this_object</span><span class="p">());</span>
+<span class="n">destruct</span><span class="p">(</span><span class="n">this_object</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; adds the switchover of this_interactive().</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../master/connect.html#lpc.master.connect" title="connect"><code class="xref lpc lpc-master docutils literal"><span class="pre">connect</span></code>(M)</a>, <a class="reference internal" href="../master/disconnect.html#lpc.master.disconnect" title="disconnect"><code class="xref lpc lpc-master docutils literal"><span class="pre">disconnect</span></code>(M)</a>, <a class="reference internal" href="../applied/logon.html#lpc.applied.logon" title="logon"><code class="xref lpc lpc-applied docutils literal"><span class="pre">logon</span></code>(A)</a>, <a class="reference internal" href="interactive.html#lpc.efun.interactive" title="interactive"><code class="xref lpc lpc-efun docutils literal"><span class="pre">interactive</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -100,8 +93,8 @@ destruct(this_object());</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -111,21 +104,25 @@ destruct(this_object());</p>
   <ul>
 <li><a class="reference internal" href="#">efun::exec()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -137,7 +134,7 @@ destruct(this_object());</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/exec.txt"
+      <a href="../_sources/efun/exec.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

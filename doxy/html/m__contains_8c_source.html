@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/m_contains.c Source File</title>
+<title>LDMud: efun/m_contains.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('m__contains_8c_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,28 +100,22 @@ $(document).ready(function(){initNavTree('m__contains_8c_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * int m_contains(mixed &amp;data1, ..., &amp;dataN, map, key)</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * }</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classefun.html#a149395923f6aed5847a664b568d55124">m_contains</a>(mixed &amp;data1, ..., &amp;dataN, <a class="code" href="classefun.html#afc8030f83d4a288ec207d538167764ef">map</a>, key);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;If the mapping contains the key map, the corresponding values</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;are assigned to the data arguments, which must be passed by</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;reference, and 1 is returned. If key is not in map, 0 is</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;returned and the data args are left unchanged.</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;It is possible to use <span class="keyword">this</span> <span class="keyword">function</span> <span class="keywordflow">for</span> a 0-value mapping, in</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;which <span class="keywordflow">case</span> it has the same effect as <a class="code" href="classefun.html#adf2253b4467a0eb544f67ff5777d2fa2">efun::member</a>().</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;Renamed from <span class="stringliteral">&#39;mapping_contains()&#39;</span> in LDMud 3.2.6.</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;   See Also: </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;      <a class="code" href="classefun.html#a3b4d34af1c4ceb2ade88380e2bcfb7b1">efun::m_entry</a>(), @ref driver_LPC_mappings <span class="stringliteral">&quot;mappings&quot;</span>, <a class="code" href="classefun.html#adf2253b4467a0eb544f67ff5777d2fa2">efun::member</a>()</div>
-<div class="ttc" id="classefun_html_a3b4d34af1c4ceb2ade88380e2bcfb7b1"><div class="ttname"><a href="classefun.html#a3b4d34af1c4ceb2ade88380e2bcfb7b1">efun.m_entry</a></div><div class="ttdeci">mixed * m_entry(mapping map, mixed key)</div></div>
-<div class="ttc" id="classefun_html_a149395923f6aed5847a664b568d55124"><div class="ttname"><a href="classefun.html#a149395923f6aed5847a664b568d55124">efun.m_contains</a></div><div class="ttdeci">int m_contains(mixed  &amp;data1,...,&amp;dataN, map, key)</div></div>
-<div class="ttc" id="classefun_html_adf2253b4467a0eb544f67ff5777d2fa2"><div class="ttname"><a href="classefun.html#adf2253b4467a0eb544f67ff5777d2fa2">efun.member</a></div><div class="ttdeci">int member(mapping m, mixed key)</div></div>
-<div class="ttc" id="classefun_html_afc8030f83d4a288ec207d538167764ef"><div class="ttname"><a href="classefun.html#afc8030f83d4a288ec207d538167764ef">efun.map</a></div><div class="ttdeci">string map(string arg, mapping m [, int idx])</div></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * If the mapping contains the key map, the corresponding values are assigned to the data arguments, which must be passed by reference, and 1 is returned. If key is not in map, 0 is returned and the data args are left unchanged. It is possible to use this function for a 0-value mapping, in which case it has the same effect as efun::member().</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * int m_contains(mixed &amp;data1, ..., &amp;dataN, map, key)</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * @history{</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * changed (3.2.6) -- Renamed from &#39;mapping_contains()&#39;.</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    * @see efun::m_entry(), @ref driver_syntax_mappings &quot;mapping&quot;, efun::member()</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classefun.html#a149395923f6aed5847a664b568d55124">m_contains</a>(mixed &amp;data1, ..., &amp;dataN, <a class="code" href="classefun.html#a33260046a3141e3b6f24f730d13201b9">map</a>, key);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
+<div class="ttc" id="classefun_html_a149395923f6aed5847a664b568d55124"><div class="ttname"><a href="classefun.html#a149395923f6aed5847a664b568d55124">efun.m_contains</a></div><div class="ttdeci">int m_contains(mixed  &amp;data1,...,&amp;dataN, map, key)</div><div class="ttdoc">If the mapping contains the key map, the corresponding values are assigned to the data arguments...</div></div>
+<div class="ttc" id="classefun_html_a33260046a3141e3b6f24f730d13201b9"><div class="ttname"><a href="classefun.html#a33260046a3141e3b6f24f730d13201b9">efun.map</a></div><div class="ttdeci">string map(string arg, mapping m [, int idx])</div><div class="ttdoc">Call the function &lt;ob&gt;-&gt;&lt;func&gt;() resp. </div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -130,7 +123,7 @@ $(document).ready(function(){initNavTree('m__contains_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>m_contains.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:08 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:21 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

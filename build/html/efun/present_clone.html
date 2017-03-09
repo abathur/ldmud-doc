@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::present_clone() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::present_clone() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::previous_object()" href="previous_object.html" />
     <link rel="prev" title="efun::present()" href="present.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -43,104 +45,110 @@
             
   <div class="section">
 <div class="section" id="SYNOPSIS">
-<span id="present_clone"></span><h2>SYNOPSIS (PRELIMINARY)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<span id="present_clone"></span><h2>SYNOPSIS (EXPERIMENTAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.present_clone">
-<td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.present_clone" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.present_clone">
+<!--[lpc.efun.present_clone]--><td>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.present_clone" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;n</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+string<em>&nbsp;str</em>, </td><td id="id3">
+int<em>&nbsp;n</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;env</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td id="id4">
+string<em>&nbsp;str</em>, </td><td id="id5">
+object<em>&nbsp;env</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;env</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;n</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td id="id6">
+string<em>&nbsp;str</em>, </td><td id="id7">
+object<em>&nbsp;env</em>, </td><td id="id8">
+int<em>&nbsp;n</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;obj</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td id="id9">
+object<em>&nbsp;obj</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;obj</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;n</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td id="id10">
+object<em>&nbsp;obj</em>, </td><td id="id11">
+int<em>&nbsp;n</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;obj</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;env</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td id="id12">
+object<em>&nbsp;obj</em>, </td><td id="id13">
+object<em>&nbsp;env</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;obj</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;env</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;n</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">present_clone</code></td><td><span class="sig-paren">(</span></td><td id="id14">
+object<em>&nbsp;obj</em>, </td><td id="id15">
+object<em>&nbsp;env</em>, </td><td id="id16">
+int<em>&nbsp;n</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>This efun searches the inventory of object &lt;env&gt; (default is
-this_object()) for an object with a specific blueprint.
-The blueprint can be specified either by name &lt;str&gt;, or as the same
-blueprint as of object &lt;obj&gt;. The matching criteria in both cases is
-the load_name().
-If &lt;n&gt; is given, the &lt;n&gt;th object in &lt;env&gt; is returned (if present),
-otherwise the first object matching &lt;str&gt; or &lt;obj&gt;.
-If no object in &lt;env&gt; matches the criteria, 0 is returned.</p>
-<p>For plain driver this name starts with a &#8216;/&#8217;, for COMPAT mode
-drivers it doesn&#8217;t.</p>
-<p>EXAMPLES
-Assume that object &#8216;env&#8217; contains the objects /obj/money#8,
-/std/weapon#9, /std/weapon#12 and /obj/key in the given order.</p>
+<p>This efun searches the inventory of object <a class="reference internal" href="#efun/present_clone.arg.env" title="env"><code class="xref lpc lpc-arg docutils literal"><span class="pre">env</span></code></a> (default is <code class="docutils literal"><span class="pre">this_object()</span></code>) for an object with a specific blueprint. The blueprint can be specified either by name <a class="reference internal" href="#efun/present_clone.arg.str" title="str"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str</span></code></a>, or as the same blueprint as of object <a class="reference internal" href="#efun/present_clone.arg.obj" title="obj"><code class="xref lpc lpc-arg docutils literal"><span class="pre">obj</span></code></a>. The matching criteria in both cases is the <code class="docutils literal"><span class="pre">load_name()</span></code>. If <a class="reference internal" href="#efun/present_clone.arg.n" title="n"><code class="xref lpc lpc-arg docutils literal"><span class="pre">n</span></code></a> is given, object <a class="reference internal" href="#efun/present_clone.arg.n" title="n"><code class="xref lpc lpc-arg docutils literal"><span class="pre">n</span></code></a> in <a class="reference internal" href="#efun/present_clone.arg.env" title="env"><code class="xref lpc lpc-arg docutils literal"><span class="pre">env</span></code></a> is returned (if present), otherwise the first object matching <a class="reference internal" href="#efun/present_clone.arg.str" title="str"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str</span></code></a> or <a class="reference internal" href="#efun/present_clone.arg.obj" title="obj"><code class="xref lpc lpc-arg docutils literal"><span class="pre">obj</span></code></a>. If no object in <a class="reference internal" href="#efun/present_clone.arg.env" title="env"><code class="xref lpc lpc-arg docutils literal"><span class="pre">env</span></code></a> matches the criteria, 0 is returned.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In contrast to <a class="reference internal" href="present.html#lpc.efun.present" title="present"><code class="xref lpc lpc-efun docutils literal"><span class="pre">present</span></code>(E)</a>, this efun never searches in the environment of <a class="reference internal" href="#efun/present_clone.arg.env" title="env"><code class="xref lpc lpc-arg docutils literal"><span class="pre">env</span></code></a>.</p>
+</div>
+<p>For plain driver this name starts with a &#8216;/&#8217;, for <a class="reference internal" href="../topics/predefined.html#lpc.macro.__COMPAT_MODE__" title="__COMPAT_MODE__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__COMPAT_MODE__</span></code></a> drivers it doesn&#8217;t.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>Assume that object <a class="reference internal" href="#efun/present_clone.arg.env" title="env"><code class="xref lpc lpc-arg docutils literal"><span class="pre">env</span></code></a> contains the objects <code class="docutils literal"><span class="pre">/obj/money#8</span></code>, <code class="docutils literal"><span class="pre">/std/weapon#9</span></code>, <code class="docutils literal"><span class="pre">/std/weapon#12</span></code> and <code class="docutils literal"><span class="pre">/obj/key</span></code> in the given order.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="77%" />
-<col width="23%" />
+<col width="74%" />
+<col width="26%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Function call</td>
-<td>returns</td>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Function call</th>
+<th class="head">returns</th>
 </tr>
-<tr class="row-even"><td>present_clone(&#8220;/obj/money&#8221;, env)
-present_clone(&#8220;/std/weapon#12&#8221;, env)
-present_clone(find_object(&#8220;/obj/money#14&#8221;), env)
-present_clone(&#8220;/obj/key#18&#8221;, env)
-present_clone(&#8220;/std/weapon#12&#8221;, env, 2)
-present_clone(&#8220;/std/weapon#12&#8221;, env, 3)</td>
-<td>/obj/money#8
-/std/weapon#9
-/obj/money#8
-/obj/key
-/std/weapon#12
-0</td>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">present_clone(&quot;/obj/money&quot;,</span> <span class="pre">env)</span></code></td>
+<td><code class="docutils literal"><span class="pre">/obj/money#8</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">present_clone(&quot;/std/weapon#12&quot;,</span> <span class="pre">env)</span></code></td>
+<td><code class="docutils literal"><span class="pre">/std/weapon#9</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">present_clone(find_object(&quot;/obj/money#14&quot;),</span> <span class="pre">env)</span></code></td>
+<td><code class="docutils literal"><span class="pre">/obj/money#8</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">present_clone(&quot;/obj/key#18&quot;,</span> <span class="pre">env)</span></code></td>
+<td><code class="docutils literal"><span class="pre">/obj/key</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">present_clone(&quot;/std/weapon#12&quot;,</span> <span class="pre">env,</span> <span class="pre">2)</span></code></td>
+<td><code class="docutils literal"><span class="pre">/std/weapon#12</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">present_clone(&quot;/std/weapon#12&quot;,</span> <span class="pre">env,</span> <span class="pre">3)</span></code></td>
+<td><code class="docutils literal"><span class="pre">0</span></code></td>
 </tr>
 </tbody>
 </table>
-<p>REMARKS
-Note that in contrast to present(), this efun never searches
-in the environment of &lt;env&gt;.</p>
-<p>Introduced in 3.2.7.
-Searching for the &lt;n&gt;th object was added in 3.3.718.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.7</em>)</li>
+<li><strong>changed</strong> (<em>3.3.718</em>) &#8211; added searching for the :arg:<a href="#id17"><span class="problematic" id="id18">`</span></a>n`th object.</li>
+</ul>
+</div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="load_name.html#lpc.load_name" title="load_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">load_name()</span></code>(E)</a>, <a class="reference internal" href="present.html#lpc.present" title="present"><code class="xref lpc lpc-efun docutils literal"><span class="pre">present()</span></code>(E)</a></p>
+<p><a class="reference internal" href="load_name.html#lpc.efun.load_name" title="load_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">load_name</span></code>(E)</a>, <a class="reference internal" href="present.html#lpc.efun.present" title="present"><code class="xref lpc lpc-efun docutils literal"><span class="pre">present</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -154,8 +162,8 @@ Searching for the &lt;n&gt;th object was added in 3.3.718.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -164,8 +172,10 @@ Searching for the &lt;n&gt;th object was added in 3.3.718.</p>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">efun::present_clone()</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (PRELIMINARY)</a></li>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (EXPERIMENTAL)</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
 <li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
 </ul>
 </li>
@@ -174,15 +184,14 @@ Searching for the &lt;n&gt;th object was added in 3.3.718.</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -194,7 +203,7 @@ Searching for the &lt;n&gt;th object was added in 3.3.718.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/present_clone.txt"
+      <a href="../_sources/efun/present_clone.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

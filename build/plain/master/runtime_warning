@@ -5,22 +5,23 @@ SYNOPSIS
 DESCRIPTION
 ===========
    This function is called to let the mudlib handle a runtime warning, e.g. by
-   logging it into a database.
+   logging it to a database.
 
-   - <msg> is the warning message.
-   - <curobj> is the name of the current object which caused the message 
+   - msg(M) is the warning message.
+   - curobj(M) is the name of the current object which caused the message 
      (the object itself might already be destructed), or 0 if there is none.
-   - <prog>, <line> determine the name of the program and the line where 
+   - prog(M), line(M) determine the name of the program and the line where
      the error occured if the current object exists, otherwise they are 0.
-   - <inside_catch> : != 0 if the warning occurs inside a catch().
+   - inside_catch(M) : != 0 if the warning occurs inside a catch(E).
 
-   The driver is limited to three nested warnings, to prevent an endless 
-   recursion in case runtime_warning() itself causes warnings.
+   Limit:  
+     The driver is limited to three nested warnings, to prevent an endless 
+     recursion in case runtime_warning(M) itself causes warnings.
 
 HISTORY
 =======
    - introduced (3.3.551)
-   - changed (3.3.705) -- added the <inside_catch> argument.
+   - changed (3.3.705) -- added the inside_catch(M) argument.
 
 SEE ALSO
 ========

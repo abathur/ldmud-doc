@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::say() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::say() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::send_erq()" href="send_erq.html" />
     <link rel="prev" title="efun::save_value()" href="save_value.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,135 +47,107 @@
 <div class="section" id="SYNOPSIS">
 <span id="say"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.say">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">say</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.say" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.say">
+<!--[lpc.efun.say]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">say</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.say" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">say</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;exclude</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">say</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+string<em>&nbsp;str</em>, </td><td id="id3">
+object<em>&nbsp;exclude</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">say</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;*excludes</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">say</code></td><td><span class="sig-paren">(</span></td><td id="id4">
+string<em>&nbsp;str</em>, </td><td id="id5">
+object<em>&nbsp;*excludes</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">say</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> *|<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a>|<a class="reference internal" href="../LPC/structs.html#lpc.struct" title="struct">struct</a>|<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;msg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">say</code></td><td><span class="sig-paren">(</span></td><td id="id6">
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> *|<a class="reference internal" href="../syntax/mappings.html#lpc.type.mapping" title="mapping">mapping</a>|<a class="reference internal" href="../syntax/structs.html#lpc.type.struct" title="struct">struct</a>|object<em>&nbsp;msg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">say</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> *|<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a>|<a class="reference internal" href="../LPC/structs.html#lpc.struct" title="struct">struct</a>|<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;msg</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;exclude</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">say</code></td><td><span class="sig-paren">(</span></td><td id="id7">
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> *|<a class="reference internal" href="../syntax/mappings.html#lpc.type.mapping" title="mapping">mapping</a>|<a class="reference internal" href="../syntax/structs.html#lpc.type.struct" title="struct">struct</a>|object<em>&nbsp;msg</em>, </td><td id="id8">
+object<em>&nbsp;exclude</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">say</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> *|<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a>|<a class="reference internal" href="../LPC/structs.html#lpc.struct" title="struct">struct</a>|<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;msg</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;*excludes</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">say</code></td><td><span class="sig-paren">(</span></td><td id="id9">
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> *|<a class="reference internal" href="../syntax/mappings.html#lpc.type.mapping" title="mapping">mapping</a>|<a class="reference internal" href="../syntax/structs.html#lpc.type.struct" title="struct">struct</a>|object<em>&nbsp;msg</em>, </td><td id="id10">
+object<em>&nbsp;*excludes</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
 <p>There are two major modes of calling:</p>
-<p>If the first argument is a string &lt;str&gt;, it will be send to
-all livings in the current room except to the initiator.</p>
-<p>If the first argument is an array/mapping/struct/object &lt;msg&gt;, the
-lfun catch_msg() of all living objects except the initiator will be
-called.
-This &lt;msg&gt; will be given as first argument to the lfun, and
-the initiating object as the second.
-CAVEAT: If the lfun catch_msg() modifies the content of &lt;msg&gt;, all
-subsequent objects will receive the modified &lt;msg&gt;.</p>
-<p>By specifying a second argument to the efun one can exclude
-more objects than just the initiator. If the second argument
-is a single object &lt;exclude&gt;, both the given object and the
-initiator are excluded from the call. If the second argument
-is an array &lt;excludes&gt;, all objects and just the objects in
-this array are excluded from the call.</p>
-<dl class="docutils">
-<dt>The &#8216;initiator&#8217; is determined according to these rules:</dt>
-<dd><ul class="first last simple">
-<li>if the say() is called from within a living object, this
-becomes the initiator</li>
-<li>if the say() is called from within a dead object as result
-of a user action (i.e. this_player() is valid), this_player()
-becomes the initiator.</li>
-<li>Else the object calling the say() becomes the initiator.</li>
+<p>If the first argument is a string <a class="reference internal" href="#efun/say.arg.str" title="str"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str</span></code></a>, it will be send to all livings in the current room except to the initiator.</p>
+<p>If the first argument is an array/mapping/struct/object <a class="reference internal" href="#efun/say.arg.msg" title="msg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">msg</span></code></a>, lfun <a class="reference internal" href="../applied/catch_msg.html#lpc.applied.catch_msg" title="catch_msg"><code class="xref lpc lpc-applied docutils literal"><span class="pre">catch_msg</span></code>(A)</a> of all living objects except the initiator will be called. This <a class="reference internal" href="#efun/say.arg.msg" title="msg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">msg</span></code></a> will be given as first argument to the lfun, and the initiating object as the second.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If the lfun <a class="reference internal" href="../applied/catch_msg.html#lpc.applied.catch_msg" title="catch_msg"><code class="xref lpc lpc-applied docutils literal"><span class="pre">catch_msg</span></code>(A)</a> modifies the content of <a class="reference internal" href="#efun/say.arg.msg" title="msg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">msg</span></code></a>, all subsequent objects will receive the modified <a class="reference internal" href="#efun/say.arg.msg" title="msg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">msg</span></code></a>.</p>
+</div>
+<p>By specifying a second argument to the efun one can exclude more objects than just the initiator. If the second argument is a single object <a class="reference internal" href="#efun/say.arg.exclude" title="exclude"><code class="xref lpc lpc-arg docutils literal"><span class="pre">exclude</span></code></a>, both the given object and the initiator are excluded from the call. If the second argument is an array <a class="reference internal" href="#efun/say.arg.excludes" title="excludes"><code class="xref lpc lpc-arg docutils literal"><span class="pre">excludes</span></code></a>, all objects and just the objects in this array are excluded from the call.</p>
+<p>The &#8216;initiator&#8217; is determined according to these rules:</p>
+<ul class="simple">
+<li>if the <a class="reference internal" href="#lpc.efun.say" title="say"><code class="xref lpc lpc-efun docutils literal"><span class="pre">say</span></code>(E)</a> is called from within a living object, this becomes the initiator</li>
+<li>if the <a class="reference internal" href="#lpc.efun.say" title="say"><code class="xref lpc lpc-efun docutils literal"><span class="pre">say</span></code>(E)</a> is called from within a dead object as result of a user action (i.e. <code class="docutils literal"><span class="pre">this_player()</span></code> is valid), <code class="docutils literal"><span class="pre">this_player()</span></code> becomes the initiator.</li>
+<li>Else the object calling the <a class="reference internal" href="#lpc.efun.say" title="say"><code class="xref lpc lpc-efun docutils literal"><span class="pre">say</span></code>(E)</a> becomes the initiator.</li>
 </ul>
-</dd>
-</dl>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<p>say(&#8220;Hi!n&#8221;);
-say(&#8220;Hi!n&#8221;, this_player());
-Both calls are equal when called by a not living object.</p>
-<dl class="docutils">
-<dt>Object 1 (living):</dt>
-<dd><dl class="first docutils">
-<dt>void catch_tell(string str) {</dt>
-<dd>write(&#8220;Received: &#8220;+str+&#8221;n&#8221;);</dd>
-</dl>
-<p class="last">}</p>
-</dd>
-<dt>Object 2 (not living):</dt>
-<dd><dl class="first docutils">
-<dt>void func() {</dt>
-<dd>...
-say(&#8220;HiHo!n&#8221;);
-...</dd>
-</dl>
-<p class="last">}</p>
-</dd>
-</dl>
-<p>This examples shows how say() together with catch_tell()
-works. The 2nd object must not be living so the write() will
-go to the current user.</p>
-<dl class="docutils">
-<dt>Object 1 (living):</dt>
-<dd><dl class="first docutils">
-<dt>void catch_msg(mixed <a href="#id1"><span class="problematic" id="id2">*</span></a>arr, object who) {</dt>
-<dd><p class="first">int i;
-if(!arr) return;
-for(i=0; i&lt;sizeof(arr); i++)</p>
-<blockquote class="last">
-<div>tell_object(who, (stringp(arr[i]) ? arr[i] : &#8220;-/-&#8221;)+&#8221;n&#8221;);</div></blockquote>
-</dd>
-</dl>
-<p class="last">}</p>
-</dd>
-<dt>Object 2 (not living):</dt>
-<dd><dl class="first docutils">
-<dt>void func() {</dt>
-<dd>...
-say( ({ &#8220;Hello&#8221;, &#8220;there!&#8221; }) );
-...</dd>
-</dl>
-<p class="last">}</p>
-</dd>
-</dl>
-<p>This is a bit complex example to demonstrate how say() and
-catch_msg() works. Here we also use a non living object to
-send the message so the who in catch_msg() will be the current
-user.</p>
+<p>Both of these calls are equal when called by a non-living object:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">say</span><span class="p">(</span><span class="s">&quot;Hi!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="n">say</span><span class="p">(</span><span class="s">&quot;Hi!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">this_player</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>The next example shows how <a class="reference internal" href="#lpc.efun.say" title="say"><code class="xref lpc lpc-efun docutils literal"><span class="pre">say</span></code>(E)</a> works with <a class="reference internal" href="../applied/catch_tell.html#lpc.applied.catch_tell" title="catch_tell"><code class="xref lpc lpc-applied docutils literal"><span class="pre">catch_tell</span></code>(A)</a>. The 2nd object must not be living so the <a class="reference internal" href="write.html#lpc.efun.write" title="write"><code class="xref lpc lpc-efun docutils literal"><span class="pre">write</span></code>(E)</a> will go to the current user.</p>
+<p>Object 1 (living):</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">catch_tell</span><span class="p">(</span><span class="kt">string</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">write</span><span class="p">(</span><span class="s">&quot;Received: &quot;</span><span class="o">+</span><span class="n">str</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Object 2 (not living):</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">func</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="n">say</span><span class="p">(</span><span class="s">&quot;HiHo!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This more complex example demonstrates how <a class="reference internal" href="#lpc.efun.say" title="say"><code class="xref lpc lpc-efun docutils literal"><span class="pre">say</span></code>(E)</a> and <a class="reference internal" href="../applied/catch_msg.html#lpc.applied.catch_msg" title="catch_msg"><code class="xref lpc lpc-applied docutils literal"><span class="pre">catch_msg</span></code>(A)</a> work. Here we also use a non living object to send the message so the who in <a class="reference internal" href="../applied/catch_msg.html#lpc.applied.catch_msg" title="catch_msg"><code class="xref lpc lpc-applied docutils literal"><span class="pre">catch_msg</span></code>(A)</a> will be the current user.</p>
+<p>Object 1 (living):</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">catch_msg</span><span class="p">(</span><span class="kt">mixed</span> <span class="o">*</span><span class="n">arr</span><span class="p">,</span> <span class="kt">object</span> <span class="n">who</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">arr</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="n">tell_object</span><span class="p">(</span><span class="n">who</span><span class="p">,</span> <span class="p">(</span><span class="n">stringp</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">?</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">:</span> <span class="s">&quot;-/-&quot;</span><span class="p">)</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Object 2 (not living):</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">func</span><span class="p">()</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="n">say</span><span class="p">(</span> <span class="p">({</span> <span class="s">&quot;Hello&quot;</span><span class="p">,</span> <span class="s">&quot;there!&quot;</span> <span class="p">})</span> <span class="p">);</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><strong>changed</strong> (<em>3.3.686</em>) &#8211; added the use of a mapping/struct/object as second
-argument.</li>
+<ul>
+<li><strong>changed</strong> (<em>3.3.686</em>) &#8211; added the use of a mapping/struct/object as second argument.</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="write.html#lpc.write" title="write"><code class="xref lpc lpc-efun docutils literal"><span class="pre">write()</span></code>(E)</a>, <a class="reference internal" href="tell_object.html#lpc.tell_object" title="tell_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tell_object()</span></code>(E)</a>, <a class="reference internal" href="tell_room.html#lpc.tell_room" title="tell_room"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tell_room()</span></code>(E)</a></p>
+<p><a class="reference internal" href="write.html#lpc.efun.write" title="write"><code class="xref lpc lpc-efun docutils literal"><span class="pre">write</span></code>(E)</a>, <a class="reference internal" href="tell_object.html#lpc.efun.tell_object" title="tell_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tell_object</span></code>(E)</a>, <a class="reference internal" href="tell_room.html#lpc.efun.tell_room" title="tell_room"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tell_room</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -187,8 +161,8 @@ argument.</li>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -209,15 +183,14 @@ argument.</li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -229,7 +202,7 @@ argument.</li>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/say.txt"
+      <a href="../_sources/efun/say.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

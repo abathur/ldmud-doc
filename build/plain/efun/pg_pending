@@ -5,19 +5,21 @@ SYNOPSIS (OPTIONAL)
 
 DESCRIPTION
 ===========
-Return the number of pending queries for the connection on the given object 
-<obj> (default is the current object). The object has no database connection, 
-return -1.
+   Return the number of pending queries for the connection on the given object
+   obj(E) (default is the current object). If the object has no database 
+   connection, return -1.
 
-The function is available only if the driver is compiled with PostgreSQL 
-support. In that case, __PGSQL__ is defined.
+   The function is available only if the driver is compiled with PostgreSQL 
+   support. In that case, __PGSQL__ is defined.
 
-The efun triggers a privilege violation ("pgsql", "pg_pending").
+   The efun triggers a privilege violation ("pgsql", "pg_pending").
 
-Added in 3.3.445. LDMud 3.3.640 added the privilege violation.
+HISTORY
+=======
+   - introduced (3.3.445)
+   - changed (3.3.640) -- added the privilege violation.
 
-      See Also: 
-         pgsql(C), pg_connect()(E), pg_conv_string()(E), pg_query()(E), 
-         pg_close()(E),
-
-   privilege_violation(M)
+SEE ALSO
+========
+   >>:concept:`pgsql`<<, pg_connect(E), pg_conv_string(E), pg_query(E), 
+   pg_close(E), privilege_violation(M)

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>applied::exit() &mdash; LDMud UNRELEASED documentation</title>
+    <title>applied::exit() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="applied" href="applied.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="applied::get()" href="get.html" />
     <link rel="prev" title="applied::drop()" href="drop.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,28 +47,24 @@
 <div class="section" id="SYNOPSIS">
 <span id="exit"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.exit">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">exit</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.exit" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.applied.exit">
+<!--[lpc.applied.exit]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">exit</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.applied.exit" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>This function was used in compat mode drivers in context with moving objects. Nowadays objects are moved by means of the <a class="reference internal" href="../hook/move_object.html#lpc.move_object" title="move_object"><code class="xref lpc lpc-hook docutils literal"><span class="pre">move_object</span></code>(H)</a> hooks, and use of this lfun is up to the mudlib.</p>
+<p>This function was used in compat mode drivers in context with moving objects. Nowadays objects are moved by means of the <a class="reference internal" href="../hook/move_object.html#lpc.hook.move_object" title="move_object"><code class="xref lpc lpc-hook docutils literal"><span class="pre">move_object</span></code>(H)</a> hooks, and use of this lfun is up to the mudlib.</p>
 <p>This function was called in the old environment everytime a living object ob leaves it.</p>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">the following should probably be explained better than it is</p>
-</div>
-<p><a class="reference internal" href="../efun/this_player.html#lpc.this_player" title="this_player"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_player()</span></code>(E)</a> will return a random value, don&#8217;t use it at this point.</p>
+<p><a class="reference internal" href="../efun/this_player.html#lpc.efun.this_player" title="this_player"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_player</span></code>(E)</a> will return a random value, don&#8217;t use it at this point.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">An error in this function will leave the player stranded in the current room until the next reboot.</p>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="init.html#lpc.init" title="init"><code class="xref lpc lpc-applied docutils literal"><span class="pre">init</span></code>(A)</a></p>
+<p><a class="reference internal" href="init.html#lpc.applied.init" title="init"><code class="xref lpc lpc-applied docutils literal"><span class="pre">init</span></code>(A)</a></p>
 </div>
 </div>
 </div>
@@ -80,8 +78,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -100,15 +98,14 @@
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -120,7 +117,7 @@
       &copy;good question.
       
       |
-      <a href="../_sources/applied/exit.txt"
+      <a href="../_sources/applied/exit.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

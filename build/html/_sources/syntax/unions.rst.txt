@@ -1,0 +1,29 @@
+.. syntax:: union
+  union type: type[|type...]
+  array member type: <type[|type...]>
+  :topics: types
+  :highlighters: |
+    <
+    >
+
+  Union types are a declaration at compile time that a variable, function parameter or function return value can be one of several types.
+
+  .. todo:: if there were a pragma directive subclassing macro, we could link to the pragma def anytime one appears in text...
+
+  Except for type checks using :pragma:`rtt_checks` they have no impact at runtime. There is no runtime union type, the concrete value type is one of the possibilities of the union type.
+
+  Union types have no type names for themselves, they are declared anonymously with the declaration of the variable, function parameter or return type::
+
+    int|string var;
+    int|float fun(object|closure f);
+
+  When using union types as array member types they must be enclosed with ``< >``::
+
+    <int|string>* arr;    /* An array of ints and strings. */
+    int*|string*  arr;    /* Either an array of ints or an array of strings.*/
+
+    /*
+      There must be a whitespace between two consecutive <to be not confused with the << operator:
+    */
+    < <int|string>*|object >* arr;
+

@@ -10,9 +10,14 @@ public class applied {
     * 
     * @usage{
     * To return an array containing a single adjective:
+    * 
+    * ~~~{.c}
     * string * parse_command_adjectiv_id_list() {
-    *     return ({ "iffish" });
+    *   return ({ "iffish" });
     * }
+    * 
+    * ~~~
+    * 
     * }
     * 
     * @see efun::parse_command()

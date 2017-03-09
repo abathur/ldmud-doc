@@ -1,0 +1,3 @@
+.. type:: void
+
+  The null type; typically only used for a function return type.

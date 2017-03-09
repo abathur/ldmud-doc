@@ -4,8 +4,8 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Return true if ob is a living object (that is, enable_commands() has been 
-   called from inside the ob). ob may be 0.
+   Return true if ob(E) is a living object (that is, enable_commands(E) has 
+   been called from inside the ob(E)). ob(E) may be 0.
 
    USAGE
    =====
@@ -13,4 +13,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   enable_commands()(E)
+   enable_commands(E)

@@ -5,12 +5,14 @@ SYNOPSIS
 DESCRIPTION
 ===========
    This function is called in the master object after it has been created and 
-   is fully functional. Note that the create() function is of little use in 
-   the master object, because at the time it is called there is no simul_efun 
-   object yet, and the interpreter does not know anything about the user-ids 
-   and access permissions.
+   is fully functional.
 
-   The argument <arg> denotes why this function is called:
+   <!> Note:  
+     The create(A) function is of little use in constructing the master 
+     object because there is no simul_efun object yet and the interpreter 
+     does not know anything about the user-ids and access permissions.
+
+   The argument arg(M) denotes why this function is called:
 
    arg = 0
       the mud just started, this is the first master of all.
@@ -29,10 +31,10 @@ DESCRIPTION
    This function has to at least set up the driverhooks to use (in 3.2.1). 
    Also, any mudwho or wizlist handling has to be initialized here.
 
-   Besides that, do whatever you feel you need to do, e.g. 
-   set_auto_include_string(), or give the master a decent euid.
+   Besides that, do whatever you feel you need to do, 
+   e.g. `set_auto_include_string()`, or give the master a decent euid.
 
 SEE ALSO
 ========
-   `initialisation`, create(A), simul_efun(C), get_master_uid(M), flag(M), 
-   reactivate_destructed_master(M)
+   `initialisation`, create(A), >>:concept:`simul_efun`<<, get_master_uid(M), 
+   flag(M), reactivate_destructed_master(M)

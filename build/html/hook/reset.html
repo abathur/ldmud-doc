@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>H_RESET &mdash; LDMud UNRELEASED documentation</title>
+    <title>H_RESET &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="hook" href="hook.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="H_SEND_NOTIFY_FAIL" href="send_notify_fail.html" />
     <link rel="prev" title="H_REGEXP_PACKAGE" href="regexp_package.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -41,17 +43,17 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="lpc.reset">
+  <div class="section" id="lpc.hook.reset">
 <div class="section" id="SYNOPSIS">
 <span id="reset"></span><span id="H_RESET"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;sys/driver_hooks.h&gt;</tr>
-<tr id="lpc.H_RESET">
-<td>
+<tr id="lpc.hook.H_RESET">
+<!--[lpc.hook.H_RESET]--><td>
 <code class="descname">set_driver_hook</code></td><td><span class="sig-paren">(</span></td><td>
 <em>H_RESET</em>, </td><td>
-<em>value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.H_RESET" title="Permalink to this definition">¶</a></tr>
+<em>value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.hook.H_RESET" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -59,9 +61,11 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>value</strong> (<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure"><em>closure</em></a>) &#8211; void|int &lt;closure&gt; ( void )</li>
-<li><strong>value</strong> (<a class="reference internal" href="../LPC/string.html#lpc.string" title="string"><em>string</em></a>) &#8211; void &lt;name&gt;(1)</li>
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last">
+<li><div class="first line"><strong>value</strong> (<a class="reference internal" href="../syntax/closures.html#lpc.type.closure" title="closure"><em>closure</em></a>) &#8211; void|int &lt;closure&gt; ( void )</div>
+</li>
+<li><div class="first line"><strong>value</strong> (<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string"><em>string</em></a>) &#8211; void &lt;name&gt;(1)</div>
+</li>
 </ul>
 </td>
 </tr>
@@ -69,21 +73,21 @@
 </table>
 <p>Optional hook to reset an object. Hook setting can be unbound lambda closures, or the name of the function (static or public) to call in the object.</p>
 <p>If the hook is a closure, it is bound to the object to be reset and called with no argument.</p>
-<p>If the result of this call is a positive number, it is used as the interval to wait before the next reset(). If the result is 0, the default interval computed from TIME_TO_RESET is used. If the result is a negative number, the object will not be reset again, unless directed otherwise by set_next_reset().</p>
-<p>If the hook is defined as the name of an lfun in the object, it is called in the object with 1 as argument, and any result is ignored. In this call the previous_object() is the object initiating the reset. If the function does not exist, the object won&#8217;t be reset again.</p>
+<p>If the result of this call is a positive number, it is used as the interval to wait before the next <a class="reference internal" href="../applied/reset.html#lpc.applied.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a>. If the result is 0, the default interval computed from TIME_TO_RESET is used. If the result is a negative number, the object will not be reset again, unless directed otherwise by <a class="reference internal" href="../efun/set_next_reset.html#lpc.efun.set_next_reset" title="set_next_reset"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_next_reset</span></code>(E)</a>.</p>
+<p>If the hook is defined as the name of an lfun in the object, it is called in the object with 1 as argument, and any result is ignored. In this call the <a class="reference internal" href="../efun/previous_object.html#lpc.efun.previous_object" title="previous_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">previous_object</span></code>(E)</a> is the object initiating the reset. If the function does not exist, the object won&#8217;t be reset again.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">an object is only reset by call to this hook if it has been used since the last reset.</p>
 </div>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><strong>changed</strong> (<em>3.2.10</em>) &#8211; allowed static functions to be given by name.</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code></p>
+<p><a class="reference internal" href="overview.html#lpc.overview.hook" title="hook"><code class="xref lpc lpc-overview docutils literal"><span class="pre">hook</span></code></a></p>
 </div>
 </div>
 </div>
@@ -97,8 +101,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -118,15 +122,14 @@
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -138,7 +141,7 @@
       &copy;good question.
       
       |
-      <a href="../_sources/hook/reset.txt"
+      <a href="../_sources/hook/reset.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

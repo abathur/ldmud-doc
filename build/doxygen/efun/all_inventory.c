@@ -1,7 +1,6 @@
 public class efun {
    /**
-    * Returns an array of the objects contained in the inventory of
-    * ob, or of this_object(), if no arg given.
+    * Returns an array of the objects contained in the inventory of \p ob, or of `this_object()`, if no arg given.
     * 
     * @synopsis{
     * object * all_inventory()

@@ -1,17 +1,24 @@
 SYNOPSIS
 ========
-   float ceil(int|float arg)
+   float ceil(int|float number)
 
 DESCRIPTION
 ===========
-Round the <arg>ument upwards the nearest whole number, returning that value. 
-If the <arg>ument value is an integer, the result will be that value, 
-converted to float.
+   Round the number(E) upwards the nearest whole number, returning that value.
+   If the number(E) value is an integer, the result will be that value, 
+   converted to float.
 
-EXAMPLES ceil(4.5)  - returns 5.0 ceil(-4.5) - returns -4.0 ceil(4)    - 
-returns 4.0
+   USAGE
+   =====
+         ceil(4.5)  - returns 5.0
+         ceil(-4.5) - returns -4.0
+         ceil(4)    - returns 4.0
 
-Introduced in LDMud 3.2.7. LDMud 3.2.9 allowed integers as argument values.
+HISTORY
+=======
+   - introduced (3.2.7)
+   - changed (3.2.9) -- allow integers as argument values.
 
-   See Also: 
-      abs()(E), floor()(E)
+SEE ALSO
+========
+   abs(E), floor(E)

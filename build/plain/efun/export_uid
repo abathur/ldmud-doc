@@ -4,5 +4,15 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Set the uid of object ob to the current object's effective uid. It is only 
-   possible when object ob has an effective uid of 0.
+   Set the uid of object ob(E) to the current object's effective uid. It is 
+   only possible when object ob(E) has an effective uid of 0.
+
+HISTORY
+=======
+   - changed (3.2.1@47) -- this efun is availabe only when using euids.
+   - changed (3.2.7) -- this efun is now always available.
+
+SEE ALSO
+========
+   seteuid(E), getuid(E), geteuid(E), >>:concept:`uids`<<, 
+   >>:concept:`native`<<

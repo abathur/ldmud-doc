@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/walk_mapping.c Source File</title>
+<title>LDMud: efun/walk_mapping.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('walk__mapping_8c_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,33 +100,27 @@ $(document).ready(function(){initNavTree('walk__mapping_8c_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * void walk_mapping(mapping m, string func, mixed extra, ...)</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * void walk_mapping(mapping m, string func, string|object ob, mixed extra, ...)</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * void walk_mapping(mapping m, closure cl, mixed extra, ...)</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * Calls `ob-&gt;func(key, value1, ..., valueN, extra,...)` resp. applies the closure to every entry in the mapping. The keys are passed by value, the values are passed by reference and can be changed in the function.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * Any number of extra arguments is accepted and passed. These arguments must not be protected references like `&amp;(i[])`.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * If \p ob is omitted, or neither a string nor an object, it defaults to `this_object()`.</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="classefun.html#a82aceeaafc69a2ea441ad52f4657e216">walk_mapping</a>(mapping m, closure cl, mixed extra, ...);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;Calls ob-&gt;func(key, value1, ..., valueN, extra,...) resp. applies</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;the closure to every entry in the mapping. The keys are passed</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;by value, the values are passed by reference and can be</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;changed in the function.</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;Any number of extra arguments is accepted and passed. These arguments</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;must not be <span class="keyword">protected</span> references like &amp;(i[]).</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;If &lt;ob&gt; is omitted, or neither a <span class="keywordtype">string</span> nor an <span class="keywordtype">object</span>, it</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;defaults to this_object().</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;Introduced in @subpage driver_mailto:3.2@61 <span class="stringliteral">&quot;3.2@61&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;   See Also: </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      <a class="code" href="classefun.html#afc8030f83d4a288ec207d538167764ef">efun::map</a>(), <a class="code" href="classefun.html#a392c25526f06346e8f0cf50b7c6ff69a">efun::filter</a>()</div>
-<div class="ttc" id="classefun_html_afc8030f83d4a288ec207d538167764ef"><div class="ttname"><a href="classefun.html#afc8030f83d4a288ec207d538167764ef">efun.map</a></div><div class="ttdeci">string map(string arg, mapping m [, int idx])</div></div>
-<div class="ttc" id="classefun_html_a82aceeaafc69a2ea441ad52f4657e216"><div class="ttname"><a href="classefun.html#a82aceeaafc69a2ea441ad52f4657e216">efun.walk_mapping</a></div><div class="ttdeci">void walk_mapping(mapping m, closure cl, mixed extra,...)</div></div>
-<div class="ttc" id="classefun_html_a392c25526f06346e8f0cf50b7c6ff69a"><div class="ttname"><a href="classefun.html#a392c25526f06346e8f0cf50b7c6ff69a">efun.filter</a></div><div class="ttdeci">mapping filter(mapping arg, closure cl, mixed extra...)</div></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * void walk_mapping(mapping m, string func, mixed extra, ...)</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * void walk_mapping(mapping m, string func, string|object ob, mixed extra, ...)</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * void walk_mapping(mapping m, closure cl, mixed extra, ...)</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    * @history{</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    * introduced (3.2@61)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    * @see efun::map(), efun::filter()</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="classefun.html#a82aceeaafc69a2ea441ad52f4657e216">walk_mapping</a>(mapping m, closure cl, mixed extra, ...);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="ttc" id="classefun_html_a82aceeaafc69a2ea441ad52f4657e216"><div class="ttname"><a href="classefun.html#a82aceeaafc69a2ea441ad52f4657e216">efun.walk_mapping</a></div><div class="ttdeci">void walk_mapping(mapping m, closure cl, mixed extra,...)</div><div class="ttdoc">Calls ob-&gt;func(key, value1, ..., valueN, extra,...) resp. </div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -135,7 +128,7 @@ $(document).ready(function(){initNavTree('walk__mapping_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>walk_mapping.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:09 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:22 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

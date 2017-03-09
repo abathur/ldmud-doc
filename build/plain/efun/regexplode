@@ -6,25 +6,28 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-This function is similar to explode but accepts a regular expression <pattern>
-as delimiter (interpreted according to <opt> if given).
+   This function is similar to explode but accepts a regular expression 
+   pattern(E) as delimiter (interpreted according to opt(E) if given).
 
-If flag RE_OMIT_DELIM is not set in <opt>, then every second element in the 
-result vector will be the text that matched the delimiter. If the flag is set,
-then the result vector will contain only the text between the delimiters.
+   If flag `RE_OMIT_DELIM` is not set in opt(E), then every second element in 
+   the result vector will be the text that matched the delimiter. If the flag 
+   is set, then the result vector will contain only the text between the 
+   delimiters.
 
-EXAMPLES regexplode("abcdef", "cde")                -> ({ "ab", "cde", "f" }) 
-regexplode("abcdef", "cde", RE_OMIT_DELIM) -> ({ "ab", "f" })
+   USAGE
+   =====
+         regexplode("abcdef", "cde")                // ({ "ab", "cde", "f" })
+         regexplode("abcdef", "cde", RE_OMIT_DELIM) // ({ "ab", "f" })
 
-Introduced in 3.2@61. LDMud 3.3 added the optional <opt> argument and the 
-RE_OMIT_DELIM
+HISTORY
+=======
+   - introduced (3.2@61)
+   - changed (3.3) -- added the optional opt(E) argument and 
+     the `RE_OMIT_DELIM` flag.
+   - changed (3.5.0) -- an error is raised if RE_PCRE is specified in 
+     opt(E), but the driver lacks PCRE support.
 
-   flag.
-
-Since 3.5.0 a error is raised if RE_PCRE is specified in <opt>, but the driver
-lacks PCRE support.
-
-      See Also: 
-         explode()(E), regexp()(E), regmatch()(E), regreplace()(E),
-
-   regexp_package()(E), regexp(C)
+SEE ALSO
+========
+   explode(E), regexp(E), regmatch(E), regreplace(E), regexp_package(E), 
+   >>:concept:`regexp`<<

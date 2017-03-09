@@ -6,14 +6,14 @@ SYNOPSIS
 DESCRIPTION
 ===========
    Arguments: 
-      - value (int(LPC)|string(LPC)) -- <name>(string cmd)
+      - value (int|string) -- <name>(string cmd) 
 
    Mandatory hook specifying the name of the 'modify_command' lfun to call for
-   newly entered commands as result of a set_modify_command().
+   newly entered commands as result of a set_modify_command(E).
 
    Hook setting must be a string.
 
-   If set_modify_command() is used for an interactive user, all newly entered 
+   If set_modify_command(E) is used for an interactive user, all newly entered
    commands are first passed to the function named by this hook.
 
    The function is called with the command as argument.
@@ -28,11 +28,11 @@ DESCRIPTION
 
    If the result is 0, the originally given command is to be used.
 
-   It is possible for the hook to change the command giver (this_player()) for
-   the execution of the command. This means that even though the commands are
-   execute for the original commandgiver, this_player() will return the 
+   It is possible for the hook to change the command giver (this_player(E)) 
+   for the execution of the command. This means that even though the commands 
+   are execute for the original commandgiver, this_player(E) will return the 
    changed commandgiver.
 
 SEE ALSO
 ========
-   `hooks`, command(H), modify_command(H), notify_fail(H), send_notify_fail(H)
+   hook(H), command(H), modify_command(H), notify_fail(H), send_notify_fail(H)

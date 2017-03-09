@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::limited() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::limited() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::living()" href="living.html" />
     <link rel="prev" title="efun::last_instructions()" href="last_instructions.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,90 +49,81 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;rtlimits.h&gt;</tr>
-<tr id="lpc.limited">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">limited</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;fun</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.limited" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.limited">
+<!--[lpc.efun.limited]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">limited</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+closure<em>&nbsp;fun</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.limited" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">limited</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;fun</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;tag</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;value</em>, </td><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">limited</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+closure<em>&nbsp;fun</em>, </td><td id="id3">
+int<em>&nbsp;tag</em>, </td><td id="id4">
+int<em>&nbsp;value</em>, </td><td id="id5">
 ...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">limited</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;fun</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;*limits</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">limited</code></td><td><span class="sig-paren">(</span></td><td id="id6">
+closure<em>&nbsp;fun</em>, </td><td id="id7">
+int<em>&nbsp;*limits</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">limited</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;fun</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;*limits</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;*args</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">limited</code></td><td><span class="sig-paren">(</span></td><td id="id8">
+closure<em>&nbsp;fun</em>, </td><td id="id9">
+int<em>&nbsp;*limits</em>, </td><td id="id10">
+mixed<em>&nbsp;*args</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Call the function <a class="reference internal" href="#efun/limited.arg.fun" title="fun"><code class="xref lpc lpc-arg docutils literal"><span class="pre">fun</span></code></a> with any given <a class="reference internal" href="#efun/limited.arg.args" title="args"><code class="xref lpc lpc-arg docutils literal"><span class="pre">args</span></code></a> as parameters, and execute it with the given runtime limits.</p>
+<p>After the function exits, the currently active limits are restored. Result of the efun is the result of the closure call.</p>
+<p>The runtime limits can be given in two ways: as an array (like the one returned from <a class="reference internal" href="query_limits.html#lpc.efun.query_limits" title="query_limits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_limits</span></code>(E)</a>, or as a list of tagged values. If the efun is used without any limit specification, all limits are supposed to be &#8216;unlimited&#8217;.</p>
+<p>The limit settings recognize three special values:</p>
+<ul class="simple">
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_UNLIMITED</span></code>: the limit is deactivated</li>
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_KEEP</span></code>:      the former setting is kept</li>
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_DEFAULT</span></code>:   the &#8216;global&#8217; default setting is used.</li>
+</ul>
+<p>For <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_COST</span></code>, the special values have these meaning:</p>
+<ul class="simple">
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_UNLIMITED</span></code>: at maximum 1 tick is accounted</li>
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_KEEP</span></code>:      <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_COST</span></code> is set to 0</li>
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_DEFAULT</span></code>:   <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_COST</span></code> is set to -100</li>
+</ul>
+<p>The efun causes a privilege violation (&#8220;limited&#8221;, current_object, fun, limits-array).</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>Execute function with no limits at all:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>limited(#&#39;func)
+</pre></div>
+</div>
+<p>Executes func with an eval_cost limit of 200000, and calls func as <code class="docutils literal"><span class="pre">&lt;func&gt;(&quot;foo&quot;)</span></code>:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>limited(#&#39;func, ({ 200000 }), &quot;foo&quot;)
+</pre></div>
+</div>
+<p>Executes func with an eval_cost limit of 200000, and calls func as <code class="docutils literal"><span class="pre">&lt;func&gt;(&quot;foo&quot;)</span></code>:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>limited(lambda(0, ({#&#39;func, &quot;foo&quot;})), LIMIT_EVAL, 200000)
+</pre></div>
 </div>
 </div>
-<p>DESCRIPTION
-Call the function &lt;fun&gt; with any given &lt;args&gt; as parameters,
-and execute it with the given runtime limits.</p>
-<p>After the function exits, the currently active limits are restored.
-Result of the efun is the result of the closure call.</p>
-<p>The runtime limits can be given in two ways: as an array (like the
-one returned from query_limits(), or as a list of tagged values.  If
-the efun is used without any limit specification, all limits are
-supposed to be &#8216;unlimited&#8217;.</p>
-<dl class="docutils">
-<dt>The limit settings recognize three special values:</dt>
-<dd>LIMIT_UNLIMITED: the limit is deactivated
-LIMIT_KEEP:      the former setting is kept
-LIMIT_DEFAULT:   the &#8216;global&#8217; default setting is used.</dd>
-<dt>For LIMIT_COST, the special values have these meaning:</dt>
-<dd>LIMIT_UNLIMITED: at maximum 1 tick is accounted
-LIMIT_KEEP:      LIMIT_COST is set to 0
-LIMIT_DEFAULT:   LIMIT_COST is set to -100</dd>
-</dl>
-<p>The efun causes a privilege violation (&#8220;limited&#8221;, current_object,
-fun, limits-array).</p>
-<p>EXAMPLES
-limited(#&#8217;function)</p>
-<blockquote>
-<div>&#8211;&gt; executes function with no limits at all</div></blockquote>
-<dl class="docutils">
-<dt>limited(#&#8217;function, ({ 200000 }), &#8220;foo&#8221;)</dt>
-<dd><dl class="first last docutils">
-<dt>&#8211;&gt; executes function with an eval_cost limit of 200000, and</dt>
-<dd>calls function as &lt;function&gt;(&#8220;foo&#8221;).</dd>
-</dl>
-</dd>
-<dt>limited(lambda(0, ({#&#8217;function, &#8220;foo&#8221;})), LIMIT_EVAL, 200000)</dt>
-<dd><dl class="first last docutils">
-<dt>&#8211;&gt; executes function with an eval_cost limit of 200000, and</dt>
-<dd>calls function as &lt;function&gt;(&#8220;foo&#8221;).</dd>
-</dl>
-</dd>
-</dl>
-<p>Introduced in LDMud 3.2.7.
-LDMud 3.3.563 introduced LIMIT_COST.
-LDMud 3.3.677 introduced LIMIT_MAPPING_KEYS, LIMIT_MAPPING_SIZE.
-LDMud 3.5.0 introduced LIMIT_MEMORY.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="query_limits.html#lpc.query_limits" title="query_limits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_limits()</span></code>(E)</a>, <a class="reference internal" href="set_limits.html#lpc.set_limits" title="set_limits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_limits()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.7</em>)</li>
+<li><strong>changed</strong> (<em>3.3.563</em>) &#8211; added <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_COST</span></code>.</li>
+<li><strong>changed</strong> (<em>3.3.677</em>) &#8211; added <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_MAPPING_KEYS</span></code>, <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_MAPPING_SIZE</span></code>.</li>
+<li><strong>changed</strong> (<em>3.5.0</em>) &#8211; added <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_MEMORY</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="query_limits.html#lpc.efun.query_limits" title="query_limits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_limits</span></code>(E)</a>, <a class="reference internal" href="set_limits.html#lpc.efun.set_limits" title="set_limits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_limits</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -141,8 +134,8 @@ LDMud 3.5.0 introduced LIMIT_MEMORY.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -152,21 +145,25 @@ LDMud 3.5.0 introduced LIMIT_MEMORY.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::limited()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -178,7 +175,7 @@ LDMud 3.5.0 introduced LIMIT_MEMORY.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/limited.txt"
+      <a href="../_sources/efun/limited.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

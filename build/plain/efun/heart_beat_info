@@ -9,4 +9,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   set_heart_beat()(E), heart_beat(A), call_out_info()(E)
+   set_heart_beat(E), heart_beat(A), call_out_info(E)

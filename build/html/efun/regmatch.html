@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::regmatch() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::regmatch() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::regreplace()" href="regreplace.html" />
     <link rel="prev" title="efun::regexplode()" href="regexplode.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,84 +49,74 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;regexp.h&gt;</tr>
-<tr id="lpc.regmatch">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">regmatch</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;text</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;pattern</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.regmatch" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.regmatch">
+<!--[lpc.efun.regmatch]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">regmatch</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;text</em>, </td><td id="id2">
+string<em>&nbsp;pattern</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.regmatch" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">regmatch</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;text</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;pattern</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;opt</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">regmatch</code></td><td><span class="sig-paren">(</span></td><td id="id3">
+string<em>&nbsp;text</em>, </td><td id="id4">
+string<em>&nbsp;pattern</em>, </td><td id="id5">
+int<em>&nbsp;opt</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">regmatch</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;text</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;pattern</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;opt</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;start</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">regmatch</code></td><td><span class="sig-paren">(</span></td><td id="id6">
+string<em>&nbsp;text</em>, </td><td id="id7">
+string<em>&nbsp;pattern</em>, </td><td id="id8">
+int<em>&nbsp;opt</em>, </td><td id="id9">
+int<em>&nbsp;start</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> * </td><td>
-<code class="descname">regmatch</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;text</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;pattern</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;opt</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> * </td><td>
+<code class="descname">regmatch</code></td><td><span class="sig-paren">(</span></td><td id="id10">
+string<em>&nbsp;text</em>, </td><td id="id11">
+string<em>&nbsp;pattern</em>, </td><td id="id12">
+int<em>&nbsp;opt</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> * </td><td>
-<code class="descname">regmatch</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;text</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;pattern</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;opt</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;start</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> * </td><td>
+<code class="descname">regmatch</code></td><td><span class="sig-paren">(</span></td><td id="id13">
+string<em>&nbsp;text</em>, </td><td id="id14">
+string<em>&nbsp;pattern</em>, </td><td id="id15">
+int<em>&nbsp;opt</em>, </td><td id="id16">
+int<em>&nbsp;start</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Match the string <a class="reference internal" href="#efun/regmatch.arg.text" title="text"><code class="xref lpc lpc-arg docutils literal"><span class="pre">text</span></code></a> against <a class="reference internal" href="#efun/regmatch.arg.pattern" title="pattern"><code class="xref lpc lpc-arg docutils literal"><span class="pre">pattern</span></code></a> (interpreted according to <a class="reference internal" href="#efun/regmatch.arg.opt" title="opt"><code class="xref lpc lpc-arg docutils literal"><span class="pre">opt</span></code></a> if given). If <a class="reference internal" href="#efun/regmatch.arg.start" title="start"><code class="xref lpc lpc-arg docutils literal"><span class="pre">start</span></code></a> is given, it is the start position for the match and must be in the range <code class="docutils literal"><span class="pre">[0..strlen(text)]</span></code>.</p>
+<p>If there is no match, the result is 0. If there is a match, the exact result is determined by the flag <code class="xref lpc lpc-macro docutils literal"><span class="pre">RE_MATCH_SUBS</span></code>:</p>
+<p>If the flag <code class="xref lpc lpc-macro docutils literal"><span class="pre">RE_MATCH_SUBS</span></code> is not set, the result is the matched expression.</p>
+<p>If the flag <code class="xref lpc lpc-macro docutils literal"><span class="pre">RE_MATCH_SUBS</span></code> is set, the result is an array of the matched string(s) of the first match. Entry [0] is the full string matching the <a class="reference internal" href="#efun/regmatch.arg.pattern" title="pattern"><code class="xref lpc lpc-arg docutils literal"><span class="pre">pattern</span></code></a>, following entries are the string segments matching parenthesized subexpressions in <a class="reference internal" href="#efun/regmatch.arg.pattern" title="pattern"><code class="xref lpc lpc-arg docutils literal"><span class="pre">pattern</span></code></a>. If a particular subexpression didn&#8217;t have a match, the corresponding array entry will be 0.</p>
+<p>The last entry in the array will be the new start index in case you want to repeat the match on the remaining parts of the string. This new index is usually equal the length of the match, but at least one higher than the original start index.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">regmatch</span><span class="p">(</span><span class="s">&quot;abcdefcdf&quot;</span><span class="p">,</span> <span class="s">&quot;cd&quot;</span><span class="p">)</span>    <span class="c1">// &quot;cd&quot;</span>
+<span class="n">regmatch</span><span class="p">(</span><span class="s">&quot;abcdefcdf&quot;</span><span class="p">,</span> <span class="s">&quot;cd(e)&quot;</span><span class="p">)</span> <span class="c1">// &quot;cde&quot;</span>
+
+<span class="n">regmatch</span><span class="p">(</span><span class="s">&quot;abcdefcdf&quot;</span><span class="p">,</span> <span class="s">&quot;cd&quot;</span><span class="p">,</span> <span class="n">RE_MATCH_SUBS</span><span class="p">)</span>    <span class="c1">// ({ &quot;cd&quot; })</span>
+<span class="n">regmatch</span><span class="p">(</span><span class="s">&quot;abcdefcdf&quot;</span><span class="p">,</span> <span class="s">&quot;cd(e)&quot;</span><span class="p">,</span> <span class="n">RE_MATCH_SUBS</span><span class="p">)</span> <span class="c1">// ({ &quot;cde&quot;, &quot;e&quot; })</span>
+</pre></div>
 </div>
 </div>
-<p>Match the string &lt;txt&gt; against &lt;pattern&gt; (interpreted according
-to &lt;opt&gt; if given). If &lt;start&gt; is given, it is the start
-position for the match and must be in the range [0..strlen(text)].</p>
-<p>If there is no match, the result is 0. If there is a match, the exact
-result is determined by the flag RE_MATCH_SUBS:</p>
-<p>If the flag RE_MATCH_SUBS is not set, the result is the matched
-expression.</p>
-<p>If the flag RE_MATCH_SUBS is set, the result is an array of the
-matched string(s) of the first match. Entry [0] is the full string
-matching the &lt;pattern&gt;, following entries are the string segments
-matching parenthesized subexpressions in &lt;pattern&gt;. If a particular
-subexpression didn&#8217;t have a match, the corresponding array entry will
-be 0.</p>
-<p>The last entry in the array will be the new start index in case you
-want to repeat the match on the remaining parts of the string. This
-new index is usually equal the length of the match, but at least one
-higher than the original start index.</p>
-<p>EXAMPLES
-regmatch(&#8220;abcdefcdf&#8221;, &#8220;cd&#8221;)    -&gt; &#8220;cd&#8221;
-regmatch(&#8220;abcdefcdf&#8221;, &#8220;cd(e)&#8221;) -&gt; &#8220;cde&#8221;</p>
-<p>regmatch(&#8220;abcdefcdf&#8221;, &#8220;cd&#8221;, RE_MATCH_SUBS)    -&gt; ({ &#8220;cd&#8221; })
-regmatch(&#8220;abcdefcdf&#8221;, &#8220;cd(e)&#8221;, RE_MATCH_SUBS) -&gt; ({ &#8220;cde&#8221;, &#8220;e&#8221; })</p>
-<p>Introduced in LDMud 3.3.198.
-Modified in 3.3.214 to return 0 for non-matches, and to take and
-return a start position.
-Since 3.5.0 a error is raised if RE_PCRE is specified in &lt;opt&gt;, but
-the driver lacks PCRE support.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="regexplode.html#lpc.regexplode" title="regexplode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexplode()</span></code>(E)</a>, <a class="reference internal" href="regreplace.html#lpc.regreplace" title="regreplace"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regreplace()</span></code>(E)</a>, <a class="reference internal" href="regexp.html#lpc.regexp" title="regexp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexp()</span></code>(E)</a>, <a class="reference internal" href="regexp_package.html#lpc.regexp_package" title="regexp_package"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexp_package()</span></code>(E)</a>, <a class="reference internal" href="../concepts/regexp.html#lpc.regexp" title="regexp"><code class="xref lpc lpc-concept docutils literal"><span class="pre">regexp</span></code>(C)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.198</em>)</li>
+<li><strong>changed</strong> (<em>3.3.214</em>) &#8211; returns 0 for non-matches, and takes and returns a start position.</li>
+<li><strong>changed</strong> (<em>3.5.0</em>) &#8211; an error is raised if <a class="reference internal" href="../topics/regexp.html#lpc.macro.RE_PCRE" title="RE_PCRE"><code class="xref lpc lpc-macro docutils literal"><span class="pre">RE_PCRE</span></code></a> is specified in <a class="reference internal" href="#efun/regmatch.arg.opt" title="opt"><code class="xref lpc lpc-arg docutils literal"><span class="pre">opt</span></code></a>, but the driver lacks PCRE support.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="regexplode.html#lpc.efun.regexplode" title="regexplode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexplode</span></code>(E)</a>, <a class="reference internal" href="regreplace.html#lpc.efun.regreplace" title="regreplace"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regreplace</span></code>(E)</a>, <a class="reference internal" href="regexp.html#lpc.efun.regexp" title="regexp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexp</span></code>(E)</a>, <a class="reference internal" href="regexp_package.html#lpc.efun.regexp_package" title="regexp_package"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexp_package</span></code>(E)</a>, <a href="#id17"><span class="problematic" id="id18">:concept:`regexp`</span></a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -135,8 +127,8 @@ the driver lacks PCRE support.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -146,21 +138,25 @@ the driver lacks PCRE support.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::regmatch()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -172,7 +168,7 @@ the driver lacks PCRE support.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/regmatch.txt"
+      <a href="../_sources/efun/regmatch.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

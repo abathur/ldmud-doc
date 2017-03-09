@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::program_name() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::program_name() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::program_time()" href="program_time.html" />
     <link rel="prev" title="efun::printf()" href="printf.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,39 +47,45 @@
 <div class="section" id="SYNOPSIS">
 <span id="program_name"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.program_name">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">program_name</code></td><a class="headerlink" href="#lpc.program_name" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.program_name">
+<!--[lpc.efun.program_name]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">program_name</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.program_name" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">program_name</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;obj</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">program_name</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;obj</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Returns the name of the program of &lt;obj&gt;, resp. the name of the
-program of the current object if &lt;obj&gt; is omitted.</p>
-<p>The returned name is usually the name from which the blueprint
-of &lt;obj&gt; was compiled (the &#8216;load name&#8217;), but changes if an object
-replaces its programs with the efun replace_program().</p>
-<p>As a special case, if &lt;ob&gt; is passed as 0, the function will
-return 0.</p>
-<p>The name always ends in &#8216;.c&#8217;. It starts with a &#8216;/&#8217; unless the
-driver is running in COMPAT mode.</p>
-<p>CAVEAT: This efun swaps in the program if it is swapped out.</p>
-<p>EXAMPLES
-object o;
-o = clone_object(&#8220;/std/thing&#8221;);
-write(program_name(o));  &#8211;&gt; writes &#8220;/std/thing.c&#8221; in !compat mode</p>
-<blockquote>
-<div>and &#8220;std/thing.c&#8221;  in compat mode</div></blockquote>
-<p>Introduced in LDMud 3.2.6.
-LDMud 3.2.9 allowed a 0 argument.</p>
+<p>Returns the name of the program of <a class="reference internal" href="#efun/program_name.arg.obj" title="obj"><code class="xref lpc lpc-arg docutils literal"><span class="pre">obj</span></code></a>, resp. the name of the program of the current object if <a class="reference internal" href="#efun/program_name.arg.obj" title="obj"><code class="xref lpc lpc-arg docutils literal"><span class="pre">obj</span></code></a> is omitted.</p>
+<p>The returned name is usually the name from which the blueprint of <a class="reference internal" href="#efun/program_name.arg.obj" title="obj"><code class="xref lpc lpc-arg docutils literal"><span class="pre">obj</span></code></a> was compiled (the &#8216;load name&#8217;), but changes if an object replaces its programs with the <a class="reference internal" href="replace_program.html#lpc.efun.replace_program" title="replace_program"><code class="xref lpc lpc-efun docutils literal"><span class="pre">replace_program</span></code>(E)</a>.</p>
+<p>As a special case, if <a class="reference internal" href="#efun/program_name.arg.obj" title="obj"><code class="xref lpc lpc-arg docutils literal"><span class="pre">obj</span></code></a> is passed as 0, the function will return 0.</p>
+<p>The name always ends in &#8216;.c&#8217;. It starts with a &#8216;/&#8217; unless the driver is running in <a class="reference internal" href="../topics/predefined.html#lpc.macro.__COMPAT_MODE__" title="__COMPAT_MODE__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__COMPAT_MODE__</span></code></a>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This efun swaps in the program if it is swapped out.</p>
+</div>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">object</span> <span class="n">o</span><span class="p">;</span>
+<span class="n">o</span> <span class="o">=</span> <span class="n">clone_object</span><span class="p">(</span><span class="s">&quot;/std/thing&quot;</span><span class="p">);</span>
+<span class="n">write</span><span class="p">(</span><span class="n">program_name</span><span class="p">(</span><span class="n">o</span><span class="p">));</span> <span class="c1">// writes &quot;/std/thing.c&quot; in !compat mode</span>
+                        <span class="c1">// and &quot;std/thing.c&quot;  in compat mode</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.6</em>)</li>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; allowed a 0 argument.</li>
+</ul>
+</div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="clone_object.html#lpc.clone_object" title="clone_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clone_object()</span></code>(E)</a>, <a class="reference internal" href="clonep.html#lpc.clonep" title="clonep"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clonep()</span></code>(E)</a>, <a class="reference internal" href="load_name.html#lpc.load_name" title="load_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">load_name()</span></code>(E)</a>, <a class="reference internal" href="load_object.html#lpc.load_object" title="load_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">load_object()</span></code>(E)</a>, <a class="reference internal" href="object_name.html#lpc.object_name" title="object_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">object_name()</span></code>(E)</a>, <a class="reference internal" href="replace_program.html#lpc.replace_program" title="replace_program"><code class="xref lpc lpc-efun docutils literal"><span class="pre">replace_program()</span></code>(E)</a></p>
+<p><a class="reference internal" href="clone_object.html#lpc.efun.clone_object" title="clone_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clone_object</span></code>(E)</a>, <a class="reference internal" href="clonep.html#lpc.efun.clonep" title="clonep"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clonep</span></code>(E)</a>, <a class="reference internal" href="load_name.html#lpc.efun.load_name" title="load_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">load_name</span></code>(E)</a>, <a class="reference internal" href="load_object.html#lpc.efun.load_object" title="load_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">load_object</span></code>(E)</a>, <a class="reference internal" href="object_name.html#lpc.efun.object_name" title="object_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">object_name</span></code>(E)</a>, <a class="reference internal" href="replace_program.html#lpc.efun.replace_program" title="replace_program"><code class="xref lpc lpc-efun docutils literal"><span class="pre">replace_program</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -91,8 +99,8 @@ LDMud 3.2.9 allowed a 0 argument.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -103,6 +111,8 @@ LDMud 3.2.9 allowed a 0 argument.</p>
 <li><a class="reference internal" href="#">efun::program_name()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
 <li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
 </ul>
 </li>
@@ -111,15 +121,14 @@ LDMud 3.2.9 allowed a 0 argument.</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -131,7 +140,7 @@ LDMud 3.2.9 allowed a 0 argument.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/program_name.txt"
+      <a href="../_sources/efun/program_name.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

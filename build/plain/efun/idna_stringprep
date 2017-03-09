@@ -5,17 +5,20 @@ SYNOPSIS (OPTIONAL)
 
 DESCRIPTION
 ===========
-Prepare the UTF-8 string <str> according to the stringprep <profile> (see also
-libidn stringprep(3)).
+   Prepare the UTF-8 string str(E) according to the stringprep profile(E) (see
+   also libidn stringprep(3)).
 
-<profile> and <flags> are one of the values defined in <idn.h>.
+   profile(E) and flags(E) are one of the values defined in `idn.h`.
 
-If an error occurs, an exception is thrown.
+   If an error occurs, an exception is thrown.
 
-The efun is available only if the system supports libidn - in that case 
-__IDNA__ is defined.
+   The efun is available only if the system supports libidn - in that case 
+   __IDNA__ is defined.
 
-Introduced in LDMud 3.3.713.
+HISTORY
+=======
+   - introduced (3.3.713)
 
-   See Also: 
-      convert_charset()(E), idna_to_ascii()(E), idna_to_unicode()(E)
+SEE ALSO
+========
+   convert_charset(E), idna_to_ascii(E), idna_to_unicode(E)

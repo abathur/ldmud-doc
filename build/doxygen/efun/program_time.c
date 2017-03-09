@@ -1,10 +1,8 @@
 public class efun {
    /**
-    * Returns the creation (compilation) time of the object's
-    * program. Default is this_object(), if no arg is given.
+    * Returns the creation (compilation) time of the object's program. Default is `this_object()`, if no arg is given.
     * 
-    * @par note:If the objects program is swapped out, this efun
-    * swaps it back in.
+    * @par note: If the objects program is swapped out, this efun swaps it back in.
     * 
     * @synopsis{
     * int program_time()

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::query_mccp() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::query_mccp() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::query_mccp_stats()" href="query_mccp_stats.html" />
     <link rel="prev" title="efun::query_load_average()" href="query_load_average.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,40 +47,34 @@
 <div class="section" id="SYNOPSIS">
 <span id="query_mccp"></span><h2>SYNOPSIS (OPTIONAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.query_mccp">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">query_mccp</code></td><a class="headerlink" href="#lpc.query_mccp" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.query_mccp">
+<!--[lpc.efun.query_mccp]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">query_mccp</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.query_mccp" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">query_mccp</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;player</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">query_mccp</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;player</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>This efun returns current whether the client uses compression or not ( default <code class="docutils literal"><span class="pre">this_player()</span></code> ).</p>
+<p>You will get either <code class="xref lpc lpc-macro docutils literal"><span class="pre">TELOPT_COMPRESS</span></code> or <code class="xref lpc lpc-macro docutils literal"><span class="pre">TELOPT_COMPRESS2</span></code> if the connection is compressed, or 0 if it isn&#8217;t.</p>
+<p>Available only if the driver is compiled with <a class="reference internal" href="../topics/mccp.html#lpc.topic.MCCP" title="MCCP"><code class="xref lpc lpc-topic docutils literal"><span class="pre">MCCP</span></code></a> enabled; <a class="reference internal" href="../topics/predefined.html#lpc.macro.__MCCP__" title="__MCCP__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__MCCP__</span></code></a> is defined in that case.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.447</em>)</li>
+<li><strong>backported</strong> (<em>3.2.10</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="end_mccp_compress.html#lpc.efun.end_mccp_compress" title="end_mccp_compress"><code class="xref lpc lpc-efun docutils literal"><span class="pre">end_mccp_compress</span></code>(E)</a>, <a class="reference internal" href="start_mccp_compress.html#lpc.efun.start_mccp_compress" title="start_mccp_compress"><code class="xref lpc lpc-efun docutils literal"><span class="pre">start_mccp_compress</span></code>(E)</a>, <a class="reference internal" href="query_mccp_stats.html#lpc.efun.query_mccp_stats" title="query_mccp_stats"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_mccp_stats</span></code>(E)</a>, <a href="#id2"><span class="problematic" id="id3">:concept:`mccp`</span></a></p>
 </div>
 </div>
-<p>This efun returns current whether the client uses compression
-or not ( default this_player() ).</p>
-<p>You will get either TELOPT_COMPRESS or TELOPT_COMPRESS2 if the
-connection is compressed, or 0 if it isn&#8217;t.</p>
-<p>Available only if the driver is compiled with MCCP enabled;
-__MCCP__ is defined in that case.</p>
-<p>Added in LDMud 3.3.447, backported to LDMud 3.2.10.</p>
-<blockquote>
-<div><blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="end_mccp_compress.html#lpc.end_mccp_compress" title="end_mccp_compress"><code class="xref lpc lpc-efun docutils literal"><span class="pre">end_mccp_compress()</span></code>(E)</a>, <a class="reference internal" href="start_mccp_compress.html#lpc.start_mccp_compress" title="start_mccp_compress"><code class="xref lpc lpc-efun docutils literal"><span class="pre">start_mccp_compress()</span></code>(E)</a>, <a class="reference internal" href="query_mccp_stats.html#lpc.query_mccp_stats" title="query_mccp_stats"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_mccp_stats()</span></code>(E)</a>,</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><a class="reference internal" href="../concepts/mccp.html#lpc.mccp" title="mccp"><code class="xref lpc lpc-concept docutils literal"><span class="pre">mccp</span></code>(C)</a></p>
-</div></blockquote>
+</div>
 
 
           </div>
@@ -89,8 +85,8 @@ __MCCP__ is defined in that case.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -100,21 +96,24 @@ __MCCP__ is defined in that case.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::query_mccp()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (OPTIONAL)</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -126,7 +125,7 @@ __MCCP__ is defined in that case.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/query_mccp.txt"
+      <a href="../_sources/efun/query_mccp.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

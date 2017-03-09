@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: hook/reset.md Source File</title>
+<title>LDMud: hook/reset.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('reset_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,37 +100,39 @@ $(document).ready(function(){initNavTree('reset_8md.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;reset {#driver_hook_reset}</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;==========================</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;Optional hook to reset an <span class="keywordtype">object</span>. Hook setting can be unbound lambda closures, or the name of the <span class="keyword">function</span> (<span class="keyword">static</span> or <span class="keyword">public</span>) to call in the <span class="keywordtype">object</span>.</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;@headerfile &lt;sys/driver_hooks.h&gt;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;If the hook is a closure, it is bound to the <span class="keywordtype">object</span> to be reset and called with no argument.</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;If the result of <span class="keyword">this</span> call is a positive number, it is used as the interval to wait before the next reset(). If the result is 0, the <span class="keywordflow">default</span> interval computed from TIME_TO_RESET is used. If the result is a negative number, the <span class="keywordtype">object</span> will not be reset again, unless directed otherwise by set_next_reset().</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;@synopsis{</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;set_driver_hook(H_RESET, value)</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;}</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;If the hook is defined as the name of an lfun in the object, it is called in the <span class="keywordtype">object</span> with 1 as argument, and any result is ignored. In <span class="keyword">this</span> call the previous_object() is the <span class="keywordtype">object</span> initiating the reset. If the function does not exist, the <span class="keywordtype">object</span> won&#39;t be reset again.</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;@par note:an <span class="keywordtype">object</span> is only reset by call to this hook if it has been used since the last reset.</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;@headerfile &lt;sys/driver_hooks.h&gt;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;@synopsis{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;set_driver_hook(H_RESET, value)</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;@history{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;changed (3.2.10) -- allowed <span class="keyword">static</span> functions to be given by name.</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;@see </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;Arguments: </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;- value (@ref driver_LPC_closures <span class="stringliteral">&quot;closure&quot;</span>) -- <span class="keywordtype">void</span>|int &lt;closure&gt; ( void )</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;- value (@ref driver_LPC_string <span class="stringliteral">&quot;string&quot;</span>) -- void &lt;name&gt;(1)</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;@param value <span class="keywordtype">void</span>|int &lt;closure&gt; ( void )</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;@param value void &lt;name&gt;(1)</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;Optional hook to reset an <span class="keywordtype">object</span>. Hook setting can be unbound lambda closures, or the name of the function (static or public) to call in the <span class="keywordtype">object</span>.</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;If the hook is a closure, it is bound to the <span class="keywordtype">object</span> to be reset and called with no argument.</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;If the result of this call is a positive number, it is used as the interval to wait before the next <a class="code" href="classapplied.html">applied</a>::reset(). If the result is 0, the default interval computed from TIME_TO_RESET is used. If the result is a negative number, the <span class="keywordtype">object</span> will not be reset again, unless directed otherwise by <a class="code" href="classefun.html">efun</a>::set_next_reset().</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;If the hook is defined as the name of an lfun in the <span class="keywordtype">object</span>, it is called in the <span class="keywordtype">object</span> with 1 as argument, and any result is ignored. In this call the <a class="code" href="classefun.html">efun</a>::previous_object() is the <span class="keywordtype">object</span> initiating the reset. If the function does not exist, the <span class="keywordtype">object</span> won&#39;t be reset again.</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;@par note: an <span class="keywordtype">object</span> is only reset by call to this hook if it has been used since the last reset.</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;@history{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;changed (3.2.10) -- allowed <span class="keyword">static</span> functions to be given by name.</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;@see @ref driver_hook_overview <span class="stringliteral">&quot;hook&quot;</span></div>
+<div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
+<div class="ttc" id="classapplied_html"><div class="ttname"><a href="classapplied.html">applied</a></div><div class="ttdef"><b>Definition:</b> <a href="____INIT_8c_source.html#l00001">__INIT.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>reset.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:10 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

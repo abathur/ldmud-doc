@@ -4,7 +4,7 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Give the object <ob> a new object name <new_name>. Causes a privilege 
+   Give the object ob(E) a new object name new_name(E). Causes a privilege 
    violation. The new name must not contain a # character, except at the end, 
    to avoid confusion with clone numbers.
 
@@ -14,4 +14,4 @@ HISTORY
 
 SEE ALSO
 ========
-   creator()(E), object_name()(E), load_name()(E).
+   creator(E), object_name(E), load_name(E).

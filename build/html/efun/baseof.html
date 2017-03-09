@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::baseof() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::baseof() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::binary_message()" href="binary_message.html" />
     <link rel="prev" title="efun::attach_erq_demon()" href="attach_erq_demon.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,25 +47,34 @@
 <div class="section" id="SYNOPSIS">
 <span id="baseof"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.baseof">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">baseof</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/structs.html#lpc.struct" title="struct">struct</a><em>&nbsp;b</em>, </td><td>
-<a class="reference internal" href="../LPC/structs.html#lpc.struct" title="struct">struct</a><em>&nbsp;s</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.baseof" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.baseof">
+<!--[lpc.efun.baseof]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">baseof</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+struct<em>&nbsp;b</em>, </td><td id="id2">
+struct<em>&nbsp;s</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.baseof" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Test if the type of struct &lt;b&gt; is a base of struct &lt;s&gt; (the
-values of &lt;b&gt; and &lt;s&gt; are irrelevant). Results are:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>0: &lt;b&gt; is not a base of &lt;s&gt;, nor is &lt;b&gt; of equal type as &lt;s&gt;</dt>
-<dd>(though &lt;s&gt; might be a base of &lt;b&gt;).</dd>
+<p>Test if the type of struct <a class="reference internal" href="#efun/baseof.arg.b" title="b"><code class="xref lpc lpc-arg docutils literal"><span class="pre">b</span></code></a> is a base of struct <a class="reference internal" href="#efun/baseof.arg.s" title="s"><code class="xref lpc lpc-arg docutils literal"><span class="pre">s</span></code></a> (the values of <a class="reference internal" href="#efun/baseof.arg.b" title="b"><code class="xref lpc lpc-arg docutils literal"><span class="pre">b</span></code></a> and <a class="reference internal" href="#efun/baseof.arg.s" title="s"><code class="xref lpc lpc-arg docutils literal"><span class="pre">s</span></code></a> are irrelevant). Results are:</p>
+<dl class="docutils">
+<dt>0</dt>
+<dd><a class="reference internal" href="#efun/baseof.arg.b" title="b"><code class="xref lpc lpc-arg docutils literal"><span class="pre">b</span></code></a> is not a base of <a class="reference internal" href="#efun/baseof.arg.s" title="s"><code class="xref lpc lpc-arg docutils literal"><span class="pre">s</span></code></a>, nor is <a class="reference internal" href="#efun/baseof.arg.b" title="b"><code class="xref lpc lpc-arg docutils literal"><span class="pre">b</span></code></a> of equal type as <a class="reference internal" href="#efun/baseof.arg.s" title="s"><code class="xref lpc lpc-arg docutils literal"><span class="pre">s</span></code></a> (though <a class="reference internal" href="#efun/baseof.arg.s" title="s"><code class="xref lpc lpc-arg docutils literal"><span class="pre">s</span></code></a> might be a base of <a class="reference internal" href="#efun/baseof.arg.b" title="b"><code class="xref lpc lpc-arg docutils literal"><span class="pre">b</span></code></a>).</dd>
+<dt>1</dt>
+<dd><a class="reference internal" href="#efun/baseof.arg.b" title="b"><code class="xref lpc lpc-arg docutils literal"><span class="pre">b</span></code></a> is a true base of <a class="reference internal" href="#efun/baseof.arg.s" title="s"><code class="xref lpc lpc-arg docutils literal"><span class="pre">s</span></code></a></dd>
+<dt>2</dt>
+<dd><a class="reference internal" href="#efun/baseof.arg.b" title="b"><code class="xref lpc lpc-arg docutils literal"><span class="pre">b</span></code></a> and <a class="reference internal" href="#efun/baseof.arg.s" title="s"><code class="xref lpc lpc-arg docutils literal"><span class="pre">s</span></code></a> are the same struct type</dd>
 </dl>
-<p>1: &lt;b&gt; is a true base of &lt;s&gt;
-2: &lt;b&gt; and &lt;s&gt; are the same struct type</p>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.344</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="structp.html#lpc.efun.structp" title="structp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">structp</span></code>(E)</a>, <a class="reference internal" href="../syntax/structs.html#lpc.type.struct" title="struct"><code class="xref lpc lpc-type docutils literal"><span class="pre">struct</span></code></a></p>
+</div>
 </div>
 </div>
 
@@ -76,8 +87,8 @@ values of &lt;b&gt; and &lt;s&gt; are irrelevant). Results are:</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -87,21 +98,24 @@ values of &lt;b&gt; and &lt;s&gt; are irrelevant). Results are:</p>
   <ul>
 <li><a class="reference internal" href="#">efun::baseof()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -113,7 +127,7 @@ values of &lt;b&gt; and &lt;s&gt; are irrelevant). Results are:</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/baseof.txt"
+      <a href="../_sources/efun/baseof.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

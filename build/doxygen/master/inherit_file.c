@@ -4,15 +4,14 @@ public class master {
     * 
     * Arguments:
     * 
-    * previous_object()
+    * `previous_object()`
     *    The object causing the compile.
     *    
     * file
     *    The name given in the inherit directive.
     *    
     * compiled_file
-    *    The object file which is just compiled.
-    *    (compat: name given without leading "/")
+    *    The object file which is just compiled. (compat: name given without leading "/")
     *    
     * Result:
     * 
@@ -20,9 +19,7 @@ public class master {
     *    use the given filename as it is.
     *    
     * `<path>`
-    *    the full absolute pathname of the file to inherit,
-    *    without parentdir parts ("/../"). Leading slashes ("/")
-    *    are ignored.
+    *    the full absolute pathname of the file to inherit, without parentdir parts ("/../"). Leading slashes ("/") are ignored.
     *    
     * else
     *    The inherit directive is not legal.
@@ -35,7 +32,7 @@ public class master {
     * introduced (3.2.8)
     * }
     * 
-    * @see master::include_file()
+    * @see @ref driver_hook_overview "hook", master::include_file()
    **/
    mixed inherit_file(string file, string compiled_file);
 }

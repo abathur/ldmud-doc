@@ -4,19 +4,18 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-      The item is moved into its new environment env, which may be 0. This 
-      efun is to be used in the move_object() hook, as it does nothing else 
-      than moving the item - no calls to init() or such.
+   The item is moved into its new environment env, which may be 0. This efun 
+   is to be used in `H_MOVE_OBJECT`, as it does *nothing* beyond moving the 
+   item - no calls to init(A) or such.
 
-      Don't use it in your own objects!
+   Don't use it in your own objects!
 
-      history 3.2.1@1 introduced: 
-         as `efun308()`
+HISTORY
+=======
+   - introduced (3.2.1@1) -- as `efun308()`
+   - changed (3.2.6) -- renamed to set_environment(E)
 
-      history 3.2.6 renamed: 
-         renamed to `set_environment()`
-
-      See Also: 
-         remove(A), init(A), move_object()(E), transfer()(E), `hooks`,
-
-   native(C)
+SEE ALSO
+========
+   remove(A), init(A), move_object(E), transfer(E), hook(H), 
+   >>:concept:`native`<<

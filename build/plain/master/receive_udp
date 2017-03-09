@@ -16,4 +16,4 @@ HISTORY
 
 SEE ALSO
 ========
-   send_udp()(E), query_udp_port()(E)
+   send_udp(E), query_udp_port(E)

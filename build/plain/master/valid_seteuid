@@ -9,4 +9,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   seteuid()(E), uids(C)
+   seteuid(E), >>:concept:`uids`<<

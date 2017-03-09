@@ -1,33 +1,24 @@
 var NAVTREE =
 [
-  [ "Tsunami", "index.html", [
-    [ "applied", "driver_applied_applied.html", null ],
-    [ "concepts", "driver_concepts_concepts.html", "driver_concepts_concepts" ],
-    [ "driver", "driver_driver_driver.html", "driver_driver_driver" ],
-    [ "efun", "driver_efun_efun.html", null ],
-    [ "hook", "driver_hook_hook.html", "driver_hook_hook" ],
-    [ "lpc", "driver_LPC_lpc.html", "driver_LPC_lpc" ],
-    [ "master", "driver_master_master.html", "driver_master_master" ],
-    [ "obsolete", "driver_obsolete_obsolete.html", "driver_obsolete_obsolete" ],
-    [ "erq", "md_concepts_erq.html", null ],
-    [ "intermud.basic {#driver_concepts_intermud.basic}", "md_concepts_intermud_8basic.html", null ],
-    [ "rxcache.doc {#driver_obsolete_rxcache.doc}", "md_obsolete_rxcache_8doc.html", null ],
-    [ "todo", "driver_todo.html", "driver_todo" ],
-    [ "Namespaces", null, [
-      [ "Namespace List", "namespaces.html", "namespaces" ],
-      [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ]
-      ] ]
-    ] ],
+  [ "LDMud", "index.html", [
+    [ "install", "md_admin_install.html", null ],
+    [ "Administrating an ldmud", "driver_admin_overview.html", "driver_admin_overview" ],
+    [ "security", "md_admin_security.html", null ],
+    [ "Driver-applied methods", "driver_applied_overview.html", null ],
+    [ "External functions", "driver_efun_overview.html", null ],
+    [ "Driver-supported hooks", "driver_hook_overview.html", "driver_hook_overview" ],
+    [ "Driver-internal docs", "driver_internals_overview.html", "driver_internals_overview" ],
+    [ "Master-object methods", "driver_master_overview.html", "driver_master_overview" ],
+    [ "LPC syntax", "driver_syntax_overview.html", "driver_syntax_overview" ],
+    [ "erq", "md_topics_erq.html", null ],
+    [ "intermud.basic {#driver_topics_intermud.basic}", "md_topics_intermud_8basic.html", null ],
+    [ "Other topics", "driver_topics_overview.html", "driver_topics_overview" ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Functions", "functions_func.html", "functions_func" ]
       ] ]
     ] ]
   ] ]
@@ -36,9 +27,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classefun.html#aade6159703754b6dc604df97df20398b",
-"driver_LPC_lfuns.html",
-"functions_w.html"
+"classefun.html#abacc5106be40e401a1f39db35581434b",
+"functions_func_c.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

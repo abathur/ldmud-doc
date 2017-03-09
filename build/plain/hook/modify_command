@@ -6,20 +6,19 @@ SYNOPSIS
 DESCRIPTION
 ===========
    Arguments: 
-      - value (closure(LPC)) -- int|string <closure>(string cmd, object 
-        player)
-      - value (string(LPC)) -- int|string <name>(string cmd)
-      - value (mapping(LPC)) -- <mapping>
+      - value (closure) -- int|string <closure>(string cmd, object player)
+      - value (string) -- int|string <name>(string cmd) 
+      - value (mapping) -- <mapping> 
 
    Optional hook to modify commands (both entered or given by a call to 
-   command()) before the parser sees them (this includes special commands like
-   'status').
+   command(E)) before the parser sees them (this includes special commands 
+   like 'status').
 
    Hook setting can be any closure, the name of the function to call in the 
    object, or a mapping.
 
    For interactives this hook is used only if the interactive object has no 
-   command modifier already set by the efun set_modify_command().
+   command modifier already set by the set_modify_command(E).
 
    If the hook is a closure, it is called with the entered command as first, 
    and the command giving player as second argument. Lambda closures are bound
@@ -49,10 +48,10 @@ DESCRIPTION
 
    It is possible for the hook to change the command giver (`this_player()`) 
    for the execution of the command. This means that even though the commands 
-   are execute for the original commandgiver, this_player() will return the 
+   are execute for the original commandgiver, `this_player()` will return the 
    changed commandgiver.
 
 SEE ALSO
 ========
-   `hooks`, command(H), modify_command_fname(H), notify_fail(H), 
+   hook(H), command(H), modify_command_fname(H), notify_fail(H), 
    send_notify_fail(H)

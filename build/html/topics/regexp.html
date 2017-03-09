@@ -1,0 +1,274 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Regular Expressions &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The simul_efun object" href="simul_efun.html" />
+    <link rel="prev" title="Driver-defined preprocessor macros" href="predefined.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="Regular Expressions">
+<span id="regexp"></span><span id="lpc.topic.Regular Expressions"></span><span id="lpc.topic.regexp"></span><div class="section" id="TOPIC">
+<h2>TOPIC<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+Regular Expressions</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>LDMud supports both the traditional regular expressions as implemented by Henry Spencer (&#8220;HS&#8221; or &#8220;traditional&#8221;), and optionally the Perl-compatible regular expressions by Philip Hazel (&#8220;PCRE&#8221;).</p>
+<p>Both packages can be used concurrently, with the selection being made through extra option flags argument to the efuns. One of the two packages can be selected at compile time, by commandline argument, and by driver hook to be the default package.</p>
+<p>If the host system does not supply PCREs at compile-time, they will not be availablea in the driver.</p>
+<p>The packages differ in the expressivity of their expressions (PCRE offering more options that Henry Spencer&#8217;s package), though they both implement the common subset outlined below.</p>
+<p>All regular expression efuns take an additional options parameter, which is a an number composed of bitflags, and is used to modify the exact behaviour of the expression evaluation. In addition, certain efuns may accept additional specific options.</p>
+<p>For details, refer to the detailed manpages:</p>
+<ul class="simple">
+<li><a href="#id1"><span class="problematic" id="id2">:concept:`hsregexp`</span></a> for the Henry Spencer package</li>
+<li><a href="#id3"><span class="problematic" id="id4">:concept:`pcre`</span></a> for the PCRE package</li>
+</ul>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>Regular Expression Details<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>A regular expression is a pattern that is matched against a subject string from left to right. Most characters stand for themselves in a pattern, and match the corresponding characters in the subject. As a trivial example, the pattern <code class="docutils literal"><span class="pre">The</span> <span class="pre">quick</span> <span class="pre">brown</span> <span class="pre">fox</span></code> matches a portion of a subject string that is identical to itself. The power of regular expressions comes from the ability to include alternatives and repetitions in the pattern. These are encoded in the pattern by the use of metacharacters, which do not stand for themselves but instead are interpreted in some special way.</p>
+<p>The following metacharacters are &#8216;universal&#8217; in that both regexp packages understand them in the same way:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><th class="stub">Metachars</th>
+<td>Description</td>
+</tr>
+<tr class="row-even"><th class="stub"><code class="docutils literal"><span class="pre">.</span></code></th>
+<td>Match any character.</td>
+</tr>
+<tr class="row-odd"><th class="stub"><code class="docutils literal"><span class="pre">^</span></code></th>
+<td>Match begin of line.</td>
+</tr>
+<tr class="row-even"><th class="stub"><code class="docutils literal"><span class="pre">$</span></code></th>
+<td>Match end of line.</td>
+</tr>
+<tr class="row-odd"><th class="stub"><code class="docutils literal"><span class="pre">x|y</span></code></th>
+<td>Match regexp x or regexp y.</td>
+</tr>
+<tr class="row-even"><th class="stub"><code class="docutils literal"><span class="pre">()</span></code></th>
+<td>Match enclosed regexp like a &#8216;simple&#8217; one.</td>
+</tr>
+<tr class="row-odd"><th class="stub"><code class="docutils literal"><span class="pre">x*</span></code></th>
+<td>Match any number (0 or more) of regexp x.</td>
+</tr>
+<tr class="row-even"><th class="stub"><code class="docutils literal"><span class="pre">x+</span></code></th>
+<td>Match any number (1 or more) of regexp x.</td>
+</tr>
+<tr class="row-odd"><th class="stub"><code class="docutils literal"><span class="pre">[..]</span></code></th>
+<td>Match one of the characters enclosed.</td>
+</tr>
+<tr class="row-even"><th class="stub"><code class="docutils literal"><span class="pre">[^</span> <span class="pre">..]</span></code></th>
+<td>Match none of the characters enclosed. The .. are to replaced by single characters or character ranges:</td>
+</tr>
+<tr class="row-odd"><th class="stub"><code class="docutils literal"><span class="pre">[abc]</span></code></th>
+<td>matches a, b or c.</td>
+</tr>
+<tr class="row-even"><th class="stub"><code class="docutils literal"><span class="pre">[ab0-9]</span></code></th>
+<td>matches a, b or any digit.</td>
+</tr>
+<tr class="row-odd"><th class="stub"><code class="docutils literal"><span class="pre">[^a-z]</span></code></th>
+<td>does not match any lowercase character.</td>
+</tr>
+<tr class="row-even"><th class="stub"><code class="docutils literal"><span class="pre">\\B</span></code></th>
+<td>not a word boundary</td>
+</tr>
+<tr class="row-odd"><th class="stub"><code class="docutils literal"><span class="pre">\\c</span></code></th>
+<td>match character c even if it&#8217;s one of the special characters.</td>
+</tr>
+</tbody>
+</table>
+<p>The following metacharacters or metacharacter combinations implement similar functions in the two regexp packages;</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><th class="stub">Metachars</th>
+<td>Description</td>
+</tr>
+<tr class="row-even"><th class="stub"><code class="docutils literal"><span class="pre">\\b</span></code></th>
+<td>PCRE: word boundary, also used in conjunction with <code class="docutils literal"><span class="pre">\w</span></code> (any &#8220;word&#8221; character) and <code class="docutils literal"><span class="pre">\W</span></code> (any &#8220;non-word&#8221; character).</td>
+</tr>
+<tr class="row-odd"><th class="stub"><code class="docutils literal"><span class="pre">\\&lt;</span></code></th>
+<td>HS: Match begin of word.</td>
+</tr>
+<tr class="row-even"><th class="stub"><code class="docutils literal"><span class="pre">\\&gt;</span></code></th>
+<td>HS: Match end of word.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>Options<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>The package is selected with these option flags:</p>
+<dl class="docutils">
+<dt id="lpc.macro.RE_PCRE">RE_PCRE</dt>
+<dd></dd>
+</dl>
+<dl class="docutils">
+<dt id="lpc.macro.RE_TRADITIONAL">RE_TRADITIONAL</dt>
+<dd></dd>
+</dl>
+<p>These flags are also used for <a class="reference internal" href="../hook/regexp_package.html#lpc.hook.H_REGEXP_PACKAGE" title="H_REGEXP_PACKAGE"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_REGEXP_PACKAGE</span></code>(H)</a>.</p>
+<p>Traditional regular expressions understand one option:</p>
+<dl class="docutils">
+<dt id="lpc.macro.RE_EXCOMPATIBLE">RE_EXCOMPATIBLE</dt>
+<dd></dd>
+</dl>
+<p>PCRE understands these options:</p>
+<dl class="docutils">
+<dt id="lpc.macro.RE_ANCHORED">RE_ANCHORED</dt>
+<dd></dd>
+</dl>
+<dl class="docutils">
+<dt id="lpc.macro.RE_CASELESS">RE_CASELESS</dt>
+<dd></dd>
+</dl>
+<dl class="docutils">
+<dt id="lpc.macro.RE_DOLLAR_ENDONLY">RE_DOLLAR_ENDONLY</dt>
+<dd></dd>
+</dl>
+<dl class="docutils">
+<dt id="lpc.macro.RE_DOTALL">RE_DOTALL</dt>
+<dd></dd>
+</dl>
+<dl class="docutils">
+<dt id="lpc.macro.RE_EXTENDED">RE_EXTENDED</dt>
+<dd></dd>
+</dl>
+<dl class="docutils">
+<dt id="lpc.macro.RE_MULTILINE">RE_MULTILINE</dt>
+<dd></dd>
+</dl>
+<dl class="docutils">
+<dt id="lpc.macro.RE_UNGREEDY">RE_UNGREEDY</dt>
+<dd></dd>
+</dl>
+<dl class="docutils">
+<dt id="lpc.macro.RE_NOTBOL">RE_NOTBOL</dt>
+<dd></dd>
+</dl>
+<dl class="docutils">
+<dt id="lpc.macro.RE_NOTEOL">RE_NOTEOL</dt>
+<dd></dd>
+</dl>
+<dl class="docutils">
+<dt id="lpc.macro.RE_NOTEMPTY">RE_NOTEMPTY</dt>
+<dd></dd>
+</dl>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.3.596</em>) &#8211; implemented the concurrent use of both packages.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a href="#id5"><span class="problematic" id="id6">:concept:`hsregexp`</span></a>, <a href="#id7"><span class="problematic" id="id8">:concept:`pcre`</span></a>, <a class="reference internal" href="../hook/regexp_package.html#lpc.hook.regexp_package" title="regexp_package"><code class="xref lpc lpc-hook docutils literal"><span class="pre">regexp_package</span></code>(H)</a>, <a class="reference internal" href="../efun/regexp.html#lpc.efun.regexp" title="regexp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexp</span></code>(E)</a>, <a class="reference internal" href="../efun/regexplode.html#lpc.efun.regexplode" title="regexplode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexplode</span></code>(E)</a>, <a class="reference internal" href="../efun/regmatch.html#lpc.efun.regmatch" title="regmatch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regmatch</span></code>(E)</a>, <a class="reference internal" href="../efun/regreplace.html#lpc.efun.regreplace" title="regreplace"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regreplace</span></code>(E)</a>, <a class="reference internal" href="../efun/regexp_package.html#lpc.efun.regexp_package" title="regexp_package"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexp_package</span></code>(E)</a>, <a class="reference internal" href="../admin/invocation.html#lpc.topic.invocation" title="invocation"><code class="xref lpc lpc-topic docutils literal"><span class="pre">invocation</span></code></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Regular Expressions</a><ul>
+<li><a class="reference internal" href="#TOPIC">TOPIC</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#l">Regular Expression Details</a></li>
+<li><a class="reference internal" href="#l">Options</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/topics/regexp.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

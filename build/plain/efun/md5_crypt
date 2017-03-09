@@ -5,19 +5,21 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Crypt the string <str> the first two characters from the string <seed> as a 
-seed. If <seed> is an integer, then a random seed is used.
+   Crypt the string str(E) the first two characters from the string seed(E) as
+   a seed. If seed(E) is an integer, then a random seed is used.
 
-The result has the first two characters as the seed.
+   The result has the first two characters as the seed.
 
-The efun uses the MD5 algorithm for encryption, and the result is compatible 
-with the Apache password encryption.
+   The efun uses the MD5 algorithm for encryption, and the result is 
+   compatible with the Apache password encryption.
 
-If you want to let enter password information without echo, input_to() can be 
-used with special argument.
+   If you want to let enter password information without echo, input_to(E) can
+   be used with special argument.
 
-Introduced in LDMud 3.3
+HISTORY
+=======
+   - introduced (3.3)
 
-   See Also: 
-      crypt()(E), input_to()(E), md5()(E), md5_crypt()(E), hash()(E), 
-      hmac()(E)
+SEE ALSO
+========
+   crypt(E), input_to(E), md5(E), md5_crypt(E), hash(E), hmac(E)

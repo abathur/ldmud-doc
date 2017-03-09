@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::shadow() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::shadow() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::shutdown()" href="shutdown.html" />
     <link rel="prev" title="efun::sha1()" href="sha1.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,132 +47,108 @@
 <div class="section" id="SYNOPSIS">
 <span id="shadow"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.shadow">
-<td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">shadow</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flag</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.shadow" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.shadow">
+<!--[lpc.efun.shadow]--><td>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">shadow</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;ob</em>, </td><td id="id2">
+int<em>&nbsp;flag</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.shadow" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>If <a class="reference internal" href="#efun/shadow.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> is non-zero the current object will shadow <a class="reference internal" href="#efun/shadow.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>. If <a class="reference internal" href="#efun/shadow.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> is 0, either 0 or the object that is shadowing <a class="reference internal" href="#efun/shadow.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> will be returned.</p>
+<p>The calling object must be permitted by the master object to do the shadowing. In most installations, an object that defines the function <code class="docutils literal"><span class="pre">query_prevent_shadow(ob)</span></code> to return 1 can&#8217;t be shadowed, and the <a class="reference internal" href="#lpc.efun.shadow" title="shadow"><code class="xref lpc lpc-efun docutils literal"><span class="pre">shadow</span></code>(E)</a> function will return 0 instead of ob.</p>
+<p><a class="reference internal" href="#lpc.efun.shadow" title="shadow"><code class="xref lpc lpc-efun docutils literal"><span class="pre">shadow</span></code>(E)</a> also fails if: the calling object tries to shadow a function that was defined as &#8220;nomask&#8221;; the program was compiled with the <a class="reference internal" href="../syntax/pragma.html#lpc.pragma.no_shadow" title="no_shadow"><code class="xref lpc lpc-pragma docutils literal"><span class="pre">no_shadow</span></code></a>; or the calling object is already shadowing, being shadowed, or has an environment. Also, the target <a class="reference internal" href="#efun/shadow.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> must not be shadowing another object.</p>
+<p>If an object A shadows an object B, every <a class="reference internal" href="call_other.html#lpc.efun.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a> to B will be redirected to A. If object A has not defined the function, the call will be passed to B. There is only one object that can directly call functions in B with <a class="reference internal" href="call_other.html#lpc.efun.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a>, and that is A. Not even object B can <a class="reference internal" href="call_other.html#lpc.efun.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a> itself; the calls will still be redirected to object A. All normal (internal) function calls inside B will, however, remain internal to B.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>With the three objects a.c, b.c and c.c</p>
+<p>code like the following:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">object</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">load_object</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">);</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">load_object</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">);</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">load_object</span><span class="p">(</span><span class="s">&quot;c&quot;</span><span class="p">);</span>
+<span class="n">b</span><span class="o">-&gt;</span><span class="n">do_shadow</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="n">c</span><span class="o">-&gt;</span><span class="n">do_shadow</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="n">debug_message</span><span class="p">(</span><span class="s">&quot;--- a-&gt;fun() ---</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="n">a</span><span class="o">-&gt;</span><span class="n">fun</span><span class="p">();</span>
+<span class="n">debug_message</span><span class="p">(</span><span class="s">&quot;--- b-&gt;fun() ---</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="n">b</span><span class="o">-&gt;</span><span class="n">fun</span><span class="p">();</span>
+<span class="n">debug_message</span><span class="p">(</span><span class="s">&quot;--- c-&gt;fun() ---</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="n">c</span><span class="o">-&gt;</span><span class="n">fun</span><span class="p">();</span>
+<span class="n">debug_message</span><span class="p">(</span><span class="s">&quot;--- b-&gt;fun2() ---</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="n">b</span><span class="o">-&gt;</span><span class="n">fun2</span><span class="p">();</span>
+</pre></div>
 </div>
-</div>
-<p>If &lt;flag&gt; is non-zero the current object will shadow &lt;ob&gt;. If
-&lt;flag&gt; is 0, either 0 or the object that is shadowing &lt;ob&gt;
-will be returned.</p>
-<p>The calling object must be permitted by the master object to
-do the shadowing. In most installations, an object that
-defines the function query_prevent_shadow() to return 1
-can&#8217;t be shadowed, and the shadow() function will return 0
-instead of ob.</p>
-<p>shadow() also fails if: the calling object tries to shadow
-a function that was defined as &#8220;nomask&#8221;; the program was
-compiled with the #pragma no_shadow; or the calling
-object is already shadowing, being shadowed, or has an
-environment. Also, the target &lt;ob&gt; must not be shadowing
-another object.</p>
-<p>If an object A shadows an object B, every call_other() to B
-will be redirected to A. If object A has not defined the
-function, the call will be passed to B. There is only one
-object that can directly call functions in B with call_other(),
-and that is A. Not even object B can call_other() itself; the
-calls will still be redirected to object A. All normal (internal)
-function calls inside B will, however, remain internal to B.</p>
-<p>EXAMPLES
-With the three objects a.c, b.c and c.c</p>
-<blockquote>
-<div><p>&#8212; a.c &#8212;
-int fun() {</p>
-<blockquote>
-<div>debug_message(sprintf(&#8220;%O [a] fun()n&#8221;, this_object()));</div></blockquote>
-<p>}</p>
-<dl class="docutils">
-<dt>void fun3() {</dt>
-<dd>debug_message(sprintf(&#8220;%O [a] fun3()n&#8221;, this_object()));</dd>
-</dl>
-<p>}</p>
-<p>&#8212; b.c &#8212;
-int fun() {</p>
-<blockquote>
-<div>debug_message(sprintf(&#8220;%O [b] fun()n&#8221;, this_object()));
-find_object(&#8220;a&#8221;)-&gt;fun();</div></blockquote>
-<p>}
-void fun2() {</p>
-<blockquote>
-<div>debug_message(sprintf(&#8220;%O [b] fun2()n&#8221;, this_object()));
-find_object(&#8220;a&#8221;)-&gt;fun3();
-this_object()-&gt;fun3();</div></blockquote>
-<p>}</p>
-<p>void do_shadow(object target) { shadow(target, 1); }</p>
-<p>&#8212; c.c &#8212;
-int fun() {</p>
-<blockquote>
-<div>debug_message(sprintf(&#8220;%O [c] fun()n&#8221;, this_object()));
-find_object(&#8220;a&#8221;)-&gt;fun();</div></blockquote>
-<p>}
-void fun3() {</p>
-<blockquote>
-<div>debug_message(sprintf(&#8220;%O [c] fun3()n&#8221;, this_object()));</div></blockquote>
-<p>}
-void do_shadow(object target) { shadow(target, 1); }</p>
-</div></blockquote>
-<p>code like the following</p>
-<blockquote>
-<div><p>object a, b, c;</p>
-<p>a = load_object(&#8220;a&#8221;);
-b = load_object(&#8220;b&#8221;);
-c = load_object(&#8220;c&#8221;);
-b-&gt;do_shadow(a);
-c-&gt;do_shadow(a);
-debug_message(&#8220;&#8212; a-&gt;fun() &#8212;n&#8221;);
-a-&gt;fun();
-debug_message(&#8220;&#8212; b-&gt;fun() &#8212;n&#8221;);
-b-&gt;fun();
-debug_message(&#8220;&#8212; c-&gt;fun() &#8212;n&#8221;);
-c-&gt;fun();
-debug_message(&#8220;&#8212; b-&gt;fun2() &#8212;n&#8221;);
-b-&gt;fun2();</p>
-</div></blockquote>
 <p>produces this output:</p>
-<blockquote>
-<div>&#8212; a-&gt;fun() &#8212;
-/c [c] fun()
-/b [b] fun()
-/a [a] fun()
-&#8212; b-&gt;fun() &#8212;
-/c [c] fun()
-/b [b] fun()
-/a [a] fun()
-&#8212; c-&gt;fun() &#8212;
-/c [c] fun()
-/b [b] fun()
-/a [a] fun()
-&#8212; b-&gt;fun2() &#8212;
-/b [b] fun2()
-/a [a] fun3()
-/c [c] fun3()</div></blockquote>
-<p>Note that the first call in b::fun2() finds c::fun3() because,
-for calls originating from b to a, the driver assumes that all
-shadows beyond c have already had their chance. The second call,
-however, was to b itself, which the gamedriver recognized as being
-shadowed by c.</p>
-<p>Up to <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;46">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>46</a>, destructing a shadowed object also destructs
-all shadows. Since <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;47">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>47</a>, shadows may survive the
-destruction of the shadowee (unless the prepare_destruct() in
-the master object destructs them manually).</p>
-<p>Since LDMud 3.2.8, programs may protect themselves from being
-shadowed with the #pragma no_shadow.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="query_shadowing.html#lpc.query_shadowing" title="query_shadowing"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_shadowing()</span></code>(E)</a>, <a class="reference internal" href="unshadow.html#lpc.unshadow" title="unshadow"><code class="xref lpc lpc-efun docutils literal"><span class="pre">unshadow()</span></code>(E)</a>, <a class="reference internal" href="../master/query_allow_shadow.html#lpc.query_allow_shadow" title="query_allow_shadow"><code class="xref lpc lpc-master docutils literal"><span class="pre">query_allow_shadow</span></code>(M)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">fun</span><span class="p">()</span> <span class="o">---</span>
+<span class="o">/</span><span class="n">c</span> <span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="n">fun</span><span class="p">()</span>
+<span class="o">/</span><span class="n">b</span> <span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="n">fun</span><span class="p">()</span>
+<span class="o">/</span><span class="n">a</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="n">fun</span><span class="p">()</span>
+<span class="o">---</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">fun</span><span class="p">()</span> <span class="o">---</span>
+<span class="o">/</span><span class="n">c</span> <span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="n">fun</span><span class="p">()</span>
+<span class="o">/</span><span class="n">b</span> <span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="n">fun</span><span class="p">()</span>
+<span class="o">/</span><span class="n">a</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="n">fun</span><span class="p">()</span>
+<span class="o">---</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">fun</span><span class="p">()</span> <span class="o">---</span>
+<span class="o">/</span><span class="n">c</span> <span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="n">fun</span><span class="p">()</span>
+<span class="o">/</span><span class="n">b</span> <span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="n">fun</span><span class="p">()</span>
+<span class="o">/</span><span class="n">a</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="n">fun</span><span class="p">()</span>
+<span class="o">---</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">fun2</span><span class="p">()</span> <span class="o">---</span>
+<span class="o">/</span><span class="n">b</span> <span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="n">fun2</span><span class="p">()</span>
+<span class="o">/</span><span class="n">a</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="n">fun3</span><span class="p">()</span>
+<span class="o">/</span><span class="n">c</span> <span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="n">fun3</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>code like the following:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">object</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">load_object</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">);</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">load_object</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">);</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">load_object</span><span class="p">(</span><span class="s">&quot;c&quot;</span><span class="p">);</span>
+<span class="n">b</span><span class="o">-&gt;</span><span class="n">do_shadow</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="n">c</span><span class="o">-&gt;</span><span class="n">do_shadow</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="n">a</span><span class="o">-&gt;</span><span class="n">fun</span><span class="p">();</span>
+<span class="c1">/// output:</span>
+<span class="c1">// /c [c] fun()</span>
+<span class="c1">// /b [b] fun()</span>
+<span class="c1">// /a [a] fun()</span>
+<span class="c1">//</span>
+<span class="n">b</span><span class="o">-&gt;</span><span class="n">fun</span><span class="p">();</span>
+<span class="c1">// output:</span>
+<span class="c1">// /c [c] fun()</span>
+<span class="c1">// /b [b] fun()</span>
+<span class="c1">// /a [a] fun()</span>
+<span class="c1">//</span>
+<span class="n">c</span><span class="o">-&gt;</span><span class="n">fun</span><span class="p">();</span>
+<span class="c1">// output:</span>
+<span class="c1">// /c [c] fun()</span>
+<span class="c1">// /b [b] fun()</span>
+<span class="c1">// /a [a] fun()</span>
+<span class="c1">//</span>
+<span class="n">b</span><span class="o">-&gt;</span><span class="n">fun2</span><span class="p">();</span>
+<span class="c1">// output:</span>
+<span class="c1">// /b [b] fun2()</span>
+<span class="c1">// /a [a] fun3()</span>
+<span class="c1">// /c [c] fun3()</span>
+<span class="c1">//</span>
+</pre></div>
+</div>
+<p>Note that the first call in <code class="docutils literal"><span class="pre">b::fun2()</span></code> finds <code class="docutils literal"><span class="pre">c::fun3()</span></code> because, for calls originating from b to a, the driver assumes that all shadows beyond c have already had their chance. The second call, however, was to b itself, which the gamedriver recognized as being shadowed by c.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.1&#64;47</em>) &#8211; shadows may now survive the destruction of the shadowee (unless the <a class="reference internal" href="../master/prepare_destruct.html#lpc.master.prepare_destruct" title="prepare_destruct"><code class="xref lpc lpc-master docutils literal"><span class="pre">prepare_destruct</span></code>(M)</a> in the master object destructs them manually).</li>
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; programs may protect themselves from being shadowed with the <a class="reference internal" href="../syntax/pragma.html#lpc.pragma.no_shadow" title="no_shadow"><code class="xref lpc lpc-pragma docutils literal"><span class="pre">no_shadow</span></code></a>.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="query_shadowing.html#lpc.efun.query_shadowing" title="query_shadowing"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_shadowing</span></code>(E)</a>, <a class="reference internal" href="unshadow.html#lpc.efun.unshadow" title="unshadow"><code class="xref lpc lpc-efun docutils literal"><span class="pre">unshadow</span></code>(E)</a>, <a class="reference internal" href="../master/query_allow_shadow.html#lpc.master.query_allow_shadow" title="query_allow_shadow"><code class="xref lpc lpc-master docutils literal"><span class="pre">query_allow_shadow</span></code>(M)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -181,8 +159,8 @@ shadowed with the #pragma no_shadow.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -192,21 +170,25 @@ shadowed with the #pragma no_shadow.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::shadow()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -218,7 +200,7 @@ shadowed with the #pragma no_shadow.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/shadow.txt"
+      <a href="../_sources/efun/shadow.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

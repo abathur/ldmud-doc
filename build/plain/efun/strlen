@@ -4,11 +4,11 @@ SYNOPSIS (DEPRECATED)
 
 DESCRIPTION
 ===========
-   Returns the length of the string <str>.
+   Returns the length of the string str(E).
 
-   This efun is DEPRECATED and replaced by sizeof(). Please do not use it in 
+   This efun is deprecated and replaced by sizeof(E). Please do not use it in 
    new code and start to phase it out in old code.
 
 SEE ALSO
 ========
-   sizeof()(E), extract()
+   sizeof(E)

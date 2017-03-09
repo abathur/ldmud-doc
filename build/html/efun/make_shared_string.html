@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::make_shared_string() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::make_shared_string() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::map()" href="map.html" />
     <link rel="prev" title="efun::m_values()" href="m_values.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,25 +47,26 @@
 <div class="section" id="SYNOPSIS">
 <span id="make_shared_string"></span><h2>SYNOPSIS (DEPRECATED)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.make_shared_string">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">make_shared_string</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.make_shared_string" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.make_shared_string">
+<!--[lpc.efun.make_shared_string]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">make_shared_string</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.make_shared_string" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Puts <a class="reference internal" href="#efun/make_shared_string.arg.str" title="str"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str</span></code></a> in the table of shared strings of the game.</p>
+<p>If the string is used by several variables/objects this saves memory. Keys of alists and mappings are always shared strings.</p>
+<p>In LDMud 3.3, this function is no longer necessary: strings are shared as much as possible anyway, and the driver automatically converts untabled strings into tabled strings after some time.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.6</em>) &#8211; following a suggestion from Tubmud.</li>
+<li><strong>deprecated</strong> (<em>3.3.531</em>) &#8211; This function is no longer necessary because strings are shared as much as possible anyway, and the driver automatically converts untabled strings into tabled strings after some time.</li>
+</ul>
 </div>
 </div>
-<p>Puts &lt;str&gt; in the table of shared strings of the game.</p>
-<p>If the string is used by several variables/objects this
-saves memory. Keys of alists and mappings are always shared
-strings.</p>
-<p>In LDMud 3.3, this function is no longer necessary: strings
-are shared as much as possible anyway, and the driver automatically
-converts untabled strings into tabled strings after some time.</p>
-<p>Introduced in LDMud 3.2.6; following a suggestion from Tubmud.
-Deprecated in LDMud 3.3.531.</p>
+</div>
 
 
           </div>
@@ -74,8 +77,8 @@ Deprecated in LDMud 3.3.531.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -85,21 +88,23 @@ Deprecated in LDMud 3.3.531.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::make_shared_string()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (DEPRECATED)</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -111,7 +116,7 @@ Deprecated in LDMud 3.3.531.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/make_shared_string.txt"
+      <a href="../_sources/efun/make_shared_string.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

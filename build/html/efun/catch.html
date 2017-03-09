@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::catch() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::catch() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::ceil()" href="ceil.html" />
     <link rel="prev" title="efun::capitalize()" href="capitalize.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,65 +47,58 @@
 <div class="section" id="SYNOPSIS">
 <span id="catch"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.catch">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">catch</code></td><td><span class="sig-paren">(</span></td><td>
-expr, </td><td>
-expr, </td><td>
-...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.catch" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.catch">
+<!--[lpc.efun.catch]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">catch</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+expr, </td><td id="id2">
+expr, </td><td id="id3">
+...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.catch" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">catch</code></td><td><span class="sig-paren">(</span></td><td>
-expr, </td><td>
-expr, </td><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">catch</code></td><td><span class="sig-paren">(</span></td><td id="id4">
+expr, </td><td id="id5">
+expr, </td><td id="id6">
 ... ;<em>&nbsp;modifiers</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Evaluate the expressions. If there is no error, 0 is returned.
-If there is an error, the evaluation of the expressions stops at
-that point, and a string with the error message is returned.</p>
-<p>System error messages start with a leading &#8216;*&#8217;, user-defined
-error values (other than 0) as given to throw() and raise_error() are
-returned as they are.</p>
-<p>If at the time the catch() is encountered less than
-__CATCH_EVAL_COST__ eval ticks are left, a runtime error will be
-thrown from inside the catch() (and thus caught like every other
-error) and the expressions will not be executed. The &#8216;reserve&#8217;
-modifier can be used to reserve a different amount of eval ticks.</p>
-<p>The default behaviour of catch() can be changed using modifiers:</p>
+<p>Evaluate the expressions. If there is no error, 0 is returned. If there is an error, the evaluation of the expressions stops at that point, and a string with the error message is returned.</p>
+<p>System error messages start with a leading &#8216;*&#8217;, user-defined error values (other than 0) as given to <a class="reference internal" href="throw.html#lpc.efun.throw" title="throw"><code class="xref lpc lpc-efun docutils literal"><span class="pre">throw</span></code>(E)</a> and <a class="reference internal" href="raise_error.html#lpc.efun.raise_error" title="raise_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">raise_error</span></code>(E)</a> are returned as they are.</p>
+<p>If at the time the <a class="reference internal" href="#lpc.efun.catch" title="catch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">catch</span></code>(E)</a> is encountered less than <code class="xref lpc lpc-macro docutils literal"><span class="pre">__CATCH_EVAL_COST__</span></code> eval ticks are left, a runtime error will be thrown from inside the <a class="reference internal" href="#lpc.efun.catch" title="catch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">catch</span></code>(E)</a> (and thus caught like every other error) and the expressions will not be executed. The &#8216;reserve&#8217; modifier can be used to reserve a different amount of eval ticks.</p>
+<p>The default behaviour of <a class="reference internal" href="#lpc.efun.catch" title="catch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">catch</span></code>(E)</a> can be changed using modifiers:</p>
 <blockquote>
-<div><dl class="docutils">
-<dt>&#8216;nolog&#8217;:   Normally, the caught error will be logged in the</dt>
-<dd>error logs for easier debugging. With this
-modifier, the log is suppressed.</dd>
-<dt>&#8216;publish&#8217;: Normally, master::runtime_error() is not called</dt>
-<dd>for a caught error. This modifier instructs
-catch() to call it nevertheless.</dd>
-<dt>&#8216;reserve &lt;expr&gt;&#8217;: The expression has to evaluate to a number</dt>
-<dd>greater than 0 and is used to determine the amount
-of eval ticks to reserve, instead of the default
-of __CATCH_EVAL_COST__. The minimum required
-are 2 * __MASTER_EVAL_COST__.</dd>
-</dl>
+<div><p>&#8216;nolog&#8217;:   Normally, the caught error will be logged in the error logs for easier debugging. With this modifier, the log is suppressed.</p>
+<p>&#8216;publish&#8217;: Normally, <a class="reference internal" href="../master/runtime_error.html#lpc.master.runtime_error" title="runtime_error"><code class="xref lpc lpc-master docutils literal"><span class="pre">runtime_error</span></code>(M)</a> is not called for a caught error. This modifier instructs <a class="reference internal" href="#lpc.efun.catch" title="catch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">catch</span></code>(E)</a> to call it nevertheless.</p>
+<p>&#8216;reserve <a class="reference internal" href="#efun/catch.arg.expr" title="expr"><code class="xref lpc lpc-arg docutils literal"><span class="pre">expr</span></code></a>&#8216;: The expression has to evaluate to a number greater than 0 and is used to determine the amount of eval ticks to reserve, instead of the default of <code class="xref lpc lpc-macro docutils literal"><span class="pre">__CATCH_EVAL_COST__</span></code>. The minimum required are 2 * <code class="xref lpc lpc-macro docutils literal"><span class="pre">__MASTER_EVAL_COST__</span></code>.</p>
 </div></blockquote>
-<p>catch() itself is not expensive as far as execution time is
-concerned: it is about the same as a intra-object function call.</p>
-<p>throw() is not very expensive either, but does include the
-internal cleanup of several structures.</p>
-<p>Real runtime errors on the other hand are expensive regardless
-of whether they are caught or not, as they include the generation
-of the stack backtrace.</p>
-<p>catch() is not really an efun but a compiler directive.</p>
+<p><a class="reference internal" href="#lpc.efun.catch" title="catch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">catch</span></code>(E)</a> itself is not expensive as far as execution time is concerned: it is about the same as a intra-object function call.</p>
+<p><a class="reference internal" href="throw.html#lpc.efun.throw" title="throw"><code class="xref lpc lpc-efun docutils literal"><span class="pre">throw</span></code>(E)</a> is not very expensive either, but does include the internal cleanup of several structures.</p>
+<p>Real runtime errors on the other hand are expensive regardless of whether they are caught or not, as they include the generation of the stack backtrace.</p>
+<p><a class="reference internal" href="#lpc.efun.catch" title="catch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">catch</span></code>(E)</a> is not _really_ an efun but a compiler directive.</p>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<p>object obj;
-string err;
-if (err = catch(obj = clone_object(&#8220;/foo/bar/baz&#8221;)))</p>
-<blockquote>
-<div>write(&#8220;Cannot clone object, reason:&#8221;+err&#8221;+n&#8221;);</div></blockquote>
+<p>This example demonstrates how to attempt to clone an object, but write a message if an error is encountered:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">object</span> <span class="n">obj</span><span class="p">;</span>
+<span class="kt">string</span> <span class="n">err</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">=</span> <span class="k">catch</span><span class="p">(</span><span class="n">obj</span> <span class="o">=</span> <span class="n">clone_object</span><span class="p">(</span><span class="s">&quot;/foo/bar/baz&quot;</span><span class="p">)))</span>
+   <span class="n">write</span><span class="p">(</span><span class="s">&quot;Cannot clone object, reason:&quot;</span><span class="o">+</span><span class="n">err</span><span class="s">&quot;+</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; introduced the &#8216;nolog&#8217; <a class="reference internal" href="#lpc.efun.catch" title="catch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">catch</span></code>(E)</a> as experimental feature.</li>
+<li><strong>changed</strong> (<em>3.2.10</em>) &#8211; implemented &#8216;nolog&#8217; as official form and added &#8216;publish&#8217;.</li>
+<li><strong>changed</strong> (<em>3.3.559</em>) &#8211; moved the check regarding <code class="xref lpc lpc-macro docutils literal"><span class="pre">__CATCH_EVAL_COST__</span></code> inside the <a class="reference internal" href="#lpc.efun.catch" title="catch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">catch</span></code>(E)</a>.</li>
+<li><strong>changed</strong> (<em>3.3.560</em>) &#8211; added the &#8216;reserve&#8217; modifier.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="throw.html#lpc.efun.throw" title="throw"><code class="xref lpc lpc-efun docutils literal"><span class="pre">throw</span></code>(E)</a>, <a class="reference internal" href="raise_error.html#lpc.efun.raise_error" title="raise_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">raise_error</span></code>(E)</a>, <a class="reference internal" href="../topics/predefined.html#lpc.topic.predefined" title="predefined"><code class="xref lpc lpc-topic docutils literal"><span class="pre">predefined</span></code></a>, <a class="reference internal" href="../master/runtime_error.html#lpc.master.runtime_error" title="runtime_error"><code class="xref lpc lpc-master docutils literal"><span class="pre">runtime_error</span></code>(M)</a></p>
 </div>
 </div>
 </div>
@@ -117,8 +112,8 @@ if (err = catch(obj = clone_object(&#8220;/foo/bar/baz&#8221;)))</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -130,6 +125,8 @@ if (err = catch(obj = clone_object(&#8220;/foo/bar/baz&#8221;)))</p>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
 <li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
 </ul>
 </li>
 </ul>
@@ -137,15 +134,14 @@ if (err = catch(obj = clone_object(&#8220;/foo/bar/baz&#8221;)))</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -157,7 +153,7 @@ if (err = catch(obj = clone_object(&#8220;/foo/bar/baz&#8221;)))</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/catch.txt"
+      <a href="../_sources/efun/catch.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

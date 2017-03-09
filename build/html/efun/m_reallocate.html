@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::m_reallocate() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::m_reallocate() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::m_values()" href="m_values.html" />
     <link rel="prev" title="efun::m_indices()" href="m_indices.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,37 +47,38 @@
 <div class="section" id="SYNOPSIS">
 <span id="m_reallocate"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.m_reallocate">
-<td>
-<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a> </td><td>
-<code class="descname">m_reallocate</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a><em>&nbsp;m</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;width</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.m_reallocate" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.m_reallocate">
+<!--[lpc.efun.m_reallocate]--><td>
+<a class="reference internal" href="../syntax/mappings.html#lpc.type.mapping" title="mapping">mapping</a> </td><td>
+<code class="descname">m_reallocate</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+mapping<em>&nbsp;m</em>, </td><td id="id2">
+int<em>&nbsp;width</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.m_reallocate" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Create a new mapping with <a class="reference internal" href="#efun/m_reallocate.arg.width" title="width"><code class="xref lpc lpc-arg docutils literal"><span class="pre">width</span></code></a> values per key and fill it with the values from mapping <a class="reference internal" href="#efun/m_reallocate.arg.m" title="m"><code class="xref lpc lpc-arg docutils literal"><span class="pre">m</span></code></a>. If <a class="reference internal" href="#efun/m_reallocate.arg.m" title="m"><code class="xref lpc lpc-arg docutils literal"><span class="pre">m</span></code></a> has less than <a class="reference internal" href="#efun/m_reallocate.arg.width" title="width"><code class="xref lpc lpc-arg docutils literal"><span class="pre">width</span></code></a> values per key, the extra values in the result are set to 0. If <a class="reference internal" href="#efun/m_reallocate.arg.m" title="m"><code class="xref lpc lpc-arg docutils literal"><span class="pre">m</span></code></a> has more values per key, the extra values are ignored.</p>
+<p>The mapping <a class="reference internal" href="#efun/m_reallocate.arg.m" title="m"><code class="xref lpc lpc-arg docutils literal"><span class="pre">m</span></code></a> is not changed.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">mapping</span> <span class="n">m</span> <span class="o">=</span> <span class="p">([</span> <span class="s">&quot;foo&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">;</span><span class="mi">2</span><span class="p">;</span><span class="mi">3</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="o">:</span><span class="mi">4</span><span class="p">;</span><span class="mi">5</span><span class="p">;</span><span class="mi">6</span> <span class="p">])</span>
+
+<span class="n">m_reallocate</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// returns ([ &quot;foo&quot;:1,       &quot;bar&quot;:4 ])</span>
+<span class="n">m_reallocate</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">// returns ([ &quot;foo&quot;:1;2;3;0, &quot;bar&quot;:4;5;6;0 ])</span>
+</pre></div>
 </div>
 </div>
-<p>Create a new mapping with &lt;width&gt; values per key and fill it
-with the values from mapping &lt;m&gt;. If &lt;m&gt; has less than &lt;width&gt;
-values per key, the extra values in the result are set to 0.
-If &lt;m&gt; has more values per key, the extra values are ignored.</p>
-<p>The mapping &lt;m&gt; is not changed.</p>
-<p>EXAMPLES
-mapping m = ([ &#8220;foo&#8221;:1;2;3, &#8220;bar&#8221;:4;5;6 ])</p>
-<p>m_reallocate(m, 1) &#8211;&gt; returns ([ &#8220;foo&#8221;:1,       &#8220;bar:4 ])
-m_reallocate(m, 4) &#8211;&gt; returns ([ &#8220;foo&#8221;:1;2;3;0, &#8220;bar:4;5;6;0 ])</p>
-<p>Introduced in LDMud 3.2.6, suggested by Tubmud.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="m_allocate.html#lpc.m_allocate" title="m_allocate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_allocate()</span></code>(E)</a>, <a class="reference internal" href="m_values.html#lpc.m_values" title="m_values"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_values()</span></code>(E)</a>, <a class="reference internal" href="widthof.html#lpc.widthof" title="widthof"><code class="xref lpc lpc-efun docutils literal"><span class="pre">widthof()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.6</em>) &#8211; suggested by Tubmud.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="m_allocate.html#lpc.efun.m_allocate" title="m_allocate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_allocate</span></code>(E)</a>, <a class="reference internal" href="m_values.html#lpc.efun.m_values" title="m_values"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_values</span></code>(E)</a>, <a class="reference internal" href="widthof.html#lpc.efun.widthof" title="widthof"><code class="xref lpc lpc-efun docutils literal"><span class="pre">widthof</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -86,8 +89,8 @@ m_reallocate(m, 4) &#8211;&gt; returns ([ &#8220;foo&#8221;:1;2;3;0, &#8220;bar:
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -97,21 +100,25 @@ m_reallocate(m, 4) &#8211;&gt; returns ([ &#8220;foo&#8221;:1;2;3;0, &#8220;bar:
   <ul>
 <li><a class="reference internal" href="#">efun::m_reallocate()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -123,7 +130,7 @@ m_reallocate(m, 4) &#8211;&gt; returns ([ &#8220;foo&#8221;:1;2;3;0, &#8220;bar:
       &copy;good question.
       
       |
-      <a href="../_sources/efun/m_reallocate.txt"
+      <a href="../_sources/efun/m_reallocate.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::garbage_collection() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::garbage_collection() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::get_combine_charset()" href="get_combine_charset.html" />
     <link rel="prev" title="efun::functionlist()" href="functionlist.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,76 +47,69 @@
 <div class="section" id="SYNOPSIS">
 <span id="garbage_collection"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.garbage_collection">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">garbage_collection</code></td><a class="headerlink" href="#lpc.garbage_collection" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.garbage_collection">
+<!--[lpc.efun.garbage_collection]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">garbage_collection</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.garbage_collection" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">garbage_collection</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;filename</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">garbage_collection</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;filename</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">garbage_collection</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;filename</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flag</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">garbage_collection</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+string<em>&nbsp;filename</em>, </td><td id="id3">
+int<em>&nbsp;flag</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<p>Tell the parser to initiate a garbage collection after the
-current execution ended. Depending on the type of memory
-allocator used, this GC is more less thorough.</p>
-<p>If the &#8216;smalloc&#8217; memory allocator is used, the GC produces
-output to a log file. The default name of the log file is
-specified at program start, but can be modified at runtime:</p>
-<blockquote>
-<div><p>With the &lt;filename&gt; argument a log file for the GC output
-different from the default log file can be specified.</p>
-<p>If &lt;flag&gt; is not given or 0, the output from the next
-and only the next GC will go into the log file. If the file
-already exists, the new output will be appended.</p>
-<p>If &lt;flag&gt; is 1, the &lt;filename&gt; will be used as the new
-default log file for all following GCs. If the file already
-exists, it will be overwritten from the start.</p>
-</div></blockquote>
-<p>If a different memory allocator is used, the GC does not produce
-output and the &lt;filename&gt; and &lt;flag&gt; arguments are ignored.</p>
+<p>Tell the parser to initiate a garbage collection after the current execution ended. Depending on the type of memory allocator used, this GC is more less thorough.</p>
+<p>If the &#8216;smalloc&#8217; memory allocator is used, the GC produces output to a log file. The default name of the log file is specified at program start, but can be modified at runtime:</p>
+<ul class="simple">
+<li>With the <a class="reference internal" href="#efun/garbage_collection.arg.filename" title="filename"><code class="xref lpc lpc-arg docutils literal"><span class="pre">filename</span></code></a> argument a log file for the GC output different from the default log file can be specified.</li>
+<li>If <a class="reference internal" href="#efun/garbage_collection.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> is not given or 0, the output from the next and only the next GC will go into the log file. If the file already exists, the new output will be appended.</li>
+<li>If <a class="reference internal" href="#efun/garbage_collection.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> is 1, the <a class="reference internal" href="#efun/garbage_collection.arg.filename" title="filename"><code class="xref lpc lpc-arg docutils literal"><span class="pre">filename</span></code></a> will be used as the new default log file for all following GCs. If the file already exists, it will be overwritten from the start.</li>
+</ul>
+<p>If a different memory allocator is used, the GC does not produce output and the <a class="reference internal" href="#efun/garbage_collection.arg.filename" title="filename"><code class="xref lpc lpc-arg docutils literal"><span class="pre">filename</span></code></a> and <a class="reference internal" href="#efun/garbage_collection.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> arguments are ignored.</p>
 <p>Calling this efun causes a privilege_violation.</p>
-<p>EXAMPLES
-garbage_collection()</p>
-<blockquote>
-<div>[ GC occurs -&gt; logs into default file ]</div></blockquote>
-<dl class="docutils">
-<dt>garbage_collection(&#8220;/GCLOG&#8221;)</dt>
-<dd>[ GC occurs -&gt; logs into &#8220;/GCLOG&#8221; ]</dd>
-<dt>garbage_collection(&#8220;/GCLOG&#8221;, 1)</dt>
-<dd>[ GC occurs -&gt; logs into &#8220;/GCLOG&#8221;, sets default log to &#8220;/GCLOG&#8221; ]</dd>
-</dl>
-<p>garbage_collection(&#8220;/GCLOG&#8221;)
-garbage_collection(&#8220;/GCLOG2&#8221;)</p>
-<blockquote>
-<div>[ GC occurs -&gt; logs into &#8220;/GCLOG&#8221; ]</div></blockquote>
-<p>garbage_collection(&#8220;/GCLOG&#8221;, 1)
-garbage_collection(&#8220;/GCLOG2&#8221;)</p>
-<blockquote>
-<div>[ GC occurs -&gt; logs into &#8220;/GCLOG2&#8221;, sets default log to &#8220;/GCLOG&#8221; ]</div></blockquote>
-<p>LDMud 3.2.9 added the &lt;filename&gt; argument.
-LDMud 3.3.209 added the &lt;flag&gt; argument.
-LDMUd 3.5.0 made the efun privileged.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="rusage.html#lpc.rusage" title="rusage"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rusage()</span></code>(E)</a>, <a class="reference internal" href="../master/valid_write.html#lpc.valid_write" title="valid_write"><code class="xref lpc lpc-master docutils literal"><span class="pre">valid_write</span></code>(M)</a>, <a class="reference internal" href="../master/privilege_violation.html#lpc.privilege_violation" title="privilege_violation"><code class="xref lpc lpc-master docutils literal"><span class="pre">privilege_violation</span></code>(M)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>The following examples demonstrate how the flag affects logging behavior:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">garbage_collection</span><span class="p">()</span>
+<span class="c1">// GC occurs -&gt; logs into default file</span>
+
+<span class="n">garbage_collection</span><span class="p">(</span><span class="s">&quot;/GCLOG&quot;</span><span class="p">)</span>
+<span class="c1">// GC occurs -&gt; logs into &quot;/GCLOG&quot;</span>
+
+<span class="n">garbage_collection</span><span class="p">(</span><span class="s">&quot;/GCLOG&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1">// GC occurs -&gt; logs into &quot;/GCLOG&quot;, sets default log to &quot;/GCLOG&quot;</span>
+
+<span class="n">garbage_collection</span><span class="p">(</span><span class="s">&quot;/GCLOG&quot;</span><span class="p">)</span>
+<span class="n">garbage_collection</span><span class="p">(</span><span class="s">&quot;/GCLOG2&quot;</span><span class="p">)</span>
+<span class="c1">// GC occurs -&gt; logs into &quot;/GCLOG&quot;</span>
+
+<span class="n">garbage_collection</span><span class="p">(</span><span class="s">&quot;/GCLOG&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">garbage_collection</span><span class="p">(</span><span class="s">&quot;/GCLOG2&quot;</span><span class="p">)</span>
+<span class="c1">// GC occurs -&gt; logs into &quot;/GCLOG2&quot;, sets default log to &quot;/GCLOG&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; adds the <a class="reference internal" href="#efun/garbage_collection.arg.filename" title="filename"><code class="xref lpc lpc-arg docutils literal"><span class="pre">filename</span></code></a> argument.</li>
+<li><strong>changed</strong> (<em>3.3.209</em>) &#8211; adds the <a class="reference internal" href="#efun/garbage_collection.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> argument.</li>
+<li><strong>changed</strong> (<em>3.5.0</em>) &#8211; made the efun privileged.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="rusage.html#lpc.efun.rusage" title="rusage"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rusage</span></code>(E)</a>, <a class="reference internal" href="../master/valid_write.html#lpc.master.valid_write" title="valid_write"><code class="xref lpc lpc-master docutils literal"><span class="pre">valid_write</span></code>(M)</a>, <a class="reference internal" href="../master/privilege_violation.html#lpc.master.privilege_violation" title="privilege_violation"><code class="xref lpc lpc-master docutils literal"><span class="pre">privilege_violation</span></code>(M)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -125,8 +120,8 @@ LDMUd 3.5.0 made the efun privileged.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -136,21 +131,25 @@ LDMUd 3.5.0 made the efun privileged.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::garbage_collection()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -162,7 +161,7 @@ LDMUd 3.5.0 made the efun privileged.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/garbage_collection.txt"
+      <a href="../_sources/efun/garbage_collection.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::xml_parse() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::xml_parse() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::abs()" href="abs.html" />
     <link rel="prev" title="efun::xml_generate()" href="xml_generate.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -43,84 +45,74 @@
             
   <div class="section">
 <div class="section" id="SYNOPSIS">
-<span id="xml_parse"></span><h2>SYNOPSIS (EXPERIMENTAL, OPTIONAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<span id="xml_parse"></span><h2>SYNOPSIS (OPTIONAL, EXPERIMENTAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;xml.h&gt;</tr>
-<tr id="lpc.xml_parse">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">xml_parse</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;xml</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.xml_parse" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.xml_parse">
+<!--[lpc.efun.xml_parse]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">xml_parse</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;xml</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.xml_parse" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Parses the given string &lt;xml&gt; as an XML conformant string. The string
-must have only one root tag, subsequent root tags are ignored.</p>
-<p>If the xml string is correct, an array of three elements is
-returned, where the following indices are defined:</p>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p>the below section probably needs to be recast. It&#8217;s trying to use the defines in xml.h to tell us that array index 0 will be a string containing the tagname, index 1 will be a mapping with its attributes, and 2 will be a nested mixed * array of parsed subtags.</p>
-<dl class="last docutils">
-<dt>string XML_TAG_NAME</dt>
+<p>Parses the given string <a class="reference internal" href="#efun/xml_parse.arg.xml" title="xml"><code class="xref lpc lpc-arg docutils literal"><span class="pre">xml</span></code></a> as an XML conformant string. The string must have only one root tag, subsequent root tags are ignored.</p>
+<p>If the xml string is correct, an array of three elements is returned, where the following indices are defined:</p>
+<dl class="docutils">
+<dt>string <code class="xref lpc lpc-macro docutils literal"><span class="pre">XML_TAG_NAME</span></code></dt>
 <dd>The name of the XML tag.</dd>
-<dt>mapping XML_TAG_ATTRIBUTES</dt>
-<dd><p class="first">All attributes given to the XML tag as a mapping where the key
-is the attribute name and the value is its string value.</p>
-<p class="last">If the xml tag does not contain any attributes, this element
-is set 0.</p>
+<dt>mapping <code class="xref lpc lpc-macro docutils literal"><span class="pre">XML_TAG_ATTRIBUTES</span></code></dt>
+<dd><p class="first">All attributes given to the XML tag as a mapping where the key is the attribute name and the value is its string value.</p>
+<p class="last">If the xml tag does not contain any attributes, this element is set 0.</p>
 </dd>
-<dt>mixed * XML_TAG_CONTENTS</dt>
-<dd><p class="first">The contents of this xml tag as an array. This array may
-contain either strings, or arrays of sub-tags again with
-three elements. (see example)</p>
-<p class="last">If the xml tag does not contain anything, the element is
-set to 0.</p>
+<dt>mixed * <code class="xref lpc lpc-macro docutils literal"><span class="pre">XML_TAG_CONTENTS</span></code></dt>
+<dd><p class="first">The contents of this xml tag as an array. This array may contain either strings, or arrays of sub-tags again with three elements. (see example)</p>
+<p class="last">If the xml tag does not contain anything, the element is set to 0.</p>
 </dd>
 </dl>
-</div>
-<p>If the XML string is not well formed, or there is not enough memory to
-parse the whole XML structure into the array an error is raised.</p>
-<p>The function is available only if the driver is compiled with Iksemel
-support. In that case, __XML_DOM__ is defined.</p>
+<p>If the XML string is not well formed, or there is not enough memory to parse the whole XML structure into the array an error is raised.</p>
+<p>The function is available only if the driver is compiled with Iksemel support. In that case, <a class="reference internal" href="../topics/predefined.html#lpc.macro.__XML_DOM__" title="__XML_DOM__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__XML_DOM__</span></code></a> is defined.</p>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">//Parse a simple self-terminating tag</span>
-<span class="n">xml_parse</span><span class="p">(</span><span class="s">&quot;&lt;abc/&gt;&quot;</span><span class="p">)</span>           <span class="o">-&gt;</span> <span class="p">({</span> <span class="s">&quot;abc&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">})</span>
-
-<span class="c1">//Parse a self-terminating tag with a property::</span>
-<span class="n">xml_parse</span><span class="p">(</span><span class="s">&quot;&lt;abc xyz=&quot;</span><span class="n">cde</span><span class="s">&quot;/&gt;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">({</span> <span class="s">&quot;abc&quot;</span><span class="p">,</span> <span class="p">([</span> <span class="s">&quot;xyz&quot;</span> <span class="o">:</span> <span class="s">&quot;cde&quot;</span> <span class="p">]),</span> <span class="mi">0</span> <span class="p">})</span>
-
-<span class="c1">//Parse a small nested data structure::</span>
-<span class="n">xml_parse</span><span class="p">(</span><span class="s">&quot;&lt;book language=&quot;</span><span class="n">common</span><span class="s">&quot;&gt;&quot;</span> <span class="o">+</span>
+<p>Parse a simple self-terminating tag:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">xml_parse</span><span class="p">(</span><span class="s">&quot;&lt;abc/&gt;&quot;</span><span class="p">)</span>           <span class="c1">// ({ &quot;abc&quot;, 0, 0 })</span>
+</pre></div>
+</div>
+<p>Parse a self-terminating tag with a property:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">xml_parse</span><span class="p">(</span><span class="s">&quot;&lt;abc xyz=&quot;</span><span class="n">cde</span><span class="s">&quot;/&gt;&quot;</span><span class="p">)</span> <span class="c1">// ({ &quot;abc&quot;, ([ &quot;xyz&quot; : &quot;cde&quot; ]), 0 })</span>
+</pre></div>
+</div>
+<p>Parse a small nested data structure:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">xml_parse</span><span class="p">(</span><span class="s">&quot;&lt;book language=&quot;</span><span class="n">common</span><span class="s">&quot;&gt;&quot;</span> <span class="o">+</span>
           <span class="s">&quot;    &lt;title&gt;This is the title&lt;/title&gt;&quot;</span> <span class="o">+</span>
           <span class="s">&quot;    &lt;chapter&gt;This is a chapter&lt;/chapter&gt;&quot;</span> <span class="o">+</span>
           <span class="s">&quot;    &lt;chapter&gt;We want &lt;b&gt;bold&lt;/b&gt; here.&lt;/chapter&gt;&quot;</span> <span class="o">+</span>
-          <span class="s">&quot;&lt;/book&gt;&quot;</span><span class="p">)</span>
-
-    <span class="o">-&gt;</span> <span class="p">({</span> <span class="s">&quot;book&quot;</span>
-        <span class="p">,</span> <span class="p">([</span> <span class="s">&quot;language&quot;</span> <span class="o">:</span> <span class="s">&quot;common&quot;</span> <span class="p">])</span>
-        <span class="p">,</span> <span class="p">({</span> <span class="p">({</span> <span class="s">&quot;title&quot;</span>
-              <span class="p">,</span> <span class="mi">0</span>
-              <span class="p">,</span> <span class="p">({</span> <span class="s">&quot;This is a title&quot;</span> <span class="p">})</span>
-             <span class="p">})</span>
-           <span class="p">,</span> <span class="p">({</span> <span class="s">&quot;chapter&quot;</span>
-              <span class="p">,</span> <span class="mi">0</span>
-              <span class="p">,</span> <span class="p">({</span> <span class="s">&quot;This is a chapter&quot;</span> <span class="p">})</span>
-             <span class="p">})</span>
-           <span class="p">,</span> <span class="p">({</span> <span class="s">&quot;chapter&quot;</span>
-              <span class="p">,</span> <span class="mi">0</span>
-              <span class="p">,</span> <span class="p">({</span> <span class="s">&quot;We want &quot;</span>
-                 <span class="p">,</span> <span class="p">({</span> <span class="s">&quot;b&quot;</span>
-                    <span class="p">,</span> <span class="mi">0</span>
-                    <span class="p">,</span> <span class="p">({</span> <span class="s">&quot;bold&quot;</span> <span class="p">})</span>
-                   <span class="p">})</span>
-                 <span class="p">,</span> <span class="s">&quot;here&quot;</span>
-                <span class="p">})</span>
-             <span class="p">})</span>
-          <span class="p">})</span>
-       <span class="p">})</span>
+          <span class="s">&quot;&lt;/book&gt;&quot;</span><span class="p">);</span>
+<span class="cm">/*</span>
+<span class="cm">   ({ &quot;book&quot;</span>
+<span class="cm">    , ([ &quot;language&quot; : &quot;common&quot; ])</span>
+<span class="cm">    , ({ ({ &quot;title&quot;</span>
+<span class="cm">          , 0</span>
+<span class="cm">          , ({ &quot;This is a title&quot; })</span>
+<span class="cm">         })</span>
+<span class="cm">       , ({ &quot;chapter&quot;</span>
+<span class="cm">          , 0</span>
+<span class="cm">          , ({ &quot;This is a chapter&quot; })</span>
+<span class="cm">         })</span>
+<span class="cm">       , ({ &quot;chapter&quot;</span>
+<span class="cm">          , 0</span>
+<span class="cm">          , ({ &quot;We want &quot;</span>
+<span class="cm">             , ({ &quot;b&quot;</span>
+<span class="cm">                , 0</span>
+<span class="cm">                , ({ &quot;bold&quot; })</span>
+<span class="cm">               })</span>
+<span class="cm">             , &quot;here&quot;</span>
+<span class="cm">            })</span>
+<span class="cm">         })</span>
+<span class="cm">      })</span>
+<span class="cm">   })</span>
+<span class="cm">*/</span>
 </pre></div>
 </div>
 </div>
@@ -132,7 +124,7 @@ support. In that case, __XML_DOM__ is defined.</p>
 </table>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="xml_generate.html#lpc.xml_generate" title="xml_generate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">xml_generate()</span></code>(E)</a></p>
+<p><a class="reference internal" href="xml_generate.html#lpc.efun.xml_generate" title="xml_generate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">xml_generate</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -146,8 +138,8 @@ support. In that case, __XML_DOM__ is defined.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -156,7 +148,7 @@ support. In that case, __XML_DOM__ is defined.</p>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">efun::xml_parse()</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (EXPERIMENTAL, OPTIONAL)</a></li>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (OPTIONAL, EXPERIMENTAL)</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
 <li><a class="reference internal" href="#USAGE">USAGE</a></li>
 <li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
@@ -167,15 +159,14 @@ support. In that case, __XML_DOM__ is defined.</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -187,7 +178,7 @@ support. In that case, __XML_DOM__ is defined.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/xml_parse.txt"
+      <a href="../_sources/efun/xml_parse.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

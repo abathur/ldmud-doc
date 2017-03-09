@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::object_info() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::object_info() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::object_name()" href="object_name.html" />
     <link rel="prev" title="efun::notify_fail()" href="notify_fail.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,132 +49,115 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;objectinfo.h&gt;</tr>
-<tr id="lpc.object_info">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">object_info</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;what</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.object_info" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.object_info">
+<!--[lpc.efun.object_info]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">object_info</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;ob</em>, </td><td id="id2">
+int<em>&nbsp;what</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.object_info" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">object_info</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;what</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;index</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">object_info</code></td><td><span class="sig-paren">(</span></td><td id="id3">
+object<em>&nbsp;ob</em>, </td><td id="id4">
+int<em>&nbsp;what</em>, </td><td id="id5">
+int<em>&nbsp;index</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Returns some internal information about object &lt;ob&gt;, collected
-in an array. Argument &lt;what&gt; determines which information is
-returned.</p>
-<p>The result is usually an array. However, if &lt;index&gt; is specified,
-the result is the value from position &lt;index&gt; of the array which
-would have been returned normally.</p>
-<p>The possible values of &lt;what&gt;, and the indices of the returned
-arrays are defined in the include file &lt;objectinfo.h&gt;, and may
-change in future versions of the driver!</p>
-<p>&lt;what&gt; == OINFO_BASIC:</p>
+<p>Returns some internal information about object <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>, collected in an array. Argument <a class="reference internal" href="#efun/object_info.arg.what" title="what"><code class="xref lpc lpc-arg docutils literal"><span class="pre">what</span></code></a> determines which information is returned.</p>
+<p>The result is usually an array. However, if <a class="reference internal" href="#efun/object_info.arg.index" title="index"><code class="xref lpc lpc-arg docutils literal"><span class="pre">index</span></code></a> is specified, the result is the value from position <a class="reference internal" href="#efun/object_info.arg.index" title="index"><code class="xref lpc lpc-arg docutils literal"><span class="pre">index</span></code></a> of the array which would have been returned normally.</p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">The possible values of <a class="reference internal" href="#efun/object_info.arg.what" title="what"><code class="xref lpc lpc-arg docutils literal"><span class="pre">what</span></code></a>, and the indices of the returned arrays are defined in the include file &lt;objectinfo.h&gt;, and may change in future versions of the driver!</p>
+</div>
+<p><a class="reference internal" href="#efun/object_info.arg.what" title="what"><code class="xref lpc lpc-arg docutils literal"><span class="pre">what</span></code></a> == <code class="xref lpc lpc-macro docutils literal"><span class="pre">OINFO_BASIC</span></code>:</p>
 <blockquote>
-<div><p>This call returns basic information about &lt;ob&gt;:</p>
-<p>int [OIB_HEART_BEAT]:       1 if &lt;ob&gt; has a heart_beat, 0 else.
-int [OIB_IS_WIZARD]:        1 if &lt;ob&gt; has the wizard flag set,</p>
-<blockquote>
-<div><blockquote>
-<div>0 else.</div></blockquote>
-<p>This entry is always 0 when set_is_wizard() is not available.</p>
+<div><p>This call returns basic information about <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>:</p>
+<p>int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_HEART_BEAT</span></code>]:       1 if <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> has a heart_beat, 0 else.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_IS_WIZARD</span></code>]:        1 if <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> has the wizard flag set, 0 else. This entry is always 0 when <a class="reference internal" href="set_is_wizard.html#lpc.efun.set_is_wizard" title="set_is_wizard"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_is_wizard</span></code>(E)</a> is not available.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_ENABLE_COMMANDS</span></code>]:  1 if <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> can give commands, 0 else.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_CLONE</span></code>]:            1 if <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is a clone, 0 else.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_DESTRUCTED</span></code>]:       1 if <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is destructed, 0 else.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_SWAPPED</span></code>]:          1 if <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is swapped, 0 else.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_ONCE_INTERACTIVE</span></code>]: 1 if <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> was once interactive, 0 else.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_RESET_STATE</span></code>]:      1 if <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is (still) reset, 0 else.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_WILL_CLEAN_UP</span></code>]:    1 if <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> will call <a class="reference internal" href="../applied/clean_up.html#lpc.applied.clean_up" title="clean_up"><code class="xref lpc lpc-applied docutils literal"><span class="pre">clean_up</span></code>(A)</a>, 0 else.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_LAMBDA_REFERENCED</span></code>]: 1 if <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> has lambdas, 0 else.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_SHADOW</span></code>]:           1 if <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> has a shadow structure tied to it, 0 if not.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_REPLACED</span></code>]:         1 if the program for <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> was replaced, 0 else.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_NEXT_RESET</span></code>]:   time of the next reset
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_TIME_OF_REF</span></code>]:  time of the last call to <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_NEXT_CLEANUP</span></code>]: time of the next data cleanup
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_REF</span></code>]:          number of references to <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_GIGATICKS</span></code>] and [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_TICKS</span></code>]: together, these numbers give the accumulated evaluation cost spend in <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_SWAP_NUM</span></code>]:     the swap number for <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob's</span></code></a> program, or -1 if not swapped.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_PROG_SWAPPED</span></code>]: 1 if <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>&#8216;s program is swapped, 0 else.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_VAR_SWAPPED</span></code>]:  1 if <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>&#8216;s variables are swapped, 0 else.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_NAME</span></code>]:         <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>&#8216;s object name.
+int [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_LOAD_NAME</span></code>]:    <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>&#8216;s load name.
+object [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_NEXT_ALL</span></code>]:  next object in the object list.
+object [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_PREV_ALL</span></code>]:  previous object in the object list.</p>
 </div></blockquote>
-<p>int [OIB_ENABLE_COMMANDS]:  1 if &lt;ob&gt; can give commands, 0 else.
-int [OIB_CLONE]:            1 if &lt;ob&gt; is a clone, 0 else.
-int [OIB_DESTRUCTED]:       1 if &lt;ob&gt; is destructed, 0 else.
-int [OIB_SWAPPED]:          1 if &lt;ob&gt; is swapped, 0 else.
-int [OIB_ONCE_INTERACTIVE]: 1 if &lt;ob&gt; was once interactive, 0 else.
-int [OIB_RESET_STATE]:      1 if &lt;ob&gt; is (still) reset, 0 else.
-int [OIB_WILL_CLEAN_UP]:    1 if &lt;ob&gt; will call clean_up(), 0 else.
-int [OIB_LAMBDA_REFERENCED]: 1 if &lt;ob&gt; has lambdas, 0 else.
-int [OIB_SHADOW]:           1 if &lt;ob&gt; has a shadow structure tied</p>
+<p><a class="reference internal" href="#efun/object_info.arg.what" title="what"><code class="xref lpc lpc-arg docutils literal"><span class="pre">what</span></code></a> == <code class="xref lpc lpc-macro docutils literal"><span class="pre">OINFO_POSITION</span></code>:</p>
 <blockquote>
-<div>to it, 0 if not.</div></blockquote>
-<dl class="docutils">
-<dt>int [OIB_REPLACED]:         1 if the program for &lt;ob&gt; was replaced,</dt>
-<dd>0 else.</dd>
-</dl>
-<p>int [OIB_NEXT_RESET]:   time of the next reset
-int [OIB_TIME_OF_REF]:  time of the last call to &lt;ob&gt;
-int [OIB_NEXT_CLEANUP]: time of the next data cleanup
-int [OIB_REF]:          number of references to &lt;ob&gt;
-int [OIB_GIGATICKS] and [OIB_TICKS]: together, these numbers</p>
-<blockquote>
-<div>give the accumulated evaluation cost spend in &lt;ob&gt;</div></blockquote>
-<dl class="docutils">
-<dt>int [OIB_SWAP_NUM]:     the swap number for &lt;ob&gt;s program,</dt>
-<dd>or -1 if not swapped.</dd>
-</dl>
-<p>int [OIB_PROG_SWAPPED]: 1 if &lt;ob&gt;&#8217;s program is swapped, 0 else.
-int [OIB_VAR_SWAPPED]:  1 if &lt;ob&gt;&#8217;s variables are swapped, 0 else.
-int [OIB_NAME]:         &lt;ob&gt;&#8217;s object name.
-int [OIB_LOAD_NAME]:    &lt;ob&gt;&#8217;s load name.
-object [OIB_NEXT_ALL]:  next object in the object list.
-object [OIB_PREV_ALL]:  previous object in the object list.</p>
-</div></blockquote>
-<p>&lt;what&gt; == OINFO_POSITION:</p>
-<blockquote>
-<div><p>This call returns information about &lt;ob&gt;&#8217;s position in the
+<div><p>This call returns information about <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>&#8216;s position in the
 global list of objects:</p>
-<p>object [OIP_NEXT]: next object in the object list.
-object [OIP_PREV]: previous object in the object list.
-int    [OIP_POS]:  position of &lt;ob&gt; in list, counting from 0 up.</p>
+<p>object [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIP_NEXT</span></code>]: next object in the object list.
+object [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIP_PREV</span></code>]: previous object in the object list.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIP_POS</span></code>]:  position of <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> in list, counting from 0 up.</p>
 <p>This call can be expensive in computing time.</p>
 </div></blockquote>
-<p>&lt;what&gt; == OINFO_MEMORY:</p>
+<p><a class="reference internal" href="#efun/object_info.arg.what" title="what"><code class="xref lpc lpc-arg docutils literal"><span class="pre">what</span></code></a> == <code class="xref lpc lpc-macro docutils literal"><span class="pre">OINFO_MEMORY</span></code>:</p>
 <blockquote>
-<div><p>This call returns information about the program &lt;ob&gt; uses:</p>
-<p>int    [OIM_REF]:            number of references to the program.
-string [OIM_NAME]:           name of program.
-int    [OIM_PROG_SIZE]:      size of the program.
-int    [OIM_NUM_FUNCTIONS]:  number of functions in the program.
-int    [OIM_SIZE_FUNCTIONS]: size needed for the function structs.
-int    [OIM_NUM_VARIABLES]:  number of variables in the program.
-int    [OIM_SIZE_VARIABLES]: size needed for the variable structs.
-int    [OIM_NUM_STRINGS]:    number of strings in the program.
-int    [OIM_SIZE_STRINGS]:   size needed for the string pointers.
-int    [OIM_SIZE_STRINGS_DATA]: size needed for the string data,</p>
-<blockquote>
-<div>scaled down according to the extend of
-data sharing.</div></blockquote>
-<dl class="docutils">
-<dt>int    [OIM_SIZE_STRINGS_TOTAL]: unmodified size needed for the</dt>
-<dd>string data.</dd>
-</dl>
-<p>int    [OIM_NUM_INCLUDES]:   number of included files in the program.
-int    [OIM_NUM_INHERITED]:  number of inherited programs.
-int    [OIM_SIZE_INHERITED]: size needed for the inherit structs.
-int    [OIM_TOTAL_SIZE]:     total size of the program.
-int    [OIM_DATA_SIZE]:      total size of the values held in the</p>
-<blockquote>
-<div>object&#8217;s variables, scaled down
-according to the extend of data
-sharing.</div></blockquote>
-<dl class="docutils">
-<dt>int    [OIM_DATA_SIZE_TOTAL]: unmodified total size of the values</dt>
-<dd>held in the object&#8217;s variables</dd>
-</dl>
-<p>int    [OIM_NO_INHERIT]:     1 if the program can&#8217;t be inherited.
-int    [OIM_NO_CLONE]:       1 if the program/blueprint can&#8217;t be</p>
-<blockquote>
-<div>cloned.</div></blockquote>
-<dl class="docutils">
-<dt>int    [OIM_NO_SHADOW]:      1 if the program&#8217;s functions can&#8217;t be</dt>
-<dd>shadowed.</dd>
-<dt>int    [OIM_SHARE_VARIABLES]:  1 if clones of this program share</dt>
-<dd>their initial variable values with
-the blueprint.</dd>
-</dl>
-<p>This call swaps in the program if necessary.
-Note that the OIM_SIZE_xxx entries only give the size spent on
-the structures and pointers, not the size of the variable data,
-function code, and strings themselves.</p>
+<div><p>This call returns information about the program <a class="reference internal" href="#efun/object_info.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> uses:</p>
+<p>int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_REF</span></code>]:            number of references to the program.
+string [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_NAME</span></code>]:           name of program.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_PROG_SIZE</span></code>]:      size of the program.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_NUM_FUNCTIONS</span></code>]:  number of functions in the program.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_SIZE_FUNCTIONS</span></code>]: size needed for the function structs.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_NUM_VARIABLES</span></code>]:  number of variables in the program.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_SIZE_VARIABLES</span></code>]: size needed for the variable structs.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_NUM_STRINGS</span></code>]:    number of strings in the program.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_SIZE_STRINGS</span></code>]:   size needed for the string pointers.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_SIZE_STRINGS_DATA</span></code>]: size needed for the string data, scaled down according to the extend of data sharing.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_SIZE_STRINGS_TOTAL</span></code>]: unmodified size needed for the string data.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_NUM_INCLUDES</span></code>]:   number of included files in the program.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_NUM_INHERITED</span></code>]:  number of inherited programs.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_SIZE_INHERITED</span></code>]: size needed for the inherit structs.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_TOTAL_SIZE</span></code>]:     total size of the program.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_DATA_SIZE</span></code>]:      total size of the values held in the object&#8217;s variables, scaled down according to the extend of data sharing.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_DATA_SIZE_TOTAL</span></code>]: unmodified total size of the values held in the object&#8217;s variables
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_NO_INHERIT</span></code>]:     1 if the program can&#8217;t be inherited.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_NO_CLONE</span></code>]:       1 if the program/blueprint can&#8217;t be cloned.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_NO_SHADOW</span></code>]:      1 if the program&#8217;s functions can&#8217;t be shadowed.
+int    [<code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_SHARE_VARIABLES</span></code>]:  1 if clones of this program share their initial variable values with the blueprint.</p>
+<p>This call swaps in the program if necessary.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_SIZE_xxx</span></code> entries only give the size spent on the structures and pointers, not the size of the variable data, function code, and strings themselves.</p>
+</div>
 </div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.6</em>)</li>
+<li><strong>changed</strong> (<em>3.2.7</em>) &#8211; <ul class="simple">
+<li>new basic result <code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_REPLACED</span></code>.</li>
+<li>basic result <code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_IS_WIZARD</span></code> is always 0 if <a class="reference internal" href="set_is_wizard.html#lpc.efun.set_is_wizard" title="set_is_wizard"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_is_wizard</span></code>(E)</a> is not available.</li>
+<li>basic result <code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_APPROVED</span></code> is gone.</li>
+</ul>
+</li>
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; added <code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_DATA_SIZE</span></code> to the result of <code class="xref lpc lpc-macro docutils literal"><span class="pre">OINFO_MEMORY</span></code>.</li>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added the index mechanism, <code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_NUM_INCLUDES</span></code>, <code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_NO_INHERIT</span></code>, <code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_NO_SHADOW</span></code>, <code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_NO_CLONE</span></code>, <code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_SIZE_STRINGS_DATA</span></code>, <code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_SIZE_STRINGS_TOTAL</span></code>, and <code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_DATA_SIZE_TOTAL</span></code> to the result of <code class="xref lpc lpc-macro docutils literal"><span class="pre">OINFO_MEMORY</span></code>.</li>
+<li><strong>changed</strong> (<em>3.3.378</em>) &#8211; added the <code class="xref lpc lpc-macro docutils literal"><span class="pre">OIM_SHARE_VARIABLES</span></code> to the result of <code class="xref lpc lpc-macro docutils literal"><span class="pre">OINFO_MEMORY</span></code>.</li>
+<li><strong>changed</strong> (<em>3.3.654</em>) &#8211; added the <code class="xref lpc lpc-macro docutils literal"><span class="pre">OIB_NEXT_CLEANUP</span></code> to the result of <code class="xref lpc lpc-macro docutils literal"><span class="pre">OINFO_BASIC</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="debug_info.html#lpc.efun.debug_info" title="debug_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">debug_info</span></code>(E)</a></p>
+</div>
 </div>
 </div>
 
@@ -185,8 +170,8 @@ function code, and strings themselves.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -196,21 +181,24 @@ function code, and strings themselves.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::object_info()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -222,7 +210,7 @@ function code, and strings themselves.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/object_info.txt"
+      <a href="../_sources/efun/object_info.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

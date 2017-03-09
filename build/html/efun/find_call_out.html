@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::find_call_out() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::find_call_out() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::find_input_to()" href="find_input_to.html" />
     <link rel="prev" title="efun::filter_objects()" href="filter_objects.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,31 +47,29 @@
 <div class="section" id="SYNOPSIS">
 <span id="find_call_out"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.find_call_out">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">find_call_out</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;func</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.find_call_out" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.find_call_out">
+<!--[lpc.efun.find_call_out]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">find_call_out</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;func</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.find_call_out" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">find_call_out</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;func</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">find_call_out</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+closure<em>&nbsp;func</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Find the first call-out due to be executed for function &lt;func&gt;
-in the current object resp. for the closure &lt;func&gt;, and return the
-time left. If no call-out is found return -1.</p>
+<p>Find the first call-out due to be executed for function <a class="reference internal" href="#efun/find_call_out.arg.func" title="func"><code class="xref lpc lpc-arg docutils literal"><span class="pre">func</span></code></a> in the current object resp. for the closure <a class="reference internal" href="#efun/find_call_out.arg.func" title="func"><code class="xref lpc lpc-arg docutils literal"><span class="pre">func</span></code></a>, and return the time left. If no call-out is found return -1.</p>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><strong>chaned</strong> (<em>3.2.1&#64;45</em>) &#8211; can now find a call_out to a closure</li>
+<ul>
+<li><strong>changed</strong> (<em>3.2.1&#64;45</em>) &#8211; can now find a call_out to a closure</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="call_out.html#lpc.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out()</span></code>(E)</a>, <a class="reference internal" href="remove_call_out.html#lpc.remove_call_out" title="remove_call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">remove_call_out()</span></code>(E)</a>, <a class="reference internal" href="call_out_info.html#lpc.call_out_info" title="call_out_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out_info()</span></code>(E)</a></p>
+<p><a class="reference internal" href="call_out.html#lpc.efun.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out</span></code>(E)</a>, <a class="reference internal" href="remove_call_out.html#lpc.efun.remove_call_out" title="remove_call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">remove_call_out</span></code>(E)</a>, <a class="reference internal" href="call_out_info.html#lpc.efun.call_out_info" title="call_out_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out_info</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -83,8 +83,8 @@ time left. If no call-out is found return -1.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -104,15 +104,14 @@ time left. If no call-out is found return -1.</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -124,7 +123,7 @@ time left. If no call-out is found return -1.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/find_call_out.txt"
+      <a href="../_sources/efun/find_call_out.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

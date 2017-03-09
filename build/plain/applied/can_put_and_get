@@ -4,7 +4,7 @@ SYNOPSIS (DEPRECATED)
 
 DESCRIPTION
 ===========
-   In compat mode, this function is used by transfer()(E).
+   In compat mode, this function is used by transfer(E).
 
    Define this function in objects that are neither living nor rooms if you 
    want to make it possible to put something into current object.
@@ -14,8 +14,8 @@ DESCRIPTION
 
 HISTORY
 =======
-   - deprecated (3.3) -- because transfer()(E) has been deprecated.
+   - deprecated (3.3) -- because transfer(E) has been deprecated.
 
 SEE ALSO
 ========
-   transfer()(E), prevent_insert(A)
+   transfer(E), prevent_insert(A)

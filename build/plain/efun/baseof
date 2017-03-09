@@ -4,10 +4,23 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Test if the type of struct <b> is a base of struct <s> (the values of <b> 
-   and <s> are irrelevant). Results are:
+   Test if the type of struct b(E) is a base of struct s(E) (the values of 
+   b(E) and s(E) are irrelevant). Results are:
 
-      0: <b> is not a base of <s>, nor is <b> of equal type as <s>
-         (though <s> might be a base of <b>).
+   0
+      b(E) is not a base of s(E), nor is b(E) of equal type as s(E) (though 
+      s(E) might be a base of b(E)).
 
-      1: <b> is a true base of <s> 2: <b> and <s> are the same struct type
+   1
+      b(E) is a true base of s(E)
+
+   2
+      b(E) and s(E) are the same struct type
+
+HISTORY
+=======
+   - introduced (3.3.344)
+
+SEE ALSO
+========
+   structp(E), struct

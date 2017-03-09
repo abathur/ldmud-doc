@@ -6,8 +6,8 @@ SYNOPSIS
 DESCRIPTION
 ===========
    Arguments: 
-      - value (closure(LPC)) -- int <closure>(int ref, object ob)
-      - value (string(LPC)) -- void|int <name>(int ref)
+      - value (closure) -- int <closure>(int ref, object ob) 
+      - value (string) -- void|int <name>(int ref) 
 
    Optional hook to clean up an object. Hook setting can be any closure, or 
    the name of the function to call in the object.
@@ -21,8 +21,6 @@ DESCRIPTION
 
    If the hook is the name of an lfun, it is called in the object with its 
    refcount as argument.
-
-   Todo: better markup for the below literal block?
 
    In both calls, the refcount is constructed as:
 
@@ -40,4 +38,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   `hooks`
+   hook(H)

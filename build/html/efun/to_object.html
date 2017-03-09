@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::to_object() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::to_object() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::to_string()" href="to_string.html" />
     <link rel="prev" title="efun::to_int()" href="to_int.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,54 +47,41 @@
 <div class="section" id="SYNOPSIS">
 <span id="to_object"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.to_object">
-<td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">to_object</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;arg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.to_object" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.to_object">
+<!--[lpc.efun.to_object]--><td>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">to_object</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;arg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.to_object" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">to_object</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;arg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">to_object</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+closure<em>&nbsp;arg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">to_object</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;arg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">to_object</code></td><td><span class="sig-paren">(</span></td><td id="id3">
+object<em>&nbsp;arg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
 <code class="descname">(object)&lt;value&gt;</code></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<p>DESCRIPTION
-The argument is converted into an object, if possible.</p>
-<p>For strings, the object with a matching object_name() is
-returned, or 0 if there is none, as find_object() does.</p>
-<p>For (bound!) closures, the object holding the closure is
-returned (for &#8216;alien lfun closures&#8217; this is the object which
-created the closure, not the object the lfun is defined in).</p>
+<p>The argument is converted into an object, if possible.</p>
+<p>For strings, the object with a matching <a class="reference internal" href="object_name.html#lpc.efun.object_name" title="object_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">object_name</span></code>(E)</a> is returned, or 0 if there is none, as <a class="reference internal" href="find_object.html#lpc.efun.find_object" title="find_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">find_object</span></code>(E)</a> does.</p>
+<p>For (bound!) closures, the object holding the closure is returned (for &#8216;alien lfun closures&#8217; this is the object which created the closure, not the object the lfun is defined in).</p>
 <p>Objects and the number 0 return themselves.</p>
-<p>BUGS
-The cast notation only works if the precise type of &lt;value&gt;
-is known at compile-time. This will not be fixed - use the
-function form instead.</p>
-<blockquote>
-<div><blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="find_object.html#lpc.find_object" title="find_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">find_object()</span></code>(E)</a>, <a class="reference internal" href="to_array.html#lpc.to_array" title="to_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_array()</span></code>(E)</a>, <a class="reference internal" href="to_int.html#lpc.to_int" title="to_int"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_int()</span></code>(E)</a>, <a class="reference internal" href="to_string.html#lpc.to_string" title="to_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_string()</span></code>(E)</a>,</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><a class="reference internal" href="get_type_info.html#lpc.get_type_info" title="get_type_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_type_info()</span></code>(E)</a></p>
-</div></blockquote>
+<div class="admonition limit">
+<p class="first admonition-title">Limit</p>
+<p class="last">The cast notation only works if the precise type of &lt;value&gt; is known at compile-time. This will not be fixed&#8211;use the function form instead.</p>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="find_object.html#lpc.efun.find_object" title="find_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">find_object</span></code>(E)</a>, <a class="reference internal" href="to_array.html#lpc.efun.to_array" title="to_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_array</span></code>(E)</a>, <a class="reference internal" href="to_int.html#lpc.efun.to_int" title="to_int"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_int</span></code>(E)</a>, <a class="reference internal" href="to_string.html#lpc.efun.to_string" title="to_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_string</span></code>(E)</a>, <a class="reference internal" href="get_type_info.html#lpc.efun.get_type_info" title="get_type_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_type_info</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -103,8 +92,8 @@ function form instead.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -114,21 +103,23 @@ function form instead.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::to_object()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -140,7 +131,7 @@ function form instead.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/to_object.txt"
+      <a href="../_sources/efun/to_object.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

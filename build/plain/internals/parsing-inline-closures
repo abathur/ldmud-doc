@@ -1,13 +1,8 @@
 META
 ====
    What happens when an inline closure is parsed
-
 DESCRIPTION
 ===========
-   Todo: initially fairly conservative with what I've converted to an inline 
-   literal in case some of these should end up being xrefs of some sort; in 
-   any case, much more inline markup could be used here.
-
    This short document tries to outline how scopes and variables are handled 
    when parsing inline closures.
 
@@ -39,9 +34,6 @@ DESCRIPTION
         < 0
       - implicit context variables: .u.local.context >= 0 and .u.local.num
         >= 0
-
-   Todo: presentation of above works but isn't terribly faithful to what 
-   original doc intends I don't think
 
    Each local variable will have an index on the stack relative to the stack 
    frame of the function or inline closure, and each context variable will 

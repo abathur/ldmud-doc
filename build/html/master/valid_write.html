@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>master::valid_write() &mdash; LDMud UNRELEASED documentation</title>
+    <title>master::valid_write() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,15 +18,16 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="master" href="master.html" />
-    <link rel="next" title="obsolete" href="../obsolete/obsolete.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LPC syntax" href="../syntax/overview.html" />
     <link rel="prev" title="master::valid_trace()" href="valid_trace.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,30 +47,20 @@
 <div class="section" id="SYNOPSIS">
 <span id="valid_write"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.valid_write">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">valid_write</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;path</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;uid</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;func</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.valid_write" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.master.valid_write">
+<!--[lpc.master.valid_write]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">valid_write</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;path</em>, </td><td id="id2">
+string<em>&nbsp;uid</em>, </td><td id="id3">
+string<em>&nbsp;func</em>, </td><td id="id4">
+object<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.master.valid_write" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>This function is called to check if the object ob with the
-user-id uid has write permissions to the file given by path
-for the operation named by func. It should return 0 if
-permission is denied, or the normalized path if permission is
-granted. You can also return 1 to indicate that the path can
-be used unchanged.</p>
-<p>The returned pathname must not contain &#8221;..&#8221;, a leading /
-will be stripped by the interpreter. By default, the returned
-path must also not contain space characters; if the driver
-is instructed to allow them, the preprocessor macro
-__FILENAME_SPACES__ is defined.</p>
-<p>Func denotes the efun call or other operation that caused
-valid_write() to be called:</p>
+<p>This function is called to check if the object <a class="reference internal" href="#master/valid_write.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> with the user-id <a class="reference internal" href="#master/valid_write.arg.uid" title="uid"><code class="xref lpc lpc-arg docutils literal"><span class="pre">uid</span></code></a> has write permissions to the file given by <a class="reference internal" href="#master/valid_write.arg.path" title="path"><code class="xref lpc lpc-arg docutils literal"><span class="pre">path</span></code></a> for the operation named by <a class="reference internal" href="#master/valid_write.arg.func" title="func"><code class="xref lpc lpc-arg docutils literal"><span class="pre">func</span></code></a>. It should return 0 if permission is denied, or the normalized path if permission is granted. You can also return 1 to indicate that the <a class="reference internal" href="#master/valid_write.arg.path" title="path"><code class="xref lpc lpc-arg docutils literal"><span class="pre">path</span></code></a> can be used unchanged.</p>
+<p>The returned pathname must not contain &#8221;..&#8221;, a leading / will be stripped by the interpreter. By default, the returned path must also not contain space characters; if the driver is instructed to allow them, the preprocessor <a class="reference internal" href="../topics/predefined.html#lpc.macro.__FILENAME_SPACES__" title="__FILENAME_SPACES__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__FILENAME_SPACES__</span></code></a> is defined.</p>
+<p><a class="reference internal" href="#master/valid_write.arg.func" title="func"><code class="xref lpc lpc-arg docutils literal"><span class="pre">func</span></code></a> denotes the efun call or other operation that caused <a class="reference internal" href="#lpc.master.valid_write" title="valid_write"><code class="xref lpc lpc-master docutils literal"><span class="pre">valid_write</span></code>(M)</a> to be called:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="27%" />
@@ -84,65 +76,62 @@ valid_write() to be called:</p>
 <td>for the target file or directory name</td>
 </tr>
 <tr class="row-odd"><td>rename_from</td>
-<td>efun rename(), for the original name</td>
+<td><a class="reference internal" href="../efun/rename.html#lpc.efun.rename" title="rename"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rename</span></code>(E)</a>, for the original name</td>
 </tr>
 <tr class="row-even"><td>rename_to</td>
-<td>efun rename(), for the new name</td>
+<td><a class="reference internal" href="../efun/rename.html#lpc.efun.rename" title="rename"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rename</span></code>(E)</a>, for the new name</td>
 </tr>
 <tr class="row-odd"><td>ed_start</td>
 <td>whenever the builtin ed tries to write to a file</td>
 </tr>
 <tr class="row-even"><td>garbage_collection</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>mkdir</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td>memdump</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>objdump</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td>opcdump</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>remove_file</td>
-<td>efun rm()</td>
+<td><a class="reference internal" href="../efun/rm.html#lpc.efun.rm" title="rm"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rm</span></code>(E)</a></td>
 </tr>
 <tr class="row-even"><td>rmdir</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>save_object</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td>write_bytes</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>write_file</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
-<p>For <a class="reference internal" href="../efun/save_object.html#lpc.save_object" title="save_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">save_object()</span></code>(E)</a>, the &lt;path&gt; passed is the filename as given
-in the efun call. If for this efun a filename ending in &#8221;.c&#8221; is
-returned, the &#8221;.c&#8221; will be stripped from the filename.</p>
-<p>This function is called in compat mode as well. If
-you need to be compatible with the old 2.4.5-mudlib, redirect
-these calls to the valid_read/valid_write in the user
-object.</p>
+<p>For <a class="reference internal" href="../efun/save_object.html#lpc.efun.save_object" title="save_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">save_object</span></code>(E)</a>, the <a class="reference internal" href="#master/valid_write.arg.path" title="path"><code class="xref lpc lpc-arg docutils literal"><span class="pre">path</span></code></a> passed is the filename as given in the efun call. If for this efun a filename ending in &#8221;.c&#8221; is returned, the &#8221;.c&#8221; will be stripped from the filename.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">This function is called in compat mode as well. If you need to be compatible with the old 2.4.5-mudlib, redirect these calls to <code class="docutils literal"><span class="pre">valid_read</span></code> or <code class="docutils literal"><span class="pre">valid_write</span></code> lfuns in the user object.</p>
+</div>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; adds operation &#8220;copy_file&#8221;, and replaces &#8220;do_rename&#8221;
-with &#8220;rename_from&#8221; and &#8220;rename_to&#8221;.</li>
+<ul>
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; adds operation &#8220;copy_file&#8221;, and replaces &#8220;do_rename&#8221; with &#8220;rename_from&#8221; and &#8220;rename_to&#8221;.</li>
 <li><strong>changed</strong> (<em>3.2.9</em>) &#8211; adds operation &#8220;garbage_collection&#8221;.</li>
 <li><strong>changed</strong> (<em>3.3.526</em>) &#8211; adds operation &#8220;memdump&#8221;.</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="valid_read.html#lpc.valid_read" title="valid_read"><code class="xref lpc lpc-master docutils literal"><span class="pre">valid_read</span></code>(M)</a>, <a class="reference internal" href="make_path_absolute.html#lpc.make_path_absolute" title="make_path_absolute"><code class="xref lpc lpc-master docutils literal"><span class="pre">make_path_absolute</span></code>(M)</a></p>
+<p><a class="reference internal" href="valid_read.html#lpc.master.valid_read" title="valid_read"><code class="xref lpc lpc-master docutils literal"><span class="pre">valid_read</span></code>(M)</a>, <a class="reference internal" href="make_path_absolute.html#lpc.master.make_path_absolute" title="make_path_absolute"><code class="xref lpc lpc-master docutils literal"><span class="pre">make_path_absolute</span></code>(M)</a></p>
 </div>
 </div>
 </div>
@@ -156,8 +145,8 @@ with &#8220;rename_from&#8221; and &#8220;rename_to&#8221;.</li>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -177,15 +166,14 @@ with &#8220;rename_from&#8221; and &#8220;rename_to&#8221;.</li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -197,7 +185,7 @@ with &#8220;rename_from&#8221; and &#8220;rename_to&#8221;.</li>
       &copy;good question.
       
       |
-      <a href="../_sources/master/valid_write.txt"
+      <a href="../_sources/master/valid_write.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::include_list() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::include_list() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::inherit_list()" href="inherit_list.html" />
     <link rel="prev" title="efun::implode()" href="implode.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,118 +49,74 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;include_list.h&gt;</tr>
-<tr id="lpc.include_list">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> * </td><td>
-<code class="descname">include_list</code></td><a class="headerlink" href="#lpc.include_list" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.include_list">
+<!--[lpc.efun.include_list]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> * </td><td>
+<code class="descname">include_list</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.include_list" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> * </td><td>
-<code class="descname">include_list</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> * </td><td>
+<code class="descname">include_list</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> * </td><td>
-<code class="descname">include_list</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flags</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> * </td><td>
+<code class="descname">include_list</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+object<em>&nbsp;ob</em>, </td><td id="id3">
+int<em>&nbsp;flags</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Return information about all files included into the compilation
-of &lt;ob&gt;, including &lt;ob&gt; program&#8217;s own filename.
-If &lt;ob&gt; is omitted, it defaults to the current object.</p>
-<p>In the resulting array(s), the information for one include file takes
-up three elements:</p>
+<p>Return information about all files included into the compilation of <a class="reference internal" href="#efun/include_list.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>, including <a class="reference internal" href="#efun/include_list.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> program&#8217;s own filename. If <a class="reference internal" href="#efun/include_list.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is omitted, it defaults to the current object.</p>
+<p>In the resulting array(s), the information for one include file takes up three elements:</p>
 <blockquote>
-<div><dl class="docutils">
-<dt>string [i+0]: the name as it appeared in the program, including the</dt>
-<dd>delimiters (&#8220;&#8221; or &lt;&gt;, resp.).</dd>
-</dl>
-<p>string [i+1]: the absolute filename of the include file.
-int    [i+2]: the inclusion depth (usually 1, more for nested</p>
-<blockquote>
-<div>includes).</div></blockquote>
-</div></blockquote>
-<p>The first entry in the result is the program&#8217;s own name in [i+0],
-the other two elements [i+1] and [i+2] are 0.</p>
-<p>The &lt;flag&gt; determines the exact structure of the result:</p>
+<div>string [i+0]: the name as it appeared in the program, including the delimiters (&#8220;&#8221; or &lt;&gt;, resp.).
+string [i+1]: the absolute filename of the include file.
+int    [i+2]: the inclusion depth (usually 1, more for nested includes).</div></blockquote>
+<p>The first entry in the result is the program&#8217;s own name in [i+0], the other two elements [i+1] and [i+2] are 0.</p>
+<p>The <a class="reference internal" href="#efun/include_list.arg.flags" title="flags"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flags</span></code></a> determines the exact structure of the result:</p>
 <dl class="docutils">
-<dt>&lt;flag&gt; = INCLIST_FLAT (0, default):</dt>
-<dd>The result is a flat array of the entries, starting the with
-the entry for &lt;ob&gt; itself, followed by the entries for all
-included files in the order they were encountered.</dd>
-<dt>&lt;flag&gt; = INCLIST_TREE (1):</dt>
-<dd>The result is an array starting the with the entry
-of &lt;ob&gt; itself, followed by the entries for all directly included
-files. If one of the included files has no nested includes by itself,
-then its information will be stored directly in the array.
-If one included file has includes by itself, a subvector will
-be created and stored in the result vector (again in [i+0], with
-[i+1] and [i+2] being 0). These subvectors have the same
-structure as the main result vector.</dd>
+<dt><a class="reference internal" href="#efun/include_list.arg.flags" title="flags"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flags</span></code></a> = <code class="xref lpc lpc-macro docutils literal"><span class="pre">INCLIST_FLAT</span></code> (0, default):</dt>
+<dd>The result is a flat array of the entries, starting the with the entry for <a class="reference internal" href="#efun/include_list.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> itself, followed by the entries for all included files in the order they were encountered.</dd>
+<dt><a class="reference internal" href="#efun/include_list.arg.flags" title="flags"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flags</span></code></a> = <code class="xref lpc lpc-macro docutils literal"><span class="pre">INCLIST_TREE</span></code> (1):</dt>
+<dd>The result is an array starting the with the entry of <a class="reference internal" href="#efun/include_list.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> itself, followed by the entries for all directly included files. If one of the included files has no nested includes by itself, then its information will be stored directly in the array. If one included file has includes by itself, a subvector will be created and stored in the result vector (again in [i+0], with [i+1] and [i+2] being 0). These subvectors have the same structure as the main result vector.</dd>
 </dl>
-<p>If objects, including &lt;ob&gt;, had been undergone a replace_program(),
-the returned filenames will reflect the actual active program.</p>
-<p>The returned proper include filenames always begin with &#8216;/&#8217; (absolute
-path), even when the parser runs in COMPAT mode. The filename of
-the object itself however does not begin with a &#8216;/&#8217; in COMPAT
-mode.</p>
+<p>If objects, including <a class="reference internal" href="#efun/include_list.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>, had been undergone a <a class="reference internal" href="replace_program.html#lpc.efun.replace_program" title="replace_program"><code class="xref lpc lpc-efun docutils literal"><span class="pre">replace_program</span></code>(E)</a>, the returned filenames will reflect the actual active program.</p>
+<p>The returned proper include filenames always begin with &#8216;/&#8217; (absolute path), even when the parser runs in <a class="reference internal" href="../topics/predefined.html#lpc.macro.__COMPAT_MODE__" title="__COMPAT_MODE__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__COMPAT_MODE__</span></code></a> mode. The filename of the object itself however does not begin with a &#8216;/&#8217; in <a class="reference internal" href="../topics/predefined.html#lpc.macro.__COMPAT_MODE__" title="__COMPAT_MODE__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__COMPAT_MODE__</span></code></a> mode.</p>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
 <p>Given this source code (and /sys as system include directory):</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>a.c:  #include &#8220;b.h&#8221;</dt>
-<dd>#include &lt;c.h&gt;</dd>
-</dl>
-<p>b.h:  #include &#8220;d.h&#8221;
-c.h:  #define BAR
-d.h:  #define FOO</p>
-</div></blockquote>
 <p>the efun will give these results:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>include_list(a, INCLIST_FLAT)</dt>
-<dd><dl class="first last docutils">
-<dt>-&gt; ({ &#8220;a.c&#8221;, 0, 0</dt>
-<dd><blockquote class="first">
-<div>, &#8220;&#8221;b.h&#8221;&#8221;, &#8220;/.../b.h&#8221;, 1
-, &#8220;&#8221;d.h&#8221;&#8221;, &#8220;/.../d.h&#8221;, 2
-, &#8220;&lt;c.h&gt;&#8221;,   &#8220;/sys/c.h&#8221;, 1</div></blockquote>
-<p class="last">})</p>
-</dd>
-</dl>
-</dd>
-<dt>include_list(a, INCLIST_TREE)</dt>
-<dd><dl class="first last docutils">
-<dt>-&gt; ({ &#8220;a.c&#8221;, 0, 0</dt>
-<dd><blockquote class="first">
-<div><dl class="docutils">
-<dt>, ({ &#8220;&#8221;b.h&#8221;&#8221;, &#8220;/.../b.h&#8221;, 1</dt>
-<dd><blockquote class="first">
-<div>, &#8220;&#8221;d.h&#8221;&#8221;, &#8220;/.../d.h&#8221;, 2</div></blockquote>
-<p class="last">}), 0, 0</p>
-</dd>
-</dl>
-<p>, &#8220;&lt;c.h&gt;&#8221;,   &#8220;/sys/c.h&#8221;, 1</p>
-</div></blockquote>
-<p class="last">})</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">include_list</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">INCLIST_FLAT</span><span class="p">)</span>
+<span class="cm">/* returns:</span>
+<span class="cm">  ({ &quot;a.c&quot;, 0, 0</span>
+<span class="cm">    , &quot;\&quot;b.h\&quot;&quot;, &quot;/.../b.h&quot;, 1</span>
+<span class="cm">    , &quot;\&quot;d.h\&quot;&quot;, &quot;/.../d.h&quot;, 2</span>
+<span class="cm">    , &quot;&lt;c.h&gt;&quot;,   &quot;/sys/c.h&quot;, 1</span>
+<span class="cm">  })</span>
+<span class="cm">*/</span>
+
+<span class="n">include_list</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">INCLIST_TREE</span><span class="p">)</span>
+<span class="cm">/* returns:</span>
+<span class="cm">  ({ &quot;a.c&quot;, 0, 0</span>
+<span class="cm">  , ({ &quot;\&quot;b.h\&quot;&quot;, &quot;/.../b.h&quot;, 1</span>
+<span class="cm">     , &quot;\&quot;d.h\&quot;&quot;, &quot;/.../d.h&quot;, 2</span>
+<span class="cm">    }), 0, 0</span>
+<span class="cm">  , &quot;&lt;c.h&gt;&quot;,   &quot;/sys/c.h&quot;, 1</span>
+<span class="cm">  })</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><strong>introduced</strong> (<em>3.2.9/3.3.128</em>)</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="debug_info.html#lpc.debug_info" title="debug_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">debug_info()</span></code>(E)</a>, <a class="reference internal" href="inherit_list.html#lpc.inherit_list" title="inherit_list"><code class="xref lpc lpc-efun docutils literal"><span class="pre">inherit_list()</span></code>(E)</a></p>
+<p><a class="reference internal" href="debug_info.html#lpc.efun.debug_info" title="debug_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">debug_info</span></code>(E)</a>, <a class="reference internal" href="inherit_list.html#lpc.efun.inherit_list" title="inherit_list"><code class="xref lpc lpc-efun docutils literal"><span class="pre">inherit_list</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -172,8 +130,8 @@ d.h:  #define FOO</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -194,15 +152,14 @@ d.h:  #define FOO</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -214,7 +171,7 @@ d.h:  #define FOO</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/include_list.txt"
+      <a href="../_sources/efun/include_list.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -1,15 +1,14 @@
 public class efun {
    /**
-    * Returns the length of the string <str>.
+    * Returns the length of the string \p str.
     * 
-    * This efun is DEPRECATED and replaced by sizeof(). Please do not use
-    * it in new code and start to phase it out in old code.
+    * This efun is deprecated and replaced by efun::sizeof(). Please do not use it in new code and start to phase it out in old code.
     * 
     * @synopsis{
     * int strlen(string str)
     * }
     * 
-    * @see efun::sizeof(), efun::extract()
+    * @see efun::sizeof()
    **/
    int strlen(string str);
 }

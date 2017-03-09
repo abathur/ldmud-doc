@@ -1,0 +1,335 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Prerequisites &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Starting LDMud" href="invocation.html" />
+    <link rel="prev" title="ed" href="ed.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Topics covered:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Prerequisites: what do you need to compile and run LDMud-3.5.x</li>
+<li>Unix or Unix-like systems (like Linux, FreeBSD, MacOS X, ...).</li>
+<li>64 bit systems (LP64 model)</li>
+<li>Compiling for 32-bit environments on 64-bit systems</li>
+<li>Compiling sources directly from our git repository</li>
+<li>IPv6</li>
+<li>mySQL</li>
+<li>Windows 95/98/NT/XP</li>
+</ul>
+</div></blockquote>
+<div class="section" id="prerequisites">
+<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul>
+<li><p class="first">a POSIX.1-2001 conformant platform</p>
+</li>
+<li><p class="first">a C99 compatible build environment</p>
+</li>
+<li><p class="first">bison (yacc won&#8217;t work! bison 2.7.x is known to work)</p>
+</li>
+<li><dl class="first docutils">
+<dt>supported architectures: i386, x86_64 (work in progress, see section about</dt>
+<dd><p class="first last">64 bit systems). Other platforms are not actively supported and tested
+by us, but many will most likely work as well. Please try and tell us
+about your experiences.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>autoconf and automake for compiling sources directly from our git</dt>
+<dd><p class="first last">repository.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Optional libraries:
+- libpcre for the support of PCRE compatible regular expressions
+- mysql for the mysql package
+- postgresql for the postgresql package
+- libsqlite3 for the sqlite package
+- libgcrypt for various optional algorithms for hashing and crypting
+- OpenSSL or GnuTLS for TLS support
+- libxml2 or libiksemel for XML support
+- json-c (libjson0) for JSON support</p>
+</div></blockquote>
+</div>
+<div class="section" id="unix-or-unix-like-system">
+<h1>Unix or Unix-like system<a class="headerlink" href="#unix-or-unix-like-system" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>The driver uses a standard autoconfiguration system which on most
+systems does all the work for you (for exceptions see below).
+To prepare the compilation, execute the &#8216;configure&#8217; script from
+within the src/ directory.
+[Note: If you got LDMud from our git repository please execute the
+autogen.sh script in src/ to generate the configure script and other
+auto-generated files.]</p>
+<p>If you have git or compile for other people (e.g. to distribute a binary),
+it is seriously recommended to compile from a cloned git repository.
+Otherwise the version information of the binary will not be precise.</p>
+<p>configure checks for a number of site specific settings and uses this
+information to create the files machine.h (from machine.h.in), Makefile
+(from Makefile.in) and config.h (from config.h.in). We&#8217;ll come back to
+config.h below.</p>
+<p>configure takes a lot of arguments (&#8211;help will tell you everything),
+but the most important are these:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>&#8211;prefix=PREFIX:  the base directory for the mud installation,</dt>
+<dd>defaults to /usr/local/mud .</dd>
+<dt>&#8211;bindir=DIR:     the directory to install the executables in,</dt>
+<dd>defaults to ${PREFIX}/bin .</dd>
+<dt>&#8211;libdir=DIR:     the directory where the mudlib is found,</dt>
+<dd>defaults to ${PREFIX}/lib .</dd>
+<dt>&#8211;includedir=DIR: the directory where driver&#8217;s LPC include files</dt>
+<dd>are supposed to live.
+defaults to ${PREFIX}/include (which is usually wrong).</dd>
+<dt>&#8211;libexecdir=DIR: the directory where the programs for the ERQ are found,</dt>
+<dd>defaults to ${PREFIX}/libexec .</dd>
+</dl>
+</div></blockquote>
+<p>These settings are written into the Makefile and compiled into the driver,
+just the mudlib directory setting can be changed with a commandline
+argument.</p>
+<p>A lot of the drivers parameters can be tweaked for better performance; these
+parameters are defined in config.h . This file too is created by configure,
+which provides sensible defaults for all parameters for which no explicite
+setting is provided. To tweak a setting yourself, pass the argument
+&#8216;&#8211;enable-&lt;option&gt;=yes|no&#8217; resp. &#8216;&#8211;with-&lt;option&gt;=&lt;value&gt;&#8217; to configure on
+the commandline.</p>
+<p>Alternatively, the indivial specifications can be collected in a settings
+file, which is stored in the directory src/settings/. To use the
+setting file &lt;osb&gt;, give &#8216;&#8211;with-&lt;osb&gt;&#8217; as argument to configure. The
+file src/settings/default documents the available settings. The setting
+files are self-executing: &#8216;./settings/&lt;foo&gt; [&lt;extra-configure-args&gt;]&#8217; will
+start configure with the proper commandline arguments.</p>
+<p>The following environment variables can be used to tweak the behaviour
+of the configure script:</p>
+<blockquote>
+<div><p>CC:           the name of the C compiler
+CFLAGS:       compiler flags to be used during the configure script
+EXTRA_CFLAGS: compiler flags to be used when compiling the game driver
+LDFLAGS:      linker flags to be used by configure and for linking the</p>
+<blockquote>
+<div>game driver.</div></blockquote>
+</div></blockquote>
+<p>After configuration is finished, you may want to modify the Makefile
+to fine tune those parameters which are not covered by the configuration.</p>
+<p>The compilation is done using make. Following targets are implemented:</p>
+<blockquote>
+<div>&lt;none&gt;:          compile the driver, named &#8216;ldmud&#8217;.
+install:         compile the driver and install it in ${bindir}
+utils:           compile the utilities, especially the ERQ demon
+install-utils:   compile and install the utilities in ${bindir}
+install-headers: install the driver header files in ${includedir}.
+install-all:     compile and install everything.</div></blockquote>
+<p>To actually run a mud, you need a mudlib. The driver comes with the
+source of the old 2.4.5 mudlib in mud/lp-245/, support for other mudlibs
+is also found in mud/. Copy all mudlib files into your &#8216;lib&#8217; directory
+and make sure that the files from mudlib/sys/ all go into your lib&#8217;s
+include directory (usually &#8216;sys/&#8217;).</p>
+<p>After compilation, you may run our testsuite (work in progress!) in the
+test subdirectory (launch test/run.sh).</p>
+<p>To test the driver, start it with &#8216;ldmud 4242&#8217;. If you see the message
+&#8216;LDMud ready for users&#8217;, the driver is up and accepting connections. Test
+it with &#8216;telnet localhost 4242&#8217;.</p>
+</div></blockquote>
+</div>
+<div class="section" id="bit-systems-using-the-lp64-model">
+<h1>64 bit systems (using the LP64 model)<a class="headerlink" href="#bit-systems-using-the-lp64-model" title="Permalink to this headline">¶</a></h1>
+<p>The driver can be compiled on systems which use the LP64 data model (longs
+and pointers are 64 bit wide). This is the case on many unixoids (but not
+Windows).
+There are some muds, which use the driver on LP64 architectures.
+However, it still has some issues on these architectures. For details
+please have a look at our bug tracker (<a class="reference external" href="http://mantis.ldmud.eu/mantis/">http://mantis.ldmud.eu/mantis/</a>)
+in the category &#8216;portability&#8217; (and there probably are some unknown ones
+as well).
+Full support for LP64 machines is planned in the current development
+series 3.5.x. If you are willing to test and report issues, please do
+so. ;-)</p>
+<dl class="docutils">
+<dt>WARNING: LPC savefiles from 64 bit systems with integers exceeding the</dt>
+<dd>(signed) 32 bit integers can&#8217;t be restored on 32 bit systems!</dd>
+</dl>
+<p>If you want to compile the driver for a 64 bit platforms and your compiler
+does not produce LP64 code by default, we suggest to set CFLAGS, LDFLAGS
+and EXTRA_CFLAGS (and maybe CC) prior to configure to suitable values to
+cause your compiler to compile for the desired platform, e.g.
+# export CFLAGS=&#8221;-m64&#8221;
+# export LDFLAGS=&#8221;-m64&#8221;
+# export EXTRA_CFLAGS=$CFLAGS
+# ./configure</p>
+<p>Setting EXTRA_FLAGS is important, otherwise the driver will be compiled using
+different compiler options that the ones used during the configure run.
+It is crucial that you DON&#8217;T CHANGE the compiler options controlling the
+platform in the generated Makefile, unless you know very well what you
+do. (If the machine.h generated by configure is for a different platform, the
+driver may assume wrong sizes of data types, resulting in undefined behaviour
+and crashes.)</p>
+</div>
+<div class="section" id="compiling-for-32-bit-environments-on-64-bit-systems">
+<h1>Compiling for 32-bit environments on 64-bit systems<a class="headerlink" href="#compiling-for-32-bit-environments-on-64-bit-systems" title="Permalink to this headline">¶</a></h1>
+<p>If you want to compile the driver for a 32 bit platforms and your compiler
+does produce LP64 code by default, we suggest to set CFLAGS, LDFLAGS
+and EXTRA_CFLAGS (and maybe CC) prior to configure to suitable values to
+cause your compiler to compile for the desired platform, e.g.
+# export CFLAGS=&#8221;-m32&#8221;
+# export LDFLAGS=&#8221;-m32&#8221;
+# export EXTRA_CFLAGS=$CFLAGS
+# ./configure</p>
+</div>
+<div class="section" id="compiling-sources-directly-from-our-git-repository">
+<h1>Compiling sources directly from our git repository<a class="headerlink" href="#compiling-sources-directly-from-our-git-repository" title="Permalink to this headline">¶</a></h1>
+<p>If you want to be on the bleeding edge of development, you may check out the
+LDMud sources from our git repository at github:</p>
+<blockquote>
+<div><a class="reference external" href="https://github.com/ldmud/ldmud">https://github.com/ldmud/ldmud</a></div></blockquote>
+<dl class="docutils">
+<dt>To clone the repo:</dt>
+<dd>git clone <a class="reference external" href="https://github.com/ldmud/ldmud.git">https://github.com/ldmud/ldmud.git</a></dd>
+</dl>
+<p>LDMud-3.5.x (current development branch) is in the branch master.
+LDMud-3.3.x in master-3.3 and LDMud-3.2.x in master-3.2.</p>
+<p>There are also various tags for various releases.</p>
+<p>You will need the autoconf package to generate and update some files
+Prior to configuring the driver, please run:
+# ./autogen.sh
+in the src/ directory. Then configure the driver as usual.</p>
+</div>
+<div class="section" id="ipv6">
+<h1>IPv6<a class="headerlink" href="#ipv6" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div>If your machine supports IPv6, the driver can be configured to use it: give
+&#8216;&#8211;enable-use-ipv6=yes&#8217; as argument to the configure script.</div></blockquote>
+</div>
+<div class="section" id="mysql">
+<h1>mySQL<a class="headerlink" href="#mysql" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>If your machine has mySQL installed, the driver can be configured to use
+it: give &#8216;&#8211;enable-use-mysql=yes&#8217; as argument to the configure script.</p>
+<p>Alternatively, if your mySQL uses an unusual include/library path,
+the option can be given as &#8216;&#8211;enable-use-mysql=/unusual/path&#8217;, which
+will use the given path as search path for both include and library
+files in addition to the normal system search paths. The include files will
+be searched in &lt;path&gt;/include and &lt;path&gt;, the library files will be search
+in &lt;path&gt;/lib/mysql, &lt;path&gt;/lib, and &lt;path&gt;, in this order.</p>
+<p>The username and password for the mySQL database are specified by
+the mudlib as arguments to the efun db_connect().</p>
+<p>Use mysqladmin to create any databases you want to provide - the
+names are later used in the efun db_connect() to connect to
+the databases.</p>
+</div></blockquote>
+</div>
+<div class="section" id="windows-95-98-nt-xp-7">
+<h1>Windows 95/98/NT/XP/7<a class="headerlink" href="#windows-95-98-nt-xp-7" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>To compile the gamedriver for Windows, you need the &#8216;Cygwin&#8217; package,
+which is a port of gcc, bash, and other GNU/Unix programs. Once it
+is installed and running, the procedure is the same as under Unix.</p>
+<p>CygWin is available from <a class="reference external" href="http://cygwin.com/">http://cygwin.com/</a>.
+(When installing make sure that your installation includes gcc, bash, make,</p>
+<blockquote>
+<div>sed, awk, and bison and stuff listed above...)</div></blockquote>
+<p>There are some pre-compiled binaries for Windows linked from our homepage.
+Please have a look at:
+<a class="reference external" href="http://www.ldmud.eu/resources.html">http://www.ldmud.eu/resources.html</a></p>
+<p>However, they are compiled for specific mudlibs, so your mileage may vary.</p>
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Prerequisites</a></li>
+<li><a class="reference internal" href="#unix-or-unix-like-system">Unix or Unix-like system</a></li>
+<li><a class="reference internal" href="#bit-systems-using-the-lp64-model">64 bit systems (using the LP64 model)</a></li>
+<li><a class="reference internal" href="#compiling-for-32-bit-environments-on-64-bit-systems">Compiling for 32-bit environments on 64-bit systems</a></li>
+<li><a class="reference internal" href="#compiling-sources-directly-from-our-git-repository">Compiling sources directly from our git repository</a></li>
+<li><a class="reference internal" href="#ipv6">IPv6</a></li>
+<li><a class="reference internal" href="#mysql">mySQL</a></li>
+<li><a class="reference internal" href="#windows-95-98-nt-xp-7">Windows 95/98/NT/XP/7</a></li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/admin/install.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

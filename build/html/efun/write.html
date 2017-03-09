@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::write() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::write() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::write_bytes()" href="write_bytes.html" />
     <link rel="prev" title="efun::wizlist_info()" href="wizlist_info.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,46 +47,41 @@
 <div class="section" id="SYNOPSIS">
 <span id="write"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.write">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">write</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;msg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.write" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.write">
+<!--[lpc.efun.write]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">write</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+mixed<em>&nbsp;msg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.write" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Write out something to the current user. What exactly will be printed in the end depends of the type of <a class="reference internal" href="#efun/write.arg.msg" title="msg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">msg</span></code></a>:</p>
+<ul class="simple">
+<li>If it is a string or a number then just prints it out.</li>
+<li>If it is an object then the object will be printed in the form: <code class="docutils literal"><span class="pre">&quot;OBJ(&quot;+object_name((object)mix)+&quot;)&quot;</span></code></li>
+<li>If it is an array just <code class="docutils literal"><span class="pre">&lt;ARRAY&gt;</span></code> will be printed.</li>
+<li>If it is a mapping just <code class="docutils literal"><span class="pre">&lt;MAPPING&gt;</span></code> will be printed.</li>
+<li>If it is a closure just <code class="docutils literal"><span class="pre">&lt;CLOSURE&gt;</span></code> will be printed.</li>
+</ul>
+<p>If the function is invoked by a command of a non-interactive living object (such as an NPC) and the given argument is a string, the lfun <a class="reference internal" href="../applied/catch_tell.html#lpc.applied.catch_tell" title="catch_tell"><code class="xref lpc lpc-applied docutils literal"><span class="pre">catch_tell</span></code>(A)</a> of the living will be invoked with the message as argument.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>Just print out a string:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Hello world!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Other types are mostly just useful for debug purposes:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">write</span><span class="p">(</span><span class="n">this_player</span><span class="p">());</span>  <span class="c1">// prints &quot;OBJ(std/player#1234)&quot;</span>
+<span class="n">write</span><span class="p">(</span> <span class="p">({</span> <span class="s">&quot;blub&quot;</span> <span class="p">})</span> <span class="p">);</span> <span class="c1">// prints &quot;&lt;ARRAY&gt;&quot;</span>
+</pre></div>
 </div>
 </div>
-<p>DESCRIPTION
-Write out something to the current user. What exactly will
-be printed in the end depends of the type of msg.</p>
-<p>If it is a string or a number then just prints it out.</p>
-<p>If it is an object then the object will be printed in the
-form: &#8220;OBJ(&#8220;+object_name((object)mix)+&#8221;)&#8221;</p>
-<p>If it is an array just &#8220;&lt;ARRAY&gt;&#8221; will be printed.
-If it is a mapping just &#8220;&lt;MAPPING&gt;&#8221; will be printed.
-If it is a closure just &#8220;&lt;CLOSURE&gt;&#8221; will be printed.</p>
-<p>If the write() function is invoked by a command of a living,
-non-interactive object and the given argument is a string
-then the lfun catch_tell() of the living will be invoked with
-the message as argument.</p>
-<p>EXAMPLES
-write(&#8220;Hello world!n&#8221;);</p>
-<p>Just print out a string.</p>
-<p>write(this_player());</p>
-<p>This will print out something like &#8220;OBJ(std/player#1234)&#8221;.</p>
-<p>write( ({ &#8220;blub&#8221; }) );</p>
-<p>Will print out &#8220;&lt;ARRAY&gt;&#8221;.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="say.html#lpc.say" title="say"><code class="xref lpc lpc-efun docutils literal"><span class="pre">say()</span></code>(E)</a>, <a class="reference internal" href="tell_object.html#lpc.tell_object" title="tell_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tell_object()</span></code>(E)</a>, <a class="reference internal" href="tell_room.html#lpc.tell_room" title="tell_room"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tell_room()</span></code>(E)</a>, <a class="reference internal" href="../applied/catch_tell.html#lpc.catch_tell" title="catch_tell"><code class="xref lpc lpc-applied docutils literal"><span class="pre">catch_tell</span></code>(A)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="say.html#lpc.efun.say" title="say"><code class="xref lpc lpc-efun docutils literal"><span class="pre">say</span></code>(E)</a>, <a class="reference internal" href="tell_object.html#lpc.efun.tell_object" title="tell_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tell_object</span></code>(E)</a>, <a class="reference internal" href="tell_room.html#lpc.efun.tell_room" title="tell_room"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tell_room</span></code>(E)</a>, <a class="reference internal" href="../applied/catch_tell.html#lpc.applied.catch_tell" title="catch_tell"><code class="xref lpc lpc-applied docutils literal"><span class="pre">catch_tell</span></code>(A)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -95,8 +92,8 @@ write(&#8220;Hello world!n&#8221;);</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -106,21 +103,24 @@ write(&#8220;Hello world!n&#8221;);</p>
   <ul>
 <li><a class="reference internal" href="#">efun::write()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -132,7 +132,7 @@ write(&#8220;Hello world!n&#8221;);</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/write.txt"
+      <a href="../_sources/efun/write.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

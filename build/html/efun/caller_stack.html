@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::caller_stack() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::caller_stack() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::caller_stack_depth()" href="caller_stack_depth.html" />
     <link rel="prev" title="efun::call_resolved()" href="call_resolved.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,50 +47,41 @@
 <div class="section" id="SYNOPSIS">
 <span id="caller_stack"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.caller_stack">
-<td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> * </td><td>
-<code class="descname">caller_stack</code></td><a class="headerlink" href="#lpc.caller_stack" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.caller_stack">
+<!--[lpc.efun.caller_stack]--><td>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> * </td><td>
+<code class="descname">caller_stack</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.caller_stack" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> * </td><td>
-<code class="descname">caller_stack</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;add_interactive</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> * </td><td>
+<code class="descname">caller_stack</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+int<em>&nbsp;add_interactive</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Returns an array of the previous objects who caused the <a class="reference internal" href="call_other.html#lpc.efun.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a> to <a class="reference internal" href="this_object.html#lpc.efun.this_object" title="this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_object</span></code>(E)</a>. <code class="docutils literal"><span class="pre">previous_object(i)</span></code> equals <code class="docutils literal"><span class="pre">caller_stack()[i]</span></code>.</p>
+<p>If you pass the optional argument <a class="reference internal" href="#efun/caller_stack.arg.add_interactive" title="add_interactive"><code class="xref lpc lpc-arg docutils literal"><span class="pre">add_interactive</span></code></a> (as true value) <code class="docutils literal"><span class="pre">this_interactive()</span></code> is appended to the array, or 0 if there is no current interactive.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">calls to &#8216;alien lfun closures&#8217; (see <a class="reference internal" href="symbol_function.html#lpc.efun.symbol_function" title="symbol_function"><code class="xref lpc lpc-efun docutils literal"><span class="pre">symbol_function</span></code>(E)</a>) generate two entries on the stack if the bound object differs from the closure object: the first is for the bound object, the second for the closure object.</p>
+</div>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>interactive object A enters a command which causes a call to a function in object B, that one calls a function in object C and that, in turn, in object D</p>
+<p>If D now calls <code class="docutils literal"><span class="pre">caller_stack()</span></code> the result would be: <code class="docutils literal"><span class="pre">({C,B})</span></code>. If it calls <code class="docutils literal"><span class="pre">caller_stack(1)</span></code> the result is: <code class="docutils literal"><span class="pre">({C,B,A})</span></code>.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.6</em>) &#8211; suggested by Tubmud.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="caller_stack_depth.html#lpc.efun.caller_stack_depth" title="caller_stack_depth"><code class="xref lpc lpc-efun docutils literal"><span class="pre">caller_stack_depth</span></code>(E)</a>, <a class="reference internal" href="previous_object.html#lpc.efun.previous_object" title="previous_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">previous_object</span></code>(E)</a>, <a class="reference internal" href="this_interactive.html#lpc.efun.this_interactive" title="this_interactive"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_interactive</span></code>(E)</a>, <a class="reference internal" href="call_other.html#lpc.efun.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a></p>
 </div>
 </div>
-<p>Returns an array of the previous_object()s who caused the
-call_other() to this_object().
-previous_object(i) equals caller_stack()[i].</p>
-<p>If you pass the optional argument &lt;add_interactive&gt; (as true value)
-this_interactive() is appended to the array, or 0 if there is no
-current interactive.</p>
-<p>Note: calls to &#8216;alien lfun closures&#8217; (see <a class="reference internal" href="symbol_function.html#lpc.symbol_function" title="symbol_function"><code class="xref lpc lpc-efun docutils literal"><span class="pre">symbol_function()</span></code>(E)</a>)
-generate two entries on the stack if the bound object differs
-from the closure object: the first is for the bound object,
-the second for the closure object.</p>
-<p>EXAMPLES
-interactive object A enters a command which causes
-a call to a function in object B, that one calls a
-function in object C and that, in turn, in object D</p>
-<p>If D now calls caller_stack() the result would be: ({C,B}).
-If it calls caller_stack(1) the result is: ({C,B,A}).</p>
-<p>Introduced in LDMud 3.2.6, suggested by Tubmud.</p>
-<blockquote>
-<div><blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="caller_stack_depth.html#lpc.caller_stack_depth" title="caller_stack_depth"><code class="xref lpc lpc-efun docutils literal"><span class="pre">caller_stack_depth()</span></code>(E)</a>, <a class="reference internal" href="previous_object.html#lpc.previous_object" title="previous_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">previous_object()</span></code>(E)</a>, <a class="reference internal" href="this_interactive.html#lpc.this_interactive" title="this_interactive"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_interactive()</span></code>(E)</a>,</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><a class="reference internal" href="call_other.html#lpc.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other()</span></code>(E)</a></p>
-</div></blockquote>
+</div>
 
 
           </div>
@@ -99,8 +92,8 @@ If it calls caller_stack(1) the result is: ({C,B,A}).</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -110,21 +103,25 @@ If it calls caller_stack(1) the result is: ({C,B,A}).</p>
   <ul>
 <li><a class="reference internal" href="#">efun::caller_stack()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -136,7 +133,7 @@ If it calls caller_stack(1) the result is: ({C,B,A}).</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/caller_stack.txt"
+      <a href="../_sources/efun/caller_stack.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

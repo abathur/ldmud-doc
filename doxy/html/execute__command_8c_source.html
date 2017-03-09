@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/execute_command.c Source File</title>
+<title>LDMud: efun/execute_command.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('execute__command_8c_source.html','');}
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,43 +100,35 @@ $(document).ready(function(){initNavTree('execute__command_8c_source.html','');}
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * int execute_command(string command, object origin, object player)</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * Low-level access to the command parser: take the \p command, parse it into verb and argument and call the appropriate action added to \p origin (read: \p origin is the object &#39;issuing&#39; the command). For the execution of the function(s), `this_player()` is set to player. The function also sets results of `query_command()` and `query_verb()` to match the given \p command.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * The result is non-0 if the command was found and execute, and 0 otherwise.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classefun.html#acb6f567dff1d19321033c6b4e5b92303">execute_command</a>(string command, object origin, object player);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;Low-level access to the command parser: take the &lt;command&gt;, parse it</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;into verb and argument and call the appropriate action added to</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;&lt;origin&gt; (read: &lt;origin&gt; is the <span class="keywordtype">object</span> <span class="stringliteral">&#39;issuing&#39;</span> the command).</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;For the execution of the <span class="keyword">function</span>(s), this_player() is set to</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;player. The function also sets results of query_command() and</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;query_verb() to match the given &lt;command&gt;.</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;The result is non-0 if the command was found and execute, and 0</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;otherwise.</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;The <a class="code" href="classefun.html">efun</a> raises a privilege violation (&quot;execute_command&quot;,</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;this_object(), origin, command).</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;Note that this function does not use the H_MODIFY_COMMAND</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;and H_NOTIFY_FAIL hooks; the notify_fail() <a class="code" href="classefun.html">efun</a> is can be used,</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;but must be evaluated by the caller.</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;Introduced in LDMud 3.2.7.</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;   See Also: </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;      `hooks`, <a class="code" href="classefun.html">efun</a>::match_command(), <a class="code" href="classefun.html">efun</a>::command(), <a class="code" href="classefun.html">efun</a>::notify_fail(), <a class="code" href="classefun.html">efun</a>::command_stack()</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * The efun raises a privilege violation (&quot;execute_command&quot;, this_object(), origin, command).</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * Note that this function does not use the @ref driver_hook_modify_command &quot;H_MODIFY_COMMAND&quot; and @ref driver_hook_notify_fail &quot;H_NOTIFY_FAIL&quot; hooks; efun::notify_fail() is can be used, but must be evaluated by the caller.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * int execute_command(string command, object origin, object player)</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    * @history{</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    * introduced (3.2.7)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    * @see @ref driver_hook_overview &quot;hook&quot;, efun::match_command(), efun::command(), efun::notify_fail(), efun::command_stack()</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classefun.html#acb6f567dff1d19321033c6b4e5b92303">execute_command</a>(string command, object origin, object player);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
-<div class="ttc" id="classefun_html_acb6f567dff1d19321033c6b4e5b92303"><div class="ttname"><a href="classefun.html#acb6f567dff1d19321033c6b4e5b92303">efun.execute_command</a></div><div class="ttdeci">int execute_command(string command, object origin, object player)</div></div>
+<div class="ttc" id="classefun_html_acb6f567dff1d19321033c6b4e5b92303"><div class="ttname"><a href="classefun.html#acb6f567dff1d19321033c6b4e5b92303">efun.execute_command</a></div><div class="ttdeci">int execute_command(string command, object origin, object player)</div><div class="ttdoc">Low-level access to the command parser: take the command, parse it into verb and argument and call th...</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>execute_command.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:08 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:21 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

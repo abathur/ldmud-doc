@@ -6,10 +6,9 @@ SYNOPSIS
 DESCRIPTION
 ===========
    Arguments: 
-      - value (closure(LPC)) -- int <closure>(string command, object 
-        command_giver)
-      - value (string(LPC)) -- int <name>(string command, object 
-        command_giver)
+      - value (closure) -- int <closure>(string command, object 
+        command_giver) 
+      - value (string) -- int <name>(string command, object command_giver)
 
    Optional hook to parse and execute commands. If this hook is used, it 
    bypasses the normal command parsing done by the driver (including the 
@@ -20,9 +19,9 @@ DESCRIPTION
    giver') itself. The hook has to return non-0 if the command was found and 
    executed, and 0 otherwise.
 
-   At the time the hook is called, query_command() returns the command string 
-   and this_player() returns the living object. query_verb() and 
-   query_notify_fail() return 0.
+   At the time the hook is called, query_command(E) returns the command string
+   and this_player(E) returns the living object. query_verb(E) and 
+   query_notify_fail(E) return 0.
 
    If the hook is a string, it is the name of an lfun in the command giver; if
    the hook is a lambda closure, it is bound to the command giver before the 
@@ -30,5 +29,5 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   `hooks`, modify_command(H), modify_command_fname(H), notify_fail(H), 
+   hook(H), modify_command(H), modify_command_fname(H), notify_fail(H), 
    send_notify_fail(H)

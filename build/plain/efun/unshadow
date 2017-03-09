@@ -9,4 +9,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   shadow()(E), query_shadowing()(E)
+   shadow(E), query_shadowing(E)

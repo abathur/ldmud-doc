@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::deep_inventory() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::deep_inventory() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::destruct()" href="destruct.html" />
     <link rel="prev" title="efun::deep_copy()" href="deep_copy.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,62 +47,69 @@
 <div class="section" id="SYNOPSIS">
 <span id="deep_inventory"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.deep_inventory">
-<td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> * </td><td>
-<code class="descname">deep_inventory</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.deep_inventory" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.deep_inventory">
+<!--[lpc.efun.deep_inventory]--><td>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> * </td><td>
+<code class="descname">deep_inventory</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+void</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.deep_inventory" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> * </td><td>
-<code class="descname">deep_inventory</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> * </td><td>
+<code class="descname">deep_inventory</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+object<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> * </td><td>
-<code class="descname">deep_inventory</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;depth</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> * </td><td>
+<code class="descname">deep_inventory</code></td><td><span class="sig-paren">(</span></td><td id="id3">
+object<em>&nbsp;ob</em>, </td><td id="id4">
+int<em>&nbsp;depth</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Returns an array of the objects contained in the inventory of
-ob (or this_object() if no arg given) and in the inventories
-of these objects, climbing down recursively.</p>
-<p>If &lt;depth&gt; is given and not 0, the result is limited as follows:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>&lt;depth&gt; &gt; 0: Only the objects in the first &lt;depth&gt; levels of</dt>
-<dd>inventory are returned.</dd>
-<dt>&lt;depth&gt; &lt; 0: Only the objects in level -&lt;depth&gt; of inventory are</dt>
-<dd>returned.</dd>
+<p>Returns an array of the objects contained in the inventory of <a class="reference internal" href="#efun/deep_inventory.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> (or <code class="docutils literal"><span class="pre">this_object()</span></code> if no arg given) and in the inventories of these objects, climbing down recursively.</p>
+<p>If <a class="reference internal" href="#efun/deep_inventory.arg.depth" title="depth"><code class="xref lpc lpc-arg docutils literal"><span class="pre">depth</span></code></a> is given and not 0, the result is limited as follows:</p>
+<dl class="docutils">
+<dt><a class="reference internal" href="#efun/deep_inventory.arg.depth" title="depth"><code class="xref lpc lpc-arg docutils literal"><span class="pre">depth</span></code></a> &gt; 0</dt>
+<dd>Only the objects in the first <a class="reference internal" href="#efun/deep_inventory.arg.depth" title="depth"><code class="xref lpc lpc-arg docutils literal"><span class="pre">depth</span></code></a> levels of inventory are returned.</dd>
+<dt><a class="reference internal" href="#efun/deep_inventory.arg.depth" title="depth"><code class="xref lpc lpc-arg docutils literal"><span class="pre">depth</span></code></a> &lt; 0</dt>
+<dd>Only the objects in level <a class="reference internal" href="#efun/deep_inventory.arg.depth" title="depth"><code class="xref lpc lpc-arg docutils literal"><span class="pre">-depth</span></code></a> of inventory are returned.</dd>
 </dl>
-</div></blockquote>
-<p>In this, level &#8216;1&#8217; is the inventory of &lt;ob&gt; itself.</p>
+<p>In this, level &#8216;1&#8217; is the inventory of <a class="reference internal" href="#efun/deep_inventory.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> itself.</p>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<p>Given the following inventory structure</p>
-<p>ob
-+- ob1
-+- ob2
-|   <a href="#id1"><span class="problematic" id="id2">`</span></a>- ob21
-|  ob3
-|   <a href="#id3"><span class="problematic" id="id4">`</span></a>- ob31
-+- ob4</p>
-<p>deep_inventory(ob)     =&gt; ({ob1, ob2, ob3, ob4, ob21, ob31})
-deep_inventory(ob, 1)  =&gt; ({ob1, ob2, ob3, ob4})
-deep_inventory(ob, 2)  =&gt; ({ob1, ob2, ob3, ob4, ob21, ob31})
-deep_inventory(ob, -2) =&gt; ({ob21, ob31})</p>
+<p>Consider the following nested inventory structure:</p>
+<ul class="simple">
+<li>ob<ul>
+<li>ob1</li>
+<li>ob2<ul>
+<li>ob21</li>
+</ul>
+</li>
+<li>ob3<ul>
+<li>ob31</li>
+</ul>
+</li>
+<li>ob4</li>
+</ul>
+</li>
+</ul>
+<p>Given this structure, <a class="reference internal" href="#lpc.efun.deep_inventory" title="deep_inventory"><code class="xref lpc lpc-efun docutils literal"><span class="pre">deep_inventory</span></code>(E)</a> would return:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">deep_inventory</span><span class="p">(</span><span class="n">ob</span><span class="p">)</span>     <span class="c1">// ({ob1, ob2, ob3, ob4, ob21, ob31})</span>
+<span class="n">deep_inventory</span><span class="p">(</span><span class="n">ob</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1">// ({ob1, ob2, ob3, ob4})</span>
+<span class="n">deep_inventory</span><span class="p">(</span><span class="n">ob</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1">// ({ob1, ob2, ob3, ob4, ob21, ob31})</span>
+<span class="n">deep_inventory</span><span class="p">(</span><span class="n">ob</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="c1">// ({ob21, ob31})</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><strong>changed</strong> (<em>3.3.554</em>) &#8211; added the &lt;depth&gt; parameter</li>
+<ul>
+<li><strong>changed</strong> (<em>3.3.554</em>) &#8211; added the <a class="reference internal" href="#efun/deep_inventory.arg.depth" title="depth"><code class="xref lpc lpc-arg docutils literal"><span class="pre">depth</span></code></a> parameter</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="first_inventory.html#lpc.first_inventory" title="first_inventory"><code class="xref lpc lpc-efun docutils literal"><span class="pre">first_inventory()</span></code>(E)</a>, <a class="reference internal" href="next_inventory.html#lpc.next_inventory" title="next_inventory"><code class="xref lpc lpc-efun docutils literal"><span class="pre">next_inventory()</span></code>(E)</a>, <a class="reference internal" href="all_inventory.html#lpc.all_inventory" title="all_inventory"><code class="xref lpc lpc-efun docutils literal"><span class="pre">all_inventory()</span></code>(E)</a></p>
+<p><a class="reference internal" href="first_inventory.html#lpc.efun.first_inventory" title="first_inventory"><code class="xref lpc lpc-efun docutils literal"><span class="pre">first_inventory</span></code>(E)</a>, <a class="reference internal" href="next_inventory.html#lpc.efun.next_inventory" title="next_inventory"><code class="xref lpc lpc-efun docutils literal"><span class="pre">next_inventory</span></code>(E)</a>, <a class="reference internal" href="all_inventory.html#lpc.efun.all_inventory" title="all_inventory"><code class="xref lpc lpc-efun docutils literal"><span class="pre">all_inventory</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -114,8 +123,8 @@ deep_inventory(ob, -2) =&gt; ({ob21, ob31})</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -136,15 +145,14 @@ deep_inventory(ob, -2) =&gt; ({ob21, ob31})</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -156,7 +164,7 @@ deep_inventory(ob, -2) =&gt; ({ob21, ob31})</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/deep_inventory.txt"
+      <a href="../_sources/efun/deep_inventory.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

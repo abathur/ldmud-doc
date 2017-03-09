@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/send_erq.c Source File</title>
+<title>LDMud: efun/send_erq.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('send__erq_8c_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,47 +100,38 @@ $(document).ready(function(){initNavTree('send__erq_8c_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @headerfile &lt;erq.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * A request of given type (\p request, default is 0), equipped with the given \p data, is sent to the erq. If \p callback is set to a closure, it will be called when the response from the erq (a status code) arrives, if the response carries enough data to work on.</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * int send_erq(int request, string|int * data, closure callback)</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * \p request can be one of the request codes defined in &lt;erq.h&gt;. The binary flag `ERQ_CB_STRING` defines whether the \p callback closure expects the returned data packed into an array of integers or as a string.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * \p data may be a string, or an array of integers which are then interpreted as characters.</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classefun.html#a795ee539a9ce43bfde252f626e49120c">send_erq</a>(int request, <span class="keywordtype">string</span>|<span class="keywordtype">int</span> * data, closure callback);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;A request of given type (&lt;request&gt;, <span class="keywordflow">default</span> is 0), equipped</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;with the given &lt;data&gt;, is sent to the erq. If &lt;callback&gt; is</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;set to a closure, it will be called when the response from the</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;erq (a status code) arrives, <span class="keywordflow">if</span> the response carries enough data to</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;work on.</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;&lt;request&gt; can be one of the request codes defined in &lt;erq.h&gt;.</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;The binary flag ERQ_CB_STRING defines whether the &lt;callback&gt;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;closure expects the returned data packed into an array of</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;integers or as a <span class="keywordtype">string</span>.</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;&lt;data&gt; may be a string, or an array of integers which are then</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;interpreted as characters.</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;&lt;callback&gt;, <span class="keywordflow">if</span> set, is a closure of either these forms:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;   !ERQ_CB_STRING: void &lt;closure&gt;(<span class="keywordtype">int</span> &gt;&gt;*&lt;&lt;response_data, <span class="keywordtype">int</span> len)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;      ERQ_CB_STRING: void &lt;closure&gt;(<span class="keywordtype">string</span> response_data)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;The result returned from the <a class="code" href="classefun.html">efun</a> is 0 on failure to send the</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;data, or non-zero on a successful send.</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;The <span class="keyword">function</span> causes a privilege violation <span class="stringliteral">&quot;erq&quot;</span>.</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;Introduced in @subpage driver_mailto:3.2.1@61 <span class="stringliteral">&quot;3.2.1@61&quot;</span>.</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;Made a privileged <span class="keyword">function</span> in @subpage driver_mailto:3.2.1@84 <span class="stringliteral">&quot;3.2.1@84&quot;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;LDMud 3.3.318 introduced the ERQ_CB_STRING flag.</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;   See Also: </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <a class="code" href="classefun.html#a5576cf9792eb99b7cb6fb45d3a95e478">efun::attach_erq_demon</a>(), @ref driver_concepts_erq <span class="stringliteral">&quot;erq&quot;</span></div>
-<div class="ttc" id="classefun_html_a795ee539a9ce43bfde252f626e49120c"><div class="ttname"><a href="classefun.html#a795ee539a9ce43bfde252f626e49120c">efun.send_erq</a></div><div class="ttdeci">int send_erq(int request, string|int * data, closure callback)</div></div>
-<div class="ttc" id="classefun_html_a5576cf9792eb99b7cb6fb45d3a95e478"><div class="ttname"><a href="classefun.html#a5576cf9792eb99b7cb6fb45d3a95e478">efun.attach_erq_demon</a></div><div class="ttdeci">int attach_erq_demon(string obname, int do_close)</div><div class="ttdoc">This privileged efun is to set/change the connection of the driver to the external erq demon...</div></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * \p callback, if set, is a closure of either these forms:</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * !ERQ_CB_STRING: void &lt;closure&gt;(int &gt;&gt;*&lt;&lt;response_data, int len)</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    *    ERQ_CB_STRING: void &lt;closure&gt;(string response_data)</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    *    </span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    * The result returned from the efun is 0 on failure to send the data, or non-zero on a successful send.</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    * The function causes a privilege violation &quot;erq&quot;.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    * @headerfile &lt;erq.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">    * int send_erq(int request, string|int * data, closure callback)</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">    * @history{</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">    * introduced (3.2.1@61)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">    * changed (3.2.1@84) -- Made a privileged function</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">    * changed (3.3.318) -- introduced the ERQ_CB_STRING flag.</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">    * @see efun::attach_erq_demon()</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classefun.html#a795ee539a9ce43bfde252f626e49120c">send_erq</a>(int request, <span class="keywordtype">string</span>|<span class="keywordtype">int</span> * data, closure callback);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="ttc" id="classefun_html_a795ee539a9ce43bfde252f626e49120c"><div class="ttname"><a href="classefun.html#a795ee539a9ce43bfde252f626e49120c">efun.send_erq</a></div><div class="ttdeci">int send_erq(int request, string|int * data, closure callback)</div><div class="ttdoc">A request of given type (request, default is 0), equipped with the given data, is sent to the erq...</div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -149,7 +139,7 @@ $(document).ready(function(){initNavTree('send__erq_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>send_erq.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:09 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:22 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

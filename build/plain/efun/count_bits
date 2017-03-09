@@ -4,18 +4,21 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Count the number of set bits in bitstring <str> and return the number as 
+   Count the number of set bits in bitstring str(E) and return the number as 
    result.
 
    USAGE
    =====
-      string s;
+      Here's a very simple example:
 
-      s = set_bit("", 3); s = set_bit(s, 15);
+         string s;
 
-      count_bits(s) --> returns 2
+         s = set_bit("", 3);
+         s = set_bit(s, 15);
+
+         count_bits(s) // returns 2
 
 SEE ALSO
 ========
-   clear_bit()(E), set_bit()(E), test_bit()(E), next_bit()(E), last_bit()(E), 
-   or_bits()(E), xor_bits()(E), invert_bits()(E), copy_bits()(E)
+   clear_bit(E), set_bit(E), test_bit(E), next_bit(E), last_bit(E), 
+   or_bits(E), xor_bits(E), invert_bits(E), copy_bits(E)

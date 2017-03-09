@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::move_object() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::move_object() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::negate()" href="negate.html" />
     <link rel="prev" title="efun::mktime()" href="mktime.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,35 +47,32 @@
 <div class="section" id="SYNOPSIS">
 <span id="move_object"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.move_object">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">move_object</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;item</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;dest</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.move_object" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.move_object">
+<!--[lpc.efun.move_object]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">move_object</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+mixed<em>&nbsp;item</em>, </td><td id="id2">
+mixed<em>&nbsp;dest</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.move_object" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>The item, which can be an object_name or an object, is moved into it&#8217;s new environment dest, which can also be an object_name or an object.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For !compat mode, the traditional implementation required <a class="reference internal" href="#efun/move_object.arg.item" title="item"><code class="xref lpc lpc-arg docutils literal"><span class="pre">item</span></code></a> to be the calling object.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.1</em>) &#8211; the innards of move_object() are implemented in the mudlib, using the M_MOVE_OBJECT0/1 driver hooks, and move_object() might as well be an simul-efun</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../applied/remove.html#lpc.applied.remove" title="remove"><code class="xref lpc lpc-applied docutils literal"><span class="pre">remove</span></code>(A)</a>, <a class="reference internal" href="../applied/init.html#lpc.applied.init" title="init"><code class="xref lpc lpc-applied docutils literal"><span class="pre">init</span></code>(A)</a>, <a class="reference internal" href="transfer.html#lpc.efun.transfer" title="transfer"><code class="xref lpc lpc-efun docutils literal"><span class="pre">transfer</span></code>(E)</a>, <a href="#id3"><span class="problematic" id="id4">:concept:`native`</span></a>, <a class="reference internal" href="../hook/overview.html#lpc.overview.hook" title="hook"><code class="xref lpc lpc-overview docutils literal"><span class="pre">hook</span></code></a>, <a class="reference internal" href="set_environment.html#lpc.efun.set_environment" title="set_environment"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_environment</span></code>(E)</a></p>
 </div>
 </div>
-<p>The item, which can be an object_name or an object, is moved into
-it&#8217;s new environment dest, which can also be an object_name or an
-object.</p>
-<p>Since 3.2.1, the innards of move_object() are implemented in
-the mudlib, using the M_MOVE_OBJECT0/1 driver hooks, and move_object()
-might as well be an simul-efun.</p>
-<p>The traditional implementation restricted for !compat mode
-the &lt;item&gt; to the calling object only.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="../applied/remove.html#lpc.remove" title="remove"><code class="xref lpc lpc-applied docutils literal"><span class="pre">remove</span></code>(A)</a>, <a class="reference internal" href="../applied/init.html#lpc.init" title="init"><code class="xref lpc lpc-applied docutils literal"><span class="pre">init</span></code>(A)</a>, <a class="reference internal" href="transfer.html#lpc.transfer" title="transfer"><code class="xref lpc lpc-efun docutils literal"><span class="pre">transfer()</span></code>(E)</a>, <a class="reference internal" href="../concepts/native.html#lpc.native" title="native"><code class="xref lpc lpc-concept docutils literal"><span class="pre">native</span></code>(C)</a>, <code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code>, <a class="reference internal" href="set_environment.html#lpc.set_environment" title="set_environment"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_environment()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+</div>
 
 
           </div>
@@ -84,8 +83,8 @@ the &lt;item&gt; to the calling object only.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -95,21 +94,24 @@ the &lt;item&gt; to the calling object only.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::move_object()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -121,7 +123,7 @@ the &lt;item&gt; to the calling object only.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/move_object.txt"
+      <a href="../_sources/efun/move_object.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

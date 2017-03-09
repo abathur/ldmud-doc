@@ -1,13 +1,10 @@
 public class efun {
    /**
-    * Indicate that the wizlist should contain an array of this size
-    * with extra info foreach wizard. A negative value indicates
-    * a non-array value.
+    * Indicate that the wizlist should contain an array of this size with extra info foreach wizard. A negative value indicates a non-array value.
     * 
     * Causes a privilege violation.
     * 
-    * The value is only used to allocate a proper empty 'extra' value
-    * for newly created wizlist entries.
+    * The value is only used to allocate a proper empty 'extra' value for newly created wizlist entries.
     * 
     * @synopsis{
     * void set_extra_wizinfo_size(int)

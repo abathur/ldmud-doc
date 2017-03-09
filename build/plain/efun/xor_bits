@@ -4,23 +4,27 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-DESCRIPTION <str1> and <str2> are both bitstrings. The result of the function 
-is a bitstring with the binary-xor of <str1> and <str2>, ie. a string in which
-a bit is set only if the corresponding bits in either <str1> or <str2> (but 
-not both) is set.
+   str1(E) and str2(E) are both bitstrings. The result of the function is a 
+   bitstring with the binary-xor of str1(E) and str2(E), ie. a string in which
+   a bit is set only if the corresponding bits in either str1(E) or str2(E) 
+   (but not both) is set.
 
-EXAMPLES string s1, s2, s3;
+   USAGE
+   =====
+      The below example demonstrates how xor_bits(E) cancels out the bit 
+      common to s1 and s2, but retains bits present only in one string:
 
-s1 = set_bit("", 3); s1 = set_bit(s1, 15);  -> s1 is "( (" s2 = set_bit("", 
-3); s2 = set_bit(s2, 4);   -> s2 is "8"
+         string s1, s2, s3;
 
-s3 = xor_bits(s1, s2);
+         s1 = set_bit("", 3);
+         s1 = set_bit(s1, 15);  // s1 is "( (", bits 3 and 15
 
--> s3 is now "0 (", ie. a bitstring with bits 4 and 15 set.
+         s2 = set_bit("", 3);
+         s2 = set_bit(s2, 4);   // s2 is "8", bits 3 and 4
 
-      See Also: 
-         clear_bit()(E), set_bit()(E), test_bit()(E), next_bit()(E), 
-         last_bit()(E),
+         s3 = xor_bits(s1, s2); // s3 is "0 (", bits 4 and 15
 
-   count_bits()(E), and_bits()(E), or_bits()(E), invert_bits()(E), 
-   copy_bits()(E)
+SEE ALSO
+========
+   clear_bit(E), set_bit(E), test_bit(E), next_bit(E), last_bit(E), 
+   count_bits(E), and_bits(E), or_bits(E), invert_bits(E), copy_bits(E)

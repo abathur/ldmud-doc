@@ -1,0 +1,603 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>operators &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pragma" href="pragma.html" />
+    <link rel="prev" title="object" href="object.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="operators">
+<span id="lpc.lang.operators"></span><div class="section" id="LANG">
+<h2>LANG<a class="headerlink" href="#LANG" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+operators</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>These are the operators availailable in LPC. They are listed in the order of precedence (low priority first):</p>
+<div class="container" id="lpc.operator.,">
+<span id="lpc.operator.comma"></span><div class="container" id="OPERATOR">
+<strong>Comma operator: </strong><code class="docutils literal"><span class="pre">,</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">,</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Evaluate &#8216;expr1&#8217; and then &#8216;expr2&#8217;. The returned value is the result of &#8216;expr2&#8217;. The returned value of &#8216;expr1&#8217; is thrown away.</dd>
+</div>
+<div class="container" id="lpc.operator.=">
+<span id="lpc.operator.equality"></span><div class="container" id="OPERATOR">
+<strong>Equality operator: </strong><code class="docutils literal"><span class="pre">=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Evaluate &#8216;expr&#8217;, and assign the value to &#8216;var&#8217;. The new value of &#8216;var&#8217; is the result.</dd>
+</div>
+<div class="container" id="lpc.operator.Assignment">
+<div class="container" id="OPERATOR">
+<strong>Assignment operator: </strong><code class="docutils literal"><span class="pre">=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Evaluate &#8216;expr&#8217;, and assign the value to &#8216;var&#8217;. The new value of &#8216;var&#8217; is the result.</dd>
+</div>
+<div class="container" id="lpc.operator.+=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">+=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">+=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shorthand for <code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var</span> <span class="pre">+</span> <span class="pre">expr</span></code>.</dd>
+</div>
+<div class="container" id="lpc.operator.-=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">-=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">-=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shorthand for <code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var</span> <span class="pre">-</span> <span class="pre">expr</span></code>.</dd>
+</div>
+<div class="container" id="lpc.operator.&amp;=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">&amp;=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">&amp;=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shorthand for <code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var</span> <span class="pre">&amp;</span> <span class="pre">expr</span></code>.</dd>
+</div>
+<div class="container" id="lpc.operator.|=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">|=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">|=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shorthand for <code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var</span> <span class="pre">|</span> <span class="pre">expr</span></code>.</dd>
+</div>
+<div class="container" id="lpc.operator.^=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">^=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">^=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shorthand for <code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var</span> <span class="pre">^</span> <span class="pre">expr</span></code>.</dd>
+</div>
+<div class="container" id="lpc.operator.&lt;&lt;=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">&lt;&lt;=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">&lt;&lt;=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shorthand for <code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var</span> <span class="pre">&lt;&lt;</span> <span class="pre">expr</span></code>.</dd>
+</div>
+<div class="container" id="lpc.operator.&gt;&gt;=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">&gt;&gt;=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">&gt;&gt;=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shorthand for <code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var</span> <span class="pre">&gt;&gt;</span> <span class="pre">expr</span></code>.</dd>
+</div>
+<div class="container" id="lpc.operator.&gt;&gt;&gt;=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">&gt;&gt;&gt;=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">&gt;&gt;&gt;=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shorthand for <code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">expr</span></code>.</dd>
+</div>
+<div class="container" id="lpc.operator.*=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">*=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">*=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shorthand for <code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var</span> <span class="pre">*</span> <span class="pre">expr</span></code>.</dd>
+</div>
+<div class="container" id="lpc.operator.%=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">%=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">%=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shorthand for <code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var</span> <span class="pre">%</span> <span class="pre">expr</span></code>.</dd>
+</div>
+<div class="container" id="lpc.operator./=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">/=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">/=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shorthand for <code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var</span> <span class="pre">/</span> <span class="pre">expr</span></code>.</dd>
+</div>
+<div class="container" id="lpc.operator.&amp;&amp;=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">&amp;&amp;=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">&amp;&amp;=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shorthand for <code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var</span> <span class="pre">&amp;&amp;</span> <span class="pre">expr</span></code>.</dd>
+</div>
+<div class="container" id="lpc.operator.||=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">||=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">||=</span></span> <span class="pre">expr</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shorthand for <code class="docutils literal"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var</span> <span class="pre">||</span> <span class="pre">expr</span></code>.</dd>
+</div>
+<div class="container" id="lpc.operator.?">
+<span id="lpc.operator.ternary"></span><div class="container" id="OPERATOR">
+<strong>Ternary operator: </strong><code class="docutils literal"><span class="pre">?</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">?</span></span> <span class="pre">expr2</span> <span class="highlighted"><span class="pre">:</span></span> <span class="pre">expr3</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Evaluates &#8216;expr1&#8217; and branches according to its truth value. If it is true, the &#8216;expr2&#8217; is evaluated and returned as result, else &#8216;expr3&#8217;.</dd>
+</div>
+<div class="container" id="lpc.operator.||">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">||</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">||</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">The result is true if &#8216;expr1&#8217; or &#8216;expr2&#8217; is true. &#8216;expr2&#8217; is not evaluated if &#8216;expr1&#8217; was true.</dd>
+</div>
+<div class="container" id="lpc.operator.&amp;&amp;">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">&amp;&amp;</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">&amp;&amp;</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">The result is true i &#8216;expr1&#8217; and &#8216;expr2&#8217; is true. &#8216;expr2&#8217; is not evaluated if &#8216;expr1&#8217; was false.</dd>
+</div>
+<div class="container" id="lpc.operator.|">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">|</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">|</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION"><p class="first">The result is the bitwise or of &#8216;expr1&#8217; and &#8216;expr2&#8217;.</p>
+<p class="last">For arrays, the union set is computed: all elements from <code class="xref lpc lpc-part docutils literal"><span class="pre">expr1</span></code> plus all those from <code class="xref lpc lpc-part docutils literal"><span class="pre">expr2</span></code> which are not in <code class="xref lpc lpc-part docutils literal"><span class="pre">expr1</span></code>.</p>
+</dd>
+</div>
+<div class="container" id="lpc.operator.^">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">^</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">^</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION"><p class="first">The result is the bitwise xor of &#8216;expr1&#8217; and &#8216;expr2&#8217;.</p>
+<p class="last">For arrays, the symmetric difference is computed: all elements from <code class="xref lpc lpc-part docutils literal"><span class="pre">expr1</span></code> which are not in <code class="xref lpc lpc-part docutils literal"><span class="pre">expr2</span></code>, plus all those from <code class="xref lpc lpc-part docutils literal"><span class="pre">expr2</span></code> which are not in <code class="xref lpc lpc-part docutils literal"><span class="pre">expr1</span></code>.</p>
+</dd>
+</div>
+<div class="container" id="lpc.operator.&amp;">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">&amp;</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">&amp;</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION"><p class="first">The result is the bitwise and of &#8216;expr1&#8217; and &#8216;expr2&#8217;.</p>
+<p>For arrays and strings, the intersection set (all elements resp. characters from expr1 which which are also in the expr2) is computed.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p><code class="docutils literal"><span class="pre">&quot;aab&quot;</span> <span class="pre">&amp;</span> <span class="pre">&quot;a&quot;</span> <span class="pre">-&gt;</span> <span class="pre">&quot;aa&quot;</span></code> but <code class="docutils literal"><span class="pre">({</span> <span class="pre">'a','a','b'</span> <span class="pre">})</span> <span class="pre">&amp;</span> <span class="pre">({</span> <span class="pre">'a'</span> <span class="pre">})</span> <span class="pre">-&gt;</span> <span class="pre">({</span> <span class="pre">'a'</span> <span class="pre">})</span></code></p>
+<p class="last">Eventually the array behaviour will be changed to match the string behaviour, so you shouldn&#8217;t rely on the array behavior in the interim.</p>
+</div>
+<p>Intersecting an array with a mapping is equivalent to intersecting the array with the indices of the mapping: <code class="docutils literal"><span class="pre">array</span> <span class="pre">&amp;</span> <span class="pre">mapping</span> <span class="pre">==</span> <span class="pre">array</span> <span class="pre">&amp;</span> <span class="pre">m_indices(mapping)</span></code>.</p>
+<p class="last">Mappings can be intersected with another mapping or an array. The resulting mapping holds all those entries from the first mapping, which are also mentioned in the second mapping (as index) resp. in the array.</p>
+</dd>
+</div>
+<div class="container" id="lpc.operator.==">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">==</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">==</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Compare values. Valid for strings, numbers, objects and closures.</dd>
+</div>
+<div class="container" id="lpc.operator.!=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">!=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">!=</span></span> <span class="pre">expr1</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Compare values. Valid for strings, numbers, objects and closures.</dd>
+</div>
+<div class="container" id="lpc.operator.&gt;">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">&gt;</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">&gt;</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Valid for strings and numbers.</dd>
+</div>
+<div class="container" id="lpc.operator.&gt;=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">&gt;=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">&gt;=</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Valid for strings and numbers.</dd>
+</div>
+<div class="container" id="lpc.operator.&lt;">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">&lt;</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">&lt;</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Valid for strings and numbers.</dd>
+</div>
+<div class="container" id="lpc.operator.&lt;=">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">&lt;=</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">&lt;=</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Valid for strings and numbers.</dd>
+</div>
+<div class="container" id="lpc.operator.&lt;&lt;">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">&lt;&lt;</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">&lt;&lt;</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shift &#8216;expr1&#8217; left by &#8216;expr2&#8217; bits; the sign bit is not preserved.</dd>
+</div>
+<div class="container" id="lpc.operator.&gt;&gt;">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">&gt;&gt;</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">&gt;&gt;</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shift &#8216;expr1&#8217; right by &#8216;expr2&#8217; bits. This shift preserves the sign of &#8216;expr1&#8217;.</dd>
+</div>
+<div class="container" id="lpc.operator.&gt;&gt;&gt;">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">&gt;&gt;&gt;</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Shift &#8216;expr1&#8217; right by &#8216;expr2&#8217; bits. This shift does not preserve the sign of &#8216;expr1&#8217;, instead it shifts in 0 bits.</dd>
+</div>
+<div class="container" id="lpc.operator.+">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">+</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">+</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Add &#8216;expr1&#8217; and &#8216;expr2&#8217;. If numbers, then arithmetic addition is used. If one of the expressions are a string, then that string is concatenated with the other value. If the expressions are arrays, the result is the right array appended to the left. If the expressions are mappings of equal width, the result is merger of the two mappings. If one key exists in both mappings, the element from the right mapping appears in the result. If the two mappings are of different width, the result is <code class="xref lpc lpc-part docutils literal"><span class="pre">expr1</span></code> if non-empty, and <code class="xref lpc lpc-part docutils literal"><span class="pre">expr2</span></code> otherwise.</dd>
+</div>
+<div class="container" id="lpc.operator.-">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">-</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">-</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Subtract &#8216;expr2&#8217; from &#8216;expr1&#8217;. Valid for numbers, strings, arrays, mappings. For arrays and strings, all occurences of the elements resp. characters in &#8216;expr2&#8217; are removed from &#8216;expr1&#8217;, and the result is returned. For mapping, all occurances of elemens in &#8216;expr1&#8217; which have a matching key in &#8216;expr2&#8217; are removed, and the result is returned.</dd>
+</div>
+<div class="container" id="lpc.operator.\*">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">\*</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">\*</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Multiply &#8216;expr1&#8217; with &#8216;expr2&#8217;. If strings or arrays are multiplied with a number (zero or positive), the result is a repetition of the original string or array.</dd>
+</div>
+<div class="container" id="lpc.operator.%">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">%</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">%</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">The modulo operator of numeric arguments.</dd>
+</div>
+<div class="container" id="lpc.operator./">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">/</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">expr1</span> <span class="highlighted"><span class="pre">/</span></span> <span class="pre">expr2</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Integer division.</dd>
+</div>
+<div class="container" id="lpc.operator.++">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">++</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="highlighted"><span class="pre">++</span></span> <span class="pre">var</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Increment the value of variable &#8216;var&#8217;, and return the new value.</dd>
+</div>
+<div class="container" id="lpc.operator.--">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">--</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="highlighted"><span class="pre">--</span></span> <span class="pre">var</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Decrement the value of variable &#8216;var&#8217;, and return the new value.</dd>
+</div>
+<div class="container">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">-</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="highlighted"><span class="pre">-</span></span> <span class="pre">var</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Compute the negative value of &#8216;var&#8217;.</dd>
+</div>
+<div class="container" id="lpc.operator.!">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">!</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="highlighted"><span class="pre">!</span></span> <span class="pre">var</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Compute the logical &#8216;not&#8217; of an integer.</dd>
+</div>
+<div class="container" id="lpc.operator.~">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">~</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="highlighted"><span class="pre">~</span></span> <span class="pre">var</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">The boolean &#8216;not&#8217; of an integer.</dd>
+</div>
+<div class="container" id="lpc.operator.( type ) var">
+<span id="lpc.operator.casting"></span><div class="container" id="OPERATOR">
+<strong>Casting operator: </strong><code class="docutils literal"><span class="pre">(</span> <span class="pre">type</span> <span class="pre">)</span> <span class="pre">var</span></code><div class="line-block">
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION"><p class="first">Return the value of <code class="xref lpc lpc-part docutils literal"><span class="pre">var</span></code> converted to <code class="xref lpc lpc-part docutils literal"><span class="pre">type</span></code>. <code class="xref lpc lpc-part docutils literal"><span class="pre">type</span></code> can be &#8216;string&#8217;, &#8216;int&#8217;, &#8216;object&#8217;, &#8216;float&#8217; or &#8216;int*&#8217;. <code class="xref lpc lpc-part docutils literal"><span class="pre">var</span></code> must be of a specific type for a conversion to take place; if <code class="xref lpc lpc-part docutils literal"><span class="pre">var</span></code> is &#8216;mixed&#8217; or unknown, the cast is purely declarative. Also, if the declared type of <code class="xref lpc lpc-part docutils literal"><span class="pre">var</span></code> is that of <code class="xref lpc lpc-part docutils literal"><span class="pre">type</span></code>, the value is not changed.</p>
+<blockquote class="last">
+<div><p>NB. The literal number 0 is of unknown type, as it doubles as &#8216;not initialized&#8217; for strings, objects, and arrays.</p>
+<p>The operator acts like <a class="reference internal" href="../efun/to_string.html#lpc.efun.to_string" title="to_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_string</span></code>(E)</a>, <a class="reference internal" href="../efun/to_int.html#lpc.efun.to_int" title="to_int"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_int</span></code>(E)</a>, <a class="reference internal" href="../efun/to_object.html#lpc.efun.to_object" title="to_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_object</span></code>(E)</a>, <a class="reference internal" href="../efun/to_float.html#lpc.efun.to_float" title="to_float"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_float</span></code>(E)</a> and <a class="reference internal" href="../efun/to_array.html#lpc.efun.to_array" title="to_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_array</span></code>(E)</a>. It is advisable to use the efuns directly instead of the cast.</p>
+</div></blockquote>
+</dd>
+</div>
+<div class="container" id="lpc.operator.({ type }) var">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">({</span> <span class="pre">type</span> <span class="pre">})</span> <span class="pre">var</span></code><div class="line-block">
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION"><code class="xref lpc lpc-part docutils literal"><span class="pre">var</span></code> is now assumed to have the type <code class="xref lpc lpc-part docutils literal"><span class="pre">type</span></code>. This is purely declarative, the actual value of <code class="xref lpc lpc-part docutils literal"><span class="pre">var</span></code> is not changed.</dd>
+</div>
+<div class="container">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">++</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">++</span></span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Increment the value of variable &#8216;var&#8217;, and return the old value.</dd>
+</div>
+<div class="container">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">--</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">var</span> <span class="highlighted"><span class="pre">--</span></span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Decrement the value of variable &#8216;var&#8217;, and return the old value.</dd>
+</div>
+<div class="container" id="lpc.operator.expr1[expr2]">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">expr1[expr2]</span></code><div class="line-block">
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">The array or mapping given by &#8216;expr1&#8217; is indexed by &#8216;expr2&#8217;.</dd>
+</div>
+<div class="container" id="lpc.operator.expr1[expr2..expr3]">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">expr1[expr2..expr3]</span></code><div class="line-block">
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Extracts a piece from an array or string. expr2 or expr3 may be omitted, default is the begin or end of expr1. Negative numbers for expr2 or expr3 mean <code class="docutils literal"><span class="pre">count</span> <span class="pre">from</span> <span class="pre">before</span> <span class="pre">the</span> <span class="pre">beginning</span></code>, i.e. foo[-2..-1] is an empty array or string. foo[&lt;2..&lt;1] gives the 2nd and last element of the array resp. chars of the string.</dd>
+</div>
+<div class="container" id="lpc.operator.expr1-&gt;name(...)">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">expr1-&gt;name(...)</span></code><div class="line-block">
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">The symbolic form of <a class="reference internal" href="../efun/call_other.html#lpc.efun.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a>. &#8216;expr1&#8217; gives either an object or a string which is used as the file_name of an object, and calls the function &#8216;name&#8217; in this object.</dd>
+</div>
+<div class="container" id="lpc.operator.ident::name(...)">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">ident::name(...)</span></code><div class="line-block">
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Call the inherited function &#8216;name&#8217; with the given parameters in the parent &#8216;ident&#8217;. &#8216;ident&#8217; may be given as string containing the full pathname, or as identifier containing the pure basename. If &#8216;ident&#8217; is omitted, the last inherited function of this &#8216;name&#8217; is called.</dd>
+</div>
+<div class="container" id="lpc.operator.({ })">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">({</span> <span class="pre">})</span></code><div class="line-block">
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Array constructor.</dd>
+</div>
+<div class="container" id="lpc.operator.([ ])">
+<div class="container" id="OPERATOR">
+<strong>Operator: </strong><code class="docutils literal"><span class="pre">([</span> <span class="pre">])</span></code><div class="line-block">
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Mapping constructor.</dd>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The closure operators are not described here.</p>
+</div>
+<pre>
+<strong id="grammar-token-operators">operators</strong> ::=  <code class="xref docutils literal"><span class="pre">arrow_operator</span></code> | <code class="xref docutils literal"><span class="pre">arithmetic_operators</span></code>
+</pre>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code>, <code class="docutils literal"><span class="pre">&gt;&gt;&gt;=</span></code>, <code class="docutils literal"><span class="pre">&amp;&amp;=</span></code> and <code class="docutils literal"><span class="pre">||=</span></code>.</li>
+<li><strong>changed</strong> (<em>3.2.10</em>) &#8211; extended <code class="docutils literal"><span class="pre">&amp;</span></code> to mappings.</li>
+<li><strong>changed</strong> (<em>3.3</em>) &#8211; extended <code class="docutils literal"><span class="pre">|</span></code> and <code class="docutils literal"><span class="pre">^</span></code> to arrays.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="arrays.html#lpc.type.array" title="array"><code class="xref lpc lpc-type docutils literal"><span class="pre">array</span></code></a>, <a class="reference internal" href="mappings.html#lpc.type.mapping" title="mapping"><code class="xref lpc lpc-type docutils literal"><span class="pre">mapping</span></code></a>, <a class="reference internal" href="closures.html#lpc.type.closure" title="closure"><code class="xref lpc lpc-type docutils literal"><span class="pre">closure</span></code></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">operators</a><ul>
+<li><a class="reference internal" href="#LANG">LANG</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/operators.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

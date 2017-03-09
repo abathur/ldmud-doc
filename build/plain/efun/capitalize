@@ -9,8 +9,8 @@ DESCRIPTION
 
    USAGE
    =====
-      `capitalize("heya!") -> "Heya!"`
+      `capitalize("heya!")` returns `"Heya!"`
 
 SEE ALSO
 ========
-   lower_case()(E), upper_case()(E)
+   lower_case(E), upper_case(E)

@@ -1,0 +1,178 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>comments &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="do" href="do-while.html" />
+    <link rel="prev" title="closures example" href="closures-example.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="comments">
+<div class="section" id="SYNTAX">
+<h2>SYNTAX<a class="headerlink" href="#SYNTAX" title="Permalink to this headline">¶</a></h2>
+<strong>Comments</strong><pre class="literal-block">
+<strong>block comment:
+</strong>    <span class="highlighted">/*</span> [comment line, ...] <span class="highlighted">*/</span>
+<strong>
+line comment:
+</strong>    <span class="highlighted">//</span> [comment line] &lt;end of line&gt;
+</pre>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Comments are used to stored arbitrary text in the LPC program source. It is a good idea if some if this text explains the deeper intentions behind the actual LPC statements.</p>
+<p>There are block comments and line comments</p>
+<div class="container" id="lpc.syntax.comments">
+<div class="container" id="SYNTAX">
+<strong>block comment:</strong><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">/*</span> <span class="pre">[comment</span> <span class="pre">line,</span> <span class="pre">...]</span> <span class="pre">*/</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">/*</span> <span class="pre">test</span> <span class="pre">comment</span> <span class="pre">*/</span></code></div>
+</div>
+<strong>line comment:</strong><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">//</span> <span class="pre">[comment</span> <span class="pre">line]</span> <span class="pre">&lt;end</span> <span class="pre">of</span> <span class="pre">line&gt;</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION"></dd>
+</div>
+<div class="container" id="lpc.syntax./* [comment line, ...] */">
+<span id="lpc.syntax.block comment"></span><div class="container" id="SYNTAX">
+<strong>Block comment: </strong><code class="docutils literal"><span class="pre">/*</span> <span class="pre">[comment</span> <span class="pre">line,</span> <span class="pre">...]</span> <span class="pre">*/</span></code><div class="line-block">
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION"><p class="first">Block comments start with a <code class="docutils literal"><span class="pre">/*</span></code> and end with a <code class="docutils literal"><span class="pre">*/</span></code>. They cannot be nested, so:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="cm">/* this /* is */</span> <span class="n">illegal</span> <span class="o">*/</span>
+</pre></div>
+</div>
+<p class="last">will treat <code class="docutils literal"><span class="pre">/*</span> <span class="pre">this</span> <span class="pre">/*</span> <span class="pre">is</span> <span class="pre">*/</span></code> as the comment.</p>
+</dd>
+</div>
+<div class="container" id="lpc.syntax.//">
+<span id="lpc.syntax.line comment"></span><div class="container" id="SYNTAX">
+<strong>Line comment: </strong><code class="docutils literal"><span class="pre">//</span></code><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="highlighted"><span class="pre">//</span></span> <span class="pre">line</span> <span class="pre">comment</span> <span class="pre">text</span> <span class="pre">&lt;end</span> <span class="pre">of</span> <span class="pre">line&gt;</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Line comments start with <code class="docutils literal"><span class="pre">//</span></code> and continue until the unescaped(!) end of the line (as in the new C standard).</dd>
+</div>
+<p>It is not possible to next block and line comments within each other. Meaning: <code class="docutils literal"><span class="pre">//</span></code> within /* ... <em>/ has no special meaning, neither does ``/*`` or ``</em>/`` have after a //.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>This should really be an egg sample:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="cm">/* Simple block comment */</span>
+
+<span class="cm">/*</span>
+<span class="cm">  Block comments can</span>
+<span class="cm">  span several lines</span>
+<span class="cm">*/</span>
+
+<span class="c1">//Simple line comment</span>
+
+<span class="c1">//Line comments can \</span>
+<span class="c1">  span several lines, too!</span>
+
+<span class="c1">//#define LONG_MACRO The unique behaviour \</span>
+<span class="c1">  of line comments regarding the end of line \</span>
+<span class="c1">  can be used for example to comment out a \</span>
+<span class="c1">  large macro with just two keystrokes.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">comments</a><ul>
+<li><a class="reference internal" href="#SYNTAX">SYNTAX</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/comments.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

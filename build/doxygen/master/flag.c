@@ -1,18 +1,13 @@
 public class master {
    /**
-    * Evaluate an argument given as option '-f' to the driver.
-    * If several '-f' options are given, this function will be
-    * called sequentially with all given arguments.
-    * This function can be used to pass the master commands via
-    * arguments to the driver. This is useful when building a new
-    * mudlib from scratch. It is called only when the system is
-    * started.
+    * Evaluate an argument given as option '-f' to the driver. If several '-f' options are given, this function will be called sequentially with all given arguments. This function can be used to pass the master commands via arguments to the driver. This is useful when building a new mudlib from scratch. It is called only when the system is started.
     * 
     * @synopsis{
     * void flag(string arg)
     * }
     * 
     * @usage{
+    * ~~~{.c}
     * // The code given implements these commands:
     * //  '-fcall <ob> <fun> <arg>': call function <fun> in object <ob> with
     * //                                argument <arg>.
@@ -38,9 +33,12 @@ public class master {
     *   }
     *   write("master: Unknown flag "+arg+"\n");
     * }
+    * 
+    * ~~~
+    * 
     * }
     * 
-    * @see @ref driver_master_master "master"
+    * @see 
    **/
    void flag(string arg);
 }

@@ -1,8 +1,6 @@
 public class efun {
    /**
-    * Give the object <ob> a new object name <new_name>. Causes a privilege
-    * violation. The new name must not contain a # character, except
-    * at the end, to avoid confusion with clone numbers.
+    * Give the object \p ob a new object name \p new_name. Causes a privilege violation. The new name must not contain a # character, except at the end, to avoid confusion with clone numbers.
     * 
     * @synopsis{
     * void rename_object(object ob, string new_name)

@@ -10,4 +10,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   shutdown()(E), swap()(E)
+   shutdown(E), swap(E)

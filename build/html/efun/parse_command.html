@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::parse_command() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::parse_command() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::process_string()" href="process_string.html" />
     <link rel="prev" title="efun::db_insert_id()" href="db_insert_id.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,43 +47,31 @@
 <div class="section" id="SYNOPSIS">
 <span id="parse_command"></span><h2>SYNOPSIS (OPTIONAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.parse_command">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">parse_command</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;cmd</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> <em>&nbsp;env</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;fmt</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;&amp;var</em>, </td><td>
-...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.parse_command" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.parse_command">
+<!--[lpc.efun.parse_command]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">parse_command</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;cmd</em>, </td><td id="id2">
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> <em>&nbsp;env</em>, </td><td id="id3">
+string<em>&nbsp;fmt</em>, </td><td id="id4">
+mixed<em>&nbsp;&amp;var</em>, </td><td id="id5">
+...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.parse_command" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">parse_command</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;cmd</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;*arr</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;fmt</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;&amp;var</em>, </td><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">parse_command</code></td><td><span class="sig-paren">(</span></td><td id="id6">
+string<em>&nbsp;cmd</em>, </td><td id="id7">
+object<em>&nbsp;*arr</em>, </td><td id="id8">
+string<em>&nbsp;fmt</em>, </td><td id="id9">
+mixed<em>&nbsp;&amp;var</em>, </td><td id="id10">
 ...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>parse_command() is basically a spiffed up sscanf operating
-on word basis and targeted at recognizing object descriptions from
-command strings.</p>
-<p>The efun takes the command string &lt;cmd&gt; and the object(s) &lt;env&gt;/&lt;arr&gt;
-and tries to match it against the format string &lt;fmt&gt;. Successfully
-matched elements are assigned to the variables &lt;var&gt;.... The result
-from the efun is 1 if the command could be fully matched, and 0
-otherwise.</p>
-<p>If the objects are given as a single object &lt;env&gt;, the efun matches
-against the given object and all objects contained therein. Otherwise,
-if the objects are given as an array &lt;arr&gt; of objects, the efun
-matches only against the given objects.</p>
-<p>The format string &lt;fmt&gt; consists of words, syntactic markers, and
-%-directives for the values to parse and return in the variables.
-A typical example is &#8221; &#8216;get&#8217; / &#8216;take&#8217; %i &#8221; or
-&#8221; &#8216;spray&#8217; / &#8216;paint&#8217; [paint] %i &#8221;. The elements in detail are:</p>
+<p><a class="reference internal" href="#lpc.efun.parse_command" title="parse_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">parse_command</span></code>(E)</a> is basically a spiffed up sscanf operating on word basis and targeted at recognizing object descriptions from command strings.</p>
+<p>The efun takes the command string <a class="reference internal" href="#efun/parse_command.arg.cmd" title="cmd"><code class="xref lpc lpc-arg docutils literal"><span class="pre">cmd</span></code></a> and the object(s) <a class="reference internal" href="#efun/parse_command.arg.env" title="env"><code class="xref lpc lpc-arg docutils literal"><span class="pre">env</span></code></a>/<a class="reference internal" href="#efun/parse_command.arg.arr" title="arr"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arr</span></code></a> and tries to match it against the format string <a class="reference internal" href="#efun/parse_command.arg.fmt" title="fmt"><code class="xref lpc lpc-arg docutils literal"><span class="pre">fmt</span></code></a>. Successfully matched elements are assigned to the variables <code class="xref lpc lpc-arg docutils literal"><span class="pre">var</span></code>.... The result from the efun is 1 if the command could be fully matched, and 0 otherwise.</p>
+<p>If the objects are given as a single object <a class="reference internal" href="#efun/parse_command.arg.env" title="env"><code class="xref lpc lpc-arg docutils literal"><span class="pre">env</span></code></a>, the efun matches against the given object and all objects contained therein. Otherwise, if the objects are given as an array <a class="reference internal" href="#efun/parse_command.arg.arr" title="arr"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arr</span></code></a> of objects, the efun matches only against the given objects.</p>
+<p>The format string <a class="reference internal" href="#efun/parse_command.arg.fmt" title="fmt"><code class="xref lpc lpc-arg docutils literal"><span class="pre">fmt</span></code></a> consists of words, syntactic markers, and %-directives for the values to parse and return in the variables. A typical example is `` &#8216;get&#8217; / &#8216;take&#8217; %i `` or `` &#8216;spray&#8217; / &#8216;paint&#8217; [paint] %i <a href="#id11"><span class="problematic" id="id12">``</span></a>. The elements in detail are:</p>
 <blockquote>
 <div><p>&#8216;word&#8217;: obligatory text
 [word]: optional text
@@ -95,17 +85,13 @@ A typical example is &#8221; &#8216;get&#8217; / &#8216;take&#8217; %i &#8221; o
 a list of words to the efun, the matching will take
 only against this list.</div></blockquote>
 <dl class="docutils">
-<dt>%l</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">non-compat: Living objects</span><dd>compat: a single living object</dd>
+<dt>%l <span class="classifier-delimiter">:</span> <span class="classifier">non-compat: Living objects</span></dt>
+<dd>compat: a single living object</dd>
 </dl>
 <p>%i    : Any objects
 %d    : Number &gt;= 0, or when given textual: 0-99.</p>
 </div></blockquote>
-<p>A &lt;word&gt; in this context is any sequence of characters not containing
-a space. &#8216;living objects&#8217; are searched by calls to the (simul)efuns
-find_player() and find_living(): both functions have to accept a name
-as argument and return the object for this name, or 0 if there
-is none.</p>
+<p>A <em>word</em> in this context is any sequence of characters not containing a space. &#8216;living objects&#8217; are searched by calls to the (simul)efuns <code class="docutils literal"><span class="pre">find_player()</span></code> and <code class="docutils literal"><span class="pre">find_living()</span></code>: both functions have to accept a name as argument and return the object for this name, or 0 if there is none.</p>
 <p>The results assigned to the variables by the %-directives are:</p>
 <blockquote>
 <div><p>%o : returns an object
@@ -115,93 +101,84 @@ is none.</p>
 <blockquote>
 <div>if passed as array of words: var[0] is the matched word</div></blockquote>
 <dl class="docutils">
-<dt>%i</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">returns an array with the following content:</span><dd><blockquote class="first">
+<dt>%i <span class="classifier-delimiter">:</span> <span class="classifier">returns an array with the following content:</span></dt>
+<dd><blockquote class="first">
 <div><dl class="docutils">
 <dt>[0]: int: the count/number recognized in the object spec</dt>
 <dd>&gt; 0: a count (e.g. &#8216;three&#8217;, &#8216;4&#8217;)
 &lt; 0: an ordinal (e.g. &#8216;second&#8217;, &#8216;third&#8217;)
 = 0: &#8216;all&#8217; or a generic plural such as &#8216;apples&#8217;</dd>
 <dt>[1..]: object: all(!) objects matching the item description.</dt>
-<dd>In the &lt;env&gt; form this may be the whole
-recursive inventory of the &lt;env&gt; object.</dd>
+<dd>In the <a class="reference internal" href="#efun/parse_command.arg.env" title="env"><code class="xref lpc lpc-arg docutils literal"><span class="pre">env</span></code></a> form this may be the whole
+recursive inventory of the <a class="reference internal" href="#efun/parse_command.arg.env" title="env"><code class="xref lpc lpc-arg docutils literal"><span class="pre">env</span></code></a> object.</dd>
 </dl>
 </div></blockquote>
 <p class="last">It is up to the caller to interpret the recognized numeral
 and to apply it on the list of matched objects.</p>
 </dd>
-<dt>%l</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">non-compat: as %i, except that only living objects are</span><dd><blockquote class="first">
+<dt>%l <span class="classifier-delimiter">:</span> <span class="classifier">non-compat: as %i, except that only living objects are</span></dt>
+<dd><blockquote class="first">
 <div>returned.</div></blockquote>
 <p class="last">compat: as %o, except that only a living object is returned.</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>%i (and non-compat-%l) match descriptions like &#8216;three red roses&#8217;,
-&#8216;all nasty bugs&#8217; or &#8216;second blue sword&#8217;.</p>
-<p>Note: Patterns of type: &#8220;%s %w %i&#8221; might not work as one would expect.
-%w will always succeed so the arg corresponding to %s will always be
-empty.</p>
-<p>To make the efun useful it must have a certain support from the
-mudlib: it calls a set of functions in objects to get the
-information it needs to parse a string.</p>
+<p>%i (and non-compat-%l) match descriptions like &#8216;three red roses&#8217;, &#8216;all nasty bugs&#8217; or &#8216;second blue sword&#8217;.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Patterns of type: &#8220;%s %w %i&#8221; might not work as one would expect. %w will always succeed so the arg corresponding to %s will always be empty.</p>
+</div>
+<p>To make the efun useful it must have a certain support from the mudlib: it calls a set of functions in objects to get the information it needs to parse a string.</p>
 <blockquote>
 <div><ol class="arabic">
 <li><dl class="first docutils">
-<dt>string <a href="#id1"><span class="problematic" id="id2">*</span></a>parse_command_id_list()</dt>
+<dt>string <a href="#id13"><span class="problematic" id="id14">*</span></a>parse_command_id_list()</dt>
 <dd><p class="first last">Normal singular names of the object.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>string <a href="#id3"><span class="problematic" id="id4">*</span></a>parse_command_plural_id_list() - optional</dt>
-<dd><p class="first last">Plural forms of the names returned by 1.
-If this function doesn&#8217;t exist, the parser tries to pluralize
-the names returned by 1.</p>
+<dt>string <a href="#id15"><span class="problematic" id="id16">*</span></a>parse_command_plural_id_list() - optional</dt>
+<dd><p class="first last">Plural forms of the names returned by 1. If this function doesn&#8217;t exist, the parser tries to pluralize the names returned by 1.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>string <a href="#id5"><span class="problematic" id="id6">*</span></a>parse_command_adjectiv_id_list() -  optional</dt>
+<dt>string <a href="#id17"><span class="problematic" id="id18">*</span></a>parse_command_adjectiv_id_list() -  optional</dt>
 <dd><p class="first last">All adjectives associated with this object.</p>
 </dd>
 </dl>
 </li>
 </ol>
 </div></blockquote>
-<p>All names and adjectives may consist of several words separated
-by spaces.</p>
-<p>These functions should exist in all objects and are therefore best
-put into a mandatory inherit file (e.g. /std/object.c).</p>
-<p>In addition the master object may offer the same functions to provide
-reasonable defaults (like &#8216;thing&#8217; as generic singular name):</p>
+<p>All names and adjectives may consist of several words separated by spaces.</p>
+<p>These functions should exist in all objects and are therefore best put into a mandatory inherit file (e.g. /std/object.c).</p>
+<p>In addition the master object may offer the same functions to provide reasonable defaults (like &#8216;thing&#8217; as generic singular name):</p>
 <blockquote>
 <div><dl class="docutils">
-<dt>string <a href="#id7"><span class="problematic" id="id8">*</span></a>parse_command_id_list()</dt>
+<dt>string <a href="#id19"><span class="problematic" id="id20">*</span></a>parse_command_id_list()</dt>
 <dd><ul class="first last simple">
-<li>Would normally return: ({ &#8220;one&#8221;, &#8220;thing&#8221; })</li>
+<li>Would normally return: <code class="docutils literal"><span class="pre">({</span> <span class="pre">&quot;one&quot;,</span> <span class="pre">&quot;thing&quot;</span> <span class="pre">})</span></code></li>
 </ul>
 </dd>
-<dt>string <a href="#id9"><span class="problematic" id="id10">*</span></a>parse_command_plural_id_list()</dt>
+<dt>string <a href="#id21"><span class="problematic" id="id22">*</span></a>parse_command_plural_id_list()</dt>
 <dd><ul class="first last simple">
-<li>Would normally return: ({ &#8220;ones&#8221;, &#8220;things&#8221;, &#8220;them&#8221; })</li>
+<li>Would normally return: <code class="docutils literal"><span class="pre">({</span> <span class="pre">&quot;ones&quot;,</span> <span class="pre">&quot;things&quot;,</span> <span class="pre">&quot;them&quot;</span> <span class="pre">})</span></code></li>
 </ul>
 </dd>
-<dt>string <a href="#id11"><span class="problematic" id="id12">*</span></a>parse_command_adjectiv_id_list()</dt>
+<dt>string <a href="#id23"><span class="problematic" id="id24">*</span></a>parse_command_adjectiv_id_list()</dt>
 <dd><ul class="first last simple">
-<li>Would normally return ({ &#8220;iffish&#8221; })</li>
+<li>Would normally return <code class="docutils literal"><span class="pre">({</span> <span class="pre">&quot;iffish&quot;</span> <span class="pre">})</span></code></li>
 </ul>
 </dd>
 </dl>
 </div></blockquote>
-<p>Two additional functions in the master object provide the default
-list of prepositions (needed for %p) and the single &#8216;all&#8217; word:</p>
+<p>Two additional functions in the master object provide the default list of prepositions (needed for %p) and the single &#8216;all&#8217; word:</p>
 <blockquote>
 <div><dl class="docutils">
-<dt>string <a href="#id13"><span class="problematic" id="id14">*</span></a>parse_command_prepos_list()</dt>
+<dt>string <a href="#id25"><span class="problematic" id="id26">*</span></a>parse_command_prepos_list()</dt>
 <dd><ul class="first last simple">
-<li>Would normally return: ({ &#8220;in&#8221;, &#8220;on&#8221;, &#8220;under&#8221;, &#8220;behind&#8221;,
-&#8220;beside&#8221; })</li>
+<li>Would normally return: <code class="docutils literal"><span class="pre">({</span> <span class="pre">&quot;in&quot;,</span> <span class="pre">&quot;on&quot;,</span> <span class="pre">&quot;under&quot;,</span> <span class="pre">&quot;behind&quot;,</span> <span class="pre">&quot;beside&quot;</span> <span class="pre">})</span></code></li>
 </ul>
 </dd>
 <dt>string parse_command_all_word()</dt>
@@ -211,23 +188,23 @@ list of prepositions (needed for %p) and the single &#8216;all&#8217; word:</p>
 </dd>
 </dl>
 </div></blockquote>
-<p>int parse_command(string, object|object*, string, destargs...)</p>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<p>object <a href="#id15"><span class="problematic" id="id16">*</span></a>items;
-parse_command(&#8220;take apple&#8221;,environment(this_player()),</p>
-<blockquote>
-<div>&#8221; &#8216;get&#8217; / &#8216;take&#8217; %i &#8221;, items);</div></blockquote>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">object</span> <span class="o">*</span><span class="n">items</span><span class="p">;</span>
+<span class="n">parse_command</span><span class="p">(</span><span class="s">&quot;take apple&quot;</span><span class="p">,</span><span class="n">environment</span><span class="p">(</span><span class="n">this_player</span><span class="p">()),</span>
+              <span class="s">&quot; &#39;get&#39; / &#39;take&#39; %i &quot;</span><span class="p">,</span> <span class="n">items</span><span class="p">);</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><strong>changed</strong> (<em>3.3.258</em>) &#8211; removed the compat-mode parse_command().</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="sscanf.html#lpc.sscanf" title="sscanf"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sscanf()</span></code>(E)</a></p>
+<p><a class="reference internal" href="sscanf.html#lpc.efun.sscanf" title="sscanf"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sscanf</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -241,8 +218,8 @@ parse_command(&#8220;take apple&#8221;,environment(this_player()),</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -263,15 +240,14 @@ parse_command(&#8220;take apple&#8221;,environment(this_player()),</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -283,7 +259,7 @@ parse_command(&#8220;take apple&#8221;,environment(this_player()),</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/parse_command.txt"
+      <a href="../_sources/efun/parse_command.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

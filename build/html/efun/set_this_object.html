@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::set_this_object() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::set_this_object() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::set_this_player()" href="set_this_player.html" />
     <link rel="prev" title="efun::set_prompt()" href="set_prompt.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,59 +47,52 @@
 <div class="section" id="SYNOPSIS">
 <span id="set_this_object"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.set_this_object">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">set_this_object</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;object_to_pretend_to_be</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.set_this_object" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.set_this_object">
+<!--[lpc.efun.set_this_object]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">set_this_object</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;object_to_pretend_to_be</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.set_this_object" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>This is a privileged function, only to be used in the master
-object or in the simul_efun object.</p>
-<p>It changes the result of this_object() in the using function,
-and the result of previous_object() in functions called in
-other objects by call_other()/apply()/funcall(). Its effect will
-remain till there is a return of an external function call, or
-another call of set_this_object(). While executing code in the
-master object&#8217;s program or the primary simul_efun object&#8217;s
-program, set_this_object() is granted even if this_object() is
-altered by set_this_object(). This does not apply to functions
-inherited from other programs.</p>
-<p>Use it with extreme care to avoid inconsistencies.  After a
-call of set_this_object(), some LPC-constructs might behave in
-an odd manner, or even crash the system. In particular, using
-global variables or calling local functions (except by
-call_other) is illegal and actively prevented.</p>
-<p>Allowed are call_other(), map functions, access of local variables
-(which might hold array pointers to a global array), simple arithmetic
-and the assignment operators.</p>
+<p>This is a privileged function, only to be used in the master object or in the simul_efun object.</p>
+<p>It changes the result of <a class="reference internal" href="this_object.html#lpc.efun.this_object" title="this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_object</span></code>(E)</a> in the using function, and the result of <a class="reference internal" href="previous_object.html#lpc.efun.previous_object" title="previous_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">previous_object</span></code>(E)</a> in functions called in other objects by <a class="reference internal" href="call_other.html#lpc.efun.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a>/<a class="reference internal" href="apply.html#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a>/<a class="reference internal" href="funcall.html#lpc.efun.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a>. Its effect will remain till there is a return of an external function call, or another call of <a class="reference internal" href="#lpc.efun.set_this_object" title="set_this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_this_object</span></code>(E)</a>. While executing code in the master object&#8217;s program or the primary simul_efun object&#8217;s program, <a class="reference internal" href="#lpc.efun.set_this_object" title="set_this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_this_object</span></code>(E)</a> is granted even if <a class="reference internal" href="this_object.html#lpc.efun.this_object" title="this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_object</span></code>(E)</a> is altered by <a class="reference internal" href="#lpc.efun.set_this_object" title="set_this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_this_object</span></code>(E)</a>. This does not apply to functions inherited from other programs.</p>
+<p>Use it with extreme care to avoid inconsistencies. After a call of <a class="reference internal" href="#lpc.efun.set_this_object" title="set_this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_this_object</span></code>(E)</a>, some LPC-constructs might behave in an odd manner, or even crash the system. In particular, using global variables or calling local functions (except by call_other) is illegal and actively prevented.</p>
+<p>Allowed are <a class="reference internal" href="call_other.html#lpc.efun.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a>, map functions, access of local variables (which might hold array pointers to a global array), simple arithmetic and the assignment operators.</p>
+<div class="admonition limit">
+<p class="first admonition-title">Limit</p>
+<p>It is currently not possible to directly restore the original current object. So instead of writing:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">object</span> <span class="n">me</span> <span class="o">=</span> <span class="n">this_object</span><span class="p">();</span>
+<span class="n">set_this_object</span><span class="p">(</span><span class="n">that</span><span class="p">);</span>
+<span class="o">&lt;</span><span class="n">some</span> <span class="n">code</span><span class="o">&gt;</span>
+<span class="n">set_this_object</span><span class="p">(</span><span class="n">me</span><span class="p">);</span>
+<span class="o">&lt;</span><span class="n">more</span> <span class="n">code</span><span class="o">&gt;</span>
+</pre></div>
 </div>
+<p>one has to use a workaround::</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>private void doit (object that) {
+  set_this_object(that);
+  &lt;some code&gt;
+}
+
+funcall(#&#39;doit, that);
+&lt;more code&gt;
+</pre></div>
 </div>
-<dl class="docutils">
-<dt>BUGS</dt>
-<dd><p class="first">It is currently not possible to directly restore the original
-current object. So instead of writing</p>
-<blockquote>
-<div>object me = this_object();
-set_this_object(that);
-&lt;some code&gt;
-set_this_object(me);
-&lt;more code&gt;</div></blockquote>
-<p>one has to use a workaround:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>private void doit (object that) {</dt>
-<dd>set_this_object(that);
-&lt;some code&gt;</dd>
-</dl>
-<p>}</p>
-<p>funcall(#&#8217;doit, that);
-&lt;more code&gt;</p>
-</div></blockquote>
 <p class="last">Some people would consider this a feature.</p>
-</dd>
-</dl>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.10</em>) &#8211; actively prevents references to global variables and function calls by address while <a class="reference internal" href="#lpc.efun.set_this_object" title="set_this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_this_object</span></code>(E)</a> is in effect.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="this_object.html#lpc.efun.this_object" title="this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_object</span></code>(E)</a>, <a class="reference internal" href="set_this_player.html#lpc.efun.set_this_player" title="set_this_player"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_this_player</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -108,8 +103,8 @@ set_this_object(me);
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -119,21 +114,24 @@ set_this_object(me);
   <ul>
 <li><a class="reference internal" href="#">efun::set_this_object()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -145,7 +143,7 @@ set_this_object(me);
       &copy;good question.
       
       |
-      <a href="../_sources/efun/set_this_object.txt"
+      <a href="../_sources/efun/set_this_object.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

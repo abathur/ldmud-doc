@@ -1,15 +1,15 @@
 SYNOPSIS
 ========
    #include <tls.h>
-   string hmac(int method, string key, string arg)
-   string hmac(int method, string key, int *  arg)
+   string hmac(int method, string key, string value)
+   string hmac(int method, string key, int *  arg  )
 
 DESCRIPTION
 ===========
-   Calculate the Hashed Message Authenication Code for <arg> based on the 
-   digest <method> and the password <key>. Return the HMAC.
+   Calculate the Hashed Message Authenication Code for value(E) based on the 
+   digest method(E) and the password key(E). Return the HMAC.
 
-   <method> is one of the >>TLS_HASH_<< constants defined in tls.h; not all 
+   method(E) is one of the >>TLS_HASH_<< constants defined in tls.h; not all 
    recognized methods may be supported for a given driven:
 
       TLS_HASH_SHA1      (1) TLS_HASH_SHA224    (2) TLS_HASH_SHA256    (3) 
@@ -21,7 +21,18 @@ DESCRIPTION
 
    USAGE
    =====
-      string s;
+      The example below shows how to compute the SHA1 hmac of a string and an 
+      array of characters:
 
-      s = hmac(TLS_HASH_SHA1, "secret", "Hello"); s = hmac(TLS_HASH_SHA1, 
-      "secret", ({ 'H', 'e', 'l', 'l', 'o' }) )
+         string s;
+
+         s = hmac(TLS_HASH_SHA1, "secret", "Hello");
+         s = hmac(TLS_HASH_SHA1, "secret", ({ 'H', 'e', 'l', 'l', 'o' }) );
+
+HISTORY
+=======
+   - introduced (3.3.714)
+
+SEE ALSO
+========
+   crypt(E), md5(E), md5_crypt(E), sha1(E), hmac(E)

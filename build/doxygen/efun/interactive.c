@@ -1,8 +1,6 @@
 public class efun {
    /**
-    * Return non-zero if ob is an interactive user. If ob is omitted,
-    * this_object() will be used. The return value is 1 if the
-    * object is interactive, else 0.
+    * Return non-zero if \p ob is an interactive user. If \p ob is omitted, `this_object()` will be used. The return value is 1 if the object \p ob is interactive, else 0.
     * 
     * @synopsis{
     * int interactive()

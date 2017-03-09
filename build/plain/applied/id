@@ -7,9 +7,7 @@ DESCRIPTION
    Let the object identify itself. If str matches an id of the current object 
    then return a non-zero value.
 
-   This lfun is applied for present()(E).
-
-   Todo: this is now a false document, right?
+   This lfun is applied for present(E).
 
    USAGE
    =====
@@ -22,4 +20,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   present()(E)
+   present(E)

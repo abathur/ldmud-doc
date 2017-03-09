@@ -1,22 +1,20 @@
 SYNOPSIS
 ========
-   object * all_environment(        )
-   object * all_environment(object o)
+   object * all_environment(          )
+   object * all_environment(object obj)
 
 DESCRIPTION
 ===========
-   Returns an array with all environments object <o> is in. If <o> is omitted,
-   the environments of the current object is returned.
+   Returns an array with all environments object obj(E) is in. If obj(E) is 
+   omitted, the environments of the current object is returned.
 
-   If <o> has no environment, or if <o> is destructed, 0 is returned.
+   If obj(E) has no environment, or if obj(E) is destructed, 0 is returned.
 
    USAGE
    =====
-      If o is a match in a matchbox which is in a box in a chest, in a 
-      room, `all_environment(o)` will 
+      If obj(E) is a match in a matchbox which is in a box in a chest, in a 
+      room, `all_environment(obj)` will 
       return `({ matchbox, box, chest, room })`.
-
-      Todo: above could be an 'example' directive
 
 HISTORY
 =======
@@ -24,4 +22,4 @@ HISTORY
 
 SEE ALSO
 ========
-   environment()(E), all_inventory()(E)
+   environment(E), all_inventory(E)

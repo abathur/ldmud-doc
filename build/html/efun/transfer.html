@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::transfer() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::transfer() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::tls_available()" href="tls_available.html" />
     <link rel="prev" title="efun::set_is_wizard()" href="set_is_wizard.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,23 +47,17 @@
 <div class="section" id="SYNOPSIS">
 <span id="transfer"></span><h2>SYNOPSIS (DEPRECATED)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.transfer">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">transfer</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;item</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;dest</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.transfer" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.transfer">
+<!--[lpc.efun.transfer]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">transfer</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;item</em>, </td><td id="id2">
+object<em>&nbsp;dest</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.transfer" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<p>DESCRIPTION
-This efun is for backward compatibility only. It is only
-available in compat mode.</p>
-<p>Move the object &#8220;item&#8221; to the object &#8220;dest&#8221;. All kinds of
-tests are done, and a number is returned specifying the
-result:</p>
+<p>This efun is for backward compatibility only. It is only available in compat mode.</p>
+<p>Move the object <a class="reference internal" href="#efun/transfer.arg.item" title="item"><code class="xref lpc lpc-arg docutils literal"><span class="pre">item</span></code></a> to the object <a class="reference internal" href="#efun/transfer.arg.dest" title="dest"><code class="xref lpc lpc-arg docutils literal"><span class="pre">dest</span></code></a>. All kinds of tests are done, and a number is returned specifying the result:</p>
 <p>0: Success.
 1: Too heavy for destination.
 2: Can&#8217;t be dropped.
@@ -69,147 +65,103 @@ result:</p>
 4: The object can&#8217;t be inserted into bags etc.
 5: The destination doesn&#8217;t allow insertions of objects.
 6: The object can&#8217;t be picked up.</p>
-<p>If an object is transfered to a newly created object, make
-sure that the new object first is transfered to its
-destination.</p>
-<p>The efun calls add_weight(), drop(), get(), prevent_insert(),
-add_weight(), and can_put_and_get() where needed.</p>
-<p>REPLACEMENT
-This efun can easily be replaced with a simul_efun:</p>
-<p>/<em>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;</em>/
-int transfer(object item, object dest)
-{</p>
-<blockquote>
-<div><p>int weight;
-object from;</p>
-<p>efun::set_this_object(previous_object());</p>
-<p>weight = item-&gt;query_weight();
-if (!item)</p>
-<blockquote>
-<div>return 3;</div></blockquote>
-<p>from = environment(item);
-if (from)
-{</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>/*</dt>
-<dd><ul class="first simple">
-<li>If the original place of the object is a living object,</li>
-<li>then we must call drop() to check that the object can be</li>
-<li>dropped.</li>
+<p>If an object is transfered to a newly created object, make sure that the new object first is transfered to its destination.</p>
+<p>The efun calls <a class="reference internal" href="../applied/add_weight.html#lpc.applied.add_weight" title="add_weight"><code class="xref lpc lpc-applied docutils literal"><span class="pre">add_weight</span></code>(A)</a>, <a class="reference internal" href="../applied/drop.html#lpc.applied.drop" title="drop"><code class="xref lpc lpc-applied docutils literal"><span class="pre">drop</span></code>(A)</a>, <a class="reference internal" href="../applied/get.html#lpc.applied.get" title="get"><code class="xref lpc lpc-applied docutils literal"><span class="pre">get</span></code>(A)</a>, <a class="reference internal" href="../applied/prevent_insert.html#lpc.applied.prevent_insert" title="prevent_insert"><code class="xref lpc lpc-applied docutils literal"><span class="pre">prevent_insert</span></code>(A)</a>, <a class="reference internal" href="../applied/add_weight.html#lpc.applied.add_weight" title="add_weight"><code class="xref lpc lpc-applied docutils literal"><span class="pre">add_weight</span></code>(A)</a>, and <a class="reference internal" href="../applied/can_put_and_get.html#lpc.applied.can_put_and_get" title="can_put_and_get"><code class="xref lpc lpc-applied docutils literal"><span class="pre">can_put_and_get</span></code>(A)</a> where needed.</p>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>replacement simul_efun<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>This efun can easily be replaced with a simul_efun:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="cm">/*--------------------------------------------------------*/</span>
+<span class="kt">int</span> <span class="nf">transfer</span><span class="p">(</span><span class="kt">object</span> <span class="n">item</span><span class="p">,</span> <span class="kt">object</span> <span class="n">dest</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">weight</span><span class="p">;</span>
+    <span class="kt">object</span> <span class="k">from</span><span class="p">;</span>
+
+    <span class="n">efun</span><span class="o">::</span><span class="n">set_this_object</span><span class="p">(</span><span class="n">previous_object</span><span class="p">());</span>
+
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">item</span><span class="o">-&gt;</span><span class="n">query_weight</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
+
+    <span class="k">from</span> <span class="o">=</span> <span class="n">environment</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">from</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="cm">/*</span>
+<span class="cm">         * If the original place of the object is a living object,</span>
+<span class="cm">         * then we must call drop() to check that the object can be</span>
+<span class="cm">         * dropped.</span>
+<span class="cm">         */</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">living</span><span class="p">(</span><span class="k">from</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">-&gt;</span><span class="n">drop</span><span class="p">()</span> <span class="o">||</span> <span class="o">!</span><span class="n">item</span><span class="p">)</span>
+                <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="cm">/*</span>
+<span class="cm">         * If &#39;from&#39; is not a room and not a player, check that we may</span>
+<span class="cm">         * remove things out of it.</span>
+<span class="cm">         */</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">environment</span><span class="p">(</span><span class="k">from</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">from</span><span class="o">-&gt;</span><span class="n">can_put_and_get</span><span class="p">()</span> <span class="o">||</span> <span class="o">!</span><span class="k">from</span><span class="p">)</span>
+                <span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * If the destination is not a room, and not a player,</span>
+<span class="cm">     * Then we must test &#39;prevent_insert&#39;, and &#39;can_put_and_get&#39;.</span>
+<span class="cm">     */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">environment</span><span class="p">(</span><span class="n">dest</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">living</span><span class="p">(</span><span class="n">dest</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="o">-&gt;</span><span class="n">prevent_insert</span><span class="p">())</span>
+            <span class="k">return</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">dest</span><span class="o">-&gt;</span><span class="n">can_put_and_get</span><span class="p">()</span> <span class="o">||</span> <span class="o">!</span><span class="n">dest</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">living</span><span class="p">(</span><span class="n">dest</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">item</span><span class="o">-&gt;</span><span class="n">get</span><span class="p">()</span> <span class="o">||</span> <span class="o">!</span><span class="n">item</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">6</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * If it is not a room, correct the total weight in the</span>
+<span class="cm">     * destination.</span>
+<span class="cm">     */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">environment</span><span class="p">(</span><span class="n">dest</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">weight</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">dest</span><span class="o">-&gt;</span><span class="n">add_weight</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">dest</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * If it is not a room, correct the weight in the &#39;from&#39; object.</span>
+<span class="cm">     */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">from</span> <span class="o">&amp;&amp;</span> <span class="n">environment</span><span class="p">(</span><span class="k">from</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">weight</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">from</span><span class="o">-&gt;</span><span class="n">add_weight</span><span class="p">(</span><span class="o">-</span><span class="n">weight</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">move_object</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">dest</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cm">/*--------------------------------------------------------*/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>deprecated</strong> (<em>3.3</em>) &#8211; available only when compiled with USE_DEPRECATED.</li>
 </ul>
-<p class="last"><a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
-</dd>
-</dl>
-<p>if (living(from))
-{</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>if (item-&gt;drop() || !item)</dt>
-<dd>return 2;</dd>
-</dl>
-</div></blockquote>
-<p>}
-/*</p>
-<blockquote>
-<div><ul class="simple">
-<li>If &#8216;from&#8217; is not a room and not a player, check that we may</li>
-<li>remove things out of it.</li>
-</ul>
-<p><a href="#id3"><span class="problematic" id="id4">*</span></a>/</p>
-</div></blockquote>
-<p>else if (environment(from))
-{</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>if (!from-&gt;can_put_and_get() || !from)</dt>
-<dd>return 3;</dd>
-</dl>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>}</p>
-<dl class="docutils">
-<dt>/*</dt>
-<dd><ul class="first simple">
-<li>If the destination is not a room, and not a player,</li>
-<li>Then we must test &#8216;prevent_insert&#8217;, and &#8216;can_put_and_get&#8217;.</li>
-</ul>
-<p class="last"><a href="#id5"><span class="problematic" id="id6">*</span></a>/</p>
-</dd>
-</dl>
-<p>if (environment(dest) &amp;&amp; !living(dest))
-{</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>if (item-&gt;prevent_insert())</dt>
-<dd>return 4;</dd>
-<dt>if (!dest-&gt;can_put_and_get() || !dest)</dt>
-<dd>return 5;</dd>
-</dl>
-</div></blockquote>
-<p>}</p>
-<p>if (living(dest))
-{</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>if (!item-&gt;get() || !item)</dt>
-<dd>return 6;</dd>
-</dl>
-</div></blockquote>
-<p>}</p>
-<dl class="docutils">
-<dt>/*</dt>
-<dd><ul class="first simple">
-<li>If it is not a room, correct the total weight in the</li>
-<li>destination.</li>
-</ul>
-<p class="last"><a href="#id7"><span class="problematic" id="id8">*</span></a>/</p>
-</dd>
-</dl>
-<p>if (environment(dest) &amp;&amp; weight)
-{</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>if (!dest-&gt;add_weight(weight) || !dest)</dt>
-<dd>return 1;</dd>
-</dl>
-</div></blockquote>
-<p>}</p>
-<dl class="docutils">
-<dt>/*</dt>
-<dd><ul class="first simple">
-<li>If it is not a room, correct the weight in the &#8216;from&#8217; object.</li>
-</ul>
-<p class="last"><a href="#id9"><span class="problematic" id="id10">*</span></a>/</p>
-</dd>
-</dl>
-<p>if (from &amp;&amp; environment(from) &amp;&amp; weight)
-{</p>
-<blockquote>
-<div>from-&gt;add_weight(-weight);</div></blockquote>
-<p>}</p>
-<p>move_object(item, dest);</p>
-<p>return 0;</p>
-</div></blockquote>
-<p>}
-/<em>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;</em>/</p>
-<dl class="docutils">
-<dt>Deprecated in LDMud 3.3; available only when compiled with</dt>
-<dd><blockquote class="first">
-<div><p>USE_DEPRECATED.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="move_object.html#lpc.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object()</span></code>(E)</a>, <a class="reference internal" href="../applied/drop.html#lpc.drop" title="drop"><code class="xref lpc lpc-applied docutils literal"><span class="pre">drop</span></code>(A)</a>, <a class="reference internal" href="../applied/get.html#lpc.get" title="get"><code class="xref lpc lpc-applied docutils literal"><span class="pre">get</span></code>(A)</a>, <a class="reference internal" href="../applied/prevent_insert.html#lpc.prevent_insert" title="prevent_insert"><code class="xref lpc lpc-applied docutils literal"><span class="pre">prevent_insert</span></code>(A)</a>,</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p class="last"><a class="reference internal" href="../applied/can_put_and_get.html#lpc.can_put_and_get" title="can_put_and_get"><code class="xref lpc lpc-applied docutils literal"><span class="pre">can_put_and_get</span></code>(A)</a>, <a class="reference internal" href="../applied/add_weight.html#lpc.add_weight" title="add_weight"><code class="xref lpc lpc-applied docutils literal"><span class="pre">add_weight</span></code>(A)</a></p>
-</dd>
-</dl>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="move_object.html#lpc.efun.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object</span></code>(E)</a>, <a class="reference internal" href="../applied/drop.html#lpc.applied.drop" title="drop"><code class="xref lpc lpc-applied docutils literal"><span class="pre">drop</span></code>(A)</a>, <a class="reference internal" href="../applied/get.html#lpc.applied.get" title="get"><code class="xref lpc lpc-applied docutils literal"><span class="pre">get</span></code>(A)</a>, <a class="reference internal" href="../applied/prevent_insert.html#lpc.applied.prevent_insert" title="prevent_insert"><code class="xref lpc lpc-applied docutils literal"><span class="pre">prevent_insert</span></code>(A)</a>, <a class="reference internal" href="../applied/can_put_and_get.html#lpc.applied.can_put_and_get" title="can_put_and_get"><code class="xref lpc lpc-applied docutils literal"><span class="pre">can_put_and_get</span></code>(A)</a>, <a class="reference internal" href="../applied/add_weight.html#lpc.applied.add_weight" title="add_weight"><code class="xref lpc lpc-applied docutils literal"><span class="pre">add_weight</span></code>(A)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -220,8 +172,8 @@ if (from)
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -231,21 +183,25 @@ if (from)
   <ul>
 <li><a class="reference internal" href="#">efun::transfer()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (DEPRECATED)</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#l">replacement simul_efun</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -257,7 +213,7 @@ if (from)
       &copy;good question.
       
       |
-      <a href="../_sources/efun/transfer.txt"
+      <a href="../_sources/efun/transfer.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

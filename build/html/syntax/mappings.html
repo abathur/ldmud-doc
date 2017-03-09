@@ -1,0 +1,451 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mapping &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mixed" href="mixed.html" />
+    <link rel="prev" title="int" href="int.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mapping">
+<span id="lpc.type.mapping"></span><div class="section" id="TYPE">
+<h2>TYPE<a class="headerlink" href="#TYPE" title="Permalink to this headline">¶</a></h2>
+<pre class="literal-block">
+<strong>literal constructor:
+</strong>    <span class="highlighted">([</span><span class="highlighted">])</span>
+<strong>
+one column:
+</strong>    <span class="highlighted">([</span>key1, ..., keyN<span class="highlighted">])</span>
+<strong>
+two columns:
+</strong>    <span class="highlighted">([</span>key1: value1, key2: value2, ...<span class="highlighted">])</span>
+<strong>
+multiple columns:
+</strong>    <span class="highlighted">([</span>key1: value1a; ... valueNa, key2: value2a; ... valueNa<span class="highlighted">])</span>
+</pre>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="A step-by-step introduction to mappings">
+<h1>Guide to A step-by-step introduction to mappings<a class="headerlink" href="#A step-by-step introduction to mappings" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<span id="lpc.guide.A step-by-step introduction to mappings"></span><ul class="simple">
+<li><a class="reference internal" href="#l" id="id1">What are mappings good for?</a></li>
+<li><a class="reference internal" href="#l" id="id2">How do I create a mapping?</a></li>
+<li><a class="reference internal" href="#l" id="id3">How can I modify the data of a mapping?</a></li>
+<li><a class="reference internal" href="#l" id="id4">How can I access the data stored in a mapping?</a></li>
+<li><a class="reference internal" href="#l" id="id5">How can I test for the existance of a key?</a></li>
+<li><a class="reference internal" href="#l" id="id6">How can I copy a mapping?</a></li>
+<li><a class="reference internal" href="#l" id="id7">How can I get all keys of a mapping?</a></li>
+<li><a class="reference internal" href="#l" id="id8">How can I get all the values of a mapping?</a></li>
+<li><a class="reference internal" href="#l" id="id9">How can I determine the size of a mapping?</a></li>
+<li><a class="reference internal" href="#l" id="id10">What is the best method to iterate over a mapping?</a></li>
+<li><a class="reference internal" href="#l" id="id11">Is it possible to join/intersect/cut mappings with another?</a></li>
+<li><a class="reference internal" href="#l" id="id12">What are those mappings without any values (besides keys) good for?</a></li>
+<li><a class="reference internal" href="#l" id="id13">How can I convert an alist into a mapping and vice versa?</a></li>
+<li><a class="reference internal" href="#l" id="id14">Dirty Mappings</a></li>
+<li><a class="reference internal" href="#HISTORY" id="id15">HISTORY</a></li>
+<li><a class="reference internal" href="#LORE" id="id16">LORE</a></li>
+<li><a class="reference internal" href="#see2also" id="id17">SEE ALSO</a></li>
+</ul>
+</div>
+<p>A mapping is a datatype which allows to store data associated to a key. In other languages they are also known as &#8216;dictionaries&#8217; or &#8216;alists&#8217;. There are also alists in LPC but they are not a separate datatype but are implemented on top of arrays. Alists are the predecessors of mappings. The keys and the values can be of any type. But most common datatypes for keys are strings, integers and objects. Others like arrays, mappings or closures aren&#8217;t a good choice because comparision between i.e. arrays often returns false even if they equal in content. This is because the driver compares i.e. two arrays by their internal pointers and not by their content. The reason for this is simple: speed.</p>
+<p>Mappings are allways treated as references when passing them to functions. This means when you pass a mapping to another object and this object modifies the mapping the modification will take place in a global scope - visible to all objects holding this mapping in a variable.</p>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h2><a class="toc-backref" href="#id1">What are mappings good for?</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h2>
+<p>The term &#8216;dictionary&#8217; probably describes the use of a mapping best. Opposed to arrays mappings don&#8217;t have a specific order. They provide a mechanism to create a set of associations between values. Such an association consists of a unique key and data that is identified by the key. Think of a dictionary where you have a word and a definition of it. You use the word to lookup its definition.</p>
+<p>Mappings can be used i.e. to hold aliases for commands. The key would then be the name of the alias and the data the command(s) behind an alias. Or they can be used for the exits of a room. The keys would be the directions where one can go to and the associated data would be the file names of the rooms. But mappings can also be used as a kind of a sparse array. A sparse array is an array where most of the elements aren&#8217;t used (occupied by 0). I.e. if you want to store values at the position 0, 13 and 37642 of an array you would have to create an array with a size of at least 37643. This costs a lot of memory so a mapping would be more useful because you would then use the numbers 0, 13 and 37642 as a key and not as an index to a position (actually the keys of a mapping are sometimes called indices but this is just because the way data is accessed in a mapping is similar to arrays: by the [] operator). This also allows to query all occupied positions of a sparse array by querying for all the keys of the mapping opposed to an array where you have to iterate over all elements.</p>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h2><a class="toc-backref" href="#id2">How do I create a mapping?</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h2>
+<p>There are several ways to do so. The most convenient is the following:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">mapping</span> <span class="n">map</span><span class="p">;</span>
+<span class="n">map</span> <span class="o">=</span> <span class="p">([</span>
+  <span class="nl">key0</span><span class="p">:</span> <span class="n">value00</span><span class="p">;</span> <span class="p">...;</span> <span class="n">value0n</span><span class="p">,</span>
+  <span class="p">...</span> <span class="o">:</span> <span class="p">...</span>    <span class="p">;</span> <span class="p">...;</span> <span class="p">...</span>    <span class="p">,</span>
+  <span class="nl">keyn</span><span class="p">:</span> <span class="n">valuen0</span><span class="p">;</span> <span class="p">...;</span> <span class="n">valuenn</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<p>As you can see, a key may have more than one value assigned. But the amount of values per key must always be equal. It is even possible to have mappings without any values!</p>
+<p>Another method is to use <a class="reference internal" href="../efun/mkmapping.html#lpc.efun.mkmapping" title="mkmapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mkmapping</span></code>(E)</a>. This efun gets two arguments with the first beeing an array of keys and the following beeing arrays of values:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">mapping</span> <span class="n">map</span><span class="p">;</span>
+<span class="n">map</span> <span class="o">=</span> <span class="n">mkmapping</span> <span class="p">(</span>
+  <span class="p">({</span> <span class="n">key0</span>   <span class="p">,</span> <span class="p">...,</span> <span class="n">keyn</span>    <span class="p">}),</span>
+  <span class="p">({</span> <span class="n">value00</span><span class="p">,</span> <span class="p">...,</span> <span class="n">value0n</span> <span class="p">}),</span>
+  <span class="p">({</span> <span class="p">...</span>    <span class="p">,</span> <span class="p">...,</span> <span class="p">...</span>     <span class="p">}),</span>
+  <span class="p">({</span> <span class="n">valuen0</span><span class="p">,</span> <span class="p">...,</span> <span class="n">valuenn</span> <span class="p">})</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>If the efun only gets one argument, then this argument will be taken as an array of keys and a mapping without values will be returned.</p>
+<p>An empty mapping can be created by using the above described methods by simply ommitting the keys and values:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">mapping</span> <span class="n">map</span><span class="p">;</span>
+<span class="n">map</span> <span class="o">=</span> <span class="p">([]);</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">map</span> <span class="o">=</span> <span class="n">mkmapping</span><span class="p">(({}),</span> <span class="p">({}));</span>
+</pre></div>
+</div>
+<p>Or by using the <a class="reference internal" href="../efun/m_allocate.html#lpc.efun.m_allocate" title="m_allocate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_allocate</span></code>(E)</a>. This efun gets as first argument the amount of keys which will be added soon and an optional second argument specifying the width of the mapping:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">map</span> <span class="o">=</span> <span class="n">m_allocate</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">width</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The value <em>n</em> may be a bit confusing since mappings shrink and grow dynamically. This value just tells the driver how &#8216;long&#8217; this mapping is going to be so proper memory allocations will be performed to reduce the overhead of memory reallocation. I.e. if you want to read in a file and store the read data in a mapping you probably know the amount of keys. So you allocate a mapping with this efun and tell the driver how much memory should be allocated by specifing a proper <em>n</em> value. Thus causing a speedup when adding the read data to the mapping afterwards. The <em>width</em> just specifies how many values per key this mapping is going to have. If no width is given, 1 will be taken as default.</p>
+<p>An empty mapping created with <code class="docutils literal"><span class="pre">([])</span></code> will always have a width of 1. To create empty mappings with other widths, write it as:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">map</span> <span class="o">=</span> <span class="p">([</span><span class="o">:</span><span class="n">width</span> <span class="p">]);</span>
+</pre></div>
+</div>
+<p><em>width</em> can be any expression returning an integer value (including function calls), and in fact this notation is just a fancy way of writing:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">map</span> <span class="o">=</span> <span class="n">m_allocate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h2><a class="toc-backref" href="#id3">How can I modify the data of a mapping?</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h2>
+<p>Adding a new key is similiar to modifying the associated data of an existing key:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">map</span> <span class="o">+=</span> <span class="p">([</span> <span class="nl">key</span><span class="p">:</span> <span class="n">value0</span><span class="p">;</span> <span class="p">...;</span> <span class="n">valuen</span> <span class="p">]);</span>
+</pre></div>
+</div>
+<p>Or in case only a single value should be modified:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">map</span><span class="p">[</span><span class="n">key</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">valuen</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If <em>n</em> is out of range or if <em>key</em> doesn&#8217;t exists and <em>n</em> is greater than 0 an &#8220;Illegal index&#8221; error will be reported. If <em>n</em> is equal to 0 or the mapping only has a single value per key one can abbreviate it with:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If there is no <em>key</em> (and <em>n</em> is equal to 0 or not specified at all) a new one will be added automatically.</p>
+<p>Deletion of a key is done with the <a class="reference internal" href="operators.html#lpc.operator.-=" title="-="><code class="xref lpc lpc-operator docutils literal"><span class="pre">-=</span></code></a> or <a class="reference internal" href="../efun/m_delete.html#lpc.efun.m_delete" title="m_delete"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_delete</span></code>(E)</a>. A mapping can only be substracted by one without any values:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">map</span> <span class="o">-=</span> <span class="p">([</span> <span class="n">key</span> <span class="p">]);</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">map</span> <span class="o">-=</span> <span class="p">([</span> <span class="n">key0</span><span class="p">,</span> <span class="p">...,</span> <span class="n">keyn</span> <span class="p">]);</span>
+</pre></div>
+</div>
+<p>The efun takes a mapping as first and a key as second argument:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">m_delete</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../efun/m_delete.html#lpc.efun.m_delete" title="m_delete"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_delete</span></code>(E)</a> returns the mapping but because mappings are handled as references there is no need of an assignment like:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">map</span> <span class="o">=</span> <span class="n">m_delete</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h2><a class="toc-backref" href="#id4">How can I access the data stored in a mapping?</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h2>
+<p>This can be done by:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">valuen</span> <span class="o">=</span> <span class="n">map</span><span class="p">[</span><span class="n">key</span><span class="p">,</span> <span class="n">n</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>Or in case of a mapping with just one value per key:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">value0</span> <span class="o">=</span> <span class="n">map</span><span class="p">[</span><span class="n">key</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>If there is no <em>key</em> in the mapping and <em>n</em> is 0 or not specified at all (which is the same) a 0 will be returned or if <em>n</em> is greater than 0 an &#8220;Illegal index&#8221; error will be reported.</p>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h2><a class="toc-backref" href="#id5">How can I test for the existance of a key?</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h2>
+<p>A return value of 0 is sufficient for most applications but sometimes the ambiguity between an existing value of 0 and a nonexisting key can lead to a problem. Therefore one can use <a class="reference internal" href="../efun/member.html#lpc.efun.member" title="member"><code class="xref lpc lpc-efun docutils literal"><span class="pre">member</span></code>(E)</a> or <a class="reference internal" href="../efun/m_contains.html#lpc.efun.m_contains" title="m_contains"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_contains</span></code>(E)</a> to check if there actually is a key in the mapping:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">member</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">mapping_contains</span><span class="p">(</span><span class="o">&amp;</span><span class="n">value0</span><span class="p">,</span> <span class="p">...,</span> <span class="o">&amp;</span><span class="n">valuen</span><span class="p">,</span> <span class="n">map</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This also shows how one can retrieve all values associated to a key from a mapping in a single step. The &#8216;&amp;&#8217; is the reference operator which is neccesary to let the efun store the values in the variables.</p>
+<p>In case of mappings with no values, the <a class="reference internal" href="../efun/member.html#lpc.efun.member" title="member"><code class="xref lpc lpc-efun docutils literal"><span class="pre">member</span></code>(E)</a> and <a class="reference internal" href="../efun/m_contains.html#lpc.efun.m_contains" title="m_contains"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_contains</span></code>(E)</a> are equal in their behaviour and their way of calling because <a class="reference internal" href="../efun/m_contains.html#lpc.efun.m_contains" title="m_contains"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_contains</span></code>(E)</a> won&#8217;t get any reference variables to store the values in (because there aren&#8217;t any).</p>
+<p>Also normally <a class="reference internal" href="../efun/member.html#lpc.efun.member" title="member"><code class="xref lpc lpc-efun docutils literal"><span class="pre">member</span></code>(E)</a> is known to return the postion of an element in a list (i.e. a character in a string or data in an array) and if an element couldn&#8217;t be found -1 is returned. But in the case of mappings there are no such things as order and postion. So <a class="reference internal" href="../efun/member.html#lpc.efun.member" title="member"><code class="xref lpc lpc-efun docutils literal"><span class="pre">member</span></code>(E)</a> only returns 0 or 1.</p>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h2><a class="toc-backref" href="#id6">How can I copy a mapping?</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h2>
+<p>A mapping can be copied with the + operator or by <a class="reference internal" href="../efun/deep_copy.html#lpc.efun.deep_copy" title="deep_copy"><code class="xref lpc lpc-efun docutils literal"><span class="pre">deep_copy</span></code>(E)</a>:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">newmap</span> <span class="o">=</span> <span class="p">([])</span> <span class="o">+</span> <span class="n">map</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">newmap</span> <span class="o">=</span> <span class="n">copy_mapping</span><span class="p">(</span><span class="n">map</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>A mapping should only be copied when it is neccesary to get an own copy of it that must not be shared by other objects.</p>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h2><a class="toc-backref" href="#id7">How can I get all keys of a mapping?</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/m_indices.html#lpc.efun.m_indices" title="m_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_indices</span></code>(E)</a> gets a mapping as argument and returns an array holding all keys defined in this mapping:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">keys</span> <span class="o">=</span> <span class="n">m_indices</span><span class="p">(</span><span class="n">map</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h2><a class="toc-backref" href="#id8">How can I get all the values of a mapping?</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/m_values.html#lpc.efun.m_values" title="m_values"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_values</span></code>(E)</a> gets a mapping as argument and returns an array holding all the first (second, ...) values of it:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">values0</span> <span class="o">=</span> <span class="n">m_values</span><span class="p">(</span><span class="n">map</span><span class="p">);</span>     <span class="c1">//returns the first values</span>
+<span class="n">values0</span> <span class="o">=</span> <span class="n">m_values</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>  <span class="c1">//dito</span>
+<span class="n">values1</span> <span class="o">=</span> <span class="n">m_values</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>  <span class="c1">//returns the second values</span>
+  <span class="n">etc</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h2><a class="toc-backref" href="#id9">How can I determine the size of a mapping?</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h2>
+<p>Because a mapping is a kind of rectangle it has two sizes: a length and a width. There are three different efuns to query these values. The first two are <a class="reference internal" href="../efun/sizeof.html#lpc.efun.sizeof" title="sizeof"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sizeof</span></code>(E)</a>, which returns the amount of key-value associations (the length of a mapping), and <a class="reference internal" href="../efun/widthof.html#lpc.efun.widthof" title="widthof"><code class="xref lpc lpc-efun docutils literal"><span class="pre">widthof</span></code>(E)</a>, which returns the number of values per key (the width). The third is the efun <a class="reference internal" href="../efun/get_type_info.html#lpc.efun.get_type_info" title="get_type_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_type_info</span></code>(E)</a>. <a class="reference internal" href="../efun/get_type_info.html#lpc.efun.get_type_info" title="get_type_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_type_info</span></code>(E)</a> is meant to be a function to identify a datatype. Its return value is an array of two numerical values. The first specifies the datatype of the argument and the second is a datatype dependend value. In the case of a mapping the first value is <code class="xref lpc lpc-macro docutils literal"><span class="pre">T_MAPPING</span></code> (which is a value defined in &lt;lpctypes.h&gt;) and the second the amount of values per key (a.k.a. columns or the width of the mapping - actually it would be correct to say that the width of a mapping is the amount of columns plus one for the keys but this is uncommon).</p>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h2><a class="toc-backref" href="#id10">What is the best method to iterate over a mapping?</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h2>
+<p>First of all the main purpose of a mapping is not meant to be a set of data to iterate over. Afterall the keys in a mapping have no specific but a random order (at least on the LPC side). But still it is possible and sometimes even neccesary to do so.</p>
+<p>If all key-value associations should be processed then one should use <a class="reference internal" href="../efun/walk_mapping.html#lpc.efun.walk_mapping" title="walk_mapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">walk_mapping</span></code>(E)</a>. If all keys of a mapping should be processed to create a new mapping being a subset of the given one, then <a class="reference internal" href="../efun/filter_indices.html#lpc.efun.filter_indices" title="filter_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter_indices</span></code>(E)</a> should be used. If all keys are going to be processed and to create a new mapping with the same set of keys as the given mapping, then one would use <a class="reference internal" href="../efun/map_indices.html#lpc.efun.map_indices" title="map_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_indices</span></code>(E)</a>. But in the case of an iteration that should/can stop even if not all data is processed it is probably wise to iterate over the mapping by first querying for the keys and then to iterate over them with a <a class="reference internal" href="for.html#lpc.keyword.for" title="for"><code class="xref lpc lpc-keyword docutils literal"><span class="pre">for</span></code></a> or a <a class="reference internal" href="while.html#lpc.keyword.while" title="while"><code class="xref lpc lpc-keyword docutils literal"><span class="pre">while</span></code></a> loop and querying the values by &#8216;hand&#8217;.</p>
+<p>The <a class="reference internal" href="../efun/walk_mapping.html#lpc.efun.walk_mapping" title="walk_mapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">walk_mapping</span></code>(E)</a> gets a mapping as first argument and the name of a function as second one. All the following arguments are treated as extras which will be passed to the function specified with the 2nd argument. Instead of a string for the name of a function a closure can be used, too. Nothing will be returned:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="n">walk_mapping</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&quot;func&quot;</span><span class="p">,</span> <span class="n">xarg0</span><span class="p">,</span> <span class="p">...,</span> <span class="n">xargn</span><span class="p">);</span>
+<span class="p">...</span>
+
+<span class="kt">void</span> <span class="n">func</span><span class="p">(</span><span class="kt">mixed</span> <span class="n">key</span><span class="p">,</span> <span class="kt">mixed</span> <span class="n">value0</span><span class="p">,</span> <span class="p">...,</span> <span class="kt">mixed</span> <span class="n">valuen</span><span class="p">,</span> <span class="kt">mixed</span> <span class="n">xarg0</span><span class="p">,</span>
+  <span class="p">...,</span> <span class="kt">mixed</span> <span class="n">xargn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">func()</span></code> will be called for all key-value associations and gets as first argument the key. The next arguments are the values behind the key and are passed as references. The rest of the passed arguments are those specified as extras. Because the values are passed as references (opposed to copies) it is possible to modify them from inside <code class="docutils literal"><span class="pre">func()</span></code> by simply assigning new value to the variables <em>value0</em>, ..., <em>valuen</em>.</p>
+<p>The <a class="reference internal" href="../efun/filter_indices.html#lpc.efun.filter_indices" title="filter_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter_indices</span></code>(E)</a> calls a function for each key in a mapping and creates a new mapping which only contains key-value associations for which the called function returned true (not equal 0 that is). The first argument is the mapping to iterate over and the second is a function name given as a string or a closure:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="n">submap</span> <span class="o">=</span> <span class="n">filter_indices</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&quot;func&quot;</span><span class="p">,</span> <span class="n">xarg0</span><span class="p">,</span> <span class="p">...,</span> <span class="n">xargn</span><span class="p">);</span>
+<span class="p">...</span>
+
+<span class="kt">int</span> <span class="n">func</span><span class="p">(</span><span class="kt">mixed</span> <span class="n">key</span><span class="p">,</span> <span class="kt">mixed</span> <span class="n">xarg0</span><span class="p">,</span> <span class="p">...,</span> <span class="kt">mixed</span> <span class="n">xargn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">func()</span></code> gets as first argument the key and the others are those passed as extras to <a class="reference internal" href="../efun/filter_indices.html#lpc.efun.filter_indices" title="filter_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter_indices</span></code>(E)</a>.</p>
+<p><a class="reference internal" href="../efun/map_indices.html#lpc.efun.map_indices" title="map_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_indices</span></code>(E)</a> gets a mapping as first argument and a string as a function name (or again a closure) as second argument. Any additional arguments are again used as extras that will be passed to the iteration function. This efun returns a new mapping with the same keys as the given one. The values returned by the function that is invoked for each key will be used as the associated data behind each key of the new mapping:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="n">newmap</span> <span class="o">=</span> <span class="n">map_indices</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&quot;func&quot;</span><span class="p">,</span> <span class="n">xarg0</span><span class="p">,</span> <span class="p">...,</span> <span class="n">xargn</span><span class="p">);</span>
+<span class="p">...</span>
+
+<span class="kt">mixed</span> <span class="n">func</span><span class="p">(</span><span class="kt">mixed</span> <span class="n">key</span><span class="p">,</span> <span class="kt">mixed</span> <span class="n">xarg0</span><span class="p">,</span> <span class="p">...,</span> <span class="kt">mixed</span> <span class="n">xargn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">func()</span></code> gets as first argument the key and the others are those passed as extras to <a class="reference internal" href="../efun/map_indices.html#lpc.efun.map_indices" title="map_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_indices</span></code>(E)</a>.</p>
+<p>Because a function can only return a single value (even when it is an array) it restricts the use of <a class="reference internal" href="../efun/map_indices.html#lpc.efun.map_indices" title="map_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_indices</span></code>(E)</a> to only allow creation of mappings with a single value per key.</p>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h2><a class="toc-backref" href="#id11">Is it possible to join/intersect/cut mappings with another?</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h2>
+<p>Joining mappings is only possible, if they have the same width (amount of values per key). One can use the + and += operator:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">map</span> <span class="o">=</span> <span class="n">map1</span> <span class="o">+</span> <span class="n">map2</span> <span class="o">+</span> <span class="p">...</span> <span class="o">+</span> <span class="n">mapn</span><span class="p">;</span>
+<span class="n">map</span> <span class="o">+=</span> <span class="n">map1</span> <span class="o">+</span> <span class="n">map2</span> <span class="o">+</span> <span class="p">...</span> <span class="o">+</span> <span class="n">mapn</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Intersection of two mappings is only possible by using <a class="reference internal" href="../efun/filter_indices.html#lpc.efun.filter_indices" title="filter_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter_indices</span></code>(E)</a>. There is no efun or operator which features this. The &#8216;easiest&#8217; way may be the following function:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>mapping intersect_mapping(mapping map1, mapping map2) {
+  closure cl;
+
+  cl = lambda(({ &#39;key }), ({ #&#39;member, map2, &#39;key }));
+  return filter_indices(map1, cl, map2);
+}
+</pre></div>
+</div>
+<p>This function returns a new mapping which consists of all key-value associations of <em>map1</em> for which an equal key could be found in <em>map2</em>. This function uses a closure which returns 0 or 1 depending on wether a key from <em>map1</em> is contained in <em>map2</em> or not.</p>
+<p>Cutting out all key-value associations of a mapping for which a key could be found in another mapping can be done by using <a class="reference internal" href="operators.html#lpc.operator.-" title="-"><code class="xref lpc lpc-operator docutils literal"><span class="pre">-</span></code></a> and <a class="reference internal" href="operators.html#lpc.operator.-=" title="-="><code class="xref lpc lpc-operator docutils literal"><span class="pre">-=</span></code></a>:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">mapping</span> <span class="nf">cut_mapping</span><span class="p">(</span><span class="kt">mapping</span> <span class="n">map1</span><span class="p">,</span> <span class="kt">mapping</span> <span class="n">map2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">map1</span> <span class="o">-</span> <span class="n">mkmapping</span><span class="p">(</span><span class="n">m_indices</span><span class="p">(</span><span class="n">map2</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Because a maping can only be substracted by one without any values we first have to create such by using <a class="reference internal" href="../efun/m_indices.html#lpc.efun.m_indices" title="m_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_indices</span></code>(E)</a> and <a class="reference internal" href="../efun/mkmapping.html#lpc.efun.mkmapping" title="mkmapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mkmapping</span></code>(E)</a>.</p>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h2><a class="toc-backref" href="#id12">What are those mappings without any values (besides keys) good for?</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h2>
+<p>Because the way how the driver searches for a key in a mapping is rather fast, those mappings can be used as a set of elements with a fast method for testing if an element is contained in the set. This technique is called hashing (further explanation would lead too far) which is faster than searching for values in array (which is done in a linear fashion).</p>
+<p>Another (maybe more pratical) use of these mappings are to create a array of unique values out of an array with several equal values:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">uniques</span> <span class="o">=</span> <span class="n">m_indices</span><span class="p">(</span><span class="n">mkmapping</span><span class="p">(</span><span class="kt">array</span><span class="p">));</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../efun/mkmapping.html#lpc.efun.mkmapping" title="mkmapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mkmapping</span></code>(E)</a> uses <em>array</em> to create a mapping without any values but just keys. And because a mapping can only have unique keys all multiple values in <em>array</em> are taken as one. The call of <a class="reference internal" href="../efun/m_indices.html#lpc.efun.m_indices" title="m_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_indices</span></code>(E)</a> then returns an array of these unique keys. Actually we only make use of those mappings temporarily.</p>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h2><a class="toc-backref" href="#id13">How can I convert an alist into a mapping and vice versa?</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h2>
+<p>There are no special efuns which handle such conversions. But it can be done by the following functions:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>mapping alist_to_mapping(mixed *alist) {
+  return apply(#&#39;mkmapping, alist);
+}
+</pre></div>
+</div>
+<p><a class="reference internal" href="../efun/apply.html#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a> takes a closure and an array of values and passes each element of the array as an argument to the closure. Because an alist consists of an array of arrays with the first beeing the list of keys and the others the values associated to each key passing them as arguments to the efun closure <code class="docutils literal"><span class="pre">#'mkmapping</span></code> via <a class="reference internal" href="../efun/apply.html#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a> causes the creation of a mapping out of an alist.</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>mixed *mapping_to_alist(mapping map) {
+  mixed *alist;
+  symbol *vars;
+  string var;
+  closure cl;
+  int width;
+
+  width = get_type_info(map)[1];
+  alist = allocate(width + 1);
+  vars  = allocate(width + 2);
+  for (var = &quot;a&quot;; width; var[0]++, width--) {
+    alist[width] = ({});
+    vars[width]  = quote(var);
+  }
+  alist[0] = ({});
+  vars[0]  = &#39;key;
+  vars[&lt;1] = &#39;alist;
+  cl = lambda(vars, ({ #&#39;=, &#39;alist, ({ #&#39;insert_alist }) + vars }));
+  walk_mapping(map, cl, &amp;alist);
+  return alist;
+}
+</pre></div>
+</div>
+<p>This function is a bit more complicated than the other and detailed description would lead too far of the topic. This function has one restriction: it can only turn a mappings with up to 26 values per key into an alist. But this should be sufficient for probably all applications which use mappings.</p>
+<p>And Hyps further comment on this:</p>
+<blockquote>
+<div>The function <code class="docutils literal"><span class="pre">mapping_to_alist()</span></code> is also not that clever because <code class="docutils literal"><span class="pre">insert_alist()</span></code> allways creates a new alist. A second (optional) argument to <a class="reference internal" href="../efun/m_values.html#lpc.efun.m_values" title="m_values"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_values</span></code>(E)</a> to specify the value column would be better. Besides this, the conversion of a mapping into an alist could be done by <a class="reference internal" href="../efun/to_array.html#lpc.efun.to_array" title="to_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_array</span></code>(E)</a>.</div></blockquote>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h2><a class="toc-backref" href="#id14">Dirty Mappings</a><a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h2>
+<p>&#8216;Dirty mappings&#8217; are nothing the LPC programmer directly is involved with, however, as it relates to the way mappings are implemented internally by the gamedriver. However, as this term shows up in various driver statistics, it is explained here.</p>
+<p>There are two fundamental approaches to implement mappings:</p>
+<ol class="arabic simple">
+<li>Store all data entries in an array-like structure, in sorted order.</li>
+<li>Store all data in a hashtable, each entry allocaed separately.</li>
+</ol>
+<p>Method 1 is very space efficient, as it doesn&#8217;t need much overhead per entry; however, insertions and deletions of entries are relatively slow as all other entries need to be moved. Method 2 is very fast as nothing needs to be moved in memory, however it has a large overhead.</p>
+<p>The gamedriver uses a hybrid method: at the basis is a mapping implementation based on arrays. However the driver uses a hash table in addition to handle all the ongoing insertions and deletions. Every once in a while, the contents of the hash table are sorted into the base array, reasoning that any entry surviving for longer time in the hash table is worth keeping in a more space-efficient manner. &#8216;Dirty&#8217; mappings are such mappings with both an array and a hash part, &#8216;clean&#8217; mappings are those with just an array part.</p>
+</div>
+<div class="section" id="HISTORY">
+<h1><a class="toc-backref" href="#id15">HISTORY</a><a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h1>
+<ul>
+<li><strong>changed</strong> (<em>3.2.9/3.3.208</em>) &#8211; added ([:width ]) notation</li>
+</ul>
+</div>
+<div class="section" id="LORE">
+<h1><a class="toc-backref" href="#id16">LORE</a><a class="headerlink" href="#LORE" title="Permalink to this headline">¶</a></h1>
+<p>Last Update</p>
+<blockquote>
+<div>Mon, 15 Mar 1999</div></blockquote>
+</div>
+<div class="section" id="see2also">
+<h1><a class="toc-backref" href="#id17">SEE ALSO</a><a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h1>
+<p><code class="xref lpc lpc-lang docutils literal"><span class="pre">alists</span></code>, <a class="reference internal" href="closures.html#lpc.type.closure" title="closure"><code class="xref lpc lpc-type docutils literal"><span class="pre">closure</span></code></a>, <a class="reference internal" href="structs.html#lpc.type.struct" title="struct"><code class="xref lpc lpc-type docutils literal"><span class="pre">struct</span></code></a>, <a class="reference internal" href="../efun/mkmapping.html#lpc.efun.mkmapping" title="mkmapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mkmapping</span></code>(E)</a>, <a class="reference internal" href="../efun/walk_mapping.html#lpc.efun.walk_mapping" title="walk_mapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">walk_mapping</span></code>(E)</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">mapping</a><ul>
+<li><a class="reference internal" href="#TYPE">TYPE</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#A step-by-step introduction to mappings">Guide to A step-by-step introduction to mappings</a><ul>
+<li><a class="reference internal" href="#l">What are mappings good for?</a></li>
+<li><a class="reference internal" href="#l">How do I create a mapping?</a></li>
+<li><a class="reference internal" href="#l">How can I modify the data of a mapping?</a></li>
+<li><a class="reference internal" href="#l">How can I access the data stored in a mapping?</a></li>
+<li><a class="reference internal" href="#l">How can I test for the existance of a key?</a></li>
+<li><a class="reference internal" href="#l">How can I copy a mapping?</a></li>
+<li><a class="reference internal" href="#l">How can I get all keys of a mapping?</a></li>
+<li><a class="reference internal" href="#l">How can I get all the values of a mapping?</a></li>
+<li><a class="reference internal" href="#l">How can I determine the size of a mapping?</a></li>
+<li><a class="reference internal" href="#l">What is the best method to iterate over a mapping?</a></li>
+<li><a class="reference internal" href="#l">Is it possible to join/intersect/cut mappings with another?</a></li>
+<li><a class="reference internal" href="#l">What are those mappings without any values (besides keys) good for?</a></li>
+<li><a class="reference internal" href="#l">How can I convert an alist into a mapping and vice versa?</a></li>
+<li><a class="reference internal" href="#l">Dirty Mappings</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#LORE">LORE</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/mappings.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

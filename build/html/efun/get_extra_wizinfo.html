@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::get_extra_wizinfo() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::get_extra_wizinfo() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::get_max_commands()" href="get_max_commands.html" />
     <link rel="prev" title="efun::get_eval_cost()" href="get_eval_cost.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,44 +47,48 @@
 <div class="section" id="SYNOPSIS">
 <span id="get_extra_wizinfo"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.get_extra_wizinfo">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">get_extra_wizinfo</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;wiz</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.get_extra_wizinfo" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.get_extra_wizinfo">
+<!--[lpc.efun.get_extra_wizinfo]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">get_extra_wizinfo</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;wiz</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.get_extra_wizinfo" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">get_extra_wizinfo</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;wiz</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">get_extra_wizinfo</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+string<em>&nbsp;wiz</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">get_extra_wizinfo</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;wiz</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">get_extra_wizinfo</code></td><td><span class="sig-paren">(</span></td><td id="id3">
+int<em>&nbsp;wiz</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<p>Returns the &#8216;extra&#8217; information that was set for the given
-wizard &lt;wiz&gt; in the wizlist.</p>
-<p>If &lt;wiz&gt; is an object, the entry of its creator (uid) is used.
-If &lt;wiz&gt; is a string (a creator aka uid), it names the entry
-to use.
-If &lt;wiz&gt; is the number 0, the data is get from the default wizlist
-entry.</p>
-<p>The function causes a privilege violation.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="wizlist_info.html#lpc.wizlist_info" title="wizlist_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">wizlist_info()</span></code>(E)</a>, <a class="reference internal" href="set_extra_wizinfo.html#lpc.set_extra_wizinfo" title="set_extra_wizinfo"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_extra_wizinfo()</span></code>(E)</a></td>
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last">
+<li><div class="first line"><strong>wiz</strong> (<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object"><em>object</em></a>) &#8211; the entry of its creator (uid) is used</div>
+</li>
+<li><div class="first line"><strong>wiz</strong> (<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string"><em>string</em></a>) &#8211; a creator (aka uid) that names the entry to use</div>
+</li>
+<li><div class="first line"><strong>wiz</strong> (<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int"><em>int</em></a>) &#8211; Uses the given wizlist entry (or the default entry, if the number is 0)</div>
+</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
-</div></blockquote>
+<p>Returns the &#8216;extra&#8217; information that was set for the given wizard <a class="reference internal" href="#efun/get_extra_wizinfo.arg.wiz" title="wiz"><code class="xref lpc lpc-arg docutils literal"><span class="pre">wiz</span></code></a> in the wizlist.</p>
+<p>The function causes a privilege violation.</p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="wizlist_info.html#lpc.efun.wizlist_info" title="wizlist_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">wizlist_info</span></code>(E)</a>, <a class="reference internal" href="set_extra_wizinfo.html#lpc.efun.set_extra_wizinfo" title="set_extra_wizinfo"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_extra_wizinfo</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -93,8 +99,8 @@ entry.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -104,21 +110,23 @@ entry.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::get_extra_wizinfo()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -130,7 +138,7 @@ entry.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/get_extra_wizinfo.txt"
+      <a href="../_sources/efun/get_extra_wizinfo.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

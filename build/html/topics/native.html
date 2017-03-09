@@ -1,0 +1,194 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>`native` driver mode &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Telnet Negotiations" href="negotiation.html" />
+    <link rel="prev" title="mysql" href="mysql.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="`native` driver mode">
+<span id="native"></span><span id="lpc.topic.`native` driver mode"></span><span id="lpc.topic.native"></span><div class="section" id="TOPIC">
+<h2>TOPIC<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+`native` driver mode</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>During the evolution of LPMud there has been a hiatus as the old driver became too restricting for the demands of modern muds: it did a lot of things the mudlib could do better or completely different. Removing these things from the driver weren&#8217;t a problem, but to keep compatible with the existing mudlibs (namely the well-known 2.4.5 lib), it was possible to undo these changes. First by setting a runtime option, then by compiling the driver either in &#8216;compat&#8217; or in &#8216;native&#8217; mode.</p>
+<p>Starting with 3.2.1, the distinction between compat and native mode is more and more transferred into the mudlib, with the future goal of having a modeless driver.</p>
+<p>Starting with 3.2.7, native mode no longer exists as such, only &#8216;plain&#8217; (quasi a superset of &#8216;native&#8217; and &#8216;compat&#8217;) and &#8216;compat&#8217; mode, and since 3.2.9 the mode selection can be made via commandline option.</p>
+<p>The main mode of the driver is determined at compile time by preprocessor symbols to be defined/undefined in config.h:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>COMPAT_MODE: when defined, the compat mode specifics are activated</dt>
+<dd>by default.</dd>
+</dl>
+</div></blockquote>
+<p>Additional modifications can be achieved by the specification of commandline arguments (most of them have a default setting entry in config.h as well):</p>
+<blockquote>
+<div>strict-euids: when active, euid usage is enforced.
+compat:       when active, the compat mode is used.</div></blockquote>
+<p>Following is the description of the changes (de) activated by these defines. A shorthand notation is used: &#8216;compat&#8217; means &#8216;if compat mode is active&#8217; and &#8216;!compat&#8217; means &#8216;if compat mode is not active&#8217;, etc.</p>
+<dl class="docutils">
+<dt>Predefined Preprocessor Symbols</dt>
+<dd><ul class="first last simple">
+<li>If compat, the symbols <a class="reference internal" href="predefined.html#lpc.macro.COMPAT_FLAG" title="COMPAT_FLAG"><code class="xref lpc lpc-macro docutils literal"><span class="pre">COMPAT_FLAG</span></code></a> and <a class="reference internal" href="predefined.html#lpc.macro.__COMPAT_MODE__" title="__COMPAT_MODE__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__COMPAT_MODE__</span></code></a> are defined for all LPC programs.</li>
+<li>If strict-euids, the symbol <a class="reference internal" href="predefined.html#lpc.macro.__STRICT_EUIDS__" title="__STRICT_EUIDS__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__STRICT_EUIDS__</span></code></a> is defined for all LPC programs.</li>
+<li>For compatibility reasons, the symbol <a class="reference internal" href="predefined.html#lpc.macro.__EUIDS__" title="__EUIDS__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__EUIDS__</span></code></a> is defined for all LPC programs all the time.</li>
+</ul>
+</dd>
+<dt>Preloading Of Objects</dt>
+<dd>The driver has the possibility to preload objects before the game is actually opened to the world. This is done by calling <a class="reference internal" href="../master/epilog.html#lpc.master.epilog" title="epilog"><code class="xref lpc lpc-master docutils literal"><span class="pre">epilog</span></code>(M)</a>, which has to return 0 or an array. If its an array, its elements (as long as they are strings) are given one by one as argument to <a class="reference internal" href="../master/preload.html#lpc.master.preload" title="preload"><code class="xref lpc lpc-master docutils literal"><span class="pre">preload</span></code>(M)</a> which may now preload the objects (or do anything else).</dd>
+<dt>Initialisation Of Objects</dt>
+<dd><p class="first">It is task of the mudlib (through the driver hooks) to call the initialisation lfuns in newly created objects. The following table shows the traditional calls:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>       <span class="nl">mode</span>        <span class="p">:</span> <span class="n">init</span> <span class="nl">call</span> <span class="p">:</span> <span class="n">reset</span> <span class="n">call</span>
+<span class="o">--------------------------------------------</span>
+ <span class="o">!</span><span class="n">compat</span> <span class="o">&amp;</span> <span class="o">!</span><span class="nl">native</span> <span class="p">:</span>  <span class="n">create</span><span class="p">()</span> <span class="o">:</span>  <span class="n">reset</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+ <span class="o">!</span><span class="n">compat</span> <span class="o">&amp;</span>  <span class="nl">native</span> <span class="p">:</span>  <span class="n">create</span><span class="p">()</span> <span class="o">:</span>  <span class="n">reset</span><span class="p">()</span>
+  <span class="n">compat</span> <span class="o">&amp;</span> <span class="o">!</span><span class="nl">native</span> <span class="p">:</span>  <span class="n">reset</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">:</span>  <span class="n">reset</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">compat</span> <span class="o">&amp;</span>  <span class="nl">native</span> <span class="p">:</span>  <span class="n">reset</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">:</span>  <span class="n">reset</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">If INITIALIZATION_BY___INIT was defined, the lfun __INIT() is called first on creation to initialize the objects variables.</p>
+</dd>
+<dt>Movement Of Objects</dt>
+<dd><p class="first">The <a class="reference internal" href="../efun/move_object.html#lpc.efun.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object</span></code>(E)</a> is implemented in the mudlib through driver hooks and the <a class="reference internal" href="../efun/set_environment.html#lpc.efun.set_environment" title="set_environment"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_environment</span></code>(E)</a>. <a class="reference internal" href="../efun/move_object.html#lpc.efun.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object</span></code>(E)</a> itself exists just for convenience and compatibility.</p>
+<p>In original native mode, <a class="reference internal" href="../efun/move_object.html#lpc.efun.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object</span></code>(E)</a> could applied only to <code class="docutils literal"><span class="pre">this_object()</span></code> as the object to move, and it called the lfun <code class="docutils literal"><span class="pre">exit()</span></code> in the old environment if in compat mode. As a side effect, <a class="reference internal" href="../efun/add_action.html#lpc.efun.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action</span></code>(E)</a> may not target the lfun <code class="docutils literal"><span class="pre">exit()</span></code> in compat mode.</p>
+<p class="last">In compat mode, objects may be moved using the <a class="reference internal" href="../efun/transfer.html#lpc.efun.transfer" title="transfer"><code class="xref lpc lpc-efun docutils literal"><span class="pre">transfer</span></code>(E)</a>. It does make assumptions about the design of the mudlib, though, as it calls the lfuns <a class="reference internal" href="../applied/query_weight.html#lpc.applied.query_weight" title="query_weight"><code class="xref lpc lpc-applied docutils literal"><span class="pre">query_weight</span></code>(A)</a>, <a class="reference internal" href="../applied/can_put_and_get.html#lpc.applied.can_put_and_get" title="can_put_and_get"><code class="xref lpc lpc-applied docutils literal"><span class="pre">can_put_and_get</span></code>(A)</a>, <a class="reference internal" href="../applied/get.html#lpc.applied.get" title="get"><code class="xref lpc lpc-applied docutils literal"><span class="pre">get</span></code>(A)</a>, <a class="reference internal" href="../applied/prevent_insert.html#lpc.applied.prevent_insert" title="prevent_insert"><code class="xref lpc lpc-applied docutils literal"><span class="pre">prevent_insert</span></code>(A)</a> and <a class="reference internal" href="../applied/add_weight.html#lpc.applied.add_weight" title="add_weight"><code class="xref lpc lpc-applied docutils literal"><span class="pre">add_weight</span></code>(A)</a>.</p>
+</dd>
+<dt>Efuns In General</dt>
+<dd><dl class="first last docutils">
+<dt><a class="reference internal" href="../efun/creator.html#lpc.efun.creator" title="creator"><code class="xref lpc lpc-efun docutils literal"><span class="pre">creator</span></code>(E)</a>, <a class="reference internal" href="../efun/transfer.html#lpc.efun.transfer" title="transfer"><code class="xref lpc lpc-efun docutils literal"><span class="pre">transfer</span></code>(E)</a></dt>
+<dd>These exist only in compat mode (<a class="reference internal" href="../efun/creator.html#lpc.efun.creator" title="creator"><code class="xref lpc lpc-efun docutils literal"><span class="pre">creator</span></code>(E)</a> is identical with <a class="reference internal" href="../efun/getuid.html#lpc.efun.getuid" title="getuid"><code class="xref lpc lpc-efun docutils literal"><span class="pre">getuid</span></code>(E)</a>).</dd>
+<dt><a class="reference internal" href="../efun/object_name.html#lpc.efun.object_name" title="object_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">object_name</span></code>(E)</a>, <a class="reference internal" href="../efun/function_exists.html#lpc.efun.function_exists" title="function_exists"><code class="xref lpc lpc-efun docutils literal"><span class="pre">function_exists</span></code>(E)</a></dt>
+<dd>In !compat mode, the returned filenames start with a leading &#8216;/&#8217;, in compat mode they don&#8217;t.</dd>
+<dt><a class="reference internal" href="../efun/parse_command.html#lpc.efun.parse_command" title="parse_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">parse_command</span></code>(E)</a></dt>
+<dd>This command exists in two versions: the old is used with compat, the new with !compat. However, SUPPLY_PARSE_COMMAND must be defined in config.h in both cases (this efun is not very useful at all).</dd>
+<dt><a class="reference internal" href="../efun/process_string.html#lpc.efun.process_string" title="process_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">process_string</span></code>(E)</a></dt>
+<dd>If <code class="docutils literal"><span class="pre">this_object()</span></code> doesn&#8217;t exist, it defaults to <code class="docutils literal"><span class="pre">this_player()</span></code> and receives the backbone uid (returned by <a class="reference internal" href="../master/get_bb_uid.html#lpc.master.get_bb_uid" title="get_bb_uid"><code class="xref lpc lpc-master docutils literal"><span class="pre">get_bb_uid</span></code>(M)</a>) as euid. If strict-euids, this uid must not be 0.</dd>
+</dl>
+</dd>
+<dt>Userids and Effective Userids</dt>
+<dd><p class="first">This is probably the most important difference between the modes.</p>
+<p>LPMud always had userids (uids) attributing the objects, though they were called &#8216;creator names&#8217; in compat mode. Internally, the compat mode uses the &#8216;creator names&#8217; as (e)uid.</p>
+<p>With the introduction of native/plain mode, additionally &#8216;effective userids&#8217; (euids) were introduced to improve security handling (which was only a partial success). The hardcoded handling of euids and uids was quite complex and too mudlib-insensitive, so most of it got moved from the driver into the mudlib with 3.2.1.</p>
+<p>In strict-euids mode, only objects with a non-zero euid may load or create new objects.</p>
+<div class="last section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>In Detail<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Userids of the Master</dt>
+<dd><p class="first">The master&#8217;s (e)uid is determined by a call to <a class="reference internal" href="../master/get_master_uid.html#lpc.master.get_master_uid" title="get_master_uid"><code class="xref lpc lpc-master docutils literal"><span class="pre">get_master_uid</span></code>(M)</a>.</p>
+<p>In strict-euids mode, the result has to be a string, otherwise the driver won&#8217;t start up at all. If the result is valid it is set as the master&#8217;s uid and euid.</p>
+<p>In !strict-euids mode, the result may be any value: 0 or a string are treated as the uid to set, a non-zero integer leads to the use of the uid set in the default &#8216;global&#8217; wizlist entry, and any other value defaults to 0. The euid is either set to the returned string (if any), or to 0.</p>
+<p class="last">The master&#8217;s uid is determined only on startup this way; at runtime the uids of a reloaded master determined as for every object by a call to the appropriate driver hooks.</p>
+</dd>
+<dt>Userids of New Objects</dt>
+<dd><p class="first">To determine the (e)uids for a new object (loaded or inherited, or cloned), the appropriate driver hook is evaluated (<a class="reference internal" href="../hook/load_uids.html#lpc.hook.H_LOAD_UIDS" title="H_LOAD_UIDS"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_LOAD_UIDS</span></code>(H)</a>, <a class="reference internal" href="../hook/clone_uids.html#lpc.hook.H_CLONE_UIDS" title="H_CLONE_UIDS"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CLONE_UIDS</span></code>(H)</a>) and the result set as (e)uid. The result may be a single value, in which case the euid is set to 0, or an array <code class="docutils literal"><span class="pre">({</span> <span class="pre">uid,</span> <span class="pre">euid</span> <span class="pre">})</span></code>.</p>
+<p>In strict-euids mode, both uid and euid must be 0 or a string, any other value causes the load/clone to fail.</p>
+<p class="last">In !strict-euids mode, the uid (however returned) may also be a non-zero integer to use the uid of the global wizlist entry as uid. The euid is then set to either 0 or the second entry of the returned array if it&#8217;s a string.</p>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../hook/overview.html#lpc.overview.hook" title="hook"><code class="xref lpc lpc-overview docutils literal"><span class="pre">hook</span></code></a>, <a href="#id1"><span class="problematic" id="id2">:concept:`uids`</span></a>, <a class="reference internal" href="../efun/move_object.html#lpc.efun.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object</span></code>(E)</a>, <a href="#id3"><span class="problematic" id="id4">:topics:`initialisation`</span></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">`native` driver mode</a><ul>
+<li><a class="reference internal" href="#TOPIC">TOPIC</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/topics/native.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

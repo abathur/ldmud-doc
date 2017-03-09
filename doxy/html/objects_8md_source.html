@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: concepts/objects.md Source File</title>
+<title>LDMud: topics/objects.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('objects_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,16 +95,16 @@ $(document).ready(function(){initNavTree('objects_8md.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">concepts/objects.md</div>  </div>
+<div class="title">topics/objects.md</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;objects {#driver_concepts_objects}</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;==================================</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;objects {#driver_topics_objects}</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;================================</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;An <span class="keywordtype">object</span> consists of a collection of functions (also called <span class="stringliteral">&#39;methods&#39;</span>) and data (variables) on which the functions operate. The only way to manipulate the data contained in an <span class="keywordtype">object</span> is via one of the functions defined by the <span class="keywordtype">object</span>.</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;Every single thing in a mud is an <span class="keywordtype">object</span>. Rooms are objects. Weapons are objects. Even your character is an <span class="keywordtype">object</span> (a special kind of <span class="keywordtype">object</span> called &quot;interactive&quot; but still an <span class="keywordtype">object</span> in most every respect). Each <span class="keywordtype">object</span> (except possibly virtual objects) in the mud is associated with some file written in LPC (in the mud&#39;s directory structure) that describes how the <span class="keywordtype">object</span> is to interact with the gamedriver and the rest of the objects in the mud.</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;@see @ref driver_concepts_files &quot;files&quot;, @ref driver_concepts_inheritance &quot;inheritance&quot;, <a class="code" href="classapplied.html">applied</a>::create(), <a class="code" href="classapplied.html">applied</a>::reset()</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;@see <a class="code" href="classapplied.html">applied</a>::create(), <a class="code" href="classapplied.html">applied</a>::reset()</div>
 <div class="ttc" id="classapplied_html"><div class="ttname"><a href="classapplied.html">applied</a></div><div class="ttdef"><b>Definition:</b> <a href="____INIT_8c_source.html#l00001">__INIT.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -113,7 +112,7 @@ $(document).ready(function(){initNavTree('objects_8md.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>objects.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:07 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

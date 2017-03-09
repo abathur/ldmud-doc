@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: concepts/inheritance.md Source File</title>
+<title>LDMud: topics/inheritance.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('inheritance_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,11 +95,11 @@ $(document).ready(function(){initNavTree('inheritance_8md.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">concepts/inheritance.md</div>  </div>
+<div class="title">topics/inheritance.md</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;inheritance {#driver_concepts_inheritance}</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;==========================================</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;inheritance {#driver_topics_inheritance}</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;========================================</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;Have you noticed how many objects in the system have the same functionality in common? Let<span class="stringliteral">&#39;s look at rooms for instance, they all have the ability to host people and provide commands. It&#39;</span>s not that every room is programmed with the same basic functions again and again, rather it will use a model room and then make some special changes to it. That doesn<span class="stringliteral">&#39;t work by copying the file.. Ouch! Don&#39;</span>t replicate code! But by putting a tiny inherit declaration:</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;~~~{.c}</div>
@@ -109,11 +108,11 @@ $(document).ready(function(){initNavTree('inheritance_8md.html','');});
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;~~~</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;at the beginning of your <span class="keyword">new</span> file. This must come before any local variables or functions. Once inherited your <span class="keyword">class </span>will behave just like the model class, because all the public methods are available to the outside world. Now it is in your hands to change such an inherited behaviour. You have the following tools to do so:</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">## ACCESS TO VARIABLES #</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">## Access to variables #</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;It is one of the best design decisions in LPC that variables are not accessible from outside, but you can use inherited variables just as if they were your own. Modifiers apply however.</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">## METHOD OVERLOADING #</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">## Method overloading #</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;You can simply rewrite a method that is also defined in the model class, and thus change how it behaves:</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
@@ -125,7 +124,7 @@ $(document).ready(function(){initNavTree('inheritance_8md.html','');});
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;~~~</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;Contrary to other languages in LPC method overloading only matches the name of the method, so even by changing the amount and type of parameters you will mask out the original version of the method. You can even apply other modifiers to it as the original.</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;## EXAMPLE #</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;## Example #</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;Let<span class="stringliteral">&#39;s imagine very simple food in a file called &quot;/the/food.c&quot;:</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="stringliteral"></span></div>
@@ -198,13 +197,13 @@ $(document).ready(function(){initNavTree('inheritance_8md.html','');});
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;~~~</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">## ADVANCED USAGE #</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">## Advanced Usage #</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">### DOING MULTIPLE INHERITANCE #</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">### Doing multiple inheritance #</span></div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;While the Java(TM) language has so-called interfaces as a kludge, LPC doesn&#39;t need them as it supports real multiple inheritance. A very powerful feature, it lets you combine the behaviour of several classes into a new one. Simply put several lines of inherit declarations underneath each other. If you have name collisions in the namespace of inherited methods, you will have to address them explicitely with a &quot;the/file&quot;::method(args) syntax.</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;While the Java(TM) language has so-called interfaces as a kludge, LPC doesn&#39;t need them as it supports real multiple inheritance. A very powerful feature, it lets you combine the behaviour of several classes into a new one. Simply put several lines of inherit declarations underneath each other. If you have name collisions in the namespace of inherited methods, you will have to address them explicitely with a `&quot;the/file&quot;::method(args)` syntax.</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">## ADVANCED EXAMPLE #</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">## Advanced Example #</span></div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;~~~{.c}</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;inherit <span class="stringliteral">&quot;foo&quot;</span>;</div>
@@ -229,27 +228,23 @@ $(document).ready(function(){initNavTree('inheritance_8md.html','');});
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;~~~</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;AUTHOR:</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;~~~{.c}</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;symlynX of PSYC and Nemesis, with a little help from Someone</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;~~~</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;@see @ref driver_LPC_functions <span class="stringliteral">&quot;functions&quot;</span>, @ref driver_concepts_initialisation <span class="stringliteral">&quot;initialisation&quot;</span>, @ref driver_LPC_modifiers <span class="stringliteral">&quot;modifiers&quot;</span>, @ref driver_LPC_pragma <span class="stringliteral">&quot;pragma&quot;</span>, @ref driver_concepts_overloading <span class="stringliteral">&quot;overloading&quot;</span>, <a class="code" href="classefun.html#a5d01aa2cfe41a64bb709d8ef3db87b58">efun::function_exists</a>(), <a class="code" href="classefun.html#ae6f59c9fb98b3b61c5cc313efa4f831d">efun::functionlist</a>(), <a class="code" href="classefun.html#a7a664980523bf7f74ca905ee06b70a8b">efun::inherit_list</a>(), <a class="code" href="classefun.html#ac7fc587fe8fda9d328a501c95f70bc92">efun::symbol_variable</a>(), <a class="code" href="classefun.html#a2801e7dd302b68995897babaee958d39">efun::variable_exists</a>(), <a class="code" href="classefun.html#a5b94e483c0d2c57a5860cfd36280c100">efun::variable_list</a>()</div>
-<div class="ttc" id="classefun_html_a7a664980523bf7f74ca905ee06b70a8b"><div class="ttname"><a href="classefun.html#a7a664980523bf7f74ca905ee06b70a8b">efun.inherit_list</a></div><div class="ttdeci">string * inherit_list(object ob, int flags)</div><div class="ttdoc">Returns the names of all files inherited by &lt;ob&gt;, including &lt;ob&gt;s own filename. </div></div>
-<div class="ttc" id="classefun_html_ac7fc587fe8fda9d328a501c95f70bc92"><div class="ttname"><a href="classefun.html#ac7fc587fe8fda9d328a501c95f70bc92">efun.symbol_variable</a></div><div class="ttdeci">closure symbol_variable(int arg)</div></div>
-<div class="ttc" id="classefun_html_a5d01aa2cfe41a64bb709d8ef3db87b58"><div class="ttname"><a href="classefun.html#a5d01aa2cfe41a64bb709d8ef3db87b58">efun.function_exists</a></div><div class="ttdeci">mixed function_exists(string str, object ob, int flags)</div><div class="ttdoc">Look up a function &lt;str&gt; in the current object, respectively in the object &lt;ob&gt;. </div></div>
-<div class="ttc" id="classefun_html_a5b94e483c0d2c57a5860cfd36280c100"><div class="ttname"><a href="classefun.html#a5b94e483c0d2c57a5860cfd36280c100">efun.variable_list</a></div><div class="ttdeci">mixed * variable_list(object ob, int flags)</div></div>
-<div class="ttc" id="classefun_html_a2801e7dd302b68995897babaee958d39"><div class="ttname"><a href="classefun.html#a2801e7dd302b68995897babaee958d39">efun.variable_exists</a></div><div class="ttdeci">string variable_exists(string str, object ob, int flags)</div></div>
-<div class="ttc" id="classefun_html_ae6f59c9fb98b3b61c5cc313efa4f831d"><div class="ttname"><a href="classefun.html#ae6f59c9fb98b3b61c5cc313efa4f831d">efun.functionlist</a></div><div class="ttdeci">mixed * functionlist(object ob, int flags)</div><div class="ttdoc">Returns an array with information about &lt;ob&gt;s lfunctions. </div></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;Author</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;symlynX of PSYC and Nemesis, with a little help from Someone</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;@see @ref driver_syntax_modifiers <span class="stringliteral">&quot;modifiers&quot;</span>, @ref driver_syntax_pragma <span class="stringliteral">&quot;pragma&quot;</span>, <a class="code" href="classefun.html#a5d01aa2cfe41a64bb709d8ef3db87b58">efun::function_exists</a>(), <a class="code" href="classefun.html#ae6f59c9fb98b3b61c5cc313efa4f831d">efun::functionlist</a>(), <a class="code" href="classefun.html#ac1f2f96fbcb047b4d200a9d68f05aa8d">efun::inherit_list</a>(), <a class="code" href="classefun.html#ac7fc587fe8fda9d328a501c95f70bc92">efun::symbol_variable</a>(), <a class="code" href="classefun.html#a2801e7dd302b68995897babaee958d39">efun::variable_exists</a>(), <a class="code" href="classefun.html#a5b94e483c0d2c57a5860cfd36280c100">efun::variable_list</a>()</div>
+<div class="ttc" id="classefun_html_ac7fc587fe8fda9d328a501c95f70bc92"><div class="ttname"><a href="classefun.html#ac7fc587fe8fda9d328a501c95f70bc92">efun.symbol_variable</a></div><div class="ttdeci">closure symbol_variable(int arg)</div><div class="ttdoc">Constructs an identifier (lfun) closure from the global variable arg of the current program...</div></div>
+<div class="ttc" id="classefun_html_ac1f2f96fbcb047b4d200a9d68f05aa8d"><div class="ttname"><a href="classefun.html#ac1f2f96fbcb047b4d200a9d68f05aa8d">efun.inherit_list</a></div><div class="ttdeci">string * inherit_list(object ob, int flag)</div><div class="ttdoc">Returns the names of all files inherited by ob, including ob own filename. </div></div>
+<div class="ttc" id="classefun_html_a5d01aa2cfe41a64bb709d8ef3db87b58"><div class="ttname"><a href="classefun.html#a5d01aa2cfe41a64bb709d8ef3db87b58">efun.function_exists</a></div><div class="ttdeci">mixed function_exists(string str, object ob, int flags)</div><div class="ttdoc">Look up a function str in the current object, respectively in the object ob. </div></div>
+<div class="ttc" id="classefun_html_a5b94e483c0d2c57a5860cfd36280c100"><div class="ttname"><a href="classefun.html#a5b94e483c0d2c57a5860cfd36280c100">efun.variable_list</a></div><div class="ttdeci">mixed * variable_list(object ob, int flags)</div><div class="ttdoc">Return an array with information about ob variables. </div></div>
+<div class="ttc" id="classefun_html_a2801e7dd302b68995897babaee958d39"><div class="ttname"><a href="classefun.html#a2801e7dd302b68995897babaee958d39">efun.variable_exists</a></div><div class="ttdeci">string variable_exists(string str, object ob, int flags)</div><div class="ttdoc">Look up a variable str in the current object, respectively in the object ob. </div></div>
+<div class="ttc" id="classefun_html_ae6f59c9fb98b3b61c5cc313efa4f831d"><div class="ttname"><a href="classefun.html#ae6f59c9fb98b3b61c5cc313efa4f831d">efun.functionlist</a></div><div class="ttdeci">mixed * functionlist(object ob, int flags)</div><div class="ttdoc">Returns an array with information about functions defined in ob. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>inheritance.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:07 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

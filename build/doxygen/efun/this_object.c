@@ -1,8 +1,6 @@
 public class efun {
    /**
-    * Return the object pointer for this object. This is not to be
-    * confused with the internal name of an object, which is used by
-    * the id() function.
+    * Return the object pointer for this object. This is not to be confused with the internal name of an object, which is used by the applied::id() function.
     * 
     * @synopsis{
     * object this_object(void)

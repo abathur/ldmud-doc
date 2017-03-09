@@ -1,0 +1,127 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>memory swapping &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mysql" href="mysql.html" />
+    <link rel="prev" title="The Mud Client Compression Protocol" href="mccp.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="memory">
+<span id="memory swapping"></span><span id="lpc.topic.memory"></span><span id="lpc.topic.memory swapping"></span><div class="section" id="TOPIC">
+<h2>TOPIC<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+memory swapping</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="admonition misleading">
+<p class="first admonition-title">Misleading</p>
+<p class="last">This document is out of date.</p>
+</div>
+<p>(Collected from the Changelogs of the driver source)</p>
+<p>The swapping algorithm has been changed. A test is done for every object, comparing to a time stamp. If the object hasn&#8217;t been touched for a while, it could be subject for swapping. Here comes the new thing: the function <a class="reference internal" href="../hook/clean_up.html#lpc.hook.H_CLEAN_UP" title="H_CLEAN_UP"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CLEAN_UP</span></code>(H)</a> will be called in the object. If the object still remains, the old swapping algorithm will continue. That means that objects that would never be subject to swapping (cloned objects) now have a chance to self-destruct. It also means that rooms that contains no important data can self-destruct. Self-destruction saves more memory than swapping, as swapping only frees the program code, while self-destruction also frees the internal object representation.</p>
+<p>The call of <a class="reference internal" href="../hook/clean_up.html#lpc.hook.H_CLEAN_UP" title="H_CLEAN_UP"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CLEAN_UP</span></code>(H)</a> has been modified. There is a constant in <code class="file docutils literal"><span class="pre">config.h</span></code> that defines how long time until clean_up is called in an object. This call is independent of <a class="reference internal" href="../hook/reset.html#lpc.hook.H_RESET" title="H_RESET"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_RESET</span></code>(H)</a> and swapping. It is recommended that the swapping time is something short, like 10 minutes to 30 minutes, while the time to <a class="reference internal" href="../hook/clean_up.html#lpc.hook.clean_up" title="clean_up"><code class="xref any lpc lpc-hook docutils literal"><span class="pre">clean_up</span></code>(H)</a> is longer.</p>
+<p>Fixed several bugs in the swap/reset/clean_up logic. Recommended values are that the swap time is short (less than 30 minutes), and that reset time is medium (aprox 60 minutes), and that time to clean_up is long (greater than 1.5h hours). Any feedback of how to best tune these values are welcome. The call of reset will be done once, and not yet again until the object has been touched. This enables reset&#8217;ed objects to stay swapped out. If you have a mudlib that has no objects that define <a class="reference internal" href="../hook/clean_up.html#lpc.hook.clean_up" title="clean_up"><code class="xref any lpc lpc-hook docutils literal"><span class="pre">clean_up</span></code>(H)</a>, then you may better define this time as 0, which means never call clean_up (and thus never swap the object in needlessly). A well implemented usage of clean_up is better than the swap algorithm, as even cloned objects can be cleaned up and a self destruction is more efficient than swapping (memory wise).</p>
+<p>Changed mechanism of calling <a class="reference internal" href="../hook/clean_up.html#lpc.hook.H_CLEAN_UP" title="H_CLEAN_UP"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CLEAN_UP</span></code>(H)</a> slightly. Only objects that define the function will be called. And, only <a class="reference internal" href="../hook/clean_up.html#lpc.hook.H_CLEAN_UP" title="H_CLEAN_UP"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CLEAN_UP</span></code>(H)</a> that returns non-zero will be called again. This will minimize calls of <a class="reference internal" href="../hook/clean_up.html#lpc.hook.H_CLEAN_UP" title="H_CLEAN_UP"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CLEAN_UP</span></code>(H)</a>, while still costing little to maintain.</p>
+<p><a class="reference internal" href="../hook/clean_up.html#lpc.hook.H_CLEAN_UP" title="H_CLEAN_UP"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CLEAN_UP</span></code>(H)</a> now gets a flag as argument, which will be non-zero if the the program of this object is used for inheritance by other objects.</p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../applied/clean_up.html#lpc.applied.clean_up" title="clean_up"><code class="xref lpc lpc-applied docutils literal"><span class="pre">clean_up</span></code>(A)</a>, <a class="reference internal" href="../master/slow_shut_down.html#lpc.master.slow_shut_down" title="slow_shut_down"><code class="xref lpc lpc-master docutils literal"><span class="pre">slow_shut_down</span></code>(M)</a>, <a class="reference internal" href="../master/quota_demon.html#lpc.master.quota_demon" title="quota_demon"><code class="xref lpc lpc-master docutils literal"><span class="pre">quota_demon</span></code>(M)</a>, <a class="reference internal" href="../master/low_memory.html#lpc.master.low_memory" title="low_memory"><code class="xref lpc lpc-master docutils literal"><span class="pre">low_memory</span></code>(M)</a>, <a class="reference internal" href="../efun/garbage_collection.html#lpc.efun.garbage_collection" title="garbage_collection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">garbage_collection</span></code>(E)</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">memory swapping</a><ul>
+<li><a class="reference internal" href="#TOPIC">TOPIC</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/topics/memory.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

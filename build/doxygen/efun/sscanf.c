@@ -1,61 +1,43 @@
 public class efun {
    /**
-    * Parse a string <str> using the format <fmt>. <fmt> can contain
-    * strings seperated by %d and %s. Every %d and %s corresponds to
-    * one of <var1>, <var2>, ... .
+    * Parse a string \p str using the format \p fmt. \p fmt can contain strings seperated by %d and %s. Every %d and %s corresponds to one of \p var1, \p var2, ... .
     * 
-    * The match operators in the format string have one of these
-    * formats:
+    * The match operators in the format string have one of these formats:
     * 
+    * ~~~{.c}
     * %[+][!|~][<size>[.<minmatch>]]<type>
     * 
-    * <type> may be:
+    * ~~~
+    * `type` may be:
     * d: matches any number.
     * D: matches any number.
     * U: matches any unsigned number.
     * s: matches any string.
     * %: matches the % character.
-    * t: matches whitespace (spaces and tab characters), but does
+    * t: matches whitespace (spaces and tab characters), but does not store them (the simple char:` `(U+00020 SPACE) matches just spaces and can't be given a size specification).
     * 
-    *    not store them (the simple ' ' matches just spaces and
-    *    can't be given a size specification).
-    *    
-    * <size> is the expected field size, and <minmatch> the demanded
-    * minimal match length (defaults are 0 for strings and 1 for
-    * numbers). Each of these both may be specified numerically, or
-    * as '*' - in which case the value of the variable at the current
-    * place in the argument list is used.
+    * `size` is the expected field size, and `minmatch` the demanded minimal match length (defaults are 0 for strings and 1 for numbers). Each of these both may be specified numerically, or as '*' - in which case the value of the variable at the current place in the argument list is used.
     * 
-    * Specifying + will require that the characters after the field
-    * match as well, or the match will be deemed unsuccessful (the variable
-    * might still get assigned, though).
+    * Specifying + will require that the characters after the field match as well, or the match will be deemed unsuccessful (the variable might still get assigned, though).
     * 
-    * Specifying ! will perform the match, but neither store the
-    * result nor count the match.
+    * Specifying ! will perform the match, but neither store the result nor count the match.
     * 
-    * Specifying ~ will perform and count the match, but not store
-    * the result.
+    * Specifying ~ will perform and count the match, but not store the result.
     * 
-    * If the %s specifier is not at the end of the format string,
-    * it is matched only if the following character(s) or format
-    * is found, too. See below for an example.
+    * If the %s specifier is not at the end of the format string, it is matched only if the following character(s) or format is found, too. See below for an example.
     * 
-    * The difference between %d and %D/%U is that the latter will abort
-    * an immediately preceeding %s as soon as possible, whereas the
-    * former will attempt to make the largest match to %s first.
-    * %D/%U will still not skip whitespace; use %.0t%D to skip optional
-    * whitespace.
+    * The difference between %d and %D/%U is that the latter will abort an immediately preceeding %s as soon as possible, whereas the former will attempt to make the largest match to %s first. %D/%U will still not skip whitespace; use %.0t%D to skip optional whitespace.
     * 
     * The number of matched arguments will be returned.
     * 
-    * The function sscanf is special in that arguments are passed
-    * by reference automatically.
+    * The function sscanf is special in that arguments are passed by reference automatically.
     * 
     * @synopsis{
     * int sscanf(string str, string fmt, mixed var1, mixed var2, ...)
     * }
     * 
     * @usage{
+    * ~~~{.c}
     * string who, what;
     * if (sscanf("throw frisbee to rover",
     *    "throw %s to %s", what, who) != 2)
@@ -71,8 +53,16 @@ public class efun {
     * 
     * sscanf("ab ", "%s %s", who, what)
     *   ==> result 2, who = "ab", what = ""
+    * 
+    * ~~~
+    * 
     * }
     * 
+    * @history{
+    * changed (3.3.713/3.2.13) -- added the + specifier.
+    * }
+    * 
+    * @see efun::explode(), efun::regexp()
    **/
    int sscanf(string str, string fmt, mixed var1, mixed var2, ...);
 }

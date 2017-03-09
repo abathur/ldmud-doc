@@ -1,8 +1,9 @@
-.. glossary::
+.. enumerate::
+  :noindex:
 
   :hook:`H_MOVE_OBJECT0`
   :hook:`H_MOVE_OBJECT1`
-    Mandatory hooks to implement the efun void move_object().
+    Mandatory hooks to implement :efun:`move_object`.
 
 
   :hook:`H_LOAD_UIDS`
@@ -39,23 +40,23 @@
 
 
   :hook:`H_COMMAND`
-    Optional hook to parse and execute commands. If this hook is used, it bypasses the normal command parsing done by the driver (including the MODIFY_COMMAND and NOTIFY_FAIL hooks).
+    Optional hook to parse and execute commands. If this hook is used, it bypasses the normal command parsing done by the driver (including :hook:`H_MODIFY_COMMAND` and :hook:`H_NOTIFY_FAIL` hooks).
 
 
   :hook:`H_MODIFY_COMMAND`
-    Optional hook to modify commands (both entered or given by a call to command()) before the parser sees them (this includes special commands like 'status').
+    Optional hook to modify commands (both entered or given by a call to :efun:`command`) before the parser sees them (this includes special commands like 'status').
 
 
   :hook:`H_MODIFY_COMMAND_FNAME`
-    Mandatory hook specifying the name of the 'modify_command' lfun to call for newly entered commands as result of a set_modify_command().
+    Mandatory hook specifying the name of the 'modify_command' lfun to call for newly entered commands as result of a :efun:`set_modify_command`.
 
 
   :hook:`H_NOTIFY_FAIL`
-    Mandatory hook to issue the default message if an entered command couldn't be parsed and no notify_fail() command is in effect.
+    Mandatory hook to issue the default message if an entered command couldn't be parsed and no :efun:`notify_fail` command is in effect.
 
 
   :hook:`H_SEND_NOTIFY_FAIL`
-    Optional hook to send the notify fail message, regardless of how it was determined, to the player. If the hook is not set, the message is delivered using tell_object() internally.
+    Optional hook to send the notify fail message, regardless of how it was determined, to the player. If the hook is not set, the message is delivered using :efun:`tell_object` internally.
 
 
   :hook:`H_NO_IPC_SLOT`
@@ -75,7 +76,7 @@
 
 
   :hook:`H_NOECHO`
-    Optional hook to specifiy how to perform the telnet actions to switch the echo mode (used for e.g. password input_to()s). If not set, a default handling is performed.
+    Optional hook to specifiy how to perform the telnet actions to switch the echo mode (used for e.g. passwords with :efun:`input_to`). If not set, a default handling is performed.
 
     IMPORTANT: If this hook is used, the control of all telnet negotiation is transferred to the mudlib (you must combine it with :hook:`H_TELNET_NEG` to conform to the telnet protocol).
 

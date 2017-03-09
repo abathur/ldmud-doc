@@ -6,16 +6,16 @@ DESCRIPTION
 ===========
    Return all adjectives associated with this object.
 
-   Used by parse_command()(E).
+   Used by parse_command(E).
 
    USAGE
    =====
       To return an array containing a single adjective:
 
          string * parse_command_adjectiv_id_list() {
-             return ({ "iffish" });
+           return ({ "iffish" });
          }
 
 SEE ALSO
 ========
-   parse_command()(E)
+   parse_command(E)

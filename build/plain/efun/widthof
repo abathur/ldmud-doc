@@ -4,8 +4,18 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Returns the number of values per key of mapping <map>. If <map> is 0, the 
+   Returns the number of values per key of mapping map(E). If map(E) is 0, the
    result is 0.
 
-EXAMPLES
-   mapping m = ([ "foo": 1,2 ]); widthof(m)  --> returns 2
+   USAGE
+   =====
+         mapping m = ([ "foo": 1,2 ]);
+         widthof(m) // returns 2
+
+HISTORY
+=======
+   - introduced (3.2.6)
+
+SEE ALSO
+========
+   sizeof(E), mkmapping(E), m_reallocate(E), m_values(E), unmkmapping(E)

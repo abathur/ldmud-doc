@@ -5,14 +5,14 @@ SYNOPSIS (DEPRECATED)
 
 DESCRIPTION
 ===========
-   In compat mode this lfun is used by transfer()(E).
+   In compat mode this lfun is used by transfer(E).
 
    It is called to check if an object wants to be moved out of the inventory 
-   of a living object. `drop()` should return 1 to prevent dropping. This is 
-   the opposite of the `get()` function. That is because if `drop()` is not 
+   of a living object. drop(A) should return 1 to prevent dropping. This is 
+   the opposite of the get(A) function. That is because if drop(A) is not 
    defined, it will always be possible to drop an object.
 
-   If the object self-destructs when `drop()` is called, be sure to return 1, 
+   If the object self-destructs when drop(A) is called, be sure to return 1, 
    as the destructed item surely not can be dropped.
 
    Most compat mode LPC libraries to define one argument for drop. If silently
@@ -20,8 +20,8 @@ DESCRIPTION
 
 HISTORY
 =======
-   - deprecated (3.3) -- because transfer()(E) has been deprecated.
+   - deprecated (3.3) -- because transfer(E) has been deprecated.
 
 SEE ALSO
 ========
-   transfer()(E)
+   transfer(E)

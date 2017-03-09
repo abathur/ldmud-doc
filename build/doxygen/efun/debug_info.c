@@ -1,67 +1,31 @@
-SYNOPSIS
-   #include <debug_info.h>
-
 public class efun {
    /**
-    * Gather some driver internal debug information according
-    * to the setting of flag:
+    * OBSOLETED_IN_MASTER_IGNORE_FOR_NOW Gather some driver internal debug information according to the setting of \p flag:
     * 
-    * DINFO_OBJECT (0): Information like heart_beat, enable_commands
-    * etc. of the specified object will be printed, and 0 returned.
+    * DINFO_OBJECT (0): Information like heart_beat, enable_commands etc. of the specified object will be printed, and 0 returned.
     * 
-    * DINFO_MEMORY (1): Memory usage information like how many strings,
-    * variables, inherited files, object size etc. will be printed
-    * about the specified object, and 0 returned.
+    * DINFO_MEMORY (1): Memory usage information like how many strings, variables, inherited files, object size etc. will be printed about the specified object, and 0 returned.
     * 
-    * DINFO_OBJLIST (2): Objects from the global object list are
-    * returned.  If the optional second arg is omitted, the first
-    * element (numbered 0) is returned. If the second arg is a
-    * number n, the n'th element of the object list returned. If the
-    * second arg is an object, it's successor in the object list is
-    * returned.  If the optional <arg2> is omitted, the first
-    * element(s) (numbered 0) is returned. If the <arg2> is a
-    * number n, the n'th element(s) of the object list returned. If the
-    * <arg2> is an object, it's successor(s) in the object list is
-    * The optional <arg3> specifies the maximum number of objects
-    * returned. If it's 0, a single object is returned. If it is
-    * a positive number m, an array with at max 'm' objects is
-    * returned. This way, by passing __INT_MAX__ as <arg3> it is
-    * possible to create an array of all objects in the game
-    * (given a suitable maximum array size).
+    * DINFO_OBJLIST (2): Objects from the global object list are returned.  If the optional second arg is omitted, the first element (numbered 0) is returned. If the second arg is a number n, the n'th element of the object list returned. If the second arg is an object, it's successor in the object list is returned.  If the optional \p arg2 is omitted, the first element(s) (numbered 0) is returned. If the \p arg2 is a number n, the n'th element(s) of the object list returned. If the \p arg2 is an object, it's successor(s) in the object list is The optional \p arg3 specifies the maximum number of objects returned. If it's 0, a single object is returned. If it is a positive number m, an array with at max 'm' objects is returned. This way, by passing __INT_MAX__ as \p arg3 it is possible to create an array of all objects in the game (given a suitable maximum array size).
     * 
-    * DINFO_MALLOC (3): Equivalent to typing >>``<<malloc'' at the command
-    * line. No second arg must be given. Returns 0.
+    * DINFO_MALLOC (3): Equivalent to typing >>``<<malloc'' at the command line. No second arg must be given. Returns 0.
     * 
-    * DINFO_STATUS (4): Collect the status information of the driver.
-    * The optional second arg can be 0, "tables", "swap", "malloc",
-    * "malloc extstats" or any other argument accepted by the actual
-    * driver.  The result is a printable string with the status
-    * information, or 0 if an invalid argument was given.
+    * DINFO_STATUS (4): Collect the status information of the driver. The optional second arg can be 0, "tables", "swap", "malloc", "malloc extstats" or any other argument accepted by the actual driver.  The result is a printable string with the status information, or 0 if an invalid argument was given.
     * 
-    * DINFO_DUMP (5): Dump the information specified by <arg2> into the
-    * filename specified by <arg3>. If <arg3> is omitted, a default
-    * file name is used. The function calls master->valid_write() to
-    * check that it can write the files. The file in question is
-    * always written anew.
+    * DINFO_DUMP (5): Dump the information specified by \p arg2 into the filename specified by \p arg3. If \p arg3 is omitted, a default file name is used. The function calls master->valid_write() to check that it can write the files. The file in question is always written anew.
     * 
     * Result is 1 on success, or 0 if an error occured.
     * 
-    * <arg2> == "objects": dump information about all live objects.
-    *       Default filename is '/OBJ_DUMP', the valid_write() will read
-    *       'objdump' for the function.
-    *       
-    *       For every object, a line is written into the file with the
-    *       following information in the given order:
-    *       
+    * \p arg2 == "objects": dump information about all live objects. Default filename is '/OBJ_DUMP', the valid_write() will read 'objdump' for the function.
+    * 
+    *       For every object, a line is written into the file with the following information in the given order:
     *          - object name
     *          - size in memory, shared data counted only once
     *          - size in memory if data wouldn't be shared
     *          - number of references
     *          - 'HB' if the object has a heartbeat, nothing if not.
-    *          - the name of the environment, or '--' if the object has no
-    *            environment
-    *          - in parentheses the number of execution ticks spent in this
-    *            object
+    *          - the name of the environment, or '--' if the object has no environment
+    *          - in parentheses the number of execution ticks spent in this object
     *          - the swap status:
     *               nothing if not swapped,
     *               'PROG SWAPPED' if only the program is swapped
@@ -70,49 +34,30 @@ public class efun {
     *               
     *          - the time the object was created
     *          
-    *    <arg2> == "destructed": dump information about all destructed
-    *          objects.  Default filename is '/DEST_OBJ_DUMP', the
-    *          valid_write() will read 'objdump' for the function.
-    *          
-    *       For every object, a line is written into the file with the
-    *       following information in the given order:
-    *       
+    *    \p arg2 == "destructed": dump information about all destructed objects.  Default filename is '/DEST_OBJ_DUMP', the valid_write() will read 'objdump' for the function.
+    *    
+    *       For every object, a line is written into the file with the following information in the given order:
     *          - object name
     *          - number of references
-    *          - 'NEW' if the object was destructed in this executiong
-    *            thread, nothing if it is older already.
+    *          - 'NEW' if the object was destructed in this executiong thread, nothing if it is older already.
     *          
-    * <arg2> == "opcodes": dump usage information about the opcodes.
-    *    Default filename is '/OPC_DUMP', the valid_write() will read
-    *    'opcdump' for the function.
+    * \p arg2 == "opcodes": dump usage information about the opcodes. Default filename is '/OPC_DUMP', the valid_write() will read 'opcdump' for the function.
+    * 
+    * \p arg2 == "memory": dump a list of all allocated memory blocks (if the allocator supports this). Default filename is '/MEMORY_DUMP', the valid_write() will read 'memdump' for the function, and the new data will be appended to the end of the file.
+    * 
+    *    If the allocator doesn't support memory dumps, this call will always return 0, and nothing will be written.
     *    
-    * <arg2> == "memory": dump a list of all allocated memory
-    *    blocks (if the allocator supports this).
-    *    Default filename is '/MEMORY_DUMP', the valid_write()
-    *    will read 'memdump' for the function, and the new data
-    *    will be appended to the end of the file.
-    *    
-    *    If the allocator doesn't support memory dumps, this call will
-    *    always return 0, and nothing will be written.
-    *    
-    *    This works best if the allocator is compiled with
-    *    MALLOC_TRACE and/or MALLOC_LPC_TRACE.
+    *    This works best if the allocator is compiled with MALLOC_TRACE and/or MALLOC_LPC_TRACE.
     *    
     *    NOTE: Make sure that this option can't be abused!
     *    
-    * DINFO_DATA (6): Return raw information about an aspect of
-    * the driver specified by <arg2>. The result of the function
-    * is an array with the information, or 0 for unsupported values
-    * of <arg2>.
+    * DINFO_DATA (6): Return raw information about an aspect of the driver specified by \p arg2. The result of the function is an array with the information, or 0 for unsupported values of \p arg2.
     * 
-    * If <arg3> is given and in the range of array indices
-    * for the given <arg2>, the result will be just the indexed array
-    * entry, but not the full array.
+    * If \p arg3 is given and in the range of array indices for the given \p arg2, the result will be just the indexed array entry, but not the full array.
     * 
-    * Allowed values for <arg2> are: DID_STATUS, DID_SWAP, DID_MALLOC.
+    * Allowed values for \p arg2 are: DID_STATUS, DID_SWAP, DID_MALLOC.
     * 
-    * <arg2> == DID_STATUS (0): Returns the "status" and "status tables"
-    * information. Following indices are defined:
+    * \p arg2 == DID_STATUS (0): Returns the "status" and "status tables" information. Following indices are defined:
     * 
     *    int DID_ST_BOOT_TIME
     *       The time() when the mud was started.
@@ -141,20 +86,16 @@ public class efun {
     *       Number of objects in the object list.
     *       
     *    int DID_ST_OBJECTS_NEWLY_DEST
-    *       Number of newly destructed objects (ie. objects destructed
-    *       in this execution thread).
+    *       Number of newly destructed objects (ie. objects destructed in this execution thread).
     *       
     *    int DID_ST_OBJECTS_DESTRUCTED
-    *       Number of destructed but still referenced objects, not
-    *       counting the DID_ST_OBJECTS_NEWLY_DEST.
+    *       Number of destructed but still referenced objects, not counting the DID_ST_OBJECTS_NEWLY_DEST.
     *       
     *    int DID_ST_OBJECTS_PROCESSED
-    *       Number of listed objects processed in the last backend
-    *       cycle.
+    *       Number of listed objects processed in the last backend cycle.
     *       
     *    float DID_ST_OBJECTS_AVG_PROC
-    *       Average number of objects processed each cycle, expressed
-    *       as percentage (0..1.0).
+    *       Average number of objects processed each cycle, expressed as percentage (0..1.0).
     *       
     *    int DID_ST_OTABLE
     *       Number of objects listed in the object table.
@@ -169,9 +110,7 @@ public class efun {
     *       Number of objects with a heartbeat.
     *       
     *    int DID_ST_HBEAT_CALLS
-    *       Number of active heart_beat cycles executed so far
-    *       (ie. cycles in which at least one heart_beat() function
-    *       was called).
+    *       Number of active heart_beat cycles executed so far (ie. cycles in which at least one heart_beat() function was called).
     *       
     *    int DID_ST_HBEAT_CALLS_TOTAL
     *       Total number of heart_beats cycles so far.
@@ -179,15 +118,13 @@ public class efun {
     *    int DID_ST_HBEAT_SLOTS
     *    int DID_ST_HBEAT_SIZE
     *    
-    *       Number of allocated entries in the heart_beat table
-    *       and its size.
+    *       Number of allocated entries in the heart_beat table and its size.
     *       
     *    int DID_ST_HBEAT_PROCESSED
     *       Number of heart_beats called in the last backend cycle.
     *       
     *    float DID_ST_HBEAT_AVG_PROC
-    *       Average number of heart_beats called each cycle, expressed
-    *       as fraction (0..1.0).
+    *       Average number of heart_beats called each cycle, expressed as fraction (0..1.0).
     *       
     *    int DID_ST_CALLOUTS
     *    int DID_ST_CALLOUT_SIZE
@@ -239,25 +176,17 @@ public class efun {
     *    int DID_ST_PACKETS
     *    int DID_ST_PACKET_SIZE
     *    
-    *       Number of calls to add_message(), number and total size
-    *       of sent packets.
-    *       If the driver is not compiled with COMM_STAT, all three
-    *       values are returned as -1.
+    *       Number of calls to add_message(), number and total size of sent packets. If the driver is not compiled with COMM_STAT, all three values are returned as -1.
     *       
     *    int DID_ST_PACKETS_IN
     *    int DID_ST_PACKET_SIZE_IN
     *    
-    *       Number and total size of received packets.
-    *       If the driver is not compiled with COMM_STAT, all three
-    *       values are returned as -1.
+    *       Number and total size of received packets. If the driver is not compiled with COMM_STAT, all three values are returned as -1.
     *       
     *    int DID_ST_APPLY
     *    int DID_ST_APPLY_HITS
     *    
-    *       Number of calls to apply_low(), and how many of these
-    *       were cache hits.
-    *       If the driver is not compiled with APPLY_CACHE_STAT, all two
-    *       values are returned as -1.
+    *       Number of calls to apply_low(), and how many of these were cache hits. If the driver is not compiled with APPLY_CACHE_STAT, all two values are returned as -1.
     *       
     *    int DID_ST_STRINGS
     *    int DID_ST_STRING_SIZE
@@ -290,8 +219,7 @@ public class efun {
     *       Number of distinct strings removed from the table so far.
     *       
     *    int DID_ST_STR_COLLISIONS
-    *       Number of distinct strings added to an existing hash chain
-    *       so far.
+    *       Number of distinct strings added to an existing hash chain so far.
     *       
     *    int DID_ST_STR_SEARCHES
     *    int DID_ST_STR_SEARCHLEN
@@ -314,8 +242,7 @@ public class efun {
     *    int DID_ST_RX_TABLE
     *    int DID_ST_RX_TABLE_SIZE
     *    
-    *       Number of slots in the regexp cache table, and size of the
-    *       memory currently held by it and the cached expressions.
+    *       Number of slots in the regexp cache table, and size of the memory currently held by it and the cached expressions.
     *       
     *    int DID_ST_RX_REQUESTS
     *       Number of requests for new regexps.
@@ -324,8 +251,7 @@ public class efun {
     *       Number of requested regexps found in the table.
     *       
     *    int DID_ST_RX_REQ_COLL
-    *       Number of requested new regexps which collided with
-    *       a cached one.
+    *       Number of requested new regexps which collided with a cached one.
     *       
     *    int DID_ST_MB_FILE
     *       The size of the 'File' memory buffer.
@@ -333,7 +259,7 @@ public class efun {
     *    int DID_ST_MB_SWAP
     *       The size of the 'Swap' memory buffer.
     *       
-    * <arg2> == DID_SWAP (1): Returns the "status swap" information:
+    * \p arg2 == DID_SWAP (1): Returns the "status swap" information:
     * 
     *    int DID_SW_PROGS
     *    int DID_SW_PROG_SIZE
@@ -364,8 +290,7 @@ public class efun {
     *    int DID_SW_SEARCHES
     *    int DID_SW_SEARCH_LEN
     *    
-    *       Number and total length of searches for block to reuse
-    *       in the swap file.
+    *       Number and total length of searches for block to reuse in the swap file.
     *       
     *    int DID_SW_F_SEARCHES
     *    int DID_SW_F_SEARCH_LEN
@@ -378,26 +303,22 @@ public class efun {
     *    int DID_SW_RECYCLE_FREE
     *       TRUE if the swapper is currently recycling free block.
     *       
-    * <arg2> == DID_MEMORY (2): Returns the "status malloc" information:
+    * \p arg2 == DID_MEMORY (2): Returns the "status malloc" information:
     * 
     *    string DID_MEM_NAME
-    *       The name of the allocator: "sysmalloc", "smalloc",
-    *       "slaballoc"
+    *       The name of the allocator: "sysmalloc", "smalloc", "slaballoc"
     *       
     *    int DID_MEM_SBRK          (slaballoc, smalloc)
     *    int DID_MEM_SBRK_SIZE     (slaballoc, smalloc)
     *    
-    *       Number and size of memory blocks requested from the
-    *       operating system (non-mmapped memory).
+    *       Number and size of memory blocks requested from the operating system (non-mmapped memory).
     *       
     *    int DID_MEM_LARGE         (slaballoc, smalloc)
     *    int DID_MEM_LARGE_SIZE    (slaballoc, smalloc)
     *    int DID_MEM_LFREE         (slaballoc, smalloc)
     *    int DID_MEM_LFREE_SIZE    (slaballoc, smalloc)
     *    
-    *       Number and size of large allocated resp. free blocks.
-    *       smalloc: The large allocated blocks include the
-    *       small chunk blocks.
+    *       Number and size of large allocated resp. free blocks. smalloc: The large allocated blocks include the small chunk blocks.
     *       
     *    int DID_MEM_LWASTED       (slaballoc, smalloc)
     *    int DID_MEM_LWASTED_SIZE  (slaballoc, smalloc)
@@ -432,16 +353,13 @@ public class efun {
     *       Number and size of unusably small memory fragments.
     *       
     *    int DID_MEM_SMALL_OVERHEAD_SIZE  (slaballoc)
-    *       Size of the slab management overhead (not including
-    *       the overhead incurred by each allocated small block).
+    *       Size of the slab management overhead (not including the overhead incurred by each allocated small block).
     *       
     *    int DID_MEM_MINC_CALLS    (slaballoc, smalloc)
     *    int DID_MEM_MINC_SUCCESS  (slaballoc, smalloc)
     *    int DID_MEM_MINC_SIZE     (slaballoc, smalloc)
     *    
-    *       Number of calls to malloc_increment(), the number
-    *       of successes and the size of memory allocated this
-    *       way.
+    *       Number of calls to malloc_increment(), the number of successes and the size of memory allocated this way.
     *       
     *    int DID_MEM_PERM         (slaballoc, smalloc)
     *    int DID_MEM_PERM_SIZE    (slaballoc, smalloc)
@@ -451,34 +369,28 @@ public class efun {
     *    int DID_MEM_CLIB         (slaballoc, smalloc)
     *    int DID_MEM_CLIB_SIZE    (slaballoc, smalloc)
     *    
-    *       Number and size of allocations done through the
-    *       clib functions (if supported by the allocator).
+    *       Number and size of allocations done through the clib functions (if supported by the allocator).
     *       
     *    int DID_MEM_OVERHEAD     (slaballoc, smalloc)
     *       Overhead for every allocation.
     *       
     *    int DID_MEM_ALLOCATED    (slaballoc, smalloc)
-    *       The amount of memory currently allocated from the
-    *       allocator, including the overhead for the allocator.
+    *       The amount of memory currently allocated from the allocator, including the overhead for the allocator.
     *       
     *    int DID_MEM_USED         (slaballoc, smalloc)
-    *       The amount of memory currently used for driver data,
-    *       excluding the overhead from the allocator.
+    *       The amount of memory currently used for driver data, excluding the overhead from the allocator.
     *       
     *    int DID_MEM_TOTAL_UNUSED (slaballoc, smalloc)
-    *       The amount of memory allocated from the system, but
-    *       not used by the driver.
+    *       The amount of memory allocated from the system, but not used by the driver.
     *       
     *    int DID_MEM_DEFRAG_CALLS       (smalloc)
     *       Total number of calls to defragment_small_lists().
     *       
     *    int DID_MEM_DEFRAG_CALLS_REQ   (smalloc)
-    *       Number of calls to defragment_small_lists() with a
-    *       desired size.
+    *       Number of calls to defragment_small_lists() with a desired size.
     *       
     *    int DID_MEM_DEFRAG_REQ_SUCCESS (smalloc)
-    *       Number of times, a defragmentation for a desired
-    *       size was successful.
+    *       Number of times, a defragmentation for a desired size was successful.
     *       
     *    int DID_MEM_BLOCKS_INSPECTED   (smalloc)
     *       Number of blocks inspected during defragmentations.
@@ -490,23 +402,14 @@ public class efun {
     *       Number of defragmented blocks (ie. merge results).
     *       
     *    int DID_MEM_AVL_NODES          (slaballoc, smalloc)
-    *       Number of AVL nodes used to manage the large free
-    *       blocks. This value might go away again.
+    *       Number of AVL nodes used to manage the large free blocks. This value might go away again.
     *       
     *    mixed * DID_MEM_EXT_STATISTICS (slaballoc, smalloc)
-    *       If the driver was compiled with extended smalloc
-    *       statistics, they are returned in this entry; if the
-    *       driver was compiled without the statistics, 0 is
-    *       returned.
+    *       If the driver was compiled with extended smalloc statistics, they are returned in this entry; if the driver was compiled without the statistics, 0 is returned.
     *       
     *       This value might go away again.
     *       
-    *       The array contains NUM+2 entries, where NUM is the
-    *       number of distinct small block sizes. Entry [NUM]
-    *       describes the statistics of oversized small blocks
-    *       (smalloc) resp. for all slabs (slaballoc),
-    *       entry [NUM+1] summarizes all large blocks. Each
-    *       entry is an array of these fields:
+    *       The array contains NUM+2 entries, where NUM is the number of distinct small block sizes. Entry [NUM] describes the statistics of oversized small blocks (smalloc) resp. for all slabs (slaballoc), entry [NUM+1] summarizes all large blocks. Each entry is an array of these fields:
     *       
     *          int DID_MEM_ES_MAX_ALLOC:
     *             Max number of allocated blocks of this size.
@@ -521,12 +424,10 @@ public class efun {
     *             Current number of allocated blocks of this size.
     *             
     *          float DID_MEM_ES_AVG_XALLOC:
-    *             Number of explicit allocation requests per
-    *             second.
+    *             Number of explicit allocation requests per second.
     *             
     *          float DID_MEM_ES_AVG_XFREE:
-    *             Number of explicit deallocation requests per
-    *             second.
+    *             Number of explicit deallocation requests per second.
     *             
     *          int DID_MEM_ES_FULL_SLABS:
     *             Number of fully used slabs (slaballoc only).
@@ -535,43 +436,25 @@ public class efun {
     *             Number of fully free slabs (slaballoc only).
     *             
     *          int DID_MEM_ES_TOTAL_SLABS:
-    *             Total number of slabs: partially used, fully used
-    *             and fully free (slaballoc only).
+    *             Total number of slabs: partially used, fully used and fully free (slaballoc only).
     *             
-    *       The allocation/deallocation-per-second statistics do
-    *       not cover internal shuffling of the freelists.
+    *       The allocation/deallocation-per-second statistics do not cover internal shuffling of the freelists.
     *       
-    *       The slab statistics (entry [NUM], slaballoc only)
-    *       shows in the AVG statistics the frequence with which
-    *       slabs were allocated from resp. returned to the large
-    *       memory pool.
+    *       The slab statistics (entry [NUM], slaballoc only) shows in the AVG statistics the frequence with which slabs were allocated from resp. returned to the large memory pool.
     *       
-    * DINFO_TRACE (7): Return the call stack 'trace' information as specified
-    * by <arg2>. The result of the function is either an array (format
-    * explained below), or a printable string. Omitting <arg2> defaults
-    * to DIT_CURRENT.
+    * DINFO_TRACE (7): Return the call stack 'trace' information as specified by \p arg2. The result of the function is either an array (format explained below), or a printable string. Omitting \p arg2 defaults to DIT_CURRENT.
     * 
-    * <arg2> == DIT_CURRENT (0): Current call trace
-    *       == DIT_ERROR   (1): Most recent error call trace (caught
-    *          or uncaught)
-    *          
-    *       == DIT_UNCAUGHT_ERROR (2): Most recent uncaught-error call
-    *          trace
-    *          
+    * \p arg2 == DIT_CURRENT (0): Current call trace
+    *       == DIT_ERROR   (1): Most recent error call trace (caught or uncaught)
+    *       == DIT_UNCAUGHT_ERROR (2): Most recent uncaught-error call trace
+    *       
     *    Return the information in array form.
     *    
-    *    The error traces are changed only when an appropriate error
-    *    occurs; in addition a GC deletes them. After an uncaught
-    *    error, both error traces point to the same array (so the '=='
-    *    operator holds true).
+    *    The error traces are changed only when an appropriate error occurs; in addition a GC deletes them. After an uncaught error, both error traces point to the same array (so the '==' operator holds true).
     *    
-    *    If the array has more than one entries, the first entry is 0 or
-    *    the name of the object with the heartbeat which started the
-    *    current thread; all following entries describe the call stack
-    *    starting with the topmost function called.
+    *    If the array has more than one entries, the first entry is 0 or the name of the object with the heartbeat which started the current thread; all following entries describe the call stack starting with the topmost function called.
     *    
-    *    All call entries are arrays themselves with the following
-    *    elements:
+    *    All call entries are arrays themselves with the following elements:
     *    
     *    int[TRACE_TYPE]: The type of the call frame:
     *       TRACE_TYPE_SYMBOL (0): a function symbol (shouldn't happen).
@@ -581,35 +464,22 @@ public class efun {
     *       TRACE_TYPE_LFUN   (4): a normal lfun.
     *       
     *    mixed[TRACE_NAME]: The 'name' of the called frame:
-    *       _TYPE_EFUN:   either the name of the efun, or the code of
-    *          the instruction for operator closures
-    *          
+    *       _TYPE_EFUN:   either the name of the efun, or the code of the instruction for operator closures
     *       _TYPE_LAMBDA: the numeric lambda identifier.
     *       _TYPE_LFUN:   the name of the lfun.
     *       
-    *    string[TRACE_PROGRAM]: The (file)name of the program holding the
-    *       code.
-    *       
-    *    string[TRACE_OBJECT]:  The name of the object for which the code
-    *       was executed.
-    *       
+    *    string[TRACE_PROGRAM]: The (file)name of the program holding the code.
+    *    string[TRACE_OBJECT]:  The name of the object for which the code was executed.
     *    int[TRACE_LOC]:
-    *       _TYPE_LAMBDA: current program offset from the start of the
-    *          closure code.
-    *          
+    *    
+    *       _TYPE_LAMBDA: current program offset from the start of the closure code.
     *       _TYPE_LFUN:   the line number.
     *       
-    * <arg2> == DIT_STR_CURRENT (3): Return the information about the
-    *    current call trace as printable string.
-    *    
-    * <arg2> == DIT_CURRENT_DEPTH (4): Return the current number of
-    *    frames on the control stack (recursion depth).
-    *    
-    * DINFO_EVAL_NUMBER (8): Return the current evaluation number.
-    * The number is incremented for each top-level call. Top-level
-    * calls are initiated by the driver, usually in reaction to an
-    * external event:
+    * \p arg2 == DIT_STR_CURRENT (3): Return the information about the current call trace as printable string.
     * 
+    * \p arg2 == DIT_CURRENT_DEPTH (4): Return the current number of frames on the control stack (recursion depth).
+    * 
+    * DINFO_EVAL_NUMBER (8): Return the current evaluation number. The number is incremented for each top-level call. Top-level calls are initiated by the driver, usually in reaction to an external event:
     *    - commands (added by add_action)
     *    - heart_beat, reset, clean_up
     *    - calls from call_out or input_to
@@ -618,12 +488,9 @@ public class efun {
     *    - send_erq callbacks
     *    - logon in interactives
     *    
-    * The number can be used to detect cases where the same code is
-    * executed twice in the same top level evaluation (say, heart_beat),
-    * and also for time stamps for ordering some events.
+    * The number can be used to detect cases where the same code is executed twice in the same top level evaluation (say, heart_beat), and also for time stamps for ordering some events.
     * 
-    * Please note that the counter may overflow, especially on 32 bit
-    * systems. As a result, it can also be negative.
+    * Please note that the counter may overflow, especially on 32 bit systems. As a result, it can also be negative.
     * 
     * @headerfile <debug_info.h>
     * 
@@ -633,6 +500,86 @@ public class efun {
     * mixed debug_info(int flag, mixed arg2, mixed arg3)
     * }
     * 
+    * @history{
+    * changed (3.2.7) -- added DINFO_DUMP
+
+DINFO_STATUS now returns the status information instead of printing it.
+    * added DINFO_DUMP
+    * DINFO_STATUS now returns the status information instead of printing it.
+    * changed (3.2.8) -- added the DINFO_DATA request
+
+added DID_MEM_LWASTED, DID_MEM_LWASTED_SIZE, DID_MEM_SWASTED, and DID_MEM_SWASTED_SIZE stats
+
+added the data size of the object to the result of DINFO_MEMORY.
+    * added the DINFO_DATA request
+    * added DID_MEM_LWASTED, DID_MEM_LWASTED_SIZE, DID_MEM_SWASTED, and DID_MEM_SWASTED_SIZE stats
+    * added the data size of the object to the result of DINFO_MEMORY.
+    * changed (3.2.9) -- added DINFO_TRACE
+
+added the indexing feature for DINFO_DATA
+
+added the 'destructed' DINFO_DUMP
+
+added DID_MEM_CLIB, DID_MEM_CLIB_SIZE
+
+added DID_MEM_PERM, DID_MEM_PERM_SIZE
+
+added DID_ST_OBJECTS_NEWLY_DEST
+
+added DID_ST_OBJECTS_DEST
+
+added DID_MEM_OVERHEAD
+
+added DID_MEM_ALLOCATED
+
+added DID_MEM_USED
+
+added DID_MEM_TOTAL_UNUSED
+
+added DID_ST_HBEAT_CALLS_TOTAL
+    * added DINFO_TRACE
+    * added the indexing feature for DINFO_DATA
+    * added the 'destructed' DINFO_DUMP
+    * added DID_MEM_CLIB, DID_MEM_CLIB_SIZE
+    * added DID_MEM_PERM, DID_MEM_PERM_SIZE
+    * added DID_ST_OBJECTS_NEWLY_DEST
+    * added DID_ST_OBJECTS_DEST
+    * added DID_MEM_OVERHEAD
+    * added DID_MEM_ALLOCATED
+    * added DID_MEM_USED
+    * added DID_MEM_TOTAL_UNUSED
+    * added DID_ST_HBEAT_CALLS_TOTAL
+    * changed (3.2.10) -- added the object creation time to DINFO_DUMP:"objects"
+
+added DID_ST_BOOT_TIME, DID_ST_MB_FILE and DID_ST_MB_SWAP to DINFO_DATA:DID_STATUS
+
+added the third argument to DINFO_OBJLIST
+
+removed DID_MEM_UNUSED from DINFO_DATA:DID_MEMORY
+
+removed DID_ST_CALLOUT_SLOTS and from DINFO_DATA:DID_STATUS
+
+changed the meaning of DID_ST_CALLOUT_SIZE, DID_ST_HBEAT_SIZE, and DID_ST_HBEAT_SLOTS
+    * added the object creation time to DINFO_DUMP:"objects"
+    * added DID_ST_BOOT_TIME, DID_ST_MB_FILE and DID_ST_MB_SWAP to DINFO_DATA:DID_STATUS
+    * added the third argument to DINFO_OBJLIST
+    * removed DID_MEM_UNUSED from DINFO_DATA:DID_MEMORY
+    * removed DID_ST_CALLOUT_SLOTS and from DINFO_DATA:DID_STATUS
+    * changed the meaning of DID_ST_CALLOUT_SIZE, DID_ST_HBEAT_SIZE, and DID_ST_HBEAT_SLOTS
+    * changed (3.3) -- replaced the string related DID_ST_* constants according to the new string implementation.
+    * changed (3.3.387) -- added the ptmalloc values for DINFO_DATA:DID_MEMORY.
+    * changed (3.3.479) -- added the DID_MEM_DEFRAG_ values for DINFO_DATA:DID_MEMORY.
+    * changed (3.3.526) -- added DINFO_DUMP:"memory".
+    * changed (3.3.533) -- added DID_MEM_AVL_NODES for DINFO_DATA:DID_MEMORY.
+    * changed (3.3.603) -- added DID_MEM_EXT_STATISTICS for DINFO_DATA:DID_MEMORY.
+    * changed (3.3.645) -- added DINFO_DATA:DID_ST_PACKETS_IN and DID_ST_PACKET_SIZE_IN.
+    * changed (3.3.679) -- removed DID_ST_IT_OVERHEAD and DID_ST_ITABLED*; added DID_ST_HYBRID_MAPPINGS and DID_ST_HASH_MAPPINGS.
+    * changed (3.3.718) -- added DIT_CURRENT_DEPTH to DINFO_TRACE.
+    * changed (3.3.719) -- added DINFO_EVAL_NUMBER
+    * changed (3.5.0) -- removed the ptmalloc values for DINFO_DATA:DID_MEMORY.
+    * }
+    * 
+    * @see efun::trace(), efun::traceprefix()
    **/
    mixed debug_info(int flag, mixed arg2, mixed arg3);
 }

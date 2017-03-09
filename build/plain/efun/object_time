@@ -5,9 +5,9 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Returns the creation time of the given object. Default is for 
-   this_object(), if no arg is given.
+   Returns the creation time of the given object. Default is 
+   for `this_object()`, if no arg is given.
 
 SEE ALSO
 ========
-   program_time()(E), program_name()(E)
+   program_time(E), program_name(E)

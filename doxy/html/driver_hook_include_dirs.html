@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: include_dirs</title>
+<title>LDMud: include_dirs</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('driver_hook_include_dirs.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,24 +98,27 @@ $(document).ready(function(){initNavTree('driver_hook_include_dirs.html','');});
 <div class="title">include_dirs </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Semi-mandatory hook specifying the directories where <em></em> &lt;&gt;<code>-type include files are searched (this includes @a""</code>-includes not found as specified). Hook setting may be any closure or a string array. If not set, only <em></em>""`-type includes may be used in LPC programs.</p>
-<p>The hook is called only if a call to <a class="el" href="classmaster.html#ac9c9e08ae1a12c13764876fed9483acc" title="Generate the pathname of an included file. ">master::include_file()</a> does not return a usable filename.</p>
-<p>If the hook setting is a string array, it has to contain the path names of those directories where <em></em> &lt;&gt;<code>-type includes are to be searched. The directories are searched in the order they appear in the array. The directory name and the name of the actual include file are concatenated, therefore the directory names have to end in @a/</code>. Leading slashes may be omitted.</p>
-<p>If the setting is a closure, it is called with the name of the desired include file as first, and the name of the compiled LPC file as second argument. Result has to be the complete path name of the include file to use. Leading slashes may be omitted. If the closure is a lambda closure, it is bound to this_object() prior to execution.</p>
-<dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_INCLUDE_DIRS, value)</div>
+<div class="textblock"><dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_INCLUDE_DIRS, value)</div>
 </div><!-- fragment --></dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_hook_auto_include.html">auto_include</a>, <a class="el" href="classmaster.html#ac9c9e08ae1a12c13764876fed9483acc" title="Generate the pathname of an included file. ">master::include_file()</a> Arguments:<ul>
-<li>value (<a class="el" href="driver_LPC_string.html">string*</a>) &ndash; &lt;dirs&gt;</li>
-<li>value (<a class="el" href="driver_LPC_closures.html">closure</a>) &ndash; string &lt;closure&gt;(string include_name, string current_file) </li>
-</ul>
-</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>&lt;dirs&gt; </td></tr>
+    <tr><td class="paramname">value</td><td>string &lt;closure&gt;(string include_name, string current_file)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Semi-mandatory hook specifying the directories where <code>&lt;&gt;</code>-type include files are searched (this includes <code>""</code>-includes not found as specified). Hook setting may be any closure or a string array. If not set, only <code>""</code>-type includes may be used in LPC programs.</p>
+<p>The hook is called only if a call to <a class="el" href="classmaster.html#ac9c9e08ae1a12c13764876fed9483acc" title="Generate the pathname of an included file. ">master::include_file()</a> does not return a usable filename.</p>
+<p>If the hook setting is a string array, it has to contain the path names of those directories where <code>&lt;&gt;</code>-type includes are to be searched. The directories are searched in the order they appear in the array. The directory name and the name of the actual include file are concatenated, therefore the directory names have to end in <code>/</code>. Leading slashes may be omitted.</p>
+<p>If the setting is a closure, it is called with the name of the desired include file as first, and the name of the compiled LPC file as second argument. Result has to be the complete path name of the include file to use. Leading slashes may be omitted. If the closure is a lambda closure, it is bound to <code>this_object()</code> prior to execution.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_hook_overview.html">hook</a>, <a class="el" href="driver_hook_auto_include.html">auto_include</a>, <a class="el" href="classmaster.html#ac9c9e08ae1a12c13764876fed9483acc" title="Generate the pathname of an included file. ">master::include_file()</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">index</a></li><li class="navelem"><a class="el" href="driver_hook_hook.html">hook</a></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:11 for Tsunami by
+    <li class="navelem"><a class="el" href="driver_hook_overview.html">Driver-supported hooks</a></li>
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:24 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

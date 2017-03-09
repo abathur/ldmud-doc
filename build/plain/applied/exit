@@ -11,9 +11,7 @@ DESCRIPTION
    This function was called in the old environment everytime a living object 
    ob leaves it.
 
-   Todo: the following should probably be explained better than it is
-
-   this_player()(E) will return a random value, don't use it at this point.
+   this_player(E) will return a random value, don't use it at this point.
 
    <!> Warning:  
      An error in this function will leave the player stranded in the current

@@ -6,7 +6,7 @@ DESCRIPTION
 ===========
    Validate the execution of a privileged operation. op denotes the requested 
    operation, who is the object requesting the operation (file_name or object 
-   pointer), <arg> and <arg2> are additional arguments, depending on the 
+   pointer), arg(M) and arg2(M) are additional arguments, depending on the 
    operation.
 
    The function should return >0 to grant the privilege, 0 to indicate that 
@@ -16,114 +16,114 @@ DESCRIPTION
    The privileged operations are:
 
    attach_erq_demon
-      Attach the erq demon to object <arg> with  flag <arg2>.
+      Attach the erq demon to object arg(M) with  flag arg2(M).
 
    bind_lambda
-      Bind a lambda-closure to object <arg>.
+      Bind a lambda-closure to object arg(M).
 
    call_out_info
       Return an array with all call_out informations.
 
    configure_interactive
-      Set option <arg2> with value <arg3> as default (<arg>==0) or for object 
-      <arg>.
+      Set option arg2(M) with value arg3(M) as default (`arg==0`) or for 
+      object arg(M).
 
    configure_driver
-      Set option <arg1> to value(s) <arg2>.
+      Set option `arg1` to value(s) arg2(M).
 
    enable_telnet
-      Enable/disable telnet (<arg2>) for object <arg>.
+      Enable/disable telnet (arg2(M)) for object arg(M).
 
    execute_command
-      Execute command string <arg2> for the object <arg>.
+      Execute command string arg2(M) for the object arg(M).
 
    erq
-      At the request <arg2> is to be sent to the erq-demon by the object 
-      <who>.
+      At the request arg2(M) is to be sent to the erq-demon by the object 
+      who(M).
 
    garbage_collection
-      Object <who> calls the efun garbage_collection() with <arg> as filename 
-      and <arg2> as flag.
+      Object who(M) calls the garbage_collection(E) with arg(M) as filename 
+      and arg2(M) as flag.
 
    input_to
-      Object <who> redirects the next input from commandgiver <arg>, using 
-      <arg2> as value for the flags. This is used for flag values including 
+      Object who(M) redirects the next input from commandgiver arg(M), using 
+      arg2(M) as value for the flags. This is used for flag values including 
       the 'no bang' option.
 
    limited
-      Execute <arg> with reduced/changed limits 1<arg2> (as return by 
-      query_limits()).
+      Execute arg(M) with reduced/changed limits arg2(M) (as return by 
+      query_limits(E)).
 
    mysql
-      Object <who> attempted to execute mySQL efun <arg>.
+      Object who(M) attempted to execute mySQL efun arg(M).
 
    pgsql
-      Object <who> attempted to execute Postgres efun <arg>.
+      Object who(M) attempted to execute Postgres efun arg(M).
 
    net_connect
-      Attempt to open a connection to host <arg>, port <arg2>.
+      Attempt to open a connection to host arg(M), port arg2(M).
 
    nomask simul_efun
-      Attempt to get an efun <arg> via efun:: when it is shadowed by a nomask 
+      Attempt to get an efun arg(M) via efun:: when it is shadowed by a nomask
       type simul_efun.
 
    rename_object
-      The object <who> tries to rename the object <arg> to the name <arg2>.
+      The object who(M) tries to rename the object arg(M) to the name arg2(M).
 
    send_udp
-      Send UDP-data to host <arg>.
+      Send UDP-data to host arg(M).
 
    get_extra_wizinfo
-      Get the additional wiz-list info for user <arg>.
+      Get the additional wiz-list info for user arg(M).
 
    set_extra_wizinfo
-      Set the additional wiz-list info for user <arg>.
+      Set the additional wiz-list info for user arg(M).
 
    set_extra_wizinfo_size
-      Set the size of the additional user info in the wiz-list to <arg>.
+      Set the size of the additional user info in the wiz-list to arg(M).
 
    set_driver_hook
-      Set hook <arg> to <arg2>.
+      Set hook arg(M) to arg2(M).
 
    set_limits
-      Set limits to <arg> (as returned by query_limits()).
+      Set limits to arg(M) (as returned by query_limits(E)).
 
    set_max_commands
-      Set the max. number of commands interactive object <arg> can issue per 
-      second to <arg2>.
+      Set the max. number of commands interactive object arg(M) can issue per 
+      second to arg2(M).
 
    set_this_object
-      Set this_object() to <arg>.
+      Set `this_object()` to arg(M).
 
    shadow_add_action
-      Add an action to function <arg2> of object <arg> from the shadow <who> 
-      which is shadowing <arg>.
+      Add an action to function arg2(M) of object arg(M) from the shadow 
+      who(M) which is shadowing arg(M).
 
    shutdown
-      Object <who> calls the efun shutdown with <arg> as argument.
+      Object who(M) calls the efun shutdown with arg(M) as argument.
 
    sqlite_pragma
       Execute pragma statement in SQLite.
 
    symbol_variable
-      Attempt to make a symbol from a hidden inherited variable. <arg> is the 
-      object in question, <arg2> the number of the variable in the variable 
+      Attempt to make a symbol from a hidden inherited variable. arg(M) is the
+      object in question, arg2(M) the number of the variable in the variable 
       table.
 
    variable_list
-      An attempt to return the variable values of object <arg> is made from a 
-      different object <who>.
+      An attempt to return the variable values of object arg(M) is made from a
+      different object who(M).
 
    wizlist_info
       Return an array with all wiz-list information.
 
-   call_out_info() can return the arguments to functions and lambda closures 
-   to be called by call_out(); you should consider that read access to 
+   call_out_info(E) can return the arguments to functions and lambda closures 
+   to be called by call_out(E); you should consider that read access to 
    closures, mappings and arrays means write access and/or other privileges. 
-   wizlist_info() will return an array which holds, among others, the extra 
+   wizlist_info(E) will return an array which holds, among others, the extra 
    wizlist field. While a toplevel array, if found, will be copied, this does 
    not apply to nested arrays or to any mappings. You might also have some 
-   sensitive closures there. send_udp() should be watched as it could be 
+   sensitive closures there. send_udp(E) should be watched as it could be 
    abused. The xxx_extra_wizinfo operations are necessary for a proper wizlist
    and should therefore be restricted to admins. All other operations are 
    potential sources for direct security breaches - any use of them should be 
@@ -140,7 +140,7 @@ HISTORY
 
 SEE ALSO
 ========
-   net_connect()(E), send_erq()(E), set_this_object()(E), rename_object()(E), 
-   simul_efun(C), call_out_info()(E), shadow()(E), add_action()(E), 
-   bind_lambda()(E), send_udp()(E), input_to()(E), execute_command()(E), 
-   variable_list()(E), enable_telnet()(E), mysql(C)
+   net_connect(E), send_erq(E), set_this_object(E), rename_object(E), 
+   >>:concept:`simul_efun`<<, call_out_info(E), shadow(E), add_action(E), 
+   bind_lambda(E), send_udp(E), input_to(E), execute_command(E), 
+   variable_list(E), enable_telnet(E), >>:concept:`mysql`<<

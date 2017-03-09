@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>master::dangling_lfun_closure() &mdash; LDMud UNRELEASED documentation</title>
+    <title>master::dangling_lfun_closure() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="master" href="master.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="master::disconnect()" href="disconnect.html" />
     <link rel="prev" title="master::connect()" href="connect.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,31 +47,28 @@
 <div class="section" id="SYNOPSIS">
 <span id="dangling_lfun_closure"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.dangling_lfun_closure">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">dangling_lfun_closure</code></td><a class="headerlink" href="#lpc.dangling_lfun_closure" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.master.dangling_lfun_closure">
+<!--[lpc.master.dangling_lfun_closure]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">dangling_lfun_closure</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.master.dangling_lfun_closure" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
 <p>Handle a dangling lfun-closure.</p>
-<p>This is called when the gamedriver executes a closure using a
-vanished lfun, with previous_object() showing the originating
-object. A proper handling is to raise a runtime error.</p>
+<p>This is called when the gamedriver executes a closure using a vanished lfun, with <code class="docutils literal"><span class="pre">previous_object()</span></code> showing the originating object. A proper handling is to raise a runtime error.</p>
 <div class="admonition-technical admonition">
 <p class="first admonition-title">Technical</p>
-<p class="last">Upon replacing programs (see efun replace_program()), any
-existing lambda closures of the object are adjusted to the
-new environment. If a closure uses a lfun which vanished in
-the replacement process, the reference to the lfun is
-replaced by an alien-lfun closure referencing to this function.
-The error will then occur when the execution of the adjusted lambda
-reaches the point of the lfun reference. There are two reasons for
-the delayed handling. First is that the program replacement and with
-it the closure adjustment happens at the end of a backend cycle,
-outside of any execution thread: noone would see the error at this
-time. Second, smart closures might know/recognize the program
-replacement and skip the call to the vanished lfun.</p>
+<p class="last">Upon replacing programs (see <a class="reference internal" href="../efun/replace_program.html#lpc.efun.replace_program" title="replace_program"><code class="xref lpc lpc-efun docutils literal"><span class="pre">replace_program</span></code>(E)</a>), any existing lambda closures of the object are adjusted to the new environment. If a closure uses a lfun which vanished in the replacement process, the reference to the lfun is replaced by an alien-lfun closure referencing to this function. The error will then occur when the execution of the adjusted lambda reaches the point of the lfun reference. There are two reasons for the delayed handling. First is that the program replacement and with it the closure adjustment happens at the end of a backend cycle, outside of any execution thread: noone would see the error at this time. Second, smart closures might know/recognize the program replacement and skip the call to the vanished lfun.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; all references to <a class="reference internal" href="#lpc.master.dangling_lfun_closure" title="dangling_lfun_closure"><code class="xref lpc lpc-master docutils literal"><span class="pre">dangling_lfun_closure</span></code>(M)</a> are now created as alien-lfun closures.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../syntax/closures.html#lpc.type.closure" title="closure"><code class="xref lpc lpc-type docutils literal"><span class="pre">closure</span></code></a></p>
 </div>
 </div>
 </div>
@@ -83,8 +82,8 @@ replacement and skip the call to the vanished lfun.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -94,21 +93,24 @@ replacement and skip the call to the vanished lfun.</p>
   <ul>
 <li><a class="reference internal" href="#">master::dangling_lfun_closure()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -120,7 +122,7 @@ replacement and skip the call to the vanished lfun.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/master/dangling_lfun_closure.txt"
+      <a href="../_sources/master/dangling_lfun_closure.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

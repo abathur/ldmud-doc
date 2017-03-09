@@ -1,0 +1,49 @@
+OVERVIEW
+========
+   LPC syntax
+DESCRIPTION
+===========
+   This directory collects information about the LPC language provided by the 
+   LDMud parser and driver.
+
+   - array
+   - ->
+   - {[<statement>...]}
+   - Guide to closures
+   - closures
+   - closures example
+   - comments
+   - do
+   - \<escape_sequence>
+   - float
+   - for
+   - foreach
+   - functions
+   - if
+   - []
+   - inherit
+   - function
+   - int
+   - mapping
+   - Guide to A step-by-step introduction to mappings
+   - mixed
+   - modifiers
+   - object
+   - operators
+   - pragma
+   - #
+   - &
+   - status
+   - string
+   - struct
+   - switch
+   - symbol
+   - types
+   - union
+   - varargs
+   - void
+   - while
+
+SEE ALSO
+========
+   applied(A), topics, efun(E), hook(H), internals(I), master(M), `obsolete`

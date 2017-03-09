@@ -8,8 +8,8 @@ DESCRIPTION
 
    USAGE
    =====
-      `lower_case("Heya!") -> "heya!"`
+      `lower_case("Heya!") // returns "heya!"`
 
 SEE ALSO
 ========
-   capitalize()(E), upper_case()(E)
+   capitalize(E), upper_case(E)

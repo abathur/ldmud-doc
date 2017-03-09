@@ -5,13 +5,13 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Returns the size of the file in bytes.
+   Return: 
+      - `FSIZE_NOFILE` (-1) : indicates that the file either does not 
+        exist, or that it is not readable for the calling object/user.
+      - `FSIZE_DIR` (-2) : indicates that it is a directory.
 
-   Size FSIZE_NOFILE (-1) indicates that the file either does not exist, or 
-   that it is not readable for the calling object/user. Size FSIZE_DIR (-2) 
-   indicates that it is a directory.
+   Returns the size of the file in bytes.
 
 SEE ALSO
 ========
-   write_file()(E), write_bytes()(E), read_file()(E), read_bytes()(E), 
-   get_dir()(E)
+   write_file(E), write_bytes(E), read_file(E), read_bytes(E), get_dir(E)

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: applied/reset.c Source File</title>
+<title>LDMud: applied/reset.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('reset_8c_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,13 +100,13 @@ $(document).ready(function(){initNavTree('reset_8c_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classapplied.html">applied</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * The H_RESET hook defines the function or closure to be called when the driver needs to reset an object. In older drivers this was hardwired to the lfun reset(), and a lot of hook implementations still follow this tradition.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * The @ref driver_hook_reset &quot;H_RESET&quot; hook defines the function or closure to be called when the driver needs to reset an object. In older drivers this was hardwired to the lfun applied::reset(), and a lot of hook implementations still follow this tradition.</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * In compat mode, reset() was called with arg 0 after the object was compiled, and with arg != 0 every once in a while. In native mode, create() is called after compiling, and reset() is called without arguments every once in a while.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * In compat mode, applied::reset() was called with arg 0 after the object was compiled, and with arg != 0 every once in a while. In native mode, applied::create() is called after compiling, and applied::reset() is called without arguments every once in a while.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * So, if the argument is zero, the parser is running in compat mode, and reset() may call your create() code. If create() is called, you&#39;re on the new version and reset() is not called for object creation. You may call reset() from create() and vice versa, but make sure they do not call each other recursively on either type of driver.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * So, if the argument is zero, the parser is running in compat mode, and applied::reset() may call your applied::create() code. If applied::create() is called, you&#39;re on the new version and applied::reset() is not called for object creation. You may call applied::reset() from applied::create() and vice versa, but make sure they do not call each other recursively on either type of driver.</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * reset() will be called only in objects that have been used since the last call to reset(), i.e. a function in them was called (other than reset() or clean_up()), or it was moved around.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * applied::reset() will be called only in objects that have been used since the last call to applied::reset(), i.e. a function in them was called (other than applied::reset() or applied::clean_up()), or it was moved around.</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * </span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * This function can be used to reset the state of the object or do some checks or what ever. The game wouldn&#39;t be fun if no challenges remained.</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * </span></div>
@@ -120,7 +119,7 @@ $(document).ready(function(){initNavTree('reset_8c_source.html','');});
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    * changed (3.2.1) -- the mudlib can be programmed to call an other lfun than reset to reset an object with reset</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">    * }</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">    * @see applied::clean_up(), applied::heart_beat(), efun::call_out(), applied::create(), applied::__INIT(), @ref driver_hook_reset &quot;reset&quot;, @ref driver_concepts_native &quot;native&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">    * @see applied::clean_up(), applied::heart_beat(), efun::call_out(), applied::create(), applied::__INIT(), @ref driver_hook_reset &quot;reset&quot;, @ref driver_hook_overview &quot;hook&quot;, @ref driver_master_initialisation &quot;initialisation&quot;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">   **/</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="classapplied.html#a3aea9deb2a0bfea9ff05a898f4822e31">reset</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
@@ -132,7 +131,7 @@ $(document).ready(function(){initNavTree('reset_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3796eddb8adc0dac39da1f7807c414b9.html">applied</a></li><li class="navelem"><b>reset.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:06 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:21 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

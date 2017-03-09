@@ -15,13 +15,14 @@ var searchData=
   ['pow',['pow',['../classefun.html#a23db3b9d4dcad4bf886083af59f2f5a2',1,'efun']]],
   ['preload',['preload',['../classmaster.html#a77bb5c507495689cfc9e4d8d6784421c',1,'master']]],
   ['prepare_5fdestruct',['prepare_destruct',['../classmaster.html#acce46cbd92020edeea3cf9c9735358d1',1,'master']]],
+  ['present',['present',['../classefun.html#a63902725c750bf04e6a6383310dd3610',1,'efun']]],
   ['present_5fclone',['present_clone',['../classefun.html#a4bb6390381b4cd2768beb7b59df5abfb',1,'efun']]],
   ['prevent_5finsert',['prevent_insert',['../classapplied.html#a60fb09d965441f9502f358d6d10e043c',1,'applied']]],
-  ['previous_5fobject',['previous_object',['../classefun.html#ad97faa7d3c08dc7c7a22ef4c0a37fd08',1,'efun']]],
+  ['previous_5fobject',['previous_object',['../classefun.html#a8d720f6391a992bf62bb528a3c48ba14',1,'efun']]],
   ['printf',['printf',['../classefun.html#a2f50b85e38b1f7510cddbe6dc5435942',1,'efun']]],
   ['printf_5fobj_5fname',['printf_obj_name',['../classmaster.html#a89db6e6e86623d52d2dbe1081b900913',1,'master']]],
   ['privilege_5fviolation',['privilege_violation',['../classmaster.html#afaf1545f7ccfbb3d897293150f5a45ca',1,'master']]],
   ['process_5fstring',['process_string',['../classefun.html#a58338c1e30d3a60a84db85cc2680684b',1,'efun']]],
-  ['program_5fname',['program_name',['../classefun.html#a8eb1d75c35953b95dd5f046abc3d1f77',1,'efun']]],
+  ['program_5fname',['program_name',['../classefun.html#a29da7cfd7195efb63c82bd788a609e93',1,'efun']]],
   ['program_5ftime',['program_time',['../classefun.html#acf0bef5d723794d143a7d159773b0520',1,'efun']]]
 ];

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/shutdown.c Source File</title>
+<title>LDMud: efun/shutdown.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('shutdown_8c_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,33 +100,27 @@ $(document).ready(function(){initNavTree('shutdown_8c_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * void shutdown()</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * void shutdown(int exit_code)</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * }</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="classefun.html#a4c6184e20b9727f3f7315013af122117">shutdown</a>(int exit_code);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;Shutdown the mud, setting the process result code to</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;&lt;exit_code&gt;, or 0 <span class="keywordflow">if</span> not given.</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;Never use <span class="keyword">this</span> efun. If you need to shutdown the mud, use</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;the shutdown command instead. You may be asking yourself,</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordflow">if</span> you<span class="stringliteral">&#39;re not supposed to use it why is it here? Sorry, I</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="stringliteral">cannot answer that. It&#39;</span>s top-secret.</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;The <a class="code" href="classefun.html">efun</a> causes a privilege violation.</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;LDMud 3.2.11 introduced the exit code.</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;LDMud 3.5.0 made the <a class="code" href="classefun.html">efun</a> privileged.</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;   See Also: </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;      <a class="code" href="classefun.html#af38c2aa695e4b3e22f55fc1a6530aabe">efun::break_point</a>(), <a class="code" href="classefun.html#afa387a1906d22bf1e0ac29dc1c3c5fb6">efun::swap</a>(), <a class="code" href="classmaster.html#afaf1545f7ccfbb3d897293150f5a45ca">master::privilege_violation</a>()</div>
-<div class="ttc" id="classefun_html_af38c2aa695e4b3e22f55fc1a6530aabe"><div class="ttname"><a href="classefun.html#af38c2aa695e4b3e22f55fc1a6530aabe">efun.break_point</a></div><div class="ttdeci">void break_point()</div><div class="ttdoc">This function is for system internal use and should never be called by user objects. </div></div>
-<div class="ttc" id="classefun_html_afa387a1906d22bf1e0ac29dc1c3c5fb6"><div class="ttname"><a href="classefun.html#afa387a1906d22bf1e0ac29dc1c3c5fb6">efun.swap</a></div><div class="ttdeci">void swap(object obj)</div><div class="ttdoc">Swap out an object. </div></div>
-<div class="ttc" id="classmaster_html_afaf1545f7ccfbb3d897293150f5a45ca"><div class="ttname"><a href="classmaster.html#afaf1545f7ccfbb3d897293150f5a45ca">master.privilege_violation</a></div><div class="ttdeci">int privilege_violation(string op, mixed who, mixed arg, mixed arg2, mixed arg3)</div><div class="ttdoc">Validate the execution of a privileged operation. </div></div>
-<div class="ttc" id="classefun_html_a4c6184e20b9727f3f7315013af122117"><div class="ttname"><a href="classefun.html#a4c6184e20b9727f3f7315013af122117">efun.shutdown</a></div><div class="ttdeci">void shutdown(int exit_code)</div></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * Shutdown the mud, setting the process result code to \p exit_code, or 0 if not given.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * Never use this efun. If you need to shutdown the mud, use the shutdown command instead. You may be asking yourself, if you&#39;re not supposed to use it why is it here? Sorry, I cannot answer that. It&#39;s top-secret.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * The efun causes a privilege violation.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * void shutdown()</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * void shutdown(int exit_code)</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    * @history{</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    * changed (3.2.11) -- introduced the exit code.</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    * changed (3.5.0) -- made the efun privileged.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    * @see efun::break_point(), efun::swap(), master::privilege_violation()</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="classefun.html#a4c6184e20b9727f3f7315013af122117">shutdown</a>(int exit_code);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="ttc" id="classefun_html_a4c6184e20b9727f3f7315013af122117"><div class="ttname"><a href="classefun.html#a4c6184e20b9727f3f7315013af122117">efun.shutdown</a></div><div class="ttdeci">void shutdown(int exit_code)</div><div class="ttdoc">Shutdown the mud, setting the process result code to exit_code, or 0 if not given. </div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -135,7 +128,7 @@ $(document).ready(function(){initNavTree('shutdown_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>shutdown.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:09 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:22 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

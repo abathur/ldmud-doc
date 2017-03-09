@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::query_verb() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::query_verb() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::quote()" href="quote.html" />
     <link rel="prev" title="efun::query_udp_port()" href="query_udp_port.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,61 +47,61 @@
 <div class="section" id="SYNOPSIS">
 <span id="query_verb"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.query_verb">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">query_verb</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.query_verb" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.query_verb">
+<!--[lpc.efun.query_verb]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">query_verb</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+void</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.query_verb" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">query_verb</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flag</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">query_verb</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+int<em>&nbsp;flag</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Return the verb of the current command, of 0 if not executing from
-a command. If &lt;flag&gt; is 0 or not given, the verb as given by the user
-is returned (this is the first word from the line input by the player,
-up to but not including the first space or lineend). If &lt;flag&gt; is
-non-0, the verb as specified in the add_action() statement is returned.</p>
+<p>Return the verb of the current command, of 0 if not executing from a command. If <a class="reference internal" href="#efun/query_verb.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> is 0 or not given, the verb as given by the user is returned (this is the first word from the line input by the player, up to but not including the first space or lineend). If <a class="reference internal" href="#efun/query_verb.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> is non-0, the verb as specified in the <a class="reference internal" href="add_action.html#lpc.efun.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action</span></code>(E)</a> statement is returned.</p>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>void init() {</dt>
-<dd>...
-add_action(&#8220;sing&#8221;,&#8221;sing&#8221;);
-add_action(&#8220;sing&#8221;,&#8221;chant&#8221;, 1);
-...</dd>
-</dl>
-<p>}
-int sing(string str) {</p>
-<blockquote>
-<div>write(&#8220;Your command was: &#8220;+query_verb()+(str ? str : &#8220;&#8221;)+&#8221;n&#8221;);
-write(&#8220;The action verb was: &#8220;+query_verb(1)+(str ? str : &#8220;&#8221;)+&#8221;n&#8221;);
-return 1;</div></blockquote>
-<p>}</p>
-<dl class="docutils">
-<dt>The command &#8216;sing ...&#8217; will print:</dt>
-<dd>Your command was: sing
-The action verb was: sing</dd>
-<dt>The command &#8216;chant ...&#8217; will print:</dt>
-<dd>Your command was: chant
-The action verb was: chant</dd>
-<dt>The command &#8216;chantit ...&#8217; will print:</dt>
-<dd>Your command was: chantit
-The action verb was: chant</dd>
-</dl>
+<p>When the user is in the presence of an object defined as:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+   <span class="p">...</span>
+   <span class="n">add_action</span><span class="p">(</span><span class="s">&quot;sing&quot;</span><span class="p">,</span><span class="s">&quot;sing&quot;</span><span class="p">);</span>
+   <span class="n">add_action</span><span class="p">(</span><span class="s">&quot;sing&quot;</span><span class="p">,</span><span class="s">&quot;chant&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+   <span class="p">...</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">sing</span><span class="p">(</span><span class="kt">string</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+   <span class="n">write</span><span class="p">(</span><span class="s">&quot;Your command was: &quot;</span><span class="o">+</span><span class="n">query_verb</span><span class="p">()</span><span class="o">+</span><span class="p">(</span><span class="n">str</span> <span class="o">?</span> <span class="nl">str</span> <span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+   <span class="n">write</span><span class="p">(</span><span class="s">&quot;The action verb was: &quot;</span><span class="o">+</span><span class="n">query_verb</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">str</span> <span class="o">?</span> <span class="nl">str</span> <span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+   <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>the command &#8216;sing ...&#8217; will print:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">Your</span> <span class="n">command</span> <span class="nl">was</span><span class="p">:</span> <span class="n">sing</span>
+<span class="n">The</span> <span class="n">action</span> <span class="n">verb</span> <span class="nl">was</span><span class="p">:</span> <span class="n">sing</span>
+</pre></div>
+</div>
+<p>the command &#8216;chant ...&#8217; will print:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">Your</span> <span class="n">command</span> <span class="nl">was</span><span class="p">:</span> <span class="n">chant</span>
+<span class="n">The</span> <span class="n">action</span> <span class="n">verb</span> <span class="nl">was</span><span class="p">:</span> <span class="n">chant</span>
+</pre></div>
+</div>
+<p>and the command &#8216;chantit ...&#8217; will print:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">Your</span> <span class="n">command</span> <span class="nl">was</span><span class="p">:</span> <span class="n">chantit</span>
+<span class="n">The</span> <span class="n">action</span> <span class="n">verb</span> <span class="nl">was</span><span class="p">:</span> <span class="n">chant</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added the optional flag argument.</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="add_action.html#lpc.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action()</span></code>(E)</a>, <a class="reference internal" href="query_command.html#lpc.query_command" title="query_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_command()</span></code>(E)</a></p>
+<p><a class="reference internal" href="add_action.html#lpc.efun.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action</span></code>(E)</a>, <a class="reference internal" href="query_command.html#lpc.efun.query_command" title="query_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_command</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -113,8 +115,8 @@ The action verb was: chant</dd>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -135,15 +137,14 @@ The action verb was: chant</dd>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -155,7 +156,7 @@ The action verb was: chant</dd>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/query_verb.txt"
+      <a href="../_sources/efun/query_verb.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

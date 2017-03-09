@@ -1,7 +1,6 @@
 public class efun {
    /**
-    * Returns the number of previous objects on the stack. This
-    * can be used for security checks.
+    * Returns the number of previous objects on the stack. This can be used for security checks.
     * 
     * @synopsis{
     * int caller_stack_depth(void)

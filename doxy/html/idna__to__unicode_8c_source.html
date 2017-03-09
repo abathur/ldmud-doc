@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/idna_to_unicode.c Source File</title>
+<title>LDMud: efun/idna_to_unicode.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('idna__to__unicode_8c_source.html','');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,31 +100,27 @@ $(document).ready(function(){initNavTree('idna__to__unicode_8c_source.html','');
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @headerfile &lt;idn.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * Convert string \p name from idna representation (8z punycode) to UTF-8.</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * string idna_to_unicode(string name)</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * If an error occurs, an exception is thrown.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * The efun is available only if the system supports libidn - in that case @ref driver_topics_predefined &quot;__IDNA__&quot; is defined.</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;   <span class="keywordtype">string</span> <a class="code" href="classefun.html#ae20f06d0b57897f89e5858c7dece465e">idna_to_unicode</a>(string name);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;Convert string &lt;name&gt; from idna representation (8z punycode)</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;to UTF-8.</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;If an error occurs, an exception is thrown.</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;The <a class="code" href="classefun.html">efun</a> is available only <span class="keywordflow">if</span> the system supports libidn - in</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;that <span class="keywordflow">case</span> __IDNA__ is defined.</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;Introduced in LDMud 3.3.713.</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;   See Also: </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      <a class="code" href="classefun.html#acffbc5493c554e688efabc660f2cac56">efun::convert_charset</a>(), <a class="code" href="classefun.html#aee5eda114231d4cd7809c13057f38c9a">efun::idna_to_ascii</a>(), <a class="code" href="classefun.html#a577d34e6ad73183274b24e5072b72b16">efun::idna_stringprep</a>()</div>
-<div class="ttc" id="classefun_html_ae20f06d0b57897f89e5858c7dece465e"><div class="ttname"><a href="classefun.html#ae20f06d0b57897f89e5858c7dece465e">efun.idna_to_unicode</a></div><div class="ttdeci">string idna_to_unicode(string name)</div></div>
-<div class="ttc" id="classefun_html_aee5eda114231d4cd7809c13057f38c9a"><div class="ttname"><a href="classefun.html#aee5eda114231d4cd7809c13057f38c9a">efun.idna_to_ascii</a></div><div class="ttdeci">string idna_to_ascii(string name)</div><div class="ttdoc">Convert string &lt;name&gt; from UTF-8 to idna representation (8z punycode). </div></div>
-<div class="ttc" id="classefun_html_acffbc5493c554e688efabc660f2cac56"><div class="ttname"><a href="classefun.html#acffbc5493c554e688efabc660f2cac56">efun.convert_charset</a></div><div class="ttdeci">string convert_charset(string str, string from_cs, string to_cs)</div><div class="ttdoc">Convert the string &lt;str&gt; from charset &lt;from_cs&gt; to charset &lt;to_cs&gt; and return the converted string...</div></div>
-<div class="ttc" id="classefun_html_a577d34e6ad73183274b24e5072b72b16"><div class="ttname"><a href="classefun.html#a577d34e6ad73183274b24e5072b72b16">efun.idna_stringprep</a></div><div class="ttdeci">string idna_stringprep(string str, int profile, int flags)</div></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * @headerfile &lt;idn.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * string idna_to_unicode(string name)</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    * @history{</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    * introduced (3.3.713)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    * @see efun::convert_charset(), efun::idna_to_ascii(), efun::idna_stringprep()</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;   <span class="keywordtype">string</span> <a class="code" href="classefun.html#ae20f06d0b57897f89e5858c7dece465e">idna_to_unicode</a>(string name);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="ttc" id="classefun_html_ae20f06d0b57897f89e5858c7dece465e"><div class="ttname"><a href="classefun.html#ae20f06d0b57897f89e5858c7dece465e">efun.idna_to_unicode</a></div><div class="ttdeci">string idna_to_unicode(string name)</div><div class="ttdoc">Convert string name from idna representation (8z punycode) to UTF-8. </div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -133,7 +128,7 @@ $(document).ready(function(){initNavTree('idna__to__unicode_8c_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>idna_to_unicode.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:08 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:21 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

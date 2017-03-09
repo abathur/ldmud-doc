@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: command</title>
+<title>LDMud: command</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('driver_hook_command.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,24 +98,27 @@ $(document).ready(function(){initNavTree('driver_hook_command.html','');});
 <div class="title">command </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Optional hook to parse and execute commands. If this hook is used, it bypasses the normal command parsing done by the driver (including the MODIFY_COMMAND and NOTIFY_FAIL hooks).</p>
-<p>The hook is called with two parameters: the command received from the living (interactive user or NPC), and the living object (the 'command giver') itself. The hook has to return non-0 if the command was found and executed, and 0 otherwise.</p>
-<p>At the time the hook is called, query_command() returns the command string and this_player() returns the living object. query_verb() and query_notify_fail() return 0.</p>
-<p>If the hook is a string, it is the name of an lfun in the command giver; if the hook is a lambda closure, it is bound to the command giver before the call.</p>
-<dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_COMMAND, value)</div>
+<div class="textblock"><dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_COMMAND, value)</div>
 </div><!-- fragment --></dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_hook_modify_command.html">modify_command</a>, <a class="el" href="driver_hook_modify_command_fname.html">modify_command_fname</a>, <a class="el" href="driver_hook_notify_fail.html">notify_fail</a>, <a class="el" href="driver_hook_send_notify_fail.html">send_notify_fail</a> Arguments:<ul>
-<li>value (<a class="el" href="driver_LPC_closures.html">closure</a>) &ndash; int &lt;closure&gt;(string command, object command_giver)</li>
-<li>value (<a class="el" href="driver_LPC_string.html">string</a>) &ndash; int &lt;name&gt;(string command, object command_giver) </li>
-</ul>
-</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>int &lt;closure&gt;(string command, object command_giver) </td></tr>
+    <tr><td class="paramname">value</td><td>int &lt;name&gt;(string command, object command_giver)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Optional hook to parse and execute commands. If this hook is used, it bypasses the normal command parsing done by the driver (including the MODIFY_COMMAND and NOTIFY_FAIL hooks).</p>
+<p>The hook is called with two parameters: the command received from the living (interactive user or NPC), and the living object (the 'command giver') itself. The hook has to return non-0 if the command was found and executed, and 0 otherwise.</p>
+<p>At the time the hook is called, <a class="el" href="classefun.html#a9d55fac98f23ae1ce0e8c4394fe63716" title="Give the text of the current command, or 0 if not executing from a command. ">efun::query_command()</a> returns the command string and <a class="el" href="classefun.html#a23dc6aa65a7477371df722a647b661af" title="Return the current command giver. ">efun::this_player()</a> returns the living object. <a class="el" href="classefun.html#ae1f08790d1820834e9fb63b7e686f75d" title="Return the verb of the current command, of 0 if not executing from a command. ">efun::query_verb()</a> and <a class="el" href="classefun.html#a81fa5c01de0fc1a44122e08ee02f667d" title="If flag is not given or 0: return the string or closure which was last set as error message for this ...">efun::query_notify_fail()</a> return 0.</p>
+<p>If the hook is a string, it is the name of an lfun in the command giver; if the hook is a lambda closure, it is bound to the command giver before the call.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_hook_overview.html">hook</a>, <a class="el" href="driver_hook_modify_command.html">modify_command</a>, <a class="el" href="driver_hook_modify_command_fname.html">modify_command_fname</a>, <a class="el" href="driver_hook_notify_fail.html">notify_fail</a>, <a class="el" href="driver_hook_send_notify_fail.html">send_notify_fail</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">index</a></li><li class="navelem"><a class="el" href="driver_hook_hook.html">hook</a></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:11 for Tsunami by
+    <li class="navelem"><a class="el" href="driver_hook_overview.html">Driver-supported hooks</a></li>
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:24 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,6 +1,0 @@
-.. efun:: int mkdir(string path)
-
-  Make a directory named path. Return 1 for success and 0 for
-  failure.
-
-  .. seealso:: :efun:`rmdir`, :efun:`rm`, :efun:`get_dir`, :efun:`file_size`

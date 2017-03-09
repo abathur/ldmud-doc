@@ -4,13 +4,13 @@ SYNOPSIS (DEPRECATED)
 
 DESCRIPTION
 ===========
-   In compat mode this lfun is used by transfer()(E). Note that no 
-   set_weight() is required by the parser.
+   In compat mode this lfun is used by transfer(E). Note that 
+   no `set_weight()` is required by the parser.
 
 HISTORY
 =======
-   - deprecated (3.3) -- because transfer()(E) has been deprecated.
+   - deprecated (3.3) -- because transfer(E) has been deprecated.
 
 SEE ALSO
 ========
-   transfer()(E), add_weight(A)
+   transfer(E), add_weight(A)

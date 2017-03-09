@@ -8,10 +8,9 @@ DESCRIPTION
    This privileged efun is to set/change the connection of the driver to the 
    external erq demon, thus in effect changing the demons.
 
-   The connection of the given interactive 'ob'ject is taken away(!) from it 
-   and stored as the erq-connection. The object itself is then no longer 
-   needed, but may stay alive - it is just another non-interactive object 
-   then.
+   The connection of the given interactive ob(E) is taken away from it and 
+   stored as the erq-connection. The object itself is then no longer needed, 
+   but may stay alive - it is just another non-interactive object then.
 
    In the second form, the string will be combined as suffix to the filename 
    ERQFILE<obname>, which is then the binary to be forked off as new erq 
@@ -26,7 +25,7 @@ DESCRIPTION
 
    USAGE
    =====
-      To restart the (default) erq, write in master.c::stale_erq(closure c):
+      To restart the (default) erq, write in stale_erq(M):
 
          attach_erq_demon("", 0);
 
@@ -36,4 +35,4 @@ HISTORY
 
 SEE ALSO
 ========
-   send_erq()(E), erq(C)
+   send_erq(E), >>:concept:`erq`<<

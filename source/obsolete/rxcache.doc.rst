@@ -1,6 +1,5 @@
-.. concept:: rxcache
-  :synopsis: regular expression cache
-  :obsolete:
+.. topic:: regular expression cache
+  :name: rxcache
 
   The rxcache acts as a wrapper around the regcomp() function
   in the regexp module. It keeps track of the recently compiled

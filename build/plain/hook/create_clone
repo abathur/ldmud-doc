@@ -6,9 +6,9 @@ SYNOPSIS
 DESCRIPTION
 ===========
    Arguments: 
-      - value (string(LPC)) -- void <name> (0)
-      - value (closure(LPC)) -- int <closure> ( void )
-      - value (closure(LPC)) -- int <closure> (object obj_to_init)
+      - value (string) -- void <name> (0) 
+      - value (closure) -- int <closure> ( void ) 
+      - value (closure) -- int <closure> (object obj_to_init) 
 
    Optional hooks to initialize a cloned object after creation. Hook setting 
    can be unbound lambda closures, or the name of the function (static or 
@@ -20,7 +20,7 @@ DESCRIPTION
    called.
 
    If the result of the closure call is a non-zero number, it is used as the 
-   interval to wait before the first reset(), else the default interval 
+   interval to wait before the first reset(A), else the default interval 
    computed from TIME_TO_RESET is used.
 
    If the hook is defined as the name of an lfun in the object, it is called 
@@ -32,4 +32,4 @@ HISTORY
 
 SEE ALSO
 ========
-   `hooks`, create_ob(H), create_super(H)
+   hook(H), create_ob(H), create_super(H)

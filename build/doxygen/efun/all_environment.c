@@ -1,19 +1,17 @@
 public class efun {
    /**
-    * Returns an array with all environments object <o> is in. If <o> is omitted, the environments of the current object is returned.
+    * Returns an array with all environments object \p obj is in. If \p obj is omitted, the environments of the current object is returned.
     * 
-    * If <o> has no environment, or if <o> is destructed, 0 is returned.
+    * If \p obj has no environment, or if \p obj is destructed, 0 is returned.
     * 
     * @synopsis{
     * object * all_environment()
-    * object * all_environment(object o)
+    * object * all_environment(object obj)
     * }
     * 
     * @usage{
-    * If o is a match in a matchbox which is in a box in a chest, in a room, all_environment(o) will return ({ matchbox, box, chest, room }).
-    * Todo
+    * If \p obj is a match in a matchbox which is in a box in a chest, in a room, `all_environment(obj)` will return `({ matchbox, box, chest, room })`.
     * 
-    * above could be an 'example' directive
     * }
     * 
     * @history{
@@ -22,5 +20,5 @@ public class efun {
     * 
     * @see efun::environment(), efun::all_inventory()
    **/
-   object * all_environment(object o);
+   object * all_environment(object obj);
 }

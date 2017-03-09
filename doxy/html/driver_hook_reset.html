@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: reset</title>
+<title>LDMud: reset</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('driver_hook_reset.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,27 +98,30 @@ $(document).ready(function(){initNavTree('driver_hook_reset.html','');});
 <div class="title">reset </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Optional hook to reset an object. Hook setting can be unbound lambda closures, or the name of the function (static or public) to call in the object.</p>
-<p>If the hook is a closure, it is bound to the object to be reset and called with no argument.</p>
-<p>If the result of this call is a positive number, it is used as the interval to wait before the next reset(). If the result is 0, the default interval computed from TIME_TO_RESET is used. If the result is a negative number, the object will not be reset again, unless directed otherwise by set_next_reset().</p>
-<p>If the hook is defined as the name of an lfun in the object, it is called in the object with 1 as argument, and any result is ignored. In this call the previous_object() is the object initiating the reset. If the function does not exist, the object won't be reset again.</p>
-<dl class="section user"><dt>note:an object is only reset by call to this hook if it has been used since the last reset.</dt><dd></dd></dl>
-<dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_RESET, value)</div>
+<div class="textblock"><dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_RESET, value)</div>
 </div><!-- fragment --></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>void|int &lt;closure&gt; ( void ) </td></tr>
+    <tr><td class="paramname">value</td><td>void &lt;name&gt;(1)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Optional hook to reset an object. Hook setting can be unbound lambda closures, or the name of the function (static or public) to call in the object.</p>
+<p>If the hook is a closure, it is bound to the object to be reset and called with no argument.</p>
+<p>If the result of this call is a positive number, it is used as the interval to wait before the next <a class="el" href="classapplied.html#a3aea9deb2a0bfea9ff05a898f4822e31" title="The H_RESET hook defines the function or closure to be called when the driver needs to reset an objec...">applied::reset()</a>. If the result is 0, the default interval computed from TIME_TO_RESET is used. If the result is a negative number, the object will not be reset again, unless directed otherwise by <a class="el" href="classefun.html#aa47ffb6cfbbd9789e05bc4af08e6b530" title="Instruct the gamedriver to reset this object not earlier than in delay seconds. ">efun::set_next_reset()</a>.</p>
+<p>If the hook is defined as the name of an lfun in the object, it is called in the object with 1 as argument, and any result is ignored. In this call the <a class="el" href="classefun.html#a8d720f6391a992bf62bb528a3c48ba14" title="Returns an object pointer to the object that did a call (efun::call_other(), efun::funcall(), etc) to the current object, if any. ">efun::previous_object()</a> is the object initiating the reset. If the function does not exist, the object won't be reset again.</p>
+<dl class="section user"><dt>note: an object is only reset by call to this hook if it has been used since the last reset.</dt><dd></dd></dl>
 <dl class="section user"><dt>History:</dt><dd><div class="fragment"><div class="line">changed (3.2.10) -- allowed <span class="keyword">static</span> functions to be given by name.</div>
 </div><!-- fragment --></dd></dl>
-<dl class="section see"><dt>See Also</dt><dd>Arguments:<ul>
-<li>value (<a class="el" href="driver_LPC_closures.html">closure</a>) &ndash; void|int &lt;closure&gt; ( void )</li>
-<li>value (<a class="el" href="driver_LPC_string.html">string</a>) &ndash; void &lt;name&gt;(1) </li>
-</ul>
-</dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_hook_overview.html">hook</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">index</a></li><li class="navelem"><a class="el" href="driver_hook_hook.html">hook</a></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:11 for Tsunami by
+    <li class="navelem"><a class="el" href="driver_hook_overview.html">Driver-supported hooks</a></li>
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:24 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

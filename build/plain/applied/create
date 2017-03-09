@@ -4,12 +4,10 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Todo: ref/link the hooks below.
-
-   The H_CREATE_SUPER/_OB/_CLONE hooks define the function or closure to be 
-   called when the driver creates a new object. In older drivers this was 
-   hardwired to the lfun create(), and a lot of hook implementations still 
-   follow this tradition.
+   The H_CREATE_SUPER(H), H_CREATE_OB(H), and H_CREATE_CLONE(H) hooks define 
+   the function or closure to be called when the driver creates a new object. 
+   In older drivers this was hardwired to the lfun create(A), and a lot of 
+   hook implementations still follow this tradition.
 
    This function will be called only once on creation of the object (this is 
    when the object will be loaded or cloned). Inside this function all major 
@@ -29,8 +27,9 @@ DESCRIPTION
 HISTORY
 =======
    - changed (3.2.1) -- the mudlib may be programmed to call other lfuns 
-     than `create()` on an object's creation.
+     than create(A) on an object's creation.
 
 SEE ALSO
 ========
-   reset(A), init(A), __INIT(A), `initialisation`, `hooks`, native(C)
+   reset(A), init(A), __INIT(A), initialisation(M), hook(H), 
+   >>:concept:`native`<<

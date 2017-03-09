@@ -1,5 +1,5 @@
-.. concept:: alists
-  :obsolete:
+.. topic:: alists
+  :removed:
 
   Alists provide a fast and convenient way to access data
   associatively.

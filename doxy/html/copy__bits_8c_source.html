@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/copy_bits.c Source File</title>
+<title>LDMud: efun/copy_bits.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('copy__bits_8c_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,58 +100,51 @@ $(document).ready(function(){initNavTree('copy__bits_8c_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * string copy_bits(string src, string dest[, int srcstart [, int deststart [, int copylen ]]])</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * Copy the bitrange `[&lt;em&gt;srcstart&lt;/em&gt;..&lt;em&gt;srcstart&lt;/em&gt;+&lt;em&gt;copylen&lt;/em&gt;]` from bitstring \p src and copy it into the bitstring `dest` starting at `deststart`, overwriting the original bits at those positions.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * The resulting combined string is returned, the input strings remain unaffected.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   <span class="keywordtype">string</span> <a class="code" href="classefun.html#afcb4b753b24046893741d3c3e0c33e62">copy_bits</a>(string src, string dest[, <span class="keywordtype">int</span> srcstart [, <span class="keywordtype">int</span> deststart [, <span class="keywordtype">int</span> copylen ]]]);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;Copy the bitrange [&lt;srcstart&gt;..&lt;srcstart&gt;+&lt;copylen&gt;[ from</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;bitstring &lt;src&gt; and copy it into the bitstring &lt;dest&gt; starting</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;at &lt;deststart&gt;, overwriting the original bits at those positions.</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;The resulting combined <span class="keywordtype">string</span> is returned, the input strings remain</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;unaffected.</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;If &lt;srcstart&gt; is not given, &lt;src&gt; is copied from the start.</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;If &lt;srcstart&gt; is negative, it is counted from one past the last set</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;bit in the string (ie. <span class="stringliteral">&#39;-1&#39;</span> will index the last set bit).</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;If &lt;deststart&gt; is not given, &lt;dest&gt; will be overwritten from the start.</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;If &lt;deststart&gt; is negative, it is counted from one past the last set</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;bit in the string (ie. <span class="stringliteral">&#39;-1&#39;</span> will index the last set bit).</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;If &lt;copylen&gt; is not given, it is assumed to be infinite, ie. the result</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;will consist of &lt;dest&gt; up to position &lt;deststart&gt;, followed by</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;the data copied from &lt;src&gt;.</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;If &lt;copylen&gt; is negative, the <span class="keyword">function</span> will copy the abs(&lt;copylen&gt;)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;bits _before_ &lt;srcstart&gt; in to the result.</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;None of the range limits can become negative.</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;EXAMPLES</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;copy_bits(src, dest, 10)    === src[10..]</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;copy_bits(src, dest, 10, 5) === dest[0..4] + src[10..]</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;copy_bits(src, dest, 10, 5, 3)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      === dest[0..4] + src[10..12] + dest[8..]</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;   (The src[]/dest[] is just for explanatory purposes!)</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;Introduced in LDMud 3.3.166.</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;   See Also: </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <a class="code" href="classefun.html">efun</a>::clear_bit(), <a class="code" href="classefun.html">efun</a>::set_bit(), <a class="code" href="classefun.html">efun</a>::test_bit(), <a class="code" href="classefun.html">efun</a>::next_bit(), <a class="code" href="classefun.html">efun</a>::last_bit(), <a class="code" href="classefun.html">efun</a>::count_bits(), <a class="code" href="classefun.html">efun</a>::or_bits(), <a class="code" href="classefun.html">efun</a>::xor_bits(), <a class="code" href="classefun.html">efun</a>::invert_bits(), <a class="code" href="classefun.html">efun</a>::and_bits()</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * If `srcstart` is not given, \p src is copied from the start. If `srcstart` is negative, it is counted from one past the last set bit in the string (ie. &#39;-1&#39; will index the last set bit).</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * If `deststart` is not given, `dest` will be overwritten from the start. If `deststart` is negative, it is counted from one past the last set bit in the string (ie. &#39;-1&#39; will index the last set bit).</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * If `copylen` is not given, it is assumed to be infinite, ie. the result will consist of `dest` up to position `deststart`, followed by the data copied from \p src. If `copylen` is negative, the function will copy the abs(`copylen`) bits _before_ `srcstart` in to the result.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    * None of the range limits can become negative.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    * string copy_bits(string src, string dest[, int srcstart [, int deststart [, int copylen ]]])</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    * @usage{</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">    * ~~~{.c}</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">    * copy_bits(src, dest, 10)    === src[10..]</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">    * copy_bits(src, dest, 10, 5) === dest[0..4] + src[10..]</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">    * copy_bits(src, dest, 10, 5, 3)</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">    *                             === dest[0..4] + src[10..12] + dest[8..]</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">    * ~~~</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">    * (The src[]/dest[] is just for explanatory purposes!)</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">    * @history{</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">    * introduced (3.3.166)</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">    * @see efun::clear_bit(), efun::set_bit(), efun::test_bit(), efun::next_bit(), efun::last_bit(), efun::count_bits(), efun::or_bits(), efun::xor_bits(), efun::invert_bits(), efun::and_bits()</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;   <span class="keywordtype">string</span> <a class="code" href="classefun.html#afcb4b753b24046893741d3c3e0c33e62">copy_bits</a>(string src, string dest[, <span class="keywordtype">int</span> srcstart [, <span class="keywordtype">int</span> deststart [, <span class="keywordtype">int</span> copylen ]]]);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
-<div class="ttc" id="classefun_html_afcb4b753b24046893741d3c3e0c33e62"><div class="ttname"><a href="classefun.html#afcb4b753b24046893741d3c3e0c33e62">efun.copy_bits</a></div><div class="ttdeci">string copy_bits(string src, string dest[, int srcstart [, int deststart [, int copylen ]]])</div></div>
+<div class="ttc" id="classefun_html_afcb4b753b24046893741d3c3e0c33e62"><div class="ttname"><a href="classefun.html#afcb4b753b24046893741d3c3e0c33e62">efun.copy_bits</a></div><div class="ttdeci">string copy_bits(string src, string dest[, int srcstart [, int deststart [, int copylen ]]])</div><div class="ttdoc">Copy the bitrange [&lt;em&gt;srcstart&lt;/em&gt;..&lt;em&gt;srcstart&lt;/em&gt;+&lt;em&gt;copylen&lt;/em&gt;] from bitstring src and copy...</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>copy_bits.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:07 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:21 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

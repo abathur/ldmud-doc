@@ -4,17 +4,19 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Reads lines from file. If <start> is not given or 0, the file is read from the
-beginning, else the efun starts reading at the beginning of line <start>.
+   Reads lines from file. If start(E) is not given or 0, the file is read from
+   the beginning, else the efun starts reading at the beginning of line 
+   start(E).
 
-If <number> is not given or 0, the whole file is read, else just the given 
-amount of lines.
+   If number(E) is not given or 0, the whole file is read, else just the given
+   amount of lines.
 
-If <start> would be outside the actual size of the file, 0 is returned instead
-of a string.
+   If start(E) would be outside the actual size of the file, 0 is returned 
+   instead of a string.
 
-The maximum bytes (not lines!) being read per call is LIMIT_FILE (see 
-query_limits()).
+   The maximum bytes (not lines!) being read per call is `LIMIT_FILE` (see 
+   query_limits(E)).
 
-   See Also: 
-      read_bytes()(E), write_file()(E)
+SEE ALSO
+========
+   read_bytes(E), write_file(E)

@@ -1,0 +1,26 @@
+.. keyword:: if
+  if (expr1) statement1;
+  else if (expr2) statement2;
+  ...
+  else if (exprN) statementN;
+  else statementX;
+  :topics: keyword, flow control
+
+  Implements conditional execution of statements. The expressions 'expr1' .. 'exprN' are evaluate in the order they appear until one of the expressions returns non-0 ('true'). At that point, the statement associated with the expression is executed, and the program continues after the :keyword:`if` statement. If none of the expressions evaluate to 'true', the statementX in the 'else'-branch is executed.
+
+  Both the 'else if' branches and the 'else' branch are optional, and there can be any number of 'else if' branches - but there must be one 'if' branch, and the branches must be in the order given above.
+
+  Any 'else' or 'else if' always relates to the immediately preceeding 'if' resp. 'else if' conditional. This means that::
+
+    if (a)
+    if (b) do_b;
+    else do_c;
+
+  is interpreted as::
+
+    if (a) {
+      if (b) do_b;
+      else   do_c;
+    }
+
+  .. seealso:: :keyword:`for`, :keyword:`foreach`, :keyword:`do-while`, :keyword:`while`, :keyword:`switch`

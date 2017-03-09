@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::set_connection_charset() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::set_connection_charset() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::set_driver_hook()" href="set_driver_hook.html" />
     <link rel="prev" title="efun::set_combine_charset()" href="set_combine_charset.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,57 +47,45 @@
 <div class="section" id="SYNOPSIS">
 <span id="set_connection_charset"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.set_connection_charset">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">set_connection_charset</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;*bitvector</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;quote_iac</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.set_connection_charset" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.set_connection_charset">
+<!--[lpc.efun.set_connection_charset]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">set_connection_charset</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+int<em>&nbsp;*bitvector</em>, </td><td id="id2">
+int<em>&nbsp;quote_iac</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.set_connection_charset" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">set_connection_charset</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;charset</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;quote_iac</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">set_connection_charset</code></td><td><span class="sig-paren">(</span></td><td id="id3">
+string<em>&nbsp;charset</em>, </td><td id="id4">
+int<em>&nbsp;quote_iac</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">set_connection_charset</code></td><td><span class="sig-paren">(</span></td><td>
-0, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;quote_iac</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">set_connection_charset</code></td><td><span class="sig-paren">(</span></td><td id="id5">
+0, </td><td id="id6">
+int<em>&nbsp;quote_iac</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Set the set of characters that can be output to the interactive user (this does not apply to <a class="reference internal" href="binary_message.html#lpc.efun.binary_message" title="binary_message"><code class="xref lpc lpc-efun docutils literal"><span class="pre">binary_message</span></code>(E)</a>). The function must be called by the interactive user object itself.</p>
+<p>The charset can be given either directly as a string, or indirectly as a bitvector. If the charset is given as the number 0, the default connection charset is re-established.</p>
+<p>The bitvector is interpreted as an array of 8-bit-values and might contain up to 32 elements. Character n is allowed to be output if <code class="docutils literal"><span class="pre">sizeof(bitvector)</span> <span class="pre">&gt;</span> <span class="pre">n/8</span> <span class="pre">&amp;&amp;</span> <span class="pre">bitvector[n/8]</span> <span class="pre">&amp;</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">n%8)</span></code>.</p>
+<p>If quote_iac is 0 and char 255 is allowed to be output, IAC will be output unmodified. If quote_iac is 1 and char 255 is allowed to be output, char 255 will be quoted so that it is not interpreted as IAC by the telnet protocol. This is the default.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.1&#64;40</em>)</li>
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; added the ability to specify the charset as a string.</li>
+<li><strong>changed</strong> (<em>3.2.10</em>) &#8211; added the ability to reset the charset to the default.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="get_connection_charset.html#lpc.efun.get_connection_charset" title="get_connection_charset"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_connection_charset</span></code>(E)</a>, <a class="reference internal" href="binary_message.html#lpc.efun.binary_message" title="binary_message"><code class="xref lpc lpc-efun docutils literal"><span class="pre">binary_message</span></code>(E)</a>, <a class="reference internal" href="set_combine_charset.html#lpc.efun.set_combine_charset" title="set_combine_charset"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_combine_charset</span></code>(E)</a></p>
 </div>
 </div>
-<p>Set the set of characters that can be output to the
-interactive user (this does not apply to binary_message()).
-The function must be called by the interactive user object
-itself.</p>
-<p>The charset can be given either directly as a string, or
-indirectly as a bitvector. If the charset is given as the
-number 0, the default connection charset is re-established.</p>
-<p>The bitvector is interpreted as an array of 8-bit-values and
-might contain up to 32 elements. Character n is allowed to be
-output if sizeof(bitvector) &gt; n/8 &amp;&amp; bitvector[n/8] &amp; (1 &lt;&lt; n%8) .</p>
-<p>If quote_iac is 0 and char 255 is allowed to be output, IAC
-will be output unmodified.
-If quote_iac is 1 and char 255 is allowed to be output, char
-255 will be quoted so that it is not interpreted as IAC by the
-telnet protocol. This is the default.</p>
-<p>Introduced in <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;40">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>40</a>.
-LDMud 3.2.8 added the ability to specify the charset as a string.
-LDMud 3.2.10 added the ability to reset the charset to the default.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="get_connection_charset.html#lpc.get_connection_charset" title="get_connection_charset"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_connection_charset()</span></code>(E)</a>, <a class="reference internal" href="binary_message.html#lpc.binary_message" title="binary_message"><code class="xref lpc lpc-efun docutils literal"><span class="pre">binary_message()</span></code>(E)</a>, <a class="reference internal" href="set_combine_charset.html#lpc.set_combine_charset" title="set_combine_charset"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_combine_charset()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+</div>
 
 
           </div>
@@ -106,8 +96,8 @@ LDMud 3.2.10 added the ability to reset the charset to the default.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -117,21 +107,24 @@ LDMud 3.2.10 added the ability to reset the charset to the default.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::set_connection_charset()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -143,7 +136,7 @@ LDMud 3.2.10 added the ability to reset the charset to the default.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/set_connection_charset.txt"
+      <a href="../_sources/efun/set_connection_charset.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

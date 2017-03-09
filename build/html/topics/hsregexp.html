@@ -1,0 +1,186 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Henry Spencer Regular Expressions &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="InterMUD Message Protocol" href="imp.html" />
+    <link rel="prev" title="files" href="files.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="Henry Spencer Regular Expressions">
+<span id="hsregexp"></span><span id="lpc.topic.Henry Spencer Regular Expressions"></span><span id="lpc.topic.hsregexp"></span><div class="section" id="TOPIC">
+<h2>TOPIC<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+Henry Spencer Regular Expressions</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>This document describes the regular expressions supported by the implementation by Henry Spencer (the traditional package for LPMud).</p>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>Options<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>The following bitflag options modify the behaviour of the regular expressions - both interpretation and actual matching.</p>
+<p>The efuns may understand additional options.</p>
+<dl class="docutils">
+<dt>RE_EXCOMPATIBLE</dt>
+<dd>If this bit is set, the pattern is interpreted as the UNIX ed editor would do it: () match literally, and the ( ) group expressions.</dd>
+</dl>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>Regular Expression Details<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>A regular expression is a pattern that is matched against a subject string from left to right. Most characters stand for themselves in a pattern, and match the corresponding characters in the subject. As a trivial example, the pattern</p>
+<blockquote>
+<div>The quick brown fox</div></blockquote>
+<p>matches a portion of a subject string that is identical to itself. The power of  regular expressions comes from the ability to include alternatives and repetitions in the pattern. These are encoded in the pattern by the use of metacharacters, which do not stand for themselves but instead are interpreted in some special way.</p>
+<p>There are two different sets of metacharacters: those that are recognized anywhere in the pattern except within square brackets, and those that are recognized in square brackets. Outside square brackets, the metacharacters are as follows:</p>
+<blockquote>
+<div><p>.       Match any character.</p>
+<p>^       Match begin of line.</p>
+<p>$       Match end of line.</p>
+<p>&lt;      Match begin of word.</p>
+<p>&gt;      Match end of word.</p>
+<dl class="docutils">
+<dt>B      not at edge of a word (supposed to be like the emacs</dt>
+<dd>compatibility one in gnu egrep)</dd>
+</dl>
+<p>x|y     Match regexp x or regexp y.</p>
+<dl class="docutils">
+<dt>()      Match enclosed regexp like a &#8216;simple&#8217; one (unless</dt>
+<dd>RE_EXCOMPATIBLE is set).</dd>
+</dl>
+<p>x*      Match any number (0 or more) of regexp x.</p>
+<p>x+      Match any number (1 or more) of regexp x.</p>
+<p>[..]    Match one of the characters enclosed.</p>
+<dl class="docutils">
+<dt>[^ ..]  Match none of the characters enclosed. The .. are to</dt>
+<dd>replaced by single characters or character ranges:</dd>
+</dl>
+<p>[abc]   matches a, b or c.</p>
+<p>[ab0-9] matches a, b or any digit.</p>
+<p>[^a-z]  does not match any lowercase character.</p>
+<dl class="docutils">
+<dt>c      match character c even if it&#8217;s one of the special</dt>
+<dd>characters.</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The &lt; and &gt; metacharacters from Henry Spencers package are not available in PCRE, but can be emulate with b, as required, also in conjunction with W or w.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In LDMud, backtracks are limited by the EVAL_COST runtime limit, to avoid freezing the driver with a match like <code class="docutils literal"><span class="pre">regexp(({&quot;=XX===================&quot;}),</span> <span class="pre">&quot;X(.+)+X&quot;)</span></code>.</p>
+</div>
+<div class="section" id="LORE">
+<h2>LORE<a class="headerlink" href="#LORE" title="Permalink to this headline">¶</a></h2>
+<p>Authors:</p>
+<ul class="simple">
+<li>Mark H. Colburn, <abbr>NAPS</abbr> International (<a class="reference external" href="mailto:mark&#37;&#52;&#48;jhereg&#46;mn&#46;org">mark<span>&#64;</span>jhereg<span>&#46;</span>mn<span>&#46;</span>org</a>)</li>
+<li>Henry Spencer, University of Torronto (<a class="reference external" href="mailto:henry&#37;&#52;&#48;utzoo&#46;edu">henry<span>&#64;</span>utzoo<span>&#46;</span>edu</a>)</li>
+<li>Joern Rennecke</li>
+<li>Ian Phillipps</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">:concept:`regexp`</span></a>, <a href="#id3"><span class="problematic" id="id4">:concept:`pcre`</span></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Henry Spencer Regular Expressions</a><ul>
+<li><a class="reference internal" href="#TOPIC">TOPIC</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#l">Options</a></li>
+<li><a class="reference internal" href="#l">Regular Expression Details</a></li>
+<li><a class="reference internal" href="#LORE">LORE</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/topics/hsregexp.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

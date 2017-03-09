@@ -1,0 +1,53 @@
+.. syntax:: comments
+  block comment: /* [comment line, ...] */
+  line comment: // [comment line] <end of line>
+  :highlighters: //
+    /\*
+    \*/
+
+  Comments are used to stored arbitrary text in the LPC program source. It is a good idea if some if this text explains the deeper intentions behind the actual LPC statements.
+
+  There are block comments and line comments
+
+  .. syntax:: comments
+    block comment: /* [comment line, ...] */
+      /* test comment */
+    line comment: // [comment line] <end of line>
+
+  .. syntax:: /* [comment line, ...] */
+    :name: block comment
+
+    Block comments start with a ``/*`` and end with a ``*/``. They cannot be nested, so::
+
+      /* this /* is */ illegal */
+
+    will treat ``/* this /* is */`` as the comment.
+
+  .. syntax:: //
+    // line comment text <end of line>
+    :name: line comment
+
+    Line comments start with ``//`` and continue until the unescaped(!) end of the line (as in the new C standard).
+
+  It is not possible to next block and line comments within each other. Meaning: ``//`` within /* ... */ has no special meaning, neither does ``/*`` or ``*/`` have after a //.
+
+  .. usage::
+
+    This should really be an egg sample::
+
+      /* Simple block comment */
+
+      /*
+        Block comments can
+        span several lines
+      */
+
+      //Simple line comment
+
+      //Line comments can \
+        span several lines, too!
+
+      //#define LONG_MACRO The unique behaviour \
+        of line comments regarding the end of line \
+        can be used for example to comment out a \
+        large macro with just two keystrokes.

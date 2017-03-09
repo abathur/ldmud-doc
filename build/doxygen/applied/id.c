@@ -10,9 +10,14 @@ public class applied {
     * 
     * @usage{
     * Return 1 if the object identifies to "sword" or "sword of fire"; 0 otherwise:
+    * 
+    * ~~~{.c}
     * int id(string str) {
     *   return "sword" == str || "sword of fire" == str;
     * }
+    * 
+    * ~~~
+    * 
     * }
     * 
     * @see efun::present()

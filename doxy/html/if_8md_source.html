@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: LPC/if.md Source File</title>
+<title>LDMud: syntax/if.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('if_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,19 +95,41 @@ $(document).ready(function(){initNavTree('if_8md.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">LPC/if.md</div>  </div>
+<div class="title">syntax/if.md</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keywordflow">if</span> {#driver_LPC_if}</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;===================</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;@see @ref driver_LPC_do-<span class="keywordflow">while</span> <span class="stringliteral">&quot;do-while&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keywordflow">if</span> {#driver_syntax_if}</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;======================</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;Implements conditional execution of statements. The expressions <span class="stringliteral">&#39;expr1&#39;</span> .. <span class="stringliteral">&#39;exprN&#39;</span> are evaluate in the order they appear until one of the expressions returns non-0 (<span class="stringliteral">&#39;true&#39;</span>). At that point, the statement associated with the expression is executed, and the program continues after the @ref driver_syntax_if <span class="stringliteral">&quot;if&quot;</span> statement. If none of the expressions evaluate to <span class="stringliteral">&#39;true&#39;</span>, the statementX in the <span class="stringliteral">&#39;else&#39;</span>-branch is executed.</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;Both the <span class="stringliteral">&#39;else if&#39;</span> branches and the <span class="stringliteral">&#39;else&#39;</span> branch are optional, and there can be any number of <span class="stringliteral">&#39;else if&#39;</span> branches - but there must be one <span class="stringliteral">&#39;if&#39;</span> branch, and the branches must be in the order given above.</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;Any <span class="stringliteral">&#39;else&#39;</span> or <span class="stringliteral">&#39;else if&#39;</span> always relates to the immediately preceeding <span class="stringliteral">&#39;if&#39;</span> resp. <span class="stringliteral">&#39;else if&#39;</span> conditional. This means that:</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordflow">if</span> (a)</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordflow">if</span> (b) do_b;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordflow">else</span> do_c;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;~~~</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;is interpreted as:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordflow">if</span> (a) {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordflow">if</span> (b) do_b;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordflow">else</span>   do_c;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;~~~</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;@see @ref driver_syntax_for <span class="stringliteral">&quot;for&quot;</span>, @ref driver_syntax_foreach <span class="stringliteral">&quot;foreach&quot;</span>, @ref driver_syntax_do-<span class="keywordflow">while</span> <span class="stringliteral">&quot;do-while&quot;</span>, @ref driver_syntax_while <span class="stringliteral">&quot;while&quot;</span>, @ref driver_syntax_switch <span class="stringliteral">&quot;switch&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>if.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:10 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

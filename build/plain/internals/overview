@@ -1,0 +1,14 @@
+OVERVIEW
+========
+   Driver-internal docs
+DESCRIPTION
+===========
+   This directory contains documentation on style, procedures and concepts 
+   useful for those working directly on LDMud.
+
+   - codestyle
+   - What happens when an inline closure is parsed
+
+SEE ALSO
+========
+   applied(A), topics, efun(E), hook(H), syntax, master(M), `obsolete`

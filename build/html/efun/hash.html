@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::hash() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::hash() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::heart_beat_info()" href="heart_beat_info.html" />
     <link rel="prev" title="efun::gmtime()" href="gmtime.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,43 +49,56 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;tls.h&gt;</tr>
-<tr id="lpc.hash">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">hash</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;method</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> arg<em>&nbsp;[</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> iterations<em>&nbsp;]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.hash" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.hash">
+<!--[lpc.efun.hash]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">hash</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+int<em>&nbsp;method</em>, </td><td id="id2">
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> arg<em>&nbsp;[</em>, </td><td id="id3">
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> iterations<em>&nbsp;]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.hash" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">hash</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;method</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> *  arg<em>&nbsp;[</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> iterations<em>&nbsp;]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">hash</code></td><td><span class="sig-paren">(</span></td><td id="id4">
+int<em>&nbsp;method</em>, </td><td id="id5">
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> *  arg<em>&nbsp;[</em>, </td><td id="id6">
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> iterations<em>&nbsp;]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Calculate the hash from &lt;arg&gt; as determined by &lt;method&gt;. The hash is
-calculated with &lt;iterations&gt; iterations, default is 1 iteration.</p>
-<p>&lt;method&gt; is one of the <a href="#id1"><span class="problematic" id="id2">TLS_HASH_</span></a> constants defined in tls.h; not
-all recognized methods may be supported for a given driven:</p>
-<blockquote>
-<div>TLS_HASH_SHA1      (1)
-TLS_HASH_SHA224    (2)
-TLS_HASH_SHA256    (3)
-TLS_HASH_SHA384    (4)
-TLS_HASH_SHA512    (5)
-TLS_HASH_MD5       (6)
-TLS_HASH_RIPEMD160 (7)</div></blockquote>
-<p>If the driver is compiled without OpenSSL or GCrypt support
-only TLS_HASH_SHA1 and TLS_HASH_MD5 are available.</p>
+<p>Calculate the hash from <code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code> as determined by <a class="reference internal" href="#efun/hash.arg.method" title="method"><code class="xref lpc lpc-arg docutils literal"><span class="pre">method</span></code></a>. The hash is calculated with <code class="xref lpc lpc-arg docutils literal"><span class="pre">iterations</span></code> iterations, default is 1 iteration.</p>
+<p><a class="reference internal" href="#efun/hash.arg.method" title="method"><code class="xref lpc lpc-arg docutils literal"><span class="pre">method</span></code></a> is one of the constants defined in tls.h; not all recognized methods may be supported for a given driver:</p>
+<ul class="simple">
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">TLS_HASH_SHA1</span></code>      (1)</li>
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">TLS_HASH_SHA224</span></code>    (2)</li>
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">TLS_HASH_SHA256</span></code>    (3)</li>
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">TLS_HASH_SHA384</span></code>    (4)</li>
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">TLS_HASH_SHA512</span></code>    (5)</li>
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">TLS_HASH_MD5</span></code>       (6)</li>
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">TLS_HASH_RIPEMD160</span></code> (7)</li>
+</ul>
+<p>If the driver is compiled without OpenSSL or GCrypt support only <code class="xref lpc lpc-macro docutils literal"><span class="pre">TLS_HASH_SHA1</span></code> and <code class="xref lpc lpc-macro docutils literal"><span class="pre">TLS_HASH_MD5</span></code> are available.</p>
 <p>The efun costs 10 ticks per iteration.</p>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<p>string s;</p>
-<p>s = hash(TLS_HASH_SHA1, &#8220;Hello&#8221;, 2);
-s = hash(TLS_HASH_SHA1, ({ &#8216;H&#8217;, &#8216;e&#8217;, &#8216;l&#8217;, &#8216;l&#8217;, &#8216;o&#8217; }) )</p>
+<p>The example below shows how to compute the <span class="xref std std-term">SHA1</span> hash of a string and an array of characters:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">string</span> <span class="n">s</span><span class="p">;</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">hash</span><span class="p">(</span><span class="n">TLS_HASH_SHA1</span><span class="p">,</span> <span class="s">&quot;Hello&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">hash</span><span class="p">(</span><span class="n">TLS_HASH_SHA1</span><span class="p">,</span> <span class="p">({</span> <span class="sc">&#39;H&#39;</span><span class="p">,</span> <span class="sc">&#39;e&#39;</span><span class="p">,</span> <span class="sc">&#39;l&#39;</span><span class="p">,</span> <span class="sc">&#39;l&#39;</span><span class="p">,</span> <span class="sc">&#39;o&#39;</span> <span class="p">})</span> <span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.714</em>)</li>
+<li><strong>changed</strong> (<em>3.3.719</em>) &#8211; added the iteration-based evaluation cost</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="crypt.html#lpc.efun.crypt" title="crypt"><code class="xref lpc lpc-efun docutils literal"><span class="pre">crypt</span></code>(E)</a>, <a class="reference internal" href="md5.html#lpc.efun.md5" title="md5"><code class="xref lpc lpc-efun docutils literal"><span class="pre">md5</span></code>(E)</a>, <a class="reference internal" href="md5_crypt.html#lpc.efun.md5_crypt" title="md5_crypt"><code class="xref lpc lpc-efun docutils literal"><span class="pre">md5_crypt</span></code>(E)</a>, <a class="reference internal" href="sha1.html#lpc.efun.sha1" title="sha1"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sha1</span></code>(E)</a>, <a class="reference internal" href="hmac.html#lpc.efun.hmac" title="hmac"><code class="xref lpc lpc-efun docutils literal"><span class="pre">hmac</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -97,8 +112,8 @@ s = hash(TLS_HASH_SHA1, ({ &#8216;H&#8217;, &#8216;e&#8217;, &#8216;l&#8217;, &#
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -110,6 +125,8 @@ s = hash(TLS_HASH_SHA1, ({ &#8216;H&#8217;, &#8216;e&#8217;, &#8216;l&#8217;, &#
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
 <li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
 </ul>
 </li>
 </ul>
@@ -117,15 +134,14 @@ s = hash(TLS_HASH_SHA1, ({ &#8216;H&#8217;, &#8216;e&#8217;, &#8216;l&#8217;, &#
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -137,7 +153,7 @@ s = hash(TLS_HASH_SHA1, ({ &#8216;H&#8217;, &#8216;e&#8217;, &#8216;l&#8217;, &#
       &copy;good question.
       
       |
-      <a href="../_sources/efun/hash.txt"
+      <a href="../_sources/efun/hash.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

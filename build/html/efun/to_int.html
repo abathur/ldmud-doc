@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::to_int() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::to_int() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::to_object()" href="to_object.html" />
     <link rel="prev" title="efun::to_float()" href="to_float.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,60 +47,52 @@
 <div class="section" id="SYNOPSIS">
 <span id="to_int"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.to_int">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">to_int</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.to_int" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.to_int">
+<!--[lpc.efun.to_int]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">to_int</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.to_int" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">to_int</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/float.html#lpc.float" title="float">float</a></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">to_int</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+float</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">to_int</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">to_int</code></td><td><span class="sig-paren">(</span></td><td id="id3">
+int</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">to_int</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">to_int</code></td><td><span class="sig-paren">(</span></td><td id="id4">
+closure</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
 <code class="descname">(int)&lt;value&gt;</code></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Floats are truncated to integer values; strings with leading digits are converted to integers up to the first non-digit; lfun-closures are converted into their function index (not adjusted for inheritance); variable closure are converted into their variable index; integers are just returned.</p>
+<p>Regarding floats, it is important to keep rounding effects in mind: <code class="docutils literal"><span class="pre">to_int(3.1*10.0)</span></code> does not return <code class="docutils literal"><span class="pre">31</span></code>, but instead <code class="docutils literal"><span class="pre">30</span></code>, because internally the result of the multiplication is <code class="docutils literal"><span class="pre">30.999999</span></code>.</p>
+<p>The function supports the <code class="docutils literal"><span class="pre">0x</span></code>, <code class="docutils literal"><span class="pre">0o</span></code> and <code class="docutils literal"><span class="pre">0b</span></code> base prefixes.</p>
+<div class="admonition limit">
+<p class="first admonition-title">Limit</p>
+<p class="last">The cast notation only works if the precise type of &lt;value&gt; is known at compile-time. This will not be fixed&#8211;use the function form instead.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.1&#64;2</em>)</li>
+<li><strong>changed</strong> (<em>3.2.11/3.3.611</em>) &#8211; added support for the base prefixes.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="to_string.html#lpc.efun.to_string" title="to_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_string</span></code>(E)</a>, <a class="reference internal" href="sscanf.html#lpc.efun.sscanf" title="sscanf"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sscanf</span></code>(E)</a></p>
 </div>
 </div>
-<p>DESCRIPTION
-Floats are truncated to integer values; strings with leading
-digits are converted to integers up to the first non-digit;
-lfun-closures are converted into their function index (not
-adjusted for inheritance); variable closure are converted
-into their variable index; integers are just returned.</p>
-<p>Regarding floats, it is important to keep rounding effects
-in mind: to_int(3.1*10.0) does not return 31, but instead 30,
-because internally the result of the multiplication is 30.999999.</p>
-<p>The function supports the &#8216;0x&#8217;, &#8216;0o&#8217; and &#8216;0b&#8217; base prefixes.</p>
-<p>BUGS
-The cast notation only works if the precise type of &lt;value&gt;
-is known at compile-time. This will not be fixed - use the
-function form instead.</p>
-<p>Introduced in 3.2.1&#64;2.
-LDMud 3.2.11/3.3.611 added support for the base prefixes.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="to_string.html#lpc.to_string" title="to_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_string()</span></code>(E)</a>, <a class="reference internal" href="sscanf.html#lpc.sscanf" title="sscanf"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sscanf()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+</div>
 
 
           </div>
@@ -109,8 +103,8 @@ LDMud 3.2.11/3.3.611 added support for the base prefixes.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -120,21 +114,24 @@ LDMud 3.2.11/3.3.611 added support for the base prefixes.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::to_int()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -146,7 +143,7 @@ LDMud 3.2.11/3.3.611 added support for the base prefixes.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/to_int.txt"
+      <a href="../_sources/efun/to_int.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::to_struct() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::to_struct() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::trace()" href="trace.html" />
     <link rel="prev" title="efun::to_string()" href="to_string.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,73 +47,53 @@
 <div class="section" id="SYNOPSIS">
 <span id="to_struct"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.to_struct">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">to_struct</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> *|<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a><em>&nbsp;data</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.to_struct" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.to_struct">
+<!--[lpc.efun.to_struct]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">to_struct</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> *|mapping<em>&nbsp;data</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.to_struct" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">to_struct</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> *|<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a><em>&nbsp;data</em>, </td><td>
-<a class="reference internal" href="../LPC/structs.html#lpc.struct" title="struct">struct</a><em>&nbsp;template</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">to_struct</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> *|mapping<em>&nbsp;data</em>, </td><td id="id3">
+struct<em>&nbsp;template</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">to_struct</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/structs.html#lpc.struct" title="struct">struct</a><em>&nbsp;data</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">to_struct</code></td><td><span class="sig-paren">(</span></td><td id="id4">
+struct<em>&nbsp;data</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">to_struct</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/structs.html#lpc.struct" title="struct">struct</a><em>&nbsp;data</em>, </td><td>
-<a class="reference internal" href="../LPC/structs.html#lpc.struct" title="struct">struct</a><em>&nbsp;template</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">to_struct</code></td><td><span class="sig-paren">(</span></td><td id="id5">
+struct<em>&nbsp;data</em>, </td><td id="id6">
+struct<em>&nbsp;template</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>The given array, mapping or struct <a class="reference internal" href="#efun/to_struct.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a> is returned as a struct. If a <a class="reference internal" href="#efun/to_struct.arg.template" title="template"><code class="xref lpc lpc-arg docutils literal"><span class="pre">template</span></code></a> struct is given, the returned struct is of the same type. Without a template, an anonymous struct is returned in case of arrays and mappings and in case of structs <a class="reference internal" href="#efun/to_struct.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a> is returned unchanged.</p>
+<p>If <a class="reference internal" href="#efun/to_struct.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a> is an array, its elements are assigned in order to the resulting struct. For an anonymous struct, all elements of <a class="reference internal" href="#efun/to_struct.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a> are assigned, for a templated struct only as many as fit into the struct.</p>
+<p>If <a class="reference internal" href="#efun/to_struct.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a> is a mapping and no template is given, the resulting anonymous struct contains all elements from <a class="reference internal" href="#efun/to_struct.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a> with a string key; the key name is used as struct member name.</p>
+<p>If <a class="reference internal" href="#efun/to_struct.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a> is a mapping and a template is given, the struct member names are used as keys for lookups in <a class="reference internal" href="#efun/to_struct.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a>; the found data is assigned to the struct members.</p>
+<p>If <a class="reference internal" href="#efun/to_struct.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a> is a struct and a template is given, a struct of the type of template is created and all members from <a class="reference internal" href="#efun/to_struct.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a> are copied to the new struct, which exist in both structs. This conversion is only allowed between a struct and one of its base structs or a base struct and one of its children. Otherwise an error is raised.</p>
+<p>Neither <a class="reference internal" href="#efun/to_struct.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a> nor <a class="reference internal" href="#efun/to_struct.arg.template" title="template"><code class="xref lpc lpc-arg docutils literal"><span class="pre">template</span></code></a> will be changed in this process - the result is a new struct value. The actual value of <a class="reference internal" href="#efun/to_struct.arg.template" title="template"><code class="xref lpc lpc-arg docutils literal"><span class="pre">template</span></code></a> does not matter, only its type.</p>
+<p>Since the returned struct can&#8217;t be known at compile time, the efun is declared to return &#8216;mixed&#8217;.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.250</em>)</li>
+<li><strong>changed</strong> (<em>3.3.344</em>) &#8211; added the template argument.</li>
+<li><strong>changed</strong> (<em>3.3.433</em>) &#8211; added the conversion from mappings.</li>
+<li><strong>changed</strong> (<em>3.3.720</em>) &#8211; added the conversion of structs into another struct.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="to_array.html#lpc.efun.to_array" title="to_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_array</span></code>(E)</a>, <a class="reference internal" href="to_string.html#lpc.efun.to_string" title="to_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_string</span></code>(E)</a>, <a class="reference internal" href="mkmapping.html#lpc.efun.mkmapping" title="mkmapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mkmapping</span></code>(E)</a>, <a class="reference internal" href="../syntax/structs.html#lpc.type.struct" title="struct"><code class="xref lpc lpc-type docutils literal"><span class="pre">struct</span></code></a></p>
 </div>
 </div>
-<p>DESCRIPTION
-The given array, mapping or struct &lt;data&gt; is returned as a struct.
-If a &lt;template&gt; struct is given, the returned struct is of the same
-type. Without a template, an anonymous struct is returned in case of
-arrays and mappings and in case of structs &lt;data&gt; is returned
-unchanged.</p>
-<p>If &lt;data&gt; is an array, its elements are assigned in order to the
-resulting struct. For an anonymous struct, all elements of &lt;data&gt;
-are assigned, for a templated struct only as many as fit into
-the struct.</p>
-<p>If &lt;data&gt; is a mapping and no template is given, the resulting
-anonymous struct contains all elements from &lt;data&gt; with a string
-key; the key name is used as struct member name.</p>
-<p>If &lt;data&gt; is a mapping and a template is given, the struct
-member names are used as keys for lookups in &lt;data&gt;; the found
-data is assigned to the struct members.</p>
-<p>If &lt;data&gt; is a struct and a template is given, a struct of the type
-of template is created and all members from &lt;data&gt; are copied to the
-new struct, which exist in both structs. This conversion is only
-allowed between a struct and one of its base structs or a base struct
-and one of its children. Otherwise an error is raised.</p>
-<p>Neither &lt;data&gt; nor &lt;template&gt; will be changed in this process - the
-result is a new struct value. The actual value of &lt;template&gt; does not
-matter, only its type.</p>
-<p>Since the returned struct can&#8217;t be known at compile time, the
-efun is declared to return &#8216;mixed&#8217;.</p>
-<p>Introduced in LDMud 3.3.250 .
-LDMud 3.3.344 added the template argument.
-LDMud 3.3.433 added the conversion from mappings.
-LDMud 3.3.720 added the conversion of structs into another struct.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="to_array.html#lpc.to_array" title="to_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_array()</span></code>(E)</a>, <a class="reference internal" href="to_string.html#lpc.to_string" title="to_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_string()</span></code>(E)</a>, <a class="reference internal" href="mkmapping.html#lpc.mkmapping" title="mkmapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mkmapping()</span></code>(E)</a>, <code class="xref lpc lpc-lang docutils literal"><span class="pre">structs</span></code></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+</div>
 
 
           </div>
@@ -122,8 +104,8 @@ LDMud 3.3.720 added the conversion of structs into another struct.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -133,21 +115,24 @@ LDMud 3.3.720 added the conversion of structs into another struct.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::to_struct()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -159,7 +144,7 @@ LDMud 3.3.720 added the conversion of structs into another struct.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/to_struct.txt"
+      <a href="../_sources/efun/to_struct.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -1,0 +1,230 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>array &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="-&gt;" href="arrow.html" />
+    <link rel="prev" title="LPC syntax" href="overview.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="array">
+<span id="arrays"></span><span id="lpc.type.array"></span><span id="lpc.type.arrays"></span><div class="section" id="TYPE">
+<h2>TYPE<a class="headerlink" href="#TYPE" title="Permalink to this headline">¶</a></h2>
+<pre class="literal-block">
+array
+<strong>
+literal constructor:
+</strong>    ({})
+</pre>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>An array is a pointer to a vector of values containing any type or a mix of types. Arrays can be declared with the type of its members appended by a star (e.g. string* for an array with string elements). But this declaration is not sufficient to actually create an array at runtime, as all variables (even arrays) are initialized with 0 which is not a valid array. Arrays must either be allocated dynamically with <a class="reference internal" href="../efun/allocate.html#lpc.efun.allocate" title="allocate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">allocate</span></code>(E)</a>, or created with the <code class="docutils literal"><span class="pre">({})</span></code> array constructor.</p>
+<p>Arrays are stored by reference, so all assignments of whole arrays will just copy the address. The array will be deallocated when no variable points to it any longer.</p>
+<p>When a variable points to an array, items can be accessed with indexing: <code class="docutils literal"><span class="pre">arr[3]</span></code> as an example. The name of the array being indexed can be any expression, even a function call: <code class="docutils literal"><span class="pre">func()[2]</span></code>. It can also be another array, if this array has pointers to arrays:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">allocate</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">allocate</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">allocate</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Now <code class="docutils literal"><span class="pre">arr[1][2]</span></code> is a valid value.</p>
+<p><a class="reference internal" href="../efun/sizeof.html#lpc.efun.sizeof" title="sizeof()"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sizeof()</span></code>(E)</a> checks the number of elements in an array.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Nowadays it is most of the time preferable to use an array constructor, a list surrounded by <code class="docutils literal"><span class="pre">({</span></code> and <code class="docutils literal"><span class="pre">})</span></code>, e.g. <code class="docutils literal"><span class="pre">({</span> <span class="pre">1,</span> <span class="pre">&quot;xx&quot;,</span> <span class="pre">2</span> <span class="pre">})</span></code> will construct a new array with size 3, initialized with 1, &#8220;xx&#8221; and 2 respectively.</p>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>Operations<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h4>Indexing<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h4>
+<p>There are several very useful operations defined on arrays. The most used is the indexing:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">({</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span> <span class="p">});</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>      <span class="c1">// this will return 2</span>
+</pre></div>
+</div>
+<p>You also can count from the end of the array. Use &lt;1 to specify the last element in the array:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">({</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span> <span class="p">});</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">];</span>     <span class="c1">// this will return 1</span>
+</pre></div>
+</div>
+<p>With indexing you can also create sub-arrays:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">({</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span> <span class="p">});</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="mf">3..5</span><span class="p">];</span>   <span class="c1">// this will return ({ 3,4,5 })</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="mf">2.</span><span class="p">.</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">];</span>  <span class="c1">// this will return ({ 2,3,4,5,6 })</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="o">&lt;</span><span class="mf">5.</span><span class="p">.</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">];</span> <span class="c1">// this will return ({ 3,4,5 })</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="o">&lt;</span><span class="mf">6..5</span><span class="p">];</span>  <span class="c1">// this will return ({ 2,3,4,5 })</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="mf">3..3</span><span class="p">];</span>   <span class="c1">// this will return ({ 3 })</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="mf">3..2</span><span class="p">];</span>   <span class="c1">// this will return ({ })</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="mf">3..0</span><span class="p">];</span>   <span class="c1">// this will return ({ })</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="mf">5..100</span><span class="p">];</span> <span class="c1">// this will return ({ 5,6,7 })</span>
+<span class="p">[</span><span class="n">x</span><span class="p">..]</span> <span class="n">is</span> <span class="n">interpreted</span> <span class="k">as</span> <span class="p">[</span><span class="n">x</span><span class="p">..</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h4>Adding<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h4>
+<p>You can add two arrays. The result is one array with the elements of both the former arrays:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">({</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span> <span class="p">});</span>
+<span class="n">b</span><span class="o">=</span><span class="p">({</span> <span class="s">&quot;a&quot;</span><span class="p">,</span><span class="s">&quot;b&quot;</span> <span class="p">});</span>
+<span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>       <span class="c1">// this will return ({ 0,1,&quot;a&quot;,&quot;b&quot; })</span>
+<span class="k">return</span> <span class="n">b</span><span class="o">+</span><span class="n">a</span><span class="p">;</span>       <span class="c1">// this will return ({ &quot;a&quot;,&quot;b&quot;,0,1 })</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h4>Subtracting<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h4>
+<p>You can erase all elements of one array that occur in another array:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">({</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span> <span class="p">});</span>
+<span class="n">b</span><span class="o">=</span><span class="p">({</span> <span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span> <span class="p">});</span>
+<span class="k">return</span> <span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">;</span>       <span class="c1">// this will return ({ 0,3,4,6 })</span>
+<span class="k">return</span> <span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">;</span>       <span class="c1">// this will return ({ 8,9 })</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h4>Interjunction<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h4>
+<p>Use the <a class="reference internal" href="operators.html#lpc.operator.&amp;" title="&amp;"><code class="xref lpc lpc-operator docutils literal"><span class="pre">&amp;</span></code></a> to create the interjunction of two arrays:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">({</span> <span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span> <span class="p">})</span>
+<span class="n">b</span><span class="o">=</span><span class="p">({</span> <span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span> <span class="p">})</span>
+<span class="k">return</span> <span class="n">a</span><span class="o">&amp;</span><span class="n">b</span><span class="p">;</span>       <span class="c1">// this will return ({ 1,4,5 })</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h4>Assigning<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h4>
+<p>Assigning can also be done to sub-arrays and is thus very powerful:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="p">({</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span> <span class="p">});</span>
+<span class="n">a</span><span class="p">[</span><span class="o">&lt;</span><span class="mf">4.</span><span class="p">.</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="p">({</span> <span class="mi">8</span><span class="p">,</span><span class="mi">9</span> <span class="p">});</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">;</span>         <span class="c1">// this will return ({ 0,1,2,3,8,9,6,7 })</span>
+
+<span class="n">a</span><span class="o">=</span><span class="p">({</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span> <span class="p">});</span>
+<span class="n">a</span><span class="p">[</span><span class="mf">2..5</span><span class="p">]</span><span class="o">=</span><span class="p">({</span> <span class="p">});</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">;</span>         <span class="c1">// this will return ({ 0,1,6,7 })</span>
+
+<span class="n">a</span><span class="o">=</span><span class="p">({</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="p">});</span>
+<span class="n">a</span><span class="p">[</span><span class="mf">3..2</span><span class="p">]</span><span class="o">=</span><span class="p">({</span> <span class="mi">8</span><span class="p">,</span><span class="mi">9</span> <span class="p">});</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">;</span>         <span class="c1">// this will return ({ 0,1,2,8,9,3,4 })</span>
+
+<span class="n">a</span><span class="o">=</span><span class="p">({</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="p">});</span>
+<span class="n">a</span><span class="p">[</span><span class="mf">3..0</span><span class="p">]</span><span class="o">=</span><span class="p">({</span> <span class="mi">8</span><span class="p">,</span><span class="mi">9</span> <span class="p">});</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">;</span>         <span class="c1">// this will return ({ 0,1,2,8,9,1,2,3,4 }) this is quite funny but true ;-) WARNING: If done unintentionally and within a loop, you can quickly cause the game to run out of memory!</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h4>General<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h4>
+<p>Of course for any of the operators explained above you can use the combined form of assigning and operating; that means the <a class="reference internal" href="operators.html#lpc.operator.+=" title="+="><code class="xref lpc lpc-operator docutils literal"><span class="pre">+=</span></code></a>, <a class="reference internal" href="operators.html#lpc.operator.-=" title="-="><code class="xref lpc lpc-operator docutils literal"><span class="pre">-=</span></code></a> and <a class="reference internal" href="operators.html#lpc.operator.&amp;=" title="&amp;="><code class="xref lpc lpc-operator docutils literal"><span class="pre">&amp;=</span></code></a> work.</p>
+</div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>If you want to make sure that no element is more than once in an array you can use the following:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">m_indices</span><span class="p">(</span><span class="n">mkmapping</span><span class="p">(</span><span class="n">a</span><span class="p">));</span>
+</pre></div>
+</div>
+<p class="last">This creates a mapping out of the array and recreates the array at once. The elements in the array can be shuffled by this procedure.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">array</a><ul>
+<li><a class="reference internal" href="#TYPE">TYPE</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#l">Operations</a><ul>
+<li><a class="reference internal" href="#l">Indexing</a></li>
+<li><a class="reference internal" href="#l">Adding</a></li>
+<li><a class="reference internal" href="#l">Subtracting</a></li>
+<li><a class="reference internal" href="#l">Interjunction</a></li>
+<li><a class="reference internal" href="#l">Assigning</a></li>
+<li><a class="reference internal" href="#l">General</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/arrays.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

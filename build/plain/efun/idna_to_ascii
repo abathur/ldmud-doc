@@ -5,7 +5,7 @@ SYNOPSIS (OPTIONAL)
 
 DESCRIPTION
 ===========
-   Convert string <name> from UTF-8 to idna representation (8z punycode).
+   Convert string name(E) from UTF-8 to idna representation (8z punycode).
 
    If an error occurs, an exception is thrown.
 
@@ -18,4 +18,4 @@ HISTORY
 
 SEE ALSO
 ========
-   convert_charset()(E), idna_to_ascii()(E), idna_stringprep()(E)
+   convert_charset(E), idna_to_ascii(E), idna_stringprep(E)

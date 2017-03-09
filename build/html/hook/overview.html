@@ -1,0 +1,280 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Driver-supported hooks &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="H_AUTO_INCLUDE" href="auto_include.html" />
+    <link rel="prev" title="efun::xor_bits()" href="../efun/xor_bits.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="Driver-supported hooks">
+<span id="hook"></span><span id="lpc.overview.Driver-supported hooks"></span><span id="lpc.overview.hook"></span><div class="section" id="OVERVIEW">
+<h2>OVERVIEW<a class="headerlink" href="#OVERVIEW" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+Driver-supported hooks</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>To allow a greater flexibility of the muds, the gamedrivers since 3.2.1 moved several once hardcoded &#8216;underground&#8217; activities from the driver into the mudlib. This includes for example the differences between compat and native mode.</p>
+<p>The hooks are set with the privileged <a class="reference internal" href="../efun/set_driver_hook.html#lpc.efun.set_driver_hook" title="set_driver_hook"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_driver_hook</span></code>(E)</a>. Some of the hooks are mandatory, some not. Most hooks accept unbound lambda closures as values, some also lfun closures or even strings.</p>
+<p>The hooks are identified by an ordinal number, for which symbolic names are defined in <code class="file docutils literal"><span class="pre">/sys/driverhooks.h</span></code>.</p>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="e"></span><span id="n"></span><span id="u"></span><span id="m"></span><span id="e"></span><span id="r"></span><span id="a"></span><span id="t"></span><span id="e"></span><dl class="docutils">
+<dt id="term-h-move-object0"><a class="reference internal" href="move_object.html#lpc.hook.H_MOVE_OBJECT0" title="H_MOVE_OBJECT0"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_MOVE_OBJECT0</span></code>(H)</a><dt id="term-h-move-object1"><a class="reference internal" href="move_object.html#lpc.hook.H_MOVE_OBJECT1" title="H_MOVE_OBJECT1"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_MOVE_OBJECT1</span></code>(H)</a></dt>
+<dd>Mandatory hooks to implement <a class="reference internal" href="../efun/move_object.html#lpc.efun.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object</span></code>(E)</a>.</dd>
+<dt id="term-h-load-uids"><a class="reference internal" href="load_uids.html#lpc.hook.H_LOAD_UIDS" title="H_LOAD_UIDS"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_LOAD_UIDS</span></code>(H)</a><dt id="term-h-clone-uids"><a class="reference internal" href="clone_uids.html#lpc.hook.H_CLONE_UIDS" title="H_CLONE_UIDS"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CLONE_UIDS</span></code>(H)</a></dt>
+<dd>Mandatory hooks to determine the uid and euid of loaded or cloned objects.</dd>
+<dt id="term-h-create-super"><a class="reference internal" href="create_super.html#lpc.hook.H_CREATE_SUPER" title="H_CREATE_SUPER"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CREATE_SUPER</span></code>(H)</a><dt id="term-h-create-ob"><a class="reference internal" href="create_ob.html#lpc.hook.H_CREATE_OB" title="H_CREATE_OB"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CREATE_OB</span></code>(H)</a><dt id="term-h-create-clone"><a class="reference internal" href="create_clone.html#lpc.hook.H_CREATE_CLONE" title="H_CREATE_CLONE"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CREATE_CLONE</span></code>(H)</a></dt>
+<dd><p class="first">Optional hooks to initialize an object after creation.</p>
+<p class="last"><a class="reference internal" href="create_super.html#lpc.hook.H_CREATE_SUPER" title="H_CREATE_SUPER"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CREATE_SUPER</span></code>(H)</a> is called for blueprints implicitely loaded by inheritance, <a class="reference internal" href="create_ob.html#lpc.hook.H_CREATE_OB" title="H_CREATE_OB"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CREATE_OB</span></code>(H)</a> for explicitely loaded blueprints/objects, and <a class="reference internal" href="create_clone.html#lpc.hook.H_CREATE_CLONE" title="H_CREATE_CLONE"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CREATE_CLONE</span></code>(H)</a> for cloned objects.</p>
+</dd>
+<dt id="term-h-reset"><a class="reference internal" href="reset.html#lpc.hook.H_RESET" title="H_RESET"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_RESET</span></code>(H)</a></dt>
+<dd>Optional hook to reset an object.</dd>
+<dt id="term-h-clean-up"><a class="reference internal" href="clean_up.html#lpc.hook.H_CLEAN_UP" title="H_CLEAN_UP"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CLEAN_UP</span></code>(H)</a></dt>
+<dd>Optional hook to clean up an object.</dd>
+<dt id="term-h-default-method"><a class="reference internal" href="default_method.html#lpc.hook.H_DEFAULT_METHOD" title="H_DEFAULT_METHOD"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_DEFAULT_METHOD</span></code>(H)</a></dt>
+<dd>Optional hook to provide default implementation for unresolved calls.</dd>
+<dt id="term-h-default-prompt"><a class="reference internal" href="default_prompt.html#lpc.hook.H_DEFAULT_PROMPT" title="H_DEFAULT_PROMPT"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_DEFAULT_PROMPT</span></code>(H)</a></dt>
+<dd>Optional hook for the command prompt. If this hook is not used, the driver will use &#8220;&gt; &#8221; as the command prompt.</dd>
+<dt id="term-h-print-prompt"><a class="reference internal" href="print_prompt.html#lpc.hook.H_PRINT_PROMPT" title="H_PRINT_PROMPT"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_PRINT_PROMPT</span></code>(H)</a></dt>
+<dd>Optional hook to print the current command prompt. If this hook is not set, the driver will just print the prompt to the user.</dd>
+<dt id="term-h-command"><a class="reference internal" href="command.html#lpc.hook.H_COMMAND" title="H_COMMAND"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_COMMAND</span></code>(H)</a></dt>
+<dd>Optional hook to parse and execute commands. If this hook is used, it bypasses the normal command parsing done by the driver (including <a class="reference internal" href="modify_command.html#lpc.hook.H_MODIFY_COMMAND" title="H_MODIFY_COMMAND"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_MODIFY_COMMAND</span></code>(H)</a> and <a class="reference internal" href="notify_fail.html#lpc.hook.H_NOTIFY_FAIL" title="H_NOTIFY_FAIL"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_NOTIFY_FAIL</span></code>(H)</a> hooks).</dd>
+<dt id="term-h-modify-command"><a class="reference internal" href="modify_command.html#lpc.hook.H_MODIFY_COMMAND" title="H_MODIFY_COMMAND"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_MODIFY_COMMAND</span></code>(H)</a></dt>
+<dd>Optional hook to modify commands (both entered or given by a call to <a class="reference internal" href="../efun/command.html#lpc.efun.command" title="command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">command</span></code>(E)</a>) before the parser sees them (this includes special commands like &#8216;status&#8217;).</dd>
+<dt id="term-h-modify-command-fname"><a class="reference internal" href="modify_command_fname.html#lpc.hook.H_MODIFY_COMMAND_FNAME" title="H_MODIFY_COMMAND_FNAME"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_MODIFY_COMMAND_FNAME</span></code>(H)</a></dt>
+<dd>Mandatory hook specifying the name of the &#8216;modify_command&#8217; lfun to call for newly entered commands as result of a <a class="reference internal" href="../efun/set_modify_command.html#lpc.efun.set_modify_command" title="set_modify_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_modify_command</span></code>(E)</a>.</dd>
+<dt id="term-h-notify-fail"><a class="reference internal" href="notify_fail.html#lpc.hook.H_NOTIFY_FAIL" title="H_NOTIFY_FAIL"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_NOTIFY_FAIL</span></code>(H)</a></dt>
+<dd>Mandatory hook to issue the default message if an entered command couldn&#8217;t be parsed and no <a class="reference internal" href="../efun/notify_fail.html#lpc.efun.notify_fail" title="notify_fail"><code class="xref lpc lpc-efun docutils literal"><span class="pre">notify_fail</span></code>(E)</a> command is in effect.</dd>
+<dt id="term-h-send-notify-fail"><a class="reference internal" href="send_notify_fail.html#lpc.hook.H_SEND_NOTIFY_FAIL" title="H_SEND_NOTIFY_FAIL"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_SEND_NOTIFY_FAIL</span></code>(H)</a></dt>
+<dd>Optional hook to send the notify fail message, regardless of how it was determined, to the player. If the hook is not set, the message is delivered using <a class="reference internal" href="../efun/tell_object.html#lpc.efun.tell_object" title="tell_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tell_object</span></code>(E)</a> internally.</dd>
+<dt id="term-h-no-ipc-slot"><a class="reference internal" href="no_ipc_slot.html#lpc.hook.H_NO_IPC_SLOT" title="H_NO_IPC_SLOT"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_NO_IPC_SLOT</span></code>(H)</a></dt>
+<dd>Optional hook specifying the message given to logins rejected due to space limitations (MAX_PLAYER).</dd>
+<dt id="term-h-include-dirs"><a class="reference internal" href="include_dirs.html#lpc.hook.H_INCLUDE_DIRS" title="H_INCLUDE_DIRS"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_INCLUDE_DIRS</span></code>(H)</a></dt>
+<dd>Semi-mandatory hook specifying the directories where &lt;&gt;-type include files are searched (this includes &#8220;&#8221;-includes not found as specified).</dd>
+<dt id="term-h-auto-include"><a class="reference internal" href="auto_include.html#lpc.hook.H_AUTO_INCLUDE" title="H_AUTO_INCLUDE"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_AUTO_INCLUDE</span></code>(H)</a></dt>
+<dd>Optional hook specifying a string to be included before the source of every compiled LPC object.</dd>
+<dt id="term-h-telnet-neg"><a class="reference internal" href="telnet_neg.html#lpc.hook.H_TELNET_NEG" title="H_TELNET_NEG"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_TELNET_NEG</span></code>(H)</a></dt>
+<dd>Optional hook to specifiy how to perform a single telnet negotiation. If not set, most telnet options are rejected (read: only a very minimal negotiation takes place).</dd>
+<dt id="term-h-noecho"><a class="reference internal" href="no_echo.html#lpc.hook.H_NOECHO" title="H_NOECHO"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_NOECHO</span></code>(H)</a></dt>
+<dd><p class="first">Optional hook to specifiy how to perform the telnet actions to switch the echo mode (used for e.g. passwords with <a class="reference internal" href="../efun/input_to.html#lpc.efun.input_to" title="input_to"><code class="xref lpc lpc-efun docutils literal"><span class="pre">input_to</span></code>(E)</a>). If not set, a default handling is performed.</p>
+<p class="last">IMPORTANT: If this hook is used, the control of all telnet negotiation is transferred to the mudlib (you must combine it with <a class="reference internal" href="telnet_neg.html#lpc.hook.H_TELNET_NEG" title="H_TELNET_NEG"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_TELNET_NEG</span></code>(H)</a> to conform to the telnet protocol).</p>
+</dd>
+<dt id="term-h-erq-stop"><a class="reference internal" href="erq_stop.html#lpc.hook.H_ERQ_STOP" title="H_ERQ_STOP"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_ERQ_STOP</span></code>(H)</a></dt>
+<dd>Optional hook to notify the mudlib about the termination of the erq demon.</dd>
+<dt id="term-h-msg-discarded"><a class="reference internal" href="msg_discarded.html#lpc.hook.H_MSG_DISCARDED" title="H_MSG_DISCARDED"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_MSG_DISCARDED</span></code>(H)</a></dt>
+<dd>Optional hook to specify a message or take other measures when a message had to be discarded.</dd>
+</dl>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_include.html">H_AUTO_INCLUDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clean_up.html">H_CLEAN_UP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clone_uids.html">H_CLONE_UIDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command.html">H_COMMAND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_clone.html">H_CREATE_CLONE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_ob.html">H_CREATE_OB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create_super.html">H_CREATE_SUPER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="default_method.html">H_DEFAULT_METHOD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="default_prompt.html">H_DEFAULT_PROMPT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erq_stop.html">H_ERQ_STOP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="include_dirs.html">H_INCLUDE_DIRS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_uids.html">H_LOAD_UIDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modify_command.html">H_MODIFY_COMMAND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modify_command_fname.html">H_MODIFY_COMMAND_FNAME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="move_object.html">H_MOVE_OBJECT0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="msg_discarded.html">H_MSG_DISCARDED</a></li>
+<li class="toctree-l1"><a class="reference internal" href="no_echo.html">H_NOECHO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="no_ipc_slot.html">H_NO_IPC_SLOT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notify_fail.html">H_NOTIFY_FAIL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="print_prompt.html">H_PRINT_PROMPT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regexp_package.html">H_REGEXP_PACKAGE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reset.html">H_RESET</a></li>
+<li class="toctree-l1"><a class="reference internal" href="send_notify_fail.html">H_SEND_NOTIFY_FAIL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnet_neg.html">H_TELNET_NEG</a></li>
+</ul>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.1</em>) &#8211; the hooks concept</li>
+<li><strong>changed</strong> (<em>3.2.1&#64;1</em>) &#8211; added <a class="reference internal" href="move_object.html#lpc.hook.H_MOVE_OBJECT0" title="H_MOVE_OBJECT0"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_MOVE_OBJECT0</span></code>(H)</a> and <a class="reference internal" href="move_object.html#lpc.hook.H_MOVE_OBJECT1" title="H_MOVE_OBJECT1"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_MOVE_OBJECT1</span></code>(H)</a></li>
+<li><strong>changed</strong> (<em>3.2.1&#64;34</em>) &#8211; added <a class="reference internal" href="clean_up.html#lpc.hook.H_CLEAN_UP" title="H_CLEAN_UP"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CLEAN_UP</span></code>(H)</a></li>
+<li><strong>changed</strong> (<em>3.2.1&#64;51</em>) &#8211; added <a class="reference internal" href="modify_command.html#lpc.hook.H_MODIFY_COMMAND" title="H_MODIFY_COMMAND"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_MODIFY_COMMAND</span></code>(H)</a></li>
+<li><strong>changed</strong> (<em>3.2.1&#64;109</em>) &#8211; added <a class="reference internal" href="modify_command_fname.html#lpc.hook.H_MODIFY_COMMAND_FNAME" title="H_MODIFY_COMMAND_FNAME"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_MODIFY_COMMAND_FNAME</span></code>(H)</a></li>
+<li><strong>changed</strong> (<em>3.2.1&#64;55</em>) &#8211; added <a class="reference internal" href="notify_fail.html#lpc.hook.H_NOTIFY_FAIL" title="H_NOTIFY_FAIL"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_NOTIFY_FAIL</span></code>(H)</a> and <a class="reference internal" href="no_ipc_slot.html#lpc.hook.H_NO_IPC_SLOT" title="H_NO_IPC_SLOT"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_NO_IPC_SLOT</span></code>(H)</a></li>
+<li><strong>changed</strong> (<em>3.2.1&#64;57</em>) &#8211; added <a class="reference internal" href="include_dirs.html#lpc.hook.H_INCLUDE_DIRS" title="H_INCLUDE_DIRS"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_INCLUDE_DIRS</span></code>(H)</a></li>
+<li><strong>changed</strong> (<em>3.2.1&#64;60</em>) &#8211; added <a class="reference internal" href="telnet_neg.html#lpc.hook.H_TELNET_NEG" title="H_TELNET_NEG"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_TELNET_NEG</span></code>(H)</a></li>
+<li><strong>changed</strong> (<em>3.2.1&#64;85</em>) &#8211; added <a class="reference internal" href="no_echo.html#lpc.hook.H_NOECHO" title="H_NOECHO"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_NOECHO</span></code>(H)</a> and <a class="reference internal" href="erq_stop.html#lpc.hook.H_ERQ_STOP" title="H_ERQ_STOP"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_ERQ_STOP</span></code>(H)</a></li>
+<li><strong>changed</strong> (<em>3.2.7</em>) &#8211; added <a class="reference internal" href="command.html#lpc.hook.H_COMMAND" title="H_COMMAND"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_COMMAND</span></code>(H)</a></li>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added <a class="reference internal" href="send_notify_fail.html#lpc.hook.H_SEND_NOTIFY_FAIL" title="H_SEND_NOTIFY_FAIL"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_SEND_NOTIFY_FAIL</span></code>(H)</a> and <a class="reference internal" href="auto_include.html#lpc.hook.H_AUTO_INCLUDE" title="H_AUTO_INCLUDE"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_AUTO_INCLUDE</span></code>(H)</a></li>
+<li><strong>changed</strong> (<em>3.3.113</em>) &#8211; added <a class="reference internal" href="default_method.html#lpc.hook.H_DEFAULT_METHOD" title="H_DEFAULT_METHOD"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_DEFAULT_METHOD</span></code>(H)</a></li>
+<li><strong>changed</strong> (<em>3.3.163</em>) &#8211; added <a class="reference internal" href="default_prompt.html#lpc.hook.H_DEFAULT_PROMPT" title="H_DEFAULT_PROMPT"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_DEFAULT_PROMPT</span></code>(H)</a> and <a class="reference internal" href="print_prompt.html#lpc.hook.H_PRINT_PROMPT" title="H_PRINT_PROMPT"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_PRINT_PROMPT</span></code>(H)</a></li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">:concept:`native`</span></a>, <a class="reference internal" href="../efun/set_driver_hook.html#lpc.efun.set_driver_hook" title="set_driver_hook"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_driver_hook</span></code>(E)</a>, <a class="reference internal" href="move_object.html#lpc.hook.move_object" title="move_object"><code class="xref lpc lpc-hook docutils literal"><span class="pre">move_object</span></code>(H)</a>, <a class="reference internal" href="../applied/overview.html#lpc.overview.applied" title="applied"><code class="xref lpc lpc-overview docutils literal"><span class="pre">applied</span></code></a>, <a class="reference internal" href="../topics/overview.html#lpc.overview.topics" title="topics"><code class="xref lpc lpc-overview docutils literal"><span class="pre">topics</span></code></a>, <a class="reference internal" href="../efun/overview.html#lpc.overview.efun" title="efun"><code class="xref lpc lpc-overview docutils literal"><span class="pre">efun</span></code></a>, <a class="reference internal" href="../internals/overview.html#lpc.overview.internals" title="internals"><code class="xref lpc lpc-overview docutils literal"><span class="pre">internals</span></code></a>, <a class="reference internal" href="../syntax/overview.html#lpc.overview.syntax" title="syntax"><code class="xref lpc lpc-overview docutils literal"><span class="pre">syntax</span></code></a>, <a class="reference internal" href="../master/overview.html#lpc.overview.master" title="master"><code class="xref lpc lpc-overview docutils literal"><span class="pre">master</span></code></a>, <code class="xref lpc lpc-overview docutils literal"><span class="pre">obsolete</span></code></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Driver-supported hooks</a><ul>
+<li><a class="reference internal" href="#OVERVIEW">OVERVIEW</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#l"><dl class="docutils">
+<dt id="term-h-move-object0"><code class="docutils literal"><span class="pre">H_MOVE_OBJECT0</span></code><dt id="term-h-move-object1"><code class="docutils literal"><span class="pre">H_MOVE_OBJECT1</span></code></dt>
+<dd><p class="first last">Mandatory hooks to implement <code class="docutils literal"><span class="pre">move_object</span></code>.</p>
+</dd>
+<dt id="term-h-load-uids"><code class="docutils literal"><span class="pre">H_LOAD_UIDS</span></code><dt id="term-h-clone-uids"><code class="docutils literal"><span class="pre">H_CLONE_UIDS</span></code></dt>
+<dd><p class="first last">Mandatory hooks to determine the uid and euid of loaded or cloned objects.</p>
+</dd>
+<dt id="term-h-create-super"><code class="docutils literal"><span class="pre">H_CREATE_SUPER</span></code><dt id="term-h-create-ob"><code class="docutils literal"><span class="pre">H_CREATE_OB</span></code><dt id="term-h-create-clone"><code class="docutils literal"><span class="pre">H_CREATE_CLONE</span></code></dt>
+<dd><p class="first">Optional hooks to initialize an object after creation.</p>
+<p class="last"><code class="docutils literal"><span class="pre">H_CREATE_SUPER</span></code> is called for blueprints implicitely loaded by inheritance, <code class="docutils literal"><span class="pre">H_CREATE_OB</span></code> for explicitely loaded blueprints/objects, and <code class="docutils literal"><span class="pre">H_CREATE_CLONE</span></code> for cloned objects.</p>
+</dd>
+<dt id="term-h-reset"><code class="docutils literal"><span class="pre">H_RESET</span></code></dt>
+<dd><p class="first last">Optional hook to reset an object.</p>
+</dd>
+<dt id="term-h-clean-up"><code class="docutils literal"><span class="pre">H_CLEAN_UP</span></code></dt>
+<dd><p class="first last">Optional hook to clean up an object.</p>
+</dd>
+<dt id="term-h-default-method"><code class="docutils literal"><span class="pre">H_DEFAULT_METHOD</span></code></dt>
+<dd><p class="first last">Optional hook to provide default implementation for unresolved calls.</p>
+</dd>
+<dt id="term-h-default-prompt"><code class="docutils literal"><span class="pre">H_DEFAULT_PROMPT</span></code></dt>
+<dd><p class="first last">Optional hook for the command prompt. If this hook is not used, the driver will use &#8220;&gt; &#8221; as the command prompt.</p>
+</dd>
+<dt id="term-h-print-prompt"><code class="docutils literal"><span class="pre">H_PRINT_PROMPT</span></code></dt>
+<dd><p class="first last">Optional hook to print the current command prompt. If this hook is not set, the driver will just print the prompt to the user.</p>
+</dd>
+<dt id="term-h-command"><code class="docutils literal"><span class="pre">H_COMMAND</span></code></dt>
+<dd><p class="first last">Optional hook to parse and execute commands. If this hook is used, it bypasses the normal command parsing done by the driver (including <code class="docutils literal"><span class="pre">H_MODIFY_COMMAND</span></code> and <code class="docutils literal"><span class="pre">H_NOTIFY_FAIL</span></code> hooks).</p>
+</dd>
+<dt id="term-h-modify-command"><code class="docutils literal"><span class="pre">H_MODIFY_COMMAND</span></code></dt>
+<dd><p class="first last">Optional hook to modify commands (both entered or given by a call to <code class="docutils literal"><span class="pre">command</span></code>) before the parser sees them (this includes special commands like &#8216;status&#8217;).</p>
+</dd>
+<dt id="term-h-modify-command-fname"><code class="docutils literal"><span class="pre">H_MODIFY_COMMAND_FNAME</span></code></dt>
+<dd><p class="first last">Mandatory hook specifying the name of the &#8216;modify_command&#8217; lfun to call for newly entered commands as result of a <code class="docutils literal"><span class="pre">set_modify_command</span></code>.</p>
+</dd>
+<dt id="term-h-notify-fail"><code class="docutils literal"><span class="pre">H_NOTIFY_FAIL</span></code></dt>
+<dd><p class="first last">Mandatory hook to issue the default message if an entered command couldn&#8217;t be parsed and no <code class="docutils literal"><span class="pre">notify_fail</span></code> command is in effect.</p>
+</dd>
+<dt id="term-h-send-notify-fail"><code class="docutils literal"><span class="pre">H_SEND_NOTIFY_FAIL</span></code></dt>
+<dd><p class="first last">Optional hook to send the notify fail message, regardless of how it was determined, to the player. If the hook is not set, the message is delivered using <code class="docutils literal"><span class="pre">tell_object</span></code> internally.</p>
+</dd>
+<dt id="term-h-no-ipc-slot"><code class="docutils literal"><span class="pre">H_NO_IPC_SLOT</span></code></dt>
+<dd><p class="first last">Optional hook specifying the message given to logins rejected due to space limitations (MAX_PLAYER).</p>
+</dd>
+<dt id="term-h-include-dirs"><code class="docutils literal"><span class="pre">H_INCLUDE_DIRS</span></code></dt>
+<dd><p class="first last">Semi-mandatory hook specifying the directories where &lt;&gt;-type include files are searched (this includes &#8220;&#8221;-includes not found as specified).</p>
+</dd>
+<dt id="term-h-auto-include"><code class="docutils literal"><span class="pre">H_AUTO_INCLUDE</span></code></dt>
+<dd><p class="first last">Optional hook specifying a string to be included before the source of every compiled LPC object.</p>
+</dd>
+<dt id="term-h-telnet-neg"><code class="docutils literal"><span class="pre">H_TELNET_NEG</span></code></dt>
+<dd><p class="first last">Optional hook to specifiy how to perform a single telnet negotiation. If not set, most telnet options are rejected (read: only a very minimal negotiation takes place).</p>
+</dd>
+<dt id="term-h-noecho"><code class="docutils literal"><span class="pre">H_NOECHO</span></code></dt>
+<dd><p class="first">Optional hook to specifiy how to perform the telnet actions to switch the echo mode (used for e.g. passwords with <code class="docutils literal"><span class="pre">input_to</span></code>). If not set, a default handling is performed.</p>
+<p class="last">IMPORTANT: If this hook is used, the control of all telnet negotiation is transferred to the mudlib (you must combine it with <code class="docutils literal"><span class="pre">H_TELNET_NEG</span></code> to conform to the telnet protocol).</p>
+</dd>
+<dt id="term-h-erq-stop"><code class="docutils literal"><span class="pre">H_ERQ_STOP</span></code></dt>
+<dd><p class="first last">Optional hook to notify the mudlib about the termination of the erq demon.</p>
+</dd>
+<dt id="term-h-msg-discarded"><code class="docutils literal"><span class="pre">H_MSG_DISCARDED</span></code></dt>
+<dd><p class="first last">Optional hook to specify a message or take other measures when a message had to be discarded.</p>
+</dd>
+</dl>
+</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/hook/overview.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

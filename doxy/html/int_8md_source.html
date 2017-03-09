@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: LPC/int.md Source File</title>
+<title>LDMud: syntax/int.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('int_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,12 +95,12 @@ $(document).ready(function(){initNavTree('int_8md.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">LPC/int.md</div>  </div>
+<div class="title">syntax/int.md</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keywordtype">int</span> {#driver_LPC_int}</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;=====================</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;An integer. Normally full 32 bits signed, yielding a range of at least -2,147,483,648 to 2,147,483,647. The exact available range is given by the predefined macros __INT_MIN__ and __INT_MAX__.</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keywordtype">int</span> {#driver_syntax_int}</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;========================</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;An integer. Normally full 32 bits signed, yielding a range of at least -2,147,483,648 to 2,147,483,647. The exact available range is given by @ref driver_topics_predefined <span class="stringliteral">&quot;predefined&quot;</span> @ref driver_topics_predefined <span class="stringliteral">&quot;__INT_MIN__&quot;</span> and @ref driver_topics_predefined <span class="stringliteral">&quot;__INT_MAX__&quot;</span>.</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;## SYNTAX #</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
@@ -118,78 +117,59 @@ $(document).ready(function(){initNavTree('int_8md.html','');});
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">char</span>           ::= <span class="stringliteral">&quot;&#39;&quot;</span> unicode_char <span class="stringliteral">&quot;&#39;&quot;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;@usage{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;Integer values can be specified in decimal, in sedecimal when preceeded by 0x (e.g. 0x11), binary when preceeded by 0b (e.g. 0b00010001), octal when preceeded by 0o (e.g. 0o21) and as character yielding the charset value for the character as the number to use (e.g. &#39;0&#39; yields 48 on ASCII machines).</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;Character values are enclosed in single-quotes (&#39;), with the sequence &#39;&#39;&#39; returning the single-quote itself. Instead of the literal character an escape-sequence can be written between the single-quotes:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;\&lt;CR&gt;     : Carriage Return (0x0d)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;Integer values can be specified in decimal, in sedecimal when preceeded by `0x` (e.g. `0x11`), binary when preceeded by `0b` (e.g. `0b00010001`), octal when preceeded by `0o` (e.g. `0o21`) and as character yielding the charset value <span class="keywordflow">for</span> the character as the number to use (e.g. `<span class="charliteral">&#39;0&#39;</span>` yields `48` on ASCII machines).</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;Character values are enclosed in single-quotes (`<span class="stringliteral">&#39;`), with the sequence `&#39;</span><span class="stringliteral">&#39;&#39;</span>` returning the single-quote itself. Instead of the literal character an escape-sequence can be written between the single-quotes:</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;\&lt;CR&gt;&lt;LF&gt; : ignored</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;\&lt;LF&gt;     : ignored</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;\&lt;LF&gt;&lt;CR&gt; : ignored</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;`\N`</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;the character code N in decimal</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;`\0xN`</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;the character code N in sedecimal</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;\&quot;   : The <span class="keywordtype">double</span> quote (&quot;)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;\N</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;`\xN`</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;the character code N in sedecimal</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;the character code N in decimal</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;\0xN</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;the character code N in sedecimal</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;`\0oN`</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;the character code N in octal</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;`\0bN`</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;the character code N in binary</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;\xN</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;the character code N in sedecimal</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;\0oN</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;`\a`</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;Bell (`0x07`)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;`\b`</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;Backspace (`0x08`)</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;the character code N in octal</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;\0bN</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;the character code N in binary</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;`\t`</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;Tab (`0x09`)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;`\e`</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;Escape (`0x1b`)</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;\a</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;BEL (0x07)</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;\b</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;`\n`</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;Newline (`0x0a`)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;`\f`</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;Formfeed (`0x0c`)</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;Backspace (0x08)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;\t</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;Tab (0x09)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;`\r`</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;Carriage Return (`0x0d`)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;`\&lt;other character&gt;`</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;the given character</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;\e</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;Escape (0x1b)</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;\n</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;Newline (0x0a)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;\f</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;Formfeed (0x0c)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;\r</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;Carriage Return (0x0d)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;\&lt;other character&gt;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;the given character</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;@see @ref driver_LPC_types &quot;types&quot;, @ref driver_LPC_float &quot;<span class="keywordtype">float</span>&quot;, @ref driver_LPC_string &quot;<span class="keywordtype">string</span>&quot;, @ref driver_LPC_modifiers &quot;public&quot;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;@see @ref driver_syntax_types <span class="stringliteral">&quot;types&quot;</span>, @ref driver_syntax_float <span class="stringliteral">&quot;float&quot;</span>, @ref driver_syntax_string <span class="stringliteral">&quot;string&quot;</span>, @ref driver_syntax_modifiers <span class="stringliteral">&quot;public&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>int.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:10 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

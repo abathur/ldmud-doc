@@ -2,9 +2,7 @@ public class master {
    /**
     * Handle a received UDP message.
     * 
-    * This function is called for every message received on the UDP
-    * port. Usually it is passed on to some object that handles
-    * inter-mud communications.
+    * This function is called for every message received on the UDP port. Usually it is passed on to some object that handles inter-mud communications.
     * 
     * @synopsis{
     * void receive_udp(string host, string msg, int hostport)

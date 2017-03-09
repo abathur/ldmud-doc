@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>H_MOVE_OBJECT0 &mdash; LDMud UNRELEASED documentation</title>
+    <title>H_MOVE_OBJECT0 &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="hook" href="hook.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="H_MSG_DISCARDED" href="msg_discarded.html" />
     <link rel="prev" title="H_MODIFY_COMMAND_FNAME" href="modify_command_fname.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -41,22 +43,22 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="lpc.move_object">
+  <div class="section" id="lpc.hook.move_object">
 <div class="section" id="SYNOPSIS">
 <span id="move_object"></span><span id="H_MOVE_OBJECT0"></span><span id="H_MOVE_OBJECT1"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;sys/driver_hooks.h&gt;</tr>
-<tr id="lpc.H_MOVE_OBJECT0">
-<td>
+<tr id="lpc.hook.H_MOVE_OBJECT0">
+<!--[lpc.hook.H_MOVE_OBJECT0]--><td>
 <code class="descname">set_driver_hook</code></td><td><span class="sig-paren">(</span></td><td>
 <em>H_MOVE_OBJECT0</em>, </td><td>
-<em>value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.H_MOVE_OBJECT0" title="Permalink to this definition">¶</a></tr>
-<tr id="lpc.H_MOVE_OBJECT1">
-<td>
+<em>value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.hook.H_MOVE_OBJECT0" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.hook.H_MOVE_OBJECT1">
+<!--[lpc.hook.H_MOVE_OBJECT1]--><td>
 <code class="descname">set_driver_hook</code></td><td><span class="sig-paren">(</span></td><td>
 <em>H_MOVE_OBJECT1</em>, </td><td>
-<em>value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.H_MOVE_OBJECT1" title="Permalink to this definition">¶</a></tr>
+<em>value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.hook.H_MOVE_OBJECT1" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -64,20 +66,21 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>value</strong> (<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure"><em>closure</em></a>) &#8211; void &lt;closure&gt;(object item, object dest)</li>
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last">
+<li><div class="first line"><strong>value</strong> (<a class="reference internal" href="../syntax/closures.html#lpc.type.closure" title="closure"><em>closure</em></a>) &#8211; void &lt;closure&gt;(object item, object dest)</div>
+</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p>Mandatory hooks to implement the efun void move_object(). Hook setting must be an unbound lambda closure.</p>
-<p>Upon call, the hook has to perform the move itself (by using set_environment()) and all depending actions (like the calls to init() to add actions).</p>
+<p>Mandatory hooks to implement the efun void <a class="reference internal" href="../efun/move_object.html#lpc.efun.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object</span></code>(E)</a>. Hook setting must be an unbound lambda closure.</p>
+<p>Upon call, the hook has to perform the move itself (by using <a class="reference internal" href="../efun/set_environment.html#lpc.efun.set_environment" title="set_environment"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_environment</span></code>(E)</a>) and all depending actions (like the calls to <a class="reference internal" href="../applied/init.html#lpc.applied.init" title="init"><code class="xref lpc lpc-applied docutils literal"><span class="pre">init</span></code>(A)</a> to add actions).</p>
 <p>The difference lies in the binding of the set hook prior to the call: the H_MOVE_OBJECT0 closure is bound to the current object, the H_MOVE_OBJECT1 to &#8216;item&#8217;.</p>
 <p>If both hooks are set, H_MOVE_OBJECT0 is ignored.</p>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../efun/move_object.html#lpc.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object()</span></code>(E)</a>, <a class="reference internal" href="../efun/set_environment.html#lpc.set_environment" title="set_environment"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_environment()</span></code>(E)</a>, <code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code></p>
+<p><a class="reference internal" href="../efun/move_object.html#lpc.efun.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object</span></code>(E)</a>, <a class="reference internal" href="../efun/set_environment.html#lpc.efun.set_environment" title="set_environment"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_environment</span></code>(E)</a>, <a class="reference internal" href="overview.html#lpc.overview.hook" title="hook"><code class="xref lpc lpc-overview docutils literal"><span class="pre">hook</span></code></a></p>
 </div>
 </div>
 </div>
@@ -91,8 +94,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -111,15 +114,14 @@
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -131,7 +133,7 @@
       &copy;good question.
       
       |
-      <a href="../_sources/hook/move_object.txt"
+      <a href="../_sources/hook/move_object.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

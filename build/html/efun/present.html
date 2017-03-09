@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::present() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::present() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::present_clone()" href="present_clone.html" />
     <link rel="prev" title="efun::pow()" href="pow.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,91 +47,90 @@
 <div class="section" id="SYNOPSIS">
 <span id="present"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.present">
-<td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">present</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.present" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.present">
+<!--[lpc.efun.present]--><td>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">present</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.present" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">present</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;n</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">present</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+string<em>&nbsp;str</em>, </td><td id="id3">
+int<em>&nbsp;n</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">present</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;env</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">present</code></td><td><span class="sig-paren">(</span></td><td id="id4">
+string<em>&nbsp;str</em>, </td><td id="id5">
+object<em>&nbsp;env</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">present</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;n</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;env</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">present</code></td><td><span class="sig-paren">(</span></td><td id="id6">
+string<em>&nbsp;str</em>, </td><td id="id7">
+int<em>&nbsp;n</em>, </td><td id="id8">
+object<em>&nbsp;env</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">present</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">present</code></td><td><span class="sig-paren">(</span></td><td id="id9">
+object<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">present</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;env</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">present</code></td><td><span class="sig-paren">(</span></td><td id="id10">
+object<em>&nbsp;ob</em>, </td><td id="id11">
+object<em>&nbsp;env</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>This efun checks if an object is present in a given environment.
-The object is identified by id &lt;str&gt; or by an object &lt;ob&gt;. This
-latter form of the efun can be used as a fast way to test for the
-presence of a known object.</p>
-<p>When searching objects by id, the efun by default returns the first
-object found matching the id. In order to search for other than the
-first object, a number can be specified either directly as the
-argument &lt;n&gt;, or implicetely inside the &lt;str&gt; in the form &#8220;&lt;id&gt;
-&lt;n&gt;&#8221;.</p>
-<p>By default, the efun searches first in the inventory of
-this_object(), then in its environment. However, if &lt;env&gt; is given,
-the efun searches just inside &lt;env&gt;.</p>
-<p>When searching both inventory and environment of this_object(),
-the numbering is applied linear over both spaces (see examples).</p>
-<p>The driver identifies objects by calling the lfun id() in each
-object.</p>
+<p>This efun checks if an object is present in a given environment. The object is identified by id <a class="reference internal" href="#efun/present.arg.str" title="str"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str</span></code></a> or by an object <a class="reference internal" href="#efun/present.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>. This latter form of the efun can be used as a fast way to test for the presence of a known object.</p>
+<p>When searching objects by id, the efun by default returns the first object found matching the id. In order to search for other than the first object, a number can be specified either directly as the argument <a class="reference internal" href="#efun/present.arg.n" title="n"><code class="xref lpc lpc-arg docutils literal"><span class="pre">n</span></code></a>, or implicetely inside the <a class="reference internal" href="#efun/present.arg.str" title="str"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str</span></code></a> in the form &#8220;<code class="xref lpc lpc-arg docutils literal"><span class="pre">id</span></code> <a class="reference internal" href="#efun/present.arg.n" title="n"><code class="xref lpc lpc-arg docutils literal"><span class="pre">n</span></code></a>&#8221;.</p>
+<p>By default, the efun searches first in the inventory of <code class="docutils literal"><span class="pre">this_object()</span></code>, then in its environment. However, if <a class="reference internal" href="#efun/present.arg.env" title="env"><code class="xref lpc lpc-arg docutils literal"><span class="pre">env</span></code></a> is given, the efun searches just inside <a class="reference internal" href="#efun/present.arg.env" title="env"><code class="xref lpc lpc-arg docutils literal"><span class="pre">env</span></code></a>.</p>
+<p>When searching both inventory and environment of <a class="reference internal" href="this_object.html#lpc.efun.this_object" title="this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_object</span></code>(E)</a>, the numbering is applied linear over both spaces (see examples).</p>
+<p>The driver identifies objects by calling <a class="reference internal" href="../applied/id.html#lpc.applied.id" title="id"><code class="xref lpc lpc-applied docutils literal"><span class="pre">id</span></code>(A)</a> in each object.</p>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>present(&#8220;chest&#8221;);</dt>
-<dd>&#8211;&gt; returns the first &#8216;chest&#8217; object in this object.</dd>
-<dt>present(&#8220;chest 2&#8221;)</dt>
-<dd>&#8211;&gt; returns the second &#8216;chest&#8217; object in this object.</dd>
-<dt>present(&#8220;chest 2&#8221;, 1)</dt>
-<dd>&#8211;&gt; returns the first &#8216;chest 2&#8217; object in this object.</dd>
-</dl>
-<p>Assume there is one &#8220;chest&#8221; inside the current object, and
-two in its environment:</p>
-<blockquote>
-<div>present(&#8220;chest&#8221;, 1) -&gt; returns the chest inside
-present(&#8220;chest&#8221;, 2) -&gt; returns the first chest outside
-present(&#8220;chest&#8221;, 3) -&gt; returns the second chest outside</div></blockquote>
-<p>A typical 2.4.5-implementation of the &#8220;do &lt;id&gt; &lt;n&gt;&#8221; command style
-is:</p>
-<blockquote>
-<div><p>void init() { add_action(&#8220;open_chest&#8221;, &#8220;open&#8221;); }</p>
-<dl class="docutils">
-<dt>int open_chest (string str) {</dt>
-<dd><dl class="first docutils">
-<dt>if (present (str) != this_object ())</dt>
-<dd>return 0; /* Not this chest <a href="#id1"><span class="problematic" id="id2">*</span></a>/</dd>
-</dl>
-<p class="last">...</p>
-</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
+<p>Find the first &#8216;chest&#8217; object within the calling object:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">present</span><span class="p">(</span><span class="s">&quot;chest&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Find the second &#8216;chest&#8217; object within the calling object:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">present</span><span class="p">(</span><span class="s">&quot;chest 2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Find the first &#8216;chest 2&#8217; object within the calling object:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">present</span><span class="p">(</span><span class="s">&quot;chest 2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Assuming there is one &#8220;chest&#8221; inside the current object, and two in its environment:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">present</span><span class="p">(</span><span class="s">&quot;chest&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// returns the chest inside</span>
+<span class="n">present</span><span class="p">(</span><span class="s">&quot;chest&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">// returns the first chest outside</span>
+<span class="n">present</span><span class="p">(</span><span class="s">&quot;chest&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">// returns the second chest outside</span>
+</pre></div>
+</div>
+<p>A typical 2.4.5-implementation of the <code class="samp docutils literal"><span class="pre">do</span> <em><span class="pre">id</span></em> <em><span class="pre">n</span></em></code> command style is:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span> <span class="n">add_action</span><span class="p">(</span><span class="s">&quot;open_chest&quot;</span><span class="p">,</span> <span class="s">&quot;open&quot;</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">open_chest</span> <span class="p">(</span><span class="kt">string</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">present</span> <span class="p">(</span><span class="n">str</span><span class="p">)</span> <span class="o">!=</span> <span class="n">this_object</span> <span class="p">())</span>
+      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// Not this chest</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.11/3.3.610</em>) &#8211; introduced the <code class="docutils literal"><span class="pre">(str,</span> <span class="pre">n)</span></code> argument form.</li>
+<li><strong>changed</strong> (<em>3.3.713</em>) &#8211; modified the <a class="reference internal" href="#efun/present.arg.n" title="n"><code class="xref lpc lpc-arg docutils literal"><span class="pre">n</span></code></a> search behaviour so that the numbering is applied over both inventory and environment together. Before, the numbering was individual in each space, leading to situations where low-numbered objects in the environment were hidden by those in the inventory.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="move_object.html#lpc.efun.move_object" title="move_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">move_object</span></code>(E)</a>, <a class="reference internal" href="environment.html#lpc.efun.environment" title="environment"><code class="xref lpc lpc-efun docutils literal"><span class="pre">environment</span></code>(E)</a>, <a class="reference internal" href="this_object.html#lpc.efun.this_object" title="this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_object</span></code>(E)</a>, <a class="reference internal" href="present_clone.html#lpc.efun.present_clone" title="present_clone"><code class="xref lpc lpc-efun docutils literal"><span class="pre">present_clone</span></code>(E)</a>, <a class="reference internal" href="../applied/id.html#lpc.applied.id" title="id"><code class="xref lpc lpc-applied docutils literal"><span class="pre">id</span></code>(A)</a>, <a class="reference internal" href="../applied/init.html#lpc.applied.init" title="init"><code class="xref lpc lpc-applied docutils literal"><span class="pre">init</span></code>(A)</a></p>
 </div>
 </div>
 </div>
@@ -143,8 +144,8 @@ is:</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -156,6 +157,8 @@ is:</p>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
 <li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
 </ul>
 </li>
 </ul>
@@ -163,15 +166,14 @@ is:</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -183,7 +185,7 @@ is:</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/present.txt"
+      <a href="../_sources/efun/present.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -8,7 +8,7 @@ DESCRIPTION
 
    Arguments:
 
-      previous_object()
+      `previous_object()`
          The object causing the compile.
 
       file
@@ -25,7 +25,7 @@ DESCRIPTION
 
       `0`
          use the normal include filename generation (""-includes are used as 
-         they are, <>-includes are handled according to H_INCLUDE_DIRS).
+         they are, <>-includes are handled according to H_INCLUDE_DIRS(H)).
 
       `<path>`
          the full absolute pathname of the file to include, without parentdir 
@@ -35,4 +35,12 @@ DESCRIPTION
          The include directive is not legal.
 
    If the function does not generate a valid pathname, the driver will next 
-   try to resolve the include using the H_INCLUDE_DIRS hook.
+   try to resolve the include using the H_INCLUDE_DIRS(H) hook.
+
+HISTORY
+=======
+   - introduced (3.2.8)
+
+SEE ALSO
+========
+   hook(H), inherit_file(M), include_dirs(H)

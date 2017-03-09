@@ -8,5 +8,5 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   mappingp()(E), mkmapping()(E), m_values()(E), m_add()(E), m_delete()(E), 
-   sizeof()(E), widthof()(E), unmkmapping()(E)
+   mappingp(E), mkmapping(E), m_values(E), m_add(E), m_delete(E), sizeof(E), 
+   widthof(E), unmkmapping(E)

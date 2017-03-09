@@ -4,10 +4,10 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Returns 1 if the ob is interactive and currently editing with ed(). If ed()
-   was called with a function name as second argument, the object where ed() 
-   was called is returned, else 0.
+   Returns 1 if the ob(E) is interactive and currently editing with ed(E). If 
+   ed(E) was called with a function name as second argument, the object where 
+   ed(E) was called is returned, else 0.
 
 SEE ALSO
 ========
-   ed()(E)
+   ed(E)

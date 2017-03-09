@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::map() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::map() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::map_indices()" href="map_indices.html" />
     <link rel="prev" title="efun::make_shared_string()" href="make_shared_string.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,178 +47,153 @@
 <div class="section" id="SYNOPSIS">
 <span id="map"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.map">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;*arg</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;func</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.map" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.map">
+<!--[lpc.efun.map]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+mixed<em>&nbsp;*arg</em>, </td><td id="id2">
+string<em>&nbsp;func</em>, </td><td id="id3">
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a>|object<em>&nbsp;ob</em>, </td><td id="id4">
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.map" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;*arg</em>, </td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;cl</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td id="id5">
+mixed<em>&nbsp;*arg</em>, </td><td id="id6">
+closure<em>&nbsp;cl</em>, </td><td id="id7">
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;*arg</em>, </td><td>
-<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a> m<em>&nbsp;[</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;idx]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td id="id8">
+mixed<em>&nbsp;*arg</em>, </td><td id="id9">
+<a class="reference internal" href="../syntax/mappings.html#lpc.type.mapping" title="mapping">mapping</a> m<em>&nbsp;[</em>, </td><td id="id10">
+int<em>&nbsp;idx]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/structs.html#lpc.struct" title="struct">struct</a><em>&nbsp;arg</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;func</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td id="id11">
+struct<em>&nbsp;arg</em>, </td><td id="id12">
+string<em>&nbsp;func</em>, </td><td id="id13">
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a>|object<em>&nbsp;ob</em>, </td><td id="id14">
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/structs.html#lpc.struct" title="struct">struct</a><em>&nbsp;arg</em>, </td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;cl</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td id="id15">
+struct<em>&nbsp;arg</em>, </td><td id="id16">
+closure<em>&nbsp;cl</em>, </td><td id="id17">
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/structs.html#lpc.struct" title="struct">struct</a><em>&nbsp;arg</em>, </td><td>
-<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a> m<em>&nbsp;[</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;idx]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td id="id18">
+struct<em>&nbsp;arg</em>, </td><td id="id19">
+<a class="reference internal" href="../syntax/mappings.html#lpc.type.mapping" title="mapping">mapping</a> m<em>&nbsp;[</em>, </td><td id="id20">
+int<em>&nbsp;idx]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a> </td><td>
-<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a><em>&nbsp;arg</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;func</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mappings.html#lpc.type.mapping" title="mapping">mapping</a> </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td id="id21">
+mapping<em>&nbsp;arg</em>, </td><td id="id22">
+string<em>&nbsp;func</em>, </td><td id="id23">
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a>|object<em>&nbsp;ob</em>, </td><td id="id24">
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a> </td><td>
-<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a><em>&nbsp;arg</em>, </td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;cl</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mappings.html#lpc.type.mapping" title="mapping">mapping</a> </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td id="id25">
+mapping<em>&nbsp;arg</em>, </td><td id="id26">
+closure<em>&nbsp;cl</em>, </td><td id="id27">
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;arg</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;func</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td id="id28">
+string<em>&nbsp;arg</em>, </td><td id="id29">
+string<em>&nbsp;func</em>, </td><td id="id30">
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a>|object<em>&nbsp;ob</em>, </td><td id="id31">
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;arg</em>, </td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;cl</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td id="id32">
+string<em>&nbsp;arg</em>, </td><td id="id33">
+closure<em>&nbsp;cl</em>, </td><td id="id34">
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;arg</em>, </td><td>
-<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a> m<em>&nbsp;[</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;idx]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">map</code></td><td><span class="sig-paren">(</span></td><td id="id35">
+string<em>&nbsp;arg</em>, </td><td id="id36">
+<a class="reference internal" href="../syntax/mappings.html#lpc.type.mapping" title="mapping">mapping</a> m<em>&nbsp;[</em>, </td><td id="id37">
+int<em>&nbsp;idx]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Call the function <code class="docutils literal"><span class="pre">&lt;ob&gt;-&gt;&lt;func&gt;()</span></code> resp. the closure <a class="reference internal" href="#efun/map.arg.cl" title="cl"><code class="xref lpc lpc-arg docutils literal"><span class="pre">cl</span></code></a> for every element of the string, array, struct or mapping <a class="reference internal" href="#efun/map.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>, and return a result made up from the returned values.</p>
+<p>If <a class="reference internal" href="#efun/map.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is omitted, or neither a string nor an object, it defaults to <code class="docutils literal"><span class="pre">this_object()</span></code>.</p>
+<p>If <a class="reference internal" href="#efun/map.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> is an string, array or struct, the function will be called with each of the array/struct elements as first parameter, followed by the <a class="reference internal" href="#efun/map.arg.extra" title="extra"><code class="xref lpc lpc-arg docutils literal"><span class="pre">extra</span></code></a> arguments. The result of the efun is an array/struct with all the results returned from the function calls. Thus the operation could be described as:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">foreach</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="n">result</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">ob</span><span class="o">-&gt;</span><span class="n">func</span><span class="p">(</span><span class="n">arg</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">extra</span><span class="p">...)</span>
+</pre></div>
+</div>
+<p>If <a class="reference internal" href="#efun/map.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> is an string/array/struct, and a mapping is specified instead of a function, the result is an array/struct with the values found in the mapping for the original values, resp. with the original values for which no mapping entry exists. If a column index <code class="xref lpc lpc-arg docutils literal"><span class="pre">idx</span></code> is given, that column of the mapping is used. In other words:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">foreach</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">arg</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="n">exists</span> <span class="k">as</span> <span class="n">key</span> <span class="k">in</span> <span class="n">map</span><span class="p">)</span>
+    <span class="n">result</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">map</span><span class="p">[</span><span class="n">arg</span><span class="p">[</span><span class="n">index</span><span class="p">]]</span> <span class="n">or</span> <span class="n">map</span><span class="p">[</span><span class="n">arg</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">idx</span><span class="p">]</span>
+  <span class="k">else</span>
+    <span class="n">result</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If <a class="reference internal" href="#efun/map.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> is a string, the only allowed replacement values are numbers, of which only the lower 8 bit will be considered.</p>
+<p>If <a class="reference internal" href="#efun/map.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> is a mapping, the function will be called with each of the mapping keys as first, and (if existing) the associated values as second parameter, followed by the <a class="reference internal" href="#efun/map.arg.extra" title="extra"><code class="xref lpc lpc-arg docutils literal"><span class="pre">extra</span></code></a> arguments (these must not be protected references like &amp;(i[0]). The result of the efun is a mapping of all results of the function calls, stored under their corresponding key.</p>
+<p>Depending on the width of the mapping <a class="reference internal" href="#efun/map.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>, the operation can be described as:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">foreach</span> <span class="p">(</span><span class="n">key</span> <span class="k">in</span> <span class="n">arg</span><span class="p">)</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="n">widthof</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span>
+  <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+    <span class="n">result</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">ob</span><span class="o">-&gt;</span><span class="n">func</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">extra</span><span class="p">...)</span>
+  <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+    <span class="n">result</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">ob</span><span class="o">-&gt;</span><span class="n">func</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">arg</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">extra</span><span class="p">...)</span>
+  <span class="k">else</span>  <span class="o">:</span>
+    <span class="n">result</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">ob</span><span class="o">-&gt;</span><span class="n">func</span><span class="p">(</span> <span class="n">key</span>
+                          <span class="p">,</span> <span class="p">({</span> <span class="n">arg</span><span class="p">[</span><span class="n">key</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">...</span><span class="n">arg</span><span class="p">[</span><span class="n">key</span><span class="p">,</span><span class="n">width</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">})</span>
+                          <span class="p">,</span> <span class="n">extra</span><span class="p">...)</span>
+</pre></div>
+</div>
+<p>The advantage of this approach is that the two types of multi-dimensional mappings (mappings with multiple values per key, and mappings of arrays) can be treated in the same way.</p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">the resulting mapping _always_ has one value per key.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This efun behaves like <code class="docutils literal"><span class="pre">map_array()</span></code>, but used with mappings generalises <a class="reference internal" href="map_indices.html#lpc.efun.map_indices" title="map_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_indices</span></code>(E)</a>!</p>
+</div>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>arr = ({ 1, 2, 3, 4 });
+m = ([ 1:-1, 3:-3 ]);
+
+map(arr, #&#39;%, 2); // returns ({ 1, 0, 1, 0 })
+map(arr, m);      // returns ({ -1, 2, -3, 4 })
+</pre></div>
 </div>
 </div>
-<p>Call the function &lt;ob&gt;-&gt;&lt;func&gt;() resp. the closure &lt;cl&gt; for every
-element of the string, array, struct or mapping &lt;arg&gt;, and return a
-result made up from the returned values.</p>
-<p>If &lt;ob&gt; is omitted, or neither a string nor an object, it
-defaults to this_object().</p>
-<p>If &lt;arg&gt; is an string, array or struct, the function will be called
-with each of the array/struct elements as first parameter, followed
-by the &lt;extra&gt; arguments. The result of the efun is an array/struct
-with all the results returned from the function calls. Thus the
-operation could be described as:</p>
-<blockquote>
-<div>foreach(index) result[index] = ob-&gt;func(arg[index], extra...)</div></blockquote>
-<p>If &lt;arg&gt; is an string/array/struct, and a mapping is specified
-instead of a function, the result is an array/struct with the
-values found in the mapping for the original values, resp. with the
-original values for which no mapping entry exists. If a column index
-&lt;idx&gt; is given, that column of the mapping is used. In other words:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>foreach(index)</dt>
-<dd><dl class="first last docutils">
-<dt>if (arg[index] exists as key in map)</dt>
-<dd>result[index] = map[arg[index]] or map[arg[index], idx]</dd>
-<dt>else</dt>
-<dd>result[index] = arg[index]</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
-<p>If &lt;arg&gt; is a string, the only allowed replacement values are
-numbers, of which only the lower 8 bit will be considered.</p>
-<p>If &lt;arg&gt; is a mapping, the function will be called with
-each of the mapping keys as first, and (if existing) the
-associated values as second parameter, followed by the &lt;extra&gt;
-arguments (these must not be protected references like &amp;(i[0]). The
-result of the efun is a mapping of all results of the function calls,
-stored under their corresponding key.</p>
-<p>Depending on the width of the mapping &lt;arg&gt;, the operation can
-be described as:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>foreach (key in arg)</dt>
-<dd><p class="first">switch (widthof(arg))
-case 0:</p>
-<blockquote>
-<div>result[key] = ob-&gt;func(key, 0, extra...)</div></blockquote>
-<dl class="last docutils">
-<dt>case 1:</dt>
-<dd>result[key] = ob-&gt;func(key, arg[key], extra...)</dd>
-<dt>else  :</dt>
-<dd><dl class="first last docutils">
-<dt>result[key] = ob-&gt;func( key</dt>
-<dd>, ({ arg[key,0] ...arg[key,width-1] })
-, extra...)</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
-<p>The advantage of this approach is that the two types of
-multi-dimensional mappings (mappings with multiple values
-per key, and mappings of arrays) can be treated in the same way.</p>
-<p>Note however that the resulting mapping always has one value
-per key.</p>
-<p>Historical Note: map() used with arrays behaves like map_array(),
-but used with mappings generalises map_indices()!</p>
-<p>EXAMPLES
-arr = ({ 1, 2, 3, 4 });
-m = ([ 1:-1, 3:-3 ]);</p>
-<p>map(arr, #&#8217;%, 2)  &#8211;&gt; returns ({ 1, 0, 1, 0 })
-map(arr, m)       &#8211;&gt; returns ({ -1, 2, -3, 4 })</p>
-<p>Introduced in LDMud 3.2.6, obsoletes map_array().
-LDMud 3.2.8 added the feature of mapping an array through a mapping.
-LDMud 3.3.439 added mapping of strings.
-LDMud 3.3.719 added the &lt;idx&gt; parameter for mapping through mappings.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="filter.html#lpc.filter" title="filter"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter()</span></code>(E)</a>, <a class="reference internal" href="filter_indices.html#lpc.filter_indices" title="filter_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter_indices()</span></code>(E)</a>, <a class="reference internal" href="map_indices.html#lpc.map_indices" title="map_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_indices()</span></code>(E)</a>, <a class="reference internal" href="map_objects.html#lpc.map_objects" title="map_objects"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_objects()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.6</em>) &#8211; obsoletes <code class="docutils literal"><span class="pre">map_array()</span></code>.</li>
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; added the feature of mapping an array through a mapping.</li>
+<li><strong>changed</strong> (<em>3.3.439</em>) &#8211; added mapping of strings.</li>
+<li><strong>changed</strong> (<em>3.3.719</em>) &#8211; added the <code class="xref lpc lpc-arg docutils literal"><span class="pre">idx</span></code> parameter for mapping through mappings.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="filter.html#lpc.efun.filter" title="filter"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter</span></code>(E)</a>, <a class="reference internal" href="filter_indices.html#lpc.efun.filter_indices" title="filter_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter_indices</span></code>(E)</a>, <a class="reference internal" href="map_indices.html#lpc.efun.map_indices" title="map_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_indices</span></code>(E)</a>, <a class="reference internal" href="map_objects.html#lpc.efun.map_objects" title="map_objects"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_objects</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -227,8 +204,8 @@ LDMud 3.3.719 added the &lt;idx&gt; parameter for mapping through mappings.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -238,21 +215,25 @@ LDMud 3.3.719 added the &lt;idx&gt; parameter for mapping through mappings.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::map()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -264,7 +245,7 @@ LDMud 3.3.719 added the &lt;idx&gt; parameter for mapping through mappings.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/map.txt"
+      <a href="../_sources/efun/map.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

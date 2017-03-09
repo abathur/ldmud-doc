@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::query_limits() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::query_limits() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::query_load_average()" href="query_load_average.html" />
     <link rel="prev" title="efun::query_ip_number()" href="query_ip_number.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,64 +49,56 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;rtlimits.h&gt;</tr>
-<tr id="lpc.query_limits">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> * </td><td>
-<code class="descname">query_limits</code></td><a class="headerlink" href="#lpc.query_limits" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.query_limits">
+<!--[lpc.efun.query_limits]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> * </td><td>
+<code class="descname">query_limits</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.query_limits" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> * </td><td>
-<code class="descname">query_limits</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;default</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> * </td><td>
+<code class="descname">query_limits</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+int<em>&nbsp;default</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Return an array with the current runtime limits, resp. if <code class="xref any docutils literal"><span class="pre">default</span></code> is true, the default runtime limits. The entries in the returned array are:</p>
+<p>Return an array with the current runtime limits, resp. if <a class="reference internal" href="#efun/query_limits.arg.default" title="default"><code class="xref lpc lpc-arg docutils literal"><span class="pre">default</span></code></a> is true, the default runtime limits. The entries in the returned array are:</p>
 <blockquote>
-<div>int[LIMIT_EVAL]:    the max number of eval costs
-int[LIMIT_ARRAY]:   the max number of array entries
-int[LIMIT_MAPPING_SIZE]: the max number of mapping values
-int[LIMIT_MAPPING_KEYS]: the max number of mapping entries (LIMIT_MAPPING is an alias for LIMIT_MAPPING_KEYS)
-int[LIMIT_BYTE]:    the max number of bytes handled with one read_bytes()/write_bytes() call.
-int[LIMIT_FILE]:    the max number of bytes handled with one read_file()/write_file() call.
-int[LIMIT_CALLOUTS]: the number of callouts at one time.
-int[LIMIT_COST]:    how to account the current cost.
-int[LIMIT_MEMROY]:  the max. number of bytes which can be <em>additionally</em> allocated/used <em>per top-level execution thread</em></div></blockquote>
-<p>For all limits except LIMIT_COST a limit of &#8216;0&#8217; aka LIMIT_UNLIMITED means &#8216;no limit&#8217;.</p>
-<p>The value for LIMIT_COST has these meanings:</p>
+<div>int[<code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_EVAL</span></code>]:    the max number of eval costs
+int[<code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_ARRAY</span></code>]:   the max number of array entries
+int[<code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_MAPPING_SIZE</span></code>]: the max number of mapping values
+int[<code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_MAPPING_KEYS</span></code>]: the max number of mapping entries (<code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_MAPPING</span></code> is an alias for <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_MAPPING_KEYS</span></code>)
+int[<code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_BYTE</span></code>]:    the max number of bytes handled with one <a class="reference internal" href="read_bytes.html#lpc.efun.read_bytes" title="read_bytes"><code class="xref lpc lpc-efun docutils literal"><span class="pre">read_bytes</span></code>(E)</a> or <a class="reference internal" href="write_bytes.html#lpc.efun.write_bytes" title="write_bytes"><code class="xref lpc lpc-efun docutils literal"><span class="pre">write_bytes</span></code>(E)</a> call.
+int[<code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_FILE</span></code>]:    the max number of bytes handled with one <a class="reference internal" href="read_file.html#lpc.efun.read_file" title="read_file"><code class="xref lpc lpc-efun docutils literal"><span class="pre">read_file</span></code>(E)</a> or <a class="reference internal" href="write_file.html#lpc.efun.write_file" title="write_file"><code class="xref lpc lpc-efun docutils literal"><span class="pre">write_file</span></code>(E)</a> call.
+int[<code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_CALLOUTS</span></code>]: the number of callouts at one time.
+int[<code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_COST</span></code>]:    how to account the current cost.
+int[<code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_MEMROY</span></code>]:  the max. number of bytes which can be <em>additionally</em> allocated/used <em>per top-level execution thread</em></div></blockquote>
+<p>For all limits except <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_COST</span></code> a limit of &#8216;0&#8217; aka <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_UN</span></code><code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMITED</span></code> means &#8216;no limit&#8217;.</p>
+<p>The value for <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_COST</span></code> has these meanings:</p>
 <blockquote>
-<div><p>value &gt; 0: the execution will cost minimum(&lt;value&gt;, actual cost) .</p>
-<dl class="docutils">
-<dt>value = 0: if the current LIMIT_EVAL is larger than the calling</dt>
-<dd>LIMIT_EVAL, the evaluation will cost only 10; otherwise
-the full cost will be accounted.</dd>
-<dt>value &lt; 0: (-value)% of the current evaluation cost will be</dt>
-<dd>accounted; -100 obviously means &#8216;full cost&#8217;.</dd>
-</dl>
+<div><p>value &gt; 0: the execution will cost <code class="docutils literal"><span class="pre">min(value,</span> <span class="pre">actual</span> <span class="pre">cost)</span></code>.</p>
+<p>value = 0: if the current <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_EVAL</span></code> is larger than the calling <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_EVAL</span></code>, the evaluation will cost only 10; otherwise the full cost will be accounted.</p>
+<p>value &lt; 0: <code class="docutils literal"><span class="pre">(-value)%</span></code> of the current evaluation cost will be accounted; <code class="docutils literal"><span class="pre">-100</span></code> means &#8216;full cost&#8217;.</p>
 </div></blockquote>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">query_limits</span><span class="p">()</span>
-  <span class="o">--&gt;</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">current</span> <span class="n">runtime</span> <span class="n">limits</span>
-
-<span class="n">query_limits</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-  <span class="o">--&gt;</span> <span class="n">returns</span> <span class="n">the</span> <span class="k">default</span> <span class="n">runtime</span> <span class="n">limits</span>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">query_limits</span><span class="p">()</span>  <span class="c1">// returns the current runtime limits</span>
+<span class="n">query_limits</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// returns the default runtime limits</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><strong>introduced</strong> (<em>3.2.7</em>)</li>
-<li><strong>modified</strong> (<em>3.2.9</em>) &#8211; adds LIMIT_CALLOUTS</li>
-<li><strong>modified</strong> (<em>3.3.563</em>) &#8211; adds LIMIT_COST</li>
-<li><strong>modified</strong> (<em>3.3.677</em>) &#8211; adds LIMIT_MAPPING_KEYS, LIMIT_MAPPING_SIZE</li>
-<li><strong>modified</strong> (<em>3.5.0</em>) &#8211; adds LIMIT_MEMORY</li>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; adds <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_CALLOUTS</span></code></li>
+<li><strong>changed</strong> (<em>3.3.563</em>) &#8211; adds <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_COST</span></code></li>
+<li><strong>changed</strong> (<em>3.3.677</em>) &#8211; adds <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_MAPPING_KEYS</span></code>, <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_MAPPING_SIZE</span></code></li>
+<li><strong>changed</strong> (<em>3.5.0</em>) &#8211; adds <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_MEMORY</span></code></li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="limited.html#lpc.limited" title="limited"><code class="xref lpc lpc-efun docutils literal"><span class="pre">limited()</span></code>(E)</a>, <a class="reference internal" href="set_limits.html#lpc.set_limits" title="set_limits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_limits()</span></code>(E)</a></p>
+<p><a class="reference internal" href="limited.html#lpc.efun.limited" title="limited"><code class="xref lpc lpc-efun docutils literal"><span class="pre">limited</span></code>(E)</a>, <a class="reference internal" href="set_limits.html#lpc.efun.set_limits" title="set_limits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_limits</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -118,8 +112,8 @@ the full cost will be accounted.</dd>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -140,15 +134,14 @@ the full cost will be accounted.</dd>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -160,7 +153,7 @@ the full cost will be accounted.</dd>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/query_limits.txt"
+      <a href="../_sources/efun/query_limits.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

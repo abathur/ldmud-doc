@@ -11,4 +11,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   `wizlist()`, `get_wiz_info()`, `query_creator`, getuid()(E)
+   `get_wiz_info`, creator(E), getuid(E)

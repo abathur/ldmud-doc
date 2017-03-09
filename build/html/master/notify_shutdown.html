@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>master::notify_shutdown() &mdash; LDMud UNRELEASED documentation</title>
+    <title>master::notify_shutdown() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="master" href="master.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="master::parse_command_adjectiv_id_list()" href="parse_command_adjectiv_id_list.html" />
     <link rel="prev" title="master::make_path_absolute()" href="make_path_absolute.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,41 +47,38 @@
 <div class="section" id="SYNOPSIS">
 <span id="notify_shutdown"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.notify_shutdown">
-<td>
-varargs <a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">notify_shutdown</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;crash_reason</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.notify_shutdown" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.master.notify_shutdown">
+<!--[lpc.master.notify_shutdown]--><td>
+<a class="reference internal" href="../syntax/varargs.html#lpc.keyword.varargs" title="varargs">varargs</a> <a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">notify_shutdown</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;crash_reason</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.master.notify_shutdown" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Notify the master about an immediate shutdown. If &lt;crash_reason&gt; is 0,
-it is a normal shutdown, otherwise it is a crash and &lt;crash_reason&gt;
-gives a hint at the reason.</p>
-<p>The function has the opportunity to perform any cleanup operation,
-like informing the mudwho server that the mud is down. This can not be
-done when remove_player() is called because the udp connectivity is
-already gone then.</p>
-<p>If the gamedriver shuts down normally, this is the last function
-called before the mud shuts down the udp connections and the accepting
-socket for new players.</p>
-<p>If the gamedriver crashes, this is the last function called before the
-mud attempts to dump core and exit. WARNING: Since the driver is in an
-unstable state, this function may not be able to run to completion!
-The following crash reasons are defined:</p>
+<p>Notify the master about an immediate shutdown. If <a class="reference internal" href="#master/notify_shutdown.arg.crash_reason" title="crash_reason"><code class="xref lpc lpc-arg docutils literal"><span class="pre">crash_reason</span></code></a> is 0, it is a normal shutdown, otherwise it is a crash and <a class="reference internal" href="#master/notify_shutdown.arg.crash_reason" title="crash_reason"><code class="xref lpc lpc-arg docutils literal"><span class="pre">crash_reason</span></code></a> gives a hint at the reason.</p>
+<p>The function has the opportunity to perform any cleanup operation, like informing the mudwho server that the mud is down. This can not be done when <a class="reference internal" href="remove_player.html#lpc.master.remove_player" title="remove_player"><code class="xref lpc lpc-master docutils literal"><span class="pre">remove_player</span></code>(M)</a> is called because the udp connectivity is already gone then.</p>
+<ul>
+<li><p class="first">If the gamedriver shuts down normally, this is the last function called before the mud shuts down the udp connections and the accepting socket for new players.</p>
+</li>
+<li><p class="first">If the gamedriver crashes, this is the last function called before the mud attempts to dump core and exit. The following crash reasons are defined:</p>
 <ul class="simple">
 <li>&#8220;Fatal Error&#8221;: an internal sanity check failed.</li>
 </ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Since the driver is in an unstable state, this function may not be able to run to completion!</p>
+</div>
+</li>
+</ul>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added the &lt;crash_reason&gt; argument and that the
-function is called for a crash at all.</li>
+<ul>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added the <a class="reference internal" href="#master/notify_shutdown.arg.crash_reason" title="crash_reason"><code class="xref lpc lpc-arg docutils literal"><span class="pre">crash_reason</span></code></a> argument and that the function is called for a crash at all.</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="slow_shut_down.html#lpc.slow_shut_down" title="slow_shut_down"><code class="xref lpc lpc-master docutils literal"><span class="pre">slow_shut_down</span></code>(M)</a>, <a class="reference internal" href="remove_player.html#lpc.remove_player" title="remove_player"><code class="xref lpc lpc-master docutils literal"><span class="pre">remove_player</span></code>(M)</a>,</p>
+<p><a class="reference internal" href="slow_shut_down.html#lpc.master.slow_shut_down" title="slow_shut_down"><code class="xref lpc lpc-master docutils literal"><span class="pre">slow_shut_down</span></code>(M)</a>, <a class="reference internal" href="remove_player.html#lpc.master.remove_player" title="remove_player"><code class="xref lpc lpc-master docutils literal"><span class="pre">remove_player</span></code>(M)</a>,</p>
 </div>
 </div>
 </div>
@@ -93,8 +92,8 @@ function is called for a crash at all.</li>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -114,15 +113,14 @@ function is called for a crash at all.</li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -134,7 +132,7 @@ function is called for a crash at all.</li>
       &copy;good question.
       
       |
-      <a href="../_sources/master/notify_shutdown.txt"
+      <a href="../_sources/master/notify_shutdown.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -4,7 +4,7 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Used by parse_command(). Return the word for "all" in the installation's 
+   Used by parse_command(E). Return the word for "all" in the installation's 
    native language.
 
    USAGE
@@ -15,4 +15,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   parse_command()(E)
+   parse_command(E)

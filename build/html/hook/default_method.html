@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>H_DEFAULT_METHOD &mdash; LDMud UNRELEASED documentation</title>
+    <title>H_DEFAULT_METHOD &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="hook" href="hook.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="H_DEFAULT_PROMPT" href="default_prompt.html" />
     <link rel="prev" title="H_CREATE_SUPER" href="create_super.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -41,17 +43,17 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="lpc.default_method">
+  <div class="section" id="lpc.hook.default_method">
 <div class="section" id="SYNOPSIS">
 <span id="default_method"></span><span id="H_DEFAULT_METHOD"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;sys/driver_hooks.h&gt;</tr>
-<tr id="lpc.H_DEFAULT_METHOD">
-<td>
+<tr id="lpc.hook.H_DEFAULT_METHOD">
+<!--[lpc.hook.H_DEFAULT_METHOD]--><td>
 <code class="descname">set_driver_hook</code></td><td><span class="sig-paren">(</span></td><td>
 <em>H_DEFAULT_METHOD</em>, </td><td>
-<em>value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.H_DEFAULT_METHOD" title="Permalink to this definition">¶</a></tr>
+<em>value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.hook.H_DEFAULT_METHOD" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -59,30 +61,32 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>value</strong> (<a class="reference internal" href="../LPC/string.html#lpc.string" title="string"><em>string</em></a>) &#8211; int &lt;name&gt;(mixed &amp; result, string fun, varargs args)</li>
-<li><strong>value</strong> (<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure"><em>closure</em></a>) &#8211; int &lt;closure&gt;(mixed &amp; result, object ob, string fun, varargs args)</li>
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last">
+<li><div class="first line"><strong>value</strong> (<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string"><em>string</em></a>) &#8211; int &lt;name&gt;(mixed &amp; result, string fun, varargs args)</div>
+</li>
+<li><div class="first line"><strong>value</strong> (<a class="reference internal" href="../syntax/closures.html#lpc.type.closure" title="closure"><em>closure</em></a>) &#8211; int &lt;closure&gt;(mixed &amp; result, object ob, string fun, varargs args)</div>
+</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p>Optional hook to provide default implementation for unresolved calls. Hook setting can be any closure, or the name of the function to call in the object.</p>
-<p>This hook is called whenever a call_other(), call_resolved() or call_out() on named function (as opposed to a closure) couldn&#8217;t be resolved. The hook has then the opportunity to provide a default implementation.</p>
-<p>Exempt from this behaviour are calls to the master object, to simul-efuns, and calls done with call_direct() and call_direct_resolved().</p>
+<p>This hook is called whenever a <a class="reference internal" href="../efun/call_other.html#lpc.efun.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a>, <a class="reference internal" href="../efun/call_resolved.html#lpc.efun.call_resolved" title="call_resolved"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_resolved</span></code>(E)</a> or <a class="reference internal" href="../efun/call_out.html#lpc.efun.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out</span></code>(E)</a> on named function (as opposed to a closure) couldn&#8217;t be resolved. The hook has then the opportunity to provide a default implementation.</p>
+<p>Exempt from this behaviour are calls to the master object, to simul-efuns, and calls done with <a class="reference internal" href="../efun/call_direct.html#lpc.efun.call_direct" title="call_direct"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_direct</span></code>(E)</a> and <a class="reference internal" href="../efun/call_direct_resolved.html#lpc.efun.call_direct_resolved" title="call_direct_resolved"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_direct_resolved</span></code>(E)</a>.</p>
 <p>If the hook is the name of an lfun, it is called in the target object; otherwise if it is a closure, the target object is passed as parameter &lt;ob&gt;.</p>
 <p>The other parameters passed are the name &lt;fun&gt; of the called function, the arguments &lt;args&gt; passed to the call (if any), and a reference &lt;result&gt; to a variable for the call result.</p>
 <p>If the hook can resolve the call, it has to return the call result in &lt;result&gt; and 1 as function result.</p>
 <p>If the hook can not (or doesn&#8217;t want to) resolve the call, it has to return 0.</p>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><strong>introduced</strong> (<em>3.3.113</em>) &#8211; allowed static functions to be given by name.</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code></p>
+<p><a class="reference internal" href="overview.html#lpc.overview.hook" title="hook"><code class="xref lpc lpc-overview docutils literal"><span class="pre">hook</span></code></a></p>
 </div>
 </div>
 </div>
@@ -96,8 +100,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -117,15 +121,14 @@
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -137,7 +140,7 @@
       &copy;good question.
       
       |
-      <a href="../_sources/hook/default_method.txt"
+      <a href="../_sources/hook/default_method.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

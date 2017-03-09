@@ -6,20 +6,28 @@ SYNOPSIS (OPTIONAL)
 
 DESCRIPTION
 ===========
-   Open a database connection as directed by <conn>, and assign the callback 
-   function <fun>/<cl> with the optional <extra> parameters to it.
+   Open a database connection as directed by conn(E), and assign the callback 
+   function fun(E)/cl(E) with the optional extra(E) parameters to it.
 
    The object holding the callback function becomes the controlling object; 
    obiously it is an error to assign more than one connection to the same 
    controlling object.
 
-   The <conn> string is in the format accepted by Postgres' PQconnectStart() 
-   API functions. Pass an empty string to use the default options, or a string
-   holding the '<key>=<value>' options separated by whitespace.
+   The conn(E) string is in the format accepted by 
+   Postgres' `PQconnectStart()` API functions. Pass an empty string to use the
+   default options, or a string holding the `'<key>=<value>'` options 
+   separated by whitespace.
 
    The most useful options are:
-      dbname:   The database name user:     The user name to connect as. 
-      password: Password to be used.
+
+   dbname
+      The database name
+
+   user
+      The user name to connect as.
+
+   password
+      Password to be used.
 
    Return 0 on success, and -1 on failure.
 
@@ -27,3 +35,13 @@ DESCRIPTION
    support. In that case, __PGSQL__ is defined.
 
    The efun triggers a privilege violation ("pgsql", "pg_connect").
+
+HISTORY
+=======
+   - introduced (3.3.445)
+   - changed (3.3.640) -- added the privilege violation.
+
+SEE ALSO
+========
+   >>:concept:`pgsql`<<, pg_query(E), pg_pending(E), pg_conv_string(E), 
+   pg_close(E), privilege_violation(M)

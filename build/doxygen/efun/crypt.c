@@ -1,13 +1,10 @@
 public class efun {
    /**
-    * Crypt the string <str> the first two characters
-    * from the string <seed> as a seed. If <seed> is an integer, then
-    * a random seed is used.
+    * Crypt the string \p str the first two characters from the string \p seed as a seed. If \p seed is an integer, then a random seed is used.
     * 
     * The result has the first two characters as the seed.
     * 
-    * If you want to let enter password information without echo,
-    * input_to() can be used with special argument.
+    * If you want to let users enter password information without echo, efun::input_to() can be used with the `INPUT_NOECHO` flag.
     * 
     * @synopsis{
     * string crypt(string str, int seed)

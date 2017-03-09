@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: LPC/closures.md Source File</title>
+<title>LDMud: syntax/closures.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('closures_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,19 +95,258 @@ $(document).ready(function(){initNavTree('closures_8md.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">LPC/closures.md</div>  </div>
+<div class="title">syntax/closures.md</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;closures {#driver_LPC_closures}</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;===============================</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;@see @ref driver_LPC_closures-example <span class="stringliteral">&quot;closures example&quot;</span>, @ref driver_LPC_inline-closures <span class="stringliteral">&quot;inline-closures&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;closures {#driver_syntax_closures}</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;==================================</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;Closure: `closure`</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;@par note: This is the official man page concerning closures. If you find it hard to read maybe the Closure Guide is an easier introduction <span class="keywordflow">for</span> you: See @ref driver_syntax_closure_guide <span class="stringliteral">&quot;closures&quot;</span> and @ref driver_syntax_closures-example <span class="stringliteral">&quot;closures example&quot;</span>.</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;Closures provide a means of creating code dynamically and passing pieces of code as parameters, storing them in variables. One might think of them as a very advanced form of <a class="code" href="classefun.html#a58338c1e30d3a60a84db85cc2680684b">efun::process_string</a>(). However, <span class="keyword">this</span> falls <span class="keywordtype">short</span> of what you can actually <span class="keywordflow">do</span> with them.</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;The simplest kind of closures are efuns, lfuns or operators. For example, `#<span class="stringliteral">&#39;this_player` is an example of a closure. You can assign it to a variable as in:</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral">~~~{.c}</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">closure f;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">object p;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">f = #&#39;</span>this_player;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;~~~</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;and later use either the <a class="code" href="classefun.html#a665f686219e1bffdb5e89a5158167473">efun::funcall</a>() or <a class="code" href="classefun.html">efun</a>::apply() <a class="code" href="classefun.html">efun</a> to evaluate it. Like:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;p = funcall(f);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;~~~</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;or:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;p = apply(f);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;~~~</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;In both cases there p will afterwards hold the value of `this_player()`. Of course, <span class="keyword">this</span> is only a rather simple application.</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;Inline closures are a variant of lfun closures, the difference being that the <span class="keyword">function</span> text is written right where the closure is used. Since they are pretty powerful by themselves, <span class="keyword">inline</span> closures have their own manpage.</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;More useful instances of closures can be created <span class="keyword">using</span> the <a class="code" href="classefun.html#a4ef2926c525dcf7e7d339d3f424b18a9">efun::lambda</a>() <a class="code" href="classefun.html">efun</a>. It is much like the lambda function in LISP. For example, you can do the following:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;f = lambda( ({ <span class="stringliteral">&#39;x }), ({ #&#39;</span>environment, <span class="stringliteral">&#39;x }) );</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="stringliteral">~~~</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="stringliteral">This will create a lambda closure and assign it to f. The first argument to lambda is an array describing the arguments (symbols) passed to the closure upon evaluation by efun::funcall() or efun::apply(). You can now evaluate f, for example by means of `funcall(f,this_object())`. This will result in the following steps:</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="stringliteral">1. The value of `this_object()` will be bound to symbol x.</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="stringliteral">2. `environment(x)` evaluates to `environment(this_object())` and is returned as the result of the efun::funcall().</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="stringliteral">One might wonder why there are two functions, efun::funcall() and efun::apply(), to perform the seemingly same job, namely evaluating a closure. Of course there is a subtle difference. If the last argument to efun::apply() is an array, then each of its elements gets expanded to an additional paramater. The obvious use would be `#&#39;</span>call_other` as in:</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;mixed eval(<span class="keywordtype">object</span> ob,<span class="keywordtype">string</span> func,mixed *args) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">return</span> apply(#<span class="stringliteral">&#39;call_other,ob,func,args);</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="stringliteral">}</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="stringliteral">~~~</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="stringliteral">This will result in calling `ob-&gt;func(args[0],args[1],...,args[sizeof(args)-1])`. Using efun::funcall() instead of efun::apply() would have given us `ob-&gt;func(args)`.</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">Of course, besides efuns there are closures for &gt;&gt;:concept:`operators`&lt;&lt;, like `#&#39;</span>+`, `#<span class="stringliteral">&#39;-`, `#&#39;</span>&lt;`, `#<span class="stringliteral">&#39;&amp;&amp;`, etc.</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="stringliteral">Well, so far closures have been pretty much limited despite their obvious flexibility. This changes now with the introduction of conditional and loop operators. For example, try:</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="stringliteral">~~~{.c}</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="stringliteral">closure max;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="stringliteral">max = lambda(</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="stringliteral">  ({ &#39;</span>x, <span class="stringliteral">&#39;y }),</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral">  ({</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="stringliteral">    #&#39;</span>?,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    ({ #<span class="stringliteral">&#39;&gt;, &#39;</span>x, <span class="stringliteral">&#39;y }),</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="stringliteral">    &#39;</span>x,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="stringliteral">&#39;y</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="stringliteral">  })</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="stringliteral">);</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="stringliteral">return funcall(max,7,3);</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="stringliteral">~~~</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="stringliteral">The above example will return 7. What happened? Of course `#&#39;</span>?` is the conditional <span class="keyword">operator</span> and its <span class="stringliteral">&#39;syntax&#39;</span> is as follows:</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;({ #<span class="stringliteral">&#39;?, cond1, val1, cond2, val2, ..., condn, valn, valdefault });</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="stringliteral">~~~</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">It evaluates cond1, cond2, ..., condn successively until it gets a nonzero result and then returns the corresponding value. If there is no condition evaluating to a nonzero result, valdefault gets returned. If valdefault is omitted, 0 gets returned. `#&#39;</span>?!` works just like `#<span class="stringliteral">&#39;?`, except that the `` is applied to conditions before testing. Therefore, while `#&#39;</span>?` is somewhat like an <span class="keywordflow">if</span> statement, `#<span class="stringliteral">&#39;?!` resembles an if_not statement if there were one.</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="stringliteral">There are also loops:</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral">~~~{.c}</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="stringliteral">({ #&#39;</span><span class="keywordflow">do</span>, loopbody1, ..., loopbodyN, loopcond, loopresult })</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;~~~</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;will evaluate the loopbodies until loopcond evaluates to 0 and then <span class="keywordflow">return</span> the value of loopresult. Symbols may be used as variables, of course.:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;({ #<span class="stringliteral">&#39;while, loopcond, loopresult, loopbody1, ..., loopbodyN })</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="stringliteral">~~~</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="stringliteral">works similar but evaluates loopcond before the loopbodies.</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="stringliteral">The @ref driver_syntax_foreach &quot;foreach&quot; loop also has a closure form:</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="stringliteral">~~~{.c}</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="stringliteral">({ #&#39;</span><span class="keywordflow">foreach</span>, <span class="stringliteral">&#39;var, expr, loopbody1, ..., loopbodyN })</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="stringliteral">({ #&#39;</span><span class="keywordflow">foreach</span>, ({ <span class="stringliteral">&#39;var1, ..., &#39;</span>varN}) , expr, loopbody1, ..., loopbodyN })</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;~~~</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;Now on to a couple of tricky things:</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;1. How <span class="keywordflow">do</span> I write down an array within a lambda closure to avoid interpretation as a subclosure?</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;`({ #<span class="stringliteral">&#39;member, ({ &quot;abc&quot;, &quot;xyz&quot; }), &#39;</span>x })` will result in an error as soon as <a class="code" href="classefun.html#a4ef2926c525dcf7e7d339d3f424b18a9">efun::lambda</a>() tries to interpret &quot;abc&quot; as a closure operator. The solution is to quote the array, as in: `({ #<span class="stringliteral">&#39;member, &#39;</span>({ <span class="stringliteral">&quot;abc&quot;</span>, <span class="stringliteral">&quot;xyz&quot;</span> }), <span class="stringliteral">&#39;x })`. Applying efun::lambda() to this will not result in an error. Instead, the quote will be stripped from the array and the result regarded as a normal array literal. The same can be achieved by using efun::quote(), e.g.:</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="stringliteral">~~~{.c}</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="stringliteral">({ #&#39;</span>member, quote( ({ <span class="stringliteral">&quot;abc&quot;</span>, <span class="stringliteral">&quot;xyz&quot;</span> }), <span class="stringliteral">&#39;x ) })</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="stringliteral">~~~</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="stringliteral">2. Isn&#39;</span>t it a security risk to pass, say, a closure to the <a class="code" href="classmaster.html">master</a> <span class="keywordtype">object</span> which then evaluates it with all the permissions it got?</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;Luckily, no. Each closure gets upon compilation bound to the <span class="keywordtype">object</span> defining it. That means that executing it first sets `this_object()` to the <span class="keywordtype">object</span> that defined it and then evaluates the closure. This also allows us to call lfuns which might otherwise be undefined in the calling <span class="keywordtype">object</span>.</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;There is however, a variant of <a class="code" href="classefun.html#a4ef2926c525dcf7e7d339d3f424b18a9">efun::lambda</a>(), called <a class="code" href="classefun.html#ad7e5e12d8853c0b52534f8a8e57dcef6">efun::unbound_lambda</a>(), which works similar but does not allow the use of lfuns and does not bind the closure to the defining <span class="keywordtype">object</span>. The drawback is that trying to evaluate it by <a class="code" href="classefun.html#aaf018e933ee843dfe67f2916aeeb51a1">efun::apply</a>() or <a class="code" href="classefun.html">efun</a>::funcall() will result in an error. The closure first needs to be bound by calling <a class="code" href="classefun.html">efun</a>::bind_lambda(). <a class="code" href="classefun.html">efun</a>::bind_lambda() normally takes one argument and transforms an unbound closure into a closure bound to the <span class="keywordtype">object</span> executing the <a class="code" href="classefun.html">efun</a>::bind_lambda().</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;Privileged objects, like the <a class="code" href="classmaster.html">master</a> and the simul_efun <span class="keywordtype">object</span> (or those authorized by <a class="code" href="classmaster.html">master</a>::privilege_violation()) may also give an <span class="keywordtype">object</span> as the second argument to <a class="code" href="classefun.html">efun</a>::bind_lambda(). This will bind the closure to that <span class="keywordtype">object</span>. A sample application is:</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;dump_object(ob)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">// will dump the variables of ob to /dump.o</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;{</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  closure save;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  save = unbound_lambda( ({ }), ({ #<span class="stringliteral">&#39;save_object, &quot;/open/dump&quot; }) );</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="stringliteral">  bind_lambda(save,ob);</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="stringliteral">  funcall(save);</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="stringliteral">}</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="stringliteral">~~~</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="stringliteral">efun::bind_lambda() can also be used with efun closures.</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="stringliteral">3. It might be an interesting application to create closures dynamically as an alternative to writing LPC code to a file and then loading it. However, how do I avoid doing exactly that if I need symbols like `&#39;</span>x` or `<span class="stringliteral">&#39;y`?</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="stringliteral">To do that one uses efun::quote(). It takes a string as its argument and transforms it into a symbol. For example, writing `quote(&quot;x&quot;)` is exactly the same as writing `&#39;</span>x`.</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;4. How <span class="keywordflow">do</span> I test <span class="keywordflow">if</span> a variable holds a closure?</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;Use the <a class="code" href="classefun.html#af96696b3733777271624be5575c72726">efun::closurep</a>() <a class="code" href="classefun.html">efun</a> which works like all the other type testing efuns. For symbols there is also <a class="code" href="classefun.html">efun</a>::symbolp() available.</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;5. That means, I can do: `if (closurep(f)) return funcall(f); else return f;` ?</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;Yes, but in the case of <a class="code" href="classefun.html">efun</a>::funcall() it is unnecessary. If <a class="code" href="classefun.html">efun</a>::funcall() gets only one argument and it is not a closure it will be returned unchanged. So return `funcall(f);` would suffice.</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;6. I want to use a function in some <span class="keywordtype">object</span> as a closure. How do I do that?</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;There are several ways. If the function resides in `this_object()`, just use `<span class="preprocessor">#&#39;func_name`. If not, or if you want to create the function dnynamically, use the efun efun::symbol_function(). It takes a string as it first and an object as its second argument and returns a closure which upon evaluation calls the given function in the given object (and faster than efun::call_other(), too, if done from inside a loop, since function search will be done only when calling efun::symbol_function().</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;7. Can I create <a class="code" href="classefun.html">efun</a> closures dynamically, too?</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;Yes, just use <a class="code" href="classefun.html#a6f70cb143146d31cee7c413d2f0a0b9a">efun::symbol_function</a>() with a single argument. Most useful for marker objects and the like. But theoretically a security risk if not used properly and from inside a security relevant <span class="keywordtype">object</span>. Take care, however, that, if there is a simul_efun with the same name, it will be preferred as in the case of `<span class="preprocessor">#&#39;function`. Use the `efun::` modifier to get the efun if you need it.</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;8. Are there other uses of closures except <span class="keyword">using</span> them to store code?</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;Lots. For example, you can use them within almost all of the efuns where you give a <span class="keyword">function</span> as an argument, like <a class="code" href="classefun.html#ac5e7282ed029a438608ee96f18052e33">efun::filter</a>(), <a class="code" href="classefun.html#a726e9875b6a71d74e719bf470c00bbf4">efun::sort_array</a>() or <a class="code" href="classefun.html">efun</a>::walk_mapping(). `sort_array(array,<span class="preprocessor">#&#39;&gt;)` does indeed what is expected. Another application is efun::set_prompt(), where a closure can output your own prompt based on the current time and other stuff which changes all the time.</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;Finally, there are some special <a class="code" href="classefun.html">efun</a>/<span class="keyword">operator</span> closures:</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;`#<span class="stringliteral">&#39;[` : indexes an array.</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="stringliteral">`#&#39;</span>[&lt;` : does the same, but starting at the end.</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;`#<span class="stringliteral">&#39;[..]` : gets an array and two numbers and returns a sub-array.</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="stringliteral">`#&#39;</span>[..&lt;]` : same as above but the second index is interpreted as counted from the left end.</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;`#<span class="stringliteral">&#39;[&lt;..]`  and</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="stringliteral">`#&#39;</span>[&lt;..&lt;]` : should be clear now.</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;`#<span class="stringliteral">&#39;[..` : takes only one index and returns the sub- array from this index to the end.</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="stringliteral">`#&#39;</span>[&lt;..` : same as above but the index is interpreted as counted from the left end.</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;`#<span class="stringliteral">&#39;({` : puts all arguments into an array.</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="stringliteral">`#&#39;</span>([` : gets an unquoted (!) array which must include at least one element as argument and returns a mapping of the width of the given array&#39;s size with one entry that contains the first element as key and the other elements as values to the key.</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;`<span class="preprocessor">#&#39;negate` is for unary minus.</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor"></span>`#<span class="stringliteral">&#39;`, may be followed by any number of closures, e.g.: `({ (#&#39;</span>,), ({#<span class="stringliteral">&#39;= &#39;</span>h, <span class="stringliteral">&#39;a, }), ({#&#39;</span>=, <span class="stringliteral">&#39;a, &#39;</span>b }), ({#<span class="stringliteral">&#39;=, &#39;</span>b, <span class="stringliteral">&#39;h }) })` will swap &#39;</span>a and <span class="stringliteral">&#39;b when compiled and executed.</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="stringliteral">## closures-abstract #</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="stringliteral">### Procedural elements #</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="stringliteral">definition of terms:</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="stringliteral">`&lt;block&gt;`</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="stringliteral">zero or more values to be evaluated.</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="stringliteral">`&lt;test&gt;`</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="stringliteral">one value to be evaluated as branch or loop condition.</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="stringliteral">`&lt;result&gt;`</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="stringliteral">one value to be evaluated at the end of the execution of the form; the value is returned.</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="stringliteral">`&lt;lvalue&gt;`</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="stringliteral">local variable/parameter, global variable, or an indexed lvalue.</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="stringliteral">used EBNF operators:</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="stringliteral">~~~{.c}</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="stringliteral">{ }     iteration</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="stringliteral">[ ]     option</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="stringliteral">~~~</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="stringliteral">forms:</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="stringliteral">- `({#&#39;</span>, &lt;body&gt; &lt;result&gt;})`</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;- `({#<span class="stringliteral">&#39;? { &lt;test&gt; &lt;result&gt; } [ &lt;result&gt; ] })`</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="stringliteral">- `({#&#39;</span>?! { &lt;test&gt; &lt;result&gt; } [ &lt;result&gt; ] })`</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;- `({#<span class="stringliteral">&#39;&amp;&amp; { test } })`</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="stringliteral">- `({#&#39;</span>|| { test } })`</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;- `({#<span class="stringliteral">&#39;while &lt;test&gt; &lt;result&gt; &lt;body&gt;})`    loop while test evaluates non-zero.</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="stringliteral">- `({#&#39;</span>do &lt;body&gt; &lt;test&gt; &lt;result&gt;})`       loop till test evaluates zero.</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;- `({#<span class="stringliteral">&#39;= { &lt;lvalue&gt; &lt;value&gt; } })`         assignment other assignment operators work, too.</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="stringliteral">lisp similars:</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="stringliteral">~~~{.c}</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="stringliteral">#&#39;</span>,           progn</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;#<span class="stringliteral">&#39;?           cond</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="stringliteral">#&#39;</span>&amp;&amp;          and</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;#<span class="stringliteral">&#39;||          or</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="stringliteral">#&#39;</span><span class="keywordflow">while</span>       <span class="keywordflow">do</span>      <span class="comment">/* but lisp has more syntactic candy here */</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;#<span class="stringliteral">&#39;=           setq</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="stringliteral">~~~</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="stringliteral">A parameter / local variable &#39;</span>foo<span class="stringliteral">&#39; is referenced as &#39;</span>foo , a global variable as `({#<span class="stringliteral">&#39;foo})`. In lvalue positions (assignment), you need not enclose global variable closures in arrays.</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="stringliteral">Call by reference parameters are given with `({#&#39;</span>&amp;, &lt;lvalue&gt;})`</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;Some special efuns:</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="preprocessor">#&#39;[             indexing</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#&#39;[&lt;            indexing from the end</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#&#39;negate        unary -</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;~~~</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="preprocessor">### Unbound lambda closures #</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;These closures are not bound to any <span class="keywordtype">object</span>. They are created with the <a class="code" href="classefun.html">efun</a> <a class="code" href="classefun.html#ad7e5e12d8853c0b52534f8a8e57dcef6">efun::unbound_lambda</a>(). They cannot contain references to global variables, and all lfun closures are inserted as is, since there is no native <span class="keywordtype">object</span> <span class="keywordflow">for</span> <span class="keyword">this</span> closure. You can bind and rebind unbound lambda closures to an <span class="keywordtype">object</span> with <a class="code" href="classefun.html">efun</a> <a class="code" href="classefun.html#a8e512d3268244957695f1a9fcf988f33">efun::bind_lambda</a>() You need to bind it before it can be called. Ordinary objects can obly bind to themselves, binding to other objects causes a privilege violation. The point is that previous_object for calls done from inside the closure will reflect the <span class="keywordtype">object</span> doing <a class="code" href="classefun.html">efun</a>::bind_lambda(), and all <span class="keywordtype">object</span> / uid based security will also refer to this <span class="keywordtype">object</span>.</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;Authors</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;MacBeth, Amylaar, Hyp</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;@see @ref driver_syntax_closures-example &quot;closures example&quot;, @ref driver_syntax_closure_guide &quot;closures&quot;</div>
+<div class="ttc" id="classefun_html_ac5e7282ed029a438608ee96f18052e33"><div class="ttname"><a href="classefun.html#ac5e7282ed029a438608ee96f18052e33">efun.filter</a></div><div class="ttdeci">mapping filter(mapping arg, closure cl, mixed extra...)</div><div class="ttdoc">Call the function &lt;ob&gt;-&gt;&lt;func&gt;() resp. </div></div>
+<div class="ttc" id="classefun_html_aaf018e933ee843dfe67f2916aeeb51a1"><div class="ttname"><a href="classefun.html#aaf018e933ee843dfe67f2916aeeb51a1">efun.apply</a></div><div class="ttdeci">mixed apply(closure cl,...)</div><div class="ttdoc">Evaluates the closure cl with the following arguments. </div></div>
+<div class="ttc" id="classefun_html_a726e9875b6a71d74e719bf470c00bbf4"><div class="ttname"><a href="classefun.html#a726e9875b6a71d74e719bf470c00bbf4">efun.sort_array</a></div><div class="ttdeci">mixed * sort_array(mixed  *arr, closure cl, mixed extra...)</div><div class="ttdoc">Sort the copy either by the ordering function ob-&gt;wrong_order(a, b), or by the closure expression cl...</div></div>
+<div class="ttc" id="classefun_html_a665f686219e1bffdb5e89a5158167473"><div class="ttname"><a href="classefun.html#a665f686219e1bffdb5e89a5158167473">efun.funcall</a></div><div class="ttdeci">mixed funcall(closure cl, mixed arg ...)</div><div class="ttdoc">Evaluates the closure. </div></div>
+<div class="ttc" id="classefun_html_a6f70cb143146d31cee7c413d2f0a0b9a"><div class="ttname"><a href="classefun.html#a6f70cb143146d31cee7c413d2f0a0b9a">efun.symbol_function</a></div><div class="ttdeci">closure symbol_function(string arg, object|string ob)</div><div class="ttdoc">Constructs a lfun closure, efun closure, or operator closure from the first arg (string or symbol)...</div></div>
+<div class="ttc" id="classefun_html_af96696b3733777271624be5575c72726"><div class="ttname"><a href="classefun.html#af96696b3733777271624be5575c72726">efun.closurep</a></div><div class="ttdeci">int closurep(mixed)</div><div class="ttdoc">Returns 1 if the argument is a closure. </div></div>
+<div class="ttc" id="classefun_html_ad7e5e12d8853c0b52534f8a8e57dcef6"><div class="ttname"><a href="classefun.html#ad7e5e12d8853c0b52534f8a8e57dcef6">efun.unbound_lambda</a></div><div class="ttdeci">closure unbound_lambda(mixed  *args, mixed)</div><div class="ttdoc">Constructs a lambda closure that is not bound to an object, like lambda function in LISP...</div></div>
+<div class="ttc" id="classefun_html_a58338c1e30d3a60a84db85cc2680684b"><div class="ttname"><a href="classefun.html#a58338c1e30d3a60a84db85cc2680684b">efun.process_string</a></div><div class="ttdeci">string process_string(string str)</div><div class="ttdoc">Searches string str for occurences of a &quot;value by function call&quot;, which is an implicit function call ...</div></div>
+<div class="ttc" id="classmaster_html"><div class="ttname"><a href="classmaster.html">master</a></div><div class="ttdef"><b>Definition:</b> <a href="compile__object_8c_source.html#l00001">compile_object.c:1</a></div></div>
+<div class="ttc" id="classefun_html_a8e512d3268244957695f1a9fcf988f33"><div class="ttname"><a href="classefun.html#a8e512d3268244957695f1a9fcf988f33">efun.bind_lambda</a></div><div class="ttdeci">closure bind_lambda(closure, object ob)</div><div class="ttdoc">Binds an unbound lambda closure to an object and return it. </div></div>
+<div class="ttc" id="classefun_html_a4ef2926c525dcf7e7d339d3f424b18a9"><div class="ttname"><a href="classefun.html#a4ef2926c525dcf7e7d339d3f424b18a9">efun.lambda</a></div><div class="ttdeci">closure lambda(mixed  *arr, mixed)</div><div class="ttdoc">Constructs a lambda closure, like lambda function in LISP. </div></div>
+<div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>closures.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:10 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

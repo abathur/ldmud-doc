@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>master::slow_shut_down() &mdash; LDMud UNRELEASED documentation</title>
+    <title>master::slow_shut_down() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="master" href="master.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="master::stale_erq()" href="stale_erq.html" />
     <link rel="prev" title="master::save_ed_setup()" href="save_ed_setup.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,50 +47,27 @@
 <div class="section" id="SYNOPSIS">
 <span id="slow_shut_down"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.slow_shut_down">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">slow_shut_down</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;minutes</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.slow_shut_down" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.master.slow_shut_down">
+<!--[lpc.master.slow_shut_down]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">slow_shut_down</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+int<em>&nbsp;minutes</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.master.slow_shut_down" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Schedule a shutdown for the near future. minutes is the
-desired time in minutes till the shutdown:</p>
+<p>Schedule a shutdown for the near future. minutes is the desired time in minutes till the shutdown:</p>
 <ul class="simple">
 <li>six, if just the user reserve has been put into use.</li>
-<li>one, if the (smaller) master reserve has been put into use as
-well.</li>
+<li>one, if the (smaller) master reserve has been put into use as well.</li>
 </ul>
-<p>The interpreter calls this function when it runs low on
-memory. At this time, it has freed its reserve, but since it
-won&#8217;t last long, the interpreter needs to be shut down. The
-delay is to give the users the opportunity to finish their
-current tasks, but don&#8217;t take the &#8216;minutes&#8217; for granted, just
-deduce the urgency from it.</p>
-<p>It is possible that the driver may reallocate some memory
-after the function has been called, and then run again into a
-low memory situation, calling this function again.</p>
-<p>This function might load an &#8216;Armageddon&#8217; object and tell it
-what to do. It is the Armageddon object then which performs
-the shutdown.</p>
-<p>Technical: The memory handling of the interpreter includes
-three reserved areas: user, system and master. All three are
-there to insure that the system shuts down gracefully when the
-memory runs out: the user area to give the users time to
-quit normally, the others to enable emergency-logouts when the
-user reserve is used up as well.</p>
-<p>The areas are allocated at start of the interpreter, and
-released when no more memory could be obtained from the host.
-In such a case, one of the remaining areas is freed (so the
-operation can continue a short while) and a garbage collection
-is initiated. If the garbage collection recycles enough memory
-(either true garbage or by the aid of the quota_demon) to
-reallocate the areas, all is fine, else the system shut down
-is invoked by a call to this function.</p>
+<p>The interpreter calls this function when it runs low on memory. At this time, it has freed its reserve, but since it won&#8217;t last long, the interpreter needs to be shut down. The delay is to give the users the opportunity to finish their current tasks, but don&#8217;t take the &#8216;minutes&#8217; for granted, just deduce the urgency from it.</p>
+<p>It is possible that the driver may reallocate some memory after the function has been called, and then run again into a low memory situation, calling this function again.</p>
+<p>This function might load an &#8216;Armageddon&#8217; object and tell it what to do. It is the Armageddon object then which performs the shutdown.</p>
+<p>Technical: The memory handling of the interpreter includes three reserved areas: user, system and master. All three are there to insure that the system shuts down gracefully when the memory runs out: the user area to give the users time to quit normally, the others to enable emergency-logouts when the user reserve is used up as well.</p>
+<p>The areas are allocated at start of the interpreter, and released when no more memory could be obtained from the host. In such a case, one of the remaining areas is freed (so the operation can continue a short while) and a garbage collection is initiated. If the garbage collection recycles enough memory (either true garbage or by the aid of the quota_demon) to reallocate the areas, all is fine, else the system shut down is invoked by a call to this function.</p>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="quota_demon.html#lpc.quota_demon" title="quota_demon"><code class="xref lpc lpc-master docutils literal"><span class="pre">quota_demon</span></code>(M)</a>, <a class="reference internal" href="notify_shutdown.html#lpc.notify_shutdown" title="notify_shutdown"><code class="xref lpc lpc-master docutils literal"><span class="pre">notify_shutdown</span></code>(M)</a>, <a class="reference internal" href="../efun/shutdown.html#lpc.shutdown" title="shutdown"><code class="xref lpc lpc-efun docutils literal"><span class="pre">shutdown()</span></code>(E)</a>, <code class="xref lpc lpc-driver docutils literal"><span class="pre">malloc</span></code>, <a class="reference internal" href="../concepts/memory.html#lpc.memory" title="memory"><code class="xref lpc lpc-concept docutils literal"><span class="pre">memory</span></code>(C)</a>, <a class="reference internal" href="low_memory.html#lpc.low_memory" title="low_memory"><code class="xref lpc lpc-master docutils literal"><span class="pre">low_memory</span></code>(M)</a></p>
+<p><a class="reference internal" href="quota_demon.html#lpc.master.quota_demon" title="quota_demon"><code class="xref lpc lpc-master docutils literal"><span class="pre">quota_demon</span></code>(M)</a>, <a class="reference internal" href="notify_shutdown.html#lpc.master.notify_shutdown" title="notify_shutdown"><code class="xref lpc lpc-master docutils literal"><span class="pre">notify_shutdown</span></code>(M)</a>, <a class="reference internal" href="../efun/shutdown.html#lpc.efun.shutdown" title="shutdown"><code class="xref lpc lpc-efun docutils literal"><span class="pre">shutdown</span></code>(E)</a>, <a href="#id2"><span class="problematic" id="id3">:concept:`memory`</span></a>, <a class="reference internal" href="low_memory.html#lpc.master.low_memory" title="low_memory"><code class="xref lpc lpc-master docutils literal"><span class="pre">low_memory</span></code>(M)</a></p>
 </div>
 </div>
 </div>
@@ -102,8 +81,8 @@ is invoked by a call to this function.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -122,15 +101,14 @@ is invoked by a call to this function.</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -142,7 +120,7 @@ is invoked by a call to this function.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/master/slow_shut_down.txt"
+      <a href="../_sources/master/slow_shut_down.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

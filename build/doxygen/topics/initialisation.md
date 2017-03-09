@@ -1,0 +1,71 @@
+variable initialization {#driver_topics_initialisation}
+=======================================================
+Global variables, like their local counterparts, can be defined with an initial value:
+
+~~~{.c}
+int * a = ({ 3, 4 });
+
+~~~
+The initialization value can be any legal LPC expression, including function calls. The code for the initializations is collected in a compiler-generated function `__INIT()` which is called even before the create-hook is applied on the object.
+
+During initialization, blueprints and clones are treated slightly differently:
+
+Blueprint variables are always all initialized using `__INIT()`.
+
+For clones the programmer can select whether the clone's variables should also be initialized with `__INIT()`, or if they should be assigned from the current blueprint values ('shared with the blueprint'). The latter method is useful for example if blueprints and clones shall share arrays or mappings.
+
+The selection is performed with the two pragmas 'init_variables' and 'share_variables'. The status of this pragma at the point of the first variable definition counts, and is applied to all variables in the program.
+
+The clone initialization method is evaluated per-program, i.e. if an inherited program defines 'share_variables' and the child program doesn't, only the inherited variables are initialized from the blueprint, and all others from `__INIT()`.
+
+The default setting for the pragma is configured into the driver, but can also be chosen when starting the driver.
+
+@par warning: Do not call `__INIT()` yourself, overload, or use it directly in any other way. The implementation of the variable initialization may change at any time.
+
+@usage{
+For the object:
+
+~~~{.c}
+inherit "a";
+int a = 4;
+int b;
+
+~~~
+the compiler executes the equivalent of these `__INIT()` functions:
+
+~~~{.c}
+#pragma share_variables:
+
+  unknown __INIT()
+  {
+      "a"::__INIT();
+      if (clonep(this_object()))
+      {
+          a = (blueprint of this_object())->a;
+      }
+      else
+      {
+          a = 4;
+      }
+      return 1;
+  }
+
+#pragma init_variables:
+
+  unknown __INIT()
+  {
+      "a"::__INIT();
+      a = 4;
+      return 1;
+  }
+
+~~~
+In either case the variable 'b' (in fact all variables) are set to '0' as part of the loading/cloning process before the driver performs the specific initialisation.
+
+}
+
+@history{
+changed (3.3.378) -- the choice between sharing and initializing variables is no longer a fixed configuration choice of the driver and may now be made via #pragma
+}
+
+@see @ref driver_syntax_pragma "pragma", @ref driver_hook_create_ob "H_CREATE_OB", @ref driver_hook_create_super "H_CREATE_SUPER", @ref driver_hook_create_clone "H_CREATE_CLONE", @ref driver_admin_invocation "invocation"

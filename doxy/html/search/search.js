@@ -9,20 +9,16 @@ var indexSectionsWithContent =
 {
   0: "_abcdefghijlmnopqrstuvwx",
   1: "aem",
-  2: "s",
-  3: "_abcdefghijlmnopqrstuvwx",
-  4: "_inp",
-  5: "abcdefhilmnoprstuvw"
+  2: "_abcdefghijlmnopqrstuvwx",
+  3: "abcdefhilmnoprstuvw"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "namespaces",
-  3: "functions",
-  4: "variables",
-  5: "pages"
+  2: "functions",
+  3: "pages"
 };
 
 function convertToId(search)

@@ -1,0 +1,194 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>intermud.basic &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lfuns" href="lfuns.html" />
+    <link rel="prev" title="Intermud communication" href="intermud.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="intermud.basic">
+<span id="lpc.topic.intermud.basic"></span><div class="section" id="TOPIC">
+<h2>TOPIC<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+intermud.basic</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Here is how intermud data is sent across the internet - specific for Zebedee Intermud (aka Intermud 2).</p>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>ADVANCED PROTOCOL<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>This file was originally written as a brief outline of the intermud protocol for use by developers interested in incorperating similar, compatible intermud protocols into their own mud systems. It is included here as it provides a much more detailed description of the intermud protocol than that provided by the original PROTOCOL file, and hence may be of use to LpMud developers.</p>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>PACKET PROTOCOL / FORMAT<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>All information is transferred as a string via a UDP port (each mud has 1 send and 1 receive port). This kindof transfer is inherently unreliable, but it&#8217;s fast and doesn&#8217;t use up file descriptors. The format of the strings (packets) is as follows:</p>
+<blockquote>
+<div>header1:body1|headerN:bodyN|DATA:body-data</div></blockquote>
+<p>In other words, a header name, followed by a : and then the data associated with this header. Each header/body pair is separated by the | character. This means that headers and their body cannot contain the | character. You should check for this in outgoing packets to aviod decoding errors at the recieving end. The exception to this is the DATA field. If it is present, it is ALWAYS positioned at the end of the packet. Once a DATA header is found, everything following it is interpreted as the body of the DATA field. This means it can contain special characters without error and it is used to carry the main body or data of all packets.</p>
+<p>By convention, predefined system fields will use capital letters for field headers and custom headers used by specific applications will use lowercase names to avoid clashes. The defined system fields are generally refered to by a set of macros which are defined in a common header file for clarity.</p>
+<p>There is one exception to this header format; If the data is too large to be transmitted in one single packet, it will be split into packets of convenient size, each with a special unique packet header to enable them to be reassembled at the receiving end. These headers are of the format:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="nl">PKT</span><span class="p">:</span><span class="nl">mudname</span><span class="p">:</span><span class="n">packet</span><span class="o">-</span><span class="nl">id</span><span class="p">:</span><span class="n">packet</span><span class="o">-</span><span class="n">number</span><span class="o">/</span><span class="n">total</span><span class="o">-</span><span class="n">packets</span><span class="o">|</span><span class="n">rest</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">packet</span>
+</pre></div>
+</div>
+<p>In this case, the mudname and packet-id combine to form a unique id for the packet. The packet-number and total-packets information is used to determine when all buffered packets have been received. The rest-of-packet part is not parsed, but is stored while the receiver awaits the other parts of the packet. When/if all parts have been received they are concatenated and decoded as a normal packet.</p>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>PACKET ENCODING / DECODING<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>Only 2 generic data types are fully suported within the inetd code itself (namely strings and integers), though others can easily be used by converting them to one of the supported data types before transfer and converting back again in receipt. The LpMud &#8220;object&#8221; data type is converted to a string automatically by the inetd on encoding, but no such conversion is carried out on decoding.</p>
+<p>On encoding integers are simply converted to a corresponding string. Strings are left untouched as long as there is no ambiguity as to wether they should be decoded as a string or an integer. In this case of ambiguity, the string is prepended with a $ character. If the first character of a string is the $ character, it is escaped by prepending another $ character. On decoding, any string with a $ as its first character will have it removed and will then be treated as a string. Any remaining strings that can be converted to an integer and then back to a string with no loss of information are considered to be integers. Any remaining strings are treated as such and are left unaltered.</p>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>DEFINED SYSTEM HEADERS<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>&#8220;RCPNT&#8221; (RECIPIENT)</dt>
+<dd>The body of this field should contiain the recipient the message is to be sent to if applicable.</dd>
+<dt>&#8220;REQ&#8221; (REQUEST)</dt>
+<dd>The name of the intermud request that is being made of the receiving mud. Standard requests that should be supported by all systems are &#8220;ping&#8221; (PING), &#8220;query&#8221; (QUERY), and &#8220;reply&#8221; (REPLY). The PING request is used to determine wether or not a mud is active. The QUERY request is used to query a remote mud for information about itself (look at the udp/query module for details of what information can be requested). The REPLY request is special in that it is the request name used for all replies made to by mud B to an initial request made by a mud A. It is mud A&#8217;s responsibility to keep track of the original request type so that the reply can be handled appropriately.</dd>
+<dt>&#8220;SND&#8221; (SENDER)</dt>
+<dd>The name of the person or object which sent the request or to whom replies should be directed. This is essential if a reply is expected.</dd>
+<dt>&#8220;DATA&#8221; (DATA)</dt>
+<dd>This field should contain the main body of any packet. It is the only field that can contain special delimiting characters without error.</dd>
+</dl>
+<p>The following headers are used internally by the inetd and should not be used by external objects:
+&#8220;HST&#8221; (HOST)</p>
+<blockquote>
+<div>The IP address of the host from which a request was received. This is set by the receiving mud and is not contained in outgoing packets.</div></blockquote>
+<dl class="docutils">
+<dt>&#8220;ID&#8221; (ID)</dt>
+<dd>The packet id. This field is simply an integer which is set by the sending inetd. The number is incremented each time a packet is sent (zero is never used). This field is only needed if a reply is expected. REPLY packets _must_ include the original request id. This is _not_ done by the inetd.</dd>
+<dt>&#8220;NAME&#8221; (NAME)</dt>
+<dd>The name of the local mud. Used for security checking and to update host list information.</dd>
+<dt>&#8220;PKT&#8221; (PACKET)</dt>
+<dd>A special header reserved for packets which have been split. See PACKET PROTOCOL / FORMAT.</dd>
+<dt>&#8220;UDP&#8221; (UDP_PORT)</dt>
+<dd>The UDP port the local mud is receiving on. Used for security checking and updating host list information.</dd>
+<dt>&#8220;SYS&#8221; (SYSTEM)</dt>
+<dd>Contains special system flags. The only system flag used at present is TIME_OUT. This is included in packets returned due to an expected reply timing out to differentiate it from an actual reply.</dd>
+</dl>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>UDP REQUESTS / MODULES<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>The following are standard request types that must be supported by all systems:
+&#8220;ping&#8221; (PING)</p>
+<blockquote>
+<div>This module should return a REPLY packet that contains the original requests ID in it&#8217;s ID field and the SENDER in it&#8217;s RECIPIENT field. It should also include an appropriate string in the DATA field, eg. &#8220;Mud-Name is alive.n&#8221;</div></blockquote>
+<dl class="docutils">
+<dt>&#8220;query&#8221; (QUERY)</dt>
+<dd>This module expects the type of query requested to appear in the recieved DATA field. It should return a REPLY packet containing the original ID in the ID field, the SENDER in it&#8217;s RECIPIENT field, and the query type in a QUERY field. The DATA field should contain the information requested.</dd>
+</dl>
+<p>For details of how other intermud requests operate, look at the relevant module code.</p>
+</div>
+<div class="section" id="LORE">
+<h2>LORE<a class="headerlink" href="#LORE" title="Permalink to this headline">¶</a></h2>
+<p>AUTHOR:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">Information</span> <span class="n">taken</span> <span class="k">from</span> <span class="n">Outerspaces</span> <span class="n">documentation</span> <span class="n">to</span> <span class="n">be</span> <span class="n">found</span> <span class="n">on</span> <span class="nl">http</span><span class="p">:</span><span class="c1">//mud.stack.nl/intermud/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">:concept:`inetd`</span></a>, <a href="#id3"><span class="problematic" id="id4">:concept:`intermud`</span></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">intermud.basic</a><ul>
+<li><a class="reference internal" href="#TOPIC">TOPIC</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#l">ADVANCED PROTOCOL</a></li>
+<li><a class="reference internal" href="#l">PACKET PROTOCOL / FORMAT</a></li>
+<li><a class="reference internal" href="#l">PACKET ENCODING / DECODING</a></li>
+<li><a class="reference internal" href="#l">DEFINED SYSTEM HEADERS</a></li>
+<li><a class="reference internal" href="#l">UDP REQUESTS / MODULES</a></li>
+<li><a class="reference internal" href="#LORE">LORE</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/topics/intermud.basic.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

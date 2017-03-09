@@ -1,0 +1,155 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>string &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="struct" href="structs.html" />
+    <link rel="prev" title="status" href="status.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="string">
+<span id="lpc.type.string"></span><div class="section" id="TYPE">
+<h2>TYPE<a class="headerlink" href="#TYPE" title="Permalink to this headline">¶</a></h2>
+<pre class="literal-block">
+<strong>literal constructor:
+</strong>    &quot;&quot;
+</pre>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Strings in lpc are true strings, not arrays of characters as in C (and not pointers to strings). Strings are mutable &#8211; that is, the contents of a string can be modified as needed.</p>
+<p>The text of a string is written between double-quotes (&#8221;). A string can written over several lines when the lineends are escaped (like a macro), however a better solution is to write one string per line and let the gamedriver concatenate them.</p>
+<p>String text typically consists of literal characters, but escape-sequences can be used instead of characters:</p>
+<blockquote>
+<div></div></blockquote>
+<blockquote>
+<div></div></blockquote>
+<dl class="glossary docutils">
+<dt id="term-n"><code class="docutils literal"><span class="pre">\N</span></code></dt>
+<dd>the character code N in decimal</dd>
+<dt id="term-0xn"><code class="docutils literal"><span class="pre">\0xN</span></code></dt>
+<dd>the character code N in sedecimal</dd>
+<dt id="term-xn"><code class="docutils literal"><span class="pre">\xN</span></code></dt>
+<dd>the character code N in sedecimal</dd>
+<dt id="term-0on"><code class="docutils literal"><span class="pre">\0oN</span></code></dt>
+<dd>the character code N in octal</dd>
+<dt id="term-0bn"><code class="docutils literal"><span class="pre">\0bN</span></code></dt>
+<dd>the character code N in binary</dd>
+<dt id="term-a"><code class="docutils literal"><span class="pre">\a</span></code></dt>
+<dd>Bell (<code class="docutils literal"><span class="pre">0x07</span></code>)</dd>
+<dt id="term-b"><code class="docutils literal"><span class="pre">\b</span></code></dt>
+<dd>Backspace (<code class="docutils literal"><span class="pre">0x08</span></code>)</dd>
+<dt id="term-t"><code class="docutils literal"><span class="pre">\t</span></code></dt>
+<dd>Tab (<code class="docutils literal"><span class="pre">0x09</span></code>)</dd>
+<dt id="term-e"><code class="docutils literal"><span class="pre">\e</span></code></dt>
+<dd>Escape (<code class="docutils literal"><span class="pre">0x1b</span></code>)</dd>
+<dt id="term-9"><code class="docutils literal"><span class="pre">\n</span></code></dt>
+<dd>Newline (<code class="docutils literal"><span class="pre">0x0a</span></code>)</dd>
+<dt id="term-f"><code class="docutils literal"><span class="pre">\f</span></code></dt>
+<dd>Formfeed (<code class="docutils literal"><span class="pre">0x0c</span></code>)</dd>
+<dt id="term-r"><code class="docutils literal"><span class="pre">\r</span></code></dt>
+<dd>Carriage Return (<code class="docutils literal"><span class="pre">0x0d</span></code>)</dd>
+<dt id="term-other-character"><code class="docutils literal"><span class="pre">\&lt;other</span> <span class="pre">character&gt;</span></code></dt>
+<dd>the given character</dd>
+</dl>
+<p>Adjacent string literals are automatically concatenated by the driver when the LPC program is compiled. String literals joined with &#8216;+&#8217; are concatenated by the LPC compiler as well.</p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="types.html#lpc.topic.types" title="types"><code class="xref lpc lpc-topic docutils literal"><span class="pre">types</span></code></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">string</a><ul>
+<li><a class="reference internal" href="#TYPE">TYPE</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/string.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

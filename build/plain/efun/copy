@@ -1,23 +1,29 @@
 SYNOPSIS
 ========
-   mixed copy(mixed arg)
+   mixed copy(mixed value)
 
 DESCRIPTION
 ===========
-   Create a shallow copy of <arg> and return it. For arrays and mappings this 
-   means that a new array or mapping is created with copies of the original 
-   content. Embedded arrays and mappings are copied by reference!
+   Create a shallow copy of value(E) and return it. For arrays and mappings 
+   this means that a new array or mapping is created with copies of the 
+   original content. Embedded arrays and mappings are copied by reference!
 
    For other values this function is a no-op.
 
    USAGE
    =====
-      mixed >>*<<a, >>*<<b;
+      Because the example below uses a shallow copy, modifications to the 
+      nested array are visible in both copies:
 
-      a = ({ 1, ({ 21, 22 }) }); b = copy(a); a[0] = -1; a[1][0] = -21;
+         mixed *a, *b;
 
-         --> a is now ({ -1, ({ -21, 22 }) })
-            b is now ({  1, ({ -21, 22 }) })
+         a = ({ 1, ({ 21, 22 }) });
+         b = copy(a);
+         a[0] = -1;
+         a[1][0] = -21;
+
+         // a is now ({ -1, ({ -21, 22 }) })
+         // b is now ({  1, ({ -21, 22 }) })
 
 HISTORY
 =======
@@ -25,4 +31,4 @@ HISTORY
 
 SEE ALSO
 ========
-   deep_copy()(E)
+   deep_copy(E)

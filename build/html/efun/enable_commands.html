@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::enable_commands() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::enable_commands() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::enable_telnet()" href="enable_telnet.html" />
     <link rel="prev" title="efun::ed()" href="ed.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,32 +47,28 @@
 <div class="section" id="SYNOPSIS">
 <span id="enable_commands"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.enable_commands">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">enable_commands</code></td><a class="headerlink" href="#lpc.enable_commands" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.enable_commands">
+<!--[lpc.efun.enable_commands]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">enable_commands</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.enable_commands" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Enable this object to use commands normally accessible to
-users. This also marks the current object as &#8220;living&#8221;.</p>
-<p>Avoid to call this function from other places then from inside
-create() (or reset(0) in compat mode), because the command
-giver will be set to this object.</p>
+<p>Enable this object to use commands normally accessible to users. This also marks the current object as &#8220;living&#8221;.</p>
+<p>Avoid calling this function outside of <code class="docutils literal"><span class="pre">create()</span></code> (or <code class="docutils literal"><span class="pre">reset(0)</span></code> in compat mode), because the command giver will be set to this object.</p>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>void create() {</dt>
-<dd>enable_commands();
-set_living_name(&#8220;dummymonster&#8221;);</dd>
-</dl>
-<p>}</p>
-<p>This will make the current object a living object which then
-can be accessed via find_living(&#8220;dummymonster&#8221;).</p>
+<p>This example makes the current object a living object which then can be accessed via <code class="docutils literal"><span class="pre">find_living(&quot;dummymonster&quot;)</span></code>:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">create</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">enable_commands</span><span class="p">();</span>
+  <span class="n">set_living_name</span><span class="p">(</span><span class="s">&quot;dummymonster&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="command.html#lpc.command" title="command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">command()</span></code>(E)</a>, <a class="reference internal" href="living.html#lpc.living" title="living"><code class="xref lpc lpc-efun docutils literal"><span class="pre">living()</span></code>(E)</a>, <a class="reference internal" href="disable_commands.html#lpc.disable_commands" title="disable_commands"><code class="xref lpc lpc-efun docutils literal"><span class="pre">disable_commands()</span></code>(E)</a>, <a class="reference internal" href="../concepts/native.html#lpc.native" title="native"><code class="xref lpc lpc-concept docutils literal"><span class="pre">native</span></code>(C)</a>, <code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code></p>
+<p><a class="reference internal" href="command.html#lpc.efun.command" title="command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">command</span></code>(E)</a>, <a class="reference internal" href="living.html#lpc.efun.living" title="living"><code class="xref lpc lpc-efun docutils literal"><span class="pre">living</span></code>(E)</a>, <a class="reference internal" href="disable_commands.html#lpc.efun.disable_commands" title="disable_commands"><code class="xref lpc lpc-efun docutils literal"><span class="pre">disable_commands</span></code>(E)</a>, <a href="#id1"><span class="problematic" id="id2">:concept:`native`</span></a>, <a class="reference internal" href="../hook/overview.html#lpc.overview.hook" title="hook"><code class="xref lpc lpc-overview docutils literal"><span class="pre">hook</span></code></a></p>
 </div>
 </div>
 </div>
@@ -84,8 +82,8 @@ can be accessed via find_living(&#8220;dummymonster&#8221;).</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -105,15 +103,14 @@ can be accessed via find_living(&#8220;dummymonster&#8221;).</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -125,7 +122,7 @@ can be accessed via find_living(&#8220;dummymonster&#8221;).</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/enable_commands.txt"
+      <a href="../_sources/efun/enable_commands.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

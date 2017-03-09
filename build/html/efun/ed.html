@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::ed() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::ed() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::enable_commands()" href="enable_commands.html" />
     <link rel="prev" title="efun::disable_commands()" href="disable_commands.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,36 +47,32 @@
 <div class="section" id="SYNOPSIS">
 <span id="ed"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.ed">
+<tr id="lpc.efun.ed">
+<!--[lpc.efun.ed]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">ed</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.ed" title="Permalink to this definition">¶</a></tr>
+<tr>
 <td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">ed</code></td><a class="headerlink" href="#lpc.ed" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">ed</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;file</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<tr>
+<td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">ed</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+string<em>&nbsp;file</em>, </td><td id="id3">
+string<em>&nbsp;func</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Calling without arguments will start the editor ed with the name of the error file, that was returned by <code class="docutils literal"><span class="pre">master-&gt;valid_read(0,</span> <span class="pre">geteuid(this_player()),</span> <span class="pre">&quot;ed_start&quot;,</span> <span class="pre">this_player())</span></code>, usually something like <code class="docutils literal"><span class="pre">~/.err</span></code>. If that file is empty, ed will immediatly exit again. Calling <a class="reference internal" href="#lpc.efun.ed" title="ed"><code class="xref lpc lpc-efun docutils literal"><span class="pre">ed</span></code>(E)</a> with <a class="reference internal" href="#efun/ed.arg.file" title="file"><code class="xref lpc lpc-arg docutils literal"><span class="pre">file</span></code></a> will start the editor on the specified path. If the optional argument func is given, this function will be called after exiting the editor.</p>
+<p>The editor ed is almost <code class="docutils literal"><span class="pre">ed(1)</span></code> compatible.</p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="enable_commands.html#lpc.efun.enable_commands" title="enable_commands"><code class="xref lpc lpc-efun docutils literal"><span class="pre">enable_commands</span></code>(E)</a>, <a class="reference internal" href="query_editing.html#lpc.efun.query_editing" title="query_editing"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_editing</span></code>(E)</a>, <code class="xref lpc lpc-guide docutils literal"><span class="pre">ed</span></code></p>
 </div>
 </div>
-<p>void ed(string file)
-void ed(string file, string func)</p>
-<p>Calling without arguments will start the editor ed with the
-name of the error file, that was returned by
-master-&gt;valid_read(0, geteuid(this_player()), &#8220;ed_start&#8221;,
-this_player()), usually something like ~/.err. If that file is
-empty, ed will immediatly exit again.
-Calling ed() with argument file will start the editor on the
-file. If the optional argument func is given, this function
-will be called after exiting the editor.</p>
-<p>The editor ed is almost ed(1) compatible.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="enable_commands.html#lpc.enable_commands" title="enable_commands"><code class="xref lpc lpc-efun docutils literal"><span class="pre">enable_commands()</span></code>(E)</a>, <a class="reference internal" href="query_editing.html#lpc.query_editing" title="query_editing"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_editing()</span></code>(E)</a>, <code class="xref lpc lpc-lang docutils literal"><span class="pre">ed0</span></code></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+</div>
 
 
           </div>
@@ -85,8 +83,8 @@ will be called after exiting the editor.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -96,21 +94,23 @@ will be called after exiting the editor.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::ed()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -122,7 +122,7 @@ will be called after exiting the editor.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/ed.txt"
+      <a href="../_sources/efun/ed.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

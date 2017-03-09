@@ -1,0 +1,171 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>types &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="union" href="unions.html" />
+    <link rel="prev" title="symbol" href="symbol.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="types">
+<span id="lpc.topic.types"></span><div class="section" id="TOPIC">
+<h2>TOPIC<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+types</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Variables can have the following types:</p>
+<dl class="docutils">
+<dt><a class="reference internal" href="int.html#lpc.type.int" title="int"><code class="xref lpc lpc-type docutils literal"><span class="pre">int</span></code></a></dt>
+<dd>An integer.</dd>
+<dt><a class="reference internal" href="string.html#lpc.type.string" title="string"><code class="xref lpc lpc-type docutils literal"><span class="pre">string</span></code></a></dt>
+<dd>A text string.</dd>
+<dt><a class="reference internal" href="status.html#lpc.type.status" title="status"><code class="xref lpc lpc-type docutils literal"><span class="pre">status</span></code></a></dt>
+<dd><div class="first last admonition obsolete">
+<p class="first admonition-title">Obsolete</p>
+<p class="last">status was planned to be an optimized boolean format, but this was never actually implemented. status does work; however, since it is only an alias for type &#8216;int&#8217;, just use int.</p>
+</div>
+</dd>
+<dt><a class="reference internal" href="object.html#lpc.type.object" title="object"><code class="xref lpc lpc-type docutils literal"><span class="pre">object</span></code></a></dt>
+<dd>Pointer to an object. Objects are always passed by reference.</dd>
+<dt><a class="reference internal" href="arrays.html#lpc.type.array" title="array"><code class="xref lpc lpc-type docutils literal"><span class="pre">array</span></code></a></dt>
+<dd><p class="first">Pointer to a vector of values, which could also be an alist. Arrays take the form <code class="docutils literal"><span class="pre">({</span> <span class="pre">n1,</span> <span class="pre">n2,</span> <span class="pre">n3</span> <span class="pre">})</span></code> and may contain any type or a mix of types. Arrays are always passed by reference.</p>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">the size of arrays in LPC <em>can</em> be changed at run-time.</p>
+</div>
+</dd>
+<dt><a class="reference internal" href="mappings.html#lpc.type.mapping" title="mapping"><code class="xref lpc lpc-type docutils literal"><span class="pre">mapping</span></code></a></dt>
+<dd>An &#8216;associative array&#8217; consisting of values indexed by keys. The indices can be any kind of datatype. Mappings take the form <code class="docutils literal"><span class="pre">([</span> <span class="pre">key1:</span> <span class="pre">value1,</span> <span class="pre">key2:</span> <span class="pre">value2</span> <span class="pre">])</span></code>. By default, mappings are passed by reference.</dd>
+<dt><a class="reference internal" href="closures.html#lpc.type.closure" title="closure"><code class="xref lpc lpc-type docutils literal"><span class="pre">closure</span></code></a></dt>
+<dd>References to executable code, both to local functions, efuns and to functions compiled at run-time (&#8220;lambda closures&#8221;).</dd>
+<dt><a class="reference internal" href="symbol.html#lpc.type.symbol" title="symbol"><code class="xref lpc lpc-type docutils literal"><span class="pre">symbol</span></code></a></dt>
+<dd>Identifier names, which in essence are quoted strings. They are used to compute lambda closures, e.g. instead of <code class="docutils literal"><span class="pre">({...,</span> <span class="pre">'ident,</span> <span class="pre">...</span> <span class="pre">})</span></code> you can write declare a &#8216;symbol&#8217; variable foo, compute a value for it, and then create the closure as <code class="docutils literal"><span class="pre">({</span> <span class="pre">...,</span> <span class="pre">foo,</span> <span class="pre">...</span> <span class="pre">})</span></code></dd>
+<dt><a class="reference internal" href="float.html#lpc.type.float" title="float"><code class="xref lpc lpc-type docutils literal"><span class="pre">float</span></code></a></dt>
+<dd>A floating-point number.</dd>
+<dt><a class="reference internal" href="mixed.html#lpc.type.mixed" title="mixed"><code class="xref lpc lpc-type docutils literal"><span class="pre">mixed</span></code></a></dt>
+<dd>A variable allowed to take a value of any type (int, string, object, array, mapping, float or closure).</dd>
+<dt><a class="reference internal" href="structs.html#lpc.type.struct" title="struct"><code class="xref lpc lpc-type docutils literal"><span class="pre">struct</span></code></a></dt>
+<dd>A collection of values. See <a class="reference internal" href="structs.html#lpc.type.struct" title="struct"><code class="xref lpc lpc-type docutils literal"><span class="pre">struct</span></code></a>.</dd>
+<dt><a class="reference internal" href="unions.html#lpc.syntax.union" title="union"><code class="xref lpc lpc-syntax docutils literal"><span class="pre">union</span></code></a></dt>
+<dd>A range of types, either of which the variable can contain at runtime. See <a class="reference internal" href="unions.html#lpc.syntax.union" title="union"><code class="xref lpc lpc-syntax docutils literal"><span class="pre">union</span></code></a>.</dd>
+</dl>
+<div class="container" id="lpc.type.unknown">
+<div class="container" id="TYPE">
+<strong>Unknown: </strong><code class="docutils literal"><span class="pre">unknown</span></code><div class="line-block">
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">An unusable (documentation-only) meta-type indicating that a function&#8217;s return type is undefined.</dd>
+</div>
+<div class="container" id="lpc.type.null">
+<div class="container" id="TYPE">
+<strong>Null: </strong><code class="docutils literal"><span class="pre">null</span></code><div class="line-block">
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION">Indicates a function that returns no value.</dd>
+</div>
+<p>All uninitialized variables have the value 0.</p>
+<p>The type of a variable is really only for documentation. Unless you define <a class="reference internal" href="pragma.html#lpc.pragma.strong_types" title="strong_types"><code class="xref lpc lpc-pragma docutils literal"><span class="pre">strong_types</span></code></a> or <a class="reference internal" href="pragma.html#lpc.pragma.rtt_checks" title="rtt_checks"><code class="xref lpc lpc-pragma docutils literal"><span class="pre">rtt_checks</span></code></a>, variables can actually be of any type and has no effect at all on the program. However, it&#8217;s extremely bad style to declare one type but use another, so please try to avoid this.</p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="arrays.html#lpc.type.array" title="array"><code class="xref lpc lpc-type docutils literal"><span class="pre">array</span></code></a>, <a class="reference internal" href="mappings.html#lpc.type.mapping" title="mapping"><code class="xref lpc lpc-type docutils literal"><span class="pre">mapping</span></code></a>, <a class="reference internal" href="closures.html#lpc.type.closure" title="closure"><code class="xref lpc lpc-type docutils literal"><span class="pre">closure</span></code></a>, <a class="reference internal" href="structs.html#lpc.type.struct" title="struct"><code class="xref lpc lpc-type docutils literal"><span class="pre">struct</span></code></a>, <a class="reference internal" href="unions.html#lpc.syntax.union" title="union"><code class="xref lpc lpc-syntax docutils literal"><span class="pre">union</span></code></a>, <a class="reference internal" href="../efun/typeof.html#lpc.efun.typeof" title="typeof"><code class="xref lpc lpc-efun docutils literal"><span class="pre">typeof</span></code>(E)</a>, <a class="reference internal" href="../efun/get_type_info.html#lpc.efun.get_type_info" title="get_type_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_type_info</span></code>(E)</a>, <a href="#id1"><span class="problematic" id="id2">:concept:`inheritance`</span></a>, <a class="reference internal" href="pragma.html#lpc.syntax.pragma" title="pragma"><code class="xref lpc lpc-syntax docutils literal"><span class="pre">pragma</span></code></a>, <a class="reference internal" href="modifiers.html#lpc.syntax.modifiers" title="modifiers"><code class="xref lpc lpc-syntax docutils literal"><span class="pre">modifiers</span></code></a>, <a class="reference internal" href="escape.html#lpc.syntax.escape" title="escape"><code class="xref lpc lpc-syntax docutils literal"><span class="pre">escape</span></code></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">types</a><ul>
+<li><a class="reference internal" href="#TOPIC">TOPIC</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/types.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

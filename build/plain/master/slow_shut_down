@@ -39,5 +39,5 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   quota_demon(M), notify_shutdown(M), shutdown()(E), `malloc`, memory(C), 
+   quota_demon(M), notify_shutdown(M), shutdown(E), >>:concept:`memory`<<, 
    low_memory(M)

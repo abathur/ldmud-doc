@@ -8,4 +8,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   mkdir()(E), rmdir()(E), rename()(E)
+   mkdir(E), rmdir(E), rename(E)

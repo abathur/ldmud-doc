@@ -5,18 +5,19 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-If <flag> is not given or 0: return the string or closure which was last set 
-as error message for this command (with notify_fail()).
+   If flag(E) is not given or 0: return the string or closure which was last 
+   set as error message for this command (with notify_fail(E)).
 
-If <flag> is given and 1: return the object which issued the last 
-notify_fail().
+   If flag(E) is given and 1: return the object which issued the last 
+   notify_fail(E).
 
-If nothing was set yet, return 0.
+   If nothing was set yet, return 0.
 
-Introduced in LDMud 3.2.7. LDMud 3.2.8 added the <flag> parameter.
+HISTORY
+=======
+   - introduced (3.2.7)
+   - changed (3.2.8) -- added the flag(E) parameter.
 
-      See Also: 
-         add_action()(E), query_verb()(E), query_command()(E), 
-         notify_fail()(E),
-
-   `hooks`
+SEE ALSO
+========
+   add_action(E), query_verb(E), query_command(E), notify_fail(E), hook(H)

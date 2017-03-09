@@ -4,18 +4,24 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Find an object with the object_name str. If the object isn't loaded, it will 
-not be found.
+   Find an object with the object_name str. If the object isn't loaded, it 
+   will not be found.
 
-EXAMPLES object obj; obj = find_object("std/thing"); obj = 
-find_object("std/thing.c"); obj = find_object("/std/thing"); obj = 
-find_object("/std/thing.c");
+   USAGE
+   =====
+      All four of these statements are equal:
 
-All four statements are equal.
+         object obj;
+         obj = find_object("std/thing");
+         obj = find_object("std/thing.c");
+         obj = find_object("/std/thing");
+         obj = find_object("/std/thing.c");
 
-obj = find_object("/std/thing#42");
+      This one, however, returns the clone whose object_name is 
+      "std/thing#42", if it exists:
 
-returns the clone whose object_name is "std/thing#42", if it exists.
+         obj = find_object("/std/thing#42");
 
-   See Also: 
-      object_name()(E), to_object()(E)
+SEE ALSO
+========
+   object_name(E), to_object(E)

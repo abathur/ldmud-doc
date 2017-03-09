@@ -1,11 +1,11 @@
 SYNOPSIS
 ========
-   int   abs(int arg  )
-   float abs(float arg)
+   int   abs(int number  )
+   float abs(float number)
 
 DESCRIPTION
 ===========
-   Returns the absolute value of the argument <arg>.
+   Returns the absolute value of number(E).
 
    USAGE
    =====
@@ -19,5 +19,5 @@ HISTORY
 
 SEE ALSO
 ========
-   sin()(E), asin()(E), cos()(E), acos()(E), tan()(E), atan()(E), log()(E), 
-   exp()(E), sqrt()(E), floor()(E), ceil()(E), pow()(E), sgn()(E)
+   sin(E), asin(E), cos(E), acos(E), tan(E), atan(E), log(E), exp(E), sqrt(E),
+   floor(E), ceil(E), pow(E), sgn(E)

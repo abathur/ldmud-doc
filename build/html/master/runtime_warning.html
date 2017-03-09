@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>master::runtime_warning() &mdash; LDMud UNRELEASED documentation</title>
+    <title>master::runtime_warning() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="master" href="master.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="master::save_ed_setup()" href="save_ed_setup.html" />
     <link rel="prev" title="master::runtime_error()" href="runtime_error.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,43 +47,39 @@
 <div class="section" id="SYNOPSIS">
 <span id="runtime_warning"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.runtime_warning">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">runtime_warning</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;msg</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;curobj</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;prog</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;line</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;inside_catch</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.runtime_warning" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.master.runtime_warning">
+<!--[lpc.master.runtime_warning]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">runtime_warning</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;msg</em>, </td><td id="id2">
+string<em>&nbsp;curobj</em>, </td><td id="id3">
+string<em>&nbsp;prog</em>, </td><td id="id4">
+int<em>&nbsp;line</em>, </td><td id="id5">
+int<em>&nbsp;inside_catch</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.master.runtime_warning" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>This function is called to let the mudlib handle a runtime warning,
-e.g. by logging it into a database.</p>
+<p>This function is called to let the mudlib handle a runtime warning, e.g. by logging it to a database.</p>
 <ul class="simple">
-<li>&lt;msg&gt; is the warning message.</li>
-<li>&lt;curobj&gt; is the name of the current object which caused the message
-(the object itself might already be destructed), or 0 if there
-is none.</li>
-<li>&lt;prog&gt;, &lt;line&gt; determine the name of the program and the line where
-the error occured if the current object exists, otherwise
-they are 0.</li>
-<li>&lt;inside_catch&gt; : != 0 if the warning occurs inside a catch().</li>
+<li><a class="reference internal" href="#master/runtime_warning.arg.msg" title="msg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">msg</span></code></a> is the warning message.</li>
+<li><a class="reference internal" href="#master/runtime_warning.arg.curobj" title="curobj"><code class="xref lpc lpc-arg docutils literal"><span class="pre">curobj</span></code></a> is the name of the current object which caused the message (the object itself might already be destructed), or 0 if there is none.</li>
+<li><a class="reference internal" href="#master/runtime_warning.arg.prog" title="prog"><code class="xref lpc lpc-arg docutils literal"><span class="pre">prog</span></code></a>, <a class="reference internal" href="#master/runtime_warning.arg.line" title="line"><code class="xref lpc lpc-arg docutils literal"><span class="pre">line</span></code></a> determine the name of the program and the line where the error occured if the current object exists, otherwise they are 0.</li>
+<li><a class="reference internal" href="#master/runtime_warning.arg.inside_catch" title="inside_catch"><code class="xref lpc lpc-arg docutils literal"><span class="pre">inside_catch</span></code></a> : != 0 if the warning occurs inside a <a class="reference internal" href="../efun/catch.html#lpc.efun.catch" title="catch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">catch</span></code>(E)</a>.</li>
 </ul>
-<p>The driver is limited to three nested warnings, to prevent
-an endless recursion in case runtime_warning() itself causes
-warnings.</p>
+<div class="admonition limit">
+<p class="first admonition-title">Limit</p>
+<p class="last">The driver is limited to three nested warnings, to prevent an endless recursion in case <a class="reference internal" href="#lpc.master.runtime_warning" title="runtime_warning"><code class="xref lpc lpc-master docutils literal"><span class="pre">runtime_warning</span></code>(M)</a> itself causes warnings.</p>
+</div>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><strong>introduced</strong> (<em>3.3.551</em>)</li>
-<li><strong>changed</strong> (<em>3.3.705</em>) &#8211; added the &lt;inside_catch&gt; argument.</li>
+<li><strong>changed</strong> (<em>3.3.705</em>) &#8211; added the <a class="reference internal" href="#master/runtime_warning.arg.inside_catch" title="inside_catch"><code class="xref lpc lpc-arg docutils literal"><span class="pre">inside_catch</span></code></a> argument.</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="runtime_error.html#lpc.runtime_error" title="runtime_error"><code class="xref lpc lpc-master docutils literal"><span class="pre">runtime_error</span></code>(M)</a></p>
+<p><a class="reference internal" href="runtime_error.html#lpc.master.runtime_error" title="runtime_error"><code class="xref lpc lpc-master docutils literal"><span class="pre">runtime_error</span></code>(M)</a></p>
 </div>
 </div>
 </div>
@@ -95,8 +93,8 @@ warnings.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -116,15 +114,14 @@ warnings.</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -136,7 +133,7 @@ warnings.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/master/runtime_warning.txt"
+      <a href="../_sources/master/runtime_warning.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

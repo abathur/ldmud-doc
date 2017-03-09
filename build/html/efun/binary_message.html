@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::binary_message() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::binary_message() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::bind_lambda()" href="bind_lambda.html" />
     <link rel="prev" title="efun::baseof()" href="baseof.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,51 +47,37 @@
 <div class="section" id="SYNOPSIS">
 <span id="binary_message"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.binary_message">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">binary_message</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> *|<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;message</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flags</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.binary_message" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.binary_message">
+<!--[lpc.efun.binary_message]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">binary_message</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> *|string<em>&nbsp;message</em>, </td><td id="id2">
+int<em>&nbsp;flags</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.binary_message" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<p>Flush output and send output directly with write WITHOUT IAC QUOTING.
-The message may contain zeroes if given as int <a href="#id1"><span class="problematic" id="id2">*</span></a>.
-The messages goes to this_object(), but only if interactive.
-return value: number of characters actually written.
-Any &#8216;allowed charset&#8217; setting is ignored.</p>
-<p>Flag settings are interpreted bitwise and may be ored
-together (only for clients not using MCCP compression):</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>Bit 0 (value 1): when set, add_message() is used instead of</dt>
-<dd>write(). Thus no previous flushing of the buffer is
-needed, but the output is not immediate, nor can the
-number of bytes actually sent be determined - the return
-value is undefined.</dd>
-<dt>Bit 1 (value 2): The buffer is flushed _after_ adding the</dt>
-<dd>message. Useful only in conjunction with Bit 0.</dd>
+<p>Flush output and send output directly with write <strong>without IAC quoting</strong>. The message may contain zeroes if given as int <a href="#id3"><span class="problematic" id="id4">*</span></a>. The messages go to <code class="docutils literal"><span class="pre">this_object()</span></code>, but only if it is interactive. It returns the number of characters actually written. Any &#8216;allowed charset&#8217; setting is ignored.</p>
+<p>Flag settings are interpreted bitwise and may be ored together (only for clients not using <a class="reference internal" href="../topics/mccp.html#lpc.topic.MCCP" title="MCCP"><code class="xref lpc lpc-topic docutils literal"><span class="pre">MCCP</span></code></a> compression):</p>
+<dl class="docutils">
+<dt>Bit 0 (value 1)</dt>
+<dd>when set, <code class="docutils literal"><span class="pre">add_message()</span></code> is used instead of <code class="docutils literal"><span class="pre">write()</span></code>. Thus no previous flushing of the buffer is needed, but the output is not immediate, nor can the number of bytes actually sent be determined - the return value is undefined.</dd>
+<dt>Bit 1 (value 2)</dt>
+<dd>The buffer is flushed _after_ adding the message. Useful only in conjunction with Bit 0.</dd>
 </dl>
-</div></blockquote>
-<p>The idea behind the flag settings is that sending command
-codes for colours and other things needs to bypass the allowed
-charset filters, but isn&#8217;t important enough to waste bandwith
-on a synchronous transmission.</p>
-<p>Introduced in <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;40">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>40</a>.
-Argument &#8216;flags&#8217; introduced in <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;60">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>60</a>.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="set_connection_charset.html#lpc.set_connection_charset" title="set_connection_charset"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_connection_charset()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<p>The idea behind the flag settings is that sending command codes for colours and other things needs to bypass the allowed charset filters, but isn&#8217;t important enough to waste bandwith on a synchronous transmission.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.1&#64;40</em>)</li>
+<li><strong>changed</strong> (<em>3.2.1&#64;60</em>) &#8211; Argument &#8216;flags&#8217; introduced.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="set_connection_charset.html#lpc.efun.set_connection_charset" title="set_connection_charset"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_connection_charset</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -100,8 +88,8 @@ Argument &#8216;flags&#8217; introduced in <a class="reference external" href="m
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -111,21 +99,24 @@ Argument &#8216;flags&#8217; introduced in <a class="reference external" href="m
   <ul>
 <li><a class="reference internal" href="#">efun::binary_message()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -137,7 +128,7 @@ Argument &#8216;flags&#8217; introduced in <a class="reference external" href="m
       &copy;good question.
       
       |
-      <a href="../_sources/efun/binary_message.txt"
+      <a href="../_sources/efun/binary_message.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

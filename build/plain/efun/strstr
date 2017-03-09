@@ -5,13 +5,15 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Returns the index of <str2> in <str>, searching from position <pos> on.
+   Returns the index of str2(E) in str(E), searching from position pos(E) on.
 
-The returned index is relative to the beginning of the string. If <str2> is 
-not found in <str>, -1 is returned.
+   The returned index is relative to the beginning of the string. If str2(E) 
+   is not found in str(E), -1 is returned.
 
-If <pos> is negative, it designates the start position relative to the end of 
-the string (the search will still proceed towards the end of the string).
+   If pos(E) is negative, it designates the start position relative to the end
+   of the string (the search will still proceed towards the end of the 
+   string).
 
-   See Also: 
-      strrstr()(E), strlen()(E), sscanf()(E), sprintf()(E), explode()(E)
+SEE ALSO
+========
+   strrstr(E), strlen(E), sscanf(E), sprintf(E), explode(E)

@@ -6,8 +6,8 @@ SYNOPSIS
 DESCRIPTION
 ===========
    Arguments: 
-      - value (int(LPC)) -- 0
-      - value (string(LPC)) -- <msg>
+      - value (int) -- 0 
+      - value (string) -- <msg> 
 
    Optional hook specifying the message given to logins rejected due to space 
    limitations (MAX_PLAYER). Hook setting has to be string.
@@ -17,4 +17,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   `hooks`
+   hook(H)

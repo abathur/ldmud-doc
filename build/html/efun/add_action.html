@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::add_action() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::add_action() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::all_environment()" href="all_environment.html" />
     <link rel="prev" title="efun::acos()" href="acos.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,108 +49,152 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;commands.h&gt;</tr>
-<tr id="lpc.add_action">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">add_action</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;fun</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;cmd</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.add_action" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.add_action">
+<!--[lpc.efun.add_action]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">add_action</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a>|closure<em>&nbsp;fun</em>, </td><td id="id2">
+string<em>&nbsp;cmd</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.add_action" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">add_action</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;fun</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;cmd</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flag</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">add_action</code></td><td><span class="sig-paren">(</span></td><td id="id3">
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a>|closure<em>&nbsp;fun</em>, </td><td id="id4">
+string<em>&nbsp;cmd</em>, </td><td id="id5">
+int<em>&nbsp;flag</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Set up a local function fun to be called when user input
-matches the command cmd. Functions called by a user command
-will get the arguments as a string. It must then return 0 if
-it was the wrong command, otherwise 1.</p>
-<p>If it was the wrong command, the parser will continue
-searching for another command, until one returns 1 or give an
-error message to the user.</p>
-<p>For example, there can be a wand and a rod. Both of these
-objects define as command &#8220;wave&#8221;. One of them will be randomly
-called first, and it must look at the argument, and match
-against &#8220;wand&#8221; or &#8220;rod&#8221; respectively.</p>
-<p>The function associated to a command will be called with a
-string as argument which stands for the given words behind the
-typed command. The verb entered can be retrieved using the
-query_verb() efun and is always the first word in the input
-line up to the first space.</p>
-<p>Always have add_action() called only from an init() routine.
-The object defining these commands must be present to the
-user, either being the user, being carried by the user,
-being the room around the user, or being an object in the
-same room as the user. If the player leaves this vicinity of the
-object, the actions are automatically removed.</p>
-<p>Actions can also be removed on demand with the remove_actions() efun.</p>
-<p>If argument &lt;flag&gt; is AA_SHORT (1), then the arguments may
-follow the verb without separating space. Any arguments after
-the first space are passed as argument string.</p>
-<p>If argument &lt;flag&gt; is AA_NOSPACE (2), then again the arguments
-may follow the verb without separating space. In contrast to
-AA_SHORT, all characters following the verb are passed as
-the argument string. However, note that the characters immediately
-following the given verb are passed as argument AND as result
-of query_verb().</p>
-<p>If argument &lt;flag&gt; is AA_IMM_ARGS (3), then again the arguments
-may follow the verb without separating space. All characters following
-the given verb are passed as argument, and only as argument.</p>
-<p>If argument &lt;flag&gt; is negative, the verb given by the player
-has to match only the leading -&lt;flag&gt; characters of the verb &lt;cmd&gt;.</p>
-<p>Never use one of the functions &#8216;create&#8217; &#8216;reset&#8217; &#8216;init&#8217; &#8216;exit&#8217;
-&#8216;heart_beat&#8217; etc as the first argument to add_action(). In
-general, a function with a name defined in /doc/applied should
-have the behaviour defined there.</p>
+<p>Set up a local function fun to be called when user input matches the command cmd. Functions called by a user command will get the arguments as a string. It must then return 0 if it was the wrong command, otherwise 1.</p>
+<p>If it was the wrong command, the parser will continue searching for another command, until one returns 1 or give an error message to the user.</p>
+<p>For example, there can be a wand and a rod. Both of these objects define as command &#8220;wave&#8221;. One of them will be randomly called first, and it must look at the argument, and match against &#8220;wand&#8221; or &#8220;rod&#8221; respectively.</p>
+<p>The function associated to a command will be called with a string as argument which stands for the given words behind the typed command. The verb entered can be retrieved using <a class="reference internal" href="query_verb.html#lpc.efun.query_verb" title="query_verb"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_verb</span></code>(E)</a> efun and is always the first word in the input line up to the first space.</p>
+<p>Always have <a class="reference internal" href="#lpc.efun.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action</span></code>(E)</a> called only from an <a class="reference internal" href="../applied/init.html#lpc.applied.init" title="init"><code class="xref lpc lpc-applied docutils literal"><span class="pre">init</span></code>(A)</a> routine. The object defining these commands must be present to the user, either being the user, being carried by the user, being the room around the user, or being an object in the same room as the user. If the player leaves this vicinity of the object, the actions are automatically removed.</p>
+<p>Actions can also be removed on demand with <a class="reference internal" href="remove_action.html#lpc.efun.remove_action" title="remove_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">remove_action</span></code>(E)</a>.</p>
+<p>If <a class="reference internal" href="#efun/add_action.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> is <code class="xref lpc lpc-macro docutils literal"><span class="pre">AA_SHORT</span></code> (1), then the arguments may follow the verb without separating space. Any arguments after the first space are passed as argument string.</p>
+<p>If <a class="reference internal" href="#efun/add_action.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> is <code class="xref lpc lpc-macro docutils literal"><span class="pre">AA_NOSPACE</span></code> (2), then again the arguments may follow the verb without separating space. In contrast to <code class="xref lpc lpc-macro docutils literal"><span class="pre">AA_SHORT</span></code>, all characters following the verb are passed as the argument string. However, note that the characters immediately following the given verb are passed as argument AND as result of <a class="reference internal" href="query_verb.html#lpc.efun.query_verb" title="query_verb"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_verb</span></code>(E)</a>.</p>
+<p>If <a class="reference internal" href="#efun/add_action.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> is <code class="xref lpc lpc-macro docutils literal"><span class="pre">AA_IMM_ARGS</span></code> (3), then again the arguments may follow the verb without separating space. All characters following the given verb are passed as argument, and only as argument.</p>
+<p>If <a class="reference internal" href="#efun/add_action.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> is negative, the verb given by the player has to match only the first <code class="docutils literal"><span class="pre">abs(flag)</span></code> characters of the verb <a class="reference internal" href="#efun/add_action.arg.cmd" title="cmd"><code class="xref lpc lpc-arg docutils literal"><span class="pre">cmd</span></code></a>.</p>
+<p>Never use one of the functions &#8216;create&#8217; &#8216;reset&#8217; &#8216;init&#8217; &#8216;exit&#8217; &#8216;heart_beat&#8217; etc as the first argument to <a class="reference internal" href="#lpc.efun.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action</span></code>(E)</a>. In general, a function with a name defined in /doc/applied should have the behaviour defined there.</p>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<p>add_action(&#8220;GoInside&#8221;, &#8220;enter&#8221;);</p>
-<blockquote>
-<div>When typing &#8220;enter&#8221; the function GoInside() will be invoked.</div></blockquote>
-<p>add_action(&#8220;DisFunc&#8221;, &#8220;dis&#8221;, AA_SHORT);</p>
-<blockquote>
-<div>Whenever you type in a command which starts with &#8220;dis&#8221; the
-function DisFunc() will be called. To get the real word which
-was typed in (because until now you only know that it was a
-command beginning with &#8220;dis&#8221;) you have to call the efun
-query_verb().</div></blockquote>
-<p>add_action(&#8220;DisFunc&#8221;, &#8220;disconnect&#8221;, AA_NOSPACE);</p>
-<blockquote>
-<div>The function DisFunc() will be called for all commands which
-use &#8220;disconnect&#8221; or a shortened form like &#8220;di&#8221;, &#8220;dis&#8221; or
-&#8220;discon&#8221; as verb. The command &#8216;disconnecting&#8217; will _not_
-be recognized. To get the real word which was typed in
-you have to call the efun query_verb().</div></blockquote>
-<p>add_action(&#8221;...&#8221;, &#8220;cmd&#8221;);
-add_action(&#8221;...&#8221;, &#8220;xcmd&#8221;, AA_SHORT);
-add_action(&#8221;...&#8221;, &#8220;scmd&#8221;, AA_NOSPACE);
-add_action(&#8221;...&#8221;, &#8220;icmd&#8221;, AA_IMM_ARGS);</p>
-<blockquote>
-<div><p>When given the following commands, the driver will parse it
-as described below. &#8216;verb&#8217; is what query_verb() would return,
-&#8216;arg&#8217; is what would be passed to the command function.</p>
-<p>&#8220;cmd&#8221;          -&gt; verb &#8220;cmd&#8221;,     arg 0
-&#8220;cmd foo bar&#8221;  -&gt; verb &#8220;cmd&#8221;,     arg &#8220;foo bar&#8221;</p>
-<p>&#8220;xcmd&#8221;         -&gt; verb &#8220;xcmd&#8221;,    arg 0
-&#8220;xcmd foo&#8221;     -&gt; verb &#8220;xcmd&#8221;,    arg &#8220;foo&#8221;
-&#8220;xcmdfoo&#8221;      -&gt; verb &#8220;xcmdfoo&#8221;, arg 0
-&#8220;xcmd foo bar&#8221; -&gt; verb &#8220;xcmd&#8221;,    arg &#8220;foo bar&#8221;
-&#8220;xcmdfoo bar&#8221;  -&gt; verb &#8220;xcmdfoo&#8221;, arg &#8220;bar&#8221;</p>
-<p>&#8220;scmd&#8221;         -&gt; verb &#8220;scmd&#8221;,    arg 0
-&#8220;scmd foo&#8221;     -&gt; verb &#8220;scmd&#8221;,    arg &#8221; foo&#8221;
-&#8220;scmdfoo&#8221;      -&gt; verb &#8220;scmdfoo&#8221;, arg &#8220;foo&#8221;
-&#8220;scmd foo bar&#8221; -&gt; verb &#8220;scmd&#8221;,    arg &#8221; foo bar&#8221;
-&#8220;scmdfoo bar&#8221;  -&gt; verb &#8220;scmdfoo&#8221;, arg &#8220;foo bar&#8221;</p>
-<p>&#8220;icmd&#8221;         -&gt; verb &#8220;icmd&#8221;,    arg 0
-&#8220;icmd foo&#8221;     -&gt; verb &#8220;icmd&#8221;,    arg &#8221; foo&#8221;
-&#8220;icmdfoo&#8221;      -&gt; verb &#8220;icmd&#8221;,    arg &#8220;foo&#8221;
-&#8220;icmd foo bar&#8221; -&gt; verb &#8220;icmd&#8221;,    arg &#8221; foo bar&#8221;
-&#8220;icmdfoo bar&#8221;  -&gt; verb &#8220;icmd&#8221;,    arg &#8220;foo bar&#8221;</p>
-</div></blockquote>
+<p>In this example, <code class="docutils literal"><span class="pre">GoInside()</span></code> is invoked when the user types <code class="docutils literal"><span class="pre">enter</span></code>:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">add_action</span><span class="p">(</span><span class="s">&quot;GoInside&quot;</span><span class="p">,</span> <span class="s">&quot;enter&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="xref lpc lpc-macro docutils literal"><span class="pre">AA_SHORT</span></code> flag used below means <code class="docutils literal"><span class="pre">DisFunc()</span></code> will be called if the user enters any command that _starts_ with <code class="docutils literal"><span class="pre">dis</span></code>. To get the full first word of the user&#8217;s command, you have to call <a class="reference internal" href="query_verb.html#lpc.efun.query_verb" title="query_verb"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_verb</span></code>(E)</a>:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">add_action</span><span class="p">(</span><span class="s">&quot;DisFunc&quot;</span><span class="p">,</span> <span class="s">&quot;dis&quot;</span><span class="p">,</span> <span class="n">AA_SHORT</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Similarly, the <code class="xref lpc lpc-macro docutils literal"><span class="pre">AA_NOSPACE</span></code> means the function <code class="docutils literal"><span class="pre">DisFunc()</span></code> will be called for all commands which use <code class="docutils literal"><span class="pre">disconnect</span></code> or a shortened form like <code class="docutils literal"><span class="pre">di</span></code>, <code class="docutils literal"><span class="pre">dis</span></code> or <code class="docutils literal"><span class="pre">discon</span></code> as verb. The command <code class="docutils literal"><span class="pre">disconnecting</span></code> would _not_ be recognized. To get the real word which was typed in you have to call <a class="reference internal" href="query_verb.html#lpc.efun.query_verb" title="query_verb"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_verb</span></code>(E)</a>.:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">add_action</span><span class="p">(</span><span class="s">&quot;DisFunc&quot;</span><span class="p">,</span> <span class="s">&quot;disconnect&quot;</span><span class="p">,</span> <span class="n">AA_NOSPACE</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>To make the effect of these flags more clear, consider the following commands:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">add_action</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">,</span> <span class="s">&quot;cmd&quot;</span><span class="p">);</span>
+<span class="n">add_action</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">,</span> <span class="s">&quot;xcmd&quot;</span><span class="p">,</span> <span class="n">AA_SHORT</span><span class="p">);</span>
+<span class="n">add_action</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">,</span> <span class="s">&quot;scmd&quot;</span><span class="p">,</span> <span class="n">AA_NOSPACE</span><span class="p">);</span>
+<span class="n">add_action</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">,</span> <span class="s">&quot;icmd&quot;</span><span class="p">,</span> <span class="n">AA_IMM_ARGS</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Next, see the table below for an example of how the driver will parse various commands. In this table, <em>verb</em> is what <a class="reference internal" href="query_verb.html#lpc.efun.query_verb" title="query_verb"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_verb</span></code>(E)</a> would return, and <em>argument</em> is what would be passed to the command function.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="27%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Verb</th>
+<th class="head">Argument</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#8220;cmd&#8221;</td>
+<td>&#8220;cmd&#8221;</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>&#8220;cmd foo bar&#8221;</td>
+<td>&#8220;cmd&#8221;</td>
+<td>&#8220;foo bar&#8221;</td>
+</tr>
+<tr class="row-even"><td>&#8220;xcmd&#8221;</td>
+<td>&#8220;xcmd&#8221;</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>&#8220;xcmd foo&#8221;</td>
+<td>&#8220;xcmd&#8221;</td>
+<td>&#8220;foo&#8221;</td>
+</tr>
+<tr class="row-even"><td>&#8220;xcmdfoo&#8221;</td>
+<td>&#8220;xcmdfoo&#8221;</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>&#8220;xcmd foo bar&#8221;</td>
+<td>&#8220;xcmd&#8221;</td>
+<td>&#8220;foo bar&#8221;</td>
+</tr>
+<tr class="row-even"><td>&#8220;xcmdfoo bar&#8221;</td>
+<td>&#8220;xcmdfoo&#8221;</td>
+<td>&#8220;bar&#8221;</td>
+</tr>
+<tr class="row-odd"><td>&#8220;scmd&#8221;</td>
+<td>&#8220;scmd&#8221;</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>&#8220;scmd foo&#8221;</td>
+<td>&#8220;scmd&#8221;</td>
+<td>&#8221; foo&#8221;</td>
+</tr>
+<tr class="row-odd"><td>&#8220;scmdfoo&#8221;</td>
+<td>&#8220;scmdfoo&#8221;</td>
+<td>&#8220;foo&#8221;</td>
+</tr>
+<tr class="row-even"><td>&#8220;scmd foo bar&#8221;</td>
+<td>&#8220;scmd&#8221;</td>
+<td>&#8221; foo bar&#8221;</td>
+</tr>
+<tr class="row-odd"><td>&#8220;scmdfoo bar&#8221;</td>
+<td>&#8220;scmdfoo&#8221;</td>
+<td>&#8220;foo bar&#8221;</td>
+</tr>
+<tr class="row-even"><td>&#8220;icmd&#8221;</td>
+<td>&#8220;icmd&#8221;</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>&#8220;icmd foo&#8221;</td>
+<td>&#8220;icmd&#8221;</td>
+<td>&#8221; foo&#8221;</td>
+</tr>
+<tr class="row-even"><td>&#8220;icmdfoo&#8221;</td>
+<td>&#8220;icmd&#8221;</td>
+<td>&#8220;foo&#8221;</td>
+</tr>
+<tr class="row-odd"><td>&#8220;icmd foo bar&#8221;</td>
+<td>&#8220;icmd&#8221;</td>
+<td>&#8221; foo bar&#8221;</td>
+</tr>
+<tr class="row-even"><td>&#8220;icmdfoo bar&#8221;</td>
+<td>&#8220;icmd&#8221;</td>
+<td>&#8220;foo bar&#8221;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2&#64;127</em>) &#8211; adds partial support for <a class="reference internal" href="#efun/add_action.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> values &lt; 0</li>
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; now actually respects <a class="reference internal" href="#efun/add_action.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> values &lt; 0</li>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; introduced the <code class="xref lpc lpc-macro docutils literal"><span class="pre">AA_IMM_ARGS</span></code> flag.</li>
+<li><strong>changed</strong> (<em>3.3</em>) &#8211; removed the historical <code class="docutils literal"><span class="pre">add_action(fun)</span></code> notation.</li>
+<li><strong>changed</strong> (<em>3.5</em>) &#8211; the function can be given as a closure.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="query_verb.html#lpc.efun.query_verb" title="query_verb"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_verb</span></code>(E)</a>, <a class="reference internal" href="query_command.html#lpc.efun.query_command" title="query_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_command</span></code>(E)</a>, <a class="reference internal" href="remove_action.html#lpc.efun.remove_action" title="remove_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">remove_action</span></code>(E)</a>, <a class="reference internal" href="../applied/init.html#lpc.applied.init" title="init"><code class="xref lpc lpc-applied docutils literal"><span class="pre">init</span></code>(A)</a></p>
 </div>
 </div>
 </div>
@@ -162,8 +208,8 @@ as described below. &#8216;verb&#8217; is what query_verb() would return,
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -175,6 +221,8 @@ as described below. &#8216;verb&#8217; is what query_verb() would return,
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
 <li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
 </ul>
 </li>
 </ul>
@@ -182,15 +230,14 @@ as described below. &#8216;verb&#8217; is what query_verb() would return,
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -202,7 +249,7 @@ as described below. &#8216;verb&#8217; is what query_verb() would return,
       &copy;good question.
       
       |
-      <a href="../_sources/efun/add_action.txt"
+      <a href="../_sources/efun/add_action.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

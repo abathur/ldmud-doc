@@ -4,18 +4,25 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Query the mapping <map> for the entry for <key> and return all its values in 
-one array.
+   Query the mapping map(E) for the entry for key(E) and return all its values
+   in one array.
 
-If <map> does not contain <key>, 0 is returned.
+   If map(E) does not contain key(E), 0 is returned.
 
-Note: the efun m_add() can be used to add all values for an entry at once.
+   <!> Note:  
+     m_add(E) can be used to add all values for an entry at once.
 
-EXAMPLES mapping m = ([ 1:"foo":-1, 2:"bar":-2 ]);
+   USAGE
+   =====
+         mapping m = ([ 1:"foo":-1, 2:"bar":-2 ]);
 
-m_entry(m, 0) -> 0 m_entry(m, 1) -> ({ "foo", -1 })
+         m_entry(m, 0) // 0
+         m_entry(m, 1) // ({ "foo", -1 })
 
-Introduced in LDMud 3.2.10.
+HISTORY
+=======
+   - introduced (3.2.10)
 
-   See Also: 
-      m_add()(E), m_contains()(E), mappings(LPC), member()(E)
+SEE ALSO
+========
+   m_add(E), m_contains(E), mapping, member(E)

@@ -1,10 +1,8 @@
 public class efun {
    /**
-    * Get next object in the same inventory as ob. If ob is not
-    * given, the current object will be used.
+    * Get next object in the same inventory as ob. If ob is not given, the current object will be used.
     * 
-    * This efun is mostly used together with the efun
-    * first_inventory().
+    * This efun is mostly used together with the efun efun::first_inventory().
     * 
     * @synopsis{
     * object next_inventory()

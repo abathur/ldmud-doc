@@ -5,12 +5,12 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Returns the creation (compilation) time of the object's program. Default is
-   this_object(), if no arg is given.
+   Returns the creation (compilation) time of the object's program. Default 
+   is `this_object()`, if no arg is given.
 
    <!> Note:  
      If the objects program is swapped out, this efun swaps it back in.
 
 SEE ALSO
 ========
-   object_time()(E), program_name()(E)
+   object_time(E), program_name(E)

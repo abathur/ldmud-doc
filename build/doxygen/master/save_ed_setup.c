@@ -1,37 +1,28 @@
 public class master {
    /**
-    * Save individual option settings of the builtin ed, encoded
-    * into code, for the user denoted by who. These functions are
-    * located in the master object so that the local gods can decide
-    * what strategy they want to use. suggestions:
+    * Save individual option settings of the builtin ed, encoded into code, for the user denoted by who. These functions are located in the master object so that the local gods can decide what strategy they want to use. Suggestions:
     * 
     * - A setup file for every user.
     * - advantages:
-    *   - transparent to the user
-    *   - independent of user count
-    *   
+    *  - transparent to the user
+    *  - independent of user count
     * - disadvantage:
     *  - extra file access at ed invocation
     * - An array in the master object, users are searched by member_array
     * - advantage:
-    *   - easy to implement
-    *   
+    *  - easy to implement
     * - disadvantage:
     *  - performance degradation with high user counts
     * - An AVL-tree to access users by name
     * - advantage:
-    *   - can fit any need
-    *   
+    *  - can fit any need
     * - disadvantage:
-    *  - hard to implement, will need more overhead on small and medium
-    *     installations than it can ever make good by lg(usercount) complexity
-    *     
+    *  - hard to implement, will need more overhead on small and medium installations than it can ever make good by `lg(usercount)` complexity
     * - Dedicated flags in every user object.
     * - advantages:
-    *   - easy to implement
-    *   - independent of user count
-    *   - Will also work for nusers w/o file access privileges.
-    *   
+    *  - easy to implement
+    *  - independent of user count
+    *  - Will also work for nusers w/o file access privileges.
     * - disadvantage:
     *  - care has to be taken to avoid collision with other uses of the flags in the user object
     * 

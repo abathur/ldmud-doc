@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::query_notify_fail() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::query_notify_fail() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::query_once_interactive()" href="query_once_interactive.html" />
     <link rel="prev" title="efun::query_mud_port()" href="query_mud_port.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,40 +47,34 @@
 <div class="section" id="SYNOPSIS">
 <span id="query_notify_fail"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.query_notify_fail">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">query_notify_fail</code></td><a class="headerlink" href="#lpc.query_notify_fail" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.query_notify_fail">
+<!--[lpc.efun.query_notify_fail]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">query_notify_fail</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.query_notify_fail" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">query_notify_fail</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flag</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">query_notify_fail</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+int<em>&nbsp;flag</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<p>If &lt;flag&gt; is not given or 0: return the string or closure which
-was last set as error message for this command (with notify_fail()).</p>
-<p>If &lt;flag&gt; is given and 1: return the object which issued the last
-notify_fail().</p>
+<p>If <a class="reference internal" href="#efun/query_notify_fail.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> is not given or 0: return the string or closure which was last set as error message for this command (with <a class="reference internal" href="notify_fail.html#lpc.efun.notify_fail" title="notify_fail"><code class="xref lpc lpc-efun docutils literal"><span class="pre">notify_fail</span></code>(E)</a>).</p>
+<p>If <a class="reference internal" href="#efun/query_notify_fail.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> is given and 1: return the object which issued the last <a class="reference internal" href="notify_fail.html#lpc.efun.notify_fail" title="notify_fail"><code class="xref lpc lpc-efun docutils literal"><span class="pre">notify_fail</span></code>(E)</a>.</p>
 <p>If nothing was set yet, return 0.</p>
-<p>Introduced in LDMud 3.2.7.
-LDMud 3.2.8 added the &lt;flag&gt; parameter.</p>
-<blockquote>
-<div><blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="add_action.html#lpc.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action()</span></code>(E)</a>, <a class="reference internal" href="query_verb.html#lpc.query_verb" title="query_verb"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_verb()</span></code>(E)</a>, <a class="reference internal" href="query_command.html#lpc.query_command" title="query_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_command()</span></code>(E)</a>, <a class="reference internal" href="notify_fail.html#lpc.notify_fail" title="notify_fail"><code class="xref lpc lpc-efun docutils literal"><span class="pre">notify_fail()</span></code>(E)</a>,</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code></p>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.7</em>)</li>
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; added the <a class="reference internal" href="#efun/query_notify_fail.arg.flag" title="flag"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flag</span></code></a> parameter.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="add_action.html#lpc.efun.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action</span></code>(E)</a>, <a class="reference internal" href="query_verb.html#lpc.efun.query_verb" title="query_verb"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_verb</span></code>(E)</a>, <a class="reference internal" href="query_command.html#lpc.efun.query_command" title="query_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_command</span></code>(E)</a>, <a class="reference internal" href="notify_fail.html#lpc.efun.notify_fail" title="notify_fail"><code class="xref lpc lpc-efun docutils literal"><span class="pre">notify_fail</span></code>(E)</a>, <a class="reference internal" href="../hook/overview.html#lpc.overview.hook" title="hook"><code class="xref lpc lpc-overview docutils literal"><span class="pre">hook</span></code></a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -89,8 +85,8 @@ LDMud 3.2.8 added the &lt;flag&gt; parameter.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -100,21 +96,24 @@ LDMud 3.2.8 added the &lt;flag&gt; parameter.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::query_notify_fail()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -126,7 +125,7 @@ LDMud 3.2.8 added the &lt;flag&gt; parameter.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/query_notify_fail.txt"
+      <a href="../_sources/efun/query_notify_fail.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

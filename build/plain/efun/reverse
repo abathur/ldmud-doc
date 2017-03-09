@@ -7,20 +7,26 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Reverse the content of array or string <arg> and return the result. If <arg> 
-is an integer, the bits in the integer are reversed.
+   Reverse the content of array or string arg(E) and return the result. If 
+   arg(E) is an integer, the bits in the integer are reversed.
 
-If called in the reference variant, the argument array itself is reversed and 
-then returned.
+   If called in the reference variant, the argument array itself is reversed 
+   and then returned.
 
-EXAMPLES reverse(0x306a) - returns 0x560c0000
+   USAGE
+   =====
+         reverse(0x306a) // returns 0x560c0000
 
-reverse("test") - returns "tset"
+         reverse("test") // returns "tset"
 
-mixed * arr = ({ 1, 2 }); reverse(arr)  - returns ({ 2, 1 }), leaves arr 
-unchanged. reverse(&arr) - returns ({ 2, 1 }), sets arr to ({ 2, 1 })
+         mixed * arr = ({ 1, 2 });
+         reverse(arr)  // returns ({ 2, 1 }), leaves arr unchanged.
+         reverse(&arr) // returns ({ 2, 1 }), sets arr to ({ 2, 1 })
 
-BUGS Reference ranges like reverse(&(a[1..2])) are not supported.
+   Limit:  
+     Reference ranges like `reverse(&(a[1..2]))` are not supported.
 
-Introduced in LDMud 3.3.529. LDMud 3.3.532 added the reversal of bits in an 
-integer.
+HISTORY
+=======
+   - introduced (3.3.529)
+   - changed (3.3.532) -- added the reversal of bits in an integer.

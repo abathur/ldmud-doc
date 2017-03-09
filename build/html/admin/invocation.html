@@ -1,0 +1,584 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Starting LDMud &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="limitations" href="limits.html" />
+    <link rel="prev" title="Prerequisites" href="install.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="Starting LDMud">
+<span id="invocation"></span><span id="lpc.topic.Starting LDMud"></span><span id="lpc.topic.invocation"></span><div class="section" id="TOPIC">
+<h2>TOPIC<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+Starting LDMud</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>This document explores the process, options and arguments used to invoke the LDMud driver from the command line. This document describes the commandline version of the driver only; non-commandline versions are platform specific and described in the related documentation.</p>
+<p>The driver is invoked from the commandline as other normal programs. Neither the current directory nor the directory the executable is in need to be in any special relation the directory of the mudlib. Once the driver is running, it emits two streams of outputs:</p>
+<ul class="simple">
+<li>driver-related messages on stderr; this unfortunately includes LPC compiler diagnostics</li>
+<li>LPC runtime-related messages in the logfile &lt;mudlib&gt;/&lt;host&gt;.parse.log (the name can be changed).</li>
+</ul>
+<p>It is possible to start the driver without any commandline arguments as suitable defaults are specified at compile time. The invocation syntax is:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">driver</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">portnumber</span><span class="o">&gt;</span><span class="p">]...</span>
+</pre></div>
+</div>
+<p>&lt;portnumber&gt; the number of the port the driver shall use to accept connections. The maximum number of ports is determined by MAXNUMPORTS in the source file config.h.</p>
+<p>The options modify the behaviour of the gamedriver. Some of them are only available if a certain compile-time option was enabled (typically in the source file config.h). The following options are recognized:</p>
+<dl class="option">
+<dt id="cmdoption-ldmud-p">
+<code class="descname">-P</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--inherit</code><code class="descclassname"> &lt;fd-number&gt;</code><a class="headerlink" href="#cmdoption-ldmud-p" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inherit filedescriptor &lt;fd-number&gt; from the parent process as socket to listen for connections. Only available if compiled with MAXNUMPORTS.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-u">
+<code class="descname">-u</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--udp</code><code class="descclassname"> &lt;portnumber&gt;</code><a class="headerlink" href="#cmdoption-ldmud-u" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify the &lt;portnumber&gt; for the UDP port, overriding the compiled-in default. Only available if compiled with CATCH_UDP_PORT.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-d">
+<code class="descname">-D</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--define</code><code class="descclassname"> &lt;macro&gt;[=&lt;text&gt;]</code><a class="headerlink" href="#cmdoption-ldmud-d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add &lt;macro&gt; (optionally to be expanded to &lt;text&gt;) to the list of predefined macros known by the LPC compiler.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-e">
+<code class="descname">-E</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--eval-cost</code><code class="descclassname"> &lt;ticks&gt;</code><a class="headerlink" href="#cmdoption-ldmud-e" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the number of &lt;ticks&gt; available for one evaluation thread. If 0, execution is unlimited.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-m">
+<code class="descname">-M</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--master</code><code class="descclassname"> &lt;filename&gt;</code><a class="headerlink" href="#cmdoption-ldmud-m" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use &lt;filename&gt; for the master object.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-mudlib">
+<code class="descname">-m</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--mudlib</code><code class="descclassname"> &lt;pathname&gt;</code><a class="headerlink" href="#cmdoption-ldmud-mudlib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use &lt;pathname&gt; as the top directory of the mudlib.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-debug-file">
+<code class="descname">--debug-file</code><code class="descclassname"> &lt;filename&gt;</code><a class="headerlink" href="#cmdoption-ldmud-debug-file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log all debug output in &lt;filename&gt; instead of &lt;mudlib&gt;/&lt;host&gt;.debug.log .</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-hostname">
+<code class="descname">--hostname</code><code class="descclassname"> &lt;name&gt;</code><a class="headerlink" href="#cmdoption-ldmud-hostname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use &lt;name&gt; as hostname instead of what the system says.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-hostaddr">
+<code class="descname">--hostaddr</code><code class="descclassname"> &lt;addr&gt;</code><a class="headerlink" href="#cmdoption-ldmud-hostaddr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use &lt;addr&gt; as address of this machine, instead of what the system says. In particular this address will be used to open the driver ports.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-no-compat">
+<code class="descname">--no-compat</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-no-compat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-compat">
+<code class="descname">--compat</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-compat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select the mode (plain or compat) of the driver. This choice does not affect the default name of the master object.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-debug">
+<code class="descname">-d</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--debug</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-debug" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Generate debug output; repeat the argument for even more output:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">1</span></code>: log resets, clean ups, swaps, reception of urgend data, telnet negotiation states. check_a_lot_of_refcounts() on startup when swapping of variables is disabled.</li>
+<li><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">2</span></code>: log all add_message()s, name lookup failures, new players.</li>
+<li><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">3</span></code>: progress of garbage collection</li>
+<li><code class="docutils literal"><span class="pre">&gt;=</span> <span class="pre">4</span></code>: even more junk from garbage collection</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-c">
+<code class="descname">-c</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--list-compiles</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the name of every compiled file on stderr.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-no-preload">
+<code class="descname">-e</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-preload</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-no-preload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pass a non-zero argument (the number of occurences of this option) to <a class="reference internal" href="../master/preload.html#lpc.master.preload" title="preload"><code class="xref lpc lpc-master docutils literal"><span class="pre">preload</span></code>(M)</a>, which usually inhibits all preloads of castles and other objects.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-erq">
+<code class="descname">--erq</code><code class="descclassname"> &lt;filename&gt;</code><code class="descclassname">, </code><code class="descname">--erq</code><code class="descclassname"> &quot;&lt;filename&gt; &lt;erq args&gt;&quot;</code><a class="headerlink" href="#cmdoption-ldmud-erq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use &lt;filename&gt; instead of &#8216;erq&#8217; as the basename of the ERQ executable. If the name starts with a &#8216;/&#8217;, it is take to be an absolute pathname, otherwise it is interpreted relative to &lt;bindir&gt;. If not specified, &#8216;erq&#8217; is used as the executable name.</p>
+<p>By enclosing the argument value in quotes, it is possible to pass arguments (e.g. &#8211;execdir) to the erq. These arguments however must not contain embedded spaces.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-n">
+<code class="descname">-N</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-erq</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-n" title="Permalink to this definition">¶</a></dt>
+<dd><p>Don&#8217;t start the erq demon (if it would be started at all).</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-alarm-time">
+<code class="descname">--alarm-time</code><code class="descclassname"> &lt;seconds&gt;</code><a class="headerlink" href="#cmdoption-ldmud-alarm-time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the granularity of call_out() and heartbeat timing. Minimum value is 1.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-heart-interval">
+<code class="descname">--heart-interval</code><code class="descclassname"> &lt;seconds&gt;</code><a class="headerlink" href="#cmdoption-ldmud-heart-interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the interval between two heartbeats. Minimum value is 1.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-sync-heart">
+<code class="descname">--sync-heart</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-sync-heart" title="Permalink to this definition">¶</a></dt>
+<dd><p>All heartbeats occur at the same time (modulo granularity).</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-async-heart">
+<code class="descname">--async-heart</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-async-heart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Heartbeats occur when they are due (modulo granularity).</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-t">
+<code class="descname">-t</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-heart</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-t" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable heartbeats and call_outs.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-f">
+<code class="descname">-f</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--funcall</code><code class="descclassname"> &lt;word&gt;</code><a class="headerlink" href="#cmdoption-ldmud-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>The lfun master-&gt;flag() is called with &lt;word&gt; as argument before the gamedriver accepts netword connections.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-regexp">
+<code class="descname">--regexp</code><code class="descclassname"> pcre | traditional</code><a class="headerlink" href="#cmdoption-ldmud-regexp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select the default regexp package.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-max-array">
+<code class="descname">--max-array</code><code class="descclassname"> &lt;size&gt;</code><a class="headerlink" href="#cmdoption-ldmud-max-array" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum number of elements an array can hold. Set to 0, arrays of any size are allowed.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-max-mapping">
+<code class="descname">--max-mapping</code><code class="descclassname"> &lt;size&gt;</code><a class="headerlink" href="#cmdoption-ldmud-max-mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum number of elements a mapping can hold. Set to 0, mappings of any size are allowed.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-max-mapping-keys">
+<code class="descname">--max-mapping-keys</code><code class="descclassname"> &lt;size&gt;</code><a class="headerlink" href="#cmdoption-ldmud-max-mapping-keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum number of entries a mapping can hold. Set to 0, mappings of any size are allowed.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-max-callouts">
+<code class="descname">--max-callouts</code><code class="descclassname"> &lt;size&gt;</code><a class="headerlink" href="#cmdoption-ldmud-max-callouts" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum number of callouts at one time. Set to 0, any number is allowed.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-max-bytes">
+<code class="descname">--max-bytes</code><code class="descclassname"> &lt;size&gt;</code><a class="headerlink" href="#cmdoption-ldmud-max-bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum number of bytes one read_bytes()/write_bytes() call can handle. Set to 0, reads and writes of any size are allowed.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-max-file">
+<code class="descname">--max-file</code><code class="descclassname"> &lt;size&gt;</code><a class="headerlink" href="#cmdoption-ldmud-max-file" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum number of bytes one read_file()/write_file() call can handle. Set to 0, reads and writes of any size are allowed.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-max-thread-pending">
+<code class="descname">--max-thread-pending</code><code class="descclassname"> &lt;size&gt;</code><a class="headerlink" href="#cmdoption-ldmud-max-thread-pending" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum number of bytes to be kept pending by the socket write thread. Set to 0, an unlimited amount of data can be kept pending.</p>
+<p>This option is ignored if pthreads are not used.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-cleanup-time">
+<code class="descname">--cleanup-time</code><code class="descclassname"> &lt;time&gt;</code><a class="headerlink" href="#cmdoption-ldmud-cleanup-time" title="Permalink to this definition">¶</a></dt>
+<dd><p>The idle time in seconds for an object before the driver tries to clean it up. It should be substantially longer than the reset time. A time &lt;= 0 disables the cleanup mechanism.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-reset-time">
+<code class="descname">--reset-time</code><code class="descclassname"> &lt;time&gt;</code><a class="headerlink" href="#cmdoption-ldmud-reset-time" title="Permalink to this definition">¶</a></dt>
+<dd><p>The time in seconds before an object is reset. A time &lt;= 0 disables the reset mechanism.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-swap-time">
+<code class="descname">--swap-time</code><code class="descclassname"> &lt;time&gt;</code><code class="descclassname">, </code><code class="descname">--swap-variables</code><code class="descclassname"> &lt;time&gt;</code><a class="headerlink" href="#cmdoption-ldmud-swap-time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time in seconds before an object (or its variables) are swapped out. A time less or equal 0 disables swapping.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-swap-file">
+<code class="descname">--swap-file</code><code class="descclassname"> &lt;name&gt;</code><a class="headerlink" href="#cmdoption-ldmud-swap-file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Swap into file &#8216;&lt;name&gt;&#8217; instead of &#8216;&lt;mudlib&gt;/LP_SWAP.&lt;host&gt;&#8217;.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-swap-compact">
+<code class="descname">--swap-compact</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-swap-compact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reuse free space in the swap file immediately. Giving this option results in smaller, but also more fragmented swapfiles, and the swap performance may degrade.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-s">
+<code class="descname">-s</code><code class="descclassname"> &lt;time&gt;</code><code class="descclassname">, </code><code class="descname">-s</code><code class="descclassname"> v&lt;time&gt;</code><code class="descclassname">, </code><code class="descname">-s</code><code class="descclassname"> f&lt;name&gt;</code><code class="descclassname">, </code><code class="descname">-s</code><code class="descclassname"> c</code><a class="headerlink" href="#cmdoption-ldmud-s" title="Permalink to this definition">¶</a></dt>
+<dd><p>Short alias for respective swap options (<a class="reference internal" href="#cmdoption-ldmud-swap-time"><code class="xref std std-option docutils literal"><span class="pre">--swap-time</span></code></a>, <a class="reference internal" href="#cmdoption-ldmud-swap-time"><code class="xref std std-option docutils literal"><span class="pre">--swap-variables</span></code></a>, <a class="reference internal" href="#cmdoption-ldmud-swap-file"><code class="xref std std-option docutils literal"><span class="pre">--swap-file</span></code></a>, <a class="reference internal" href="#cmdoption-ldmud-swap-compact"><code class="xref std std-option docutils literal"><span class="pre">--swap-compact</span></code></a>).</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-hard-malloc-limit">
+<code class="descname">--hard-malloc-limit</code><code class="descclassname"> &lt;size&gt;</code><a class="headerlink" href="#cmdoption-ldmud-hard-malloc-limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restrict total memory allocation to &lt;size&gt; bytes. A &lt;size&gt; of 0 or &#8216;unlimited&#8217; removes any restriction.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-soft-malloc-limit">
+<code class="descname">--soft-malloc-limit</code><code class="descclassname"> &lt;size&gt;</code><a class="headerlink" href="#cmdoption-ldmud-soft-malloc-limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>This value gives a soft limit of the allocated memory (kind of low watermark). If this value is exceeded, the driver will call low_memory() in the master to inform the mudlib about the (potentially) developing low memory situation. A &lt;size&gt; of 0 or &#8216;unlimited&#8217; removes this threshold.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-min-malloc">
+<code class="descname">--min-malloc</code><code class="descclassname"> &lt;size&gt;</code><a class="headerlink" href="#cmdoption-ldmud-min-malloc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-min-small-malloc">
+<code class="descname">--min-small-malloc</code><code class="descclassname"> &lt;size&gt;</code><a class="headerlink" href="#cmdoption-ldmud-min-small-malloc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the sizes for the explicit initial large resp. small chunk allocation. A size of 0 disables the explicit initial allocations.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-reserve-user">
+<code class="descname">--reserve-user</code><code class="descclassname"> &lt;size&gt;</code><code class="descclassname">, </code><code class="descname">--reserve-master</code><code class="descclassname"> &lt;size&gt;</code><code class="descclassname">, </code><code class="descname">--reserve-system</code><code class="descclassname"> &lt;size&gt;</code><a class="headerlink" href="#cmdoption-ldmud-reserve-user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-r">
+<code class="descname">-r</code><code class="descclassname"> u&lt;size&gt;</code><code class="descclassname">, </code><code class="descname">-r</code><code class="descclassname"> m&lt;size&gt;</code><code class="descclassname">, </code><code class="descname">-r</code><code class="descclassname"> s&lt;size&gt;</code><a class="headerlink" href="#cmdoption-ldmud-r" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reserve &lt;size&gt; amount of memory for user/master/system allocations to be held until main memory runs out.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-filename-spaces">
+<code class="descname">--filename-spaces</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-filename-spaces" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-no-filename-spaces">
+<code class="descname">--no-filename-spaces</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-no-filename-spaces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allow/disallow the use of spaces in filenames.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-strict-euids">
+<code class="descname">--strict-euids</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-strict-euids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-no-strict-euids">
+<code class="descname">--no-strict-euids</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-no-strict-euids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable/disable the enforced use of euids.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-share-variables">
+<code class="descname">--share-variables</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-share-variables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-init-variables">
+<code class="descname">--init-variables</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-init-variables" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Select how clones initialize their variables:</dt>
+<dd><ul class="first last simple">
+<li>by sharing the current values of their blueprint</li>
+<li>by initializing them afresh (using __INIT()).</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-pidfile">
+<code class="descname">--pidfile</code><code class="descclassname"> &lt;filename&gt;</code><a class="headerlink" href="#cmdoption-ldmud-pidfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the pid of the driver process into &lt;filename&gt;.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-tls-key">
+<code class="descname">--tls-key</code><code class="descclassname"> &lt;pathname&gt;</code><a class="headerlink" href="#cmdoption-ldmud-tls-key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use &lt;pathname&gt; as the x509 keyfile, default is &#8216;key.pem&#8217;. If relative, &lt;pathname&gt; is interpreted relative to &lt;mudlib&gt;.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-tls-cert">
+<code class="descname">--tls-cert</code><code class="descclassname"> &lt;pathname&gt;</code><a class="headerlink" href="#cmdoption-ldmud-tls-cert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use &lt;pathname&gt; as the x509 certfile, default is &#8216;cert.pem&#8217;. If relative, &lt;pathname&gt; is interpreted relative to &lt;mudlib&gt;.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-tls-crlfile">
+<code class="descname">--tls-crlfile</code><code class="descclassname"> &lt;pathname&gt;</code><a class="headerlink" href="#cmdoption-ldmud-tls-crlfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use &lt;pathname&gt; as the filename holding your certificate revocation lists. If relative, &lt;pathname&gt; is interpreted relative to &lt;mudlib&gt;.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-tls-crldirectory">
+<code class="descname">--tls-crldirectory</code><code class="descclassname"> &lt;pathname&gt;</code><a class="headerlink" href="#cmdoption-ldmud-tls-crldirectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use &lt;pathname&gt; as the directory where your certificate revocation lists reside. If relative, &lt;pathname&gt; is interpreted relative to &lt;mudlib&gt;.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-tls-trustfile">
+<code class="descname">--tls-trustfile</code><code class="descclassname"> &lt;pathname&gt;</code><a class="headerlink" href="#cmdoption-ldmud-tls-trustfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use &lt;pathname&gt; as the filename holding your trusted PEM certificates. If relative, &lt;pathname&gt; is interpreted relative to &lt;mudlib&gt;.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-tls-trustdirectory">
+<code class="descname">--tls-trustdirectory</code><code class="descclassname"> &lt;pathname&gt;</code><a class="headerlink" href="#cmdoption-ldmud-tls-trustdirectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use &lt;pathname&gt; as the directory where your trusted PEM certificates reside, default is &#8216;/etc/ssl/certs&#8217;. If relative, &lt;pathname&gt; is interpreted relative to &lt;mudlib&gt;.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-wizlist-file">
+<code class="descname">--wizlist-file</code><code class="descclassname"> &lt;filename&gt;</code><a class="headerlink" href="#cmdoption-ldmud-wizlist-file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-no-wizlist-file">
+<code class="descname">--no-wizlist-file</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-no-wizlist-file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read and save the wizlist in the named file (always interpreted relative the mudlib); resp. don&#8217;t read or save the wizlist.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-gcollect-outfd">
+<code class="descname">--gcollect-outfd</code><code class="descclassname"> &lt;filename&gt;</code><code class="descclassname">, </code><code class="descname">--gcollect-outfd</code><code class="descclassname"> &lt;num&gt;</code><a class="headerlink" href="#cmdoption-ldmud-gcollect-outfd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Garbage collector output (like a log of all reclaimed memory blocks) is sent to &lt;filename&gt; (or inherited fd &lt;num&gt;) instead of stderr. Only available if compiled with MALLOC_smalloc.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-y">
+<code class="descname">--y</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--yydebug</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable debugging of the LPC compiler. Only available if compiled with YYDEBUG.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-randomdevice">
+<code class="descname">--randomdevice</code><code class="descclassname"> &lt;filename&gt;</code><a class="headerlink" href="#cmdoption-ldmud-randomdevice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Chooses the source of the seed for the random number generator. Default is /dev/urandom, Fall-back if &lt;filename&gt; is not readable is the system clock. If you want to seed the PRNG with a specific seed, you can use a filename with the seed and give it here instead of using &#8211;random-seed. (Note: the last one of &#8211;randomdevice and &#8211;random-seed wins!)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-random-seed">
+<code class="descname">--random-seed</code><code class="descclassname"> &lt;num&gt;</code><a class="headerlink" href="#cmdoption-ldmud-random-seed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Seed value for the random number generator. If not given, the driver chooses a seed value on its own. This option is for debugging.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-check-state">
+<code class="descname">--check-state</code><code class="descclassname"> &lt;lvl&gt;</code><a class="headerlink" href="#cmdoption-ldmud-check-state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a regular simplistic check of the virtual machine according to &lt;lvl&gt;:
+- <code class="docutils literal"><span class="pre">=</span> <span class="pre">0</span></code>: no check
+- <code class="docutils literal"><span class="pre">=</span> <span class="pre">1</span></code>: once per backend loop
+- <code class="docutils literal"><span class="pre">=</span> <span class="pre">2</span></code>: at various points in the backend loop
+Only available if compiled with DEBUG.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-check-refcounts">
+<code class="descname">--check-refcounts</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-check-refcounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Every backend cycle, all refcounts in the system are checked. SLOW! Only available if compiled with DEBUG.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-gobble-descriptors">
+<code class="descname">--gobble-descriptors</code><code class="descclassname"> &lt;num&gt;</code><a class="headerlink" href="#cmdoption-ldmud-gobble-descriptors" title="Permalink to this definition">¶</a></dt>
+<dd><p>&lt;num&gt; (more) filedescriptors are used up. You&#8217;ll know when you need it. Only available if compiled with DEBUG.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-check-strings">
+<code class="descname">--check-strings</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-check-strings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Every backend cycle, all shared strings in the system are checked. SLOW! Only available if compiled with DEBUG and CHECK_STRINGS.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-v">
+<code class="descname">-V</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--version</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-v" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the version of the driver and exit.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-options">
+<code class="descname">--options</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the version and compilation options of the driver and exit.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-h">
+<code class="descname">-h</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">-?</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--help</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-h" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a command help and exit.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-longhelp">
+<code class="descname">--longhelp</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-ldmud-longhelp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a long command help and exit.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-ldmud-args">
+<code class="descname">--args</code><code class="descclassname"> &lt;filename&gt;</code><a class="headerlink" href="#cmdoption-ldmud-args" title="Permalink to this definition">¶</a></dt>
+<dd><p>The driver reads and parses the given file and treats its contents as if given on the commandline right where the &#8211;args option occured. The file itself can again contain &#8211;args options.</p>
+</dd></dl>
+
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>Argument Parser<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>The parser analyses the commandline arguments given with the driver invocation and distinguishes &#8216;options&#8217;, which start with a <code class="docutils literal"><span class="pre">-</span></code>, from proper arguments. Options are further distinguished by their name and may take an additional value. In general, options and arguments can be given in any order.</p>
+<p>Options are recognized in two forms. In the short form the option must be given as a single <code class="docutils literal"><span class="pre">-</span></code> followed by a single letter. In the long form, options start with <code class="docutils literal"><span class="pre">--</span></code> followed by a string of arbitrary length. The short options are case sensitive, the long options aren&#8217;t. Most options can be specified in both the short and long form, but that is not mandatory. Examples: <code class="docutils literal"><span class="pre">-r</span></code> and <code class="docutils literal"><span class="pre">--recursive</span></code>.</p>
+<p>If an option takes a value, it must follow the option immediately after a separating space or <code class="docutils literal"><span class="pre">=</span></code>. Additionally, the value for a short option may follow the option without separator. Examples are: <code class="docutils literal"><span class="pre">-fMakefile</span></code>, <code class="docutils literal"><span class="pre">-f</span> <span class="pre">Makefile</span></code>, <code class="docutils literal"><span class="pre">--file=Makefile</span></code> and <code class="docutils literal"><span class="pre">--file</span> <span class="pre">Makefile</span></code>.</p>
+<p>Short options may be collated into one argument, e.g. <code class="docutils literal"><span class="pre">-rtl</span></code>, but of these only the last may take a value.</p>
+<p>The option <code class="docutils literal"><span class="pre">--</span></code> marks the end of options. All following command arguments are considered proper arguments even if they start with a <code class="docutils literal"><span class="pre">-</span></code> or <code class="docutils literal"><span class="pre">--</span></code>.</p>
+<p>The arguments are usually taken from the commandline; but the parser is also able to read them from a textfiles, which can be nested. The content of the textfiles is broken down into words delimited by whitespace, which are then treated as given on the commandline at the place where the instruction to read the textfile stood.</p>
+<p>The file parser recognizes simple double-quoted strings, which must be contained on a single line. Additionally, the <code class="docutils literal"><span class="pre">#</span></code> character given by itself is a comment marker - everthing after the <code class="docutils literal"><span class="pre">#</span></code> until the end of the current line is ignored.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added the <a class="reference internal" href="#cmdoption-ldmud-max-thread-pending"><code class="xref std std-option docutils literal"><span class="pre">--max-thread-pending</span></code></a>, <a class="reference internal" href="#cmdoption-ldmud-hostname"><code class="xref std std-option docutils literal"><span class="pre">--hostname</span></code></a>, <a class="reference internal" href="#cmdoption-ldmud-hostaddr"><code class="xref std std-option docutils literal"><span class="pre">--hostaddr</span></code></a>, <a class="reference internal" href="#cmdoption-ldmud-args"><code class="xref std std-option docutils literal"><span class="pre">--args</span></code></a> and <a class="reference internal" href="#cmdoption-ldmud-random-seed"><code class="xref std std-option docutils literal"><span class="pre">--random-seed</span></code></a> options.</li>
+<li><strong>changed</strong> (<em>3.2.10</em>) &#8211; added the <a class="reference internal" href="#cmdoption-ldmud-filename-spaces"><code class="xref std std-option docutils literal"><span class="pre">--filename-spaces</span></code></a> option.</li>
+<li><strong>changed</strong> (<em>3.3.378</em>) &#8211; added <a class="reference internal" href="#cmdoption-ldmud-share-variables"><code class="xref std std-option docutils literal"><span class="pre">--share-variables</span></code></a>, <a class="reference internal" href="#cmdoption-ldmud-init-variables"><code class="xref std std-option docutils literal"><span class="pre">--init-variables</span></code></a>.</li>
+<li><strong>changed</strong> (<em>3.3.475/3.2.11</em>) &#8211; added <a class="reference internal" href="#cmdoption-ldmud-tls-key"><code class="xref std std-option docutils literal"><span class="pre">--tls-key</span></code></a>, <a class="reference internal" href="#cmdoption-ldmud-tls-cert"><code class="xref std std-option docutils literal"><span class="pre">--tls-cert</span></code></a>.</li>
+<li><strong>changed</strong> (<em>3.3.672/3.2.11</em>) &#8211; added <a class="reference internal" href="#cmdoption-ldmud-tls-trustfile"><code class="xref std std-option docutils literal"><span class="pre">--tls-trustfile</span></code></a>, <a class="reference internal" href="#cmdoption-ldmud-tls-trustdirectory"><code class="xref std std-option docutils literal"><span class="pre">--tls-trustdirectory</span></code></a>.</li>
+<li><strong>changed</strong> (<em>3.3.677</em>) &#8211; added <a class="reference internal" href="#cmdoption-ldmud-max-mapping-keys"><code class="xref std std-option docutils literal"><span class="pre">--max-mapping-keys</span></code></a>.</li>
+<li><strong>changed</strong> (<em>3.3.714/3.2.15</em>) &#8211; added <a class="reference internal" href="#cmdoption-ldmud-tls-crlfile"><code class="xref std std-option docutils literal"><span class="pre">--tls-crlfile</span></code></a>, <a class="reference internal" href="#cmdoption-ldmud-tls-crldirectory"><code class="xref std std-option docutils literal"><span class="pre">--tls-crldirectory</span></code></a>.</li>
+<li><strong>changed</strong> (<em>3.3.718</em>) &#8211; added <a class="reference internal" href="#cmdoption-ldmud-randomdevice"><code class="xref std std-option docutils literal"><span class="pre">--randomdevice</span></code></a>.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Starting LDMud</a><ul>
+<li><a class="reference internal" href="#TOPIC">TOPIC</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#l">Argument Parser</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/admin/invocation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

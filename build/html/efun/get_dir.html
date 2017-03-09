@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::get_dir() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::get_dir() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::get_error_file()" href="get_error_file.html" />
     <link rel="prev" title="efun::get_connection_charset()" href="get_connection_charset.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,145 +47,120 @@
 <div class="section" id="SYNOPSIS">
 <span id="get_dir"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.get_dir">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">get_dir</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.get_dir" title="Permalink to this definition">¶</a></tr>
+<tr>
+#include &lt;files.h&gt;</tr>
+<tr id="lpc.efun.get_dir">
+<!--[lpc.efun.get_dir]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">get_dir</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.get_dir" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">get_dir</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;mask</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
-<tr>
-<td>
-<code class="descname">:include &lt;files.h&gt;</code></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">get_dir</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+string<em>&nbsp;str</em>, </td><td id="id3">
+int<em>&nbsp;mask</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<p>This function takes a path as argument and returns an array of file
-names and attributes in that directory.</p>
+<p>This function takes a path as argument and returns an array of file names and attributes in that directory.</p>
 <p>Returns 0 if the directory to search in does not exist.</p>
-<p>The filename part of the path may contain &#8216;*&#8217; or &#8216;?&#8217; as wildcards:
-every &#8216;*&#8217; matches an arbitrary amount of characters (or just itself),
-a &#8216;?&#8217; matches any character. Thus get_dir(&#8220;/path/<em>&#8221;) would return an
-alphabetically sorted array of all files in directory &#8220;/path&#8221;, or
-just ({ &#8220;/path/</em>&#8221; }) if this file happens to exist.</p>
-<p>To query the content of a directory, use the directory name with a
-trailing &#8216;/&#8217; or &#8216;/.&#8217;, for example get_dir(&#8220;/path/.&#8221;). Use the
-directory name as it is to get information about the directory itself.</p>
-<p>The optional second argument mask can be used to get
-information about the specified files.</p>
-<dl class="docutils">
-<dt>GETDIR_EMPTY    (0x00)  get_dir returns an empty array (not very</dt>
-<dd>useful).</dd>
-<dt>GETDIR_NAMES    (0x01)  put the alphabetically sorted file names into</dt>
-<dd>the returned array.</dd>
-<dt>GETDIR_SIZES    (0x02)  put the file sizes unsorted into the returned</dt>
-<dd>array. directories have size FSIZE_DIR (-2).</dd>
-<dt>GETDIR_DATES    (0x04)  put the file modification dates (in seconds</dt>
-<dd>since 01/01/1970) unsorted into the
-returned array.</dd>
-<dt>GETDIR_ACCESS   (0x40)  put the file access dates unsorted into</dt>
-<dd>the returned array.</dd>
-<dt>GETDIR_MODES    (0x80)  put the unix file modes unsorted into</dt>
-<dd>the returned array.</dd>
-</dl>
-<p>GETDIR_ALL      (0xDF)  Return all.</p>
-<dl class="docutils">
-<dt>GETDIR_PATH     (0x10)  if this mask bit is set, the filenames with</dt>
-<dd>the full path will be returned
-(GETDIR_NAMES is implied).</dd>
-<dt>GETDIR_UNSORTED (0x20)  if this mask bit is set, the result of will</dt>
-<dd>_not_ be sorted.</dd>
-</dl>
-<p>Note: You should use GETDIR_NAMES|GETDIR_UNSORTED to get the entries
-in the same order as with GETDIR_SIZES and GETDIR_DATES.</p>
+<p>The filename part of the path may contain &#8216;*&#8217; or &#8216;?&#8217; as wildcards: every &#8216;*&#8217; matches an arbitrary amount of characters (or just itself), a &#8216;?&#8217; matches any character. Thus get_dir(&#8220;/path/<em>&#8221;) would return an alphabetically sorted array of all files in directory &#8220;/path&#8221;, or just ({ &#8220;/path/</em>&#8221; }) if this file happens to exist.</p>
+<p>To query the content of a directory, use the directory name with a trailing &#8216;/&#8217; or &#8216;/.&#8217;, for example <code class="docutils literal"><span class="pre">get_dir(&quot;/path/.&quot;)</span></code>. Use the directory name as it is to get information about the directory itself.</p>
+<p>The optional second argument mask can be used to get information about the specified files.:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>:macro:`GETDIR_EMPTY`    (0x00)  get_dir returns an empty array (not very useful).
+:macro:`GETDIR_NAMES`    (0x01)  put the alphabetically sorted file names into the returned array.
+:macro:`GETDIR_SIZES`    (0x02)  put the file sizes unsorted into the returned array. directories have size :macro:`FSIZE_DIR` (-2).
+:macro:`GETDIR_DATES`    (0x04)  put the file modification dates (in seconds since 01/01/1970) unsorted into the returned array.
+:macro:`GETDIR_ACCESS`   (0x40)  put the file access dates unsorted into the returned array.
+:macro:`GETDIR_MODES`    (0x80)  put the unix file modes unsorted into the returned array.
+
+:macro:`GETDIR_ALL`      (0xDF)  Return all.
+
+:macro:`GETDIR_PATH`     (0x10)  if this mask bit is set, the filenames with the full path will be returned (GETDIR_NAMES is implied).
+:macro:`GETDIR_UNSORTED` (0x20)  if this mask bit is set, the result of will _not_ be sorted.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You should use <code class="docutils literal"><span class="pre">GETDIR_NAMES|GETDIR_UNSORTED</span></code> to get the entries in the same order as with <code class="xref lpc lpc-macro docutils literal"><span class="pre">GETDIR_SIZES</span></code> and <code class="xref lpc lpc-macro docutils literal"><span class="pre">GETDIR_DATES</span></code>.</p>
+</div>
 <p>The values of mask can be added together.</p>
-<p>NOTES
-The path argument to this efun is processed by valid_read() in the
-mudlib master before being used. The mudlib may normalize this path
-(e.g. strip leading or trailing &#8220;/&#8221;) and this may lead to expected
-results (e.g. get_dir(&#8220;/dir/&#8221;, ...) not returning the contents
-of /dir/).
-COMPAT mode: GETDIR_PATH will return the paths without leading /.</p>
-<p>EXAMPLES
-function                         returns
-&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
-get_dir(&#8220;/obj/.&#8221;)                all files contained in directory /obj.
-get_dir(&#8220;/obj/&#8221;)                 the same as get_dir(&#8220;/obj/&#8221;)</p>
-<dl class="docutils">
-<dt>get_dir(&#8220;/obj/sword.c&#8221;)          ({ &#8220;sword.c&#8221; }) if /obj/sword.c</dt>
-<dd>exists (it may be a file or a
-directory), otherwise ({ }) if
-/obj is a directory,
-otherwise 0.</dd>
-<dt>get_dir(&#8220;/obj/<em>&#8221;)                ({ &#8220;</em>&#8221; }) if * exists.</dt>
-<dd>otherwise and normally an
-alphabetically sorted array with all
-names of files and directories in
-/obj if /obj is a directory,
-otherwise 0.</dd>
-<dt>get_dir(&#8220;/obj/sword.c&#8221;, GETDIR_SIZES)  ({ &lt;size of /obj/sword.c&gt; })</dt>
-<dd>if that file exists.</dd>
-</dl>
-<p>get_dir(&#8220;/obj/.&#8221;, GETDIR_NAMES)  the same as get_dir(&#8220;/obj/.&#8221;).
-get_dir(&#8220;/obj/.&#8221;, GETDIR_SIZES)  an array with the sizes of the files</p>
-<blockquote>
-<div>in /obj, not sorted by names.</div></blockquote>
-<p>get_dir(&#8220;/obj/.&#8221;, GETDIR_NAMES|GETDIR_SIZES|GETDIR_DATES) or shorter
-get_dir(&#8220;/obj/.&#8221;, GETDIR_ALL)    an one-dimensional array that</p>
-<blockquote>
-<div><p>contains for each file in /obj its
-name, its size and its modification
-date, sorted by names, for example</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>({</dt>
-<dd>&#8220;axe.c&#8221;  ,  927, 994539583,
-&#8220;sword.c&#8221;, 1283, 998153903,</dd>
-</dl>
-<p>}).</p>
-</div></blockquote>
-</div></blockquote>
-<dl class="docutils">
-<dt>get_dir(&#8220;/obj/sword.c&#8221;, GETDIR_NAMES|GETDIR_PATH)</dt>
-<dd>({ &#8220;/obj/sword.c&#8221; }) if applicable.</dd>
-</dl>
-<p>get_dir(&#8220;/obj/sword.c&#8221;, GETDIR_PATH)  Short form of the same query.</p>
-<dl class="docutils">
-<dt>transpose_array(({ get_dir(str, GETDIR_NAMES|GETDIR_UNSORTED)</dt>
-<dd>, get_dir(str, GETDIR_SIZES)
-, get_dir(str, GETDIR_DATES) }));</dd>
-</dl>
-<p>This returns an array of arrays, with filename, size and
-filetime as elements, not sorted by names, for example</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>({</dt>
-<dd>({ &#8220;sword.c&#8221;, 1283, 998153903 }),
-({ &#8220;axe.c&#8221;  ,  927, 994539583 }),</dd>
-</dl>
-<p>}).</p>
-</div></blockquote>
-<p>LDMud 3.2.9 added GETDIR_PATH.
-LDMud 3.2.11/3.3.648 added GETDIR_ACCESS and GETDIR_MODES.</p>
-<blockquote>
-<div><blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="mkdir.html#lpc.mkdir" title="mkdir"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mkdir()</span></code>(E)</a>, <a class="reference internal" href="rmdir.html#lpc.rmdir" title="rmdir"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rmdir()</span></code>(E)</a>, <a class="reference internal" href="file_size.html#lpc.file_size" title="file_size"><code class="xref lpc lpc-efun docutils literal"><span class="pre">file_size()</span></code>(E)</a>, <a class="reference internal" href="write_file.html#lpc.write_file" title="write_file"><code class="xref lpc lpc-efun docutils literal"><span class="pre">write_file()</span></code>(E)</a>, <a class="reference internal" href="write_bytes.html#lpc.write_bytes" title="write_bytes"><code class="xref lpc lpc-efun docutils literal"><span class="pre">write_bytes()</span></code>(E)</a>,</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><a class="reference internal" href="read_file.html#lpc.read_file" title="read_file"><code class="xref lpc lpc-efun docutils literal"><span class="pre">read_file()</span></code>(E)</a>, <a class="reference internal" href="read_bytes.html#lpc.read_bytes" title="read_bytes"><code class="xref lpc lpc-efun docutils literal"><span class="pre">read_bytes()</span></code>(E)</a></p>
-</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The path argument to this efun is processed by <a class="reference internal" href="../master/valid_read.html#lpc.master.valid_read" title="valid_read"><code class="xref lpc lpc-master docutils literal"><span class="pre">valid_read</span></code>(M)</a> in the mudlib master before being used. The mudlib may normalize this path (e.g. strip leading or trailing &#8220;/&#8221;) and this may lead to unexpected results (e.g. <code class="docutils literal"><span class="pre">get_dir(&quot;/dir/&quot;,</span> <span class="pre">...)</span></code> not returning the contents of &#8220;/dir/&#8221;).</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">in <a class="reference internal" href="../topics/predefined.html#lpc.macro.__COMPAT_MODE__" title="__COMPAT_MODE__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__COMPAT_MODE__</span></code></a>, <code class="xref lpc lpc-macro docutils literal"><span class="pre">GETDIR_PATH</span></code> will return the paths without the leading /.</p>
+</div>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">function</span>                         <span class="n">returns</span>
+<span class="o">-------------------------------------------------------------------</span>
+<span class="n">get_dir</span><span class="p">(</span><span class="s">&quot;/obj/.&quot;</span><span class="p">)</span>                <span class="n">all</span> <span class="n">files</span> <span class="n">contained</span> <span class="k">in</span> <span class="n">directory</span> <span class="o">/</span><span class="n">obj</span><span class="p">.</span>
+<span class="n">get_dir</span><span class="p">(</span><span class="s">&quot;/obj/&quot;</span><span class="p">)</span>                 <span class="n">the</span> <span class="n">same</span> <span class="k">as</span> <span class="n">get_dir</span><span class="p">(</span><span class="s">&quot;/obj/&quot;</span><span class="p">)</span>
+
+<span class="n">get_dir</span><span class="p">(</span><span class="s">&quot;/obj/sword.c&quot;</span><span class="p">)</span>          <span class="p">({</span> <span class="s">&quot;sword.c&quot;</span> <span class="p">})</span> <span class="k">if</span> <span class="o">/</span><span class="n">obj</span><span class="o">/</span><span class="n">sword</span><span class="p">.</span><span class="n">c</span>
+                                 <span class="n">exists</span> <span class="p">(</span><span class="n">it</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">file</span> <span class="n">or</span> <span class="n">a</span>
+                                 <span class="n">directory</span><span class="p">),</span> <span class="n">otherwise</span> <span class="p">({</span> <span class="p">})</span> <span class="k">if</span>
+                                 <span class="o">/</span><span class="n">obj</span> <span class="n">is</span> <span class="n">a</span> <span class="n">directory</span><span class="p">,</span>
+                                 <span class="n">otherwise</span> <span class="mf">0.</span>
+
+<span class="n">get_dir</span><span class="p">(</span><span class="s">&quot;/obj/*&quot;</span><span class="p">)</span>                <span class="p">({</span> <span class="s">&quot;*&quot;</span> <span class="p">})</span> <span class="k">if</span> <span class="o">*</span> <span class="n">exists</span><span class="p">.</span>
+                                 <span class="n">otherwise</span> <span class="n">and</span> <span class="n">normally</span> <span class="n">an</span>
+                                 <span class="n">alphabetically</span> <span class="n">sorted</span> <span class="kt">array</span> <span class="n">with</span> <span class="n">all</span>
+                                 <span class="n">names</span> <span class="n">of</span> <span class="n">files</span> <span class="n">and</span> <span class="n">directories</span> <span class="k">in</span>
+                                 <span class="o">/</span><span class="n">obj</span> <span class="k">if</span> <span class="o">/</span><span class="n">obj</span> <span class="n">is</span> <span class="n">a</span> <span class="n">directory</span><span class="p">,</span>
+                                 <span class="n">otherwise</span> <span class="mf">0.</span>
+
+<span class="n">get_dir</span><span class="p">(</span><span class="s">&quot;/obj/sword.c&quot;</span><span class="p">,</span> <span class="n">GETDIR_SIZES</span><span class="p">)</span>  <span class="p">({</span> <span class="o">&lt;</span><span class="n">size</span> <span class="n">of</span> <span class="o">/</span><span class="n">obj</span><span class="o">/</span><span class="n">sword</span><span class="p">.</span><span class="n">c</span><span class="o">&gt;</span> <span class="p">})</span>
+                                 <span class="k">if</span> <span class="n">that</span> <span class="n">file</span> <span class="n">exists</span><span class="p">.</span>
+<span class="n">get_dir</span><span class="p">(</span><span class="s">&quot;/obj/.&quot;</span><span class="p">,</span> <span class="n">GETDIR_NAMES</span><span class="p">)</span>  <span class="n">the</span> <span class="n">same</span> <span class="k">as</span> <span class="n">get_dir</span><span class="p">(</span><span class="s">&quot;/obj/.&quot;</span><span class="p">).</span>
+<span class="n">get_dir</span><span class="p">(</span><span class="s">&quot;/obj/.&quot;</span><span class="p">,</span> <span class="n">GETDIR_SIZES</span><span class="p">)</span>  <span class="n">an</span> <span class="kt">array</span> <span class="n">with</span> <span class="n">the</span> <span class="n">sizes</span> <span class="n">of</span> <span class="n">the</span> <span class="n">files</span>
+                                 <span class="k">in</span> <span class="o">/</span><span class="n">obj</span><span class="p">,</span> <span class="n">not</span> <span class="n">sorted</span> <span class="n">by</span> <span class="n">names</span><span class="p">.</span>
+<span class="n">get_dir</span><span class="p">(</span><span class="s">&quot;/obj/.&quot;</span><span class="p">,</span> <span class="n">GETDIR_NAMES</span><span class="o">|</span><span class="n">GETDIR_SIZES</span><span class="o">|</span><span class="n">GETDIR_DATES</span><span class="p">)</span> <span class="n">or</span> <span class="n">shorter</span>
+<span class="n">get_dir</span><span class="p">(</span><span class="s">&quot;/obj/.&quot;</span><span class="p">,</span> <span class="n">GETDIR_ALL</span><span class="p">)</span>    <span class="n">an</span> <span class="n">one</span><span class="o">-</span><span class="n">dimensional</span> <span class="kt">array</span> <span class="n">that</span>
+                                 <span class="n">contains</span> <span class="k">for</span> <span class="n">each</span> <span class="n">file</span> <span class="k">in</span> <span class="o">/</span><span class="n">obj</span> <span class="n">its</span>
+                                 <span class="n">name</span><span class="p">,</span> <span class="n">its</span> <span class="n">size</span> <span class="n">and</span> <span class="n">its</span> <span class="n">modification</span>
+                                 <span class="n">date</span><span class="p">,</span> <span class="n">sorted</span> <span class="n">by</span> <span class="n">names</span><span class="p">,</span> <span class="k">for</span> <span class="n">example</span>
+                                   <span class="p">({</span>
+                                      <span class="s">&quot;axe.c&quot;</span>  <span class="p">,</span>  <span class="mi">927</span><span class="p">,</span> <span class="mi">994539583</span><span class="p">,</span>
+                                      <span class="s">&quot;sword.c&quot;</span><span class="p">,</span> <span class="mi">1283</span><span class="p">,</span> <span class="mi">998153903</span><span class="p">,</span>
+                                   <span class="p">}).</span>
+
+<span class="n">get_dir</span><span class="p">(</span><span class="s">&quot;/obj/sword.c&quot;</span><span class="p">,</span> <span class="n">GETDIR_NAMES</span><span class="o">|</span><span class="n">GETDIR_PATH</span><span class="p">)</span>
+                                 <span class="p">({</span> <span class="s">&quot;/obj/sword.c&quot;</span> <span class="p">})</span> <span class="k">if</span> <span class="n">applicable</span><span class="p">.</span>
+<span class="n">get_dir</span><span class="p">(</span><span class="s">&quot;/obj/sword.c&quot;</span><span class="p">,</span> <span class="n">GETDIR_PATH</span><span class="p">)</span>  <span class="n">Short</span> <span class="n">form</span> <span class="n">of</span> <span class="n">the</span> <span class="n">same</span> <span class="n">query</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>This returns an array of arrays, with filename, size and filetime as elements, not sorted by names:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">transpose_array</span><span class="p">(({</span> <span class="n">get_dir</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">GETDIR_NAMES</span><span class="o">|</span><span class="n">GETDIR_UNSORTED</span><span class="p">)</span>
+                 <span class="p">,</span> <span class="n">get_dir</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">GETDIR_SIZES</span><span class="p">)</span>
+                 <span class="p">,</span> <span class="n">get_dir</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">GETDIR_DATES</span><span class="p">)</span> <span class="p">}));</span>
+</pre></div>
+</div>
+<p>Here&#8217;s an example of this array:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="p">({</span>
+   <span class="p">({</span> <span class="s">&quot;sword.c&quot;</span><span class="p">,</span> <span class="mi">1283</span><span class="p">,</span> <span class="mi">998153903</span> <span class="p">}),</span>
+   <span class="p">({</span> <span class="s">&quot;axe.c&quot;</span>  <span class="p">,</span>  <span class="mi">927</span><span class="p">,</span> <span class="mi">994539583</span> <span class="p">}),</span>
+<span class="p">}).</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; adds GETDIR_PATH.</li>
+<li><strong>changed</strong> (<em>3.2.11/3.3.648</em>) &#8211; adds GETDIR_ACCESS and GETDIR_MODES.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="mkdir.html#lpc.efun.mkdir" title="mkdir"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mkdir</span></code>(E)</a>, <a class="reference internal" href="rmdir.html#lpc.efun.rmdir" title="rmdir"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rmdir</span></code>(E)</a>, <a class="reference internal" href="file_size.html#lpc.efun.file_size" title="file_size"><code class="xref lpc lpc-efun docutils literal"><span class="pre">file_size</span></code>(E)</a>, <a class="reference internal" href="write_file.html#lpc.efun.write_file" title="write_file"><code class="xref lpc lpc-efun docutils literal"><span class="pre">write_file</span></code>(E)</a>, <a class="reference internal" href="write_bytes.html#lpc.efun.write_bytes" title="write_bytes"><code class="xref lpc lpc-efun docutils literal"><span class="pre">write_bytes</span></code>(E)</a>, <a class="reference internal" href="read_file.html#lpc.efun.read_file" title="read_file"><code class="xref lpc lpc-efun docutils literal"><span class="pre">read_file</span></code>(E)</a>, <a class="reference internal" href="read_bytes.html#lpc.efun.read_bytes" title="read_bytes"><code class="xref lpc lpc-efun docutils literal"><span class="pre">read_bytes</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -194,8 +171,8 @@ LDMud 3.2.11/3.3.648 added GETDIR_ACCESS and GETDIR_MODES.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -205,21 +182,25 @@ LDMud 3.2.11/3.3.648 added GETDIR_ACCESS and GETDIR_MODES.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::get_dir()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -231,7 +212,7 @@ LDMud 3.2.11/3.3.648 added GETDIR_ACCESS and GETDIR_MODES.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/get_dir.txt"
+      <a href="../_sources/efun/get_dir.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

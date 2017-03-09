@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['efun',['efun',['../driver_efun_efun.html',1,'driver_todo']]],
-  ['erq_5fstop',['erq_stop',['../driver_hook_erq_stop.html',1,'driver_hook_hook']]],
-  ['ed',['ed',['../driver_LPC_ed.html',1,'driver_LPC_lpc']]],
-  ['efuns',['efuns',['../driver_LPC_efuns.html',1,'driver_LPC_lpc']]],
-  ['escape',['escape',['../driver_LPC_escape.html',1,'driver_todo']]],
-  ['ed',['ed',['../classefun.html#a770435af0aed7e16bcaa63d412e58bcc',1,'efun']]],
+  ['ed',['ed',['../driver_admin_ed.html',1,'driver_admin_overview']]],
+  ['external_20functions',['External functions',['../driver_efun_overview.html',1,'']]],
+  ['erq_5fstop',['erq_stop',['../driver_hook_erq_stop.html',1,'driver_hook_overview']]],
+  ['escape',['escape',['../driver_syntax_escape.html',1,'driver_syntax_overview']]],
+  ['efuns',['efuns',['../driver_topics_efuns.html',1,'driver_topics_overview']]],
+  ['ed',['ed',['../classefun.html#a9ee9e4fa5066437c75195638c362ee6d',1,'efun']]],
   ['efun',['efun',['../classefun.html',1,'']]],
   ['enable_5fcommands',['enable_commands',['../classefun.html#a57a7c813f5dd1e9315900171a868d4dd',1,'efun']]],
   ['enable_5ftelnet',['enable_telnet',['../classefun.html#a0edd06bcaa96598da8d8041b8783a2d8',1,'efun']]],
@@ -21,6 +21,5 @@ var searchData=
   ['export_5fuid',['export_uid',['../classefun.html#ade44122dc7cb16d015937a67cc645939',1,'efun']]],
   ['extern_5fcall',['extern_call',['../classefun.html#adbad80797e70e6d2fa6ba96cb6e226fb',1,'efun']]],
   ['external_5fmaster_5freload',['external_master_reload',['../classmaster.html#ae2737fcfda8fdd4caf44bf4f22f218bd',1,'master']]],
-  ['extract',['extract',['../classefun.html#a698adb6a03d7e46c1fd21113cdea94f2',1,'efun']]],
-  ['erq',['erq',['../md_concepts_erq.html',1,'']]]
+  ['erq',['erq',['../md_topics_erq.html',1,'']]]
 ];

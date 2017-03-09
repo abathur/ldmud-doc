@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::apply() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::apply() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::asin()" href="asin.html" />
     <link rel="prev" title="efun::and_bits()" href="and_bits.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,60 +47,58 @@
 <div class="section" id="SYNOPSIS">
 <span id="apply"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.apply">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">apply</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;cl</em>, </td><td>
-...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.apply" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.apply">
+<!--[lpc.efun.apply]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">apply</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+closure<em>&nbsp;cl</em>, </td><td id="id2">
+...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.apply" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Evaluates the closure <a class="reference internal" href="#efun/apply.arg.cl" title="cl"><code class="xref lpc lpc-arg docutils literal"><span class="pre">cl</span></code></a> with the following arguments. If the last argument is an array or struct, it will be flattened: ie. the array/struct itself will be removed and its contents added to the argument list of <a class="reference internal" href="#efun/apply.arg.cl" title="cl"><code class="xref lpc lpc-arg docutils literal"><span class="pre">cl</span></code></a>.</p>
+<p>If <a class="reference internal" href="#efun/apply.arg.cl" title="cl"><code class="xref lpc lpc-arg docutils literal"><span class="pre">cl</span></code></a> is not a closure, it will simply be returned (and all other arguments are ignored).</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>The flattening of the last argument is the important difference between <a class="reference internal" href="#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a> and <a class="reference internal" href="funcall.html#lpc.efun.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a>. For example:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>mixed eval(object ob, string func, mixed *args)
+{
+  return apply(#&#39;call_other, ob, func, args);
+}
+</pre></div>
 </div>
+<p>This will result in calling:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">ob</span><span class="o">-&gt;</span><span class="n">func</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],...,</span><span class="n">args</span><span class="p">[</span><span class="k">sizeof</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]).</span>
+</pre></div>
 </div>
-<p>Evaluates the closure &lt;cl&gt; with the following arguments.
-If the last argument is an array or struct, it will be
-flattened: ie. the array/struct itself will be removed and its
-contents added to the argument list of &lt;cl&gt;</p>
-<p>If &lt;cl&gt; is not a closure, it will simply be returned (and all
-other arguments are ignored).</p>
-<p>EXAMPLES
-The flattening of the last argument is the important difference
-between apply() and funcall(). For example:</p>
-<p>mixed eval(object ob, string func, mixed <a href="#id1"><span class="problematic" id="id2">*</span></a>args)
-{</p>
-<blockquote>
-<div>return apply(#&#8217;call_other, ob, func, args);</div></blockquote>
-<p>}</p>
-<p>This will result in calling</p>
-<blockquote>
-<div>ob-&gt;func(args[0],args[1],...,args[sizeof(args)-1]).</div></blockquote>
-<p>Using funcall() instead of apply() would have given us</p>
-<blockquote>
-<div>ob-&gt;func(args).</div></blockquote>
-<p>Of course, with the &#8216;...&#8217; operator we could also write</p>
-<p>mixed eval(object ob, string func, mixed <a href="#id3"><span class="problematic" id="id4">*</span></a>args)
-{</p>
-<blockquote>
-<div>return funcall(#&#8217;call_other, ob, func, args...);</div></blockquote>
-<p>}</p>
+<p>Using <a class="reference internal" href="funcall.html#lpc.efun.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a> instead of <a class="reference internal" href="#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a> would have given us:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">ob</span><span class="o">-&gt;</span><span class="n">func</span><span class="p">(</span><span class="n">args</span><span class="p">).</span>
+</pre></div>
+</div>
+<p>Of course, with the &#8216;...&#8217; operator we could also write:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>mixed eval(object ob, string func, mixed *args)
+{
+  return funcall(#&#39;call_other, ob, func, args...);
+}
+</pre></div>
+</div>
 <p>and achieve the same result.</p>
-<p>Introduced in <a class="reference external" href="mailto:3&#46;2&#37;&#52;&#48;70">3<span>&#46;</span>2<span>&#64;</span>70</a>
-LDMud 3.2.8 adds the returning of a non-closure as first
-argument.
-LDMud 3.3 added the &#8216;...&#8217; operator and thus made apply() in fact
-redundant.
-LDMud 3.3.266 added support for structs.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="funcall.html#lpc.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall()</span></code>(E)</a>, <a class="reference internal" href="../LPC/closures.html#lpc.closures" title="closures"><code class="xref lpc lpc-lang docutils literal"><span class="pre">closures</span></code>(LPC)</a>, <a class="reference internal" href="../LPC/varargs.html#lpc.varargs" title="varargs"><code class="xref lpc lpc-lang docutils literal"><span class="pre">varargs</span></code>(LPC)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2&#64;70</em>)</li>
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; adds the returning of a non-closure as first argument.</li>
+<li><strong>changed</strong> (<em>3.3</em>) &#8211; added the &#8216;...&#8217; operator and thus made <a class="reference internal" href="#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a> in fact redundant.</li>
+<li><strong>changed</strong> (<em>3.3.266</em>) &#8211; added support for structs.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="funcall.html#lpc.efun.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a>, <a class="reference internal" href="../syntax/closures.html#lpc.type.closure" title="closure"><code class="xref lpc lpc-type docutils literal"><span class="pre">closure</span></code></a>, <a class="reference internal" href="../syntax/varargs.html#lpc.keyword.varargs" title="varargs"><code class="xref lpc lpc-keyword docutils literal"><span class="pre">varargs</span></code></a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -109,8 +109,8 @@ LDMud 3.3.266 added support for structs.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -120,21 +120,25 @@ LDMud 3.3.266 added support for structs.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::apply()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -146,7 +150,7 @@ LDMud 3.3.266 added support for structs.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/apply.txt"
+      <a href="../_sources/efun/apply.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

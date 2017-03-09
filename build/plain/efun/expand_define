@@ -5,19 +5,24 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Expands the macro <name> with the argument(s) <arg>... (default is one empty 
-string ""). Result is the expanded macro, or 0 if there is no macro with that 
-name.
+   Expands the macro name(E) with the argument(s) arg(E) ... (default is one 
+   empty string ""). Result is the expanded macro, or 0 if there is no macro 
+   with that name.
 
-This efun is applicable only while an object is compiled, therefore its usage 
-is restricted to a few functions like the H_INCLUDE_DIRS driver hook, or the 
-masters runtime_error() function.
+   This efun is applicable only while an object is compiled, therefore its 
+   usage is restricted to a few functions like H_INCLUDE_DIRS(H), or 
+   runtime_error(M).
 
-EXAMPLES While compiling 'foo.c':
+   USAGE
+   =====
+      While compiling 'foo.c':
 
-   expand_define("__FILE__") --> "foo.c"
+         expand_define("__FILE__") --> "foo.c"
 
-Introduced in 3.2.1@93.
+HISTORY
+=======
+   - introduced (3.2.1@93)
 
-   See Also: 
-      `hooks`, runtime_error(M)
+SEE ALSO
+========
+   hook(H), runtime_error(M)

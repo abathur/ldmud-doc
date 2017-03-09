@@ -1,0 +1,21 @@
+OVERVIEW
+========
+   Administrating an ldmud
+DESCRIPTION
+===========
+   Do all kinds of shit to admin this ldmud.
+
+   Administration tasks
+   ====================
+      - ed
+      - Prerequisites
+      - Unix or Unix-like system
+      - 64 bit systems (using the LP64 model)
+      - Compiling for 32-bit environments on 64-bit systems
+      - Compiling sources directly from our git repository
+      - IPv6
+      - mySQL
+      - Windows 95/98/NT/XP/7
+      - Starting LDMud
+      - limitations
+      - architectures

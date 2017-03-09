@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: telnet_neg</title>
+<title>LDMud: telnet_neg</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('driver_hook_telnet_neg.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,34 +98,37 @@ $(document).ready(function(){initNavTree('driver_hook_telnet_neg.html','');});
 <div class="title">telnet_neg </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Optional hook to specifiy how to perform a single telnet negotiation. Hook setting may be any closure or a string. If not set, most telnet options are rejected (read: only a very minimal negotiation takes place).</p>
+<div class="textblock"><dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_TELNET_NEG, value)</div>
+</div><!-- fragment --></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>void|mixed &lt;name&gt;(int action, int option [, int * opts ] ) </td></tr>
+    <tr><td class="paramname">value</td><td>void|mixed &lt;closure&gt;(int action, int option [, int * opts ] )</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Optional hook to specifiy how to perform a single telnet negotiation. Hook setting may be any closure or a string. If not set, most telnet options are rejected (read: only a very minimal negotiation takes place).</p>
 <p>The hook is called whenever the driver receives a demand for option negotiation for any option the driver does not handle itself. By default, the driver deals with the following options:</p>
-<p>TELOPT_ECHO: Echo option TELOPT_SGA: Suppress Go Ahead (nearly always on) TELOPT_COMPRESS: Mud client compression protocol (obsolete) TELOPT_COMPRESS2: Mud client compression protocol V2</p>
+<p><code>TELOPT_ECHO</code>: Echo option <code>TELOPT_SGA</code>: Suppress Go Ahead (nearly always on) <code>TELOPT_COMPRESS</code>: Mud client compression protocol (obsolete) <code>TELOPT_COMPRESS2</code>: Mud client compression protocol V2</p>
 <p>For all other telnet options negotiations, this hook is called.</p>
-<p>The hook has then to perform the negotiation using the efun binary_message().</p>
-<p>Alternatively, if H_NOECHO is set, this hook is called for <em>all</em> telnet data received.</p>
-<p>If the setting is a string, it used as the name of an lfun to call in this_player(). Closures are just called, with unbound lambda-closures being bound to this_player() prior to execution.</p>
+<p>The hook has then to perform the negotiation using the :efun::efun::binary_message().</p>
+<p>Alternatively, if <a class="el" href="driver_hook_no_echo.html">H_NOECHO</a> is set, this hook is called for <em>all</em> telnet data received.</p>
+<p>If the setting is a string, it used as the name of an lfun to call in <code>this_player()</code>. Closures are just called, with unbound lambda-closures being bound to <code>this_player()</code> prior to execution.</p>
 <p>The hook is called for a 'DO/DONT/WILL/WONT &lt;opt&gt;' with the action (DO/DONT/...) as the first, and &lt;opt&gt; as the second argument.</p>
 <p>For example:, if the driver receives the sequence</p>
 <p>IAC SB &lt;opt&gt; &lt;opts&gt;...</p>
 <p>followed by IAC SB/SE, the hook is called with 'SB' as first argument, &lt;opt&gt; as second, and &lt;opts&gt; as an array of integers as third argument.</p>
-<p>REMARKS An incomplete list of telnet negotiations this hook is called for includes the following:</p>
-<p>SB: Suboption negotiation TELOPT_LINEMODE: linemode TELOPT_NAWS: window size TELOPT_TTYPE: terminal type TELOPT_TM: timing mark TELOPT_NEWENV: remote environment variables TELOPT_ENVIRON: remote environment variables TELOPT_XDISPLOC: remote X display address TELOPT_TSPEED: terminal speed TELOPT_BINARY: binary data, needed for non-ASCII charsets TELOPT_EOR: TinyFugue prompt marker (together with EOR)</p>
-<p>TELOPT_MSP: Mud Sound Protocol TELOPT_MXP: Mud Extension Protocol TELOPT_MSSP: Mud Server Status Protocol TELOPT_GMCP: Generic Mud Communication Protocol</p>
-<dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_TELNET_NEG, value)</div>
-</div><!-- fragment --></dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_concepts_telnet.html">telnet</a>, <a class="el" href="driver_hook_no_echo.html">no_echo</a> Arguments:<ul>
-<li>value (<a class="el" href="driver_LPC_string.html">string</a>) &ndash; void|mixed &lt;name&gt;(int action, int option [, int * opts ] )</li>
-<li>value (<a class="el" href="driver_LPC_closures.html">closure</a>) &ndash; void|mixed &lt;closure&gt;(int action, int option [, int * opts ] ) </li>
-</ul>
-</dd></dl>
+<h2>Negotiations</h2>
+<p>An incomplete list of telnet negotiations this hook is called for includes the following: SB: Suboption negotiation <code>TELOPT_LINEMODE</code>: linemode <code>TELOPT_NAWS</code>: window size <code>TELOPT_TTYPE</code>: terminal type <code>TELOPT_TM</code>: timing mark <code>TELOPT_NEWENV</code>: remote environment variables <code>TELOPT_ENVIRON</code>: remote environment variables <code>TELOPT_XDISPLOC</code>: remote X display address <code>TELOPT_TSPEED</code>: terminal speed <code>TELOPT_BINARY</code>: binary data, needed for non-ASCII charsets <code>TELOPT_EOR</code>: TinyFugue prompt marker (together with EOR)</p>
+<p><code>TELOPT_MSP</code>: Mud Sound Protocol <code>TELOPT_MXP</code>: Mud Extension Protocol <code>TELOPT_MSSP</code>: Mud Server Status Protocol <code>TELOPT_GMCP</code>: Generic Mud Communication Protocol</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_hook_overview.html">hook</a>, <a class="el" href="driver_hook_no_echo.html">no_echo</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">index</a></li><li class="navelem"><a class="el" href="driver_hook_hook.html">hook</a></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:11 for Tsunami by
+    <li class="navelem"><a class="el" href="driver_hook_overview.html">Driver-supported hooks</a></li>
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:24 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

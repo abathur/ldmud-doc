@@ -6,8 +6,8 @@ DESCRIPTION
 ===========
    Return the normal singular names of this object.
 
-   Used by parse_command().
+   Used by parse_command(E).
 
 SEE ALSO
 ========
-   parse_command()(E), `parse_command_pural_id_list`
+   parse_command(E), parse_command_plural_id_list(A)

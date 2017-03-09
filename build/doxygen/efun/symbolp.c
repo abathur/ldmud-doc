@@ -1,13 +1,14 @@
 public class efun {
    /**
-    * Returns 1 if <arg> is a symbol.
+    * Returns 1 if \p value is a symbol.
     * 
     * @synopsis{
-    * int symbolp(mixed arg)
+    * int symbolp(mixed value)
     * }
     * 
     * @usage{
-    * symbolp('foo) returns 1.
+    * `symbolp('foo) // returns 1.`
+    * 
     * }
     * 
     * @history{
@@ -16,5 +17,5 @@ public class efun {
     * 
     * @see efun::quote(), efun::clonep(), efun::closurep(), efun::floatp(), efun::mappingp(), efun::objectp(), efun::intp(), efun::referencep(), efun::pointerp(), efun::stringp(), efun::structp()
    **/
-   int symbolp(mixed arg);
+   int symbolp(mixed value);
 }

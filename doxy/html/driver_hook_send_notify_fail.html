@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: send_notify_fail</title>
+<title>LDMud: send_notify_fail</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('driver_hook_send_notify_fail.html','')
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,28 +98,31 @@ $(document).ready(function(){initNavTree('driver_hook_send_notify_fail.html','')
 <div class="title">send_notify_fail </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Optional hook to send the notify fail message, regardless of how it was determined, to the player. If the hook is not set, the message is delivered using tell_object() internally. Hook setting can be a string or a closure.</p>
+<div class="textblock"><dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_SEND_NOTIFY_FAIL, value)</div>
+</div><!-- fragment --></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>void &lt;name&gt;(string msg, object msgobj, object orig_cmd_giver) </td></tr>
+    <tr><td class="paramname">value</td><td>void &lt;closure&gt;(string msg, object msgobj, object orig_cmd_giver)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Optional hook to send the notify fail message, regardless of how it was determined, to the player. If the hook is not set, the message is delivered using <a class="el" href="classefun.html#ac82979d3c13cf20f0fd4b2269248a9ab" title="Send a message str to object ob (which is looked up and loaded by given name if necessary). ">efun::tell_object()</a> internally. Hook setting can be a string or a closure.</p>
 <p>If the hook is a string, it is the name of a (possibly static) function to call in the current command giver. If the hook is a closure, it is the function to be called. Lambda closures are bound to the current command giver first.</p>
 <p>The arguments to the call are:</p>
 <ul>
 <li>&lt;msg&gt; is the notify fail message to be delivered.</li>
 <li>&lt;msgobj&gt; is the object which set the message. It is 0 for the default message.</li>
-<li>&lt;orig_cmd_giver&gt; is the object for which the original command was first received. It is usually identical withthe current command giver this_player().</li>
+<li>&lt;orig_cmd_giver&gt; is the object for which the original command was first received. It is usually identical with the current command giver <code>this_player()</code>.</li>
 </ul>
-<dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_SEND_NOTIFY_FAIL, value)</div>
-</div><!-- fragment --></dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_hook_command.html">command</a>, <a class="el" href="driver_hook_modify_command.html">modify_command</a>, <a class="el" href="driver_hook_modify_command_fname.html">modify_command_fname</a>, <a class="el" href="driver_hook_notify_fail.html">notify_fail</a> Arguments:<ul>
-<li>value (<a class="el" href="driver_LPC_string.html">string</a>) &ndash; void &lt;name&gt;(string msg, object msgobj, object orig_cmd_giver)</li>
-<li>value (<a class="el" href="driver_LPC_closures.html">closure</a>) &ndash; void &lt;closure&gt;(string msg, object msgobj, object orig_cmd_giver) </li>
-</ul>
-</dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_hook_overview.html">hook</a>, <a class="el" href="driver_hook_command.html">command</a>, <a class="el" href="driver_hook_modify_command.html">modify_command</a>, <a class="el" href="driver_hook_modify_command_fname.html">modify_command_fname</a>, <a class="el" href="driver_hook_notify_fail.html">notify_fail</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">index</a></li><li class="navelem"><a class="el" href="driver_hook_hook.html">hook</a></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:11 for Tsunami by
+    <li class="navelem"><a class="el" href="driver_hook_overview.html">Driver-supported hooks</a></li>
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:24 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

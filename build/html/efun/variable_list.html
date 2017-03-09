@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::variable_list() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::variable_list() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::walk_mapping()" href="walk_mapping.html" />
     <link rel="prev" title="efun::variable_exists()" href="variable_exists.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -49,71 +51,59 @@
 #include &lt;functionlist.h&gt;</tr>
 <tr>
 #include &lt;lpctypes.h&gt;</tr>
-<tr id="lpc.variable_list">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">variable_list</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flags</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.variable_list" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.variable_list">
+<!--[lpc.efun.variable_list]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">variable_list</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;ob</em>, </td><td id="id2">
+int<em>&nbsp;flags</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.variable_list" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<p>Return an array with information about &lt;ob&gt;s variables. For
-every variable, 1 to 3 values (depending on &lt;flags&gt;) are
-stored in the result array conveying in this order:</p>
-<blockquote>
-<div><ul class="simple">
+<p>Return an array with information about <a class="reference internal" href="#efun/variable_list.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob's</span></code></a> variables. For every variable, 1 to 3 values (depending on <a class="reference internal" href="#efun/variable_list.arg.flags" title="flags"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flags</span></code></a>) are stored in the result array conveying in this order:</p>
+<ul class="simple">
 <li>the name of the variable</li>
 <li>the variable flags (see below)</li>
 <li>the return type (listed in &lt;lpctypes.h&gt;)</li>
 <li>the value of the variable</li>
 </ul>
-</div></blockquote>
-<p>&lt;ob&gt; may be given as true object or as a filename. In the latter
-case, the efun does not try to load the object before proceeding.</p>
-<p>If &lt;ob&gt; is not the current object and the value of the variable is
-requested, a privilege_violation (&#8220;variable_list&#8221;, &lt;ob&gt;) occurs.</p>
-<p>&lt;flags&gt; determines both which information is returned for every
-variable, and which variables should be considered at all.
-Its value is created by bin-or&#8217;ing together the following flags from
-&lt;functionlist.h&gt;:</p>
+<p><a class="reference internal" href="#efun/variable_list.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> may be given as true object or as a filename. In the latter case, the efun does not try to load the object before proceeding.</p>
+<p>If <a class="reference internal" href="#efun/variable_list.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is not the current object and the value of the variable is requested, a privilege_violation (&#8220;variable_list&#8221;, &lt;ob&gt;) occurs.</p>
+<p><a class="reference internal" href="#efun/variable_list.arg.flags" title="flags"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flags</span></code></a> determines both which information is returned for every variable, and which variables should be considered at all. Its value is created by bin-or&#8217;ing together the following flags from &lt;functionlist.h&gt;:</p>
 <blockquote>
-<div><dl class="docutils">
-<dt>Control of returned information:</dt>
-<dd>RETURN_FUNCTION_NAME    include the variable name
-RETURN_FUNCTION_FLAGS   include the variable flags
-RETURN_FUNCTION_TYPE    include the return type
-RETURN_VARIABLE_VALUE   include the variable value</dd>
-<dt>Control of listed variables:</dt>
-<dd>NAME_INHERITED      don&#8217;t list if defined by inheritance
-TYPE_MOD_STATIC ==
-TYPE_MOD_NOSAVE     don&#8217;t list if nosave (&#8216;static&#8217;) variable
-TYPE_MOD_PRIVATE    don&#8217;t list if private
-TYPE_MOD_PROTECTED  don&#8217;t list if protected
-NAME_HIDDEN         don&#8217;t list if not visible through inheritance</dd>
-</dl>
-</div></blockquote>
-<p>The &#8216;flags&#8217; information consists of the bin-or of the list control
-flags given above, plus the following:</p>
+<div><p>Control of returned information:</p>
 <blockquote>
-<div>TYPE_MOD_VIRTUAL    variable is inherited virtually
-TYPE_MOD_NO_MASK    variable is nomask
-TYPE_MOD_PUBLIC     variable is public</div></blockquote>
-<p>All these flags are defined in &lt;functionlist.h&gt;; the
-return types are defined in &lt;lpctypes.h&gt;.</p>
-<p>Introduced in LDMud 3.2.10.</p>
+<div><code class="xref lpc lpc-macro docutils literal"><span class="pre">RETURN_FUNCTION_NAME</span></code>    include the variable name
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">RETURN_FUNCTION_FLAGS</span></code>   include the variable flags
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">RETURN_FUNCTION_TYPE</span></code>    include the return type
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">RETURN_VARIABLE_VALUE</span></code>   include the variable value</div></blockquote>
+<p>Control of listed variables:</p>
 <blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="inherit_list.html#lpc.inherit_list" title="inherit_list"><code class="xref lpc lpc-efun docutils literal"><span class="pre">inherit_list()</span></code>(E)</a>, <a class="reference internal" href="functionlist.html#lpc.functionlist" title="functionlist"><code class="xref lpc lpc-efun docutils literal"><span class="pre">functionlist()</span></code>(E)</a>, <a class="reference internal" href="variable_exists.html#lpc.variable_exists" title="variable_exists"><code class="xref lpc lpc-efun docutils literal"><span class="pre">variable_exists()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
+<div><code class="xref lpc lpc-macro docutils literal"><span class="pre">NAME_INHERITED</span></code>      don&#8217;t list if defined by inheritance
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">TYPE_MOD_STATIC</span></code> ==
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">TYPE_MOD_NOSAVE</span></code>     don&#8217;t list if nosave (&#8216;static&#8217;) variable
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">TYPE_MOD_PRIVATE</span></code>    don&#8217;t list if private
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">TYPE_MOD_PROTECTED</span></code>  don&#8217;t list if protected
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">NAME_HIDDEN</span></code>         don&#8217;t list if not visible through inheritance</div></blockquote>
 </div></blockquote>
+<p>The &#8216;flags&#8217; information consists of the bin-or of the list control flags given above, plus the following:</p>
+<blockquote>
+<div><code class="xref lpc lpc-macro docutils literal"><span class="pre">TYPE_MOD_VIRTUAL</span></code>    variable is inherited virtually
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">TYPE_MOD_NO_MASK</span></code>    variable is nomask
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">TYPE_MOD_PUBLIC</span></code>     variable is public</div></blockquote>
+<p>All these flags are defined in &lt;functionlist.h&gt;; the return types are defined in &lt;lpctypes.h&gt;.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.10</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="inherit_list.html#lpc.efun.inherit_list" title="inherit_list"><code class="xref lpc lpc-efun docutils literal"><span class="pre">inherit_list</span></code>(E)</a>, <a class="reference internal" href="functionlist.html#lpc.efun.functionlist" title="functionlist"><code class="xref lpc lpc-efun docutils literal"><span class="pre">functionlist</span></code>(E)</a>, <a class="reference internal" href="variable_exists.html#lpc.efun.variable_exists" title="variable_exists"><code class="xref lpc lpc-efun docutils literal"><span class="pre">variable_exists</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -124,8 +114,8 @@ return types are defined in &lt;lpctypes.h&gt;.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -135,21 +125,24 @@ return types are defined in &lt;lpctypes.h&gt;.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::variable_list()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -161,7 +154,7 @@ return types are defined in &lt;lpctypes.h&gt;.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/variable_list.txt"
+      <a href="../_sources/efun/variable_list.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

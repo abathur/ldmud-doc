@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>master::save_ed_setup() &mdash; LDMud UNRELEASED documentation</title>
+    <title>master::save_ed_setup() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="master" href="master.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="master::slow_shut_down()" href="slow_shut_down.html" />
     <link rel="prev" title="master::runtime_warning()" href="runtime_warning.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,79 +47,68 @@
 <div class="section" id="SYNOPSIS">
 <span id="save_ed_setup"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.save_ed_setup">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">save_ed_setup</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;who</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;code</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.save_ed_setup" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.master.save_ed_setup">
+<!--[lpc.master.save_ed_setup]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">save_ed_setup</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;who</em>, </td><td id="id2">
+int<em>&nbsp;code</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.master.save_ed_setup" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Save individual option settings of the builtin ed, encoded
-into code, for the user denoted by who. These functions are
-located in the master object so that the local gods can decide
-what strategy they want to use. suggestions:</p>
-<ul>
-<li><p class="first">A setup file for every user.
-- advantages:</p>
-<blockquote>
-<div><ul class="simple">
+<p>Save individual option settings of the builtin ed, encoded into code, for the user denoted by who. These functions are located in the master object so that the local gods can decide what strategy they want to use. Suggestions:</p>
+<ul class="simple">
+<li>A setup file for every user.<ul>
+<li>advantages:<ul>
 <li>transparent to the user</li>
 <li>independent of user count</li>
 </ul>
-</div></blockquote>
-<ul class="simple">
-<li>disadvantage:
-- extra file access at ed invocation</li>
+</li>
+<li>disadvantage:<ul>
+<li>extra file access at ed invocation</li>
 </ul>
 </li>
-<li><p class="first">An array in the master object, users are searched by member_array
-- advantage:</p>
-<blockquote>
-<div><ul class="simple">
+</ul>
+</li>
+<li>An array in the master object, users are searched by member_array<ul>
+<li>advantage:<ul>
 <li>easy to implement</li>
 </ul>
-</div></blockquote>
-<ul class="simple">
-<li>disadvantage:
-- performance degradation with high user counts</li>
+</li>
+<li>disadvantage:<ul>
+<li>performance degradation with high user counts</li>
 </ul>
 </li>
-<li><p class="first">An AVL-tree to access users by name
-- advantage:</p>
-<blockquote>
-<div><ul class="simple">
+</ul>
+</li>
+<li>An AVL-tree to access users by name<ul>
+<li>advantage:<ul>
 <li>can fit any need</li>
 </ul>
-</div></blockquote>
-<ul>
-<li><p class="first">disadvantage:
-- hard to implement, will need more overhead on small and medium</p>
-<blockquote>
-<div><p>installations than it can ever make good by lg(usercount) complexity</p>
-</div></blockquote>
+</li>
+<li>disadvantage:<ul>
+<li>hard to implement, will need more overhead on small and medium installations than it can ever make good by <code class="docutils literal"><span class="pre">lg(usercount)</span></code> complexity</li>
+</ul>
 </li>
 </ul>
 </li>
-<li><p class="first">Dedicated flags in every user object.
-- advantages:</p>
-<blockquote>
-<div><ul class="simple">
+<li>Dedicated flags in every user object.<ul>
+<li>advantages:<ul>
 <li>easy to implement</li>
 <li>independent of user count</li>
 <li>Will also work for nusers w/o file access privileges.</li>
 </ul>
-</div></blockquote>
-<ul class="simple">
-<li>disadvantage:
-- care has to be taken to avoid collision with other uses of the flags in the user object</li>
+</li>
+<li>disadvantage:<ul>
+<li>care has to be taken to avoid collision with other uses of the flags in the user object</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../efun/ed.html#lpc.ed" title="ed"><code class="xref lpc lpc-efun docutils literal"><span class="pre">ed()</span></code>(E)</a>, <a class="reference internal" href="retrieve_ed_setup.html#lpc.retrieve_ed_setup" title="retrieve_ed_setup"><code class="xref lpc lpc-master docutils literal"><span class="pre">retrieve_ed_setup</span></code>(M)</a>, <a class="reference internal" href="valid_write.html#lpc.valid_write" title="valid_write"><code class="xref lpc lpc-master docutils literal"><span class="pre">valid_write</span></code>(M)</a>, <a class="reference internal" href="get_ed_buffer_save_file_name.html#lpc.get_ed_buffer_save_file_name" title="get_ed_buffer_save_file_name"><code class="xref lpc lpc-master docutils literal"><span class="pre">get_ed_buffer_save_file_name</span></code>(M)</a></p>
+<p><a class="reference internal" href="../efun/ed.html#lpc.efun.ed" title="ed"><code class="xref lpc lpc-efun docutils literal"><span class="pre">ed</span></code>(E)</a>, <a class="reference internal" href="retrieve_ed_setup.html#lpc.master.retrieve_ed_setup" title="retrieve_ed_setup"><code class="xref lpc lpc-master docutils literal"><span class="pre">retrieve_ed_setup</span></code>(M)</a>, <a class="reference internal" href="valid_write.html#lpc.master.valid_write" title="valid_write"><code class="xref lpc lpc-master docutils literal"><span class="pre">valid_write</span></code>(M)</a>, <a class="reference internal" href="get_ed_buffer_save_file_name.html#lpc.master.get_ed_buffer_save_file_name" title="get_ed_buffer_save_file_name"><code class="xref lpc lpc-master docutils literal"><span class="pre">get_ed_buffer_save_file_name</span></code>(M)</a></p>
 </div>
 </div>
 </div>
@@ -131,8 +122,8 @@ what strategy they want to use. suggestions:</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -151,15 +142,14 @@ what strategy they want to use. suggestions:</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -171,7 +161,7 @@ what strategy they want to use. suggestions:</p>
       &copy;good question.
       
       |
-      <a href="../_sources/master/save_ed_setup.txt"
+      <a href="../_sources/master/save_ed_setup.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

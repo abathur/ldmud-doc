@@ -1,5 +1,14 @@
 clean_up {#driver_hook_clean_up}
 ================================
+@headerfile <sys/driver_hooks.h>
+
+@synopsis{
+set_driver_hook(H_CLEAN_UP, value)
+}
+
+@param value int <closure>(int ref, object ob)
+@param value void|int <name>(int ref)
+
 Optional hook to clean up an object. Hook setting can be any closure, or the name of the function to call in the object.
 
 This hook is called for an object if it hasn't been used for at least TIME_TO_CLEAN_UP seconds, to give it the opportunity to self destruct.
@@ -21,13 +30,4 @@ The cleanup method has the possibility to destruct the object. To survive this t
 
 If the hook specifies a non-existing lfun, or if the call returns 0, no further attempt to clean up this object will be made.
 
-@headerfile <sys/driver_hooks.h>
-
-@synopsis{
-set_driver_hook(H_CLEAN_UP, value)
-}
-
-@see 
-Arguments: 
-- value (@ref driver_LPC_closures "closure") -- int <closure>(int ref, object ob)
-- value (@ref driver_LPC_string "string") -- void|int <name>(int ref)
+@see @ref driver_hook_overview "hook"

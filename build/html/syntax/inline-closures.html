@@ -1,0 +1,213 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>function &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="int" href="int.html" />
+    <link rel="prev" title="inherit" href="inherit.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="function">
+<span id="inline-closures"></span><span id="lpc.keyword.function"></span><span id="lpc.keyword.inline-closures"></span><div class="section" id="KEYWORD">
+<h2>KEYWORD<a class="headerlink" href="#KEYWORD" title="Permalink to this headline">¶</a></h2>
+<strong>Keyword</strong><pre class="literal-block">
+function
+<strong>
+inline-closure definition:
+</strong>    <span class="highlighted">function</span> &lt;returntype&gt; ( &lt;arguments&gt; ) : &lt;context&gt; { &lt;code&gt; }
+<strong>
+inline-closure literal:
+</strong>    <span class="highlighted">(:</span> &lt;statements&gt; ; &lt;expr&gt;, ... , &lt;expr&gt; <span class="highlighted">:)</span>
+</pre>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Inline closures are a way to program closures which are compiled at the time an object is loaded, but can access values from their enclosing function at runtime.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Inline closures are not to be confused with inline functions known from other languages.</p>
+</div>
+<p>In the definition of an inline closure, some elements are optional:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>&lt;returntype&gt;     defaults to &#39;mixed&#39;
+( &lt;arguments&gt; )  defaults to &#39;(mixed $1 ...  mixed $9)&#39;
+: &lt;context&gt;      no default
+</pre></div>
+</div>
+<p>The special <code class="docutils literal"><span class="pre">(:</span> <span class="pre">:)</span></code> form is meant for simple expressions (and MudOS compatibility). The form:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span> <span class="p">;</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">...,</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span> <span class="o">:</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>is the shorthand notation for:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">function</span> <span class="p">{</span> <span class="o">&lt;</span><span class="n">statements</span><span class="o">&gt;</span><span class="p">;</span> <span class="k">return</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">...,</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>For example the two statements:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>sort_array(arr, function { return $1 &lt; $2; } )
+sort_array(arr, (: $1 &lt; $2 :) )
+</pre></div>
+</div>
+<p>do the same. The example also demonstrates that both the <code class="xref lpc lpc-part docutils literal"><span class="pre">statements</span></code> and the <code class="xref lpc lpc-part docutils literal"><span class="pre">expr</span></code> part in this form are optional.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>The closure below &#8216;inherits&#8217; the current value of the local variable &#8216;arg&#8217; at the time the closure is created. These values, called the &#8220;context&#8221; of the closures, are stored in a special set of variables in the closure:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">closure</span> <span class="nf">factory</span> <span class="p">(</span><span class="kt">int</span> <span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kt">function</span> <span class="kt">int</span> <span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">val</span> <span class="o">*</span> <span class="n">arg</span><span class="p">;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="n">closure</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">factory</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">closure</span> <span class="n">f2</span> <span class="o">=</span> <span class="n">factory</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">funcall</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// returns 6.</span>
+<span class="n">funcall</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// returns 9.</span>
+</pre></div>
+</div>
+<p>The closure can permanently change its context:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">closure</span> <span class="nf">factory</span> <span class="p">(</span><span class="kt">int</span> <span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kt">function</span> <span class="kt">int</span> <span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">val</span> <span class="o">*</span> <span class="n">arg</span><span class="o">++</span><span class="p">;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="n">closure</span> <span class="n">f</span> <span class="o">=</span> <span class="n">factory</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">funcall</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// will yield 6.</span>
+<span class="n">funcall</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// will now yield 9!</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Changes to the closure context will not reflect on the local variable it was copied from or vice versa.</p>
+</div>
+<p>In addition to the implicit context inherited from the defining function, additional context variables can be defined in the closure:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">closure</span> <span class="nf">factory</span> <span class="p">(</span><span class="kt">int</span> <span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kt">function</span> <span class="kt">int</span> <span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="o">:</span> <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">arg</span> <span class="p">{</span> <span class="k">return</span> <span class="n">val</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="n">closure</span> <span class="n">f</span> <span class="o">=</span> <span class="n">factory</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">funcall</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">will</span> <span class="n">yield</span> <span class="mf">12.</span>
+</pre></div>
+</div>
+<p>It is possible to define multiple context variables with and without initialisation:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">closure</span> <span class="nf">factory</span> <span class="p">(</span><span class="kt">int</span> <span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kt">function</span> <span class="kt">int</span> <span class="p">(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="o">:</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">arg</span><span class="p">;</span> <span class="kt">int</span> <span class="n">z</span> <span class="p">{</span> <span class="k">return</span> <span class="n">val</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span> <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>These explicit context variables are useful when the closures needs to keep a state, or to improve performance:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">mapping</span> <span class="n">m</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="n">closure</span> <span class="nf">slow</span> <span class="p">(</span><span class="kt">int</span> <span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kt">function</span> <span class="kt">mixed</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">m</span><span class="p">[</span><span class="n">arg</span><span class="p">];</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">closure</span> <span class="nf">fast</span> <span class="p">(</span><span class="kt">int</span> <span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kt">function</span> <span class="kt">mixed</span> <span class="p">()</span> <span class="o">:</span> <span class="kt">mixed</span> <span class="n">val</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span> <span class="p">{</span> <span class="k">return</span> <span class="n">val</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the above example, the <code class="docutils literal"><span class="pre">fast()</span></code> function executes the lookup m[arg] only once when the inline closure is created; the <code class="docutils literal"><span class="pre">slow()</span></code> function on the other hand returns a closures which looks up <code class="docutils literal"><span class="pre">m[arg]</span></code> every time it is called. A second effect is that the results of the slow closure change when <code class="docutils literal"><span class="pre">m</span></code> changes; the result of the fast closure is always the same.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.7</em>) &#8211; implemented the older, restricted form of inline closures.</li>
+<li><strong>changed</strong> (<em>3.3.271</em>) &#8211; implemented the full form of inline closures.</li>
+<li><strong>changed</strong> (<em>3.3.275</em>) &#8211; re-allowed statements in the <code class="docutils literal"><span class="pre">(:</span> <span class="pre">:)</span></code> form.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref any docutils literal"><span class="pre">closures-abstract(LPC)</span></code>, <code class="xref lpc lpc-topic docutils literal"><span class="pre">closures-example</span></code>, <a class="reference internal" href="closure_guide.html#lpc.guide.closures" title="closures"><code class="xref lpc lpc-guide docutils literal"><span class="pre">closures</span></code></a> <a class="reference internal" href="closures.html#lpc.type.closure" title="closure"><code class="xref lpc lpc-type docutils literal"><span class="pre">closure</span></code></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">function</a><ul>
+<li><a class="reference internal" href="#KEYWORD">KEYWORD</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/inline-closures.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

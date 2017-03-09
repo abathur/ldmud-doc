@@ -5,5 +5,5 @@ var searchData=
   ['bind_5flambda',['bind_lambda',['../classefun.html#a8e512d3268244957695f1a9fcf988f33',1,'efun']]],
   ['blueprint',['blueprint',['../classefun.html#a3a63228deda22102b5b98b541b392834',1,'efun']]],
   ['break_5fpoint',['break_point',['../classefun.html#af38c2aa695e4b3e22f55fc1a6530aabe',1,'efun']]],
-  ['block',['block',['../driver_LPC_block.html',1,'driver_LPC_lpc']]]
+  ['block',['block',['../driver_syntax_block.html',1,'driver_syntax_overview']]]
 ];

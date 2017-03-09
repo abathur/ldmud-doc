@@ -1,0 +1,211 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>[] &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="inherit" href="inherit.html" />
+    <link rel="prev" title="if" href="if.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="[]">
+<span id="lpc.operator.[]"></span><div class="section" id="OPERATOR">
+<h2>OPERATOR<a class="headerlink" href="#OPERATOR" title="Permalink to this headline">¶</a></h2>
+<strong>Operator</strong><pre class="literal-block">
+mixed arr[index]
+int str[index]
+mixed * arr[from .. to]
+string str[from .. to]
+</pre>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Return one element from a string/array (first form), or a slice (substring resp. subarray) of the string/array (second form).</p>
+<p>The indexes <code class="xref lpc lpc-part docutils literal"><span class="pre">index</span></code>, <code class="xref lpc lpc-part docutils literal"><span class="pre">from</span></code> and <code class="xref lpc lpc-part docutils literal"><span class="pre">to</span></code> are numbered 0 to <code class="docutils literal"><span class="pre">strlen(str)-1</span></code> resp. <code class="docutils literal"><span class="pre">sizeof(arr)-1</span></code>.</p>
+<p>If an index is written <code class="docutils literal"><span class="pre">&lt;value</span></code>, the value is counted from the end of the string/array and is numbered 1 to <code class="docutils literal"><span class="pre">strlen(str)</span></code> resp. <code class="docutils literal"><span class="pre">sizeof(arr)</span></code>.</p>
+<p>If an index is written &#8216;&gt;value&#8217;, the value is counted from the end of the string/array if it is negative (starting with -1 for the last element), and from the beginning if it is positive (starting with 0 for the first element).</p>
+<p>If <code class="xref lpc lpc-part docutils literal"><span class="pre">from</span></code> is omitted, it defaults to the beginning of the string/array. If <code class="xref lpc lpc-part docutils literal"><span class="pre">to</span></code> is omitted, it defaults to the beginning of the string/array.</p>
+<p>In the first form, the <code class="xref lpc lpc-part docutils literal"><span class="pre">index</span></code> must be within the bounds of the string/array, or a runtime error occurs. In the second form, the indexes will be fitted to the bounds of the string/array. If <code class="xref lpc lpc-part docutils literal"><span class="pre">from</span></code> is greater than <code class="xref lpc lpc-part docutils literal"><span class="pre">to</span></code>, or both outside the bounds, an empty string/array (&#8220;&#8221; resp. <code class="docutils literal"><span class="pre">({})</span></code>) will be returned.</p>
+<p>The closure notation is straightforward:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">normal form</th>
+<th class="head">closure form</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">[index]</span></code></td>
+<td><code class="docutils literal"><span class="pre">({'#[,</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">arr,</span> <span class="pre">index</span> <span class="pre">})</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">[&lt;index]</span></code></td>
+<td><code class="docutils literal"><span class="pre">({'#[&lt;,</span>&#160;&#160;&#160;&#160; <span class="pre">arr,</span> <span class="pre">index</span> <span class="pre">})</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">[&gt;index]</span></code></td>
+<td><code class="docutils literal"><span class="pre">({'#[&gt;,</span>&#160;&#160;&#160;&#160; <span class="pre">arr,</span> <span class="pre">index</span> <span class="pre">})</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">[from..to]</span></code></td>
+<td><code class="docutils literal"><span class="pre">({'#[..],</span>&#160;&#160; <span class="pre">arr,</span> <span class="pre">from,</span> <span class="pre">to</span> <span class="pre">})</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">[&lt;from..to]</span></code></td>
+<td><code class="docutils literal"><span class="pre">({'#[&lt;..],</span>&#160; <span class="pre">arr,</span> <span class="pre">from,</span> <span class="pre">to</span> <span class="pre">})</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">[from..&lt;to]</span></code></td>
+<td><code class="docutils literal"><span class="pre">({'#[..&lt;],</span>&#160; <span class="pre">arr,</span> <span class="pre">from,</span> <span class="pre">to</span> <span class="pre">})</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">[&lt;from..&lt;to]</span></code></td>
+<td><code class="docutils literal"><span class="pre">({'#[&lt;..&lt;],</span> <span class="pre">arr,</span> <span class="pre">from,</span> <span class="pre">to</span> <span class="pre">})</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">[&gt;from..to]</span></code></td>
+<td><code class="docutils literal"><span class="pre">({'#[&gt;..],</span>&#160; <span class="pre">arr,</span> <span class="pre">from,</span> <span class="pre">to</span> <span class="pre">})</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">[from..&gt;to]</span></code></td>
+<td><code class="docutils literal"><span class="pre">({'#[..&gt;],</span>&#160; <span class="pre">arr,</span> <span class="pre">from,</span> <span class="pre">to</span> <span class="pre">})</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">[&gt;from..&lt;to]</span></code></td>
+<td><code class="docutils literal"><span class="pre">({'#[&gt;..&lt;],</span> <span class="pre">arr,</span> <span class="pre">from,</span> <span class="pre">to</span> <span class="pre">})</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">[&lt;from..&gt;to]</span></code></td>
+<td><code class="docutils literal"><span class="pre">({'#[&lt;..&gt;],</span> <span class="pre">arr,</span> <span class="pre">from,</span> <span class="pre">to</span> <span class="pre">})</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">[&gt;from..&gt;to]</span></code></td>
+<td><code class="docutils literal"><span class="pre">({'#[&gt;..&gt;],</span> <span class="pre">arr,</span> <span class="pre">from,</span> <span class="pre">to</span> <span class="pre">})</span></code></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">foo</span> <span class="o">=</span> <span class="p">({</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">});</span>         <span class="n">str</span> <span class="o">=</span> <span class="s">&quot;test&quot;</span><span class="p">;</span>
+
+<span class="n">foo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>     <span class="o">-&gt;</span> <span class="mi">1</span>                 <span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="sc">&#39;e&#39;</span> <span class="o">==</span> <span class="mi">101</span>
+<span class="n">foo</span><span class="p">[</span><span class="mf">1..2</span><span class="p">]</span>  <span class="o">-&gt;</span> <span class="p">({</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">})</span>        <span class="n">str</span><span class="p">[</span><span class="mf">1..2</span><span class="p">]</span>  <span class="o">-&gt;</span> <span class="s">&quot;es&quot;</span>
+<span class="n">foo</span><span class="p">[</span><span class="mf">2..1</span><span class="p">]</span>  <span class="o">-&gt;</span> <span class="p">({</span> <span class="p">})</span>             <span class="n">str</span><span class="p">[</span><span class="mf">2..1</span><span class="p">]</span>  <span class="o">-&gt;</span> <span class="s">&quot;&quot;</span>
+<span class="n">foo</span><span class="p">[</span><span class="mf">0.</span><span class="p">.</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">({</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">})</span>        <span class="n">str</span><span class="p">[</span><span class="mf">0.</span><span class="p">.</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">]</span>  <span class="o">-&gt;</span> <span class="s">&quot;tes&quot;</span>
+<span class="n">foo</span><span class="p">[..</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">]</span>  <span class="o">-&gt;</span> <span class="p">({</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">})</span>        <span class="n">str</span><span class="p">[..</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">]</span>  <span class="o">-&gt;</span> <span class="s">&quot;tes&quot;</span>
+<span class="n">foo</span><span class="p">[</span><span class="o">&lt;</span><span class="mf">3.</span><span class="p">.]</span>  <span class="o">-&gt;</span> <span class="p">({</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">})</span>     <span class="n">str</span><span class="p">[</span><span class="o">&lt;</span><span class="mf">3.</span><span class="p">.]</span>  <span class="o">-&gt;</span> <span class="s">&quot;est&quot;</span>
+
+<span class="n">foo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>                <span class="c1">// foo == ({ 1, 5, 3, 4 })</span>
+<span class="n">foo</span><span class="p">[</span><span class="mf">1..2</span><span class="p">]</span> <span class="o">=</span> <span class="p">({</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span> <span class="p">})</span> <span class="c1">// foo == ({ 1, 5, 6, 7, 4 })</span>
+<span class="n">foo</span><span class="p">[</span><span class="mf">1..2</span><span class="p">]</span> <span class="o">=</span> <span class="p">({</span> <span class="p">})</span>         <span class="c1">// foo == ({ 1, 4 })</span>
+
+<span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span>              <span class="c1">// str == &quot;tast&quot;</span>
+<span class="n">str</span><span class="p">[</span><span class="mf">1..2</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;bar&quot;</span>         <span class="c1">// str == &quot;tbart&quot;</span>
+<span class="n">str</span><span class="p">[</span><span class="mf">1..2</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>            <span class="c1">// str == &quot;tt&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The <code class="docutils literal"><span class="pre">slice_array()</span></code> efun was the old form of <a class="reference internal" href="#lpc.operator.[]" title="[]"><code class="xref lpc lpc-operator docutils literal"><span class="pre">[]</span></code></a> on arrays. Efun <code class="docutils literal"><span class="pre">extract()</span></code> was the old form of the <a class="reference internal" href="#lpc.operator.[]" title="[]"><code class="xref lpc lpc-operator docutils literal"><span class="pre">[]</span></code></a> on strings. Both <em>are no longer supported</em> and should not be used anymore!</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.1.K</em>) &#8211; The syntax for &#8220;counting from last element&#8221; has changed between from <code class="docutils literal"><span class="pre">-1</span></code> to <code class="docutils literal"><span class="pre">&lt;1</span></code>. <code class="docutils literal"><span class="pre">foo[0..-1]</span></code> is now an empty string resp. array.</li>
+<li><strong>changed</strong> (<em>3.3</em>) &#8211; introduced the &#8216;&gt;&#8217; indexing method.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/member.html#lpc.efun.member" title="member"><code class="xref lpc lpc-efun docutils literal"><span class="pre">member</span></code>(E)</a>, <a class="reference internal" href="../efun/sizeof.html#lpc.efun.sizeof" title="sizeof"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sizeof</span></code>(E)</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">[]</a><ul>
+<li><a class="reference internal" href="#OPERATOR">OPERATOR</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

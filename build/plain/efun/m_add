@@ -4,28 +4,34 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Add (or replace) an entry with index <key> in mapping <map>. The modified 
-mapping is also returned as result.
+   Add (or replace) an entry with index key(E) in mapping map(E). The modified
+   mapping is also returned as result.
 
-The values for the entry are taken from the <data> arguments. Unassigned entry
-values default to 0, extraneous <data> arguments are ignored.
+   The values for the entry are taken from the `data` arguments. Unassigned 
+   entry values default to 0, extraneous `data` arguments are ignored.
 
-The difference between m_add() and the operator += is that the latter creates 
-a duplicate of the target mapping if it has several references (see EXAMPLES).
+   The difference between m_add(E) and += is that the latter creates a 
+   duplicate of the target mapping if it has several references.
 
-EXAMPLES mapping m;
+   USAGE
+   =====
+         mapping m;
 
-m = ([ "foo" ]); m_add(m, "bar", 1) --> ([ "foo", "bar" ])
+         m = ([ "foo" ]);
+         m_add(m, "bar", 1) // ([ "foo", "bar" ])
 
-m = ([ "foo":1 ]); m_add(m, "bar", 1) --> ([ "foo":1, "bar":1 ])
+         m = ([ "foo":1 ]);
+         m_add(m, "bar", 1) // ([ "foo":1, "bar":1 ])
 
-m = ([ "foo":1;2 ]); m_add(m, "bar", 1) --> ([ "foo":1;2, "bar":1;0 ]) 
-m_add(m, "baz", ({ 4, 5 })... )
+         m = ([ "foo":1;2 ]);
+         m_add(m, "bar", 1) // ([ "foo":1;2, "bar":1;0 ])
+         m_add(m, "baz", ({ 4, 5 })... ) // ([ "foo":1;2, "bar":1;0, "baz":4;5 ])
 
-   --> ([ "foo":1;2, "bar":1;0, "baz":4;5 ])
+HISTORY
+=======
+   - introduced (3.2.9)
 
-Introduced in LDMud 3.2.9.
-
-   See Also: 
-      mappingp()(E), mkmapping()(E), m_delete()(E), m_entry()(E), 
-      m_indices()(E), m_values()(E), sizeof()(E), widthof()(E)
+SEE ALSO
+========
+   mappingp(E), mkmapping(E), m_delete(E), m_entry(E), m_indices(E), 
+   m_values(E), sizeof(E), widthof(E)

@@ -10,8 +10,8 @@ DESCRIPTION
    Allocate an array of size elements. The number of elements must be >= 0 and
    not bigger than a system maximum (usually 1000).
 
-   If <init_value> is given, all array elements will be set to this value (if 
-   <init_value> is an array or mapping, a shallow copy will be created for 
+   If init_value(E) is given, all array elements will be set to this value (if
+   init_value(E) is an array or mapping, a shallow copy will be created for 
    each element), otherwise they all will be 0.
 
    In the second form (using an array of sizes instead of one size), the efun 
@@ -19,8 +19,9 @@ DESCRIPTION
 
    Obsolete:  
      this function is hardly needed anymore, because arrays can be added by 
-     the + operator, and can be constructed and initialized by the ({ }) 
-     operator. The functions only use is to construct big empty arrays.
+     the + operator, and can be constructed and initialized by 
+     the `({ })` operator. The functions only use is to construct big empty 
+     arrays.
 
    USAGE
    =====
@@ -38,4 +39,4 @@ HISTORY
 
 SEE ALSO
 ========
-   sizeof()(E)
+   sizeof(E)

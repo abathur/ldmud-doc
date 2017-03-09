@@ -1,0 +1,227 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>\&lt;escape_sequence&gt; &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="float" href="float.html" />
+    <link rel="prev" title="do" href="do-while.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="\&lt;escape_sequence&gt;">
+<span id="escape"></span><span id="lpc.syntax.\<escape_sequence>"></span><span id="lpc.syntax.escape"></span><div class="section" id="SYNTAX">
+<h2>SYNTAX<a class="headerlink" href="#SYNTAX" title="Permalink to this headline">¶</a></h2>
+<strong>Character escape codes</strong><pre class="literal-block">
+\&lt;escape_sequence&gt;
+
+</pre>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Character escape codes are used to represent some common special characters that would be awkward or impossible to enter in the source program directly. The escape characters come in two varieties: &#8216;character escapes&#8217;, which can be used to represent some particular formatting and special characters, and &#8216;numeric escapes&#8217;, which allow a character to be specified by its numeric encoding.</p>
+<p>Escapes begin always with a backslash &#8216;&#8217;. If the following characters could not be treated as a valid escape the backslash is merely ignored.</p>
+<p>The following character escapes are available in LPC (the code may differ from platform to platform):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="15%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">escape</th>
+<th class="head">code</th>
+<th class="head">name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">\a</span></code></td>
+<td>007</td>
+<td>Bell</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">\b</span></code></td>
+<td>008</td>
+<td>Backspace</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">\e</span></code></td>
+<td>027</td>
+<td>Escape</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">\f</span></code></td>
+<td>012</td>
+<td>Formfeed</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">\n</span></code></td>
+<td>010</td>
+<td>Newline</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">\r</span></code></td>
+<td>013</td>
+<td>Carriage-Return</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">\t</span></code></td>
+<td>009</td>
+<td>Tabulator</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">\\</span></code></td>
+<td>092</td>
+<td>Backslash itself</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">\'</span></code></td>
+<td>039</td>
+<td>Single quote</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">\&quot;</span></code></td>
+<td>034</td>
+<td>Double quote</td>
+</tr>
+</tbody>
+</table>
+<p>The single quote may appear without preceding backslash in character constants, and the double quote may appear without a backslash in string constants.</p>
+<p>The numeric escapes could be used to express a character directly by its code in binary, octal, decimal or hexadecimal notation.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">\0b</span></code></dt>
+<dd>Beginning of binary notation</dd>
+<dt><code class="docutils literal"><span class="pre">\0o</span></code></dt>
+<dd>Beginning of octal notation</dd>
+<dt><code class="docutils literal"><span class="pre">\0x</span></code></dt>
+<dd>Beginning of hexadecimal notation</dd>
+<dt><code class="docutils literal"><span class="pre">\x</span></code></dt>
+<dd>Beginning of hexadecimal notation</dd>
+</dl>
+<p>A backslash followed by a digit (<code class="docutils literal"><span class="pre">0-9</span></code>) which does not map to one of the above starts an escape in decimal notation.</p>
+<p>A numeric escape terminates when N digits have been used up or when the first character that is not a valid digit in that notation is encountered. N is 2 for hexadeximals, 3 for decimals and octals and 8 for binarys.</p>
+<p>If the specified code is greater than 255 a warning is issued and the value modulo 256 is used.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>Put a newline at the end of user output:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="s">&quot;You enter.</span><span class="se">\n</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+<p>Alert the user:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="s">&quot;Beeep.</span><span class="se">\a</span><span class="s"> Wake up</span><span class="se">\n</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+<p>Put a double quote in a string:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="s">&quot;You say </span><span class="se">\&quot;</span><span class="s">hello</span><span class="se">\&quot;\n</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+<p>Write the line from above:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">You say </span><span class="se">\\\&quot;</span><span class="s">hello</span><span class="se">\\\&quot;\\</span><span class="s">n</span><span class="se">\&quot;</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+<p>Put a single quote in a string:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="s">&quot;You say &#39;hello&#39;</span><span class="se">\n</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+<p>Some forms to write &#8220;abcde&#8221;:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>&quot;abcde&quot;
+&quot;ab\99de&quot;              (with c&#39;s code being 99)
+&quot;ab\099de&quot;
+&quot;ab\x63de&quot;             (99 = 0x63)
+&quot;ab\0x63de&quot;
+</pre></div>
+</div>
+<p>The following string consists of two characters:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>&quot;\0111&quot;                (\011 and 1)
+</pre></div>
+</div>
+<p>The following string consists of three characters:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>&quot;\0o090&quot;               (\000 and 9 and 0)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">\&lt;escape_sequence&gt;</a><ul>
+<li><a class="reference internal" href="#SYNTAX">SYNTAX</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/escape.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: no_echo</title>
+<title>LDMud: no_echo</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('driver_hook_no_echo.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,28 +98,31 @@ $(document).ready(function(){initNavTree('driver_hook_no_echo.html','');});
 <div class="title">no_echo </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Optional hook to specifiy how to perform the telnet actions to switch the echo mode (used for e.g. password input_to()s). Hook setting may be any closure or a string. If not set, a default handling is performed.</p>
-<p>If the setting is a string, it is used as name of an lfun to call in the interactive &lt;user&gt;, where &lt;flag&gt; is the echo-flag passed to the input_to() statement.</p>
-<p>If the setting is a closure, it is called with the same arguments, and unbound lambda-closures being bound to this_player() prior to execution.</p>
-<p>&lt;local&gt; is a boolean flag: it is TRUE when input_to() was called with the INPUT_NO_TELNET flag.</p>
-<p>When set, the hook is called whenever the driver needs to change the echo mode, thus you can negotiate about things that are coupled with it, like LINEMODE or character-at-a-time.</p>
-<dl class="section user"><dt>warning:If this hook is used, the control of all telnet negotiation is transferred to the mudlib: all incoming negotiations are passed to H_TELNET_NEG, and the sending of no-echo negotiations is handled by this hook.</dt><dd></dd></dl>
-<dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_NOECHO, value)</div>
+<div class="textblock"><dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_NOECHO, value)</div>
 </div><!-- fragment --></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>void &lt;name&gt;(int flag, object user, int no_telnet) </td></tr>
+    <tr><td class="paramname">value</td><td>void &lt;closure&gt;(int flag, object user, int no_telnet)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Optional hook to specifiy how to perform the telnet actions to switch the echo mode (used for e.g. passwords with <a class="el" href="classefun.html#af611da839c18f550d1639881f3f3cade" title="Enable next line of user input to be sent to the function fun as an argument. ">efun::input_to()</a>). Hook setting may be any closure or a string. If not set, a default handling is performed.</p>
+<p>If the setting is a string, it is used as name of an lfun to call in the interactive &lt;user&gt;, where &lt;flag&gt; is the echo-flag passed to the :efun:&gt;&gt;<code>&lt;&lt;input_to</code>statement.</p>
+<p>If the setting is a closure, it is called with the same arguments, and unbound lambda-closures being bound to <code>this_player()</code> prior to execution.</p>
+<p>&lt;local&gt; is a boolean flag: it is TRUE when <a class="el" href="classefun.html#af611da839c18f550d1639881f3f3cade" title="Enable next line of user input to be sent to the function fun as an argument. ">efun::input_to()</a> was called with the <code>INPUT_NO_TELNET</code> flag.</p>
+<p>When set, the hook is called whenever the driver needs to change the echo mode, thus you can negotiate about things that are coupled with it, like LINEMODE or character-at-a-time.</p>
+<dl class="section user"><dt>warning: If this hook is used, the control of all telnet negotiation is transferred to the mudlib: all incoming negotiations are passed to  driver_hook_telnet_neg "H_TELNET_NEG", and the sending of no-echo negotiations is handled by this hook.</dt><dd></dd></dl>
 <dl class="section user"><dt>History:</dt><dd><div class="fragment"><div class="line">changed (3.2.11/3.3.593) -- added the &lt;no_telnet&gt; argument.</div>
 </div><!-- fragment --></dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_concepts_telnet.html">telnet</a>, <a class="el" href="driver_hook_telnet_neg.html">telnet_neg</a> Arguments:<ul>
-<li>value (<a class="el" href="driver_LPC_string.html">string</a>) &ndash; void &lt;name&gt;(int flag, object user, int no_telnet)</li>
-<li>value (<a class="el" href="driver_LPC_closures.html">closure</a>) &ndash; void &lt;closure&gt;(int flag, object user, int no_telnet) </li>
-</ul>
-</dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_hook_overview.html">hook</a>, <a class="el" href="driver_hook_telnet_neg.html">telnet_neg</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="driver_todo.html">todo</a></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:11 for Tsunami by
+    <li class="navelem"><a class="el" href="driver_hook_overview.html">Driver-supported hooks</a></li>
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:24 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

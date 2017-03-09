@@ -1,0 +1,177 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>variable initialization &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Intermud communication" href="intermud.html" />
+    <link rel="prev" title="inheritance" href="inheritance.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="initialisation">
+<span id="variable initialization"></span><span id="lpc.topic.initialisation"></span><span id="lpc.topic.variable initialization"></span><div class="section" id="TOPIC">
+<h2>TOPIC<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+variable initialization</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Global variables, like their local counterparts, can be defined with an initial value:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="o">*</span> <span class="n">a</span> <span class="o">=</span> <span class="p">({</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">});</span>
+</pre></div>
+</div>
+<p>The initialization value can be any legal LPC expression, including function calls. The code for the initializations is collected in a compiler-generated function <code class="docutils literal"><span class="pre">__INIT()</span></code> which is called even before the create-hook is applied on the object.</p>
+<p>During initialization, blueprints and clones are treated slightly differently:</p>
+<p>Blueprint variables are always all initialized using <code class="docutils literal"><span class="pre">__INIT()</span></code>.</p>
+<p>For clones the programmer can select whether the clone&#8217;s variables should also be initialized with <code class="docutils literal"><span class="pre">__INIT()</span></code>, or if they should be assigned from the current blueprint values (&#8216;shared with the blueprint&#8217;). The latter method is useful for example if blueprints and clones shall share arrays or mappings.</p>
+<p>The selection is performed with the two pragmas &#8216;init_variables&#8217; and &#8216;share_variables&#8217;. The status of this pragma at the point of the first variable definition counts, and is applied to all variables in the program.</p>
+<p>The clone initialization method is evaluated per-program, i.e. if an inherited program defines &#8216;share_variables&#8217; and the child program doesn&#8217;t, only the inherited variables are initialized from the blueprint, and all others from <code class="docutils literal"><span class="pre">__INIT()</span></code>.</p>
+<p>The default setting for the pragma is configured into the driver, but can also be chosen when starting the driver.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>For the object:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">inherit</span> <span class="s">&quot;a&quot;</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>the compiler executes the equivalent of these <code class="docutils literal"><span class="pre">__INIT()</span></code> functions:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="cp">#pragma share_variables:</span>
+
+  <span class="n">unknown</span> <span class="nf">__INIT</span><span class="p">()</span>
+  <span class="p">{</span>
+      <span class="s">&quot;a&quot;</span><span class="o">::</span><span class="n">__INIT</span><span class="p">();</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">clonep</span><span class="p">(</span><span class="n">this_object</span><span class="p">()))</span>
+      <span class="p">{</span>
+          <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">blueprint</span> <span class="n">of</span> <span class="n">this_object</span><span class="p">())</span><span class="o">-&gt;</span><span class="n">a</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+          <span class="n">a</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="cp">#pragma init_variables:</span>
+
+  <span class="n">unknown</span> <span class="nf">__INIT</span><span class="p">()</span>
+  <span class="p">{</span>
+      <span class="s">&quot;a&quot;</span><span class="o">::</span><span class="n">__INIT</span><span class="p">();</span>
+      <span class="n">a</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+      <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>In either case the variable &#8216;b&#8217; (in fact all variables) are set to &#8216;0&#8217; as part of the loading/cloning process before the driver performs the specific initialisation.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Do not call <code class="docutils literal"><span class="pre">__INIT()</span></code> yourself, overload, or use it directly in any other way. The implementation of the variable initialization may change at any time.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.3.378</em>) &#8211; the choice between sharing and initializing variables is no longer a fixed configuration choice of the driver and may now be made via #pragma</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../syntax/pragma.html#lpc.syntax.pragma" title="pragma"><code class="xref lpc lpc-syntax docutils literal"><span class="pre">pragma</span></code></a>, <a class="reference internal" href="../hook/create_ob.html#lpc.hook.H_CREATE_OB" title="H_CREATE_OB"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CREATE_OB</span></code>(H)</a>, <a class="reference internal" href="../hook/create_super.html#lpc.hook.H_CREATE_SUPER" title="H_CREATE_SUPER"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CREATE_SUPER</span></code>(H)</a>, <a class="reference internal" href="../hook/create_clone.html#lpc.hook.H_CREATE_CLONE" title="H_CREATE_CLONE"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CREATE_CLONE</span></code>(H)</a>, <a class="reference internal" href="../admin/invocation.html#lpc.topic.invocation" title="invocation"><code class="xref lpc lpc-topic docutils literal"><span class="pre">invocation</span></code></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">variable initialization</a><ul>
+<li><a class="reference internal" href="#TOPIC">TOPIC</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/topics/initialisation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

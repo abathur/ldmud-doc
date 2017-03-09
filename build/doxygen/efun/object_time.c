@@ -1,7 +1,6 @@
 public class efun {
    /**
-    * Returns the creation time of the given object.
-    * Default is for this_object(), if no arg is given.
+    * Returns the creation time of the given object. Default is for `this_object()`, if no arg is given.
     * 
     * @synopsis{
     * int object_time()

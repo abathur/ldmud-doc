@@ -14,4 +14,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   get_extra_wizinfo()(E), set_extra_wizinfo()(E), wizlist_info()(E)
+   get_extra_wizinfo(E), set_extra_wizinfo(E), wizlist_info(E)

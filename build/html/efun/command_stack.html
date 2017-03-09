@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::command_stack() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::command_stack() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::command_stack_depth()" href="command_stack_depth.html" />
     <link rel="prev" title="efun::command()" href="command.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,17 +49,15 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;commands.h&gt;</tr>
-<tr id="lpc.command_stack">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">command_stack</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.command_stack" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.command_stack">
+<!--[lpc.efun.command_stack]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">command_stack</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+void</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.command_stack" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Return an array describing the current command stack. The array has
-command_stack_depth() entries, the first describing the top-level
-command, and the last describing the current one.</p>
+<p>Return an array describing the current command stack. The array has <code class="docutils literal"><span class="pre">command_stack_depth()</span></code> entries, the first describing the top-level command, and the last describing the current one.</p>
 <p>Each entry is an array itself with these entries:</p>
 <blockquote>
 <div>string [CMD_VERB]:    the verb of this command
@@ -66,12 +66,21 @@ object [CMD_ORIGIN]:  the original command giver
 object [CMD_PLAYER]:  the current command giver
 mixed  [CMD_FAIL]:    the notify_fail setting (or 0).
 mixed  [CMD_FAILOBJ]: the object which set the notify_fail setting.</div></blockquote>
-<p>CMD_ORIGIN and CMD_PLAYER are usually the same; there is a difference
-only if the modify_command hook changes the command giver with
-set_this_player().</p>
+<p><code class="xref lpc lpc-macro docutils literal"><span class="pre">CMD_ORIGIN</span></code> and <code class="xref lpc lpc-macro docutils literal"><span class="pre">CMD_PLAYER</span></code> are usually the same; there is a difference only if <a class="reference internal" href="../hook/modify_command.html#lpc.hook.H_MODIFY_COMMAND" title="H_MODIFY_COMMAND"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_MODIFY_COMMAND</span></code>(H)</a> changes the command giver with <a class="reference internal" href="set_this_player.html#lpc.efun.set_this_player" title="set_this_player"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_this_player</span></code>(E)</a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">any of the entries may be returned as 0.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.7</em>)</li>
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; added the <code class="xref lpc lpc-macro docutils literal"><span class="pre">CMD_FAILOBJ</span></code> result</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="command.html#lpc.efun.command" title="command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">command</span></code>(E)</a>, <a class="reference internal" href="command_stack_depth.html#lpc.efun.command_stack_depth" title="command_stack_depth"><code class="xref lpc lpc-efun docutils literal"><span class="pre">command_stack_depth</span></code>(E)</a>, <a class="reference internal" href="notify_fail.html#lpc.efun.notify_fail" title="notify_fail"><code class="xref lpc lpc-efun docutils literal"><span class="pre">notify_fail</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -85,8 +94,8 @@ set_this_player().</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -96,21 +105,24 @@ set_this_player().</p>
   <ul>
 <li><a class="reference internal" href="#">efun::command_stack()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -122,7 +134,7 @@ set_this_player().</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/command_stack.txt"
+      <a href="../_sources/efun/command_stack.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

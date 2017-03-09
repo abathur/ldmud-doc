@@ -1,0 +1,132 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>union &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="varargs" href="varargs.html" />
+    <link rel="prev" title="types" href="types.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="union">
+<span id="lpc.syntax.union"></span><div class="section" id="SYNTAX">
+<h2>SYNTAX<a class="headerlink" href="#SYNTAX" title="Permalink to this headline">¶</a></h2>
+<strong>Union</strong><pre class="literal-block">
+<strong>union type:
+</strong>    type[|type...]
+<strong>
+array member type:
+</strong>    &lt;type[|type...]&gt;
+</pre>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Union types are a declaration at compile time that a variable, function parameter or function return value can be one of several types.</p>
+<p>Except for type checks using <a class="reference internal" href="pragma.html#lpc.pragma.rtt_checks" title="rtt_checks"><code class="xref lpc lpc-pragma docutils literal"><span class="pre">rtt_checks</span></code></a> they have no impact at runtime. There is no runtime union type, the concrete value type is one of the possibilities of the union type.</p>
+<p>Union types have no type names for themselves, they are declared anonymously with the declaration of the variable, function parameter or return type:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="o">|</span><span class="kt">string</span> <span class="n">var</span><span class="p">;</span>
+<span class="kt">int</span><span class="o">|</span><span class="kt">float</span> <span class="n">fun</span><span class="p">(</span><span class="kt">object</span><span class="o">|</span><span class="n">closure</span> <span class="n">f</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>When using union types as array member types they must be enclosed with <code class="docutils literal"><span class="pre">&lt;</span> <span class="pre">&gt;</span></code>:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="kt">int</span><span class="o">|</span><span class="kt">string</span><span class="o">&gt;*</span> <span class="n">arr</span><span class="p">;</span>    <span class="cm">/* An array of ints and strings. */</span>
+<span class="kt">int</span><span class="o">*|</span><span class="kt">string</span><span class="o">*</span>  <span class="n">arr</span><span class="p">;</span>    <span class="cm">/* Either an array of ints or an array of strings.*/</span>
+
+<span class="cm">/*</span>
+<span class="cm">  There must be a whitespace between two consecutive &lt;to be not confused with the &lt;&lt; operator:</span>
+<span class="cm">*/</span>
+<span class="o">&lt;</span> <span class="o">&lt;</span><span class="kt">int</span><span class="o">|</span><span class="kt">string</span><span class="o">&gt;*|</span><span class="kt">object</span> <span class="o">&gt;*</span> <span class="n">arr</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">union</a><ul>
+<li><a class="reference internal" href="#SYNTAX">SYNTAX</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/unions.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

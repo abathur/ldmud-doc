@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::functionlist() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::functionlist() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::garbage_collection()" href="garbage_collection.html" />
     <link rel="prev" title="efun::function_exists()" href="function_exists.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -49,49 +51,25 @@
 #include &lt;functionlist.h&gt;</tr>
 <tr>
 #include &lt;lpctypes.h&gt;</tr>
-<tr id="lpc.functionlist">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">functionlist</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flags</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.functionlist" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.functionlist">
+<!--[lpc.efun.functionlist]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">functionlist</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;ob</em>, </td><td id="id2">
+int<em>&nbsp;flags</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.functionlist" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Returns an array with information about &lt;ob&gt;s lfunctions. For every
-function, 1 to 4 values (depending on &lt;flags&gt;) are stored in
-the result array conveying in this order:</p>
+<p>Returns an array with information about functions defined in <a class="reference internal" href="#efun/functionlist.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>. For every function, 1 to 4 values (depending on <a class="reference internal" href="#efun/functionlist.arg.flags" title="flags"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flags</span></code></a>) are stored in the result array conveying in this order:</p>
 <ul class="simple">
 <li>the name of the function</li>
 <li>the function flags (see below)</li>
-<li>the return type (listed in &lt;lpctypes.h&gt;)</li>
+<li>the return type (listed in <code class="docutils literal"><span class="pre">&lt;lpctypes.h&gt;</span></code>)</li>
 <li>the number of accepted argumens</li>
 </ul>
-<p>&lt;ob&gt; may be given as true object or as a filename. In the latter
-case, the efun does not try to load the object before proceeding.</p>
-<p>&lt;flags&gt; determines both which information is returned for every
-function, and which functions should be considered at all.
-Its value is created by bin-or&#8217;ing together following flags from
-&lt;functionlist.h&gt;:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>Control of returned information:</dt>
-<dd><p class="first">RETURN_FUNCTION_NAME    include the function name
-RETURN_FUNCTION_FLAGS   include the function flags
-RETURN_FUNCTION_TYPE    include the return type
-RETURN_FUNCTION_NUMARG  include the number of arguments.</p>
-<p class="last">The name RETURN_FUNCTION_ARGTYPE is defined but not implemented.</p>
-</dd>
-<dt>Control of listed functions:</dt>
-<dd>NAME_INHERITED      don&#8217;t list if defined by inheritance
-TYPE_MOD_STATIC     don&#8217;t list if static function
-TYPE_MOD_PRIVATE    don&#8217;t list if private
-TYPE_MOD_PROTECTED  don&#8217;t list if protected
-NAME_HIDDEN         don&#8217;t list if not visible through inheritance</dd>
-</dl>
-</div></blockquote>
-<p>The &#8216;flags&#8217; information consists of the bin-or of the list control
-flags given above, plus the following:</p>
+<p><a class="reference internal" href="#efun/functionlist.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> may be given as true object or as a filename. In the latter case, the efun does not try to load the object before proceeding.</p>
+<p><a class="reference internal" href="#efun/functionlist.arg.flags" title="flags"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flags</span></code></a> determines both which information is returned for every function, and which functions should be considered at all. Its value is created by bin-or&#8217;ing together following flags from &lt;functionlist.h&gt;:</p>
+<p>The &#8216;flags&#8217; information consists of the bin-or of the list control flags given above, plus the following:</p>
 <blockquote>
 <div>TYPE_MOD_VARARGS    function takes varargs
 NAME_UNDEFINED      function not defined yet, but referenced.
@@ -100,7 +78,7 @@ TYPE_MOD_NO_MASK    function is nomask
 TYPE_MOD_PUBLIC     function is public</div></blockquote>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="inherit_list.html#lpc.inherit_list" title="inherit_list"><code class="xref lpc lpc-efun docutils literal"><span class="pre">inherit_list()</span></code>(E)</a>, <a class="reference internal" href="function_exists.html#lpc.function_exists" title="function_exists"><code class="xref lpc lpc-efun docutils literal"><span class="pre">function_exists()</span></code>(E)</a>, <a class="reference internal" href="variable_list.html#lpc.variable_list" title="variable_list"><code class="xref lpc lpc-efun docutils literal"><span class="pre">variable_list()</span></code>(E)</a>, <a class="reference internal" href="call_resolved.html#lpc.call_resolved" title="call_resolved"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_resolved()</span></code>(E)</a></p>
+<p><a class="reference internal" href="inherit_list.html#lpc.efun.inherit_list" title="inherit_list"><code class="xref lpc lpc-efun docutils literal"><span class="pre">inherit_list</span></code>(E)</a>, <a class="reference internal" href="function_exists.html#lpc.efun.function_exists" title="function_exists"><code class="xref lpc lpc-efun docutils literal"><span class="pre">function_exists</span></code>(E)</a>, <a class="reference internal" href="variable_list.html#lpc.efun.variable_list" title="variable_list"><code class="xref lpc lpc-efun docutils literal"><span class="pre">variable_list</span></code>(E)</a>, <a class="reference internal" href="call_resolved.html#lpc.efun.call_resolved" title="call_resolved"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_resolved</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -114,8 +92,8 @@ TYPE_MOD_PUBLIC     function is public</div></blockquote>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -134,15 +112,14 @@ TYPE_MOD_PUBLIC     function is public</div></blockquote>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -154,7 +131,7 @@ TYPE_MOD_PUBLIC     function is public</div></blockquote>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/functionlist.txt"
+      <a href="../_sources/efun/functionlist.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

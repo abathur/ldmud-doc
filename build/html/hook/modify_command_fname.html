@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>H_MODIFY_COMMAND_FNAME &mdash; LDMud UNRELEASED documentation</title>
+    <title>H_MODIFY_COMMAND_FNAME &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="hook" href="hook.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="H_MOVE_OBJECT0" href="move_object.html" />
     <link rel="prev" title="H_MODIFY_COMMAND" href="modify_command.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -41,17 +43,17 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="lpc.modify_command_fname">
+  <div class="section" id="lpc.hook.modify_command_fname">
 <div class="section" id="SYNOPSIS">
 <span id="modify_command_fname"></span><span id="H_MODIFY_COMMAND_FNAME"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;sys/driver_hooks.h&gt;</tr>
-<tr id="lpc.H_MODIFY_COMMAND_FNAME">
-<td>
+<tr id="lpc.hook.H_MODIFY_COMMAND_FNAME">
+<!--[lpc.hook.H_MODIFY_COMMAND_FNAME]--><td>
 <code class="descname">set_driver_hook</code></td><td><span class="sig-paren">(</span></td><td>
 <em>H_MODIFY_COMMAND_FNAME</em>, </td><td>
-<em>value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.H_MODIFY_COMMAND_FNAME" title="Permalink to this definition">¶</a></tr>
+<em>value</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.hook.H_MODIFY_COMMAND_FNAME" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
@@ -59,24 +61,25 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>value</strong> (<a class="reference internal" href="../LPC/int.html#lpc.int" title="int"><em>int</em></a>|<a class="reference internal" href="../LPC/string.html#lpc.string" title="string"><em>string</em></a>) &#8211; &lt;name&gt;(string cmd)</li>
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last">
+<li><div class="first line"><strong>value</strong> (<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int"><em>int</em></a>|<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string"><em>string</em></a>) &#8211; &lt;name&gt;(string cmd)</div>
+</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p>Mandatory hook specifying the name of the &#8216;modify_command&#8217; lfun to call for newly entered commands as result of a set_modify_command().</p>
+<p>Mandatory hook specifying the name of the &#8216;modify_command&#8217; lfun to call for newly entered commands as result of a <a class="reference internal" href="../efun/set_modify_command.html#lpc.efun.set_modify_command" title="set_modify_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_modify_command</span></code>(E)</a>.</p>
 <p>Hook setting must be a string.</p>
-<p>If set_modify_command() is used for an interactive user, all newly entered commands are first passed to the function named by this hook.</p>
+<p>If <a class="reference internal" href="../efun/set_modify_command.html#lpc.efun.set_modify_command" title="set_modify_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_modify_command</span></code>(E)</a> is used for an interactive user, all newly entered commands are first passed to the function named by this hook.</p>
 <p>The function is called with the command as argument.</p>
 <p>If the result is a string, it is the new command to execute instead of the given one. Note that it is not possible to make several commands from one this way!</p>
 <p>If the result is a non-zero number, the given command is to be ignored. In case of the closure/lfun setting this may mean that the closure/lfun already executed it.</p>
 <p>If the result is 0, the originally given command is to be used.</p>
-<p>It is possible for the hook to change the command giver (this_player()) for the execution of the command. This means that even though the commands are execute for the original commandgiver, this_player() will return the changed commandgiver.</p>
+<p>It is possible for the hook to change the command giver (<a class="reference internal" href="../efun/this_player.html#lpc.efun.this_player" title="this_player"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_player</span></code>(E)</a>) for the execution of the command. This means that even though the commands are execute for the original commandgiver, <a class="reference internal" href="../efun/this_player.html#lpc.efun.this_player" title="this_player"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_player</span></code>(E)</a> will return the changed commandgiver.</p>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref lpc lpc-concept docutils literal"><span class="pre">hooks</span></code>, <a class="reference internal" href="command.html#lpc.command" title="command"><code class="xref lpc lpc-hook docutils literal"><span class="pre">command</span></code>(H)</a>, <a class="reference internal" href="modify_command.html#lpc.modify_command" title="modify_command"><code class="xref lpc lpc-hook docutils literal"><span class="pre">modify_command</span></code>(H)</a>, <a class="reference internal" href="notify_fail.html#lpc.notify_fail" title="notify_fail"><code class="xref lpc lpc-hook docutils literal"><span class="pre">notify_fail</span></code>(H)</a>, <a class="reference internal" href="send_notify_fail.html#lpc.send_notify_fail" title="send_notify_fail"><code class="xref lpc lpc-hook docutils literal"><span class="pre">send_notify_fail</span></code>(H)</a></p>
+<p><a class="reference internal" href="overview.html#lpc.overview.hook" title="hook"><code class="xref lpc lpc-overview docutils literal"><span class="pre">hook</span></code></a>, <a class="reference internal" href="command.html#lpc.hook.command" title="command"><code class="xref lpc lpc-hook docutils literal"><span class="pre">command</span></code>(H)</a>, <a class="reference internal" href="modify_command.html#lpc.hook.modify_command" title="modify_command"><code class="xref lpc lpc-hook docutils literal"><span class="pre">modify_command</span></code>(H)</a>, <a class="reference internal" href="notify_fail.html#lpc.hook.notify_fail" title="notify_fail"><code class="xref lpc lpc-hook docutils literal"><span class="pre">notify_fail</span></code>(H)</a>, <a class="reference internal" href="send_notify_fail.html#lpc.hook.send_notify_fail" title="send_notify_fail"><code class="xref lpc lpc-hook docutils literal"><span class="pre">send_notify_fail</span></code>(H)</a></p>
 </div>
 </div>
 </div>
@@ -90,8 +93,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -110,15 +113,14 @@
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -130,7 +132,7 @@
       &copy;good question.
       
       |
-      <a href="../_sources/hook/modify_command_fname.txt"
+      <a href="../_sources/hook/modify_command_fname.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

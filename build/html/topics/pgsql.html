@@ -1,0 +1,187 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PostgreSQL support &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Driver-defined preprocessor macros" href="predefined.html" />
+    <link rel="prev" title="Perl-compatible regular expressions" href="pcre.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="PostgreSQL support">
+<span id="pgsql"></span><span id="lpc.topic.PostgreSQL support"></span><span id="lpc.topic.pgsql"></span><div class="section" id="TOPIC">
+<h2>TOPIC<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+PostgreSQL support</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>On hosts with the PostgreSQL package installed, the driver can be configured to interface with the PostgreSQL database. If that is done, the driver defines the macro <a class="reference internal" href="predefined.html#lpc.macro.__PGSQL__" title="__PGSQL__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__PGSQL__</span></code></a> for LPC programs and activates a number of related efuns.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>The interface to the PostgreSQL database is implemented through the concept of a controlling object: when opening a database connection, the LPC code has to provide a callback function. The object this function is bound to is the controlling object: all queries to the database will be issued by this object, and the responses will be sent to the callback function.</p>
+<p>The interface is also asynchronous: <a class="reference internal" href="../efun/pg_query.html#lpc.efun.pg_query" title="pg_query"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_query</span></code>(E)</a> just queues the query with the database connection, and returns immediately. When the database has finished working the query, the callback function is called with the results.</p>
+<p>The callback function can be defined by name or by closure, and can be defined with extra parameters:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>#include &lt;pgsql.h&gt;
+
+void &lt;callback&gt;(int type, mixed ret, int id [, mixed extra...])
+
+  &lt;type&gt; is the type of the call, &lt;id&gt; identifies the query
+  for which this call is executed:
+
+    PGRES_TUPLES_OK: &lt;ret&gt; is the result from a query.
+                     It is either a mapping (field name as
+                     key, indexing &lt;n&gt; values for n returned
+                     tuples), or an array of arrays (one per
+                     row).
+
+    PGRES_COMMAND_OK: &lt;ret&gt; is a string which contains the
+                      server response (e.g. on INSERT or DELETE)
+
+    PGRES_BAD_RESPONSE,
+    PGRES_NONFATAL_ERROR,
+    PGRES_FATAL_ERROR: ret is the error-string
+
+
+void &lt;callback&gt;(int type, mixed ret [, mixed extra...])
+
+  &lt;type&gt; is the type of the call, which is not related to a
+  specific query:
+
+    PGCONN_SUCCESS: The database-connection was established,
+                    &lt;ret&gt; is a dummy string.
+    PGCONN_FAILED:  The database-connection failed, &lt;ret&gt; is
+                    the error message.
+      The first message to the callback after a call to
+      pg_connect() is always one of these two.
+
+    PGRES_NOTICE: &lt;ret&gt; is a informational text.
+
+    PGCONN_ABORTED: If the connection to the backend fails
+                    we try to re-establish (reset) it. If the
+                    reset fails, the connection is closed and
+                    this value is returned. Consider the
+                    connection gone and don&#39;t try to close or
+                    otherwise operate further on it.
+                    &lt;ret&gt; is a dummy string.
+</pre></div>
+</div>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>security<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>All SQL efuns (unless execute by the master or the simul-efun object) trigger a <code class="docutils literal"><span class="pre">privilege_violation</span> <span class="pre">(&quot;pgsql&quot;,</span> <span class="pre">&quot;&lt;efun_name&gt;&quot;)</span></code>. If a more fine-grained control is desired, overload the individual efuns with a nomask simul_efun.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.445</em>)</li>
+<li><strong>changed</strong> (<em>3.3.640</em>) &#8211; added a privilege_violation() call for each efun.</li>
+</ul>
+</div>
+<div class="section" id="LORE">
+<h2>LORE<a class="headerlink" href="#LORE" title="Permalink to this headline">¶</a></h2>
+<p>Authored by Florian Heinz and others.</p>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">:concept:`mysql`</span></a>, <a class="reference internal" href="../efun/pg_connect.html#lpc.efun.pg_connect" title="pg_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_connect</span></code>(E)</a>, <a class="reference internal" href="../efun/pg_conv_string.html#lpc.efun.pg_conv_string" title="pg_conv_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_conv_string</span></code>(E)</a>, <a class="reference internal" href="../efun/pg_query.html#lpc.efun.pg_query" title="pg_query"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_query</span></code>(E)</a>, <a class="reference internal" href="../efun/pg_pending.html#lpc.efun.pg_pending" title="pg_pending"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_pending</span></code>(E)</a>, <a class="reference internal" href="../efun/pg_close.html#lpc.efun.pg_close" title="pg_close"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_close</span></code>(E)</a>, <a class="reference internal" href="../master/privilege_violation.html#lpc.master.privilege_violation" title="privilege_violation"><code class="xref lpc lpc-master docutils literal"><span class="pre">privilege_violation</span></code>(M)</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">PostgreSQL support</a><ul>
+<li><a class="reference internal" href="#TOPIC">TOPIC</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#l">security</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#LORE">LORE</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/topics/pgsql.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

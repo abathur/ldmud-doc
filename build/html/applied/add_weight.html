@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>applied::add_weight() &mdash; LDMud UNRELEASED documentation</title>
+    <title>applied::add_weight() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="applied" href="applied.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="applied::can_put_and_get()" href="can_put_and_get.html" />
     <link rel="prev" title="applied::__INIT()" href="__INIT.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,27 +47,30 @@
 <div class="section" id="SYNOPSIS">
 <span id="add_weight"></span><h2>SYNOPSIS (DEPRECATED)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.add_weight">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">add_weight</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;w</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.add_weight" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.applied.add_weight">
+<!--[lpc.applied.add_weight]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">add_weight</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+int<em>&nbsp;w</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.applied.add_weight" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>In compat mode, this function is used by <a class="reference internal" href="../efun/transfer.html#lpc.transfer" title="transfer"><code class="xref lpc lpc-efun docutils literal"><span class="pre">transfer()</span></code>(E)</a>.</p>
+<p>In compat mode, this function is used by <a class="reference internal" href="../efun/transfer.html#lpc.efun.transfer" title="transfer"><code class="xref lpc lpc-efun docutils literal"><span class="pre">transfer</span></code>(E)</a>.</p>
 <p>An object that can contain other objects and is not a room must define this function. It is called with the extra weight of the object that is moved into it. If this is ok, then it has to increment the local weight count, and return true. Otherwise, return false, and the new object can not be entered into this object.</p>
 <p>The function is also called with the negative weight in the object that the moving leaves.</p>
-<p>Note that no set_weight() is required by the parser.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">no <code class="docutils literal"><span class="pre">set_weight()</span></code> is required by the parser.</p>
+</div>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><strong>deprecated</strong> (<em>3.3</em>) &#8211; because <a class="reference internal" href="../efun/transfer.html#lpc.transfer" title="transfer"><code class="xref lpc lpc-efun docutils literal"><span class="pre">transfer()</span></code>(E)</a> has been deprecated.</li>
+<ul>
+<li><strong>deprecated</strong> (<em>3.3</em>) &#8211; because <a class="reference internal" href="../efun/transfer.html#lpc.efun.transfer" title="transfer"><code class="xref lpc lpc-efun docutils literal"><span class="pre">transfer</span></code>(E)</a> has been deprecated.</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../efun/transfer.html#lpc.transfer" title="transfer"><code class="xref lpc lpc-efun docutils literal"><span class="pre">transfer()</span></code>(E)</a>, <a class="reference internal" href="query_weight.html#lpc.query_weight" title="query_weight"><code class="xref lpc lpc-applied docutils literal"><span class="pre">query_weight</span></code>(A)</a>, <a class="reference internal" href="prevent_insert.html#lpc.prevent_insert" title="prevent_insert"><code class="xref lpc lpc-applied docutils literal"><span class="pre">prevent_insert</span></code>(A)</a></p>
+<p><a class="reference internal" href="../efun/transfer.html#lpc.efun.transfer" title="transfer"><code class="xref lpc lpc-efun docutils literal"><span class="pre">transfer</span></code>(E)</a>, <a class="reference internal" href="query_weight.html#lpc.applied.query_weight" title="query_weight"><code class="xref lpc lpc-applied docutils literal"><span class="pre">query_weight</span></code>(A)</a>, <a class="reference internal" href="prevent_insert.html#lpc.applied.prevent_insert" title="prevent_insert"><code class="xref lpc lpc-applied docutils literal"><span class="pre">prevent_insert</span></code>(A)</a></p>
 </div>
 </div>
 </div>
@@ -79,8 +84,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -100,15 +105,14 @@
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -120,7 +124,7 @@
       &copy;good question.
       
       |
-      <a href="../_sources/applied/add_weight.txt"
+      <a href="../_sources/applied/add_weight.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

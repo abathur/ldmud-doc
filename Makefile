@@ -142,6 +142,16 @@ plain:
 	@echo
 	@echo "Build finished. The plaintext files are in $(BUILDDIR)/plain."
 
+dev:
+	$(SPHINXBUILD) -q -b multi -D multi_builders=html,plain,doxygen,linkcheck -d build/doctrees source $(BUILDDIR)
+	@echo
+	@echo "Build finished. The files are in $(BUILDDIR)/*."
+
+ldmud:
+	$(SPHINXBUILD) -b multi -D multi_builders=html:html,plain:plain,doxygen:doxygen -d build/doctrees source $(BUILDDIR)
+	@echo
+	@echo "Build finished. The files are in $(BUILDDIR)/*."
+
 doxygen:
 	$(SPHINXBUILD) -b doxygen $(ALLSPHINXOPTS) $(BUILDDIR)/doxygen
 	@echo

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/write.c Source File</title>
+<title>LDMud: efun/write.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('write_8c_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,59 +100,50 @@ $(document).ready(function(){initNavTree('write_8c_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * void write(mixed msg)</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * }</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="classefun.html#afacd7cdaff7309a4b579f4c14db53662">write</a>(mixed msg);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;DESCRIPTION</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;Write out something to the current user. What exactly will</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;be printed in the end depends of the type of msg.</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;If it is a <span class="keywordtype">string</span> or a number then just prints it out.</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;If it is an <span class="keywordtype">object</span> then the <span class="keywordtype">object</span> will be printed in the</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;form: <span class="stringliteral">&quot;OBJ(&quot;</span>+object_name((<span class="keywordtype">object</span>)mix)+<span class="stringliteral">&quot;)&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;If it is an array just <span class="stringliteral">&quot;&lt;ARRAY&gt;&quot;</span> will be printed.</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;If it is a mapping just <span class="stringliteral">&quot;&lt;MAPPING&gt;&quot;</span> will be printed.</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;If it is a closure just <span class="stringliteral">&quot;&lt;CLOSURE&gt;&quot;</span> will be printed.</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;If the write() function is invoked by a command of a living,</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;non-interactive <span class="keywordtype">object</span> and the given argument is a <span class="keywordtype">string</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;then the lfun catch_tell() of the living will be invoked with</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;the message as argument.</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;EXAMPLES</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;write(&quot;Hello world!n&quot;);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;Just print out a <span class="keywordtype">string</span>.</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;write(this_player());</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;This will print out something like &quot;OBJ(std/player<span class="preprocessor">#1234)&quot;.</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;write( ({ <span class="stringliteral">&quot;blub&quot;</span> }) );</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;Will print out <span class="stringliteral">&quot;&lt;ARRAY&gt;&quot;</span>.</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;   See Also: </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <a class="code" href="classefun.html#a9047308a38d0fbf3c038db31e501851d">efun::say</a>(), <a class="code" href="classefun.html#a8ce0444b0446469dad1664f4eb0ed85a">efun::tell_object</a>(), <a class="code" href="classefun.html#a423050a263ffc6f1171433c543b075ae">efun::tell_room</a>(), <a class="code" href="classapplied.html#a7694f52f199ec3698af091accf6e6f22">applied::catch_tell</a>()</div>
-<div class="ttc" id="classefun_html_a423050a263ffc6f1171433c543b075ae"><div class="ttname"><a href="classefun.html#a423050a263ffc6f1171433c543b075ae">efun.tell_room</a></div><div class="ttdeci">void tell_room(string|object ob, mixed *|mapping|struct|object msg, object  *exclude)</div><div class="ttdoc">Send a message &lt;str&gt; to all living objects in the room &lt;ob&gt;. </div></div>
-<div class="ttc" id="classefun_html_a8ce0444b0446469dad1664f4eb0ed85a"><div class="ttname"><a href="classefun.html#a8ce0444b0446469dad1664f4eb0ed85a">efun.tell_object</a></div><div class="ttdeci">void tell_object(object|string ob, mixed *|mapping|struct|object msg)</div><div class="ttdoc">Send a message &lt;str&gt; to object &lt;ob&gt; (which is looked up and loaded by given name if necessary)...</div></div>
-<div class="ttc" id="classapplied_html_a7694f52f199ec3698af091accf6e6f22"><div class="ttname"><a href="classapplied.html#a7694f52f199ec3698af091accf6e6f22">applied.catch_tell</a></div><div class="ttdeci">void catch_tell(string)</div><div class="ttdoc">When a message is sent to an non-interactive object, via (), @atell_object(), ()or @awrite()...</div></div>
-<div class="ttc" id="classefun_html_afacd7cdaff7309a4b579f4c14db53662"><div class="ttname"><a href="classefun.html#afacd7cdaff7309a4b579f4c14db53662">efun.write</a></div><div class="ttdeci">void write(mixed msg)</div></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * Write out something to the current user. What exactly will be printed in the end depends of the type of \p msg:</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * - If it is a string or a number then just prints it out.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * - If it is an object then the object will be printed in the form: `&quot;OBJ(&quot;+object_name((object)mix)+&quot;)&quot;`</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * - If it is an array just `&lt;ARRAY&gt;` will be printed.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * - If it is a mapping just `&lt;MAPPING&gt;` will be printed.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * - If it is a closure just `&lt;CLOSURE&gt;` will be printed.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * If the function is invoked by a command of a non-interactive living object (such as an NPC) and the given argument is a string, the lfun applied::catch_tell() of the living will be invoked with the message as argument.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    * void write(mixed msg)</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    * @usage{</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    * Just print out a string:</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">    * ~~~{.c}</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">    * write(&quot;Hello world!\n&quot;);</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">    * ~~~</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">    * Other types are mostly just useful for debug purposes:</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">    * ~~~{.c}</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">    * write(this_player());  // prints &quot;OBJ(std/player#1234)&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">    * write( ({ &quot;blub&quot; }) ); // prints &quot;&lt;ARRAY&gt;&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">    * ~~~</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">    * @see efun::say(), efun::tell_object(), efun::tell_room(), applied::catch_tell()</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="classefun.html#afacd7cdaff7309a4b579f4c14db53662">write</a>(mixed msg);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="ttc" id="classefun_html_afacd7cdaff7309a4b579f4c14db53662"><div class="ttname"><a href="classefun.html#afacd7cdaff7309a4b579f4c14db53662">efun.write</a></div><div class="ttdeci">void write(mixed msg)</div><div class="ttdoc">Write out something to the current user. </div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
-<div class="ttc" id="classefun_html_a9047308a38d0fbf3c038db31e501851d"><div class="ttname"><a href="classefun.html#a9047308a38d0fbf3c038db31e501851d">efun.say</a></div><div class="ttdeci">void say(mixed *|mapping|struct|object msg, object  *excludes)</div><div class="ttdoc">There are two major modes of calling: </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>write.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:10 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:22 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

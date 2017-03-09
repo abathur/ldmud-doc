@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::blueprint() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::blueprint() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::call_direct()" href="call_direct.html" />
     <link rel="prev" title="efun::bind_lambda()" href="bind_lambda.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -43,44 +45,43 @@
             
   <div class="section">
 <div class="section" id="SYNOPSIS">
-<span id="blueprint"></span><h2>SYNOPSIS (PRELIMINARY)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<span id="blueprint"></span><h2>SYNOPSIS (EXPERIMENTAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.blueprint">
-<td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">blueprint</code></td><a class="headerlink" href="#lpc.blueprint" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.blueprint">
+<!--[lpc.efun.blueprint]--><td>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">blueprint</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.blueprint" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a> </td><td>
-<code class="descname">blueprint</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a> </td><td>
+<code class="descname">blueprint</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a>|object<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>The efuns returns the blueprint for the given object <a class="reference internal" href="#efun/blueprint.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a>, or for the current object if <a class="reference internal" href="#efun/blueprint.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is not specified.</p>
+<p>If the blueprint is destructed, or its program replaced, the efun returns 0.</p>
+<p>For objects with replaced programs, the efun returns the blueprint for the replacement program. In <a class="reference internal" href="../topics/predefined.html#lpc.macro.__COMPAT_MODE__" title="__COMPAT_MODE__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__COMPAT_MODE__</span></code></a> the returned blueprint does not start with a &#8220;/&#8221;.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">blueprint</span><span class="p">(</span><span class="s">&quot;/std/thing&quot;</span><span class="p">))</span>               <span class="o">-&gt;</span> <span class="o">/</span><span class="n">std</span><span class="o">/</span><span class="n">thing</span>
+<span class="n">blueprint</span><span class="p">(</span><span class="n">find_object</span><span class="p">(</span><span class="s">&quot;/std/thing&quot;</span><span class="p">))</span>   <span class="o">-&gt;</span> <span class="o">/</span><span class="n">std</span><span class="o">/</span><span class="n">thing</span>
+<span class="n">blueprint</span><span class="p">(</span><span class="n">clone_object</span><span class="p">(</span><span class="s">&quot;/std/thing&quot;</span><span class="p">))</span>  <span class="o">-&gt;</span> <span class="o">/</span><span class="n">std</span><span class="o">/</span><span class="n">thing</span>
+</pre></div>
 </div>
 </div>
-<p>The efuns returns the blueprint for the given object &lt;ob&gt;, or for
-the current object if &lt;ob&gt; is not specified.</p>
-<p>If the blueprint is destructed, or its program replaced, the efun
-returns 0.</p>
-<p>For objects with replaced programs, the efun returns the blueprint
-for the replacement program.
-In COMPAT mode the returned blueprint does not start with a &#8220;/&#8221;.</p>
-<p>EXAMPLES
-blueprint(&#8220;/std/thing&#8221;))               -&gt; /std/thing
-blueprint(find_object(&#8220;/std/thing&#8221;))   -&gt; /std/thing
-blueprint(clone_object(&#8220;/std/thing&#8221;))  -&gt; /std/thing</p>
-<p>Introduced in LDMud 3.2.9.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="clones.html#lpc.clones" title="clones"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clones()</span></code>(E)</a>, <a class="reference internal" href="clone_object.html#lpc.clone_object" title="clone_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clone_object()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.9</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="clones.html#lpc.efun.clones" title="clones"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clones</span></code>(E)</a>, <a class="reference internal" href="clone_object.html#lpc.efun.clone_object" title="clone_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clone_object</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -91,8 +92,8 @@ blueprint(clone_object(&#8220;/std/thing&#8221;))  -&gt; /std/thing</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -101,22 +102,26 @@ blueprint(clone_object(&#8220;/std/thing&#8221;))  -&gt; /std/thing</p>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">efun::blueprint()</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (PRELIMINARY)</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (EXPERIMENTAL)</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -128,7 +133,7 @@ blueprint(clone_object(&#8220;/std/thing&#8221;))  -&gt; /std/thing</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/blueprint.txt"
+      <a href="../_sources/efun/blueprint.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

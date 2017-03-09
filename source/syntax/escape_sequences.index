@@ -1,0 +1,47 @@
+
+      .. \<CR>     : Carriage Return (0x0d)
+      .. \<CR><LF> : ignored
+      .. \<LF>     : ignored
+      .. \<LF><CR> : ignored
+      .. \"   : The double quote (")
+
+.. glossary::
+
+  ``\N``
+    the character code N in decimal
+
+  ``\0xN``
+    the character code N in sedecimal
+
+  ``\xN``
+    the character code N in sedecimal
+
+  ``\0oN``
+    the character code N in octal
+
+  ``\0bN``
+    the character code N in binary
+
+  ``\a``
+    Bell (``0x07``)
+
+  ``\b``
+    Backspace (``0x08``)
+
+  ``\t``
+    Tab (``0x09``)
+
+  ``\e``
+    Escape (``0x1b``)
+
+  ``\n``
+    Newline (``0x0a``)
+
+  ``\f``
+    Formfeed (``0x0c``)
+
+  ``\r``
+    Carriage Return (``0x0d``)
+
+  ``\<other character>``
+    the given character

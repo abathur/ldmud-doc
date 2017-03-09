@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::xml_generate() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::xml_generate() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::xml_parse()" href="xml_parse.html" />
     <link rel="prev" title="efun::tls_refresh_certs()" href="tls_refresh_certs.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -43,109 +45,81 @@
             
   <div class="section">
 <div class="section" id="SYNOPSIS">
-<span id="xml_generate"></span><h2>SYNOPSIS (EXPERIMENTAL, OPTIONAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
+<span id="xml_generate"></span><h2>SYNOPSIS (OPTIONAL, EXPERIMENTAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;xml.h&gt;</tr>
-<tr id="lpc.xml_generate">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">xml_generate</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;*xml</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.xml_generate" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.xml_generate">
+<!--[lpc.efun.xml_generate]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">xml_generate</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+mixed<em>&nbsp;*xml</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.xml_generate" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Converts the given &lt;xml&gt; array into an XML conformant string, if
-possible. The &lt;xml&gt; argument array must have the following structure:</p>
-<p>It must contain tag arrays of three elements, with the following
-indices:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>string XML_TAG_NAME</dt>
+<p>Converts the given <a class="reference internal" href="#efun/xml_generate.arg.xml" title="xml"><code class="xref lpc lpc-arg docutils literal"><span class="pre">xml</span></code></a> array into an XML conformant string, if possible. The <a class="reference internal" href="#efun/xml_generate.arg.xml" title="xml"><code class="xref lpc lpc-arg docutils literal"><span class="pre">xml</span></code></a> argument array must have the following structure:</p>
+<p>It must contain tag arrays of three elements, with the following indices:</p>
+<dl class="docutils">
+<dt>string <code class="xref lpc lpc-macro docutils literal"><span class="pre">XML_TAG_NAME</span></code></dt>
 <dd>The name of the XML tag.</dd>
-<dt>mapping XML_TAG_ATTRIBUTES</dt>
-<dd><p class="first">All attributes given to the XML tag as a mapping where the key
-is the attribute name and the value is its string value.</p>
-<p class="last">If the xml tag does not contain any attributes, this element
-is set to 0:</p>
+<dt>mapping <code class="xref lpc lpc-macro docutils literal"><span class="pre">XML_TAG_ATTRIBUTES</span></code></dt>
+<dd><p class="first">All attributes given to the XML tag as a mapping where the key is the attribute name and the value is its string value.</p>
+<p class="last">If the xml tag does not contain any attributes, this element is set to 0.</p>
 </dd>
-<dt>mixed * XML_TAG_CONTENTS</dt>
-<dd><p class="first">The contents of this xml tag as an array. This array may
-contain either strings, or arrays of sub-tags again with
-three elements. (see example)</p>
-<p class="last">If the xml tag does not contain anything, the element is
-set to 0.</p>
+<dt>mixed * <code class="xref lpc lpc-macro docutils literal"><span class="pre">XML_TAG_CONTENTS</span></code></dt>
+<dd><p class="first">The contents of this xml tag as an array. This array may contain either strings, or arrays of sub-tags again with three elements. (see example)</p>
+<p class="last">If the xml tag does not contain anything, the element is set to 0.</p>
 </dd>
 </dl>
-</div></blockquote>
-<p>In case the parameter does not follow these rules, errors are raised.
-The method returns a valid XML string otherwise.</p>
-<p>The function is available only if the driver is compiled with Iksemel
-support. In that case, __XML_DOM__ is defined.</p>
+<p>In case the parameter does not follow these rules, errors are raised. The method returns a valid XML string otherwise.</p>
+<p>The function is available only if the driver is compiled with Iksemel support. In that case, <a class="reference internal" href="../topics/predefined.html#lpc.macro.__XML_DOM__" title="__XML_DOM__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__XML_DOM__</span></code></a> is defined.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>For starters, here&#8217;s how you can generate individual tags:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">xml_generate</span><span class="p">(({</span> <span class="s">&quot;abc&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">}));</span>                   <span class="c1">// &quot;&lt;abc/&gt;&quot;</span>
+<span class="n">xml_generate</span><span class="p">(({</span> <span class="s">&quot;abc&quot;</span><span class="p">,</span> <span class="p">([</span> <span class="s">&quot;xyz&quot;</span> <span class="o">:</span> <span class="s">&quot;cde&quot;</span> <span class="p">]),</span> <span class="mi">0</span> <span class="p">}));</span> <span class="c1">// &quot;&lt;abc xyz=&quot;cde&quot;/&gt;&quot;</span>
+</pre></div>
+</div>
+<p>Nested tags get complicated (and hard to read) quickly, so it&#8217;s important to format them consistently:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">mixed</span> <span class="o">*</span><span class="n">xml</span> <span class="o">=</span> <span class="p">({</span> <span class="s">&quot;book&quot;</span>
+              <span class="p">,</span> <span class="p">([</span> <span class="s">&quot;language&quot;</span> <span class="o">:</span> <span class="s">&quot;common&quot;</span> <span class="p">])</span>
+              <span class="p">,</span> <span class="p">({</span> <span class="p">({</span> <span class="s">&quot;title&quot;</span>
+                    <span class="p">,</span> <span class="mi">0</span>
+                    <span class="p">,</span> <span class="p">({</span> <span class="s">&quot;This is a title&quot;</span> <span class="p">})</span>
+                   <span class="p">})</span>
+                 <span class="p">,</span> <span class="p">({</span> <span class="s">&quot;chapter&quot;</span>
+                    <span class="p">,</span> <span class="mi">0</span>
+                    <span class="p">,</span> <span class="p">({</span> <span class="s">&quot;This is a chapter&quot;</span> <span class="p">})</span>
+                   <span class="p">})</span>
+                 <span class="p">,</span> <span class="p">({</span> <span class="s">&quot;chapter&quot;</span>
+                    <span class="p">,</span> <span class="mi">0</span>
+                    <span class="p">,</span> <span class="p">({</span> <span class="s">&quot;We want &quot;</span>
+                       <span class="p">,</span> <span class="p">({</span> <span class="s">&quot;b&quot;</span>
+                          <span class="p">,</span> <span class="mi">0</span>
+                          <span class="p">,</span> <span class="p">({</span> <span class="s">&quot;bold&quot;</span> <span class="p">})</span>
+                         <span class="p">})</span>
+                       <span class="p">,</span> <span class="s">&quot;here&quot;</span>
+                      <span class="p">})</span>
+                   <span class="p">})</span>
+                <span class="p">})</span>
+             <span class="p">});</span>
+
+<span class="n">xml_generate</span><span class="p">(</span><span class="n">xml</span><span class="p">);</span> <span class="c1">// &quot;&lt;book language=&quot;common&quot;&gt;&lt;title&gt;This is the title&lt;/title&gt;&lt;chapter&gt;This is a chapter&lt;/chapter&gt;&lt;chapter&gt;We want &lt;b&gt;bold&lt;/b&gt; here.&lt;/chapter&gt;&lt;/book&gt;&quot;</span>
+</pre></div>
 </div>
 </div>
-<dl class="docutils">
-<dt>EXAMPLES</dt>
-<dd><p class="first">xml_generate(({ &#8220;abc&#8221;, 0, 0 })) -&gt; &#8220;&lt;abc/&gt;&#8221;
-xml_generate(({ &#8220;abc&#8221;, ([ &#8220;xyz&#8221; : &#8220;cde&#8221; ]), 0 })) -&gt; &#8220;&lt;abc xyz=&#8221;cde&#8221;/&gt;&#8221;</p>
-<dl class="last docutils">
-<dt>mixed <a href="#id1"><span class="problematic" id="id2">*</span></a>xml = ({ &#8220;book&#8221;</dt>
-<dd><blockquote class="first">
-<div><p>, ([ &#8220;language&#8221; : &#8220;common&#8221; ])
-, ({ ({ &#8220;title&#8221;</p>
-<blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><blockquote>
-<div>, 0
-, ({ &#8220;This is a title&#8221; })</div></blockquote>
-<p>})</p>
-</div></blockquote>
-<dl class="docutils">
-<dt>, ({ &#8220;chapter&#8221;</dt>
-<dd><blockquote class="first">
-<div>, 0
-, ({ &#8220;This is a chapter&#8221; })</div></blockquote>
-<p class="last">})</p>
-</dd>
-<dt>, ({ &#8220;chapter&#8221;</dt>
-<dd><blockquote class="first">
-<div><p>, 0
-, ({ &#8220;We want &#8220;</p>
-<blockquote>
-<div><blockquote>
-<div><dl class="docutils">
-<dt>, ({ &#8220;b&#8221;</dt>
-<dd><blockquote class="first">
-<div>, 0
-, ({ &#8220;bold&#8221; })</div></blockquote>
-<p class="last">})</p>
-</dd>
-</dl>
-<p>, &#8220;here&#8221;</p>
-</div></blockquote>
-<p>})</p>
-</div></blockquote>
-</div></blockquote>
-<p class="last">})</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>})</p>
-</div></blockquote>
-</div></blockquote>
-<p class="last">})</p>
-</dd>
-<dt>xml_generate(xml)</dt>
-<dd><dl class="first last docutils">
-<dt>-&gt; &#8220;&lt;book language=&#8221;common&#8221;&gt;&lt;title&gt;This is the title&lt;/title&gt;&#8221;</dt>
-<dd>&#8220;&lt;chapter&gt;This is a chapter&lt;/chapter&gt;&lt;chapter&gt;We want &#8221;
-&#8220;&lt;b&gt;bold&lt;/b&gt; here.&lt;/chapter&gt;&lt;/book&gt;&#8221;</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.718</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="xml_parse.html#lpc.efun.xml_parse" title="xml_parse"><code class="xref lpc lpc-efun docutils literal"><span class="pre">xml_parse</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -156,8 +130,8 @@ xml_generate(({ &#8220;abc&#8221;, ([ &#8220;xyz&#8221; : &#8220;cde&#8221; ]), 
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -166,22 +140,26 @@ xml_generate(({ &#8220;abc&#8221;, ([ &#8220;xyz&#8221; : &#8220;cde&#8221; ]), 
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">efun::xml_generate()</a><ul>
-<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (EXPERIMENTAL, OPTIONAL)</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (OPTIONAL, EXPERIMENTAL)</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -193,7 +171,7 @@ xml_generate(({ &#8220;abc&#8221;, ([ &#8220;xyz&#8221; : &#8220;cde&#8221; ]), 
       &copy;good question.
       
       |
-      <a href="../_sources/efun/xml_generate.txt"
+      <a href="../_sources/efun/xml_generate.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

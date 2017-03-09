@@ -1,0 +1,24 @@
+.. syntax:: #
+  #<directive>[ <arguments...>]
+  :name: preprocessor
+  :title: Preprocessor directives
+
+  .. directive: include | define | if | ifdef | ifndef | else | elif | endif | undef
+
+  .. todo:: needs extensive work, probably explicit documentation of every different directive
+
+  The LPC driver understands the following preprocessor directives:
+
+  ``#include, #define, #if, #ifdef, #ifndef, #else, #elif, #endif, #undef``
+    same as in ANSI C
+
+  ``#line <num>``
+    line numbers start at *num* with the next line
+
+  ``#echo``
+    the rest of the line is printed to the error output (stderr), thus can be captured into a log file
+
+  ``#pragma``
+    see the separate :syntax:`pragma` page
+
+  .. seealso:: :syntax:`pragma`, :topic:`predefined`

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::xor_bits() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::xor_bits() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,15 +18,16 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
-    <link rel="next" title="hook" href="../hook/hook.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Driver-supported hooks" href="../hook/overview.html" />
     <link rel="prev" title="efun::write_file()" href="write_file.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,41 +47,37 @@
 <div class="section" id="SYNOPSIS">
 <span id="xor_bits"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.xor_bits">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">xor_bits</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str1</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str2</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.xor_bits" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.xor_bits">
+<!--[lpc.efun.xor_bits]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">xor_bits</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;str1</em>, </td><td id="id2">
+string<em>&nbsp;str2</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.xor_bits" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#efun/xor_bits.arg.str1" title="str1"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str1</span></code></a> and <a class="reference internal" href="#efun/xor_bits.arg.str2" title="str2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str2</span></code></a> are both bitstrings. The result of the function is a bitstring with the binary-xor of <a class="reference internal" href="#efun/xor_bits.arg.str1" title="str1"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str1</span></code></a> and <a class="reference internal" href="#efun/xor_bits.arg.str2" title="str2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str2</span></code></a>, ie. a string in which a bit is set only if the corresponding bits in either <a class="reference internal" href="#efun/xor_bits.arg.str1" title="str1"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str1</span></code></a> or <a class="reference internal" href="#efun/xor_bits.arg.str2" title="str2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str2</span></code></a> (but not both) is set.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>The below example demonstrates how <a class="reference internal" href="#lpc.efun.xor_bits" title="xor_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">xor_bits</span></code>(E)</a> cancels out the bit common to s1 and s2, but retains bits present only in one string:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">string</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">;</span>
+
+<span class="n">s1</span> <span class="o">=</span> <span class="n">set_bit</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">set_bit</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>  <span class="c1">// s1 is &quot;( (&quot;, bits 3 and 15</span>
+
+<span class="n">s2</span> <span class="o">=</span> <span class="n">set_bit</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">set_bit</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>   <span class="c1">// s2 is &quot;8&quot;, bits 3 and 4</span>
+
+<span class="n">s3</span> <span class="o">=</span> <span class="n">xor_bits</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">);</span> <span class="c1">// s3 is &quot;0 (&quot;, bits 4 and 15</span>
+</pre></div>
 </div>
 </div>
-<p>DESCRIPTION
-&lt;str1&gt; and &lt;str2&gt; are both bitstrings. The result of the function
-is a bitstring with the binary-xor of &lt;str1&gt; and &lt;str2&gt;,
-ie. a string in which a bit is set only if the corresponding
-bits in either &lt;str1&gt; or &lt;str2&gt; (but not both) is set.</p>
-<p>EXAMPLES
-string s1, s2, s3;</p>
-<p>s1 = set_bit(&#8220;&#8221;, 3); s1 = set_bit(s1, 15);  -&gt; s1 is &#8220;( (&#8221;
-s2 = set_bit(&#8220;&#8221;, 3); s2 = set_bit(s2, 4);   -&gt; s2 is &#8220;8&#8221;</p>
-<p>s3 = xor_bits(s1, s2);</p>
-<p>-&gt; s3 is now &#8220;0 (&#8221;, ie. a bitstring with bits 4 and 15 set.</p>
-<blockquote>
-<div><blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="clear_bit.html#lpc.clear_bit" title="clear_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clear_bit()</span></code>(E)</a>, <a class="reference internal" href="set_bit.html#lpc.set_bit" title="set_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_bit()</span></code>(E)</a>, <a class="reference internal" href="test_bit.html#lpc.test_bit" title="test_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">test_bit()</span></code>(E)</a>, <a class="reference internal" href="next_bit.html#lpc.next_bit" title="next_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">next_bit()</span></code>(E)</a>, <a class="reference internal" href="last_bit.html#lpc.last_bit" title="last_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">last_bit()</span></code>(E)</a>,</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><a class="reference internal" href="count_bits.html#lpc.count_bits" title="count_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">count_bits()</span></code>(E)</a>, <a class="reference internal" href="and_bits.html#lpc.and_bits" title="and_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">and_bits()</span></code>(E)</a>, <a class="reference internal" href="or_bits.html#lpc.or_bits" title="or_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">or_bits()</span></code>(E)</a>, <a class="reference internal" href="invert_bits.html#lpc.invert_bits" title="invert_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">invert_bits()</span></code>(E)</a>, <a class="reference internal" href="copy_bits.html#lpc.copy_bits" title="copy_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">copy_bits()</span></code>(E)</a></p>
-</div></blockquote>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="clear_bit.html#lpc.efun.clear_bit" title="clear_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clear_bit</span></code>(E)</a>, <a class="reference internal" href="set_bit.html#lpc.efun.set_bit" title="set_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_bit</span></code>(E)</a>, <a class="reference internal" href="test_bit.html#lpc.efun.test_bit" title="test_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">test_bit</span></code>(E)</a>, <a class="reference internal" href="next_bit.html#lpc.efun.next_bit" title="next_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">next_bit</span></code>(E)</a>, <a class="reference internal" href="last_bit.html#lpc.efun.last_bit" title="last_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">last_bit</span></code>(E)</a>, <a class="reference internal" href="count_bits.html#lpc.efun.count_bits" title="count_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">count_bits</span></code>(E)</a>, <a class="reference internal" href="and_bits.html#lpc.efun.and_bits" title="and_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">and_bits</span></code>(E)</a>, <a class="reference internal" href="or_bits.html#lpc.efun.or_bits" title="or_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">or_bits</span></code>(E)</a>, <a class="reference internal" href="invert_bits.html#lpc.efun.invert_bits" title="invert_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">invert_bits</span></code>(E)</a>, <a class="reference internal" href="copy_bits.html#lpc.efun.copy_bits" title="copy_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">copy_bits</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -90,8 +88,8 @@ s2 = set_bit(&#8220;&#8221;, 3); s2 = set_bit(s2, 4);   -&gt; s2 is &#8220;8&#82
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -101,21 +99,24 @@ s2 = set_bit(&#8220;&#8221;, 3); s2 = set_bit(s2, 4);   -&gt; s2 is &#8220;8&#82
   <ul>
 <li><a class="reference internal" href="#">efun::xor_bits()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -127,7 +128,7 @@ s2 = set_bit(&#8220;&#8221;, 3); s2 = set_bit(s2, 4);   -&gt; s2 is &#8220;8&#82
       &copy;good question.
       
       |
-      <a href="../_sources/efun/xor_bits.txt"
+      <a href="../_sources/efun/xor_bits.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

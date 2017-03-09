@@ -8,43 +8,56 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-DESCRIPTION Call the function <fun> with any given <args> as parameters, and 
-execute it with the given runtime limits.
+   Call the function fun(E) with any given args(E) as parameters, and execute 
+   it with the given runtime limits.
 
-After the function exits, the currently active limits are restored. Result of 
-the efun is the result of the closure call.
+   After the function exits, the currently active limits are restored. Result 
+   of the efun is the result of the closure call.
 
-The runtime limits can be given in two ways: as an array (like the one 
-returned from query_limits(), or as a list of tagged values.  If the efun is 
-used without any limit specification, all limits are supposed to be 
-'unlimited'.
+   The runtime limits can be given in two ways: as an array (like the one 
+   returned from query_limits(E), or as a list of tagged values. If the efun 
+   is used without any limit specification, all limits are supposed to be 
+   'unlimited'.
 
-The limit settings recognize three special values:
-   LIMIT_UNLIMITED: the limit is deactivated LIMIT_KEEP:      the former 
-   setting is kept LIMIT_DEFAULT:   the 'global' default setting is used.
+   The limit settings recognize three special values:
 
-For LIMIT_COST, the special values have these meaning:
-   LIMIT_UNLIMITED: at maximum 1 tick is accounted LIMIT_KEEP:      LIMIT_COST
-   is set to 0 LIMIT_DEFAULT:   LIMIT_COST is set to -100
+   - `LIMIT_UNLIMITED`: the limit is deactivated
+   - `LIMIT_KEEP`:      the former setting is kept
+   - `LIMIT_DEFAULT`:   the 'global' default setting is used.
 
-The efun causes a privilege violation ("limited", current_object, fun, limits-
-array).
+   For `LIMIT_COST`, the special values have these meaning:
 
-EXAMPLES limited(#'function)
+   - `LIMIT_UNLIMITED`: at maximum 1 tick is accounted
+   - `LIMIT_KEEP`:      `LIMIT_COST` is set to 0
+   - `LIMIT_DEFAULT`:   `LIMIT_COST` is set to -100
 
-   --> executes function with no limits at all
+   The efun causes a privilege violation ("limited", current_object, fun, 
+   limits-array).
 
-limited(#'function, ({ 200000 }), "foo")
-   --> executes function with an eval_cost limit of 200000, and
-      calls function as <function>("foo").
+   USAGE
+   =====
+      Execute function with no limits at all:
 
-limited(lambda(0, ({#'function, "foo"})), LIMIT_EVAL, 200000)
-   --> executes function with an eval_cost limit of 200000, and
-      calls function as <function>("foo").
+         limited(#'func)
 
-Introduced in LDMud 3.2.7. LDMud 3.3.563 introduced LIMIT_COST. LDMud 3.3.677 
-introduced LIMIT_MAPPING_KEYS, LIMIT_MAPPING_SIZE. LDMud 3.5.0 introduced 
-LIMIT_MEMORY.
+      Executes func with an eval_cost limit of 200000, and calls func 
+      as `<func>("foo")`:
 
-   See Also: 
-      query_limits()(E), set_limits()(E)
+         limited(#'func, ({ 200000 }), "foo")
+
+      Executes func with an eval_cost limit of 200000, and calls func 
+      as `<func>("foo")`:
+
+         limited(lambda(0, ({#'func, "foo"})), LIMIT_EVAL, 200000)
+
+HISTORY
+=======
+   - introduced (3.2.7)
+   - changed (3.3.563) -- added `LIMIT_COST`.
+   - changed (3.3.677) -- 
+     added `LIMIT_MAPPING_KEYS`, `LIMIT_MAPPING_SIZE`.
+   - changed (3.5.0) -- added `LIMIT_MEMORY`.
+
+SEE ALSO
+========
+   query_limits(E), set_limits(E)

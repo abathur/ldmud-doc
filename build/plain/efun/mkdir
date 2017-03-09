@@ -8,4 +8,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   rmdir()(E), rm()(E), get_dir()(E), file_size()(E)
+   rmdir(E), rm(E), get_dir(E), file_size(E)

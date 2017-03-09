@@ -4,19 +4,24 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-The efun copy_file() will copy the file <from> to the new name <to>. If <to> 
-exists and is a directory, then <from> will be placed in that directory and 
-keep its original name.
+   Copies the file from(E) to the new name to(E). If to(E) exists and is a 
+   directory, then from(E) will be placed in that directory and keep its 
+   original name.
 
-You must have read permission for <from> and write permission for the target 
-file to copy the file.
+   You must have read permission for from(E) and write permission for the 
+   target file to copy the file.
 
-On successfull completion copy_file() will return 0. If any error occurs, a 
-non-zero value is returned.
+   On successful completion copy_file(E) will return 0. If any error occurs, a
+   non-zero value is returned.
 
-EXAMPLES copy_file("/players/wizard/obj.c", "/players/wizard/newobj.c");
+   USAGE
+   =====
+         copy_file("/players/wizard/obj.c", "/players/wizard/newobj.c");
 
-LDMud 3.2.9 restricted the error behaviour to returning non-0.
+HISTORY
+=======
+   - changed (3.2.9) -- restricts the error behaviour to returning non-0.
 
-   See Also: 
-      mkdir()(E), rmdir()(E), rm()(E), rename()(E)
+SEE ALSO
+========
+   mkdir(E), rmdir(E), rm(E), rename(E)

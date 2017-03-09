@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/db_fetch.c Source File</title>
+<title>LDMud: efun/db_fetch.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('db__fetch_8c_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,46 +100,34 @@ $(document).ready(function(){initNavTree('db__fetch_8c_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * mixed db_fetch(int handle)</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * Retrieve _ONE_ line of result of the latest SQL-action to the server based on the handle \p handle. If not more results are on the server, 0 is returned.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * The function is available only if the driver is compiled with mySQL support. In that case, @ref driver_topics_predefined &quot;__MYSQL__&quot; is defined.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   mixed <a class="code" href="classefun.html#a99208794ce39f11037cd4ca56c30ade5">db_fetch</a>(int handle);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;Retrieve _ONE_ line of result of the latest SQL-action to the server</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;based on the handle &lt;handle&gt;. If not more results are on the server,</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;0 is returned.</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;The <span class="keyword">function</span> is available only <span class="keywordflow">if</span> the driver is compiled with</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;mySQL support. In that <span class="keywordflow">case</span>, __MYSQL__ is defined.</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;The <a class="code" href="classefun.html">efun</a> triggers a privilege violation (<span class="stringliteral">&quot;mysql&quot;</span>, <span class="stringliteral">&quot;db_fetch&quot;</span>).</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;Added in 3.2.9 .</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;LDMud 3.2.11 added the privilege violation.</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;   See Also: </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      <a class="code" href="classefun.html#a189f629b6f5461a8a6637c4fae69e7e4">efun::db_affected_rows</a>(), <a class="code" href="classefun.html#a5cbfc312aa2e18ee6693c8a2b38c5aaa">efun::db_conv_string</a>(), <a class="code" href="classefun.html#a5286f8999424c84309cbed60dde101f4">efun::db_close</a>(), <a class="code" href="classefun.html#a5e7193b4798e703cbd1b39050711b6d3">efun::db_coldefs</a>(), <a class="code" href="classefun.html#a812dfa6948546b8539038f6924944435">efun::db_connect</a>(), <a class="code" href="classefun.html#acd85d4e031c2a63ae341b96ba9a71053">efun::db_error</a>(), <a class="code" href="classefun.html#ae4a665bd9b3fd1bbfd527d3b1e827763">efun::db_exec</a>(), <a class="code" href="classefun.html#a1fdefa3fca7e507606cf45baf38b0cbf">efun::db_handles</a>(), <a class="code" href="classefun.html#a6dd2821ef141bd777f88608514e23f37">efun::db_insert_id</a>(), @ref driver_concepts_mysql <span class="stringliteral">&quot;mysql&quot;</span>, <a class="code" href="classmaster.html#afaf1545f7ccfbb3d897293150f5a45ca">master::privilege_violation</a>()</div>
-<div class="ttc" id="classefun_html_a812dfa6948546b8539038f6924944435"><div class="ttname"><a href="classefun.html#a812dfa6948546b8539038f6924944435">efun.db_connect</a></div><div class="ttdeci">int db_connect(string database, string user, string password)</div></div>
-<div class="ttc" id="classefun_html_a5cbfc312aa2e18ee6693c8a2b38c5aaa"><div class="ttname"><a href="classefun.html#a5cbfc312aa2e18ee6693c8a2b38c5aaa">efun.db_conv_string</a></div><div class="ttdeci">string db_conv_string(string str)</div><div class="ttdoc">Convert the string &lt;str&gt; into a string that is correctly interpretated for usage as a string in db_ex...</div></div>
-<div class="ttc" id="classefun_html_acd85d4e031c2a63ae341b96ba9a71053"><div class="ttname"><a href="classefun.html#acd85d4e031c2a63ae341b96ba9a71053">efun.db_error</a></div><div class="ttdeci">string db_error(int handle)</div></div>
-<div class="ttc" id="classefun_html_a5286f8999424c84309cbed60dde101f4"><div class="ttname"><a href="classefun.html#a5286f8999424c84309cbed60dde101f4">efun.db_close</a></div><div class="ttdeci">int db_close(int handle)</div></div>
-<div class="ttc" id="classefun_html_a99208794ce39f11037cd4ca56c30ade5"><div class="ttname"><a href="classefun.html#a99208794ce39f11037cd4ca56c30ade5">efun.db_fetch</a></div><div class="ttdeci">mixed db_fetch(int handle)</div></div>
-<div class="ttc" id="classefun_html_ae4a665bd9b3fd1bbfd527d3b1e827763"><div class="ttname"><a href="classefun.html#ae4a665bd9b3fd1bbfd527d3b1e827763">efun.db_exec</a></div><div class="ttdeci">int db_exec(int handle, string statement)</div></div>
-<div class="ttc" id="classmaster_html_afaf1545f7ccfbb3d897293150f5a45ca"><div class="ttname"><a href="classmaster.html#afaf1545f7ccfbb3d897293150f5a45ca">master.privilege_violation</a></div><div class="ttdeci">int privilege_violation(string op, mixed who, mixed arg, mixed arg2, mixed arg3)</div><div class="ttdoc">Validate the execution of a privileged operation. </div></div>
-<div class="ttc" id="classefun_html_a1fdefa3fca7e507606cf45baf38b0cbf"><div class="ttname"><a href="classefun.html#a1fdefa3fca7e507606cf45baf38b0cbf">efun.db_handles</a></div><div class="ttdeci">int * db_handles()</div></div>
-<div class="ttc" id="classefun_html_a5e7193b4798e703cbd1b39050711b6d3"><div class="ttname"><a href="classefun.html#a5e7193b4798e703cbd1b39050711b6d3">efun.db_coldefs</a></div><div class="ttdeci">string * db_coldefs(int handle)</div></div>
-<div class="ttc" id="classefun_html_a189f629b6f5461a8a6637c4fae69e7e4"><div class="ttname"><a href="classefun.html#a189f629b6f5461a8a6637c4fae69e7e4">efun.db_affected_rows</a></div><div class="ttdeci">int db_affected_rows(int handle)</div></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * The efun triggers a privilege violation (&quot;mysql&quot;, &quot;db_fetch&quot;).</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * mixed db_fetch(int handle)</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    * @history{</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    * introduced (3.2.9)</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    * changed (3.2.11) -- adds the privilege violation.</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    * @see efun::db_affected_rows(), efun::db_conv_string(), efun::db_close(), efun::db_coldefs(), efun::db_connect(), efun::db_error(), efun::db_exec(), efun::db_handles(), efun::db_insert_id(), master::privilege_violation()</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;   mixed <a class="code" href="classefun.html#a99208794ce39f11037cd4ca56c30ade5">db_fetch</a>(int handle);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+<div class="ttc" id="classefun_html_a99208794ce39f11037cd4ca56c30ade5"><div class="ttname"><a href="classefun.html#a99208794ce39f11037cd4ca56c30ade5">efun.db_fetch</a></div><div class="ttdeci">mixed db_fetch(int handle)</div><div class="ttdoc">Retrieve ONE line of result of the latest SQL-action to the server based on the handle handle...</div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
-<div class="ttc" id="classefun_html_a6dd2821ef141bd777f88608514e23f37"><div class="ttname"><a href="classefun.html#a6dd2821ef141bd777f88608514e23f37">efun.db_insert_id</a></div><div class="ttdeci">int db_insert_id(int handle)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>db_fetch.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:07 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:21 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

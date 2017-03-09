@@ -4,6 +4,6 @@ var searchData=
   ['widthof',['widthof',['../classefun.html#abd02e530c8ad0620b241d0933fdc91da',1,'efun']]],
   ['wizlist_5finfo',['wizlist_info',['../classefun.html#a68a193afd07ce9f74d4722f8ae4e1efd',1,'efun']]],
   ['write',['write',['../classefun.html#afacd7cdaff7309a4b579f4c14db53662',1,'efun']]],
-  ['write_5fbytes',['write_bytes',['../classefun.html#a2205d4e4aba7441c2c9364d151ffe244',1,'efun']]],
-  ['write_5ffile',['write_file',['../classefun.html#a774272e5348c068001ddb6ab2619037c',1,'efun']]]
+  ['write_5fbytes',['write_bytes',['../classefun.html#aace43816f21156a6d6f2487d1a4d43c8',1,'efun']]],
+  ['write_5ffile',['write_file',['../classefun.html#a383474b75b88587a17308ed30dfea60d',1,'efun']]]
 ];

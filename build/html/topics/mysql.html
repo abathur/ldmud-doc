@@ -1,0 +1,268 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mysql &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="`native` driver mode" href="native.html" />
+    <link rel="prev" title="memory swapping" href="memory.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mysql">
+<span id="lpc.topic.mysql"></span><div class="section" id="TOPIC">
+<h2>TOPIC<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+mysql</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>On hosts with the mySQL package installed, the driver can be configured to interface with the mySQL database. If that is done, the driver defines the <a class="reference internal" href="predefined.html#lpc.macro.__MYSQL__" title="__MYSQL__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__MYSQL__</span></code></a> for LPC programs and activates a number of efuns.</p>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>Configuration<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>Create a dedicated user in the mySQL database for the driver. Enter this username and password in the file pkg-mysql.c, (function <code class="docutils literal"><span class="pre">mysql_real_connect()</span></code>), and compile the driver (the username and password are built into the driver for security reasons). If you choose to not create either a username and/or a password, leave the corresponding entry at 0.</p>
+<p>Use mysqladmin to create any databases you want to provide - the names are later used in the <a class="reference internal" href="../efun/db_connect.html#lpc.efun.db_connect" title="db_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_connect</span></code>(E)</a> to connect to the databases.</p>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>Working with a mySQL database<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>The idea behind SQL-support is that you can swap large amounts of data into a database where it can be accessed very easily. As mySQL &#8220;limits&#8221; the number of connections to 100 and as every connection to the mySQL-server takes time, you should use database serverobjects in your MUD which constantly keep the connection to the mySQL-server.</p>
+<p>To connect to your mySQL-server, use the <a class="reference internal" href="../efun/db_connect.html#lpc.efun.db_connect" title="db_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_connect</span></code>(E)</a>. It takes only one argument which is the name of the database (which must exist). The return-value of <a class="reference internal" href="../efun/db_connect.html#lpc.efun.db_connect" title="db_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_connect</span></code>(E)</a> is an integer representing the unique handle to the database with which you will identify your connection later.</p>
+<p>To send or retrieve data from this connection, use <a class="reference internal" href="../efun/db_exec.html#lpc.efun.db_exec" title="db_exec"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_exec</span></code>(E)</a>. The first parameter for all efuns dealing with an open connection is always the handle and so is the first argument the handle and the second one the command you want to issue. The return-value is either 0 if there was an error in your command (this can have various reasons), otherwise your handle is returned again. A typical SQL-statement to retrieve data would be like:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">aliases</span><span class="p">.</span><span class="n">command</span> <span class="k">from</span> <span class="n">aliases</span> <span class="k">where</span> <span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;mario&#39;</span> <span class="k">AND</span>
+  <span class="k">alias</span> <span class="n">regexp</span> <span class="s1">&#39;l.*&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you know, mySQL accepts either &#8221; or &#8216; to classify strings for parameters. Most likely, you will pass variables and don&#8217;t know whether they contain one or more of these key-chars (or even other chars that need to be converted). mySQL provides a function for converting just any string into an acceptable argument and this is implemented in <a class="reference internal" href="../efun/db_conv_string.html#lpc.efun.db_conv_string" title="db_conv_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_conv_string</span></code>(E)</a>.</p>
+<p>So the above example with variables looks like:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">aliases</span><span class="p">.</span><span class="n">command</span> <span class="k">from</span> <span class="n">aliases</span> <span class="k">where</span> <span class="p">(</span><span class="n">name</span> <span class="o">=</span><span class="s1">&#39;&quot;+</span>
+<span class="s1">  db_conv_string(name)+&quot;&#39;</span> <span class="k">AND</span> <span class="k">alias</span> <span class="n">regexp</span> <span class="s1">&#39;&quot;+</span>
+<span class="s1">  db_conv_string(mask)+&quot;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>I left out the <a class="reference internal" href="../efun/db_exec.html#lpc.efun.db_exec" title="db_exec"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_exec</span></code>(E)</a>-stuff, more complete examples will follow.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">After you initiated a statement that could return rows from the database, use <a class="reference internal" href="../efun/db_fetch.html#lpc.efun.db_fetch" title="db_fetch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_fetch</span></code>(E)</a> to retrieve each row. You need to call it until it returns 0. If you stop calling <a class="reference internal" href="../efun/db_fetch.html#lpc.efun.db_fetch" title="db_fetch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_fetch</span></code>(E)</a> before it reaches the end of data, serious inconsistencies can happen!</p>
+</div>
+<p>If you used a <code class="docutils literal"><span class="pre">DELETE</span></code> or <code class="docutils literal"><span class="pre">UPDATE</span></code> statement, you cannot call <a class="reference internal" href="../efun/db_fetch.html#lpc.efun.db_fetch" title="db_fetch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_fetch</span></code>(E)</a>, but you can query the number of deleted/changed rows with <a class="reference internal" href="../efun/db_affected_rows.html#lpc.efun.db_affected_rows" title="db_affected_rows"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_affected_rows</span></code>(E)</a>.</p>
+<p>After all operations are done in the database, you should use <a class="reference internal" href="../efun/db_close.html#lpc.efun.db_close" title="db_close"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_close</span></code>(E)</a> to close the connection again. If you are using a database-server concept (such as the one in the usage section), call it from the lfun <a class="reference internal" href="../applied/remove.html#lpc.applied.remove" title="remove"><code class="xref lpc lpc-applied docutils literal"><span class="pre">remove</span></code>(A)</a>.</p>
+<p>The SQL efuns have some built-in optimization-features to speed up often used connections. To get a list of all open connections to the mySQL-server, use <a class="reference internal" href="../efun/db_handles.html#lpc.efun.db_handles" title="db_handles"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_handles</span></code>(E)</a> which returns an array of integers with all open handles.</p>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>Security<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>Most SQL efuns (unless executed by the master or simul-efun objects) trigger a <code class="docutils literal"><span class="pre">privilege_violation</span> <span class="pre">(&quot;mysql&quot;,</span> <span class="pre">&quot;&lt;efun_name&gt;&quot;)</span></code>. If a more fine-grained control is desired, overload the individual efuns with a nomask simul-efun.</p>
+<p>The unprivileged efuns are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../efun/db_conv_string.html#lpc.efun.db_conv_string" title="db_conv_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_conv_string</span></code>(E)</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The driver enables automatic reconnects on the database connections. This means that if a connection is lost (the most common case for this is timeouts, which by default happen after 28800 seconds of inactivity) an attempt will be made to establish a new connection to the database server. When that happens, all session state (temprary tables and state changes from <code class="docutils literal"><span class="pre">SET</span></code> statements) will be lost. It&#8217;s best not to rely on such state.</p>
+</div>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>A simple server to store aliases could be implemented like this:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">**  CREATION:</span>
+<span class="cm">**</span>
+<span class="cm">**  create table aliases (</span>
+<span class="cm">**      name varchar(15) not NULL,</span>
+<span class="cm">**      alias varchar(20) not NULL,</span>
+<span class="cm">**      command varchar(255) not NULL,</span>
+<span class="cm">**      primary key (name, alias));</span>
+<span class="cm">*/</span>
+
+<span class="cp">#define DATABASE &quot;mud&quot;</span>
+
+<span class="k">private</span> <span class="kt">int</span> <span class="n">handle</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">handle</span> <span class="o">=</span> <span class="n">db_connect</span><span class="p">(</span><span class="n">DATABASE</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="kt">int</span> <span class="nf">remove</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="n">handle</span> <span class="p">)</span>
+    <span class="n">db_close</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span>
+  <span class="n">destruct</span><span class="p">(</span><span class="n">ME</span><span class="p">);</span>
+  <span class="k">return</span> <span class="o">!</span><span class="n">ME</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="kt">int</span> <span class="nf">AddAlias</span><span class="p">(</span><span class="kt">string</span> <span class="n">alias</span><span class="p">,</span> <span class="kt">string</span> <span class="n">command</span><span class="p">,</span> <span class="kt">object</span> <span class="n">ob</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="n">handle</span> <span class="p">)</span>
+    <span class="n">handle</span> <span class="o">=</span> <span class="n">db_connect</span><span class="p">(</span><span class="n">DATABASE</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="n">db_exec</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="s">&quot;insert into aliases (name, alias, command) values (&#39;&quot;</span> <span class="o">+</span> <span class="n">getuid</span><span class="p">(</span><span class="n">ob</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&#39;,&#39;&quot;</span> <span class="o">+</span> <span class="n">db_conv_string</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span><span class="o">+</span> <span class="s">&quot;&#39;,&#39;&quot;</span> <span class="o">+</span><span class="n">db_conv_string</span><span class="p">(</span><span class="n">command</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&#39;)&quot;</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="kt">int</span> <span class="nf">RemoveAlias</span><span class="p">(</span><span class="kt">string</span> <span class="n">alias</span><span class="p">,</span> <span class="kt">object</span> <span class="n">ob</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">res</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="n">handle</span> <span class="p">)</span>
+    <span class="n">handle</span> <span class="o">=</span> <span class="n">db_connect</span><span class="p">(</span><span class="n">DATABASE</span><span class="p">);</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="n">db_exec</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span>
+    <span class="s">&quot;delete from aliases where (name = &#39;&quot;</span><span class="o">+</span> <span class="n">getuid</span><span class="p">(</span><span class="n">ob</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&#39; AND alias = &#39;&quot;</span> <span class="o">+</span> <span class="n">db_conv_string</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span><span class="o">+</span> <span class="s">&quot;&#39;)&quot;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="n">res</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="n">db_affected_rows</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">res</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">?</span><span class="mi">1</span><span class="o">:-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="kt">mixed</span> <span class="o">*</span><span class="nf">QueryAliases</span><span class="p">(</span><span class="kt">string</span> <span class="n">mask</span><span class="p">,</span> <span class="kt">object</span> <span class="n">ob</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">mixed</span> <span class="o">*</span><span class="n">result</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="o">*</span><span class="n">tmp</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="n">handle</span> <span class="p">)</span>
+    <span class="n">handle</span> <span class="o">=</span> <span class="n">db_connect</span><span class="p">(</span><span class="n">DATABASE</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="n">db_exec</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="s">&quot;select aliases.alias, aliases.command from aliases where (name = &#39;&quot;</span> <span class="o">+</span> <span class="n">getuid</span><span class="p">(</span><span class="n">ob</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&#39; AND alias regexp &#39;&quot;</span> <span class="o">+</span> <span class="n">db_conv_string</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&#39;)&quot;</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="p">({</span> <span class="p">});</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="p">({</span> <span class="p">});</span>
+  <span class="k">while</span> <span class="p">(</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">db_fetch</span><span class="p">(</span><span class="n">handle</span><span class="p">))</span> <span class="p">)</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="p">({</span> <span class="n">tmp</span> <span class="p">});</span>
+  <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="kt">string</span> <span class="nf">QueryAlias</span><span class="p">(</span><span class="kt">string</span> <span class="n">alias</span><span class="p">,</span> <span class="kt">object</span> <span class="n">ob</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">mixed</span> <span class="o">*</span><span class="n">result</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="o">*</span><span class="n">tmp</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="n">handle</span> <span class="p">)</span>
+    <span class="n">handle</span> <span class="o">=</span> <span class="n">db_connect</span><span class="p">(</span><span class="n">DATABASE</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="n">db_exec</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="s">&quot;select aliases.command from aliases where (name = &#39;&quot;</span> <span class="o">+</span> <span class="n">getuid</span><span class="p">(</span><span class="n">ob</span><span class="p">)</span><span class="o">+</span> <span class="s">&quot;&#39; AND alias = &#39;&quot;</span> <span class="o">+</span> <span class="n">db_conv_string</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;&#39;)&quot;</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="p">({</span> <span class="p">});</span>
+  <span class="k">while</span> <span class="p">(</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">db_fetch</span><span class="p">(</span><span class="n">handle</span><span class="p">))</span> <span class="p">)</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="n">tmp</span><span class="p">;</span>
+  <span class="k">return</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">?</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">:</span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="LORE">
+<h2>LORE<a class="headerlink" href="#LORE" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Author</dt>
+<dd>Mark Daniel Reidel and others.</dd>
+</dl>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.8</em>) &#8211; as package</li>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; integrated with driver</li>
+<li><strong>changed</strong> (<em>3.2.11</em>) &#8211; added a privilege_violation() call for each efun</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="pgsql.html#lpc.topic.pgsql" title="pgsql"><code class="xref lpc lpc-topic docutils literal"><span class="pre">pgsql</span></code></a>, <a class="reference internal" href="../efun/db_affected_rows.html#lpc.efun.db_affected_rows" title="db_affected_rows"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_affected_rows</span></code>(E)</a>, <a class="reference internal" href="../efun/db_conv_string.html#lpc.efun.db_conv_string" title="db_conv_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_conv_string</span></code>(E)</a>, <a class="reference internal" href="../efun/db_close.html#lpc.efun.db_close" title="db_close"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_close</span></code>(E)</a>, <a class="reference internal" href="../efun/db_connect.html#lpc.efun.db_connect" title="db_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_connect</span></code>(E)</a>, <a class="reference internal" href="../efun/db_exec.html#lpc.efun.db_exec" title="db_exec"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_exec</span></code>(E)</a>, <a class="reference internal" href="../efun/db_fetch.html#lpc.efun.db_fetch" title="db_fetch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_fetch</span></code>(E)</a>, <a class="reference internal" href="../efun/db_handles.html#lpc.efun.db_handles" title="db_handles"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_handles</span></code>(E)</a>, <a class="reference internal" href="../efun/db_insert_id.html#lpc.efun.db_insert_id" title="db_insert_id"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_insert_id</span></code>(E)</a>, <a class="reference internal" href="../efun/db_coldefs.html#lpc.efun.db_coldefs" title="db_coldefs"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_coldefs</span></code>(E)</a>, <a class="reference internal" href="../efun/db_error.html#lpc.efun.db_error" title="db_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_error</span></code>(E)</a>, <a class="reference internal" href="../master/privilege_violation.html#lpc.master.privilege_violation" title="privilege_violation"><code class="xref lpc lpc-master docutils literal"><span class="pre">privilege_violation</span></code>(M)</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">mysql</a><ul>
+<li><a class="reference internal" href="#TOPIC">TOPIC</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#l">Configuration</a></li>
+<li><a class="reference internal" href="#l">Working with a mySQL database</a></li>
+<li><a class="reference internal" href="#l">Security</a></li>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#LORE">LORE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/topics/mysql.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

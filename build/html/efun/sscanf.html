@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::sscanf() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::sscanf() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::start_mccp_compress()" href="start_mccp_compress.html" />
     <link rel="prev" title="efun::sqrt()" href="sqrt.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,80 +47,69 @@
 <div class="section" id="SYNOPSIS">
 <span id="sscanf"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.sscanf">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">sscanf</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;fmt</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;var1</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;var2</em>, </td><td>
-...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.sscanf" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.sscanf">
+<!--[lpc.efun.sscanf]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">sscanf</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;str</em>, </td><td id="id2">
+string<em>&nbsp;fmt</em>, </td><td id="id3">
+mixed<em>&nbsp;var1</em>, </td><td id="id4">
+mixed<em>&nbsp;var2</em>, </td><td id="id5">
+...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.sscanf" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Parse a string &lt;str&gt; using the format &lt;fmt&gt;. &lt;fmt&gt; can contain
-strings seperated by %d and %s. Every %d and %s corresponds to
-one of &lt;var1&gt;, &lt;var2&gt;, ... .</p>
-<p>The match operators in the format string have one of these
-formats:</p>
-<blockquote>
-<div>%[+][!|~][&lt;size&gt;[.&lt;minmatch&gt;]]&lt;type&gt;</div></blockquote>
+<p>Parse a string <a class="reference internal" href="#efun/sscanf.arg.str" title="str"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str</span></code></a> using the format <a class="reference internal" href="#efun/sscanf.arg.fmt" title="fmt"><code class="xref lpc lpc-arg docutils literal"><span class="pre">fmt</span></code></a>. <a class="reference internal" href="#efun/sscanf.arg.fmt" title="fmt"><code class="xref lpc lpc-arg docutils literal"><span class="pre">fmt</span></code></a> can contain strings seperated by %d and %s. Every %d and %s corresponds to one of <a class="reference internal" href="#efun/sscanf.arg.var1" title="var1"><code class="xref lpc lpc-arg docutils literal"><span class="pre">var1</span></code></a>, <a class="reference internal" href="#efun/sscanf.arg.var2" title="var2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">var2</span></code></a>, ... .</p>
+<p>The match operators in the format string have one of these formats:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="o">%</span><span class="p">[</span><span class="o">+</span><span class="p">][</span><span class="o">!|~</span><span class="p">][</span><span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="p">[.</span><span class="o">&lt;</span><span class="n">minmatch</span><span class="o">&gt;</span><span class="p">]]</span><span class="o">&lt;</span><span class="n">type</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 <dl class="docutils">
-<dt>&lt;type&gt; may be:</dt>
-<dd><p class="first">d: matches any number.
+<dt><code class="xref lpc lpc-arg docutils literal"><span class="pre">type</span></code> may be:</dt>
+<dd>d: matches any number.
 D: matches any number.
 U: matches any unsigned number.
 s: matches any string.
 %: matches the % character.
-t: matches whitespace (spaces and tab characters), but does</p>
-<blockquote class="last">
-<div>not store them (the simple &#8216; &#8216; matches just spaces and
-can&#8217;t be given a size specification).</div></blockquote>
-</dd>
+t: matches whitespace (spaces and tab characters), but does not store them (the simple <span>char:<code class="docutils literal"> </code><span>(U+00020 SPACE)</span></span> matches just spaces and can&#8217;t be given a size specification).</dd>
 </dl>
-<p>&lt;size&gt; is the expected field size, and &lt;minmatch&gt; the demanded
-minimal match length (defaults are 0 for strings and 1 for
-numbers). Each of these both may be specified numerically, or
-as &#8216;*&#8217; - in which case the value of the variable at the current
-place in the argument list is used.</p>
-<p>Specifying + will require that the characters after the field
-match as well, or the match will be deemed unsuccessful (the variable
-might still get assigned, though).</p>
-<p>Specifying ! will perform the match, but neither store the
-result nor count the match.</p>
-<p>Specifying ~ will perform and count the match, but not store
-the result.</p>
-<p>If the %s specifier is not at the end of the format string,
-it is matched only if the following character(s) or format
-is found, too. See below for an example.</p>
-<p>The difference between %d and %D/%U is that the latter will abort
-an immediately preceeding %s as soon as possible, whereas the
-former will attempt to make the largest match to %s first.
-%D/%U will still not skip whitespace; use %.0t%D to skip optional
-whitespace.</p>
+<p><code class="xref lpc lpc-arg docutils literal"><span class="pre">size</span></code> is the expected field size, and <code class="xref lpc lpc-arg docutils literal"><span class="pre">minmatch</span></code> the demanded minimal match length (defaults are 0 for strings and 1 for numbers). Each of these both may be specified numerically, or as &#8216;*&#8217; - in which case the value of the variable at the current place in the argument list is used.</p>
+<p>Specifying + will require that the characters after the field match as well, or the match will be deemed unsuccessful (the variable might still get assigned, though).</p>
+<p>Specifying ! will perform the match, but neither store the result nor count the match.</p>
+<p>Specifying ~ will perform and count the match, but not store the result.</p>
+<p>If the %s specifier is not at the end of the format string, it is matched only if the following character(s) or format is found, too. See below for an example.</p>
+<p>The difference between %d and %D/%U is that the latter will abort an immediately preceeding %s as soon as possible, whereas the former will attempt to make the largest match to %s first. %D/%U will still not skip whitespace; use %.0t%D to skip optional whitespace.</p>
 <p>The number of matched arguments will be returned.</p>
-<p>The function sscanf is special in that arguments are passed
-by reference automatically.</p>
+<p>The function sscanf is special in that arguments are passed by reference automatically.</p>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="n">who</span><span class="p">,</span> <span class="n">what</span><span class="p">;</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">sscanf</span><span class="p">(</span><span class="s">&quot;throw frisbee to rover&quot;</span><span class="p">,</span>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">string</span> <span class="n">who</span><span class="p">,</span> <span class="n">what</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">sscanf</span><span class="p">(</span><span class="s">&quot;throw frisbee to rover&quot;</span><span class="p">,</span>
    <span class="s">&quot;throw %s to %s&quot;</span><span class="p">,</span> <span class="n">what</span><span class="p">,</span> <span class="n">who</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
    <span class="n">write</span><span class="p">(</span><span class="s">&quot;Usage: throw &lt;what&gt; to &lt;who&gt;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 <span class="k">else</span>
    <span class="nf">write</span><span class="p">(</span><span class="s">&quot;You throw a &quot;</span><span class="o">+</span><span class="n">what</span><span class="o">+</span><span class="s">&quot; to &quot;</span><span class="o">+</span><span class="n">who</span><span class="o">+</span><span class="s">&quot; to get his attention.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 
-<span class="n">sscanf</span><span class="p">(</span><span class="s">&quot;ab&quot;</span><span class="p">,</span> <span class="s">&quot;%s%s&quot;</span><span class="p">,</span> <span class="n">who</span><span class="p">,</span> <span class="n">what</span><span class="p">)</span>
+<span class="k">sscanf</span><span class="p">(</span><span class="s">&quot;ab&quot;</span><span class="p">,</span> <span class="s">&quot;%s%s&quot;</span><span class="p">,</span> <span class="n">who</span><span class="p">,</span> <span class="n">what</span><span class="p">)</span>
   <span class="o">==&gt;</span> <span class="n">result</span> <span class="mi">2</span><span class="p">,</span> <span class="n">who</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">what</span> <span class="o">=</span> <span class="s">&quot;ab&quot;</span>
 
-<span class="n">sscanf</span><span class="p">(</span><span class="s">&quot;ab&quot;</span><span class="p">,</span> <span class="s">&quot;%s %s&quot;</span><span class="p">,</span> <span class="n">who</span><span class="p">,</span> <span class="n">what</span><span class="p">)</span>
+<span class="k">sscanf</span><span class="p">(</span><span class="s">&quot;ab&quot;</span><span class="p">,</span> <span class="s">&quot;%s %s&quot;</span><span class="p">,</span> <span class="n">who</span><span class="p">,</span> <span class="n">what</span><span class="p">)</span>
   <span class="o">==&gt;</span> <span class="n">result</span> <span class="mi">0</span><span class="p">,</span> <span class="n">who</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">what</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="n">sscanf</span><span class="p">(</span><span class="s">&quot;ab &quot;</span><span class="p">,</span> <span class="s">&quot;%s %s&quot;</span><span class="p">,</span> <span class="n">who</span><span class="p">,</span> <span class="n">what</span><span class="p">)</span>
+<span class="k">sscanf</span><span class="p">(</span><span class="s">&quot;ab &quot;</span><span class="p">,</span> <span class="s">&quot;%s %s&quot;</span><span class="p">,</span> <span class="n">who</span><span class="p">,</span> <span class="n">what</span><span class="p">)</span>
   <span class="o">==&gt;</span> <span class="n">result</span> <span class="mi">2</span><span class="p">,</span> <span class="n">who</span> <span class="o">=</span> <span class="s">&quot;ab&quot;</span><span class="p">,</span> <span class="n">what</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.3.713/3.2.13</em>) &#8211; added the <code class="docutils literal"><span class="pre">+</span></code> specifier.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="explode.html#lpc.efun.explode" title="explode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">explode</span></code>(E)</a>, <a class="reference internal" href="regexp.html#lpc.efun.regexp" title="regexp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexp</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -132,8 +123,8 @@ by reference automatically.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -145,6 +136,8 @@ by reference automatically.</p>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
 <li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
 </ul>
 </li>
 </ul>
@@ -152,15 +145,14 @@ by reference automatically.</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -172,7 +164,7 @@ by reference automatically.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/sscanf.txt"
+      <a href="../_sources/efun/sscanf.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

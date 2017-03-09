@@ -4,9 +4,9 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Returns the user who currently snoops victim. The calling object must be 
+   Returns the user who currently snoops victim(E). The calling object must be
    privileged by the master object.
 
 SEE ALSO
 ========
-   snoop()(E)
+   snoop(E)

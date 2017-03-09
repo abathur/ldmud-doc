@@ -5,19 +5,21 @@ SYNOPSIS (OPTIONAL)
 
 DESCRIPTION
 ===========
-This efun returns current whether the client uses compression or not ( default
-this_player() ).
+   This efun returns current whether the client uses compression or not ( 
+   default `this_player()` ).
 
-You will get either TELOPT_COMPRESS or TELOPT_COMPRESS2 if the connection is 
-compressed, or 0 if it isn't.
+   You will get either `TELOPT_COMPRESS` or `TELOPT_COMPRESS2` if the 
+   connection is compressed, or 0 if it isn't.
 
-Available only if the driver is compiled with MCCP enabled; __MCCP__ is 
-defined in that case.
+   Available only if the driver is compiled with MCCP enabled; __MCCP__ is 
+   defined in that case.
 
-Added in LDMud 3.3.447, backported to LDMud 3.2.10.
+HISTORY
+=======
+   - introduced (3.3.447)
+   - backported (3.2.10)
 
-      See Also: 
-         end_mccp_compress()(E), start_mccp_compress()(E), 
-         query_mccp_stats()(E),
-
-   mccp(C)
+SEE ALSO
+========
+   end_mccp_compress(E), start_mccp_compress(E), query_mccp_stats(E), 
+   >>:concept:`mccp`<<

@@ -1,7 +1,6 @@
 public class efun {
    /**
-    * A cross between sprintf() and write(). Returns void and prints
-    * the result string to the user.
+    * A cross between efun::sprintf() and efun::write(). Returns void and prints the result string to the user.
     * 
     * @synopsis{
     * void printf(string format, ...)

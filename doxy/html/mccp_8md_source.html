@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: concepts/mccp.md Source File</title>
+<title>LDMud: topics/mccp.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('mccp_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,31 +95,31 @@ $(document).ready(function(){initNavTree('mccp_8md.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">concepts/mccp.md</div>  </div>
+<div class="title">topics/mccp.md</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;mccp {#driver_concepts_mccp}</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;============================</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;Information and code taken from the MCCP Homepage @subpage driver_http:__www.randomly.org_projects_MCCP_ <span class="stringliteral">&quot;http://www.randomly.org/projects/MCCP/&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;The Mud Client Compression Protocol {#driver_topics_mccp}</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;=========================================================</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;Information and code taken from the @ref driver_topics_mccp <span class="stringliteral">&quot;MCCP&quot;</span> Homepage @subpage driver_http:__www.randomly.org_projects_MCCP_ <span class="stringliteral">&quot;http://www.randomly.org/projects/MCCP/&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;MCCP is implemented as a Telnet option [RFC854, RFC855]. The server and client negotiate the use of MCCP as they would any other telnet option. Once agreement has been reached on the use of the option, option subnegotiation is used to determine acceptable compression methods to use, and to indicate the start of a compressed data stream.</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;@ref driver_topics_mccp <span class="stringliteral">&quot;MCCP&quot;</span> is implemented as a Telnet option [RFC854, RFC855]. The server and client negotiate the use of @ref driver_topics_mccp <span class="stringliteral">&quot;MCCP&quot;</span> as they would any other telnet option. Once agreement has been reached on the use of the option, option subnegotiation is used to determine acceptable compression methods to use, and to indicate the start of a compressed data stream.</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;If the driver is compiled with MCCP Support there is a define __MCCP__.</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;If the driver is compiled with @ref driver_topics_mccp <span class="stringliteral">&quot;MCCP&quot;</span> Support there is a define @ref driver_topics_predefined <span class="stringliteral">&quot;__MCCP__&quot;</span>.</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;The driver currently supports both versions of mccp. If your mud has a H_NOECHO hook you have to find out <span class="keywordflow">if</span> the client supports mccp. Without <span class="keyword">this</span> hook you still have to start neogotiation.</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;The driver currently supports both versions of mccp. If your mud has a @ref driver_hook_no_echo <span class="stringliteral">&quot;H_NOECHO&quot;</span> hook you have to find out <span class="keywordflow">if</span> the client supports mccp. Without <span class="keyword">this</span> hook you still have to start neogotiation.</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;All sub-negotiation is done by the efuns start_mccp_compress() and end_mccp_compress() whether you have this hook or not.</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;All sub-negotiation is done by <a class="code" href="classefun.html#a0942012412ffa3f64f1d7c92352a805e">efun::start_mccp_compress</a>() and <a class="code" href="classefun.html">efun</a>::end_mccp_compress() whether you have this hook or not.</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;@par note:when the client uses compressions all binary_message calls are executed with flag=3. This is because writing to the socket would disturb zlib stream.</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;@par note: when the client uses compressions all binary_message calls are executed with flag=3. This is because writing to the socket would disturb zlib stream.</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;mccp-efuns:</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;- <a class="code" href="classefun.html">efun</a>::start_mccp_compress() (only needed with H_NOECHO)</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;- <a class="code" href="classefun.html">efun</a>::end_mccp_compress()   (only needed with H_NOECHO)</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;- <a class="code" href="classefun.html">efun</a>::start_mccp_compress() (only needed with @ref driver_hook_no_echo &quot;H_NOECHO&quot;)</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;- <a class="code" href="classefun.html">efun</a>::end_mccp_compress()   (only needed with @ref driver_hook_no_echo &quot;H_NOECHO&quot;)</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;- <a class="code" href="classefun.html">efun</a>::query_mccp()</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;- <a class="code" href="classefun.html">efun</a>::query_mccp_stats()</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;Initiating MCCP without H_NOECHO hook:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;Initiating @ref driver_topics_mccp &quot;MCCP&quot; without @ref driver_hook_no_echo &quot;H_NOECHO&quot; hook:</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;~~~{.c}</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordflow">if</span>(!query_mccp()){</div>
@@ -129,69 +128,70 @@ $(document).ready(function(){initNavTree('mccp_8md.html','');});
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;~~~</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;the driver will parse the clients answers and start compression. (The connection might already be compressed, because although the documentation says clients should not negotiate from themselves, zmud e.g. does.)</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;You can start and stop compression manually by efuns when you are sure client supports compression :)</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;Initiating MCCP compression with H_NOECHO hook:</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;~~~{.c}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;If your mudlib uses the H_NOECHO driver-hook you decided to <span class="keywordflow">do</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;all the negotiation by yourself:</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;Server Commands</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;IAC WILL COMPRESS  indicates the sender supports version 1 of the</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                   protocol, and is willing to compress data it sends.</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;IAC WILL COMPRESS2 indicates the sender supports version 2, and is</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                   willing to compress data it sends.</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;IAC WONT COMPRESS  indicates the sender refuses to compress data <span class="keyword">using</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                   version 1.</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;IAC WONT COMPRESS2 indicates the sender refuses to compress data</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                   <span class="keyword">using</span> version 2.</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;Client Commands</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;IAC DO COMPRESS    indicates the sender supports version 1 of the</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                   protocol, and is willing to decompress data</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                   received.</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;IAC DO COMPRESS2   indicates the sender supports version 2 or above,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                   and is willing to decompress data received.</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;IAC DONT COMPRESS  indicates the sender refuses to support version 1.</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                   If compression was previously negotiated and is</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                   currently being used, the server should terminate</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                   compression.</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;IAC DONT COMPRESS2 indicates the sender refuses to support version 2.</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                   If compression was previously negotiated and is</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                   currently being used, the server should terminate</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                   compression</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;After you found out whether the client supports mccp or not you can</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;start compression with start_mccp_compress(TELOPT_COMPRESS2) or</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;start_mccp_compress(TELOPT_COMPRESS). ( you could start it without</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;checking but some players would protest :) )</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;~~~</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;- author: Bastian Hoyer (@subpage driver_mailto:dafire@ff.mud.de &quot;dafire@ff.mud.de&quot;) (some text taken from project page)</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;@history{</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;introduced (3.3.447)</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;backported (3.2.10)</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;@see <a class="code" href="classefun.html">efun</a>::start_mccp_compress(), <a class="code" href="classefun.html">efun</a>::end_mccp_compress(), <a class="code" href="classefun.html">efun</a>::query_mccp(), <a class="code" href="classefun.html">efun</a>::query_mccp_stats()</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;the driver will parse the client<span class="stringliteral">&#39;s answers and start compression. (The connection might already be compressed, because although the documentation says clients should not negotiate from themselves, zmud e.g. does.)</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="stringliteral">You can start and stop compression manually by efuns when you are sure client supports compression :)</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="stringliteral">Initiating @ref driver_topics_mccp &quot;MCCP&quot; compression with @ref driver_hook_no_echo &quot;H_NOECHO&quot; hook:</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="stringliteral">~~~{.c}</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="stringliteral">If your mudlib uses the :hook:`H_NOECHO` driver-hook you decided to do</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="stringliteral">all the negotiation by yourself:</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="stringliteral">Server Commands</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="stringliteral">IAC WILL COMPRESS  indicates the sender supports version 1 of the</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="stringliteral">                   protocol, and is willing to compress data it sends.</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="stringliteral">IAC WILL COMPRESS2 indicates the sender supports version 2, and is</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="stringliteral">                   willing to compress data it sends.</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="stringliteral">IAC WONT COMPRESS  indicates the sender refuses to compress data using</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="stringliteral">                   version 1.</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral">IAC WONT COMPRESS2 indicates the sender refuses to compress data</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">                   using version 2.</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="stringliteral">Client Commands</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="stringliteral">IAC DO COMPRESS    indicates the sender supports version 1 of the</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="stringliteral">                   protocol, and is willing to decompress data</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="stringliteral">                   received.</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="stringliteral">IAC DO COMPRESS2   indicates the sender supports version 2 or above,</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral">                   and is willing to decompress data received.</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="stringliteral">IAC DONT COMPRESS  indicates the sender refuses to support version 1.</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="stringliteral">                   If compression was previously negotiated and is</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="stringliteral">                   currently being used, the server should terminate</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="stringliteral">                   compression.</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="stringliteral">IAC DONT COMPRESS2 indicates the sender refuses to support version 2.</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="stringliteral">                   If compression was previously negotiated and is</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="stringliteral">                   currently being used, the server should terminate</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="stringliteral">                   compression</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="stringliteral">After you found out whether the client supports mccp or not you can</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="stringliteral">start compression with start_mccp_compress(TELOPT_COMPRESS2) or</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="stringliteral">start_mccp_compress(TELOPT_COMPRESS). ( you could start it without</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="stringliteral">checking but some players would protest :) )</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="stringliteral">~~~</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="stringliteral">- author: Bastian Hoyer (@subpage driver_mailto:dafire@ff.mud.de &quot;dafire@ff.mud.de&quot;) (some text taken from project page)</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral">@history{</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="stringliteral">introduced (3.3.447)</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="stringliteral">backported (3.2.10)</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="stringliteral">}</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="stringliteral">@see efun::start_mccp_compress(), efun::end_mccp_compress(), efun::query_mccp(), efun::query_mccp_stats()</span></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
+<div class="ttc" id="classefun_html_a0942012412ffa3f64f1d7c92352a805e"><div class="ttname"><a href="classefun.html#a0942012412ffa3f64f1d7c92352a805e">efun.start_mccp_compress</a></div><div class="ttdeci">int start_mccp_compress(int telopt)</div><div class="ttdoc">This efun must be called inside an interactive player and starts the compression of the driver -&gt; cli...</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>mccp.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:07 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

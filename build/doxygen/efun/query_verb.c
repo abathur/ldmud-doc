@@ -1,10 +1,6 @@
 public class efun {
    /**
-    * Return the verb of the current command, of 0 if not executing from
-    * a command. If <flag> is 0 or not given, the verb as given by the user
-    * is returned (this is the first word from the line input by the player,
-    * up to but not including the first space or lineend). If <flag> is
-    * non-0, the verb as specified in the add_action() statement is returned.
+    * Return the verb of the current command, of 0 if not executing from a command. If \p flag is 0 or not given, the verb as given by the user is returned (this is the first word from the line input by the player, up to but not including the first space or lineend). If \p flag is non-0, the verb as specified in the efun::add_action() statement is returned.
     * 
     * @synopsis{
     * string query_verb(void)
@@ -12,32 +8,44 @@ public class efun {
     * }
     * 
     * @usage{
-    * void init() {
+    * When the user is in the presence of an object defined as:
     * 
-    * ...
-    * add_action("sing","sing");
-    * add_action("sing","chant", 1);
-    * ...
+    * ~~~{.c}
+    * void init() {
+    *    ...
+    *    add_action("sing","sing");
+    *    add_action("sing","chant", 1);
+    *    ...
     * }
     * int sing(string str) {
-    * write("Your command was: "+query_verb()+(str ? str : "")+"n");
-    * write("The action verb was: "+query_verb(1)+(str ? str : "")+"n");
-    * return 1;
+    *    write("Your command was: "+query_verb()+(str ? str : "")+"\n");
+    *    write("The action verb was: "+query_verb(1)+(str ? str : "")+"\n");
+    *    return 1;
     * }
-    * The command 'sing ...' will print:
     * 
+    * ~~~
+    * the command 'sing ...' will print:
+    * 
+    * ~~~{.c}
     * Your command was: sing
     * The action verb was: sing
     * 
-    * The command 'chant ...' will print:
+    * ~~~
+    * the command 'chant ...' will print:
     * 
+    * ~~~{.c}
     * Your command was: chant
     * The action verb was: chant
     * 
-    * The command 'chantit ...' will print:
+    * ~~~
+    * and the command 'chantit ...' will print:
     * 
+    * ~~~{.c}
     * Your command was: chantit
     * The action verb was: chant
+    * 
+    * ~~~
+    * 
     * }
     * 
     * @history{

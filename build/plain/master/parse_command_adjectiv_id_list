@@ -4,7 +4,7 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Used by parse_command(). Return an array of common adjectives in the 
+   Used by parse_command(E). Return an array of common adjectives in the 
    installation's native language.
 
    USAGE
@@ -15,4 +15,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   parse_command()(E)
+   parse_command(E)

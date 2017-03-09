@@ -1,0 +1,31 @@
+SYNOPSIS (EXPERIMENTAL)
+=======================
+   mixed * tls_check_certificate(object obj           )
+   mixed * tls_check_certificate(object obj, int extra)
+
+DESCRIPTION
+===========
+   Checks the certificate of the secured connection bound to obj(E) (default 
+   is the current object). An error is thrown if obj(E) is not interactive or 
+   TLS is not available.
+
+   An error is also thrown if obj(E) doesn't have a secure connection up and 
+   running.
+
+   Otherwise, the result is an array with these values:
+
+   <!> Note:  
+     An X509 certificate can have more than one object with the same name.
+
+HISTORY
+=======
+   - introduced (3.3.672/3.2.11)
+   - changed (3.3.711/3.2.12) -- modified the behaviour to return the low-
+     level API result value, and to throw an error if the connection is not 
+     secure.
+
+SEE ALSO
+========
+   tls_init_connection(E), tls_deinit_connection(E), tls_error(E), 
+   tls_query_connection_state(E), tls_query_connection_info(E), 
+   tls_available(E), tls_refresh_certs(E), mudlib/psyc-tls.c

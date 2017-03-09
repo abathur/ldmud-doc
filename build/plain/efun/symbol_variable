@@ -6,20 +6,28 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Constructs an identifier (lfun) closure from the global variable <arg> of the 
-current program. The variable may be given as a symbol, by name, or by its 
-ordinal number in the object's variable table.
+   Constructs an identifier (lfun) closure from the global variable arg(E) of 
+   the current program. The variable may be given as a symbol, by name, or by 
+   its ordinal number in the object's variable table.
 
-If there is no such variable, or if it is not visible outside the object, 0 is
-returned.
+   If there is no such variable, or if it is not visible outside the object, 0
+   is returned.
 
-If the argument is an integer, and the variable is both inherited and private 
-in the inherited object (i.e. hidden), then a privilege violation will occur.
+   If the argument is an integer, and the variable is both inherited and 
+   private in the inherited object (i.e. hidden), then a privilege violation 
+   will occur.
 
-EXAMPLES int base; int var; symbol_variable("var")    -> #'<this_object>->var 
-symbol_variable(0)        -> #'<this_object>->base
+   USAGE
+   =====
+         int base;
+         int var;
+         symbol_variable("var") // #'<this_object>->var
+         symbol_variable(0)     // #'<this_object>->base
 
-Enabled since 3.2.1@8.
+HISTORY
+=======
+   - introduced (3.2.1@8)
 
-   See Also: 
-      lambda()(E), quote()(E), symbol_function()(E)
+SEE ALSO
+========
+   lambda(E), quote(E), symbol_function(E)

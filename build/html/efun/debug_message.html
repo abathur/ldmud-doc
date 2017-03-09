@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::debug_message() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::debug_message() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::deep_copy()" href="deep_copy.html" />
     <link rel="prev" title="efun::debug_info()" href="debug_info.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,53 +49,48 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;debug_message.h&gt;</tr>
-<tr id="lpc.debug_message">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">debug_message</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;text</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.debug_message" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.debug_message">
+<!--[lpc.efun.debug_message]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">debug_message</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;text</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.debug_message" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">debug_message</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;text</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;flags</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">debug_message</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+string<em>&nbsp;text</em>, </td><td id="id3">
+int<em>&nbsp;flags</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Prints the given text to stdout, stderr, the &lt;host&gt;.debug.log file,
-or any combination of these.</p>
-<p>The parameter &lt;flags&gt; is a combination of bitflags determining the
-target and the mode of writing.</p>
-<p>The target flags are: DMSG_STDOUT, DMSG_STDERR and DMSG_LOGFILE.
-If the flag DMSG_STAMP is given, the message is prepended with the
-current date and time in the format &#8216;YYYY.MM.DD HH:MM:SS &#8216;.</p>
-<p>If &lt;flags&gt; is given as 0, left out, or contains no target
-definition, debug_message() will print to stdout and to the logfile.</p>
+<p>Prints the given text to stdout, stderr, the <code class="docutils literal"><span class="pre">&lt;host&gt;.debug.log</span></code> file, or any combination of these.</p>
+<p>The parameter <a class="reference internal" href="#efun/debug_message.arg.flags" title="flags"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flags</span></code></a> is a combination of bitflags determining the target and the mode of writing.</p>
+<p>The target flags are: <code class="xref lpc lpc-macro docutils literal"><span class="pre">DMSG_STDOUT</span></code>, <code class="xref lpc lpc-macro docutils literal"><span class="pre">DMSG_STDERR</span></code> and <code class="xref lpc lpc-macro docutils literal"><span class="pre">DMSG_LOGFILE</span></code>. If the flag <code class="xref lpc lpc-macro docutils literal"><span class="pre">DMSG_STAMP</span></code> is given, the message is prepended with the current date and time in the format <code class="docutils literal"><span class="pre">YYYY.MM.DD</span> <span class="pre">HH:MM:SS</span></code>.</p>
+<p>If <a class="reference internal" href="#efun/debug_message.arg.flags" title="flags"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flags</span></code></a> is given as 0, left out, or contains no target definition, <a class="reference internal" href="#lpc.efun.debug_message" title="debug_message"><code class="xref lpc lpc-efun docutils literal"><span class="pre">debug_message</span></code>(E)</a> will print to stdout and to the logfile.</p>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<p>debug_message(&#8220;This goes to stdout and the logfile.n&#8221;);
-debug_message(&#8220;This goes to stderr.n&#8221;, DMSG_STDERR);
-debug_message(&#8220;This goes to stdout and stderr.n&#8221;</p>
-<blockquote>
-<div>, DMSG_STDOUT | DMSG_STDERR);</div></blockquote>
-<dl class="docutils">
-<dt>debug_message(&#8220;This goes to stdout and the logfile, with timestamp.n&#8221;</dt>
-<dd>, DMSG_STAMP);</dd>
-<dt>debug_message(&#8220;This goes to stdout and has the timestamp in front.n&#8221;</dt>
-<dd>, DMSG_STDOUT | DMSG_STAMP);</dd>
-</dl>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">debug_message</span><span class="p">(</span><span class="s">&quot;This goes to stdout and the logfile.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="n">debug_message</span><span class="p">(</span><span class="s">&quot;This goes to stderr.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">DMSG_STDERR</span><span class="p">);</span>
+<span class="n">debug_message</span><span class="p">(</span><span class="s">&quot;This goes to stdout and stderr.</span><span class="se">\n</span><span class="s">&quot;</span>
+             <span class="p">,</span> <span class="n">DMSG_STDOUT</span> <span class="o">|</span> <span class="n">DMSG_STDERR</span><span class="p">);</span>
+
+<span class="n">debug_message</span><span class="p">(</span><span class="s">&quot;This goes to stdout and the logfile, with timestamp.</span><span class="se">\n</span><span class="s">&quot;</span>
+             <span class="p">,</span> <span class="n">DMSG_STAMP</span><span class="p">);</span>
+<span class="n">debug_message</span><span class="p">(</span><span class="s">&quot;This goes to stdout and has the timestamp in front.</span><span class="se">\n</span><span class="s">&quot;</span>
+             <span class="p">,</span> <span class="n">DMSG_STDOUT</span> <span class="o">|</span> <span class="n">DMSG_STAMP</span><span class="p">);</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><strong>introduced</strong> (<em>3.2.1&#64;34</em>)</li>
-<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added the &lt;flags&gt; parameter</li>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added the <a class="reference internal" href="#efun/debug_message.arg.flags" title="flags"><code class="xref lpc lpc-arg docutils literal"><span class="pre">flags</span></code></a> parameter</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="last_instructions.html#lpc.last_instructions" title="last_instructions"><code class="xref lpc lpc-efun docutils literal"><span class="pre">last_instructions()</span></code>(E)</a></p>
+<p><a class="reference internal" href="last_instructions.html#lpc.efun.last_instructions" title="last_instructions"><code class="xref lpc lpc-efun docutils literal"><span class="pre">last_instructions</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -107,8 +104,8 @@ debug_message(&#8220;This goes to stdout and stderr.n&#8221;</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -129,15 +126,14 @@ debug_message(&#8220;This goes to stdout and stderr.n&#8221;</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -149,7 +145,7 @@ debug_message(&#8220;This goes to stdout and stderr.n&#8221;</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/debug_message.txt"
+      <a href="../_sources/efun/debug_message.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

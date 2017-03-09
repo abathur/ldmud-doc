@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::db_conv_string() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::db_conv_string() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::db_error()" href="db_error.html" />
     <link rel="prev" title="efun::db_connect()" href="db_connect.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,19 +47,26 @@
 <div class="section" id="SYNOPSIS">
 <span id="db_conv_string"></span><h2>SYNOPSIS (OPTIONAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.db_conv_string">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">db_conv_string</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.db_conv_string" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.db_conv_string">
+<!--[lpc.efun.db_conv_string]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">db_conv_string</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;str</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.db_conv_string" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Convert the string &lt;str&gt; into a string that is correctly interpretated
-for usage as a string in db_exec(), e.g. &#8216; is replaced with &#8216; and so
-on.</p>
-<p>The function is available only if the driver is compiled with
-mySQL support. In that case, __MYSQL__ is defined.</p>
+<p>Convert the string <a class="reference internal" href="#efun/db_conv_string.arg.str" title="str"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str</span></code></a> into a string that is correctly interpretated for usage as a string in <a class="reference internal" href="db_exec.html#lpc.efun.db_exec" title="db_exec"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_exec</span></code>(E)</a>, e.g. &#8216; is replaced with &#8216; and so on.</p>
+<p>The function is available only if the driver is compiled with mySQL support. In that case, <a class="reference internal" href="../topics/predefined.html#lpc.macro.__MYSQL__" title="__MYSQL__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__MYSQL__</span></code></a> is defined.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.9</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="db_affected_rows.html#lpc.efun.db_affected_rows" title="db_affected_rows"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_affected_rows</span></code>(E)</a>, <a class="reference internal" href="db_close.html#lpc.efun.db_close" title="db_close"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_close</span></code>(E)</a>, <a class="reference internal" href="db_coldefs.html#lpc.efun.db_coldefs" title="db_coldefs"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_coldefs</span></code>(E)</a>, <a class="reference internal" href="db_connect.html#lpc.efun.db_connect" title="db_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_connect</span></code>(E)</a>, <a class="reference internal" href="db_exec.html#lpc.efun.db_exec" title="db_exec"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_exec</span></code>(E)</a>, <a class="reference internal" href="db_error.html#lpc.efun.db_error" title="db_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_error</span></code>(E)</a>, <a class="reference internal" href="db_fetch.html#lpc.efun.db_fetch" title="db_fetch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_fetch</span></code>(E)</a>, <a class="reference internal" href="db_handles.html#lpc.efun.db_handles" title="db_handles"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_handles</span></code>(E)</a>, <a class="reference internal" href="db_insert_id.html#lpc.efun.db_insert_id" title="db_insert_id"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_insert_id</span></code>(E)</a>, <a href="#id2"><span class="problematic" id="id3">:concept:`mysql`</span></a></p>
+</div>
 </div>
 </div>
 
@@ -70,8 +79,8 @@ mySQL support. In that case, __MYSQL__ is defined.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -81,21 +90,24 @@ mySQL support. In that case, __MYSQL__ is defined.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::db_conv_string()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (OPTIONAL)</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -107,7 +119,7 @@ mySQL support. In that case, __MYSQL__ is defined.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/db_conv_string.txt"
+      <a href="../_sources/efun/db_conv_string.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

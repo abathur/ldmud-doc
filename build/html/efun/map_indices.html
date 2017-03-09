@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::map_indices() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::map_indices() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::map_objects()" href="map_objects.html" />
     <link rel="prev" title="efun::map()" href="map.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,52 +47,47 @@
 <div class="section" id="SYNOPSIS">
 <span id="map_indices"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.map_indices">
-<td>
-<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a> </td><td>
-<code class="descname">map_indices</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a><em>&nbsp;m</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;func</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.map_indices" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.map_indices">
+<!--[lpc.efun.map_indices]--><td>
+<a class="reference internal" href="../syntax/mappings.html#lpc.type.mapping" title="mapping">mapping</a> </td><td>
+<code class="descname">map_indices</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+mapping<em>&nbsp;m</em>, </td><td id="id2">
+string<em>&nbsp;func</em>, </td><td id="id3">
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a>|object<em>&nbsp;ob</em>, </td><td id="id4">
+...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.map_indices" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a> </td><td>
-<code class="descname">map_indices</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mappings.html#lpc.mapping" title="mapping">mapping</a><em>&nbsp;m</em>, </td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;cl</em>, </td><td>
+<a class="reference internal" href="../syntax/mappings.html#lpc.type.mapping" title="mapping">mapping</a> </td><td>
+<code class="descname">map_indices</code></td><td><span class="sig-paren">(</span></td><td id="id5">
+mapping<em>&nbsp;m</em>, </td><td id="id6">
+closure<em>&nbsp;cl</em>, </td><td id="id7">
 ...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">ob-&gt;func()</span></code> is called resp. cl applied to every element in the mapping, with the key of the element as first argument, and then the extra args that were given to map_indices (these args must not be protected references like &amp;(i[0])). The data item in the mapping is replaced by the return value of the function. ob can also be a file_name of an object.</p>
+<p>If <a class="reference internal" href="#efun/map_indices.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is omitted, or neither a string nor an object, it defaults to <code class="docutils literal"><span class="pre">this_object()</span></code>.</p>
+<p>Note that if mapping m has more than one value per key, these are ignored: the resulting mapping always has one value per key.</p>
+<p>Also note that the behaviour of this function is different from <code class="docutils literal"><span class="pre">map(&lt;array&gt;)</span></code>.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>m = mkmapping(users());
+m = map_indices(m, #&#39;environment);
+</pre></div>
 </div>
 </div>
-<p>ob-&gt;func() is called resp. cl applied to every element in the mapping,
-with the key of the element as first argument, and then the extra args
-that were given to map_indices (these args must not be protected
-references like &amp;(i[0])).  The data item in the mapping is replaced by
-the return value of the function. ob can also be a file_name of an
-object.</p>
-<p>If &lt;ob&gt; is omitted, or neither a string nor an object, it
-defaults to this_object().</p>
-<p>Note that if mapping m has more than one value per key, these
-are ignored: the resulting mapping always has one value per key.</p>
-<p>Also note that the behaviour of this function is different from
-map(&lt;array&gt;).</p>
-<p>EXAMPLES
-m = mkmapping(users());
-m = map_indices(m, #&#8217;environment);</p>
-<p>In LDMud 3.2.6 renamed from map_mapping() and complemented by map().</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="map.html#lpc.map" title="map"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map()</span></code>(E)</a>, <a class="reference internal" href="filter.html#lpc.filter" title="filter"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter()</span></code>(E)</a>, <a class="reference internal" href="filter_indices.html#lpc.filter_indices" title="filter_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter_indices()</span></code>(E)</a>, <a class="reference internal" href="walk_mapping.html#lpc.walk_mapping" title="walk_mapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">walk_mapping()</span></code>(E)</a>, <a class="reference internal" href="member.html#lpc.member" title="member"><code class="xref lpc lpc-efun docutils literal"><span class="pre">member()</span></code>(E)</a>, <a class="reference internal" href="m_contains.html#lpc.m_contains" title="m_contains"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_contains()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.6</em>) &#8211; renamed from <code class="docutils literal"><span class="pre">map_mapping()</span></code> and complemented by <a class="reference internal" href="map.html#lpc.efun.map" title="map"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map</span></code>(E)</a>.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="map.html#lpc.efun.map" title="map"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map</span></code>(E)</a>, <a class="reference internal" href="filter.html#lpc.efun.filter" title="filter"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter</span></code>(E)</a>, <a class="reference internal" href="filter_indices.html#lpc.efun.filter_indices" title="filter_indices"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter_indices</span></code>(E)</a>, <a class="reference internal" href="walk_mapping.html#lpc.efun.walk_mapping" title="walk_mapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">walk_mapping</span></code>(E)</a>, <a class="reference internal" href="member.html#lpc.efun.member" title="member"><code class="xref lpc lpc-efun docutils literal"><span class="pre">member</span></code>(E)</a>, <a class="reference internal" href="m_contains.html#lpc.efun.m_contains" title="m_contains"><code class="xref lpc lpc-efun docutils literal"><span class="pre">m_contains</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -101,8 +98,8 @@ m = map_indices(m, #&#8217;environment);</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -112,21 +109,25 @@ m = map_indices(m, #&#8217;environment);</p>
   <ul>
 <li><a class="reference internal" href="#">efun::map_indices()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -138,7 +139,7 @@ m = map_indices(m, #&#8217;environment);</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/map_indices.txt"
+      <a href="../_sources/efun/map_indices.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -12,4 +12,4 @@ HISTORY
 
 SEE ALSO
 ========
-   sin()(E), asin()(E), cos()(E), acos()(E), atan()(E), atan2()(E)
+   sin(E), asin(E), cos(E), acos(E), atan(E), atan2(E)

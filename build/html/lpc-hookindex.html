@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>localhookindex &mdash; LDMud UNRELEASED documentation</title>
+    <title>localhookindex &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,13 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
 
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -33,7 +36,7 @@
 
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -60,291 +63,291 @@
    <a href="#cap-t"><strong>t</strong></a>
    </div>
 
-   <table class="indextable modindextable" cellspacing="0" cellpadding="2">
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+   <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-a"><td></td><td>
        <strong>a</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/auto_include.html#hook"><code class="xref">auto_include</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+       <a href="hook/auto_include.html#hook"><code class="xref">auto_include</code></a></td><td>
+       <em>Optional hook specifying a string to be included before the source of every compiled LPC object.</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-c"><td></td><td>
        <strong>c</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/clean_up.html#hook"><code class="xref">clean_up</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/clean_up.html#hook"><code class="xref">clean_up</code></a></td><td>
+       <em>Optional hook to clean up an object.</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/clone_uids.html#hook"><code class="xref">clone_uids</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/clone_uids.html#hook"><code class="xref">clone_uids</code></a></td><td>
+       <em>Mandatory hooks to determine the uid and euid of cloned objects.</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/command.html#hook"><code class="xref">command</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/command.html#hook"><code class="xref">command</code></a></td><td>
+       <em>Optional hook to parse and execute commands.</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/create_clone.html#hook"><code class="xref">create_clone</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/create_clone.html#hook"><code class="xref">create_clone</code></a></td><td>
+       <em>Optional hooks to initialize a cloned object after creation.</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/create_ob.html#hook"><code class="xref">create_ob</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/create_ob.html#hook"><code class="xref">create_ob</code></a></td><td>
+       <em>Optional hooks to initialize an explicitly loaded object/blueprint after creation.</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/create_super.html#hook"><code class="xref">create_super</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+       <a href="hook/create_super.html#hook"><code class="xref">create_super</code></a></td><td>
+       <em>Optional hooks to initialize a blueprint which is loaded by inheritance after creation.</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-d"><td></td><td>
        <strong>d</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/default_method.html#hook"><code class="xref">default_method</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/default_method.html#hook"><code class="xref">default_method</code></a></td><td>
+       <em>Optional hook to provide default implementation for unresolved calls.</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/default_prompt.html#hook"><code class="xref">default_prompt</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+       <a href="hook/default_prompt.html#hook"><code class="xref">default_prompt</code></a></td><td>
+       <em>Optional hook for the command prompt.</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-e"><td></td><td>
        <strong>e</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/erq_stop.html#hook"><code class="xref">erq_stop</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+       <a href="hook/erq_stop.html#hook"><code class="xref">erq_stop</code></a></td><td>
+       <em>Optional hook to notify the mudlib about the termination of the erq demon.</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-H"><td></td><td>
        <strong>H</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/auto_include.html#hook"><code class="xref">H_AUTO_INCLUDE</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/auto_include.html#hook"><code class="xref">H_AUTO_INCLUDE</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/clean_up.html#hook"><code class="xref">H_CLEAN_UP</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/clean_up.html#hook"><code class="xref">H_CLEAN_UP</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/clone_uids.html#hook"><code class="xref">H_CLONE_UIDS</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/clone_uids.html#hook"><code class="xref">H_CLONE_UIDS</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/command.html#hook"><code class="xref">H_COMMAND</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/command.html#hook"><code class="xref">H_COMMAND</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/create_clone.html#hook"><code class="xref">H_CREATE_CLONE</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/create_clone.html#hook"><code class="xref">H_CREATE_CLONE</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/create_ob.html#hook"><code class="xref">H_CREATE_OB</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/create_ob.html#hook"><code class="xref">H_CREATE_OB</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/create_super.html#hook"><code class="xref">H_CREATE_SUPER</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/create_super.html#hook"><code class="xref">H_CREATE_SUPER</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/default_method.html#hook"><code class="xref">H_DEFAULT_METHOD</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/default_method.html#hook"><code class="xref">H_DEFAULT_METHOD</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/default_prompt.html#hook"><code class="xref">H_DEFAULT_PROMPT</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/default_prompt.html#hook"><code class="xref">H_DEFAULT_PROMPT</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/erq_stop.html#hook"><code class="xref">H_ERQ_STOP</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/erq_stop.html#hook"><code class="xref">H_ERQ_STOP</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/include_dirs.html#hook"><code class="xref">H_INCLUDE_DIRS</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/include_dirs.html#hook"><code class="xref">H_INCLUDE_DIRS</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/load_uids.html#hook"><code class="xref">H_LOAD_UIDS</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/load_uids.html#hook"><code class="xref">H_LOAD_UIDS</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/modify_command.html#hook"><code class="xref">H_MODIFY_COMMAND</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/modify_command.html#hook"><code class="xref">H_MODIFY_COMMAND</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/modify_command_fname.html#hook"><code class="xref">H_MODIFY_COMMAND_FNAME</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/modify_command_fname.html#hook"><code class="xref">H_MODIFY_COMMAND_FNAME</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/move_object.html#hook"><code class="xref">H_MOVE_OBJECT0</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/move_object.html#hook"><code class="xref">H_MOVE_OBJECT0</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/move_object.html#hook"><code class="xref">H_MOVE_OBJECT1</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/move_object.html#hook"><code class="xref">H_MOVE_OBJECT1</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/msg_discarded.html#hook"><code class="xref">H_MSG_DISCARDED</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/msg_discarded.html#hook"><code class="xref">H_MSG_DISCARDED</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/no_ipc_slot.html#hook"><code class="xref">H_NO_IPC_SLOT</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/no_ipc_slot.html#hook"><code class="xref">H_NO_IPC_SLOT</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/no_echo.html#hook"><code class="xref">H_NOECHO</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/no_echo.html#hook"><code class="xref">H_NOECHO</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/notify_fail.html#hook"><code class="xref">H_NOTIFY_FAIL</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/notify_fail.html#hook"><code class="xref">H_NOTIFY_FAIL</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/print_prompt.html#hook"><code class="xref">H_PRINT_PROMPT</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/print_prompt.html#hook"><code class="xref">H_PRINT_PROMPT</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/regexp_package.html#hook"><code class="xref">H_REGEXP_PACKAGE</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/regexp_package.html#hook"><code class="xref">H_REGEXP_PACKAGE</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/reset.html#hook"><code class="xref">H_RESET</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/reset.html#hook"><code class="xref">H_RESET</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/send_notify_fail.html#hook"><code class="xref">H_SEND_NOTIFY_FAIL</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/send_notify_fail.html#hook"><code class="xref">H_SEND_NOTIFY_FAIL</code></a></td><td>
+       <em>None</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/telnet_neg.html#hook"><code class="xref">H_TELNET_NEG</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+       <a href="hook/telnet_neg.html#hook"><code class="xref">H_TELNET_NEG</code></a></td><td>
+       <em>None</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-i"><td></td><td>
        <strong>i</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/include_dirs.html#hook"><code class="xref">include_dirs</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+       <a href="hook/include_dirs.html#hook"><code class="xref">include_dirs</code></a></td><td>
+       <em>Semi-mandatory hook specifying the directories where &lt;&gt;-type include files are searched (this includes &#34;&#34;-includes not found as specified).</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-l"><td></td><td>
        <strong>l</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/load_uids.html#hook"><code class="xref">load_uids</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+       <a href="hook/load_uids.html#hook"><code class="xref">load_uids</code></a></td><td>
+       <em>Mandatory hooks to determine the uid and euid of loaded or cloned objects.</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-m"><td></td><td>
        <strong>m</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/modify_command.html#hook"><code class="xref">modify_command</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/modify_command.html#hook"><code class="xref">modify_command</code></a></td><td>
+       <em>Optional hook to modify commands (both entered or given by a call to command) before the parser sees them (this includes special commands like &#39;status&#39;).</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/modify_command_fname.html#hook"><code class="xref">modify_command_fname</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/modify_command_fname.html#hook"><code class="xref">modify_command_fname</code></a></td><td>
+       <em>Mandatory hook specifying the name of the &#39;modify_command&#39; lfun to call for newly entered commands as result of a set_modify_command.</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/move_object.html#hook"><code class="xref">move_object</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/move_object.html#hook"><code class="xref">move_object</code></a></td><td>
+       <em>Mandatory hooks to implement the efun void move_object.</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/msg_discarded.html#hook"><code class="xref">msg_discarded</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+       <a href="hook/msg_discarded.html#hook"><code class="xref">msg_discarded</code></a></td><td>
+       <em>Optional hook to specify a message or take other measures when a message had to be discarded, because they could not be delivered to the player &lt;user&gt;.</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-n"><td></td><td>
        <strong>n</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/no_echo.html#hook"><code class="xref">no_echo</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/no_echo.html#hook"><code class="xref">no_echo</code></a></td><td>
+       <em>this was formerly documenting H_TELNET_NEG, which I think was probably a mistake, though I&#39;m not 100% sure; needs to be clarified.</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/no_ipc_slot.html#hook"><code class="xref">no_ipc_slot</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/no_ipc_slot.html#hook"><code class="xref">no_ipc_slot</code></a></td><td>
+       <em>Optional hook specifying the message given to logins rejected due to space limitations (MAX_PLAYER).</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/notify_fail.html#hook"><code class="xref">notify_fail</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+       <a href="hook/notify_fail.html#hook"><code class="xref">notify_fail</code></a></td><td>
+       <em>Mandatory hook to issue the default message if an entered command couldn&#39;t be parsed and no notify_fail command is in effect.</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-p"><td></td><td>
        <strong>p</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/print_prompt.html#hook"><code class="xref">print_prompt</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+       <a href="hook/print_prompt.html#hook"><code class="xref">print_prompt</code></a></td><td>
+       <em>Optional hook to print the current command prompt.</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-r"><td></td><td>
        <strong>r</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/regexp_package.html#hook"><code class="xref">regexp_package</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/regexp_package.html#hook"><code class="xref">regexp_package</code></a></td><td>
+       <em>Optional hook to select the default regexp package to use for regular expression functions.</em></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/reset.html#hook"><code class="xref">reset</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+       <a href="hook/reset.html#hook"><code class="xref">reset</code></a></td><td>
+       <em>Optional hook to reset an object.</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-s"><td></td><td>
        <strong>s</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/send_notify_fail.html#hook"><code class="xref">send_notify_fail</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
+       <a href="hook/send_notify_fail.html#hook"><code class="xref">send_notify_fail</code></a></td><td>
+       <em>Optional hook to send the notify fail message, regardless of how it was determined, to the player.</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-t"><td></td><td>
        <strong>t</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="hook/telnet_neg.html#hook"><code class="xref">telnet_neg</code></a> <em>(extra)</em></td><td><strong>qualifier:</strong>
-       <em>descr</em></td></tr>
+       <a href="hook/telnet_neg.html#hook"><code class="xref">telnet_neg</code></a></td><td>
+       <em>Optional hook to specifiy how to perform a single telnet negotiation.</em></td></tr>
    </table>
 
 
@@ -356,23 +359,22 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topics/overview.html">Other topics</a></li>
 </ul>
 
 

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/call_direct_resolved.c Source File</title>
+<title>LDMud: efun/call_direct_resolved.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('call__direct__resolved_8c_source.html'
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,42 +100,35 @@ $(document).ready(function(){initNavTree('call__direct__resolved_8c_source.html'
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * int call_direct_resolved(mixed result, object ob, string func, ...)</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * Similar to efun::call_direct(). If `ob-&gt;func()` is defined and publicly accessible, any of the optional extra arguments are passed to `ob-&gt;func(...)`. The result of that function call is stored in result, which must be passed by reference.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * This efun is a twin to efun::call_resolved(), with the difference being that efun::call_direct_resolved() never calls a default method.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classefun.html#aab1c8fc1fc94fc634d5b77e74aa8a7c8">call_direct_resolved</a>(mixed result, object ob, string func, ...);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;Similar to call_direct(). If ob-&gt;func() is defined and publicly</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;accessible, any of the optional extra arguments are passed to</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;ob-&gt;func(...). The result of that <span class="keyword">function</span> call is stored in</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;result, which must be passed by reference.</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;This <a class="code" href="classefun.html">efun</a> is a twin to call_resolved(), with the difference</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;being that call_direct_resolved() never calls a default method.</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;The <a class="code" href="classefun.html">efun</a> returns 1 if the function could be called.</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;If ob::fun does not define a publicly accessible function, the</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<a class="code" href="classefun.html">efun</a> will return 0.</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;ob can also be an object_name. If a <span class="keywordtype">string</span> is passed for ob, and</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;no <span class="keywordtype">object</span> with that name does exist, an error occurs.</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;Introduced in LDMud 3.3.113 with the H_DEFAULT_METHOD hook.</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;   See Also: </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;      <a class="code" href="classefun.html">efun</a>::call_other(), <a class="code" href="classefun.html">efun</a>::call_direct(), <a class="code" href="classefun.html">efun</a>::call_resolved(), <a class="code" href="classapplied.html">applied</a>::create(), @ref driver_LPC_pragma &quot;pragma&quot;, <a class="code" href="classefun.html">efun</a>::extern_call(), <a class="code" href="classefun.html">efun</a>::function_exists(), `functions`, <a class="code" href="classefun.html">efun</a>::map_objects()</div>
-<div class="ttc" id="classefun_html_aab1c8fc1fc94fc634d5b77e74aa8a7c8"><div class="ttname"><a href="classefun.html#aab1c8fc1fc94fc634d5b77e74aa8a7c8">efun.call_direct_resolved</a></div><div class="ttdeci">int call_direct_resolved(mixed result, object ob, string func,...)</div></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * The efun returns 1 if the function could be called. If ob::fun does not define a publicly accessible function, the efun will return 0.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * ob can also be an object_name. If a string is passed for ob, and no object with that name does exist, an error occurs.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * int call_direct_resolved(mixed result, object ob, string func, ...)</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    * @history{</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    * introduced (3.3.113) -- with the H_DEFAULT_METHOD.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    * @see efun::call_other(), efun::call_direct(), efun::call_resolved(), applied::create(), @ref driver_syntax_pragma &quot;pragma&quot;, efun::extern_call(), efun::function_exists(), @ref driver_syntax_functions &quot;functions&quot;, efun::map_objects()</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classefun.html#aab1c8fc1fc94fc634d5b77e74aa8a7c8">call_direct_resolved</a>(mixed result, object ob, string func, ...);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="ttc" id="classefun_html_aab1c8fc1fc94fc634d5b77e74aa8a7c8"><div class="ttname"><a href="classefun.html#aab1c8fc1fc94fc634d5b77e74aa8a7c8">efun.call_direct_resolved</a></div><div class="ttdeci">int call_direct_resolved(mixed result, object ob, string func,...)</div><div class="ttdoc">Similar to efun::call_direct(). </div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
-<div class="ttc" id="classapplied_html"><div class="ttname"><a href="classapplied.html">applied</a></div><div class="ttdef"><b>Definition:</b> <a href="____INIT_8c_source.html#l00001">__INIT.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>call_direct_resolved.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:07 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:21 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

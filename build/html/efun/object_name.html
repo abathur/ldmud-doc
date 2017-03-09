@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::object_name() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::object_name() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::object_time()" href="object_time.html" />
     <link rel="prev" title="efun::object_info()" href="object_info.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,51 +47,42 @@
 <div class="section" id="SYNOPSIS">
 <span id="object_name"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.object_name">
+<tr id="lpc.efun.object_name">
+<!--[lpc.efun.object_name]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">object_name</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.object_name" title="Permalink to this definition">¶</a></tr>
+<tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">object_name</code></td><a class="headerlink" href="#lpc.object_name" title="Permalink to this definition">¶</a></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">object_name</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Get the name of an object <a class="reference internal" href="#efun/object_name.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> or, if no argument is given, of the current object.</p>
+<p>As a special case, if <a class="reference internal" href="#efun/object_name.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is 0, the function returns 0.</p>
+<p>This name is the name under which the object is stored in the muds object table. It is initialised at the creation of the object such that blueprints are named after the file they are compiled from (without the trailing &#8216;.c&#8217;), and clones receive the name of their blueprint, extended by &#8220;#&#8221; followed by a unique non-negative number. These rules also apply to virtual objects - the real name/type of virtual objects is ignored.</p>
+<p>The name of an object can be changed with <a class="reference internal" href="rename_object.html#lpc.efun.rename_object" title="rename_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rename_object</span></code>(E)</a>, and <a class="reference internal" href="#lpc.efun.object_name" title="object_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">object_name</span></code>(E)</a> will reflect any of these changes.</p>
+<p>The returned name always begins with &#8216;/&#8217; (absolute path), except when the parser runs in <a class="reference internal" href="../topics/predefined.html#lpc.macro.__COMPAT_MODE__" title="__COMPAT_MODE__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__COMPAT_MODE__</span></code></a>.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>The below is guaranteed to be true for all objects ob that are not destructed:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">find_object</span><span class="p">(</span><span class="n">object_name</span><span class="p">(</span><span class="n">ob</span><span class="p">))</span> <span class="c1">// ob</span>
+</pre></div>
 </div>
 </div>
-<p>string object_name(object ob)</p>
-<p>Get the name of an object &lt;ob&gt; or, if no argument is given, of
-the current object.</p>
-<p>As a special case, if &lt;ob&gt; is 0, the function returns 0.</p>
-<p>This name is the name under which the object is stored in the
-muds object table. It is initialised at the creation of the
-object such that blueprints are named after the file they are
-compiled from (without the trailing &#8216;.c&#8217;), and clones receive
-the name of their blueprint, extended by &#8216;#&#8217; followed by
-a unique non-negative number. These rules also apply to
-virtual objects - the real name/type of virtual objects
-is ignored.</p>
-<p>The name of an object can be changed with rename_object(), and
-object_name() will reflect any of these changes.</p>
-<p>The returned name always begins with &#8216;/&#8217; (absolute path),
-except when the parser runs in COMPAT mode.</p>
-<dl class="docutils">
-<dt>EXAMPLES</dt>
-<dd>find_object(object_name(ob)) == ob</dd>
-</dl>
-<p>This is guaranteed to be true for all objects ob that are not
-destructed.</p>
-<p>0 is accepted as argument since 3.2.9.</p>
-<blockquote>
-<div><blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="clone_object.html#lpc.clone_object" title="clone_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clone_object()</span></code>(E)</a>, <a class="reference internal" href="load_name.html#lpc.load_name" title="load_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">load_name()</span></code>(E)</a>, <a class="reference internal" href="load_object.html#lpc.load_object" title="load_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">load_object()</span></code>(E)</a>, <a class="reference internal" href="find_object.html#lpc.find_object" title="find_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">find_object()</span></code>(E)</a>,</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><a class="reference internal" href="object_time.html#lpc.object_time" title="object_time"><code class="xref lpc lpc-efun docutils literal"><span class="pre">object_time()</span></code>(E)</a>, <a class="reference internal" href="program_name.html#lpc.program_name" title="program_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">program_name()</span></code>(E)</a>, <a class="reference internal" href="rename_object.html#lpc.rename_object" title="rename_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rename_object()</span></code>(E)</a></p>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; 0 is accepted as argument</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="clone_object.html#lpc.efun.clone_object" title="clone_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clone_object</span></code>(E)</a>, <a class="reference internal" href="load_name.html#lpc.efun.load_name" title="load_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">load_name</span></code>(E)</a>, <a class="reference internal" href="load_object.html#lpc.efun.load_object" title="load_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">load_object</span></code>(E)</a>, <a class="reference internal" href="find_object.html#lpc.efun.find_object" title="find_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">find_object</span></code>(E)</a>, <a class="reference internal" href="object_time.html#lpc.efun.object_time" title="object_time"><code class="xref lpc lpc-efun docutils literal"><span class="pre">object_time</span></code>(E)</a>, <a class="reference internal" href="program_name.html#lpc.efun.program_name" title="program_name"><code class="xref lpc lpc-efun docutils literal"><span class="pre">program_name</span></code>(E)</a>, <a class="reference internal" href="rename_object.html#lpc.efun.rename_object" title="rename_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rename_object</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -100,8 +93,8 @@ destructed.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -111,21 +104,25 @@ destructed.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::object_name()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -137,7 +134,7 @@ destructed.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/object_name.txt"
+      <a href="../_sources/efun/object_name.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

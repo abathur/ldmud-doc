@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::to_string() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::to_string() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::to_struct()" href="to_struct.html" />
     <link rel="prev" title="efun::to_object()" href="to_object.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,44 +47,40 @@
 <div class="section" id="SYNOPSIS">
 <span id="to_string"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.to_string">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">to_string</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.to_string" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.to_string">
+<!--[lpc.efun.to_string]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">to_string</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+mixed</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.to_string" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
 <code class="descname">(string)&lt;value&gt;</code></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>The argument is converted to a string. Works with int, float, object, arrays, structs, symbols, strings and closures.</p>
+<p>Converts closures and structs into an appropriate name (this has mostly debugging purposes).</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Arrays are considered exploded strings, ie. arrays of char codes, and are &#8216;imploded&#8217; up to the first non-number entry, whatever comes first. That means that <code class="docutils literal"><span class="pre">to_string(({</span> <span class="pre">49,</span> <span class="pre">50</span> <span class="pre">}))</span></code> will return <code class="docutils literal"><span class="pre">12</span></code> and not <code class="docutils literal"><span class="pre">({</span> <span class="pre">49,</span> <span class="pre">50</span> <span class="pre">})</span></code>.</p>
+</div>
+<div class="admonition limit">
+<p class="first admonition-title">Limit</p>
+<p class="last">The cast notation only works if the precise type of &lt;value&gt; is known at compile-time. This will not be fixed&#8211;use the function form instead.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; adds lambda closures to the accepted data types.</li>
+<li><strong>changed</strong> (<em>3.3.250</em>) &#8211; adds structs to the accepted data types.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="to_array.html#lpc.efun.to_array" title="to_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_array</span></code>(E)</a>, <a class="reference internal" href="to_int.html#lpc.efun.to_int" title="to_int"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_int</span></code>(E)</a>, <a class="reference internal" href="to_object.html#lpc.efun.to_object" title="to_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_object</span></code>(E)</a>, <a class="reference internal" href="to_struct.html#lpc.efun.to_struct" title="to_struct"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_struct</span></code>(E)</a>, <a class="reference internal" href="sprintf.html#lpc.efun.sprintf" title="sprintf"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sprintf</span></code>(E)</a></p>
 </div>
 </div>
-<p>DESCRIPTION
-The argument is converted to a string. Works with int, float,
-object, arrays, structs, symbols, strings and closures.</p>
-<p>Converts closures and structs into an appropriate name (this
-has mostly debugging purposes).</p>
-<p>CAVEAT: Arrays are considered exploded strings, ie. arrays of char
-codes, and are &#8216;imploded&#8217; up to the first non-number entry, whatever
-comes first. That means that to_string(({ 49, 50 })) will return
-&#8220;12&#8221; and not &#8220;({ 49, 50 })&#8221;.</p>
-<p>BUGS
-The cast notation only works if the precise type of &lt;value&gt;
-is known at compile-time. This will not be fixed - use the
-function form instead.</p>
-<p>LDMud 3.2.8 adds lambda closures to the accepted data types.
-LDMud 3.3.250 adds structs to the accepted data types.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="to_array.html#lpc.to_array" title="to_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_array()</span></code>(E)</a>, <a class="reference internal" href="to_int.html#lpc.to_int" title="to_int"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_int()</span></code>(E)</a>, <a class="reference internal" href="to_object.html#lpc.to_object" title="to_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_object()</span></code>(E)</a>, <a class="reference internal" href="to_struct.html#lpc.to_struct" title="to_struct"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_struct()</span></code>(E)</a>, <a class="reference internal" href="sprintf.html#lpc.sprintf" title="sprintf"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sprintf()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+</div>
 
 
           </div>
@@ -93,8 +91,8 @@ LDMud 3.3.250 adds structs to the accepted data types.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -104,21 +102,24 @@ LDMud 3.3.250 adds structs to the accepted data types.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::to_string()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -130,7 +131,7 @@ LDMud 3.3.250 adds structs to the accepted data types.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/to_string.txt"
+      <a href="../_sources/efun/to_string.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

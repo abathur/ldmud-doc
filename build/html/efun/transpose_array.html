@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::transpose_array() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::transpose_array() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::trim()" href="trim.html" />
     <link rel="prev" title="efun::traceprefix()" href="traceprefix.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,35 +47,32 @@
 <div class="section" id="SYNOPSIS">
 <span id="transpose_array"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.transpose_array">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">transpose_array</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;*arr</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.transpose_array" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.transpose_array">
+<!--[lpc.efun.transpose_array]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">transpose_array</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+mixed<em>&nbsp;*arr</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.transpose_array" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>transpose_array(({ ({1,2,3}), ({a,b,c}) }))</dt>
-<dd>== ({ ({1,a}), ({2,b}), ({3,c}) })</dd>
-</dl>
-<p>transpose_array() applied to an alist results in an array of
-({ key, data }) pairs, useful if you want to use sort_array()
-or filter() on the alist.</p>
+<p>Applied to an alist, results in an array of <code class="docutils literal"><span class="pre">({</span> <span class="pre">key,</span> <span class="pre">data</span> <span class="pre">})</span></code> pairs, useful if you want to use <a class="reference internal" href="sort_array.html#lpc.efun.sort_array" title="sort_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sort_array</span></code>(E)</a> or <a class="reference internal" href="filter.html#lpc.efun.filter" title="filter"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter</span></code>(E)</a> on the alist.</p>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span>sort_array(transpose_array(({ m_indices(map), m_values(map) })),
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">transpose_array</span><span class="p">(({</span> <span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}),</span> <span class="p">({</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">})</span> <span class="p">}))</span>
+<span class="c1">// returns ({ ({1,a}), ({2,b}), ({3,c}) })</span>
+</pre></div>
+</div>
+<p>The mapping &#8216;map&#8217; in the example below is returned as an array of <code class="docutils literal"><span class="pre">({</span> <span class="pre">key,</span> <span class="pre">data</span> <span class="pre">})</span></code> pairs, sorted by the keys.:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>sort_array(transpose_array(({ m_indices(map), m_values(map) })),
        lambda(({ &#39;a, &#39;b }),
               ({ #&#39;&lt;, ({ #&#39;[, &#39;a, 0 }),
                       ({ #&#39;[, &#39;b, 0}) }) )
 </pre></div>
 </div>
 </div>
-<p>The given mapping &#8216;map&#8217; is returned as an array of
-<code class="docutils literal"><span class="pre">({</span> <span class="pre">key,</span> <span class="pre">data</span> <span class="pre">})</span></code> pairs, sorted by the keys.</p>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref lpc lpc-lang docutils literal"><span class="pre">alists</span></code>, <a class="reference internal" href="sort_array.html#lpc.sort_array" title="sort_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sort_array()</span></code>(E)</a></p>
+<p><code class="xref lpc lpc-lang docutils literal"><span class="pre">alists</span></code>, <a class="reference internal" href="sort_array.html#lpc.efun.sort_array" title="sort_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sort_array</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -87,8 +86,8 @@ or filter() on the alist.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -108,15 +107,14 @@ or filter() on the alist.</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -128,7 +126,7 @@ or filter() on the alist.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/transpose_array.txt"
+      <a href="../_sources/efun/transpose_array.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

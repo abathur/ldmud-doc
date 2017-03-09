@@ -6,7 +6,7 @@ SYNOPSIS
 DESCRIPTION
 ===========
    Arguments: 
-      - value (closure(LPC)) -- void <closure>()
+      - value (closure) -- void <closure>() 
 
    Optional hook to notify the mudlib about the termination of the erq demon. 
    Hook setting may be any closure.
@@ -16,4 +16,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   `hooks`
+   hook(H)

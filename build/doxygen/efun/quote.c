@@ -1,20 +1,25 @@
 public class efun {
    /**
+    * Converts arrays to quoted arrays and strings to symbols. Symbols and quoted arrays get quoted once more.
+    * 
     * @synopsis{
     * mixed quote(mixed)
     * }
     * 
+    * @usage{
+    * ~~~{.c}
+    * quote("foo") -> 'foo
+    * quote(({1,2,3})) -> '({1,2,3})
+    * 
+    * ~~~
+    * 
+    * }
+    * 
+    * @history{
+    * introduced (3.2@70)
+    * }
+    * 
+    * @see efun::symbolp(), efun::unquote()
    **/
    mixed quote(mixed);
 }
-Converts arrays to quoted arrays and strings to symbols.
-Symbols and quoted arrays get quoted once more.
-
-EXAMPLES
-quote("foo") -> 'foo
-quote(({1,2,3})) -> '({1,2,3})
-
-Introduced in @subpage driver_mailto:3.2@70 "3.2@70"
-
-   See Also: 
-      efun::symbolp(), efun::unquote()

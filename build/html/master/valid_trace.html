@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>master::valid_trace() &mdash; LDMud UNRELEASED documentation</title>
+    <title>master::valid_trace() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="master" href="master.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="master::valid_write()" href="valid_write.html" />
     <link rel="prev" title="master::valid_snoop()" href="valid_snoop.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,42 +47,39 @@
 <div class="section" id="SYNOPSIS">
 <span id="valid_trace"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.valid_trace">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">valid_trace</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;what</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a>|<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;arg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.valid_trace" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.master.valid_trace">
+<!--[lpc.master.valid_trace]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">valid_trace</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;what</em>, </td><td id="id2">
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a>|string<em>&nbsp;arg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.master.valid_trace" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
 <p>Check if the interactive user is allowed to use tracing.</p>
-<p>The argument &lt;what&gt; denotes the action for which permission is to be
-checked, &lt;arg&gt; is the argument given to the traceing efun:</p>
+<p>The argument <a class="reference internal" href="#master/valid_trace.arg.what" title="what"><code class="xref lpc lpc-arg docutils literal"><span class="pre">what</span></code></a> denotes the action for which permission is to be checked, <a class="reference internal" href="#master/valid_trace.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> is the argument given to <a class="reference internal" href="../efun/trace.html#lpc.efun.trace" title="trace"><code class="xref lpc lpc-efun docutils literal"><span class="pre">trace</span></code>(E)</a>.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="24%" />
-<col width="76%" />
+<col width="14%" />
+<col width="86%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">&lt;what&gt;</th>
+<tr class="row-odd"><th class="head"><a class="reference internal" href="#master/valid_trace.arg.what" title="what"><code class="xref lpc lpc-arg docutils literal"><span class="pre">what</span></code></a></th>
 <th class="head">notes</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>&#8220;trace&#8221;</td>
-<td>Is the user allowed to use tracing?
-&lt;arg&gt; is the tracelevel argument given.</td>
+<td>Is the user allowed to use tracing? <a class="reference internal" href="#master/valid_trace.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> is the tracelevel argument given.</td>
 </tr>
 <tr class="row-odd"><td>&#8220;traceprefix&#8221;</td>
-<td>Is the user allowed to set a traceprefix?
-&lt;arg&gt; is the prefix given.</td>
+<td>Is the user allowed to set a traceprefix? <a class="reference internal" href="#master/valid_trace.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> is the prefix given.</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../efun/trace.html#lpc.trace" title="trace"><code class="xref lpc lpc-efun docutils literal"><span class="pre">trace()</span></code>(E)</a>, <code class="xref lpc lpc-driver docutils literal"><span class="pre">showsmallnewmalloced</span></code>, <code class="xref lpc lpc-driver docutils literal"><span class="pre">malloc</span></code>, <code class="xref lpc lpc-driver docutils literal"><span class="pre">status</span></code>, <a class="reference internal" href="../concepts/memory.html#lpc.memory" title="memory"><code class="xref lpc lpc-concept docutils literal"><span class="pre">memory</span></code>(C)</a></p>
+<p><a class="reference internal" href="../efun/trace.html#lpc.efun.trace" title="trace"><code class="xref lpc lpc-efun docutils literal"><span class="pre">trace</span></code>(E)</a>, <a href="#id3"><span class="problematic" id="id4">:concept:`memory`</span></a></p>
 </div>
 </div>
 </div>
@@ -94,8 +93,8 @@ checked, &lt;arg&gt; is the argument given to the traceing efun:</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -114,15 +113,14 @@ checked, &lt;arg&gt; is the argument given to the traceing efun:</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -134,7 +132,7 @@ checked, &lt;arg&gt; is the argument given to the traceing efun:</p>
       &copy;good question.
       
       |
-      <a href="../_sources/master/valid_trace.txt"
+      <a href="../_sources/master/valid_trace.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

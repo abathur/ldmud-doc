@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::remove_call_out() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::remove_call_out() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::remove_input_to()" href="remove_input_to.html" />
     <link rel="prev" title="efun::remove_action()" href="remove_action.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,40 +47,40 @@
 <div class="section" id="SYNOPSIS">
 <span id="remove_call_out"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.remove_call_out">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">remove_call_out</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;fun</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.remove_call_out" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.remove_call_out">
+<!--[lpc.efun.remove_call_out]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">remove_call_out</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;fun</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.remove_call_out" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">remove_call_out</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;fun</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">remove_call_out</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+closure<em>&nbsp;fun</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Remove next pending call-out for function <a class="reference internal" href="#efun/remove_call_out.arg.fun" title="fun"><code class="xref lpc lpc-arg docutils literal"><span class="pre">fun</span></code></a> in the current object, resp. the next pending call-out for closure <a class="reference internal" href="#efun/remove_call_out.arg.fun" title="fun"><code class="xref lpc lpc-arg docutils literal"><span class="pre">fun</span></code></a>. The time left is returned.</p>
+<p>-1 is returned if there were no call-outs pending to this function.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>To remove every pending call-out to <code class="docutils literal"><span class="pre">MyTimer()</span></code>:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">(</span><span class="n">remove_call_out</span><span class="p">(</span><span class="s">&quot;MyTimer&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+</pre></div>
 </div>
 </div>
-<p>Remove next pending call-out for function &lt;fun&gt; in the current
-object, resp. the next pending call-out for closure &lt;fun&gt;.
-The time left is returned.</p>
-<p>-1 is returned if there were no call-outs pending to this
-function.</p>
-<p>EXAMPLES
-To remove every pending call-out to MyTimer() :</p>
-<p>while (remove_call_out(&#8220;MyTimer&#8221;) != -1) /* continue <a href="#id1"><span class="problematic" id="id2">*</span></a>/ ;</p>
-<p>Removing a call_out to a closure was introduced in <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;45">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>45</a>.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="call_out.html#lpc.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out()</span></code>(E)</a>, <a class="reference internal" href="call_out_info.html#lpc.call_out_info" title="call_out_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out_info()</span></code>(E)</a>, <a class="reference internal" href="find_call_out.html#lpc.find_call_out" title="find_call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">find_call_out()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.1</em>) &#8211; can now remove a call_out to a closure</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="call_out.html#lpc.efun.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out</span></code>(E)</a>, <a class="reference internal" href="call_out_info.html#lpc.efun.call_out_info" title="call_out_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out_info</span></code>(E)</a>, <a class="reference internal" href="find_call_out.html#lpc.efun.find_call_out" title="find_call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">find_call_out</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -89,8 +91,8 @@ To remove every pending call-out to MyTimer() :</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -100,21 +102,25 @@ To remove every pending call-out to MyTimer() :</p>
   <ul>
 <li><a class="reference internal" href="#">efun::remove_call_out()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -126,7 +132,7 @@ To remove every pending call-out to MyTimer() :</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/remove_call_out.txt"
+      <a href="../_sources/efun/remove_call_out.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

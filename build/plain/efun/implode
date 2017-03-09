@@ -4,21 +4,29 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Concatenate all strings found in array arr, with the string del between each 
-element. Only strings are used from the array.
+   Concatenate all strings found in array arr(E), with the string del(E) 
+   between each element. Only strings are used from the array.
 
-EXAMPLES function                                        returns 
-------------------------------------------------------------------- implode(({
-"foo", "bar", "" }), "*")            "foo*bar*" implode(({ "a", 2, 
-this_object(), "c" }), "b")  "abc"
+   USAGE
+   =====
+      This basic example inserts an asterisk between each array element:
 
-Together with explode() this can be used as a search and replace function of 
-strings: implode(explode("a short text", " "), "_")      "a_short_text"
+         implode(({ "foo", "bar", "" }), "*") // returns "foo*bar*"
 
-But nowadays you can also use
-   regreplace("a short text", " ", "_", 1)
+      Because implode ignores non-string elements, the result below only 
+      includes a single "b":
 
-instead.
+         implode(({ "a", 2, this_object(), "c" }), "b") // returns "abc"
 
-   See Also: 
-      explode()(E), regreplace()(E)
+      Together with explode(E) this can be used as a search-and-replace for 
+      strings:
+
+         implode(explode("a short text", " "), "_") // returns "a_short_text"
+
+      But nowadays you can also use:
+
+         regreplace("a short text", " ", "_", 1)
+
+SEE ALSO
+========
+   explode(E), regreplace(E)

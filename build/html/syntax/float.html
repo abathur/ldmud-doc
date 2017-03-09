@@ -1,0 +1,142 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>float &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="for" href="for.html" />
+    <link rel="prev" title="\&lt;escape_sequence&gt;" href="escape.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="float">
+<span id="lpc.type.float"></span><div class="section" id="TYPE">
+<h2>TYPE<a class="headerlink" href="#TYPE" title="Permalink to this headline">¶</a></h2>
+<pre class="literal-block">
+<strong>decimal:
+</strong>    &lt;number&gt;.[number]
+    1<span class="highlighted">.</span>
+    42<span class="highlighted">.</span>2
+<strong>
+exponential:
+</strong>    &lt;number&gt;.&lt;e|E&gt;[+|-]&lt;number&gt;
+    1<span class="highlighted">.</span>0<span class="highlighted">e</span>3
+    1<span class="highlighted">.</span><span class="highlighted">e</span>3
+    1<span class="highlighted">.</span><span class="highlighted">e+</span>3
+    1<span class="highlighted">.</span><span class="highlighted">e-</span>3
+    1<span class="highlighted">.</span>0<span class="highlighted">E</span>3
+</pre>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>A floating point number in the absolute range <a class="reference internal" href="../topics/predefined.html#lpc.macro.__FLOAT_MIN__" title="__FLOAT_MIN__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__FLOAT_MIN__</span></code></a> to <a class="reference internal" href="../topics/predefined.html#lpc.macro.__FLOAT_MAX__" title="__FLOAT_MAX__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__FLOAT_MAX__</span></code></a> (typically 1e-38 to 1e+38). Floating point numbers are signified by a &#8216;.&#8217; appearing, e.g. &#8216;1&#8217; is integer 1, but &#8216;1.&#8217; is floating-point 1 .</p>
+<div class="container" id="lpc.syntax.float">
+<div class="container" id="SYNTAX">
+<strong>decimal:</strong><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">&lt;number&gt;.[number]</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">1.</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">42.2</span></code></div>
+</div>
+<strong>exponential:</strong><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">&lt;number&gt;.&lt;e|E&gt;[+|-]&lt;number&gt;</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">1.0e3</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">1.e3</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">1.e+3</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">1.e-3</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">1.0E3</span></code></div>
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION"></dd>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">float</a><ul>
+<li><a class="reference internal" href="#TYPE">TYPE</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/float.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

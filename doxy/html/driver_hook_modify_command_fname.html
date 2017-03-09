@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: modify_command_fname</title>
+<title>LDMud: modify_command_fname</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('driver_hook_modify_command_fname.html'
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,27 +98,30 @@ $(document).ready(function(){initNavTree('driver_hook_modify_command_fname.html'
 <div class="title">modify_command_fname </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Mandatory hook specifying the name of the 'modify_command' lfun to call for newly entered commands as result of a set_modify_command().</p>
+<div class="textblock"><dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_MODIFY_COMMAND_FNAME, value)</div>
+</div><!-- fragment --></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Mandatory hook specifying the name of the 'modify_command' lfun to call for newly entered commands as result of a <a class="el" href="classefun.html#a48f9b91df9e47b18043fc33e4c28f6d7" title="All commands for the current object (which must interactive) will be passed to ob-&gt;modify_command() b...">efun::set_modify_command()</a>.</p>
 <p>Hook setting must be a string.</p>
-<p>If set_modify_command() is used for an interactive user, all newly entered commands are first passed to the function named by this hook.</p>
+<p>If <a class="el" href="classefun.html#a48f9b91df9e47b18043fc33e4c28f6d7" title="All commands for the current object (which must interactive) will be passed to ob-&gt;modify_command() b...">efun::set_modify_command()</a> is used for an interactive user, all newly entered commands are first passed to the function named by this hook.</p>
 <p>The function is called with the command as argument.</p>
 <p>If the result is a string, it is the new command to execute instead of the given one. Note that it is not possible to make several commands from one this way!</p>
 <p>If the result is a non-zero number, the given command is to be ignored. In case of the closure/lfun setting this may mean that the closure/lfun already executed it.</p>
 <p>If the result is 0, the originally given command is to be used.</p>
-<p>It is possible for the hook to change the command giver (this_player()) for the execution of the command. This means that even though the commands are execute for the original commandgiver, this_player() will return the changed commandgiver.</p>
-<dl class="section user"><dt>Synopsis:</dt><dd><div class="fragment"><div class="line">set_driver_hook(H_MODIFY_COMMAND_FNAME, value)</div>
-</div><!-- fragment --></dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_hook_command.html">command</a>, <a class="el" href="driver_hook_modify_command.html">modify_command</a>, <a class="el" href="driver_hook_notify_fail.html">notify_fail</a>, <a class="el" href="driver_hook_send_notify_fail.html">send_notify_fail</a> Arguments:<ul>
-<li>value (<a class="el" href="driver_LPC_int.html">int</a>|<a class="el" href="driver_LPC_string.html">string</a>) &ndash; &lt;name&gt;(string cmd) </li>
-</ul>
-</dd></dl>
+<p>It is possible for the hook to change the command giver (<a class="el" href="classefun.html#a23dc6aa65a7477371df722a647b661af" title="Return the current command giver. ">efun::this_player()</a>) for the execution of the command. This means that even though the commands are execute for the original commandgiver, <a class="el" href="classefun.html#a23dc6aa65a7477371df722a647b661af" title="Return the current command giver. ">efun::this_player()</a> will return the changed commandgiver.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="driver_hook_overview.html">hook</a>, <a class="el" href="driver_hook_command.html">command</a>, <a class="el" href="driver_hook_modify_command.html">modify_command</a>, <a class="el" href="driver_hook_notify_fail.html">notify_fail</a>, <a class="el" href="driver_hook_send_notify_fail.html">send_notify_fail</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="index.html">index</a></li><li class="navelem"><a class="el" href="driver_hook_hook.html">hook</a></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:11 for Tsunami by
+    <li class="navelem"><a class="el" href="driver_hook_overview.html">Driver-supported hooks</a></li>
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:24 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,0 +1,293 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>struct &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="switch" href="switch.html" />
+    <link rel="prev" title="string" href="string.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="struct">
+<span id="lpc.type.struct"></span><div class="section" id="TYPE">
+<h2>TYPE<a class="headerlink" href="#TYPE" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<pre>
+<strong id="grammar-token-declare">declare    </strong> ::=  struct struct_name;
+<strong id="grammar-token-define">define     </strong> ::=  struct name (parent) {int one;};
+<strong id="grammar-token-construct">construct  </strong> ::=  (&lt;struct_name&gt;)
+                 (&lt;struct_name&gt; 1)
+                 (&lt;<a class="reference internal" href="#grammar-token-struct_name"><code class="xref docutils literal"><span class="pre">struct_name</span></code></a>&gt; one: 1)
+                 test (* comment *) test
+<strong id="grammar-token-struct_name">struct_name</strong> ::=  beeps
+</pre>
+<pre>
+<strong id="id1">declare    </strong> ::=  struct struct_name;
+<strong id="id2">define     </strong> ::=  struct name (parent) {int one;};
+<strong id="id3">construct  </strong> ::=  (&lt;struct_name&gt;)
+                 (&lt;struct_name&gt; 1)
+                 (&lt;<a class="reference internal" href="#grammar-token-struct_name"><code class="xref docutils literal"><span class="pre">struct_name</span></code></a>&gt; one: 1)
+                 test (* comment *) test
+<strong id="id4">struct_name</strong> ::=  beeps
+</pre>
+<p>Structs are, next to arrays and mappings, a way to group a collection of values together. A struct holds a fixed number of values, called &#8216;members&#8217;, and allows to access them by their given name. The name is resolved when the LPC code is compiled, making struct member access as fast as array member access.</p>
+<p>Structs are passed by reference. <a class="reference internal" href="#grammar-token-struct_name"><code class="xref std std-token docutils literal"><span class="pre">struct_name</span></code></a></p>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>DEFINING<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>A new struct type has to be <a class="reference internal" href="#grammar-token-struct_definition"><code class="xref std std-token docutils literal"><span class="pre">defined</span></code></a> at the top level of an object. For example:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Foo</span> <span class="p">{</span>
+  <span class="kt">int</span>        <span class="n">one</span><span class="p">,</span> <span class="o">*</span><span class="n">two</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="n">Bar</span> <span class="n">three</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>defines the new struct &#8216;Foo&#8217; with three members: integer &#8216;one&#8217;, integer array &#8216;two&#8217;, and struct Bar &#8216;three&#8217;</p>
+<p>It is possible to &#8216;inherit&#8217; structs from each other. Given above definition of struct Foo, the following definition</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nf">Quux</span> <span class="p">(</span><span class="n">Foo</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">four</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>is equivalent to the definition:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Quux</span> <span class="p">{</span>
+  <span class="kt">int</span>        <span class="n">one</span><span class="p">,</span> <span class="o">*</span><span class="n">two</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="n">Bar</span> <span class="n">three</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">four</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>The usual visibility modifiers apply, e.g.</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">protected</span> <span class="k">struct</span> <span class="n">Bang</span> <span class="p">{...};</span>
+</pre></div>
+</div>
+<p>struct definitions are promoted through inheritance like functions, with the difference that all structs live in the same flat namespace. This means: a struct defined in a program is visible in _all_ inherited programs, regardless of how deep the inheritance is nested. This also means that in one program there must not be two structs, inherited or not, with the same name.</p>
+<p>To <a class="reference internal" href="#grammar-token-struct_declaration"><code class="xref std std-token docutils literal"><span class="pre">declare</span></code></a> a struct without defining it, write:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Quux</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This notation is useful if you have two structs referencing each other:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Quux</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="n">Bar</span> <span class="p">{</span>
+  <span class="k">struct</span> <span class="n">Quux</span> <span class="n">quux</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="n">Quux</span> <span class="p">{</span>
+  <span class="k">struct</span> <span class="n">Bar</span> <span class="n">bar</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>CREATING<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>To use a struct, its definition must be visible - either because it is defined in the object compiled, or it has been inherited.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">#include&#8217;ing structs does not what you think it does: in LPC it constructs a new struct type whereever it is included.</p>
+</div>
+<p>A variable to hold a struct is defined like this:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Foo</span> <span class="n">var</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>and similar for function arguments:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">fun</span> <span class="p">(</span><span class="k">struct</span> <span class="n">Foo</span> <span class="n">arg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Just writing &#8216;struct Foo var&#8217; however does not _create_ a struct, it just creates a variable capable of holding one. To assign a value to the variable upon creation, assign it with a struct value, either from another variable or from a literal struct:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Foo</span> <span class="n">var</span> <span class="o">=</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Literal structs are written using <code class="docutils literal"><span class="pre">(&lt;&gt;)</span></code> as delimiters:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">(&lt;Foo&gt;)</span></code></dt>
+<dd>creates an empty instance of struct Foo</dd>
+<dt><code class="docutils literal"><span class="pre">(&lt;Foo&gt;</span> <span class="pre">1,</span> <span class="pre">({</span> <span class="pre">2</span> <span class="pre">}),</span> <span class="pre">bar)</span></code></dt>
+<dd>creates an instance of struct Foo, and assigns <code class="docutils literal"><span class="pre">1</span></code> to member &#8216;one&#8217;, <code class="docutils literal"><span class="pre">({</span> <span class="pre">2</span> <span class="pre">})</span></code> to member &#8216;two&#8217;, and the content of variable <code class="docutils literal"><span class="pre">bar</span></code> to member &#8216;three&#8217;.</dd>
+<dt><code class="docutils literal"><span class="pre">(&lt;Foo&gt;</span> <span class="pre">two:</span> <span class="pre">({</span> <span class="pre">2</span> <span class="pre">})</span> <span class="pre">)</span></code></dt>
+<dd>creates an instance of struct Foo which is all empty except for member &#8216;two&#8217; which is assigned the value <code class="docutils literal"><span class="pre">({</span> <span class="pre">2</span> <span class="pre">})</span></code>.</dd>
+</dl>
+<p>It is not possible to use both named and unnamed initializers in the same literal.</p>
+</div>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>A struct member is accessed using the -&gt; operator:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Foo</span> <span class="n">var</span> <span class="o">=</span> <span class="p">...;</span>
+
+<span class="n">var</span><span class="o">-&gt;</span><span class="n">one</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>It is possible to compute struct lookups at runtime:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Foo</span> <span class="n">bar</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="kt">string</span> <span class="n">member</span> <span class="o">=</span> <span class="s">&quot;one&quot;</span><span class="p">;</span>
+
+<span class="n">bar</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">member</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// sets bar-&gt;one to 1</span>
+<span class="n">bar</span><span class="o">-&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>      <span class="c1">// sets bar-&gt;one to 1</span>
+</pre></div>
+</div>
+<p>When using struct values held in variables/expressions of type &#8216;mixed&#8217;, the &#8216;mixed&#8217; value should to be casted to the struct value. The cast can be omitted if the looked-up member exists in only one struct (and its children) known to the compiler:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Foo</span> <span class="p">{</span> <span class="kt">int</span> <span class="n">one</span><span class="p">;</span> <span class="p">};</span>
+<span class="k">struct</span> <span class="n">Bar</span> <span class="p">{</span> <span class="kt">int</span> <span class="n">two</span><span class="p">;</span> <span class="p">};</span>
+<span class="k">struct</span> <span class="n">Baz</span> <span class="p">{</span> <span class="kt">int</span> <span class="n">two</span><span class="p">;</span> <span class="p">};</span>
+<span class="kt">mixed</span> <span class="n">var</span><span class="p">;</span>
+
+<span class="n">var</span><span class="o">-&gt;</span><span class="n">one</span>              <span class="c1">// looks up Foo-&gt;one</span>
+<span class="p">(</span><span class="k">struct</span> <span class="n">Foo</span><span class="p">)</span><span class="n">var</span><span class="o">-&gt;</span><span class="n">one</span>  <span class="c1">// looks up Foo-&gt;one</span>
+<span class="n">var</span><span class="o">-&gt;</span><span class="n">two</span>              <span class="c1">// ERROR: ambiguous lookup</span>
+<span class="p">(</span><span class="k">struct</span> <span class="n">Bar</span><span class="p">)</span><span class="n">var</span><span class="o">-&gt;</span><span class="n">one</span>  <span class="c1">// looks up Bar-&gt;one</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>USAGE IN CLOSURES<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">#'(&lt;</span></code> operator can be used in lambda closures to create a struct; the type of the struct is given by the &#8216;template&#8217; struct passed as first argument. The content of the template struct is irrelevant, so an empty struct suffices. For example, to create an instance of struct Foo:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>({ #&#39;(&lt;, (&lt;Foo&gt;), 1, ({ 2 }), (&lt;Bar&gt;) })
+</pre></div>
+</div>
+<p>The order of the member values is the order in which they appear in the struct definition.</p>
+<p>To access a struct member in a lambda closure, use the <code class="docutils literal"><span class="pre">#'-&gt;</span></code> operator with the name of the member as double-quoted symbol or literal string:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>({ #&#39;-&gt;, struct-expression, &#39;&#39;one })
+({ #&#39;-&gt;, struct-expression, &quot;one&quot; })
+</pre></div>
+</div>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>SYNTAX<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>Dunno yet:</p>
+<pre>
+<strong id="grammar-token-struct_definition">struct_definition </strong> ::=  &quot;struct &quot; <a class="reference internal" href="#grammar-token-struct_name"><code class="xref docutils literal"><span class="pre">struct_name</span></code></a> [&quot;(&quot; <a class="reference internal" href="#grammar-token-struct_name"><code class="xref docutils literal"><span class="pre">struct_name</span></code></a> &quot;)&quot;]
+                        &quot;{&quot; <code class="xref docutils literal"><span class="pre">variable_declaration</span></code>* &quot;};&quot;
+<strong id="grammar-token-struct_declaration">struct_declaration</strong> ::=  &quot;struct &quot; <a class="reference internal" href="#grammar-token-struct_name"><code class="xref docutils literal"><span class="pre">struct_name</span></code></a> &quot;;&quot;
+<strong id="id5">struct_name       </strong> ::=  <code class="xref docutils literal"><span class="pre">identifier</span></code>
+<strong id="grammar-token-literal">literal           </strong> ::=  &quot;(&lt;&quot; <a class="reference internal" href="#grammar-token-struct_name"><code class="xref docutils literal"><span class="pre">struct_name</span></code></a> &quot;&gt;)&quot;
+</pre>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>MISCELLANEOUS<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<p>Internally structs can be identified by the ID string returned from <a class="reference internal" href="../efun/get_type_info.html#lpc.efun.get_type_info" title="get_type_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_type_info</span></code>(E)</a>. This string contains the name of the struct, the name of the program its type was defined in, and the ID number of the program. However, do not rely on a particular format of this string!</p>
+<p>Support for structs is signaled by the <a class="reference internal" href="../topics/predefined.html#lpc.macro.__LPC_STRUCTS__" title="__LPC_STRUCTS__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__LPC_STRUCTS__</span></code></a>.</p>
+<p>Though structs are tied to the program the are defined in, re-compiling a program doesn&#8217;t make the struct types incompatible. Even if the newly compiled struct has a different structure it will be accepted by routines that expect the old struct definition. When members disappeared in the new struct definition, read access to those members will return 0, write access to vanished members however will result in a runtime error.</p>
+</div>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>Suppose we have two objects: a monster, and a monster coordinate tracker, and we want to use a struct to store the coordinate:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Using <code class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;monster_coordinate.c&quot;</span></code> instead of <a class="reference internal" href="inherit.html#lpc.keyword.inherit" title="inherit"><code class="xref lpc lpc-keyword docutils literal"><span class="pre">inherit</span></code></a> won&#8217;t work. While the objects would compile, the first call to <code class="docutils literal"><span class="pre">track()</span></code> would cause a runtime error similar to: <code class="docutils literal"><span class="pre">Illegal</span> <span class="pre">type</span> <span class="pre">to</span> <span class="pre">struct-&gt;():</span> <span class="pre">struct</span> <span class="pre">Coordinate</span> <span class="pre">(/monster.c</span> <span class="pre">#234),</span> <span class="pre">expected</span> <span class="pre">struct</span> <span class="pre">Coordinate</span> <span class="pre">(/monster_tracker.c</span> <span class="pre">#552)</span></code></p>
+</div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.246</em>)</li>
+<li><strong>changed</strong> (<em>3.3.344</em>) &#8211; implementation revised</li>
+<li><strong>changed</strong> (<em>3.3.417</em>) &#8211; implemented reactivation of unchanged structs in object updates</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="mappings.html#lpc.type.mapping" title="mapping"><code class="xref lpc lpc-type docutils literal"><span class="pre">mapping</span></code></a>, <a class="reference internal" href="../efun/get_type_info.html#lpc.efun.get_type_info" title="get_type_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_type_info</span></code>(E)</a>, <a class="reference internal" href="../efun/structp.html#lpc.efun.structp" title="structp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">structp</span></code>(E)</a>, <a class="reference internal" href="../efun/mkmapping.html#lpc.efun.mkmapping" title="mkmapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mkmapping</span></code>(E)</a>, <a class="reference internal" href="../efun/to_struct.html#lpc.efun.to_struct" title="to_struct"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_struct</span></code>(E)</a>, <a class="reference internal" href="../efun/struct_info.html#lpc.efun.struct_info" title="struct_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">struct_info</span></code>(E)</a>, <a class="reference internal" href="../efun/baseof.html#lpc.efun.baseof" title="baseof"><code class="xref lpc lpc-efun docutils literal"><span class="pre">baseof</span></code>(E)</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">struct</a><ul>
+<li><a class="reference internal" href="#TYPE">TYPE</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#l">DEFINING</a></li>
+<li><a class="reference internal" href="#l">CREATING</a></li>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#l">USAGE IN CLOSURES</a></li>
+<li><a class="reference internal" href="#l">SYNTAX</a></li>
+<li><a class="reference internal" href="#l">MISCELLANEOUS</a></li>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/structs.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

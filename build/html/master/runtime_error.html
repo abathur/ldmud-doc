@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>master::runtime_error() &mdash; LDMud UNRELEASED documentation</title>
+    <title>master::runtime_error() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="master" href="master.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="master::runtime_warning()" href="runtime_warning.html" />
     <link rel="prev" title="master::retrieve_ed_setup()" href="retrieve_ed_setup.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,58 +47,63 @@
 <div class="section" id="SYNOPSIS">
 <span id="runtime_error"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.runtime_error">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">runtime_error</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;err</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;prg</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;curobj</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;line</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;culprit</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;caught</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.runtime_error" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.master.runtime_error">
+<!--[lpc.master.runtime_error]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">runtime_error</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;err</em>, </td><td id="id2">
+string<em>&nbsp;prg</em>, </td><td id="id3">
+string<em>&nbsp;curobj</em>, </td><td id="id4">
+int<em>&nbsp;line</em>, </td><td id="id5">
+mixed<em>&nbsp;culprit</em>, </td><td id="id6">
+int<em>&nbsp;caught</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.master.runtime_error" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>This function has to announce a runtime error to the active
-user. If the user has enough privileges, it might give him the
-full error message together with the source line. Else it
-should issue a decent message (&#8220;Your sensitive mind notices a
-wrongness in the fabric of space&#8221;).</p>
-<p>&lt;err&gt; is the error message, &lt;prg&gt; is the program executed (which
-might be an inherited program), &lt;curobj&gt; is the current object at
-the time of the error. &lt;line&gt; is the linenumber within the program.</p>
-<p>If the error is a normal runtime error, &lt;culprit&gt; is -1. Otherwise,
-the error occured during a heartbeat and &lt;culprit&gt; is the object which
-heart_beat() function was executed. Also, in case of a heartbeat error,
-the heartbeat for the &lt;culprit&gt; has been turned off.</p>
-<p>If the error is caught on a higher level, &lt;caught&gt; is non-zero;
-otherwise it is 0.</p>
-<p>Note that any of the the objects or programs might be destructed, ie.
-might be passed as 0.</p>
-<p>One common pitfall in the implementation of runtime_error() is
-that runtime_error() itself could run out of evaluation ticks,
-causing a runtime error itself. The workaround is to use
-limited() like this:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span>static void
-handle_runtime_error ( string err, string prg, string curobj
-                     , int line)
-{ ... the actual error handler ... }
-
-static void
+<p>This function has to announce a runtime error to the active user. If the user has enough privileges, it might give him the full error message together with the source line. Else it should issue a decent message (&#8220;Your sensitive mind notices a wrongness in the fabric of space&#8221;).</p>
+<p><a class="reference internal" href="#master/runtime_error.arg.err" title="err"><code class="xref lpc lpc-arg docutils literal"><span class="pre">err</span></code></a> is the error message, <a class="reference internal" href="#master/runtime_error.arg.prg" title="prg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">prg</span></code></a> is the program executed (which might be an inherited program), <a class="reference internal" href="#master/runtime_error.arg.curobj" title="curobj"><code class="xref lpc lpc-arg docutils literal"><span class="pre">curobj</span></code></a> is the current object at the time of the error. <a class="reference internal" href="#master/runtime_error.arg.line" title="line"><code class="xref lpc lpc-arg docutils literal"><span class="pre">line</span></code></a> is the linenumber within the program.</p>
+<p>If the error is a normal runtime error, <a class="reference internal" href="#master/runtime_error.arg.culprit" title="culprit"><code class="xref lpc lpc-arg docutils literal"><span class="pre">culprit</span></code></a> is -1. Otherwise, the error occured during a heartbeat and <a class="reference internal" href="#master/runtime_error.arg.culprit" title="culprit"><code class="xref lpc lpc-arg docutils literal"><span class="pre">culprit</span></code></a> is the object which <a class="reference internal" href="../applied/heart_beat.html#lpc.applied.heart_beat" title="heart_beat"><code class="xref lpc lpc-applied docutils literal"><span class="pre">heart_beat</span></code>(A)</a> function was executed. Also, in case of a heartbeat error, the heartbeat for the <a class="reference internal" href="#master/runtime_error.arg.culprit" title="culprit"><code class="xref lpc lpc-arg docutils literal"><span class="pre">culprit</span></code></a> has been turned off.</p>
+<p>If the error is caught on a higher level, <a class="reference internal" href="#master/runtime_error.arg.caught" title="caught"><code class="xref lpc lpc-arg docutils literal"><span class="pre">caught</span></code></a> is non-zero; otherwise it is 0.</p>
+<p>Note that any of the the objects or programs might be destructed, ie. might be passed as 0.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>A common pitfall in implementing <a class="reference internal" href="#lpc.master.runtime_error" title="runtime_error"><code class="xref lpc lpc-master docutils literal"><span class="pre">runtime_error</span></code>(M)</a> is that <a class="reference internal" href="#lpc.master.runtime_error" title="runtime_error"><code class="xref lpc lpc-master docutils literal"><span class="pre">runtime_error</span></code>(M)</a> itself could run out of evaluation ticks, causing a runtime error itself. The workaround is to use <a class="reference internal" href="../efun/limited.html#lpc.efun.limited" title="limited"><code class="xref lpc lpc-efun docutils literal"><span class="pre">limited</span></code>(E)</a> like this:</p>
+<p>static void
+handle_runtime_error ( string err, string prg, string curobj</p>
+<blockquote>
+<div>, int line)</div></blockquote>
+<p>{ ... the actual error handler ... }</p>
+<p>static void
 call_runtime_error (string err, string prg, string curobj, int line)
-{
-    limited(#&#39;handle_runtime_error, ({ 200000 }), err, prg, curobj
-           , line);
-}
-
-void
+{</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>limited(#&#8217;handle_runtime_error, ({ 200000 }), err, prg, curobj</dt>
+<dd>, line);</dd>
+</dl>
+</div></blockquote>
+<p>}</p>
+<p>void
 runtime_error (string err, string prg, string curobj, int line)
-{
-    limited(#&#39;call_runtime_error, ({ LIMIT_UNLIMITED })
-           , err, prg, curobj, line);
-}
-</pre></div>
+{</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>limited(#&#8217;call_runtime_error, ({ LIMIT_UNLIMITED })</dt>
+<dd>, err, prg, curobj, line);</dd>
+</dl>
+</div></blockquote>
+<p class="last">}</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added the <a class="reference internal" href="#master/runtime_error.arg.culprit" title="culprit"><code class="xref lpc lpc-arg docutils literal"><span class="pre">culprit</span></code></a> argument.</li>
+<li><strong>changed</strong> (<em>3.2.12/3.3.705</em>) &#8211; added the <a class="reference internal" href="#master/runtime_error.arg.caught" title="caught"><code class="xref lpc lpc-arg docutils literal"><span class="pre">caught</span></code></a> argument.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="log_error.html#lpc.master.log_error" title="log_error"><code class="xref lpc lpc-master docutils literal"><span class="pre">log_error</span></code>(M)</a>, <a class="reference internal" href="heart_beat_error.html#lpc.master.heart_beat_error" title="heart_beat_error"><code class="xref lpc lpc-master docutils literal"><span class="pre">heart_beat_error</span></code>(M)</a>, <a class="reference internal" href="runtime_warning.html#lpc.master.runtime_warning" title="runtime_warning"><code class="xref lpc lpc-master docutils literal"><span class="pre">runtime_warning</span></code>(M)</a>, <a class="reference internal" href="../efun/raise_error.html#lpc.efun.raise_error" title="raise_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">raise_error</span></code>(E)</a>, <a class="reference internal" href="../efun/expand_define.html#lpc.efun.expand_define" title="expand_define"><code class="xref lpc lpc-efun docutils literal"><span class="pre">expand_define</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -110,8 +117,8 @@ runtime_error (string err, string prg, string curobj, int line)
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -121,21 +128,24 @@ runtime_error (string err, string prg, string curobj, int line)
   <ul>
 <li><a class="reference internal" href="#">master::runtime_error()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -147,7 +157,7 @@ runtime_error (string err, string prg, string curobj, int line)
       &copy;good question.
       
       |
-      <a href="../_sources/master/runtime_error.txt"
+      <a href="../_sources/master/runtime_error.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

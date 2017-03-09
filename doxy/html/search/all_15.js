@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['varargs',['varargs',['../driver_LPC_varargs.html',1,'driver_LPC_lpc']]],
-  ['void',['void',['../driver_LPC_void.html',1,'driver_LPC_lpc']]],
+  ['varargs',['varargs',['../driver_syntax_varargs.html',1,'driver_syntax_overview']]],
+  ['void',['void',['../driver_syntax_void.html',1,'driver_syntax_overview']]],
+  ['variable_20initialization',['variable initialization',['../driver_topics_initialisation.html',1,'driver_topics_overview']]],
   ['valid_5fexec',['valid_exec',['../classmaster.html#a8f3c822a548a8f0a46b2e71a0b7a15d6',1,'master']]],
   ['valid_5fquery_5fsnoop',['valid_query_snoop',['../classmaster.html#a9800da3de8948929233ff5a18d0bfa2e',1,'master']]],
   ['valid_5fread',['valid_read',['../classmaster.html#a43ecfe8cbfb8fa9dffacb9111a6d180a',1,'master']]],

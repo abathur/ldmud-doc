@@ -10,5 +10,13 @@ DESCRIPTION
 
    USAGE
    =====
-         unquote('foo) -> "foo"
-         unquote( '({1,2,3}) ) -> ({1,2,3})
+         unquote('foo)         // returns "foo"
+         unquote( '({1,2,3}) ) // returns ({1,2,3})
+
+HISTORY
+=======
+   - introduced (3.2.9)
+
+SEE ALSO
+========
+   quote(E), symbolp(E)

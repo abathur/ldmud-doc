@@ -1,30 +1,26 @@
-SYNOPSIS (EXPERIMENTAL, OPTIONAL)
+SYNOPSIS (OPTIONAL, EXPERIMENTAL)
 =================================
    #include <xml.h>
    mixed * xml_parse(string xml)
 
 DESCRIPTION
 ===========
-   Parses the given string <xml> as an XML conformant string. The string must 
+   Parses the given string xml(E) as an XML conformant string. The string must
    have only one root tag, subsequent root tags are ignored.
 
    If the xml string is correct, an array of three elements is returned, where
    the following indices are defined:
 
-   Todo: the below section probably needs to be recast. It's trying to use the
-   defines in xml.h to tell us that array index 0 will be a string containing
-   the tagname, index 1 will be a mapping with its attributes, and 2 will be 
-   a nested mixed * array of parsed subtags.
-   string XML_TAG_NAME
+   string `XML_TAG_NAME`
       The name of the XML tag.
 
-   mapping XML_TAG_ATTRIBUTES
+   mapping `XML_TAG_ATTRIBUTES`
       All attributes given to the XML tag as a mapping where the key is the 
       attribute name and the value is its string value.
 
       If the xml tag does not contain any attributes, this element is set 0.
 
-   mixed * XML_TAG_CONTENTS
+   mixed * `XML_TAG_CONTENTS`
       The contents of this xml tag as an array. This array may contain either 
       strings, or arrays of sub-tags again with three elements. (see example)
 
@@ -38,42 +34,46 @@ DESCRIPTION
 
    USAGE
    =====
-         //Parse a simple self-terminating tag
-         xml_parse("<abc/>")           -> ({ "abc", 0, 0 })
+      Parse a simple self-terminating tag:
 
-         //Parse a self-terminating tag with a property::
-         xml_parse("<abc xyz="cde"/>") -> ({ "abc", ([ "xyz" : "cde" ]), 0 })
+         xml_parse("<abc/>")           // ({ "abc", 0, 0 })
 
-         //Parse a small nested data structure::
+      Parse a self-terminating tag with a property:
+
+         xml_parse("<abc xyz="cde"/>") // ({ "abc", ([ "xyz" : "cde" ]), 0 })
+
+      Parse a small nested data structure:
+
          xml_parse("<book language="common">" +
                    "    <title>This is the title</title>" +
                    "    <chapter>This is a chapter</chapter>" +
                    "    <chapter>We want <b>bold</b> here.</chapter>" +
-                   "</book>")
-
-             -> ({ "book"
-                 , ([ "language" : "common" ])
-                 , ({ ({ "title"
-                       , 0
-                       , ({ "This is a title" })
-                      })
-                    , ({ "chapter"
-                       , 0
-                       , ({ "This is a chapter" })
-                      })
-                    , ({ "chapter"
-                       , 0
-                       , ({ "We want "
-                          , ({ "b"
-                             , 0
-                             , ({ "bold" })
-                            })
-                          , "here"
-                         })
-                      })
-                   })
-                })
+                   "</book>");
+         /*
+            ({ "book"
+             , ([ "language" : "common" ])
+             , ({ ({ "title"
+                   , 0
+                   , ({ "This is a title" })
+                  })
+                , ({ "chapter"
+                   , 0
+                   , ({ "This is a chapter" })
+                  })
+                , ({ "chapter"
+                   , 0
+                   , ({ "We want "
+                      , ({ "b"
+                         , 0
+                         , ({ "bold" })
+                        })
+                      , "here"
+                     })
+                  })
+               })
+            })
+         */
 
 SEE ALSO
 ========
-   xml_generate()(E)
+   xml_generate(E)

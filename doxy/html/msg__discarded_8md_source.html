@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: hook/msg_discarded.md Source File</title>
+<title>LDMud: hook/msg_discarded.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('msg__discarded_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,34 +100,34 @@ $(document).ready(function(){initNavTree('msg__discarded_8md.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;msg_discarded {#driver_hook_msg_discarded}</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;==========================================</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;Optional hook to specify a message or take other measures when a message had to be discarded, because they could not be delivered to the player &lt;user&gt;. If the hook is not set, a standard message is used.</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;@headerfile &lt;sys/driver_hooks.h&gt;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;If the hook is a string, <span class="keyword">this</span> text will be sent as soon as possible to the player informing about the lost transmission.</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;If the hook is a closure, it is the <span class="keyword">function</span> to be called and the result is used as the message to be sent. Lambda closures are bound to the interactive &lt;user&gt; first.</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;@synopsis{</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;set_driver_hook(H_MSG_DISCARDED, value)</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;}</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;@headerfile &lt;sys/driver_hooks.h&gt;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;@synopsis{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;set_driver_hook(H_MSG_DISCARDED, value)</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;@history{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;3.3.719 (introduced)</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;@see <a class="code" href="classefun.html#a68840ff50b3f2328be081a1f98fc32fe">efun::configure_interactive</a>()</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;Arguments: </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;- value (@ref driver_LPC_string <span class="stringliteral">&quot;string&quot;</span>) -- &lt;msg&gt;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;- value (@ref driver_LPC_closures <span class="stringliteral">&quot;closure&quot;</span>) -- string &lt;closure&gt;(<span class="keywordtype">object</span> user)</div>
-<div class="ttc" id="classefun_html_a68840ff50b3f2328be081a1f98fc32fe"><div class="ttname"><a href="classefun.html#a68840ff50b3f2328be081a1f98fc32fe">efun.configure_interactive</a></div><div class="ttdeci">void configure_interactive(object ob, int what, mixed data)</div><div class="ttdoc">Sets the option &lt;what&gt; to the value &lt;data&gt; on the interactive &lt;ob&gt; or the default for all interactive...</div></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;@param value &lt;msg&gt;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;@param value string &lt;closure&gt;(<span class="keywordtype">object</span> user)</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;Optional hook to specify a message or take other measures when a message had to be discarded, because they could not be delivered to the player &lt;user&gt;. If the hook is not set, a standard message is used.</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;If the hook is a <span class="keywordtype">string</span>, <span class="keyword">this</span> text will be sent as soon as possible to the player informing about the lost transmission.</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;If the hook is a closure, it is the <span class="keyword">function</span> to be called and the result is used as the message to be sent. Lambda closures are bound to the interactive &lt;user&gt; first.</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;@history{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;introduced (3.3.719)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;@see @ref driver_hook_overview <span class="stringliteral">&quot;hook&quot;</span>, <a class="code" href="classefun.html#a68840ff50b3f2328be081a1f98fc32fe">efun::configure_interactive</a>()</div>
+<div class="ttc" id="classefun_html_a68840ff50b3f2328be081a1f98fc32fe"><div class="ttname"><a href="classefun.html#a68840ff50b3f2328be081a1f98fc32fe">efun.configure_interactive</a></div><div class="ttdeci">void configure_interactive(object ob, int what, mixed data)</div><div class="ttdoc">Sets the option what to the value data on the interactive ob or the default for all interactives if o...</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>msg_discarded.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:10 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

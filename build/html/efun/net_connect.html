@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::net_connect() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::net_connect() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::next_bit()" href="next_bit.html" />
     <link rel="prev" title="efun::negate()" href="negate.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,56 +49,53 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;comm.h&gt;</tr>
-<tr id="lpc.net_connect">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">net_connect</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;host</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;port</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.net_connect" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.net_connect">
+<!--[lpc.efun.net_connect]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">net_connect</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;host</em>, </td><td id="id2">
+int<em>&nbsp;port</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.net_connect" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Open a non-blocking TCP network connection to &lt;host&gt; and
-&lt;port&gt;.  On success, the connection is bound to the current
-object and the lfun logon() is called in the object.</p>
-<dl class="docutils">
-<dt>Returns one of the following values:</dt>
-<dd>NC_SUCCESS        Success
-NC_EUNKNOWNHOST   the host address could not be resolved
-NC_ENOSOCKET      error during socket creation
-NC_ENOBIND        socket could not be bound
-NC_ENOCONNECT     socket could not be connected</dd>
-<dt>(Details of the last three errors can be found in the driver&#8217;s error</dt>
-<dd><dl class="first last docutils">
-<dt>log.)</dt>
-<dd><p class="first">NC_ECONNREFUSED   remote host not listening/refusing
-NC_EMCONN         too many pending connections (transient, try</p>
+<p>Open a non-blocking TCP network connection to <a class="reference internal" href="#efun/net_connect.arg.host" title="host"><code class="xref lpc lpc-arg docutils literal"><span class="pre">host</span></code></a> and <a class="reference internal" href="#efun/net_connect.arg.port" title="port"><code class="xref lpc lpc-arg docutils literal"><span class="pre">port</span></code></a>. On success, the connection is bound to the current object and the lfun <a class="reference internal" href="../applied/logon.html#lpc.applied.logon" title="logon"><code class="xref lpc lpc-applied docutils literal"><span class="pre">logon</span></code>(A)</a> is called in the object.</p>
+<p>Returns one of the following values:</p>
 <blockquote>
-<div>again later)</div></blockquote>
-<dl class="last docutils">
-<dt>NC_ENORESSOURCES  insufficient system ressources (transient, try</dt>
-<dd>again later)</dd>
+<div><code class="xref lpc lpc-macro docutils literal"><span class="pre">NC_SUCCESS</span></code>        Success
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">NC_EUNKNOWNHOST</span></code>   the host address could not be resolved
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">NC_ENOSOCKET</span></code>      error during socket creation
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">NC_ENOBIND</span></code>        socket could not be bound
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">NC_ENOCONNECT</span></code>     socket could not be connected</div></blockquote>
+<dl class="docutils">
+<dt>(Details of the last three errors can be found in the driver&#8217;s error log.)</dt>
+<dd><code class="xref lpc lpc-macro docutils literal"><span class="pre">NC_ECONNREFUSED</span></code>   remote host not listening/refusing
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">NC_EMCONN</span></code>         too many pending connections (transient, try again later)
+<code class="xref lpc lpc-macro docutils literal"><span class="pre">NC_ENORESSOURCES</span></code>  insufficient system ressources (transient, try again later)</dd>
 </dl>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>If the driver is configured to support IPv6, &lt;host&gt; is first
-interpreted as IPv6 hostname. If that fails, &lt;host&gt; is then
-interpretd as IPv4 hostname.</p>
-<p>If the connection can&#8217;t be established immediately, the efun
-returns &#8216;success&#8217; and the driver will check in the background
-for the progress of the connection. When it is established,
-logon() will be called in the object. If the connection fails,
-logon(-1) will be called in the object.</p>
+<p>If the driver is configured to support IPv6, <a class="reference internal" href="#efun/net_connect.arg.host" title="host"><code class="xref lpc lpc-arg docutils literal"><span class="pre">host</span></code></a> is first interpreted as IPv6 hostname. If that fails, <a class="reference internal" href="#efun/net_connect.arg.host" title="host"><code class="xref lpc lpc-arg docutils literal"><span class="pre">host</span></code></a> is then interpretd as IPv4 hostname.</p>
+<p>If the connection can&#8217;t be established immediately, the efun returns &#8216;success&#8217; and the driver will check in the background for the progress of the connection. When it is established, <a class="reference internal" href="../applied/logon.html#lpc.applied.logon" title="logon"><code class="xref lpc lpc-applied docutils literal"><span class="pre">logon</span></code>(A)</a> will be called in the object. If the connection fails, <code class="docutils literal"><span class="pre">logon(-1)</span></code> will be called in the object.</p>
 <p>The efun raises a privilege violation (&#8220;net_connect&#8221;, host, port).</p>
-<p>BUGS
-A non-blocking connect() doesn&#8217;t imply a non-blocking
-forward name resolution. If you provide a hostname instead
-of an IP address to connect to, the driver will block until
-the name is resolved. This may be an issue, depending on how
-fast your nameserver replies. Non-blocking forward DNS
-resolution can currently only be achieved using ERQ_LOOKUP.</p>
+<div class="admonition limit">
+<p class="first admonition-title">Limit</p>
+<p class="last">A non-blocking <code class="xref lpc lpc-efun docutils literal"><span class="pre">connect</span></code> doesn&#8217;t imply a non-blocking forward name resolution. If you provide a hostname instead of an IP address to connect to, the driver will block until the name is resolved. This may be an issue, depending on how fast your nameserver replies. Non-blocking forward DNS resolution can currently only be achieved using <code class="xref lpc lpc-macro docutils literal"><span class="pre">ERQ_LOOKUP</span></code>.</p>
+</div>
+<div class="section" id="LORE">
+<h2>LORE<a class="headerlink" href="#LORE" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>First version 1992 by Snake and LynX for Nemesis.</li>
+<li>Improved 1993 by Junky.</li>
+</ul>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.10</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../applied/logon.html#lpc.applied.logon" title="logon"><code class="xref lpc lpc-applied docutils literal"><span class="pre">logon</span></code>(A)</a></p>
+</div>
 </div>
 </div>
 
@@ -109,8 +108,8 @@ resolution can currently only be achieved using ERQ_LOOKUP.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -120,21 +119,25 @@ resolution can currently only be achieved using ERQ_LOOKUP.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::net_connect()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#LORE">LORE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -146,7 +149,7 @@ resolution can currently only be achieved using ERQ_LOOKUP.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/net_connect.txt"
+      <a href="../_sources/efun/net_connect.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

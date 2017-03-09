@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: internals/codestyle.md Source File</title>
+<title>LDMud: internals/codestyle.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('codestyle_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -109,7 +108,7 @@ $(document).ready(function(){initNavTree('codestyle_8md.html','');});
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;Any reader of the <span class="stringliteral">&quot;real programmers don&#39;t write comments&quot;</span>-school of thought is asked to take his or her incompetence elsewhere.</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;## LANGUAGE #</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;## Language #</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;The language is ISO Standard C (also known as <span class="stringliteral">&#39;C89&#39;</span> or <span class="stringliteral">&#39;ANSI C&#39;</span>). Common compiler extensions or features from the <span class="keyword">new</span> C99 standard are permitted <span class="keywordflow">if</span> their addition is transparent <span class="keywordflow">for</span> other C89 compilers. For example: the <span class="stringliteral">&#39;inline&#39;</span> keyword permitted through the use of the INLINE macro; so are the Metrowerks-pragmas and GNU-attributes. Not permitted are GNU<span class="stringliteral">&#39;s local functions.</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="stringliteral"></span></div>
@@ -129,7 +128,7 @@ $(document).ready(function(){initNavTree('codestyle_8md.html','');});
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="stringliteral">~~~are not legal and shouldn&#39;</span>t be used.</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;- Don<span class="stringliteral">&#39;t make assumptions about the size of the base types (e.g. a char might have more than 8 bits). If such an assumption is unavoidable, comment it clearly and if possible add a test to raise a compile or runtime error if the assumption is not met.</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="stringliteral">## STYLE #</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="stringliteral">## Style #</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="stringliteral"></span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="stringliteral">All modules (.c-files) have to have their interface in an accompanying .h-file. The header file must be guarded against repeated inclusion with the normal:</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="stringliteral"></span></div>
@@ -220,7 +219,7 @@ $(document).ready(function(){initNavTree('codestyle_8md.html','');});
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;[ The reasoning behind <span class="keyword">this</span> style is to use the language elements to create strong visual structures <span class="keywordflow">for</span> the eyes to follow. By doing so, the structure of the program becomes obvious without much conscious thought.</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;]</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">## COMMENTING #</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">## Commenting #</span></div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;The comments also follow the idea of giving strong visual clues of</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;how the program is structured.</div>
@@ -335,7 +334,7 @@ $(document).ready(function(){initNavTree('codestyle_8md.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>codestyle.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:10 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

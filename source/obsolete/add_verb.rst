@@ -13,4 +13,4 @@
 
   :history 3.3 removed: obsoleted by add_action().
 
-  .. seealso:: :efun:`add_action`, :efun:`query_verb`, :obsolete:`add_xverb`, :efun:`remove_action`
+  .. seealso:: :efun:`add_action`, :efun:`query_verb`, :efun:`add_xverb`, :efun:`remove_action`

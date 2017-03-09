@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::localtime() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::localtime() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::log()" href="log.html" />
     <link rel="prev" title="efun::load_object()" href="load_object.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,43 +49,79 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;time.h&gt;</tr>
-<tr id="lpc.localtime">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> * </td><td>
-<code class="descname">localtime</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;clock</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.localtime" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.localtime">
+<!--[lpc.efun.localtime]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> * </td><td>
+<code class="descname">localtime</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+int<em>&nbsp;clock</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.localtime" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> * </td><td>
-<code class="descname">localtime</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;*uclock</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> * </td><td>
+<code class="descname">localtime</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+int<em>&nbsp;*uclock</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Interpret the argument clock as number of seconds since Jan,
-1st, 1970, 0:00, and return the time in local time in a nice structure.
-if &lt;clock&gt; is not specified, time() is used as default.</p>
-<p>Alternatively, accept an array of two ints: the first is &lt;clock&gt;
-value as in the first form, the second int is the number of
-microseconds elapsed in the current second, which is ignored.</p>
+<p>Interpret the argument clock as number of seconds since <code class="docutils literal"><span class="pre">Jan,</span> <span class="pre">1st,</span> <span class="pre">1970,</span> <span class="pre">0:00</span></code>, and return the time in local time in a nice structure. if <a class="reference internal" href="#efun/localtime.arg.clock" title="clock"><code class="xref lpc lpc-arg docutils literal"><span class="pre">clock</span></code></a> is not specified, <code class="docutils literal"><span class="pre">time()</span></code> is used as default.</p>
+<p>Alternatively, accept an array of two ints: the first is <a class="reference internal" href="#efun/localtime.arg.clock" title="clock"><code class="xref lpc lpc-arg docutils literal"><span class="pre">clock</span></code></a> value as in the first form, the second int is the number of microseconds elapsed in the current second, which is ignored.</p>
 <p>The result is an array of integers:</p>
-<blockquote>
-<div>int TM_SEC   (0) : Seconds (0..59)
-int TM_MIN   (1) : Minutes (0..59)
-int TM_HOUR  (2) : Hours (0..23)
-int TM_MDAY  (3) : Day of the month (1..31)
-int TM_MON   (4) : Month of the year (0..11)
-int TM_YEAR  (5) : Year (e.g.  2001)
-int TM_WDAY  (6) : Day of the week (Sunday = 0)
-int TM_YDAY  (7) : Day of the year (0..365)
-int TM_ISDST (8) : TRUE: Daylight saving time</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">place</th>
+<th class="head">contains</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>int <code class="xref lpc lpc-macro docutils literal"><span class="pre">TM_SEC</span></code>   (0)</td>
+<td>Seconds (0..59)</td>
+</tr>
+<tr class="row-odd"><td>int <code class="xref lpc lpc-macro docutils literal"><span class="pre">TM_MIN</span></code>   (1)</td>
+<td>Minutes (0..59)</td>
+</tr>
+<tr class="row-even"><td>int <code class="xref lpc lpc-macro docutils literal"><span class="pre">TM_HOUR</span></code>  (2)</td>
+<td>Hours (0..23)</td>
+</tr>
+<tr class="row-odd"><td>int <code class="xref lpc lpc-macro docutils literal"><span class="pre">TM_MDAY</span></code>  (3)</td>
+<td>Day of the month (1..31)</td>
+</tr>
+<tr class="row-even"><td>int <code class="xref lpc lpc-macro docutils literal"><span class="pre">TM_MON</span></code>   (4)</td>
+<td>Month of the year (0..11)</td>
+</tr>
+<tr class="row-odd"><td>int <code class="xref lpc lpc-macro docutils literal"><span class="pre">TM_YEAR</span></code>  (5)</td>
+<td>Year (e.g. 2001)</td>
+</tr>
+<tr class="row-even"><td>int <code class="xref lpc lpc-macro docutils literal"><span class="pre">TM_WDAY</span></code>  (6)</td>
+<td>Day of the week (Sunday = 0)</td>
+</tr>
+<tr class="row-odd"><td>int <code class="xref lpc lpc-macro docutils literal"><span class="pre">TM_YDAY</span></code>  (7)</td>
+<td>Day of the year (0..365)</td>
+</tr>
+<tr class="row-even"><td>int <code class="xref lpc lpc-macro docutils literal"><span class="pre">TM_ISDST</span></code> (8)</td>
+<td>TRUE during daylight saving time</td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Today is %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Today is %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
        <span class="p">({</span> <span class="s">&quot;Sunday&quot;</span><span class="p">,</span> <span class="s">&quot;Monday&quot;</span><span class="p">,</span> <span class="s">&quot;Tuesday&quot;</span><span class="p">,</span> <span class="s">&quot;Wednesday&quot;</span><span class="p">,</span>
           <span class="s">&quot;Thursday&quot;</span><span class="p">,</span> <span class="s">&quot;Friday&quot;</span><span class="p">,</span> <span class="s">&quot;Saturday&quot;</span> <span class="p">})[</span><span class="n">localtime</span><span class="p">()[</span><span class="n">TM_WDAY</span><span class="p">]]);</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.9</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="ctime.html#lpc.efun.ctime" title="ctime"><code class="xref lpc lpc-efun docutils literal"><span class="pre">ctime</span></code>(E)</a>, <a class="reference internal" href="gmtime.html#lpc.efun.gmtime" title="gmtime"><code class="xref lpc lpc-efun docutils literal"><span class="pre">gmtime</span></code>(E)</a>, <a class="reference internal" href="time.html#lpc.efun.time" title="time"><code class="xref lpc lpc-efun docutils literal"><span class="pre">time</span></code>(E)</a>, <a class="reference internal" href="utime.html#lpc.efun.utime" title="utime"><code class="xref lpc lpc-efun docutils literal"><span class="pre">utime</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -97,8 +135,8 @@ int TM_ISDST (8) : TRUE: Daylight saving time</div></blockquote>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -110,6 +148,8 @@ int TM_ISDST (8) : TRUE: Daylight saving time</div></blockquote>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
 <li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
 </ul>
 </li>
 </ul>
@@ -117,15 +157,14 @@ int TM_ISDST (8) : TRUE: Daylight saving time</div></blockquote>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -137,7 +176,7 @@ int TM_ISDST (8) : TRUE: Daylight saving time</div></blockquote>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/localtime.txt"
+      <a href="../_sources/efun/localtime.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

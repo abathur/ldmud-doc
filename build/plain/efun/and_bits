@@ -4,9 +4,9 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   <str1> and <str2> are both bitstrings. The result of the function is a 
-   bitstring with the binary-and of <str1> and <str2>, ie. a string in which a
-   bit is set only if both corresponding bits in the input strings are set, 
+   str1(E) and str2(E) are both bitstrings. The result of the function is a 
+   bitstring with the binary-and of str1(E) and str2(E), ie. a string in which
+   a bit is set only if both corresponding bits in the input strings are set,
    too.
 
    USAGE
@@ -22,6 +22,5 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   clear_bit()(E), set_bit()(E), test_bit()(E), next_bit()(E), last_bit()(E), 
-   count_bits()(E), or_bits()(E), xor_bits()(E), invert_bits()(E), 
-   copy_bits()(E)
+   clear_bit(E), set_bit(E), test_bit(E), next_bit(E), last_bit(E), 
+   count_bits(E), or_bits(E), xor_bits(E), invert_bits(E), copy_bits(E)

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: concepts/imp.md Source File</title>
+<title>LDMud: topics/imp.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('imp_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,46 +95,42 @@ $(document).ready(function(){initNavTree('imp_8md.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">concepts/imp.md</div>  </div>
+<div class="title">topics/imp.md</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;imp {#driver_concepts_imp}</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;==========================</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;InterMUD Message Protocol {#driver_topics_imp}</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;==============================================</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;This document describes IMP, the intermud message protocol, also known as Intermud-1.</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;Imp messages are exchanged between muds <span class="keyword">using</span> UDP (unreliable datagram protocol) packets. Each mud provides a connection endpoint which is given by the ip host address and the UDP port number. Muds may then send messages to <span class="keyword">this</span> port by <span class="keyword">using</span> the <a class="code" href="classefun.html">efun</a> send_imp(). The <a class="code" href="classapplied.html">applied</a> <span class="keyword">function</span> receive_imp will be called by the driver in the <a class="code" href="classmaster.html">master</a> <span class="keywordtype">object</span> <span class="keywordflow">if</span> a imp message arrives at the mud<span class="stringliteral">&#39;s UDP port.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;Imp messages are exchanged between muds <span class="keyword">using</span> UDP (unreliable datagram protocol) packets. Each mud provides a connection endpoint which is given by the ip host address and the UDP port number. Muds may then send messages to <span class="keyword">this</span> port by <span class="keyword">using</span> `send_imp`. The <a class="code" href="classapplied.html">applied</a> <span class="keyword">function</span> receive_imp will be called by the driver in the <a class="code" href="classmaster.html">master</a> <span class="keywordtype">object</span> <span class="keywordflow">if</span> a imp message arrives at the mud<span class="stringliteral">&#39;s UDP port.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="stringliteral">Imp message packets have the following format:</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="stringliteral">Imp message packets have the following format: `&lt;em&gt;password&lt;/em&gt;@&lt;em&gt;objectname&lt;/em&gt;@&lt;em&gt;functionname&lt;/em&gt;[[@&lt;em&gt;argument&lt;/em&gt;]...]`</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">password@objectname@functionname[[@argument]...]</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">&lt;password&gt; is the connection password to verify incoming imp packets. It is encoded using efun::crypt() and compared to the stored password. Each mud participating in the imp network has a secret password which is encoded by the admin and distributed to remote muds with which the mud should have direct connection. Encryted passwords may also propagated to other muds over already secure channels.</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">&lt;objectname&gt; is a logical name which is not to be confused with mudlib object filenames. It is used by receive_msg in the master object to route the message to another object by associating the logical object name with a real mudlib file name. A good idea would be to reserve a special directory for imp objects, e.g. /secure/net/&lt;objectname&gt;.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="stringliteral">&lt;em&gt;password&lt;/em&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="stringliteral">The connection password to verify incoming imp packets. It is encoded using efun::crypt() and compared to the stored password. Each mud participating in the imp network has a secret password which is encoded by the admin and distributed to remote muds with which the mud should have direct connection. Encryted passwords may also propagated to other muds over already secure channels.</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">&lt;em&gt;objectname&lt;/em&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">A logical name which is not to be confused with mudlib object filenames. It is used by receive_msg in the master object to route the message to another object by associating the logical object name with a real mudlib file name. A good idea would be to reserve a special directory for imp objects, e.g. `/secure/net/&lt;em&gt;objectname&lt;/em&gt;`.</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="stringliteral">&lt;functionname&gt; is the function which is called by the master object in the object described by &lt;objectname&gt;.</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="stringliteral">&lt;argument&gt; are additional arguments which are handed to the function &lt;functionname&gt;. The exact definition of functions and arguments are left to the imp applications.</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="stringliteral">@par note:The above is only particularly correct nowadays. Recently a package name &quot;inetd&quot; was published, that is based on the IMP mechanism in the driver (send_imp() and receive_imp()), but it uses a different message format. That package seems to enjoy much publicity and is installed in a number of muds. For details look into the inetd description.Another method of inter mud connection is the Mudlink package, which uses a normal user connection that is connected to a special user object, and an auxiliary process that does the connection to other muds.</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="stringliteral">&lt;em&gt;functionname&lt;/em&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="stringliteral">The function which is called by the master object in the object described by &lt;em&gt;objectname&lt;/em&gt;.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="stringliteral">&lt;em&gt;argument&lt;/em&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="stringliteral">are additional arguments which are handed to the function &lt;em&gt;functionname&lt;/em&gt;. The exact definition of functions and arguments are left to the imp applications.</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="stringliteral">AUTHOR:</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="stringliteral">@par misleading: The above is only partially correct nowadays. Recently a package name &quot;inetd&quot; was published, that is based on the IMP mechanism in the driver (efun::send_udp() and master::receive_udp()), but it uses a different message format. That package seems to enjoy much publicity and is installed in a number of muds. For details look into the inetd description.Another method of inter mud connection is the Mudlink package, which uses a normal user connection that is connected to a special user object, and an auxiliary process that does the connection to other muds.</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">~~~{.c}</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="stringliteral">Deepthought</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="stringliteral">~~~</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="stringliteral">LAST UPDATED:</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">Author</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="stringliteral">- Deepthought</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="stringliteral">Last Updated</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="stringliteral">~~~{.c}</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="stringliteral">Deepthought, 10-Nov-92</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="stringliteral">Pepel, 18-Nov-93</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="stringliteral">~~~</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="stringliteral"></span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="stringliteral">@see efun::send_udp(), master::receive_udp(), @ref driver_concepts_intermud &quot;intermud&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="stringliteral">- Deepthought, 10-Nov-92</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="stringliteral">- Pepel, 18-Nov-93</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="stringliteral">@see efun::send_udp(), master::receive_udp()</span></div>
 <div class="ttc" id="classmaster_html"><div class="ttname"><a href="classmaster.html">master</a></div><div class="ttdef"><b>Definition:</b> <a href="compile__object_8c_source.html#l00001">compile_object.c:1</a></div></div>
-<div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
 <div class="ttc" id="classapplied_html"><div class="ttname"><a href="classapplied.html">applied</a></div><div class="ttdef"><b>Definition:</b> <a href="____INIT_8c_source.html#l00001">__INIT.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -143,7 +138,7 @@ $(document).ready(function(){initNavTree('imp_8md.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>imp.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:07 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

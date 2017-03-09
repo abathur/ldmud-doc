@@ -5,14 +5,14 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Find the first call-out due to be executed for function <func> in the 
-   current object resp. for the closure <func>, and return the time left. If 
+   Find the first call-out due to be executed for function func(E) in the 
+   current object resp. for the closure func(E), and return the time left. If 
    no call-out is found return -1.
 
 HISTORY
 =======
-   - chaned (3.2.1@45) -- can now find a call_out to a closure
+   - changed (3.2.1@45) -- can now find a call_out to a closure
 
 SEE ALSO
 ========
-   call_out()(E), remove_call_out()(E), call_out_info()(E)
+   call_out(E), remove_call_out(E), call_out_info(E)

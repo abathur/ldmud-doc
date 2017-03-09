@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: concepts/mysql.md Source File</title>
+<title>LDMud: topics/mysql.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('mysql_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,35 +95,35 @@ $(document).ready(function(){initNavTree('mysql_8md.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">concepts/mysql.md</div>  </div>
+<div class="title">topics/mysql.md</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;mysql {#driver_concepts_mysql}</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;==============================</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;On hosts with the mySQL <span class="keyword">package </span>installed, the driver can be configured to interface with the mySQL database. If that is done, the driver defines the macro __MYSQL__ for LPC programs and activates a number of efuns.</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;mysql {#driver_topics_mysql}</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;============================</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;On hosts with the mySQL <span class="keyword">package </span>installed, the driver can be configured to interface with the mySQL database. If that is done, the driver defines the @ref driver_topics_predefined &quot;__MYSQL__&quot; for LPC programs and activates a number of efuns.</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;## CONFIGURATION #</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;## Configuration #</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;Create a dedicated user in the mySQL database for the driver. Enter this username and password in the file pkg-mysql.c, function mysql_real_connect(), and compile the driver (the username and password are built into the driver for security reasons). If you choose to not create either a username and/or a password, leave the corresponding entry at 0.</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;Create a dedicated user in the mySQL database for the driver. Enter this username and password in the file pkg-mysql.c, (function `mysql_real_connect()`), and compile the driver (the username and password are built into the driver for security reasons). If you choose to not create either a username and/or a password, leave the corresponding entry at 0.</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;Use mysqladmin to create any databases you want to provide - the names are later used in the efun db_connect() to connect to the databases.</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;Use mysqladmin to create any databases you want to provide - the names are later used in the efun::db_connect() to connect to the databases.</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;## USAGE #</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;## Working with a mySQL database #</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;The idea behind SQL-support is that you can swap large amounts of data into a database where it can be accessed very easily. As mySQL &quot;limits&quot; the number of connections to 100 and as every connection to the mySQL-server takes time, you should use database serverobjects in your MUD which constantly keep the connection to the mySQL-server.</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;To connect to your mySQL-server, use the efun db_connect(). It takes only one argument which is the name of the database (which must exist). The return-value of db_connect() is an integer representing the unique handle to the database with which you will identify your connection later.</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;To connect to your mySQL-server, use the efun::db_connect(). It takes only one argument which is the name of the database (which must exist). The return-value of efun::db_connect() is an integer representing the unique handle to the database with which you will identify your connection later.</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;To send or retrieve data from this connection, use db_exec(). The first parameter for all efuns dealing with an open connection is always the handle and so is the first argument the handle and the second one the command you want to issue. The return-value is either 0 if there was an error in your command (this can have various reasons), otherwise your handle is returned again. A typical SQL-statement to retrieve data would be like this:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;To send or retrieve data from this connection, use efun::db_exec(). The first parameter for all efuns dealing with an open connection is always the handle and so is the first argument the handle and the second one the command you want to issue. The return-value is either 0 if there was an error in your command (this can have various reasons), otherwise your handle is returned again. A typical SQL-statement to retrieve data would be like:</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;~~~{.c}</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;select aliases.command from aliases where (name = &#39;mario&#39; AND</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  alias regexp &#39;l.*&#39;)</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;~~~</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;As you know, mySQL accepts either &quot; or &#39; to classify strings for parameters. Most likely, you will pass variables and don&#39;t know whether they contain one or more of these key-chars (or even other chars that need to be converted). mySQL provides a function for converting just any string into an acceptable argument and this is implemented in db_conv_string().</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;As you know, mySQL accepts either &quot; or &#39; to classify strings for parameters. Most likely, you will pass variables and don&#39;t know whether they contain one or more of these key-chars (or even other chars that need to be converted). mySQL provides a function for converting just any string into an acceptable argument and this is implemented in efun::db_conv_string().</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;So the above example with variables looks like this:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;So the above example with variables looks like:</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;~~~{.c}</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;select aliases.command from aliases where (name =&#39;&quot;+</div>
@@ -132,134 +131,131 @@ $(document).ready(function(){initNavTree('mysql_8md.html','');});
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  db_conv_string(mask)+&quot;&#39;)</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;~~~</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;I left out the db_exec()-stuff, more complete examples will follow.</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;I left out the efun::db_exec()-stuff, more complete examples will follow.</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;After you initiated a statement that should return rows from the database, use db_fetch() to retrieve the data. db_fetch() returns the data row by row and not all at once. You need to call it until it returns 0. THIS IS IMPORTANT! If stop calling db_fetch() before it reaches the end of data, serious inconsistencies can happen.</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;@par warning: After you initiated a statement that could return rows from the database, use efun::db_fetch() to retrieve each row. You need to call it until it returns 0. If you stop calling efun::db_fetch() before it reaches the end of data, serious inconsistencies can happen!</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;If you used a DELETE- or UPDATE-statement, you cannot call db_fetch(), but you might be interested in the number of deleted/changed rows which can be queried with db_affected_rows().</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;If you used a `DELETE` or `UPDATE` statement, you cannot call efun::db_fetch(), but you can query the number of deleted/changed rows with efun::db_affected_rows().</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;After all operations are done in the database, you should use db_close() to close the connection again. If you are using a database-server-concept, place it in the remove()-function.</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;After all operations are done in the database, you should use efun::db_close() to close the connection again. If you are using a database-server concept (such as the one in the usage section), call it from the lfun applied::remove().</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;The SQL-efuns have some built-in optimization-features to speed up often used connections. To get a list of all open connections to the mySQL-server, use db_handles() which returns an array of integers with all open handles.</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;The SQL efuns have some built-in optimization-features to speed up often used connections. To get a list of all open connections to the mySQL-server, use efun::db_handles() which returns an array of integers with all open handles.</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;## SECURITY #</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;## Security #</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;Most SQL efuns (unless execute by the master or the simul-efun object) trigger a privilege_violation (&quot;mysql&quot;, &quot;&lt;efun_name&gt;&quot;). If a more finegrained control is desired, overload the individual efuns with a nomask simul-efun.</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;Most SQL efuns (unless executed by the master or simul-efun objects) trigger a `privilege_violation (&quot;mysql&quot;, &quot;&lt;efun_name&gt;&quot;)`. If a more fine-grained control is desired, overload the individual efuns with a nomask simul-efun.</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;The unprivileged efuns are:</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;- efun::db_conv_string()</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;@par warning:The driver enables automatic reconnects on the database connections. This means that if a connection is lost--the most common case for this is timeouts, which by default happen after 28800 seconds of inactivity--an attempt will be made to establish a new connection to the database server. When that happens, all session state (temprary tables and state changes from SET statements) will be lost. It&#39;s best not to rely on such state.</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;@par warning: The driver enables automatic reconnects on the database connections. This means that if a connection is lost (the most common case for this is timeouts, which by default happen after 28800 seconds of inactivity) an attempt will be made to establish a new connection to the database server. When that happens, all session state (temprary tables and state changes from `SET` statements) will be lost. It&#39;s best not to rely on such state.</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;## EXAMPLE #</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;A simple server to store aliases could be implemented like this:</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;~~~{.c}</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">**  CREATION:</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">**</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">**  create table aliases (</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">**      name varchar(15) not NULL,</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">**      alias varchar(20) not NULL,</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">**      command varchar(255) not NULL,</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">**      primary key (name, alias));</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;#define DATABASE &quot;mud&quot;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;Author</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;Mark Daniel Reidel and others.</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;@usage{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;A simple server to store aliases could be implemented like this:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">**  CREATION:</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">**</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">**  create table aliases (</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">**      name varchar(15) not NULL,</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">**      alias varchar(20) not NULL,</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">**      command varchar(255) not NULL,</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">**      primary key (name, alias));</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;private int handle;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;#define DATABASE &quot;mud&quot;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">public</span> <span class="keywordtype">void</span> create()</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  handle = db_connect(DATABASE);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">public</span> <span class="keywordtype">int</span> <span class="keyword">remove</span>()</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordflow">if</span> ( handle )</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    db_close(handle);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  destruct(ME);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordflow">return</span> !ME;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">public</span> <span class="keywordtype">int</span> AddAlias(<span class="keywordtype">string</span> alias, <span class="keywordtype">string</span> command, <span class="keywordtype">object</span> ob)</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordflow">if</span> ( !handle )</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    handle = db_connect(DATABASE);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordflow">if</span> ( !db_exec(handle, <span class="stringliteral">&quot;insert into aliases (name, alias, command) values (&#39;&quot;</span> + getuid(ob) + <span class="stringliteral">&quot;&#39;,&#39;&quot;</span> + db_conv_string(alias)+ <span class="stringliteral">&quot;&#39;,&#39;&quot;</span> +db_conv_string(command) + <span class="stringliteral">&quot;&#39;)&quot;</span>) )</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">public</span> <span class="keywordtype">int</span> RemoveAlias(<span class="keywordtype">string</span> alias, <span class="keywordtype">object</span> ob)</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordtype">int</span> res;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordflow">if</span> ( !handle )</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    handle = db_connect(DATABASE);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  res = db_exec(handle,</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="stringliteral">&quot;delete from aliases where (name = &#39;&quot;</span>+ getuid(ob) + <span class="stringliteral">&quot;&#39; AND alias = &#39;&quot;</span> + db_conv_string(alias)+ <span class="stringliteral">&quot;&#39;)&quot;</span>);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordflow">if</span> ( !res )</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  res = db_affected_rows(handle);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">return</span> (res &gt; 0)?1:-1;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">public</span> mixed *QueryAliases(<span class="keywordtype">string</span> mask, <span class="keywordtype">object</span> ob)</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  mixed *result;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordtype">string</span> *tmp;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordflow">if</span> ( !handle )</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    handle = db_connect(DATABASE);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordflow">if</span> ( !db_exec(handle, <span class="stringliteral">&quot;select aliases.alias, aliases.command from aliases where (name = &#39;&quot;</span> + getuid(ob) + <span class="stringliteral">&quot;&#39; AND alias regexp &#39;&quot;</span> + db_conv_string(mask) + <span class="stringliteral">&quot;&#39;)&quot;</span>) )</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">return</span> ({ });</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  result = ({ });</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordflow">while</span> ( <span class="keyword">sizeof</span>(tmp = db_fetch(handle)) )</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    result += ({ tmp });</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">public</span> <span class="keywordtype">string</span> QueryAlias(<span class="keywordtype">string</span> alias, <span class="keywordtype">object</span> ob)</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;{</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  mixed *result;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordtype">string</span> *tmp;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <span class="keywordflow">if</span> ( !handle )</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    handle = db_connect(DATABASE);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordflow">if</span> ( !db_exec(handle, <span class="stringliteral">&quot;select aliases.command from aliases where (name = &#39;&quot;</span> + getuid(ob)+ <span class="stringliteral">&quot;&#39; AND alias = &#39;&quot;</span> + db_conv_string(alias) + <span class="stringliteral">&quot;&#39;)&quot;</span>) )</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  result = ({ });</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keywordflow">while</span> ( <span class="keyword">sizeof</span>(tmp = db_fetch(handle)) )</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    result += tmp;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(result)?result[0]:0;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;~~~</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;private int handle;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">public</span> <span class="keywordtype">void</span> create()</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  handle = db_connect(DATABASE);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">public</span> <span class="keywordtype">int</span> <span class="keyword">remove</span>()</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">if</span> ( handle )</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    db_close(handle);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  destruct(ME);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordflow">return</span> !ME;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">public</span> <span class="keywordtype">int</span> AddAlias(<span class="keywordtype">string</span> alias, <span class="keywordtype">string</span> command, <span class="keywordtype">object</span> ob)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordflow">if</span> ( !handle )</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    handle = db_connect(DATABASE);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordflow">if</span> ( !db_exec(handle, <span class="stringliteral">&quot;insert into aliases (name, alias, command) values (&#39;&quot;</span> + getuid(ob) + <span class="stringliteral">&quot;&#39;,&#39;&quot;</span> + db_conv_string(alias)+ <span class="stringliteral">&quot;&#39;,&#39;&quot;</span> +db_conv_string(command) + <span class="stringliteral">&quot;&#39;)&quot;</span>) )</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">public</span> <span class="keywordtype">int</span> RemoveAlias(<span class="keywordtype">string</span> alias, <span class="keywordtype">object</span> ob)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordtype">int</span> res;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">if</span> ( !handle )</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    handle = db_connect(DATABASE);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  res = db_exec(handle,</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="stringliteral">&quot;delete from aliases where (name = &#39;&quot;</span>+ getuid(ob) + <span class="stringliteral">&quot;&#39; AND alias = &#39;&quot;</span> + db_conv_string(alias)+ <span class="stringliteral">&quot;&#39;)&quot;</span>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordflow">if</span> ( !res )</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  res = db_affected_rows(handle);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">return</span> (res &gt; 0)?1:-1;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">public</span> mixed *QueryAliases(<span class="keywordtype">string</span> mask, <span class="keywordtype">object</span> ob)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;{</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  mixed *result;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordtype">string</span> *tmp;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordflow">if</span> ( !handle )</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    handle = db_connect(DATABASE);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keywordflow">if</span> ( !db_exec(handle, <span class="stringliteral">&quot;select aliases.alias, aliases.command from aliases where (name = &#39;&quot;</span> + getuid(ob) + <span class="stringliteral">&quot;&#39; AND alias regexp &#39;&quot;</span> + db_conv_string(mask) + <span class="stringliteral">&quot;&#39;)&quot;</span>) )</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">return</span> ({ });</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  result = ({ });</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keywordflow">while</span> ( <span class="keyword">sizeof</span>(tmp = db_fetch(handle)) )</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    result += ({ tmp });</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">public</span> <span class="keywordtype">string</span> QueryAlias(<span class="keywordtype">string</span> alias, <span class="keywordtype">object</span> ob)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;{</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  mixed *result;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <span class="keywordtype">string</span> *tmp;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordflow">if</span> ( !handle )</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    handle = db_connect(DATABASE);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <span class="keywordflow">if</span> ( !db_exec(handle, <span class="stringliteral">&quot;select aliases.command from aliases where (name = &#39;&quot;</span> + getuid(ob)+ <span class="stringliteral">&quot;&#39; AND alias = &#39;&quot;</span> + db_conv_string(alias) + <span class="stringliteral">&quot;&#39;)&quot;</span>) )</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  result = ({ });</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keywordflow">while</span> ( <span class="keyword">sizeof</span>(tmp = db_fetch(handle)) )</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    result += tmp;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(result)?result[0]:0;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;AUTHOR:</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;~~~</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;~~~{.c}</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;Mark Daniel Reidel and others.</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;~~~</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;@history{</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;introduced (3.2.8) -- as <span class="keyword">package</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keyword"></span>changed (3.2.9) -- integrated with driver</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;changed (3.2.11) -- added a privilege_violation() call for each efun</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;@see @ref driver_concepts_pgsql &quot;pgsql&quot;, efun::db_affected_rows(), efun::db_conv_string(), efun::db_close(), efun::db_connect(), efun::db_exec(), efun::db_fetch(), efun::db_handles(), efun::db_insert_id(), efun::db_coldefs(), efun::db_error()</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;@history{</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;introduced (3.2.8) -- as <span class="keyword">package</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keyword"></span>changed (3.2.9) -- integrated with driver</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;changed (3.2.11) -- added a privilege_violation() call for each efun</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;@see @ref driver_topics_pgsql &quot;pgsql&quot;, efun::db_affected_rows(), efun::db_conv_string(), efun::db_close(), efun::db_connect(), efun::db_exec(), efun::db_fetch(), efun::db_handles(), efun::db_insert_id(), efun::db_coldefs(), efun::db_error(), master::privilege_violation()</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>mysql.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:07 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

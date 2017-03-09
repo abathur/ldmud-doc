@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>applied::heart_beat() &mdash; LDMud UNRELEASED documentation</title>
+    <title>applied::heart_beat() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="applied" href="applied.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="applied::id()" href="id.html" />
     <link rel="prev" title="applied::get()" href="get.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,16 +47,16 @@
 <div class="section" id="SYNOPSIS">
 <span id="heart_beat"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.heart_beat">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">heart_beat</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.heart_beat" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.applied.heart_beat">
+<!--[lpc.applied.heart_beat]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">heart_beat</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.applied.heart_beat" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>This function will be called automatically every __HEART_BEAT_INTERVAL__ seconds. The driver will call the function directly in the object, even if the function is being shadowed.</p>
-<p>The start and stop of heart beat is controlled by the efun set_heart_beat(). Be careful not to have objects with heart beat running all the time, as it uses a lot of driver resources. If there is an error in the heart beat routine, the heart beat will be turned off for this object and <a class="reference internal" href="../master/heart_beat_error.html#lpc.heart_beat_error" title="heart_beat_error"><code class="xref lpc lpc-master docutils literal"><span class="pre">heart_beat_error</span></code>(M)</a> is called. If the call to the master function returns a non-zero value, the heart beat will be turned back on again.</p>
-<p>The function <code class="xref any docutils literal"><span class="pre">this_player()</span></code> will return this object, but only if it is living. Otherwise, <code class="xref any docutils literal"><span class="pre">this_player()</span></code> will return 0.</p>
+<p>This function will be called automatically every <a class="reference internal" href="../topics/predefined.html#lpc.macro.__HEART_BEAT_INTERVAL__" title="__HEART_BEAT_INTERVAL__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__HEART_BEAT_INTERVAL__</span></code></a> seconds. The driver will call the function directly in the object, even if the function is being shadowed.</p>
+<p>The start and stop of heart beat is controlled by <a class="reference internal" href="../efun/set_heart_beat.html#lpc.efun.set_heart_beat" title="set_heart_beat"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_heart_beat</span></code>(E)</a>. Be careful not to have objects with heart beat running all the time, as it uses a lot of driver resources. If there is an error in the heart beat routine, the heart beat will be turned off for this object and <a class="reference internal" href="../master/heart_beat_error.html#lpc.master.heart_beat_error" title="heart_beat_error"><code class="xref lpc lpc-master docutils literal"><span class="pre">heart_beat_error</span></code>(M)</a> is called. If the call to the master function returns a non-zero value, the heart beat will be turned back on again.</p>
+<p>The function <a class="reference internal" href="../efun/this_player.html#lpc.efun.this_player" title="this_player"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_player</span></code>(E)</a> will return this object, but only if it is living. Otherwise, <a class="reference internal" href="../efun/this_player.html#lpc.efun.this_player" title="this_player"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_player</span></code>(E)</a> will return 0.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">error messages will be given to the current user which will be the object itself or nobody.</p>
@@ -62,7 +64,7 @@
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
 <p>This tiny object has a heart_beat that messages its owner every time it is called:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">object</span> <span class="n">owner</span><span class="p">;</span>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">object</span> <span class="n">owner</span><span class="p">;</span>
 <span class="kt">void</span> <span class="nf">create</span><span class="p">()</span> <span class="p">{</span>
   <span class="p">...</span>
   <span class="n">owner</span><span class="o">=</span><span class="n">this_player</span><span class="p">();</span>
@@ -73,17 +75,17 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>We have to use tell_object() because write goes to the current user and this can only be the object itself or nobody.</p>
+<p>We have to use <a class="reference internal" href="../efun/tell_object.html#lpc.efun.tell_object" title="tell_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tell_object</span></code>(E)</a> because write goes to the current user and this can only be the object itself or nobody.</p>
 </div>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><strong>changed</strong> (<em>3.3.687</em>) &#8211; made the interval time configurable at driver compile time (used to be 2 seconds fixed).</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../efun/set_heart_beat.html#lpc.set_heart_beat" title="set_heart_beat"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_heart_beat()</span></code>(E)</a>, <a class="reference internal" href="../efun/call_out.html#lpc.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out()</span></code>(E)</a>, <a class="reference internal" href="../efun/enable_commands.html#lpc.enable_commands" title="enable_commands"><code class="xref lpc lpc-efun docutils literal"><span class="pre">enable_commands()</span></code>(E)</a>, <a class="reference internal" href="../master/heart_beat_error.html#lpc.heart_beat_error" title="heart_beat_error"><code class="xref lpc lpc-master docutils literal"><span class="pre">heart_beat_error</span></code>(M)</a></p>
+<p><a class="reference internal" href="../efun/set_heart_beat.html#lpc.efun.set_heart_beat" title="set_heart_beat"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_heart_beat</span></code>(E)</a>, <a class="reference internal" href="../efun/call_out.html#lpc.efun.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out</span></code>(E)</a>, <a class="reference internal" href="../efun/enable_commands.html#lpc.efun.enable_commands" title="enable_commands"><code class="xref lpc lpc-efun docutils literal"><span class="pre">enable_commands</span></code>(E)</a>, <a class="reference internal" href="../master/heart_beat_error.html#lpc.master.heart_beat_error" title="heart_beat_error"><code class="xref lpc lpc-master docutils literal"><span class="pre">heart_beat_error</span></code>(M)</a></p>
 </div>
 </div>
 </div>
@@ -97,8 +99,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -119,15 +121,14 @@
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -139,7 +140,7 @@
       &copy;good question.
       
       |
-      <a href="../_sources/applied/heart_beat.txt"
+      <a href="../_sources/applied/heart_beat.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

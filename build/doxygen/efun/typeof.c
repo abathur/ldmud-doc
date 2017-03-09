@@ -1,7 +1,6 @@
 public class efun {
    /**
-    * Returns a code for the type of the argument, as defined in
-    * <lpctypes.h>.
+    * Returns a code for the type of the argument, as defined in <lpctypes.h>.
     * 
     * @headerfile <lpctypes.h>
     * 

@@ -9,3 +9,11 @@ DESCRIPTION
 
    It starts at a driver given high value and is reduced with each executed 
    statement.
+
+HISTORY
+=======
+   - changed (3.2.6) -- the initial value was made available as macro.
+
+SEE ALSO
+========
+   rusage(E), command(E), query_limits(E)

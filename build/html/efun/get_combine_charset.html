@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::get_combine_charset() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::get_combine_charset() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::get_connection_charset()" href="get_connection_charset.html" />
     <link rel="prev" title="efun::garbage_collection()" href="garbage_collection.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,23 +49,33 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;comm.h&gt;</tr>
-<tr id="lpc.get_combine_charset">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> </td><td>
-<code class="descname">get_combine_charset</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;mode</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.get_combine_charset" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.get_combine_charset">
+<!--[lpc.efun.get_combine_charset]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> </td><td>
+<code class="descname">get_combine_charset</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+int<em>&nbsp;mode</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.get_combine_charset" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Return the combine charset of the current interactive in the form
-requested by &lt;mode&gt;:</p>
+<p>Return the combine charset of the current interactive in the form requested by <a class="reference internal" href="#efun/get_combine_charset.arg.mode" title="mode"><code class="xref lpc lpc-arg docutils literal"><span class="pre">mode</span></code></a>:</p>
 <blockquote>
-<div>&lt;mode&gt; == CHARSET_VECTOR: return as bitvector
-&lt;mode&gt; == CHARSET_STRING: return as string</div></blockquote>
-<p>The bitvector is interpreted as an array of 8-bit-values and might
-contain up to 32 elements. Character n is &#8220;combinable&#8221;
-if sizeof(bitvector) &gt; n/8 &amp;&amp; bitvector[n/8] &amp; (1 &lt;&lt; n%8) .</p>
+<div><ul class="simple">
+<li><a class="reference internal" href="#efun/get_combine_charset.arg.mode" title="mode"><code class="xref lpc lpc-arg docutils literal"><span class="pre">mode</span></code></a> == <code class="xref lpc lpc-macro docutils literal"><span class="pre">CHARSET_VECTOR</span></code>: return as bitvector</li>
+<li><a class="reference internal" href="#efun/get_combine_charset.arg.mode" title="mode"><code class="xref lpc lpc-arg docutils literal"><span class="pre">mode</span></code></a> == <code class="xref lpc lpc-macro docutils literal"><span class="pre">CHARSET_STRING</span></code>: return as string</li>
+</ul>
+</div></blockquote>
+<p>The bitvector is interpreted as an array of 8-bit-values and might contain up to 32 elements. Character n is &#8220;combinable&#8221; if <code class="docutils literal"><span class="pre">sizeof(bitvector)</span> <span class="pre">&gt;</span> <span class="pre">n/8</span> <span class="pre">&amp;&amp;</span> <span class="pre">bitvector[n/8]</span> <span class="pre">&amp;</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">n%8)</span></code>.</p>
 <p>If there is no current interactive, the function returns 0.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.10</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="get_connection_charset.html#lpc.efun.get_connection_charset" title="get_connection_charset"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_connection_charset</span></code>(E)</a>, <a class="reference internal" href="get_connection_charset.html#lpc.efun.get_connection_charset" title="get_connection_charset"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_connection_charset</span></code>(E)</a></p>
+</div>
 </div>
 </div>
 
@@ -76,8 +88,8 @@ if sizeof(bitvector) &gt; n/8 &amp;&amp; bitvector[n/8] &amp; (1 &lt;&lt; n%8) .
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -87,21 +99,24 @@ if sizeof(bitvector) &gt; n/8 &amp;&amp; bitvector[n/8] &amp; (1 &lt;&lt; n%8) .
   <ul>
 <li><a class="reference internal" href="#">efun::get_combine_charset()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -113,7 +128,7 @@ if sizeof(bitvector) &gt; n/8 &amp;&amp; bitvector[n/8] &amp; (1 &lt;&lt; n%8) .
       &copy;good question.
       
       |
-      <a href="../_sources/efun/get_combine_charset.txt"
+      <a href="../_sources/efun/get_combine_charset.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

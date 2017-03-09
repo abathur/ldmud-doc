@@ -4,7 +4,7 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   This method is called when efun process_string() is used without a current 
+   This method is called when process_string(E) is used without a current 
    object (e.g. from notify_fail method). The current object will be set to 
    the current command giver, and will receive the euid returned from this 
    function.
@@ -12,9 +12,11 @@ DESCRIPTION
    If strict-euids, this function must exist and return a string. Otherwise 
    the function is optional and/or may return 0.
 
-   Since 3.2.1, get_bb_uid() is needed just for process_string() if no 
-   this_object() is present.
+HISTORY
+=======
+   - changed (3.2.1) -- get_bb_uid(M) is needed just for process_string(E)
+     if no `this_object()` is present.
 
 SEE ALSO
 ========
-   uids(C), creator_file, creator()(E), get_master_uid(M)
+   >>:concept:`uids`<<, creator(E), get_master_uid(M)

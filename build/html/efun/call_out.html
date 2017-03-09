@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::call_out() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::call_out() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::call_out_info()" href="call_out_info.html" />
     <link rel="prev" title="efun::call_other()" href="call_other.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,76 +47,46 @@
 <div class="section" id="SYNOPSIS">
 <span id="call_out"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.call_out">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">call_out</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;fun</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;delay</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;arg</em>, </td><td>
-...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.call_out" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.call_out">
+<!--[lpc.efun.call_out]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">call_out</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;fun</em>, </td><td id="id2">
+int<em>&nbsp;delay</em>, </td><td id="id3">
+mixed<em>&nbsp;arg</em>, </td><td id="id4">
+...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.call_out" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">call_out</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;cl</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;delay</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;arg</em>, </td><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">call_out</code></td><td><span class="sig-paren">(</span></td><td id="id5">
+closure<em>&nbsp;cl</em>, </td><td id="id6">
+int<em>&nbsp;delay</em>, </td><td id="id7">
+mixed<em>&nbsp;arg</em>, </td><td id="id8">
 ...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Set up a call to function fun in the current object, or to closure cl. The call will take place after <a class="reference internal" href="#efun/call_out.arg.delay" title="delay"><code class="xref lpc lpc-arg docutils literal"><span class="pre">delay</span></code></a> seconds, with the remaining argument list provided. <a class="reference internal" href="#efun/call_out.arg.delay" title="delay"><code class="xref lpc lpc-arg docutils literal"><span class="pre">delay</span></code></a> can be a minimum time of 0 (negative values are implicitly treated as 0), but the real delay will be something between <a class="reference internal" href="#efun/call_out.arg.delay" title="delay"><code class="xref lpc lpc-arg docutils literal"><span class="pre">delay</span></code></a> and <a class="reference internal" href="#efun/call_out.arg.delay" title="delay"><code class="xref lpc lpc-arg docutils literal"><span class="pre">delay</span></code></a> + <a class="reference internal" href="../topics/predefined.html#lpc.macro.__ALARM_TIME__" title="__ALARM_TIME__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__ALARM_TIME__</span></code></a>.</p>
+<p><a class="reference internal" href="#lpc.efun.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out</span></code>(E)</a> saves and restores the current user. It is now possible to use <a class="reference internal" href="say.html#lpc.efun.say" title="say"><code class="xref lpc lpc-efun docutils literal"><span class="pre">say</span></code>(E)</a> or <a class="reference internal" href="write.html#lpc.efun.write" title="write"><code class="xref lpc lpc-efun docutils literal"><span class="pre">write</span></code>(E)</a> which rely on a current user to be something useful.</p>
+<p><a class="reference internal" href="#lpc.efun.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out</span></code>(E)</a> can only call functions by name <a class="reference internal" href="#efun/call_out.arg.fun" title="fun"><code class="xref lpc lpc-arg docutils literal"><span class="pre">fun</span></code></a> which are publicly accessible, i.e. &#8220;public&#8221; and &#8220;static&#8221; functions. &#8220;private&#8221; and &#8220;protected&#8221; functions can&#8217;t be called.</p>
+<p>If <a class="reference internal" href="#efun/call_out.arg.fun" title="fun"><code class="xref lpc lpc-arg docutils literal"><span class="pre">fun</span></code></a> does not define a publicly accessible function, the efun will call the <a class="reference internal" href="../hook/default_method.html#lpc.hook.H_DEFAULT_METHOD" title="H_DEFAULT_METHOD"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_DEFAULT_METHOD</span></code>(H)</a> hook if set. Calls to the master object never use the <a class="reference internal" href="../hook/default_method.html#lpc.hook.H_DEFAULT_METHOD" title="H_DEFAULT_METHOD"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_DEFAULT_METHOD</span></code>(H)</a> hook.</p>
+<p>The execution of the :efun:<a href="#id9"><span class="problematic" id="id10">`</span></a>call_out`s implies a simple (not exhaustive) measure against rabbits: the evaluation costs of those call_outs executing at the same time are summed up on a per-UID base. If the summed-up costs exceed the given maximum, a &#8216;too long evaluation&#8217; error will occur and any remaining call_outs of this user scheduled for the same time are discarded.</p>
+<p>If two :efun:<a href="#id11"><span class="problematic" id="id12">`</span></a>call_out`s were started with the same target time the one that was issued first will be executed first.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>This will call the function <code class="docutils literal"><span class="pre">RefreshMe()</span></code> in 10 seconds without any arguments:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">call_out</span><span class="p">(</span><span class="s">&quot;RefreshMe&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The function <code class="docutils literal"><span class="pre">RefreshMe()</span></code> can then call out itself again which will result in a loop (not in a recursion) which can be used to check or set up things in the object in intervals. Be aware that callouts are stored in a linear list, and so are somewhat expensive for the driver.</p>
+<p>And YES: a self-replicating <a class="reference internal" href="#lpc.efun.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out</span></code>(E)</a>, where each call_out creates two or more additional call_outs in a loop (so called &#8216;rabbits&#8217;) slow the mud down very fast, and are even able to crash it. No need to try it yourself.</p>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="remove_call_out.html#lpc.efun.remove_call_out" title="remove_call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">remove_call_out</span></code>(E)</a>, <a class="reference internal" href="call_out_info.html#lpc.efun.call_out_info" title="call_out_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out_info</span></code>(E)</a>, <a class="reference internal" href="find_call_out.html#lpc.efun.find_call_out" title="find_call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">find_call_out</span></code>(E)</a>, <a class="reference internal" href="this_player.html#lpc.efun.this_player" title="this_player"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_player</span></code>(E)</a>, <a class="reference internal" href="../applied/reset.html#lpc.applied.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a>, <a class="reference internal" href="../applied/heart_beat.html#lpc.applied.heart_beat" title="heart_beat"><code class="xref lpc lpc-applied docutils literal"><span class="pre">heart_beat</span></code>(A)</a></p>
 </div>
 </div>
-<p>Set up a call to function fun in the current object, or to
-closure cl. The call will take place after &lt;delay&gt; seconds, with the
-remaining argument list provided.
-&lt;delay&gt; can be a minimum time of 0 (negative values are implicitly
-treated as 0), but the real delay will be something between &lt;delay&gt;
-and &lt;delay&gt; + __ALARM_TIME__.</p>
-<p>call_out() saves and restores the current user. It is now
-possible to use say() or write() which rely on a current
-user to be something useful.</p>
-<p>call_out() can only call functions by name &lt;fun&gt; which are publicly
-accessible, i.e. &#8220;public&#8221; and &#8220;static&#8221; functions. &#8220;private&#8221; and
-&#8220;protected&#8221; functions can&#8217;t be called.</p>
-<p>If &lt;fun&gt; does not define a publicly accessible function, the
-efun will call the H_DEFAULT_METHOD hook if set.
-Calls to the master object never use the H_DEFAULT_METHOD hook.</p>
-<p>The execution of the call_out()s implies a simple (not
-exhaustive) measure against rabbits: the evaluation costs of
-those call_outs() executing at the same time are summed up on
-a per-UID base. If the summed-up costs exceed the given maximum,
-a &#8216;too long evaluation&#8217; error will occur and any remaining
-call_outs() of this user scheduled for the same time are
-discarded.</p>
-<p>If two call_out()s were started with the same target time
-the one that was issued first will be executed first.</p>
-<p>EXAMPLES
-call_out(&#8220;RefreshMe&#8221;, 10);</p>
-<p>This will call the function RefreshMe() in 10 seconds without
-any arguments. The function RefreshMe() can then call out
-itself again which will result in a loop (not in a recursion)
-which can be used to check or set up things in the object in
-intervals. Be aware that callouts are stored in a linear
-list, and so are somewhat expensive for the driver.</p>
-<p>And YES: self-replicating call_out()s, where each call_out()
-creates two or more other call_out()s in a loop (so called
-&#8216;rabbits&#8217;) slow the mud down very fast, and are even able
-to crash it. No need to try it yourself.</p>
-<blockquote>
-<div><blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="remove_call_out.html#lpc.remove_call_out" title="remove_call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">remove_call_out()</span></code>(E)</a>, <a class="reference internal" href="call_out_info.html#lpc.call_out_info" title="call_out_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out_info()</span></code>(E)</a>, <a class="reference internal" href="find_call_out.html#lpc.find_call_out" title="find_call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">find_call_out()</span></code>(E)</a>,</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><a class="reference internal" href="this_player.html#lpc.this_player" title="this_player"><code class="xref lpc lpc-efun docutils literal"><span class="pre">this_player()</span></code>(E)</a>, <a class="reference internal" href="../applied/reset.html#lpc.reset" title="reset"><code class="xref lpc lpc-applied docutils literal"><span class="pre">reset</span></code>(A)</a>, <a class="reference internal" href="../applied/heart_beat.html#lpc.heart_beat" title="heart_beat"><code class="xref lpc lpc-applied docutils literal"><span class="pre">heart_beat</span></code>(A)</a></p>
-</div></blockquote>
+</div>
 
 
           </div>
@@ -125,8 +97,8 @@ to crash it. No need to try it yourself.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -136,21 +108,24 @@ to crash it. No need to try it yourself.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::call_out()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -162,7 +137,7 @@ to crash it. No need to try it yourself.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/call_out.txt"
+      <a href="../_sources/efun/call_out.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

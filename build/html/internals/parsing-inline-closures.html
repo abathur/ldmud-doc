@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>What happens when an inline closure is parsed &mdash; LDMud UNRELEASED documentation</title>
+    <title>What happens when an inline closure is parsed &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,15 +18,16 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="internals" href="internals.html" />
-    <link rel="next" title="master" href="../master/master.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Master-object methods" href="../master/overview.html" />
     <link rel="prev" title="codestyle" href="codestyle.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -42,21 +44,18 @@
           <div class="body" role="main">
             
   <div class="section" id="What happens when an inline closure is parsed">
-<span id="lpc.What happens when an inline closure is parsed"></span><div class="section" id="META">
+<span id="lpc.meta.What happens when an inline closure is parsed"></span><div class="section" id="META">
 <h2>META<a class="headerlink" href="#META" title="Permalink to this headline">¶</a></h2>
-<p>What happens when an inline closure is parsed</p>
+<div class="container">
+What happens when an inline closure is parsed</div>
 </div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">initially fairly conservative with what I&#8217;ve converted to an inline literal in case some of these should end up being xrefs of some sort; in any case, much more inline markup could be used here.</p>
-</div>
 <p>This short document tries to outline how scopes and variables are handled when parsing inline closures.</p>
 <p>Let&#8217;s take the following closure as an example:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">var</span><span class="p">;</span>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">var</span><span class="p">;</span>
 
-<span class="n">function</span> <span class="nf">void</span><span class="p">(</span><span class="n">string</span> <span class="n">arg</span><span class="p">)</span> <span class="o">:</span> <span class="kt">int</span> <span class="n">ctx</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="kt">function</span> <span class="nf">void</span><span class="p">(</span><span class="kt">string</span> <span class="n">arg</span><span class="p">)</span> <span class="o">:</span> <span class="kt">int</span> <span class="n">ctx</span> <span class="o">=</span> <span class="mi">42</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
@@ -83,10 +82,6 @@
 </ul>
 </dd>
 </dl>
-<div class="admonition-todo admonition" id="index-1">
-<p class="first admonition-title">Todo</p>
-<p class="last">presentation of above works but isn&#8217;t terribly faithful to what original doc intends I don&#8217;t think</p>
-</div>
 <p>Each local variable will have an index on the stack relative to the stack frame of the function or inline closure, and each context variable will have an index into the closure&#8217;s context. So the variable counters will be reset in block 2 (context scope), because then the closure (with it&#8217;s own stack frame) will start. The block 2 (context) is first compiled as a part of the outer function and will then be transferred to the closure.</p>
 <p>The above example will introduce the following variables:</p>
 <blockquote>
@@ -140,8 +135,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -157,15 +152,14 @@
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -177,7 +171,7 @@
       &copy;good question.
       
       |
-      <a href="../_sources/internals/parsing-inline-closures.txt"
+      <a href="../_sources/internals/parsing-inline-closures.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

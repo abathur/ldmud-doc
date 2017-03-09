@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::set_limits() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::set_limits() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::set_max_commands()" href="set_max_commands.html" />
     <link rel="prev" title="efun::set_heart_beat()" href="set_heart_beat.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,70 +49,64 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;rtlimits.h&gt;</tr>
-<tr id="lpc.set_limits">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">set_limits</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;tag</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;value</em>, </td><td>
-...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.set_limits" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.set_limits">
+<!--[lpc.efun.set_limits]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">set_limits</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+int<em>&nbsp;tag</em>, </td><td id="id2">
+int<em>&nbsp;value</em>, </td><td id="id3">
+...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.set_limits" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">set_limits</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;*limits</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">set_limits</code></td><td><span class="sig-paren">(</span></td><td id="id4">
+int<em>&nbsp;*limits</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Set the default runtime limits from the given arguments. The new limits will be in effect as the initial &#8216;max limits&#8217; with the next execution thread.</p>
+<p>The arguments can be given in two ways: as an array (like the one returned from <a class="reference internal" href="query_limits.html#lpc.efun.query_limits" title="query_limits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_limits</span></code>(E)</a>, or as a list of tagged values. The limit settings recognize three special values:</p>
+<ul class="simple">
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_UNLIMITED</span></code>: the limit is deactivated</li>
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_KEEP</span></code>:      the former setting is kept</li>
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_DEFAULT</span></code>:   the &#8216;global&#8217; default setting is used.</li>
+</ul>
+<p>For <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_COST</span></code>, the special values have these meaning:</p>
+<ul class="simple">
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_UNLIMITED</span></code>: at maximum 1 tick is accounted</li>
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_KEEP</span></code>:      <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_COST</span></code> is set to 0</li>
+<li><code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_DEFAULT</span></code>:   <code class="xref lpc lpc-macro docutils literal"><span class="pre">LIMIT_COST</span></code> is set to -100</li>
+</ul>
+<p>The efun causes a privilege violation (&#8220;set_limits&#8221;, current_object, limits-array).</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>Both lines below set a new default eval_cost limit of 200000:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">set_limits</span><span class="p">(({</span> <span class="mi">200000</span> <span class="p">}))</span>
+<span class="n">set_limits</span><span class="p">(</span><span class="n">LIMIT_EVAL</span><span class="p">,</span> <span class="mi">200000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The lines below both set new eval_cost limit to unlimited, keep the current array size limit, and limit mapping sizes to 5000:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">set_limits</span><span class="p">(({</span> <span class="n">LIMIT_UNLIMITED</span><span class="p">,</span> <span class="n">LIMIT_KEEP</span><span class="p">,</span> <span class="mi">5000</span> <span class="p">}))</span>
+<span class="n">set_limits</span><span class="p">(</span><span class="n">LIMIT_EVAL</span><span class="p">,</span> <span class="n">LIMIT_UNLIMITED</span><span class="p">,</span> <span class="n">LIMIT_ARRAY</span><span class="p">,</span> <span class="n">LIMIT_KEEP</span><span class="p">,</span>
+            <span class="n">LIMIT_MAPPING</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
-<p>Set the default runtime limits from the given arguments. The new
-limits will be in effect as the initial &#8216;max limits&#8217; with the
-next execution thread.</p>
-<p>The arguments can be given in two ways: as an array (like the one
-returned from query_limits(), or as a list of tagged values.
-The limit settings recognize three special values:</p>
-<blockquote>
-<div>LIMIT_UNLIMITED: the limit is deactivated
-LIMIT_KEEP:      the former setting is kept
-LIMIT_DEFAULT:   the &#8216;global&#8217; default setting is used.</div></blockquote>
-<dl class="docutils">
-<dt>For LIMIT_COST, the special values have these meaning:</dt>
-<dd>LIMIT_UNLIMITED: at maximum 1 tick is accounted
-LIMIT_KEEP:      LIMIT_COST is set to 0
-LIMIT_DEFAULT:   LIMIT_COST is set to -100</dd>
-</dl>
-<p>The efun causes a privilege violation (&#8220;set_limits&#8221;, current_object,
-limits-array).</p>
-<p>EXAMPLES
-set_limits(({ 200000 }))
-set_limits(LIMIT_EVAL, 200000)</p>
-<blockquote>
-<div>&#8211;&gt; set new default eval_cost limit to 200000</div></blockquote>
-<p>set_limits(({ LIMIT_UNLIMITED, LIMIT_KEEP, 5000 }))
-set_limits(LIMIT_EVAL, LIMIT_UNLIMITED, LIMIT_ARRAY, LIMIT_KEEP,</p>
-<blockquote>
-<div><blockquote>
-<div>LIMIT_MAPPING, 5000)</div></blockquote>
-<dl class="docutils">
-<dt>&#8211;&gt; set new eval_cost limit to unlimited, keep the current</dt>
-<dd>array size limit, and limit mapping sizes to 5000.</dd>
-</dl>
-</div></blockquote>
-<p>Introduced in LDMud 3.2.7.
-LDMud 3.3.563 introduced LIMIT_COST.
-LDMud 3.3.677 introduced LIMIT_MAPPING_KEYS, LIMIT_MAPPING_SIZE.
-LDMud 3.5.0 introduced LIMIT_MEMORY.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="limited.html#lpc.limited" title="limited"><code class="xref lpc lpc-efun docutils literal"><span class="pre">limited()</span></code>(E)</a>, <a class="reference internal" href="query_limits.html#lpc.query_limits" title="query_limits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_limits()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.7</em>)</li>
+<li><strong>changed</strong> (<em>3.3.563</em>) &#8211; added LIMIT_COST.</li>
+<li><strong>changed</strong> (<em>3.3.677</em>) &#8211; added LIMIT_MAPPING_KEYS, LIMIT_MAPPING_SIZE.</li>
+<li><strong>changed</strong> (<em>3.5.0</em>) &#8211; added LIMIT_MEMORY.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="limited.html#lpc.efun.limited" title="limited"><code class="xref lpc lpc-efun docutils literal"><span class="pre">limited</span></code>(E)</a>, <a class="reference internal" href="query_limits.html#lpc.efun.query_limits" title="query_limits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_limits</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -121,8 +117,8 @@ LDMud 3.5.0 introduced LIMIT_MEMORY.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -132,21 +128,25 @@ LDMud 3.5.0 introduced LIMIT_MEMORY.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::set_limits()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -158,7 +158,7 @@ LDMud 3.5.0 introduced LIMIT_MEMORY.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/set_limits.txt"
+      <a href="../_sources/efun/set_limits.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

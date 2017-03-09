@@ -1,0 +1,537 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>External functions &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="efun::break_point()" href="break_point.html" />
+    <link rel="prev" title="applied::reset()" href="../applied/reset.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="External functions">
+<span id="efun"></span><span id="lpc.overview.External functions"></span><span id="lpc.overview.efun"></span><div class="section" id="OVERVIEW">
+<h2>OVERVIEW<a class="headerlink" href="#OVERVIEW" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+External functions</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>This directory contains descriptions for the efuns of LDMud.</p>
+<p>These are functions that are supplied by the driver and can be called by any LPC object (somewhat similar to system calls in the C library).</p>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="e"></span><span id="n"></span><span id="u"></span><span id="m"></span><span id="e"></span><span id="r"></span><span id="a"></span><span id="t"></span><span id="e"></span><p>There a few kinds of efuns:</p>
+<dl class="docutils">
+<dt id="term-optional"><em>optional</em></dt>
+<dd><p class="first">A mud&#8217;s maintainer is free to deactivate these efuns when
+compiling the driver:</p>
+<ul class="simple">
+<li><a class="reference internal" href="break_point.html#lpc.efun.break_point" title="break_point"><code class="xref lpc lpc-efun docutils literal"><span class="pre">break_point</span></code>(E)</a></li>
+<li><a class="reference internal" href="db_affected_rows.html#lpc.efun.db_affected_rows" title="db_affected_rows"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_affected_rows</span></code>(E)</a></li>
+<li><a class="reference internal" href="db_close.html#lpc.efun.db_close" title="db_close"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_close</span></code>(E)</a></li>
+<li><a class="reference internal" href="db_coldefs.html#lpc.efun.db_coldefs" title="db_coldefs"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_coldefs</span></code>(E)</a></li>
+<li><a class="reference internal" href="db_connect.html#lpc.efun.db_connect" title="db_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_connect</span></code>(E)</a></li>
+<li><a class="reference internal" href="db_conv_string.html#lpc.efun.db_conv_string" title="db_conv_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_conv_string</span></code>(E)</a></li>
+<li><a class="reference internal" href="db_error.html#lpc.efun.db_error" title="db_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_error</span></code>(E)</a></li>
+<li><a class="reference internal" href="db_exec.html#lpc.efun.db_exec" title="db_exec"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_exec</span></code>(E)</a></li>
+<li><a class="reference internal" href="db_fetch.html#lpc.efun.db_fetch" title="db_fetch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_fetch</span></code>(E)</a></li>
+<li><a class="reference internal" href="db_handles.html#lpc.efun.db_handles" title="db_handles"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_handles</span></code>(E)</a></li>
+<li><a class="reference internal" href="db_insert_id.html#lpc.efun.db_insert_id" title="db_insert_id"><code class="xref lpc lpc-efun docutils literal"><span class="pre">db_insert_id</span></code>(E)</a></li>
+<li><a class="reference internal" href="parse_command.html#lpc.efun.parse_command" title="parse_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">parse_command</span></code>(E)</a></li>
+<li><a class="reference internal" href="process_string.html#lpc.efun.process_string" title="process_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">process_string</span></code>(E)</a></li>
+<li><a class="reference internal" href="rusage.html#lpc.efun.rusage" title="rusage"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rusage</span></code>(E)</a></li>
+<li><a class="reference internal" href="set_is_wizard.html#lpc.efun.set_is_wizard" title="set_is_wizard"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_is_wizard</span></code>(E)</a></li>
+<li><a class="reference internal" href="transfer.html#lpc.efun.transfer" title="transfer"><code class="xref lpc lpc-efun docutils literal"><span class="pre">transfer</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_available.html#lpc.efun.tls_available" title="tls_available"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_available</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_check_certificate.html#lpc.efun.tls_check_certificate" title="tls_check_certificate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_check_certificate</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_deinit_connection.html#lpc.efun.tls_deinit_connection" title="tls_deinit_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_deinit_connection</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_error.html#lpc.efun.tls_error" title="tls_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_error</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_init_connection.html#lpc.efun.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_query_connection_info.html#lpc.efun.tls_query_connection_info" title="tls_query_connection_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_info</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_query_connection_state.html#lpc.efun.tls_query_connection_state" title="tls_query_connection_state"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_state</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_refresh_certs.html#lpc.efun.tls_refresh_certs" title="tls_refresh_certs"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_refresh_certs</span></code>(E)</a></li>
+<li><a class="reference internal" href="xml_generate.html#lpc.efun.xml_generate" title="xml_generate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">xml_generate</span></code>(E)</a></li>
+<li><a class="reference internal" href="xml_parse.html#lpc.efun.xml_parse" title="xml_parse"><code class="xref lpc lpc-efun docutils literal"><span class="pre">xml_parse</span></code>(E)</a></li>
+</ul>
+<p>alt approach:</p>
+<div class="toctree-wrapper last compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="break_point.html">efun::break_point()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_affected_rows.html">efun::db_affected_rows()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_close.html">efun::db_close()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_coldefs.html">efun::db_coldefs()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_connect.html">efun::db_connect()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_conv_string.html">efun::db_conv_string()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_error.html">efun::db_error()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_exec.html">efun::db_exec()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_fetch.html">efun::db_fetch()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_handles.html">efun::db_handles()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_insert_id.html">efun::db_insert_id()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parse_command.html">efun::parse_command()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process_string.html">efun::process_string()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rusage.html">efun::rusage()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_is_wizard.html">efun::set_is_wizard()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transfer.html">efun::transfer()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_available.html">efun::tls_available()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_check_certificate.html">efun::tls_check_certificate()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_deinit_connection.html">efun::tls_deinit_connection()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_error.html">efun::tls_error()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_init_connection.html">efun::tls_init_connection()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_query_connection_info.html">efun::tls_query_connection_info()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_query_connection_state.html">efun::tls_query_connection_state()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_refresh_certs.html">efun::tls_refresh_certs()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xml_generate.html">efun::xml_generate()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xml_parse.html">efun::xml_parse()</a></li>
+</ul>
+</div>
+</dd>
+<dt id="term-experimental"><em>experimental</em></dt>
+<dd><p class="first">The behaviour of these efuns is not fixed yet, and may change with further releases:</p>
+<ul class="last simple">
+<li><a class="reference internal" href="tls_available.html#lpc.efun.tls_available" title="tls_available"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_available</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_check_certificate.html#lpc.efun.tls_check_certificate" title="tls_check_certificate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_check_certificate</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_deinit_connection.html#lpc.efun.tls_deinit_connection" title="tls_deinit_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_deinit_connection</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_error.html#lpc.efun.tls_error" title="tls_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_error</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_init_connection.html#lpc.efun.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_query_connection_info.html#lpc.efun.tls_query_connection_info" title="tls_query_connection_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_info</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_query_connection_state.html#lpc.efun.tls_query_connection_state" title="tls_query_connection_state"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_state</span></code>(E)</a></li>
+<li><a class="reference internal" href="tls_refresh_certs.html#lpc.efun.tls_refresh_certs" title="tls_refresh_certs"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_refresh_certs</span></code>(E)</a></li>
+<li><a class="reference internal" href="xml_generate.html#lpc.efun.xml_generate" title="xml_generate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">xml_generate</span></code>(E)</a></li>
+<li><a class="reference internal" href="xml_parse.html#lpc.efun.xml_parse" title="xml_parse"><code class="xref lpc lpc-efun docutils literal"><span class="pre">xml_parse</span></code>(E)</a></li>
+</ul>
+</dd>
+<dt id="term-deprecated"><em>deprecated</em></dt>
+<dd><p class="first">These efuns should no longer be used, they are merely provided for backwards compatibility:</p>
+<ul class="last simple">
+<li><a class="reference internal" href="make_shared_string.html#lpc.efun.make_shared_string" title="make_shared_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">make_shared_string</span></code>(E)</a></li>
+<li><a class="reference internal" href="md5.html#lpc.efun.md5" title="md5"><code class="xref lpc lpc-efun docutils literal"><span class="pre">md5</span></code>(E)</a></li>
+<li><a class="reference internal" href="sha1.html#lpc.efun.sha1" title="sha1"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sha1</span></code>(E)</a></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>efun index<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="abs.html">efun::abs()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acos.html">efun::acos()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_action.html">efun::add_action()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="all_environment.html">efun::all_environment()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="all_inventory.html">efun::all_inventory()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allocate.html">efun::allocate()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="and_bits.html">efun::and_bits()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apply.html">efun::apply()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asin.html">efun::asin()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atan.html">efun::atan()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atan2.html">efun::atan2()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="attach_erq_demon.html">efun::attach_erq_demon()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="baseof.html">efun::baseof()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="binary_message.html">efun::binary_message()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bind_lambda.html">efun::bind_lambda()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blueprint.html">efun::blueprint()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="break_point.html">efun::break_point()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="call_direct.html">efun::call_direct()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="call_direct_resolved.html">efun::call_direct_resolved()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="call_other.html">efun::call_other()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="call_out.html">efun::call_out()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="call_out_info.html">efun::call_out_info()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="call_resolved.html">efun::call_resolved()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caller_stack.html">efun::caller_stack()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caller_stack_depth.html">efun::caller_stack_depth()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capitalize.html">efun::capitalize()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catch.html">efun::catch()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ceil.html">efun::ceil()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clear_bit.html">efun::clear_bit()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clone_object.html">efun::clone_object()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clonep.html">efun::clonep()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clones.html">efun::clones()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="closurep.html">efun::closurep()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command.html">efun::command()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_stack.html">efun::command_stack()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_stack_depth.html">efun::command_stack_depth()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configure_driver.html">efun::configure_driver()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configure_interactive.html">efun::configure_interactive()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert_charset.html">efun::convert_charset()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copy.html">efun::copy()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copy_bits.html">efun::copy_bits()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copy_file.html">efun::copy_file()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cos.html">efun::cos()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="count_bits.html">efun::count_bits()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creator.html">efun::creator()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crypt.html">efun::crypt()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctime.html">efun::ctime()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_affected_rows.html">efun::db_affected_rows()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_close.html">efun::db_close()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_coldefs.html">efun::db_coldefs()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_connect.html">efun::db_connect()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_conv_string.html">efun::db_conv_string()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_error.html">efun::db_error()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_exec.html">efun::db_exec()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_fetch.html">efun::db_fetch()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_handles.html">efun::db_handles()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_insert_id.html">efun::db_insert_id()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug_info.html">efun::debug_info()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug_message.html">efun::debug_message()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deep_copy.html">efun::deep_copy()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deep_inventory.html">efun::deep_inventory()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="destruct.html">efun::destruct()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disable_commands.html">efun::disable_commands()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ed.html">efun::ed()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enable_commands.html">efun::enable_commands()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enable_telnet.html">efun::enable_telnet()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="end_mccp_compress.html">efun::end_mccp_compress()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment.html">efun::environment()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exec.html">efun::exec()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execute_command.html">efun::execute_command()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exp.html">efun::exp()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expand_define.html">efun::expand_define()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="explode.html">efun::explode()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="export_uid.html">efun::export_uid()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extern_call.html">efun::extern_call()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_size.html">efun::file_size()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">efun::filter()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter_indices.html">efun::filter_indices()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter_objects.html">efun::filter_objects()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="find_call_out.html">efun::find_call_out()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="find_input_to.html">efun::find_input_to()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="find_object.html">efun::find_object()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first_inventory.html">efun::first_inventory()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="floatp.html">efun::floatp()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="floor.html">efun::floor()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funcall.html">efun::funcall()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function_exists.html">efun::function_exists()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionlist.html">efun::functionlist()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="garbage_collection.html">efun::garbage_collection()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_combine_charset.html">efun::get_combine_charset()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_connection_charset.html">efun::get_connection_charset()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_dir.html">efun::get_dir()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_error_file.html">efun::get_error_file()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_eval_cost.html">efun::get_eval_cost()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_extra_wizinfo.html">efun::get_extra_wizinfo()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_max_commands.html">efun::get_max_commands()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_type_info.html">efun::get_type_info()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geteuid.html">efun::geteuid()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getuid.html">efun::getuid()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmtime.html">efun::gmtime()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hash.html">efun::hash()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heart_beat_info.html">efun::heart_beat_info()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hmac.html">efun::hmac()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idna_stringprep.html">efun::idna_stringprep()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idna_to_ascii.html">efun::idna_to_ascii()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idna_to_unicode.html">efun::idna_to_unicode()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implode.html">efun::implode()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="include_list.html">efun::include_list()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inherit_list.html">efun::inherit_list()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_to.html">efun::input_to()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_to_info.html">efun::input_to_info()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive.html">efun::interactive()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intp.html">efun::intp()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="invert_bits.html">efun::invert_bits()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json_parse.html">efun::json_parse()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json_serialize.html">efun::json_serialize()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lambda.html">efun::lambda()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="last_bit.html">efun::last_bit()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="last_instructions.html">efun::last_instructions()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limited.html">efun::limited()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="living.html">efun::living()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_name.html">efun::load_name()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_object.html">efun::load_object()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="localtime.html">efun::localtime()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">efun::log()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lower_case.html">efun::lower_case()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_add.html">efun::m_add()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_allocate.html">efun::m_allocate()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_contains.html">efun::m_contains()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_delete.html">efun::m_delete()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_entry.html">efun::m_entry()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_indices.html">efun::m_indices()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_reallocate.html">efun::m_reallocate()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="m_values.html">efun::m_values()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="make_shared_string.html">efun::make_shared_string()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map.html">efun::map()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_indices.html">efun::map_indices()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_objects.html">efun::map_objects()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mappingp.html">efun::mappingp()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="master.html">efun::master()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="match_command.html">efun::match_command()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="max.html">efun::max()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md5.html">efun::md5()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md5_crypt.html">efun::md5_crypt()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="member.html">efun::member()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="min.html">efun::min()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mkdir.html">efun::mkdir()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mkmapping.html">efun::mkmapping()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mktime.html">efun::mktime()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="move_object.html">efun::move_object()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="negate.html">efun::negate()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="net_connect.html">efun::net_connect()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="next_bit.html">efun::next_bit()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="next_inventory.html">efun::next_inventory()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notify_fail.html">efun::notify_fail()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_info.html">efun::object_info()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_name.html">efun::object_name()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_time.html">efun::object_time()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objectp.html">efun::objectp()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="or_bits.html">efun::or_bits()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parse_command.html">efun::parse_command()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pg_close.html">efun::pg_close()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pg_connect.html">efun::pg_connect()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pg_conv_string.html">efun::pg_conv_string()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pg_pending.html">efun::pg_pending()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pg_query.html">efun::pg_query()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pointerp.html">efun::pointerp()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pow.html">efun::pow()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="present.html">efun::present()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="present_clone.html">efun::present_clone()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="previous_object.html">efun::previous_object()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="printf.html">efun::printf()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process_string.html">efun::process_string()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="program_name.html">efun::program_name()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="program_time.html">efun::program_time()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_actions.html">efun::query_actions()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_command.html">efun::query_command()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_editing.html">efun::query_editing()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_idle.html">efun::query_idle()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_input_pending.html">efun::query_input_pending()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_ip_name.html">efun::query_ip_name()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_ip_number.html">efun::query_ip_number()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_limits.html">efun::query_limits()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_load_average.html">efun::query_load_average()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_mccp.html">efun::query_mccp()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_mccp_stats.html">efun::query_mccp_stats()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_mud_port.html">efun::query_mud_port()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_notify_fail.html">efun::query_notify_fail()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_once_interactive.html">efun::query_once_interactive()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_shadowing.html">efun::query_shadowing()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_snoop.html">efun::query_snoop()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_udp_port.html">efun::query_udp_port()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query_verb.html">efun::query_verb()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quote.html">efun::quote()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raise_error.html">efun::raise_error()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="random.html">efun::random()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read_bytes.html">efun::read_bytes()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read_file.html">efun::read_file()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencep.html">efun::referencep()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regexp.html">efun::regexp()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regexp_package.html">efun::regexp_package()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regexplode.html">efun::regexplode()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regmatch.html">efun::regmatch()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regreplace.html">efun::regreplace()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remove_action.html">efun::remove_action()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remove_call_out.html">efun::remove_call_out()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remove_input_to.html">efun::remove_input_to()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remove_interactive.html">efun::remove_interactive()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rename.html">efun::rename()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rename_object.html">efun::rename_object()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="replace_program.html">efun::replace_program()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restore_object.html">efun::restore_object()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restore_value.html">efun::restore_value()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reverse.html">efun::reverse()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rm.html">efun::rm()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rmdir.html">efun::rmdir()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rmember.html">efun::rmember()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rusage.html">efun::rusage()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="save_object.html">efun::save_object()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="save_value.html">efun::save_value()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="say.html">efun::say()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="send_erq.html">efun::send_erq()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="send_udp.html">efun::send_udp()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_bit.html">efun::set_bit()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_buffer_size.html">efun::set_buffer_size()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_combine_charset.html">efun::set_combine_charset()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_connection_charset.html">efun::set_connection_charset()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_driver_hook.html">efun::set_driver_hook()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_environment.html">efun::set_environment()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_extra_wizinfo.html">efun::set_extra_wizinfo()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_extra_wizinfo_size.html">efun::set_extra_wizinfo_size()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_heart_beat.html">efun::set_heart_beat()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_is_wizard.html">efun::set_is_wizard()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_limits.html">efun::set_limits()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_max_commands.html">efun::set_max_commands()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_modify_command.html">efun::set_modify_command()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_next_reset.html">efun::set_next_reset()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_prompt.html">efun::set_prompt()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_this_object.html">efun::set_this_object()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_this_player.html">efun::set_this_player()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seteuid.html">efun::seteuid()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sgn.html">efun::sgn()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sha1.html">efun::sha1()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shadow.html">efun::shadow()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shutdown.html">efun::shutdown()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sin.html">efun::sin()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sizeof.html">efun::sizeof()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sl_close.html">efun::sl_close()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sl_exec.html">efun::sl_exec()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sl_insert_id.html">efun::sl_insert_id()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sl_open.html">efun::sl_open()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="snoop.html">efun::snoop()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sort_array.html">efun::sort_array()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprintf.html">efun::sprintf()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sqrt.html">efun::sqrt()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sscanf.html">efun::sscanf()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start_mccp_compress.html">efun::start_mccp_compress()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strftime.html">efun::strftime()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stringp.html">efun::stringp()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strlen.html">efun::strlen()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strrstr.html">efun::strrstr()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strstr.html">efun::strstr()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="struct_info.html">efun::struct_info()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structp.html">efun::structp()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swap.html">efun::swap()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbol_function.html">efun::symbol_function()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbol_variable.html">efun::symbol_variable()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolp.html">efun::symbolp()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tan.html">efun::tan()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tell_object.html">efun::tell_object()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tell_room.html">efun::tell_room()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terminal_colour.html">efun::terminal_colour()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test_bit.html">efun::test_bit()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="this_interactive.html">efun::this_interactive()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="this_object.html">efun::this_object()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="this_player.html">efun::this_player()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="throw.html">efun::throw()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">efun::time()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_available.html">efun::tls_available()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_check_certificate.html">efun::tls_check_certificate()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_deinit_connection.html">efun::tls_deinit_connection()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_error.html">efun::tls_error()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_init_connection.html">efun::tls_init_connection()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_query_connection_info.html">efun::tls_query_connection_info()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_query_connection_state.html">efun::tls_query_connection_state()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls_refresh_certs.html">efun::tls_refresh_certs()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="to_array.html">efun::to_array()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="to_float.html">efun::to_float()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="to_int.html">efun::to_int()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="to_object.html">efun::to_object()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="to_string.html">efun::to_string()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="to_struct.html">efun::to_struct()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trace.html">efun::trace()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traceprefix.html">efun::traceprefix()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transfer.html">efun::transfer()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transpose_array.html">efun::transpose_array()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trim.html">efun::trim()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typeof.html">efun::typeof()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unbound_lambda.html">efun::unbound_lambda()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unique_array.html">efun::unique_array()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unmkmapping.html">efun::unmkmapping()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unquote.html">efun::unquote()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unshadow.html">efun::unshadow()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upper_case.html">efun::upper_case()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">efun::users()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utime.html">efun::utime()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variable_exists.html">efun::variable_exists()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variable_list.html">efun::variable_list()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="walk_mapping.html">efun::walk_mapping()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="widthof.html">efun::widthof()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wizlist_info.html">efun::wizlist_info()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="write.html">efun::write()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="write_bytes.html">efun::write_bytes()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="write_file.html">efun::write_file()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xml_generate.html">efun::xml_generate()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xml_parse.html">efun::xml_parse()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xor_bits.html">efun::xor_bits()</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">:concept:`efuns`</span></a>,
+<a class="reference internal" href="../applied/overview.html#lpc.overview.applied" title="applied"><code class="xref lpc lpc-overview docutils literal"><span class="pre">applied</span></code></a>, <a class="reference internal" href="../topics/overview.html#lpc.overview.topics" title="topics"><code class="xref lpc lpc-overview docutils literal"><span class="pre">topics</span></code></a>, <a class="reference internal" href="../hook/overview.html#lpc.overview.hook" title="hook"><code class="xref lpc lpc-overview docutils literal"><span class="pre">hook</span></code></a>, <a class="reference internal" href="../internals/overview.html#lpc.overview.internals" title="internals"><code class="xref lpc lpc-overview docutils literal"><span class="pre">internals</span></code></a>, <a class="reference internal" href="../syntax/overview.html#lpc.overview.syntax" title="syntax"><code class="xref lpc lpc-overview docutils literal"><span class="pre">syntax</span></code></a>, <a class="reference internal" href="../master/overview.html#lpc.overview.master" title="master"><code class="xref lpc lpc-overview docutils literal"><span class="pre">master</span></code></a>, <code class="xref lpc lpc-overview docutils literal"><span class="pre">obsolete</span></code></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">External functions</a><ul>
+<li><a class="reference internal" href="#OVERVIEW">OVERVIEW</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#l">There a few kinds of efuns:</a></li>
+<li><a class="reference internal" href="#l">efun index</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/efun/overview.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

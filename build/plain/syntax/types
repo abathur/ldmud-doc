@@ -1,0 +1,78 @@
+TOPIC
+=====
+   types
+DESCRIPTION
+===========
+   Variables can have the following types:
+
+   int
+      An integer.
+
+   string
+      A text string.
+
+   status
+      Obsolete:  
+        status was planned to be an optimized boolean format, but this was 
+        never actually implemented. status does work; however, since it is 
+        only an alias for type 'int', just use int.
+
+   object
+      Pointer to an object. Objects are always passed by reference.
+
+   array
+      Pointer to a vector of values, which could also be an alist. Arrays take
+      the form `({ n1, n2, n3 })` and may contain any type or a mix of types.
+      Arrays are always passed by reference.
+
+      <!> Note:  
+        the size of arrays in LPC *can* be changed at run-time.
+
+   mapping
+      An 'associative array' consisting of values indexed by keys. The indices
+      can be any kind of datatype. Mappings take the 
+      form `([ key1: value1, key2: value2 ])`. By default, mappings are passed
+      by reference.
+
+   closure
+      References to executable code, both to local functions, efuns and to 
+      functions compiled at run-time ("lambda closures").
+
+   symbol
+      Identifier names, which in essence are quoted strings. They are used to 
+      compute lambda closures, e.g. instead of `({..., 'ident, ... })` you can
+      write declare a 'symbol' variable foo, compute a value for it, and then
+      create the closure as `({ ..., foo, ... })`
+
+   float
+      A floating-point number.
+
+   mixed
+      A variable allowed to take a value of any type (int, string, object, 
+      array, mapping, float or closure).
+
+   struct
+      A collection of values. See struct.
+
+   union
+      A range of types, either of which the variable can contain at runtime. 
+      See union.
+
+   Unknown: `unknown` 
+      An unusable (documentation-only) meta-type indicating that a function's 
+      return type is undefined.
+
+   Null: `null` 
+      Indicates a function that returns no value.
+
+   All uninitialized variables have the value 0.
+
+   The type of a variable is really only for documentation. Unless you define 
+   strong_types or rtt_checks, variables can actually be of any type and has 
+   no effect at all on the program. However, it's extremely bad style to 
+   declare one type but use another, so please try to avoid this.
+
+SEE ALSO
+========
+   array, mapping, closure, struct, union, typeof(E), get_type_info(E), 
+   >>:concept:`inheritance`<<, pragma, modifiers, escape

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::send_erq() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::send_erq() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::send_udp()" href="send_udp.html" />
     <link rel="prev" title="efun::say()" href="say.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,54 +49,42 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;erq.h&gt;</tr>
-<tr id="lpc.send_erq">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">send_erq</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;request</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> *<em>&nbsp;data</em>, </td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;callback</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.send_erq" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.send_erq">
+<!--[lpc.efun.send_erq]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">send_erq</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+int<em>&nbsp;request</em>, </td><td id="id2">
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a>|<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> *<em>&nbsp;data</em>, </td><td id="id3">
+closure<em>&nbsp;callback</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.send_erq" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<p>A request of given type (&lt;request&gt;, default is 0), equipped
-with the given &lt;data&gt;, is sent to the erq. If &lt;callback&gt; is
-set to a closure, it will be called when the response from the
-erq (a status code) arrives, if the response carries enough data to
-work on.</p>
-<p>&lt;request&gt; can be one of the request codes defined in &lt;erq.h&gt;.
-The binary flag ERQ_CB_STRING defines whether the &lt;callback&gt;
-closure expects the returned data packed into an array of
-integers or as a string.</p>
-<p>&lt;data&gt; may be a string, or an array of integers which are then
-interpreted as characters.</p>
-<p>&lt;callback&gt;, if set, is a closure of either these forms:</p>
+<p>A request of given type (<a class="reference internal" href="#efun/send_erq.arg.request" title="request"><code class="xref lpc lpc-arg docutils literal"><span class="pre">request</span></code></a>, default is 0), equipped with the given <a class="reference internal" href="#efun/send_erq.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a>, is sent to the erq. If <a class="reference internal" href="#efun/send_erq.arg.callback" title="callback"><code class="xref lpc lpc-arg docutils literal"><span class="pre">callback</span></code></a> is set to a closure, it will be called when the response from the erq (a status code) arrives, if the response carries enough data to work on.</p>
+<p><a class="reference internal" href="#efun/send_erq.arg.request" title="request"><code class="xref lpc lpc-arg docutils literal"><span class="pre">request</span></code></a> can be one of the request codes defined in &lt;erq.h&gt;. The binary flag <code class="xref lpc lpc-macro docutils literal"><span class="pre">ERQ_CB_STRING</span></code> defines whether the <a class="reference internal" href="#efun/send_erq.arg.callback" title="callback"><code class="xref lpc lpc-arg docutils literal"><span class="pre">callback</span></code></a> closure expects the returned data packed into an array of integers or as a string.</p>
+<p><a class="reference internal" href="#efun/send_erq.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a> may be a string, or an array of integers which are then interpreted as characters.</p>
+<p><a class="reference internal" href="#efun/send_erq.arg.callback" title="callback"><code class="xref lpc lpc-arg docutils literal"><span class="pre">callback</span></code></a>, if set, is a closure of either these forms:</p>
 <blockquote>
 <div><dl class="docutils">
-<dt>!ERQ_CB_STRING: void &lt;closure&gt;(int <a href="#id1"><span class="problematic" id="id2">*</span></a>response_data, int len)</dt>
+<dt>!ERQ_CB_STRING: void &lt;closure&gt;(int <a href="#id4"><span class="problematic" id="id5">*</span></a>response_data, int len)</dt>
 <dd>ERQ_CB_STRING: void &lt;closure&gt;(string response_data)</dd>
 </dl>
 </div></blockquote>
-<p>The result returned from the efun is 0 on failure to send the
-data, or non-zero on a successful send.</p>
+<p>The result returned from the efun is 0 on failure to send the data, or non-zero on a successful send.</p>
 <p>The function causes a privilege violation &#8220;erq&#8221;.</p>
-<blockquote>
-<div></div></blockquote>
-<p>Introduced in <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;61">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>61</a>.
-Made a privileged function in <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;84">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>84</a>
-LDMud 3.3.318 introduced the ERQ_CB_STRING flag.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="attach_erq_demon.html#lpc.attach_erq_demon" title="attach_erq_demon"><code class="xref lpc lpc-efun docutils literal"><span class="pre">attach_erq_demon()</span></code>(E)</a>, <a class="reference internal" href="../concepts/erq.html#lpc.erq" title="erq"><code class="xref lpc lpc-concept docutils literal"><span class="pre">erq</span></code>(C)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.1&#64;61</em>)</li>
+<li><strong>changed</strong> (<em>3.2.1&#64;84</em>) &#8211; Made a privileged function</li>
+<li><strong>changed</strong> (<em>3.3.318</em>) &#8211; introduced the <code class="xref lpc lpc-macro docutils literal"><span class="pre">ERQ_CB_STRING</span></code> flag.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="attach_erq_demon.html#lpc.efun.attach_erq_demon" title="attach_erq_demon"><code class="xref lpc lpc-efun docutils literal"><span class="pre">attach_erq_demon</span></code>(E)</a>, <a href="#id6"><span class="problematic" id="id7">:concept:`erq`</span></a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -105,8 +95,8 @@ LDMud 3.3.318 introduced the ERQ_CB_STRING flag.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -116,21 +106,24 @@ LDMud 3.3.318 introduced the ERQ_CB_STRING flag.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::send_erq()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -142,7 +135,7 @@ LDMud 3.3.318 introduced the ERQ_CB_STRING flag.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/send_erq.txt"
+      <a href="../_sources/efun/send_erq.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

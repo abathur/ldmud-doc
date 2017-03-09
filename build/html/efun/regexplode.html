@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::regexplode() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::regexplode() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::regmatch()" href="regmatch.html" />
     <link rel="prev" title="efun::regexp_package()" href="regexp_package.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,53 +49,45 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;regexp.h&gt;</tr>
-<tr id="lpc.regexplode">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> * </td><td>
-<code class="descname">regexplode</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;text</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;pattern</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.regexplode" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.regexplode">
+<!--[lpc.efun.regexplode]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> * </td><td>
+<code class="descname">regexplode</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;text</em>, </td><td id="id2">
+string<em>&nbsp;pattern</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.regexplode" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> * </td><td>
-<code class="descname">regexplode</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;text</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;pattern</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;opt</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> * </td><td>
+<code class="descname">regexplode</code></td><td><span class="sig-paren">(</span></td><td id="id3">
+string<em>&nbsp;text</em>, </td><td id="id4">
+string<em>&nbsp;pattern</em>, </td><td id="id5">
+int<em>&nbsp;opt</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>This function is similar to explode but accepts a regular expression <a class="reference internal" href="#efun/regexplode.arg.pattern" title="pattern"><code class="xref lpc lpc-arg docutils literal"><span class="pre">pattern</span></code></a> as delimiter (interpreted according to <a class="reference internal" href="#efun/regexplode.arg.opt" title="opt"><code class="xref lpc lpc-arg docutils literal"><span class="pre">opt</span></code></a> if given).</p>
+<p>If flag <code class="xref lpc lpc-macro docutils literal"><span class="pre">RE_OMIT_DELIM</span></code> is not set in <a class="reference internal" href="#efun/regexplode.arg.opt" title="opt"><code class="xref lpc lpc-arg docutils literal"><span class="pre">opt</span></code></a>, then every second element in the result vector will be the text that matched the delimiter. If the flag is set, then the result vector will contain only the text between the delimiters.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">regexplode</span><span class="p">(</span><span class="s">&quot;abcdef&quot;</span><span class="p">,</span> <span class="s">&quot;cde&quot;</span><span class="p">)</span>                <span class="c1">// ({ &quot;ab&quot;, &quot;cde&quot;, &quot;f&quot; })</span>
+<span class="n">regexplode</span><span class="p">(</span><span class="s">&quot;abcdef&quot;</span><span class="p">,</span> <span class="s">&quot;cde&quot;</span><span class="p">,</span> <span class="n">RE_OMIT_DELIM</span><span class="p">)</span> <span class="c1">// ({ &quot;ab&quot;, &quot;f&quot; })</span>
+</pre></div>
 </div>
 </div>
-<p>This function is similar to explode but accepts a regular
-expression &lt;pattern&gt; as delimiter (interpreted according to &lt;opt&gt;
-if given).</p>
-<p>If flag RE_OMIT_DELIM is not set in &lt;opt&gt;, then every second element
-in the result vector will be the text that matched the delimiter.
-If the flag is set, then the result vector will contain only
-the text between the delimiters.</p>
-<p>EXAMPLES
-regexplode(&#8220;abcdef&#8221;, &#8220;cde&#8221;)                -&gt; ({ &#8220;ab&#8221;, &#8220;cde&#8221;, &#8220;f&#8221; })
-regexplode(&#8220;abcdef&#8221;, &#8220;cde&#8221;, RE_OMIT_DELIM) -&gt; ({ &#8220;ab&#8221;, &#8220;f&#8221; })</p>
-<p>Introduced in <a class="reference external" href="mailto:3&#46;2&#37;&#52;&#48;61">3<span>&#46;</span>2<span>&#64;</span>61</a>.
-LDMud 3.3 added the optional &lt;opt&gt; argument and the RE_OMIT_DELIM</p>
-<blockquote>
-<div>flag.</div></blockquote>
-<p>Since 3.5.0 a error is raised if RE_PCRE is specified in &lt;opt&gt;, but
-the driver lacks PCRE support.</p>
-<blockquote>
-<div><blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="explode.html#lpc.explode" title="explode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">explode()</span></code>(E)</a>, <a class="reference internal" href="regexp.html#lpc.regexp" title="regexp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexp()</span></code>(E)</a>, <a class="reference internal" href="regmatch.html#lpc.regmatch" title="regmatch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regmatch()</span></code>(E)</a>, <a class="reference internal" href="regreplace.html#lpc.regreplace" title="regreplace"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regreplace()</span></code>(E)</a>,</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><a class="reference internal" href="regexp_package.html#lpc.regexp_package" title="regexp_package"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexp_package()</span></code>(E)</a>, <a class="reference internal" href="../concepts/regexp.html#lpc.regexp" title="regexp"><code class="xref lpc lpc-concept docutils literal"><span class="pre">regexp</span></code>(C)</a></p>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2&#64;61</em>)</li>
+<li><strong>changed</strong> (<em>3.3</em>) &#8211; added the optional <a class="reference internal" href="#efun/regexplode.arg.opt" title="opt"><code class="xref lpc lpc-arg docutils literal"><span class="pre">opt</span></code></a> argument and the <code class="xref lpc lpc-macro docutils literal"><span class="pre">RE_OMIT_DELIM</span></code> flag.</li>
+<li><strong>changed</strong> (<em>3.5.0</em>) &#8211; an error is raised if <a class="reference internal" href="../topics/regexp.html#lpc.macro.RE_PCRE" title="RE_PCRE"><code class="xref lpc lpc-macro docutils literal"><span class="pre">RE_PCRE</span></code></a> is specified in <a class="reference internal" href="#efun/regexplode.arg.opt" title="opt"><code class="xref lpc lpc-arg docutils literal"><span class="pre">opt</span></code></a>, but the driver lacks PCRE support.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="explode.html#lpc.efun.explode" title="explode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">explode</span></code>(E)</a>, <a class="reference internal" href="regexp.html#lpc.efun.regexp" title="regexp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexp</span></code>(E)</a>, <a class="reference internal" href="regmatch.html#lpc.efun.regmatch" title="regmatch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regmatch</span></code>(E)</a>, <a class="reference internal" href="regreplace.html#lpc.efun.regreplace" title="regreplace"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regreplace</span></code>(E)</a>, <a class="reference internal" href="regexp_package.html#lpc.efun.regexp_package" title="regexp_package"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexp_package</span></code>(E)</a>, <a href="#id6"><span class="problematic" id="id7">:concept:`regexp`</span></a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -104,8 +98,8 @@ the driver lacks PCRE support.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -115,21 +109,25 @@ the driver lacks PCRE support.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::regexplode()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -141,7 +139,7 @@ the driver lacks PCRE support.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/regexplode.txt"
+      <a href="../_sources/efun/regexplode.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

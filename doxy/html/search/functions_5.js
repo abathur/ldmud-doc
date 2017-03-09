@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['ed',['ed',['../classefun.html#a770435af0aed7e16bcaa63d412e58bcc',1,'efun']]],
+  ['ed',['ed',['../classefun.html#a9ee9e4fa5066437c75195638c362ee6d',1,'efun']]],
   ['enable_5fcommands',['enable_commands',['../classefun.html#a57a7c813f5dd1e9315900171a868d4dd',1,'efun']]],
   ['enable_5ftelnet',['enable_telnet',['../classefun.html#a0edd06bcaa96598da8d8041b8783a2d8',1,'efun']]],
   ['end_5fmccp_5fcompress',['end_mccp_compress',['../classefun.html#ab7f14bd8da9ff16ac3c60d868af1aedb',1,'efun']]],
@@ -14,6 +14,5 @@ var searchData=
   ['explode',['explode',['../classefun.html#a5b90a42c555bc61599b700a31b530082',1,'efun']]],
   ['export_5fuid',['export_uid',['../classefun.html#ade44122dc7cb16d015937a67cc645939',1,'efun']]],
   ['extern_5fcall',['extern_call',['../classefun.html#adbad80797e70e6d2fa6ba96cb6e226fb',1,'efun']]],
-  ['external_5fmaster_5freload',['external_master_reload',['../classmaster.html#ae2737fcfda8fdd4caf44bf4f22f218bd',1,'master']]],
-  ['extract',['extract',['../classefun.html#a698adb6a03d7e46c1fd21113cdea94f2',1,'efun']]]
+  ['external_5fmaster_5freload',['external_master_reload',['../classmaster.html#ae2737fcfda8fdd4caf44bf4f22f218bd',1,'master']]]
 ];

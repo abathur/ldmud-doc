@@ -1,0 +1,156 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&amp; &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="status" href="status.html" />
+    <link rel="prev" title="#" href="preprocessor.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="&amp;">
+<span id="reference"></span><span id="lpc.syntax.&"></span><span id="lpc.syntax.reference"></span><div class="section" id="SYNTAX">
+<h2>SYNTAX<a class="headerlink" href="#SYNTAX" title="Permalink to this headline">¶</a></h2>
+<strong>Call by reference</strong><pre class="literal-block">
+&amp;
+<span class="highlighted">&amp;</span>&lt;lvalue&gt;
+</pre>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Call by reference can be used to have a function that passes more than one value to the caller without using arrays that have to be unpacked therein.</p>
+<p>There is nothing special to declare in the calling function, you simply do an assignment to a parameter of the function. The caller has to pass references explicitely; this is done by prefixing an lvalue with <code class="docutils literal"><span class="pre">&amp;</span></code>.</p>
+<p>To pass a reference to an element of an array, you have to enclose the indexed lvalue in round brackets.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">assign</span><span class="p">(</span><span class="kt">mixed</span> <span class="n">destination</span><span class="p">,</span> <span class="kt">mixed</span> <span class="n">source</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">destination</span> <span class="o">=</span> <span class="n">source</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">extract_number</span><span class="p">(</span><span class="kt">int</span> <span class="n">destination</span><span class="p">,</span> <span class="kt">string</span> <span class="n">source</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">sscanf</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="n">destination</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">f</span><span class="p">;</span>
+  <span class="kt">mixed</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span>
+
+  <span class="n">extract_number</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">,</span> <span class="s">&quot;42 palantirs&quot;</span><span class="p">);</span>
+  <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="n">f</span><span class="p">,</span> <span class="mf">3.141592653589793</span><span class="p">);</span>
+  <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="p">({</span> <span class="n">i</span><span class="p">,</span> <span class="n">f</span> <span class="p">}));</span>
+  <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">&lt;</span><span class="mf">0.</span><span class="p">.</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">]),</span> <span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s">&quot;sink&quot;</span><span class="p">,</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="s">&quot;y&quot;</span><span class="p">,</span><span class="s">&quot;x&quot;</span><span class="p">}));</span>
+  <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span> <span class="sc">&#39;w&#39;</span><span class="p">);</span>
+  <span class="n">assign</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">]),</span> <span class="sc">&#39;g&#39;</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%O&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="p">({</span> <span class="cm">/* sizeof() == 9 */</span>
+  <span class="mi">42</span><span class="p">,</span>
+  <span class="mf">3.14159</span><span class="p">,</span>
+  <span class="mi">1</span><span class="p">,</span>
+  <span class="mi">2</span><span class="p">,</span>
+  <span class="mi">3</span><span class="p">,</span>
+  <span class="s">&quot;wing&quot;</span><span class="p">,</span>
+  <span class="s">&quot;x&quot;</span><span class="p">,</span>
+  <span class="s">&quot;y&quot;</span><span class="p">,</span>
+  <span class="s">&quot;x&quot;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">&amp;</a><ul>
+<li><a class="reference internal" href="#SYNTAX">SYNTAX</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/references.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

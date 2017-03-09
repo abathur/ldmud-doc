@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/m_entry.c Source File</title>
+<title>LDMud: efun/m_entry.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('m__entry_8c_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,35 +100,36 @@ $(document).ready(function(){initNavTree('m__entry_8c_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * mixed * m_entry(mapping map, mixed key)</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * Query the mapping \p map for the entry for \p key and return all its values in one array.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * If \p map does not contain \p key, 0 is returned.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   mixed * <a class="code" href="classefun.html#a3b4d34af1c4ceb2ade88380e2bcfb7b1">m_entry</a>(mapping map, mixed key);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;Query the mapping &lt;map&gt; <span class="keywordflow">for</span> the entry for &lt;key&gt; and <span class="keywordflow">return</span> all</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;its values in one array.</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;If &lt;map&gt; does not contain &lt;key&gt;, 0 is returned.</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;Note: the <a class="code" href="classefun.html">efun</a> m_add() can be used to add all values for an entry</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;at once.</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;EXAMPLES</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;mapping m = ([ 1:&quot;foo&quot;:-1, 2:&quot;bar&quot;:-2 ]);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;m_entry(m, 0) -&gt; 0</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;m_entry(m, 1) -&gt; ({ <span class="stringliteral">&quot;foo&quot;</span>, -1 })</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;Introduced in LDMud 3.2.10.</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;   See Also: </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;      <a class="code" href="classefun.html#acc510db961553dfdf2856f0e1de7eefc">efun::m_add</a>(), <a class="code" href="classefun.html#a149395923f6aed5847a664b568d55124">efun::m_contains</a>(), @ref driver_LPC_mappings <span class="stringliteral">&quot;mappings&quot;</span>, <a class="code" href="classefun.html#adf2253b4467a0eb544f67ff5777d2fa2">efun::member</a>()</div>
-<div class="ttc" id="classefun_html_a3b4d34af1c4ceb2ade88380e2bcfb7b1"><div class="ttname"><a href="classefun.html#a3b4d34af1c4ceb2ade88380e2bcfb7b1">efun.m_entry</a></div><div class="ttdeci">mixed * m_entry(mapping map, mixed key)</div></div>
-<div class="ttc" id="classefun_html_a149395923f6aed5847a664b568d55124"><div class="ttname"><a href="classefun.html#a149395923f6aed5847a664b568d55124">efun.m_contains</a></div><div class="ttdeci">int m_contains(mixed  &amp;data1,...,&amp;dataN, map, key)</div></div>
-<div class="ttc" id="classefun_html_adf2253b4467a0eb544f67ff5777d2fa2"><div class="ttname"><a href="classefun.html#adf2253b4467a0eb544f67ff5777d2fa2">efun.member</a></div><div class="ttdeci">int member(mapping m, mixed key)</div></div>
-<div class="ttc" id="classefun_html_acc510db961553dfdf2856f0e1de7eefc"><div class="ttname"><a href="classefun.html#acc510db961553dfdf2856f0e1de7eefc">efun.m_add</a></div><div class="ttdeci">mapping m_add(mapping map, mixed key, [mixed data...])</div></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * @par note: efun::m_add() can be used to add all values for an entry at once.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * mixed * m_entry(mapping map, mixed key)</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    * @usage{</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    * ~~~{.c}</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    * mapping m = ([ 1:&quot;foo&quot;:-1, 2:&quot;bar&quot;:-2 ]);</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    * m_entry(m, 0) // 0</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    * m_entry(m, 1) // ({ &quot;foo&quot;, -1 })</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">    * ~~~</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">    * @history{</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">    * introduced (3.2.10)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">    * @see efun::m_add(), efun::m_contains(), @ref driver_syntax_mappings &quot;mapping&quot;, efun::member()</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;   mixed * <a class="code" href="classefun.html#a3b4d34af1c4ceb2ade88380e2bcfb7b1">m_entry</a>(mapping map, mixed key);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="ttc" id="classefun_html_a3b4d34af1c4ceb2ade88380e2bcfb7b1"><div class="ttname"><a href="classefun.html#a3b4d34af1c4ceb2ade88380e2bcfb7b1">efun.m_entry</a></div><div class="ttdeci">mixed * m_entry(mapping map, mixed key)</div><div class="ttdoc">Query the mapping map for the entry for key and return all its values in one array. </div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('m__entry_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>m_entry.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:08 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:21 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/get_dir.c Source File</title>
+<title>LDMud: efun/get_dir.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('get__dir_8c_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,155 +100,123 @@ $(document).ready(function(){initNavTree('get__dir_8c_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * mixed * get_dir(string str)</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * mixed * get_dir(string str, int mask)</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * :include &lt;files.h&gt;()</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * This function takes a path as argument and returns an array of file names and attributes in that directory.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * Returns 0 if the directory to search in does not exist.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * The filename part of the path may contain &#39;*&#39; or &#39;?&#39; as wildcards: every &#39;*&#39; matches an arbitrary amount of characters (or just itself), a &#39;?&#39; matches any character. Thus get_dir(&quot;/path/&lt;em&gt;&quot;) would return an alphabetically sorted array of all files in directory &quot;/path&quot;, or just ({ &quot;/path/&lt;/em&gt;&quot; }) if this file happens to exist.</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classefun.html#ab6f3c269fc46c9c1c0f81b3431240138">   10</a></span>&#160;   :include &lt;files.h&gt;();</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;This <span class="keyword">function</span> takes a path as argument and returns an array of file</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;names and attributes in that directory.</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;Returns 0 <span class="keywordflow">if</span> the directory to search in does not exist.</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;The filename part of the path may contain <span class="charliteral">&#39;*&#39;</span> or <span class="charliteral">&#39;?&#39;</span> as wildcards:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;every <span class="charliteral">&#39;*&#39;</span> matches an arbitrary amount of characters (or just itself),</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;a <span class="charliteral">&#39;?&#39;</span> matches any character. Thus get_dir(<span class="stringliteral">&quot;/path/&lt;em&gt;&quot;</span>) would return an</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;alphabetically sorted array of all files in directory &quot;/path&quot;, or</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;just ({ <span class="stringliteral">&quot;/path/&lt;/em&gt;&quot;</span> }) <span class="keywordflow">if</span> <span class="keyword">this</span> file happens to exist.</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;To query the content of a directory, use the directory name with a</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;trailing <span class="charliteral">&#39;/&#39;</span> or <span class="stringliteral">&#39;/.&#39;</span>, <span class="keywordflow">for</span> example get_dir(<span class="stringliteral">&quot;/path/.&quot;</span>). Use the</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;directory name as it is to <span class="keyword">get</span> information about the directory itself.</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;The optional second argument mask can be used to <span class="keyword">get</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;information about the specified files.</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;GETDIR_EMPTY    (0x00)  get_dir returns an empty array (not very</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;   useful).</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;GETDIR_NAMES    (0x01)  put the alphabetically sorted file names into</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;   the returned array.</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;GETDIR_SIZES    (0x02)  put the file sizes unsorted into the returned</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;   array. directories have size FSIZE_DIR (-2).</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;GETDIR_DATES    (0x04)  put the file modification dates (in seconds</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;   since 01/01/1970) unsorted into the</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;   returned array.</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;GETDIR_ACCESS   (0x40)  put the file access dates unsorted into</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;   the returned array.</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;GETDIR_MODES    (0x80)  put the unix file modes unsorted into</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;   the returned array.</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;GETDIR_ALL      (0xDF)  Return all.</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;GETDIR_PATH     (0x10)  if this mask bit is set, the filenames with</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;   the full path will be returned</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;   (GETDIR_NAMES is implied).</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;GETDIR_UNSORTED (0x20)  if this mask bit is set, the result of will</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;   _not_ be sorted.</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;Note: You should use GETDIR_NAMES|GETDIR_UNSORTED to get the entries</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;in the same order as with GETDIR_SIZES and GETDIR_DATES.</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;The values of mask can be added together.</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;NOTES</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;The path argument to this <a class="code" href="classefun.html">efun</a> is processed by valid_read() in the</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;mudlib <a class="code" href="classmaster.html">master</a> before being used. The mudlib may normalize this path</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;(e.g. strip leading or trailing &quot;/&quot;) and this may lead to expected</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;results (e.g. get_dir(&quot;/dir/&quot;, ...) not returning the contents</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;of /dir/).</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;COMPAT mode: GETDIR_PATH will return the paths without leading /.</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;EXAMPLES</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;function                         returns</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;-------------------------------------------------------------------</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;get_dir(&quot;/obj/.&quot;)                all files contained in directory /obj.</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;get_dir(&quot;/obj/&quot;)                 the same as get_dir(&quot;/obj/&quot;)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;get_dir(&quot;/obj/sword.c&quot;)          ({ <span class="stringliteral">&quot;sword.c&quot;</span> }) <span class="keywordflow">if</span> /obj/sword.c</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;   exists (it may be a file or a</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;   directory), otherwise ({ }) <span class="keywordflow">if</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;   /obj is a directory,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;   otherwise 0.</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;get_dir(<span class="stringliteral">&quot;/obj/&lt;em&gt;&quot;</span>)                ({ <span class="stringliteral">&quot;&lt;/em&gt;&quot;</span> }) <span class="keywordflow">if</span> * exists.</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;   otherwise and normally an</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;   alphabetically sorted array with all</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;   names of files and directories in</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;   /obj <span class="keywordflow">if</span> /obj is a directory,</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;   otherwise 0.</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;get_dir(<span class="stringliteral">&quot;/obj/sword.c&quot;</span>, GETDIR_SIZES)  ({ &lt;size of /obj/sword.c&gt; })</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;   <span class="keywordflow">if</span> that file exists.</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;get_dir(<span class="stringliteral">&quot;/obj/.&quot;</span>, GETDIR_NAMES)  the same as get_dir(<span class="stringliteral">&quot;/obj/.&quot;</span>).</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;get_dir(<span class="stringliteral">&quot;/obj/.&quot;</span>, GETDIR_SIZES)  an array with the sizes of the files</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;   in /obj, not sorted by names.</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;get_dir(<span class="stringliteral">&quot;/obj/.&quot;</span>, GETDIR_NAMES|GETDIR_SIZES|GETDIR_DATES) or shorter</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;get_dir(<span class="stringliteral">&quot;/obj/.&quot;</span>, GETDIR_ALL)    an one-dimensional array that</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;   contains for each file in /obj its</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;   name, its size and its modification</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;   date, sorted by names, for example</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      ({</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;         <span class="stringliteral">&quot;axe.c&quot;</span>  ,  927, 994539583,</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;         <span class="stringliteral">&quot;sword.c&quot;</span>, 1283, 998153903,</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      }).</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;get_dir(<span class="stringliteral">&quot;/obj/sword.c&quot;</span>, GETDIR_NAMES|GETDIR_PATH)</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;   ({ <span class="stringliteral">&quot;/obj/sword.c&quot;</span> }) <span class="keywordflow">if</span> applicable.</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;get_dir(<span class="stringliteral">&quot;/obj/sword.c&quot;</span>, GETDIR_PATH)  Short form of the same query.</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;transpose_array(({ get_dir(str, GETDIR_NAMES|GETDIR_UNSORTED)</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;   , get_dir(str, GETDIR_SIZES)</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;   , get_dir(str, GETDIR_DATES) }));</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;This returns an array of arrays, with filename, size and</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;filetime as elements, not sorted by names, <span class="keywordflow">for</span> example</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;   ({</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      ({ <span class="stringliteral">&quot;sword.c&quot;</span>, 1283, 998153903 }),</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      ({ <span class="stringliteral">&quot;axe.c&quot;</span>  ,  927, 994539583 }),</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;   }).</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;LDMud 3.2.9 added GETDIR_PATH.</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;LDMud 3.2.11/3.3.648 added GETDIR_ACCESS and GETDIR_MODES.</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      See Also: </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;         <a class="code" href="classefun.html#a04954648bada0ed418aae3b3d42e552c">efun::mkdir</a>(), <a class="code" href="classefun.html#a2fb85ac66a311b390a291be362fe3f50">efun::rmdir</a>(), <a class="code" href="classefun.html#a0c87cd9fec8ea173263102f5340e8eeb">efun::file_size</a>(), <a class="code" href="classefun.html#a774272e5348c068001ddb6ab2619037c">efun::write_file</a>(), <a class="code" href="classefun.html#a2205d4e4aba7441c2c9364d151ffe244">efun::write_bytes</a>(),</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;   <a class="code" href="classefun.html#a8dc3fe07fb68607e9aeec34108c40b7a">efun::read_file</a>(), <a class="code" href="classefun.html#ae718aabad56d4181a21426316d496107">efun::read_bytes</a>()</div>
-<div class="ttc" id="classefun_html_a774272e5348c068001ddb6ab2619037c"><div class="ttname"><a href="classefun.html#a774272e5348c068001ddb6ab2619037c">efun.write_file</a></div><div class="ttdeci">int write_file(string file, string str, int flags)</div></div>
-<div class="ttc" id="classefun_html_a0c87cd9fec8ea173263102f5340e8eeb"><div class="ttname"><a href="classefun.html#a0c87cd9fec8ea173263102f5340e8eeb">efun.file_size</a></div><div class="ttdeci">int file_size(string file)</div><div class="ttdoc">Returns the size of the file in bytes. </div></div>
-<div class="ttc" id="classefun_html_a04954648bada0ed418aae3b3d42e552c"><div class="ttname"><a href="classefun.html#a04954648bada0ed418aae3b3d42e552c">efun.mkdir</a></div><div class="ttdeci">int mkdir(string path)</div><div class="ttdoc">Make a directory named path. </div></div>
-<div class="ttc" id="classefun_html_a8dc3fe07fb68607e9aeec34108c40b7a"><div class="ttname"><a href="classefun.html#a8dc3fe07fb68607e9aeec34108c40b7a">efun.read_file</a></div><div class="ttdeci">string read_file(string file, int start, int number)</div></div>
-<div class="ttc" id="classmaster_html"><div class="ttname"><a href="classmaster.html">master</a></div><div class="ttdef"><b>Definition:</b> <a href="compile__object_8c_source.html#l00001">compile_object.c:1</a></div></div>
-<div class="ttc" id="classefun_html_ae718aabad56d4181a21426316d496107"><div class="ttname"><a href="classefun.html#ae718aabad56d4181a21426316d496107">efun.read_bytes</a></div><div class="ttdeci">string read_bytes(string file, int start, int number)</div></div>
-<div class="ttc" id="classefun_html_a2205d4e4aba7441c2c9364d151ffe244"><div class="ttname"><a href="classefun.html#a2205d4e4aba7441c2c9364d151ffe244">efun.write_bytes</a></div><div class="ttdeci">int write_bytes(string file, int start, string str)</div><div class="ttdoc">Write string str to file file by overwriting the old bytes at position start. </div></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * To query the content of a directory, use the directory name with a trailing &#39;/&#39; or &#39;/.&#39;, for example `get_dir(&quot;/path/.&quot;)`. Use the directory name as it is to get information about the directory itself.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * The optional second argument mask can be used to get information about the specified files.:</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    * ~~~{.c}</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    * :macro:`GETDIR_EMPTY`    (0x00)  get_dir returns an empty array (not very useful).</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    * :macro:`GETDIR_NAMES`    (0x01)  put the alphabetically sorted file names into the returned array.</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    * :macro:`GETDIR_SIZES`    (0x02)  put the file sizes unsorted into the returned array. directories have size :macro:`FSIZE_DIR` (-2).</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    * :macro:`GETDIR_DATES`    (0x04)  put the file modification dates (in seconds since 01/01/1970) unsorted into the returned array.</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    * :macro:`GETDIR_ACCESS`   (0x40)  put the file access dates unsorted into the returned array.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    * :macro:`GETDIR_MODES`    (0x80)  put the unix file modes unsorted into the returned array.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">    * :macro:`GETDIR_ALL`      (0xDF)  Return all.</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">    * :macro:`GETDIR_PATH`     (0x10)  if this mask bit is set, the filenames with the full path will be returned (GETDIR_NAMES is implied).</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">    * :macro:`GETDIR_UNSORTED` (0x20)  if this mask bit is set, the result of will _not_ be sorted.</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">    * ~~~</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">    * @par note: You should use `GETDIR_NAMES|GETDIR_UNSORTED` to get the entries in the same order as with `GETDIR_SIZES` and `GETDIR_DATES`.</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">    * The values of mask can be added together.</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">    * @par note: The path argument to this efun is processed by master::valid_read() in the mudlib master before being used. The mudlib may normalize this path (e.g. strip leading or trailing &quot;/&quot;) and this may lead to unexpected results (e.g. `get_dir(&quot;/dir/&quot;, ...)` not returning the contents of &quot;/dir/&quot;).</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">    * @par note: in @ref driver_topics_predefined &quot;__COMPAT_MODE__&quot;, `GETDIR_PATH` will return the paths without the leading /.</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">    * @headerfile &lt;files.h&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">    * mixed * get_dir(string str)</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">    * mixed * get_dir(string str, int mask)</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">    * @usage{</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">    * ~~~{.c}</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">    * function                         returns</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">    * -------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">    * get_dir(&quot;/obj/.&quot;)                all files contained in directory /obj.</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">    * get_dir(&quot;/obj/&quot;)                 the same as get_dir(&quot;/obj/&quot;)</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">    * get_dir(&quot;/obj/sword.c&quot;)          ({ &quot;sword.c&quot; }) if /obj/sword.c</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">    *                                  exists (it may be a file or a</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">    *                                  directory), otherwise ({ }) if</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">    *                                  /obj is a directory,</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">    *                                  otherwise 0.</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">    * get_dir(&quot;/obj/*&quot;)                ({ &quot;*&quot; }) if * exists.</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">    *                                  otherwise and normally an</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">    *                                  alphabetically sorted array with all</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">    *                                  names of files and directories in</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">    *                                  /obj if /obj is a directory,</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">    *                                  otherwise 0.</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">    * get_dir(&quot;/obj/sword.c&quot;, GETDIR_SIZES)  ({ &lt;size of /obj/sword.c&gt; })</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">    *                                  if that file exists.</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">    * get_dir(&quot;/obj/.&quot;, GETDIR_NAMES)  the same as get_dir(&quot;/obj/.&quot;).</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">    * get_dir(&quot;/obj/.&quot;, GETDIR_SIZES)  an array with the sizes of the files</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">    *                                  in /obj, not sorted by names.</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">    * get_dir(&quot;/obj/.&quot;, GETDIR_NAMES|GETDIR_SIZES|GETDIR_DATES) or shorter</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">    * get_dir(&quot;/obj/.&quot;, GETDIR_ALL)    an one-dimensional array that</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">    *                                  contains for each file in /obj its</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">    *                                  name, its size and its modification</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">    *                                  date, sorted by names, for example</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">    *                                    ({</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">    *                                       &quot;axe.c&quot;  ,  927, 994539583,</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">    *                                       &quot;sword.c&quot;, 1283, 998153903,</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">    *                                    }).</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">    * get_dir(&quot;/obj/sword.c&quot;, GETDIR_NAMES|GETDIR_PATH)</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">    *                                  ({ &quot;/obj/sword.c&quot; }) if applicable.</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">    * get_dir(&quot;/obj/sword.c&quot;, GETDIR_PATH)  Short form of the same query.</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">    * ~~~</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">    * This returns an array of arrays, with filename, size and filetime as elements, not sorted by names:</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">    * ~~~{.c}</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">    * transpose_array(({ get_dir(str, GETDIR_NAMES|GETDIR_UNSORTED)</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">    *                  , get_dir(str, GETDIR_SIZES)</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">    *                  , get_dir(str, GETDIR_DATES) }));</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">    * ~~~</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">    * Here&#39;s an example of this array:</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">    * ~~~{.c}</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">    * ({</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">    *    ({ &quot;sword.c&quot;, 1283, 998153903 }),</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">    *    ({ &quot;axe.c&quot;  ,  927, 994539583 }),</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">    * }).</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">    * ~~~</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">    * @history{</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">    * changed (3.2.9) -- adds GETDIR_PATH.</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">    * changed (3.2.11/3.3.648) -- adds GETDIR_ACCESS and GETDIR_MODES.</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">    * @see efun::mkdir(), efun::rmdir(), efun::file_size(), efun::write_file(), efun::write_bytes(), efun::read_file(), efun::read_bytes()</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;   mixed * <a class="code" href="classefun.html#a457ca99271d2dd61e3378e952e34291a">get_dir</a>(string str, int mask);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
+<div class="ttc" id="classefun_html_a457ca99271d2dd61e3378e952e34291a"><div class="ttname"><a href="classefun.html#a457ca99271d2dd61e3378e952e34291a">efun.get_dir</a></div><div class="ttdeci">mixed * get_dir(string str, int mask)</div><div class="ttdoc">This function takes a path as argument and returns an array of file names and attributes in that dire...</div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
-<div class="ttc" id="classefun_html_a2fb85ac66a311b390a291be362fe3f50"><div class="ttname"><a href="classefun.html#a2fb85ac66a311b390a291be362fe3f50">efun.rmdir</a></div><div class="ttdeci">int rmdir(string dir)</div><div class="ttdoc">Remove directory dir. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>get_dir.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:08 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:21 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

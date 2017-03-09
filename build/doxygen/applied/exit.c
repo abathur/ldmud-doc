@@ -6,7 +6,7 @@ public class applied {
     * 
     * efun::this_player() will return a random value, don't use it at this point.
     * 
-    * @par warning:An error in this function will leave the player stranded in the current room until the next reboot.
+    * @par warning: An error in this function will leave the player stranded in the current room until the next reboot.
     * 
     * @synopsis{
     * void exit(object ob)

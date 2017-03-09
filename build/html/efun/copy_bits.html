@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::copy_bits() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::copy_bits() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::copy_file()" href="copy_file.html" />
     <link rel="prev" title="efun::copy()" href="copy.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,57 +47,46 @@
 <div class="section" id="SYNOPSIS">
 <span id="copy_bits"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.copy_bits">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">copy_bits</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;src</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;dest[</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> srcstart<em>&nbsp;[</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> deststart<em>&nbsp;[</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> copylen<em>&nbsp;]]]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.copy_bits" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.copy_bits">
+<!--[lpc.efun.copy_bits]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">copy_bits</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;src</em>, </td><td id="id2">
+string<em>&nbsp;dest[</em>, </td><td id="id3">
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> srcstart<em>&nbsp;[</em>, </td><td id="id4">
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> deststart<em>&nbsp;[</em>, </td><td id="id5">
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> copylen<em>&nbsp;]]]</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.copy_bits" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<p>Copy the bitrange [&lt;srcstart&gt;..&lt;srcstart&gt;+&lt;copylen&gt;[ from
-bitstring &lt;src&gt; and copy it into the bitstring &lt;dest&gt; starting
-at &lt;deststart&gt;, overwriting the original bits at those positions.</p>
-<p>The resulting combined string is returned, the input strings remain
-unaffected.</p>
-<p>If &lt;srcstart&gt; is not given, &lt;src&gt; is copied from the start.
-If &lt;srcstart&gt; is negative, it is counted from one past the last set
-bit in the string (ie. &#8216;-1&#8217; will index the last set bit).</p>
-<p>If &lt;deststart&gt; is not given, &lt;dest&gt; will be overwritten from the start.
-If &lt;deststart&gt; is negative, it is counted from one past the last set
-bit in the string (ie. &#8216;-1&#8217; will index the last set bit).</p>
-<p>If &lt;copylen&gt; is not given, it is assumed to be infinite, ie. the result
-will consist of &lt;dest&gt; up to position &lt;deststart&gt;, followed by
-the data copied from &lt;src&gt;.
-If &lt;copylen&gt; is negative, the function will copy the abs(&lt;copylen&gt;)
-bits _before_ &lt;srcstart&gt; in to the result.</p>
+<p>Copy the bitrange <code class="samp docutils literal"><span class="pre">[</span><em><span class="pre">srcstart</span></em><span class="pre">..</span><em><span class="pre">srcstart</span></em><span class="pre">+</span><em><span class="pre">copylen</span></em><span class="pre">]</span></code> from bitstring <a class="reference internal" href="#efun/copy_bits.arg.src" title="src"><code class="xref lpc lpc-arg docutils literal"><span class="pre">src</span></code></a> and copy it into the bitstring <code class="xref lpc lpc-arg docutils literal"><span class="pre">dest</span></code> starting at <code class="xref lpc lpc-arg docutils literal"><span class="pre">deststart</span></code>, overwriting the original bits at those positions.</p>
+<p>The resulting combined string is returned, the input strings remain unaffected.</p>
+<p>If <code class="xref lpc lpc-arg docutils literal"><span class="pre">srcstart</span></code> is not given, <a class="reference internal" href="#efun/copy_bits.arg.src" title="src"><code class="xref lpc lpc-arg docutils literal"><span class="pre">src</span></code></a> is copied from the start. If <code class="xref lpc lpc-arg docutils literal"><span class="pre">srcstart</span></code> is negative, it is counted from one past the last set bit in the string (ie. &#8216;-1&#8217; will index the last set bit).</p>
+<p>If <code class="xref lpc lpc-arg docutils literal"><span class="pre">deststart</span></code> is not given, <code class="xref lpc lpc-arg docutils literal"><span class="pre">dest</span></code> will be overwritten from the start. If <code class="xref lpc lpc-arg docutils literal"><span class="pre">deststart</span></code> is negative, it is counted from one past the last set bit in the string (ie. &#8216;-1&#8217; will index the last set bit).</p>
+<p>If <code class="xref lpc lpc-arg docutils literal"><span class="pre">copylen</span></code> is not given, it is assumed to be infinite, ie. the result will consist of <code class="xref lpc lpc-arg docutils literal"><span class="pre">dest</span></code> up to position <code class="xref lpc lpc-arg docutils literal"><span class="pre">deststart</span></code>, followed by the data copied from <a class="reference internal" href="#efun/copy_bits.arg.src" title="src"><code class="xref lpc lpc-arg docutils literal"><span class="pre">src</span></code></a>. If <code class="xref lpc lpc-arg docutils literal"><span class="pre">copylen</span></code> is negative, the function will copy the abs(<code class="xref lpc lpc-arg docutils literal"><span class="pre">copylen</span></code>) bits _before_ <code class="xref lpc lpc-arg docutils literal"><span class="pre">srcstart</span></code> in to the result.</p>
 <p>None of the range limits can become negative.</p>
-<p>EXAMPLES
-copy_bits(src, dest, 10)    === src[10..]
-copy_bits(src, dest, 10, 5) === dest[0..4] + src[10..]
-copy_bits(src, dest, 10, 5, 3)</p>
-<blockquote>
-<div><blockquote>
-<div>=== dest[0..4] + src[10..12] + dest[8..]</div></blockquote>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">copy_bits</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>    <span class="o">===</span> <span class="n">src</span><span class="p">[</span><span class="mf">10.</span><span class="p">.]</span>
+<span class="n">copy_bits</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">===</span> <span class="n">dest</span><span class="p">[</span><span class="mf">0..4</span><span class="p">]</span> <span class="o">+</span> <span class="n">src</span><span class="p">[</span><span class="mf">10.</span><span class="p">.]</span>
+<span class="n">copy_bits</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+                            <span class="o">===</span> <span class="n">dest</span><span class="p">[</span><span class="mf">0..4</span><span class="p">]</span> <span class="o">+</span> <span class="n">src</span><span class="p">[</span><span class="mf">10..12</span><span class="p">]</span> <span class="o">+</span> <span class="n">dest</span><span class="p">[</span><span class="mf">8.</span><span class="p">.]</span>
+</pre></div>
+</div>
 <p>(The src[]/dest[] is just for explanatory purposes!)</p>
-</div></blockquote>
-<p>Introduced in LDMud 3.3.166.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="clear_bit.html#lpc.clear_bit" title="clear_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clear_bit()</span></code>(E)</a>, <a class="reference internal" href="set_bit.html#lpc.set_bit" title="set_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_bit()</span></code>(E)</a>, <a class="reference internal" href="test_bit.html#lpc.test_bit" title="test_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">test_bit()</span></code>(E)</a>, <a class="reference internal" href="next_bit.html#lpc.next_bit" title="next_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">next_bit()</span></code>(E)</a>, <a class="reference internal" href="last_bit.html#lpc.last_bit" title="last_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">last_bit()</span></code>(E)</a>, <a class="reference internal" href="count_bits.html#lpc.count_bits" title="count_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">count_bits()</span></code>(E)</a>, <a class="reference internal" href="or_bits.html#lpc.or_bits" title="or_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">or_bits()</span></code>(E)</a>, <a class="reference internal" href="xor_bits.html#lpc.xor_bits" title="xor_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">xor_bits()</span></code>(E)</a>, <a class="reference internal" href="invert_bits.html#lpc.invert_bits" title="invert_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">invert_bits()</span></code>(E)</a>, <a class="reference internal" href="and_bits.html#lpc.and_bits" title="and_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">and_bits()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.166</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="clear_bit.html#lpc.efun.clear_bit" title="clear_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clear_bit</span></code>(E)</a>, <a class="reference internal" href="set_bit.html#lpc.efun.set_bit" title="set_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_bit</span></code>(E)</a>, <a class="reference internal" href="test_bit.html#lpc.efun.test_bit" title="test_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">test_bit</span></code>(E)</a>, <a class="reference internal" href="next_bit.html#lpc.efun.next_bit" title="next_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">next_bit</span></code>(E)</a>, <a class="reference internal" href="last_bit.html#lpc.efun.last_bit" title="last_bit"><code class="xref lpc lpc-efun docutils literal"><span class="pre">last_bit</span></code>(E)</a>, <a class="reference internal" href="count_bits.html#lpc.efun.count_bits" title="count_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">count_bits</span></code>(E)</a>, <a class="reference internal" href="or_bits.html#lpc.efun.or_bits" title="or_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">or_bits</span></code>(E)</a>, <a class="reference internal" href="xor_bits.html#lpc.efun.xor_bits" title="xor_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">xor_bits</span></code>(E)</a>, <a class="reference internal" href="invert_bits.html#lpc.efun.invert_bits" title="invert_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">invert_bits</span></code>(E)</a>, <a class="reference internal" href="and_bits.html#lpc.efun.and_bits" title="and_bits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">and_bits</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -106,8 +97,8 @@ copy_bits(src, dest, 10, 5, 3)</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -117,21 +108,25 @@ copy_bits(src, dest, 10, 5, 3)</p>
   <ul>
 <li><a class="reference internal" href="#">efun::copy_bits()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -143,7 +138,7 @@ copy_bits(src, dest, 10, 5, 3)</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/copy_bits.txt"
+      <a href="../_sources/efun/copy_bits.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

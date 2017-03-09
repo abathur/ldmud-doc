@@ -233,4 +233,6 @@ DESCRIPTION
   string parse_command_all_word()
     Return the one(!) 'all' word.
 
-  .. seealso:: :master:`master`, :efun:`efun`, :applied:`applied`, :concept:`concepts`, :driver:`driver`, :lang:`lpc`
+  .. todo:: not sure if 'driver' is a topic, an overview, etc.
+
+  .. seealso:: :master:`master`, :efun:`efun`, :applied:`applied`, :concept:`concepts`, :topic:`driver`, :lang:`lpc`

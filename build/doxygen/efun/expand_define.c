@@ -1,29 +1,29 @@
 public class efun {
    /**
+    * Expands the macro \p name with the argument(s) \p arg ... (default is one empty string ""). Result is the expanded macro, or 0 if there is no macro with that name.
+    * 
+    * This efun is applicable only while an object is compiled, therefore its usage is restricted to a few functions like @ref driver_hook_include_dirs "H_INCLUDE_DIRS", or master::runtime_error().
+    * 
     * @synopsis{
     * string expand_define(string name)
     * string expand_define(string name, string arg, ...)
     * }
     * 
+    * @usage{
+    * While compiling 'foo.c':
+    * 
+    * ~~~{.c}
+    * expand_define("__FILE__") --> "foo.c"
+    * 
+    * ~~~
+    * 
+    * }
+    * 
+    * @history{
+    * introduced (3.2.1@93)
+    * }
+    * 
+    * @see @ref driver_hook_overview "hook", master::runtime_error()
    **/
    string expand_define(string name, string arg, ...);
 }
-Expands the macro <name> with the argument(s) <arg>... (default is
-one empty string "").
-Result is the expanded macro, or 0 if there is no macro with
-that name.
-
-This efun is applicable only while an object is compiled,
-therefore its usage is restricted to a few functions like the
-H_INCLUDE_DIRS driver hook, or the masters runtime_error()
-function.
-
-EXAMPLES
-While compiling 'foo.c':
-
-   expand_define("__FILE__") --> "foo.c"
-
-Introduced in @subpage driver_mailto:3.2.1@93 "3.2.1@93".
-
-   See Also: 
-      `hooks`, master::runtime_error()

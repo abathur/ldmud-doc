@@ -8,4 +8,12 @@ DESCRIPTION
    compat mode.
 
    Returns the creator (i.e. the name of the wizard or domain) of the object. 
-   Default for ob is this_object().
+   Default for ob(E) is `this_object()`.
+
+HISTORY
+=======
+   - changed (3.2.1@47) -- this efun is now an alias for getuid(E).
+
+SEE ALSO
+========
+   getuid(E), >>:concept:`native`<<, >>:concept:`uids`<<

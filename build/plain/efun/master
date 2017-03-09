@@ -5,13 +5,18 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-Returns the master object.
+   Returns the master object.
 
-If <dont_load> is false, the function first makes sure that the master object 
-exists. If <dont_load> is true, the function just returns the current master 
-object, or 0 if the current master has been destructed.
+   If dont_load(E) is false, the function first makes sure that the master 
+   object exists.
 
-Introduced in LDMud 3.2.10.
+   If dont_load(E) is true, the function just returns the current master 
+   object, or 0 if the current master has been destructed.
 
-   See Also: 
-      master(E)
+HISTORY
+=======
+   - introduced (3.2.10)
+
+SEE ALSO
+========
+   `overview`

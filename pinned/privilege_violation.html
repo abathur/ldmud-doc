@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>privilege_violation &mdash; LDMud UNRELEASED documentation</title>
+    <title>master::privilege_violation() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,22 +18,25 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="master" href="master.html" />
-    <link rel="next" title="query_allow_shadow" href="query_allow_shadow.html" />
-    <link rel="prev" title="printf_obj_name" href="printf_obj_name.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="master::query_allow_shadow()" href="query_allow_shadow.html" />
+    <link rel="prev" title="master::printf_obj_name()" href="printf_obj_name.html" />
    
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -43,123 +47,97 @@
 <div class="section" id="SYNOPSIS">
 <span id="privilege_violation"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.privilege_violation">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">privilege_violation</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;op</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;who</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;arg</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;arg2</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;arg3</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.privilege_violation" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.master.privilege_violation">
+<!--[lpc.master.privilege_violation]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">privilege_violation</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;op</em>, </td><td id="id2">
+mixed<em>&nbsp;who</em>, </td><td id="id3">
+mixed<em>&nbsp;arg</em>, </td><td id="id4">
+mixed<em>&nbsp;arg2</em>, </td><td id="id5">
+mixed<em>&nbsp;arg3</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.master.privilege_violation" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Validate the execution of a privileged operation.
-op denotes the requested operation, who is the object
-requesting the operation (file_name or object pointer), &lt;arg&gt;
-and &lt;arg2&gt; are additional arguments, depending on the operation.</p>
-<p>The function should return &gt;0 to grant the privilege, 0 to
-indicate that the caller was probably misled and the error
-might be fixed, and anything else to indicate a real
-violation that will be handled as run time error.</p>
+<p>Validate the execution of a privileged operation. op denotes the requested operation, who is the object requesting the operation (file_name or object pointer), <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> and <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a> are additional arguments, depending on the operation.</p>
+<p>The function should return &gt;0 to grant the privilege, 0 to indicate that the caller was probably misled and the error might be fixed, and anything else to indicate a real violation that will be handled as run time error.</p>
 <p>The privileged operations are:</p>
 <dl class="docutils">
 <dt>attach_erq_demon</dt>
-<dd>Attach the erq demon to object &lt;arg&gt; with  flag &lt;arg2&gt;.</dd>
+<dd>Attach the erq demon to object <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> with  flag <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a>.</dd>
 <dt>bind_lambda</dt>
-<dd>Bind a lambda-closure to object &lt;arg&gt;.</dd>
+<dd>Bind a lambda-closure to object <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>.</dd>
 <dt>call_out_info</dt>
 <dd>Return an array with all call_out informations.</dd>
 <dt>configure_interactive</dt>
-<dd>Set option &lt;arg2&gt; with value &lt;arg3&gt; as default (&lt;arg&gt;==0) or for object
-&lt;arg&gt;.</dd>
+<dd>Set option <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a> with value <a class="reference internal" href="#master/privilege_violation.arg.arg3" title="arg3"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg3</span></code></a> as default (<code class="docutils literal"><span class="pre">arg==0</span></code>) or for object <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>.</dd>
 <dt>configure_driver</dt>
-<dd>Set option &lt;arg1&gt; to value(s) &lt;arg2&gt;.</dd>
+<dd>Set option <code class="xref lpc lpc-arg docutils literal"><span class="pre">arg1</span></code> to value(s) <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a>.</dd>
 <dt>enable_telnet</dt>
-<dd>Enable/disable telnet (&lt;arg2&gt;) for object &lt;arg&gt;.</dd>
+<dd>Enable/disable telnet (<a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a>) for object <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>.</dd>
 <dt>execute_command</dt>
-<dd>Execute command string &lt;arg2&gt; for the object &lt;arg&gt;.</dd>
+<dd>Execute command string <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a> for the object <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>.</dd>
 <dt>erq</dt>
-<dd>At the request &lt;arg2&gt; is to be sent to the erq-demon by the object &lt;who&gt;.</dd>
+<dd>At the request <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a> is to be sent to the erq-demon by the object <a class="reference internal" href="#master/privilege_violation.arg.who" title="who"><code class="xref lpc lpc-arg docutils literal"><span class="pre">who</span></code></a>.</dd>
 <dt>garbage_collection</dt>
-<dd>Object &lt;who&gt; calls the efun garbage_collection() with &lt;arg&gt; as filename
-and &lt;arg2&gt; as flag.</dd>
+<dd>Object <a class="reference internal" href="#master/privilege_violation.arg.who" title="who"><code class="xref lpc lpc-arg docutils literal"><span class="pre">who</span></code></a> calls the <a class="reference internal" href="../efun/garbage_collection.html#lpc.efun.garbage_collection" title="garbage_collection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">garbage_collection</span></code>(E)</a> with <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> as filename and <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a> as flag.</dd>
 <dt>input_to</dt>
-<dd>Object &lt;who&gt; redirects the next input from commandgiver &lt;arg&gt;, using
-&lt;arg2&gt; as value for the flags. This is used for flag values including the
-&#8216;no bang&#8217; option.</dd>
+<dd>Object <a class="reference internal" href="#master/privilege_violation.arg.who" title="who"><code class="xref lpc lpc-arg docutils literal"><span class="pre">who</span></code></a> redirects the next input from commandgiver <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>, using <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a> as value for the flags. This is used for flag values including the &#8216;no bang&#8217; option.</dd>
 <dt>limited</dt>
-<dd>Execute &lt;arg&gt; with reduced/changed limits 1&lt;arg2&gt; (as return by
-query_limits()).</dd>
+<dd>Execute <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> with reduced/changed limits <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a> (as return by <a class="reference internal" href="../efun/query_limits.html#lpc.efun.query_limits" title="query_limits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_limits</span></code>(E)</a>).</dd>
 <dt>mysql</dt>
-<dd>Object &lt;who&gt; attempted to execute mySQL efun &lt;arg&gt;.</dd>
+<dd>Object <a class="reference internal" href="#master/privilege_violation.arg.who" title="who"><code class="xref lpc lpc-arg docutils literal"><span class="pre">who</span></code></a> attempted to execute mySQL efun <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>.</dd>
 <dt>pgsql</dt>
-<dd>Object &lt;who&gt; attempted to execute Postgres efun &lt;arg&gt;.</dd>
+<dd>Object <a class="reference internal" href="#master/privilege_violation.arg.who" title="who"><code class="xref lpc lpc-arg docutils literal"><span class="pre">who</span></code></a> attempted to execute Postgres efun <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>.</dd>
 <dt>net_connect</dt>
-<dd>Attempt to open a connection to host &lt;arg&gt;, port &lt;arg2&gt;.</dd>
+<dd>Attempt to open a connection to host <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>, port <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a>.</dd>
 <dt>nomask simul_efun</dt>
-<dd>Attempt to get an efun &lt;arg&gt; via efun:: when it is shadowed by a nomask
-type simul_efun.</dd>
+<dd>Attempt to get an efun <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> via efun:: when it is shadowed by a nomask type simul_efun.</dd>
 <dt>rename_object</dt>
-<dd>The object &lt;who&gt; tries to rename the object &lt;arg&gt; to the name &lt;arg2&gt;.</dd>
+<dd>The object <a class="reference internal" href="#master/privilege_violation.arg.who" title="who"><code class="xref lpc lpc-arg docutils literal"><span class="pre">who</span></code></a> tries to rename the object <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> to the name <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a>.</dd>
 <dt>send_udp</dt>
-<dd>Send UDP-data to host &lt;arg&gt;.</dd>
+<dd>Send UDP-data to host <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>.</dd>
 <dt>get_extra_wizinfo</dt>
-<dd>Get the additional wiz-list info for user &lt;arg&gt;.</dd>
+<dd>Get the additional wiz-list info for user <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>.</dd>
 <dt>set_extra_wizinfo</dt>
-<dd>Set the additional wiz-list info for user &lt;arg&gt;.</dd>
+<dd>Set the additional wiz-list info for user <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>.</dd>
 <dt>set_extra_wizinfo_size</dt>
-<dd>Set the size of the additional user info in the wiz-list to &lt;arg&gt;.</dd>
+<dd>Set the size of the additional user info in the wiz-list to <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>.</dd>
 <dt>set_driver_hook</dt>
-<dd>Set hook &lt;arg&gt; to &lt;arg2&gt;.</dd>
+<dd>Set hook <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> to <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a>.</dd>
 <dt>set_limits</dt>
-<dd>Set limits to &lt;arg&gt; (as returned by query_limits()).</dd>
+<dd>Set limits to <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> (as returned by <a class="reference internal" href="../efun/query_limits.html#lpc.efun.query_limits" title="query_limits"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_limits</span></code>(E)</a>).</dd>
 <dt>set_max_commands</dt>
-<dd>Set the max. number of commands interactive object &lt;arg&gt; can issue per
-second to &lt;arg2&gt;.</dd>
+<dd>Set the max. number of commands interactive object <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> can issue per second to <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a>.</dd>
 <dt>set_this_object</dt>
-<dd>Set this_object() to &lt;arg&gt;.</dd>
+<dd>Set <code class="docutils literal"><span class="pre">this_object()</span></code> to <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>.</dd>
 <dt>shadow_add_action</dt>
-<dd>Add an action to function &lt;arg2&gt; of object &lt;arg&gt; from the shadow &lt;who&gt;
-which is shadowing &lt;arg&gt;.</dd>
+<dd>Add an action to function <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a> of object <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> from the shadow <a class="reference internal" href="#master/privilege_violation.arg.who" title="who"><code class="xref lpc lpc-arg docutils literal"><span class="pre">who</span></code></a> which is shadowing <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a>.</dd>
 <dt>shutdown</dt>
-<dd>Object &lt;who&gt; calls the efun shutdown with &lt;arg&gt; as argument.</dd>
+<dd>Object <a class="reference internal" href="#master/privilege_violation.arg.who" title="who"><code class="xref lpc lpc-arg docutils literal"><span class="pre">who</span></code></a> calls the efun shutdown with <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> as argument.</dd>
 <dt>sqlite_pragma</dt>
 <dd>Execute pragma statement in SQLite.</dd>
 <dt>symbol_variable</dt>
-<dd>Attempt to make a symbol from a hidden inherited variable. &lt;arg&gt; is the
-object in question, &lt;arg2&gt; the number of the variable in the variable table.</dd>
+<dd>Attempt to make a symbol from a hidden inherited variable. <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> is the object in question, <a class="reference internal" href="#master/privilege_violation.arg.arg2" title="arg2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg2</span></code></a> the number of the variable in the variable table.</dd>
 <dt>variable_list</dt>
-<dd>An attempt to return the variable values of object &lt;arg&gt; is made from a
-different object &lt;who&gt;.</dd>
+<dd>An attempt to return the variable values of object <a class="reference internal" href="#master/privilege_violation.arg.arg" title="arg"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arg</span></code></a> is made from a different object <a class="reference internal" href="#master/privilege_violation.arg.who" title="who"><code class="xref lpc lpc-arg docutils literal"><span class="pre">who</span></code></a>.</dd>
 <dt>wizlist_info</dt>
 <dd>Return an array with all wiz-list information.</dd>
 </dl>
-<p>call_out_info() can return the arguments to functions and
-lambda closures to be called by call_out(); you should
-consider that read access to closures, mappings and arrays
-means write access and/or other privileges.
-wizlist_info() will return an array which holds, among others,
-the extra wizlist field. While a toplevel array, if found,
-will be copied, this does not apply to nested arrays or to any
-mappings. You might also have some sensitive closures there.
-send_udp() should be watched as it could be abused.
-The xxx_extra_wizinfo operations are necessary for a proper
-wizlist and should therefore be restricted to admins.
-All other operations are potential sources for direct security
-breaches - any use of them should be scrutinized closely.</p>
-<h2 id="HISTORY">HISTORY<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><strong>changed</strong> (<em>3.2.10</em>) &#8211; added the &#8220;enable_telnet&#8221;, &#8220;net_connect&#8221;,
-&#8220;set_max_commands&#8221; and &#8220;variable_list&#8221; violations.</li>
-<li><strong>changed</strong> (<em>3.3.563</em>) &#8211; added the passing of the limits to the &#8220;limited&#8221;
-and &#8220;set_limits&#8221;.</li>
+<p><a class="reference internal" href="../efun/call_out_info.html#lpc.efun.call_out_info" title="call_out_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out_info</span></code>(E)</a> can return the arguments to functions and lambda closures to be called by <a class="reference internal" href="../efun/call_out.html#lpc.efun.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out</span></code>(E)</a>; you should consider that read access to closures, mappings and arrays means write access and/or other privileges. <a class="reference internal" href="../efun/wizlist_info.html#lpc.efun.wizlist_info" title="wizlist_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">wizlist_info</span></code>(E)</a> will return an array which holds, among others, the extra wizlist field. While a toplevel array, if found, will be copied, this does not apply to nested arrays or to any mappings. You might also have some sensitive closures there. <a class="reference internal" href="../efun/send_udp.html#lpc.efun.send_udp" title="send_udp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">send_udp</span></code>(E)</a> should be watched as it could be abused. The xxx_extra_wizinfo operations are necessary for a proper wizlist and should therefore be restricted to admins. All other operations are potential sources for direct security breaches - any use of them should be scrutinized closely.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.10</em>) &#8211; added the &#8220;enable_telnet&#8221;, &#8220;net_connect&#8221;, &#8220;set_max_commands&#8221; and &#8220;variable_list&#8221; violations.</li>
+<li><strong>changed</strong> (<em>3.3.563</em>) &#8211; added the passing of the limits to the &#8220;limited&#8221; and &#8220;set_limits&#8221;.</li>
 <li><strong>changed</strong> (<em>3.2.11/3.3.640</em>) &#8211; added the &#8220;mysql&#8221; violation.</li>
 <li><strong>changed</strong> (<em>3.3.717</em>) &#8211; added the &#8220;sqlite_pragma&#8221; violation.</li>
 </ul>
-<h2 id="see2also">SEE ALSO<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../efun/net_connect.html#lpc.net_connect" title="net_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">net_connect()</span></code>(E)</a>, <a class="reference internal" href="../efun/send_erq.html#lpc.send_erq" title="send_erq"><code class="xref lpc lpc-efun docutils literal"><span class="pre">send_erq()</span></code>(E)</a>, <a class="reference internal" href="../efun/set_this_object.html#lpc.set_this_object" title="set_this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_this_object()</span></code>(E)</a>, <a class="reference internal" href="../efun/rename_object.html#lpc.rename_object" title="rename_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rename_object()</span></code>(E)</a>, <a class="reference internal" href="../concepts/simul_efun.html#lpc.simul_efun" title="simul_efun"><code class="xref lpc lpc-concept docutils literal"><span class="pre">simul_efun</span></code>(C)</a>, <a class="reference internal" href="../efun/call_out_info.html#lpc.call_out_info" title="call_out_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out_info()</span></code>(E)</a>, <a class="reference internal" href="../efun/shadow.html#lpc.shadow" title="shadow"><code class="xref lpc lpc-efun docutils literal"><span class="pre">shadow()</span></code>(E)</a>, <a class="reference internal" href="../efun/add_action.html#lpc.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action()</span></code>(E)</a>, <a class="reference internal" href="../efun/bind_lambda.html#lpc.bind_lambda" title="bind_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">bind_lambda()</span></code>(E)</a>, <a class="reference internal" href="../efun/send_udp.html#lpc.send_udp" title="send_udp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">send_udp()</span></code>(E)</a>, <a class="reference internal" href="../efun/input_to.html#lpc.input_to" title="input_to"><code class="xref lpc lpc-efun docutils literal"><span class="pre">input_to()</span></code>(E)</a>, <a class="reference internal" href="../efun/execute_command.html#lpc.execute_command" title="execute_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">execute_command()</span></code>(E)</a>, <a class="reference internal" href="../efun/variable_list.html#lpc.variable_list" title="variable_list"><code class="xref lpc lpc-efun docutils literal"><span class="pre">variable_list()</span></code>(E)</a>, <a class="reference internal" href="../efun/enable_telnet.html#lpc.enable_telnet" title="enable_telnet"><code class="xref lpc lpc-efun docutils literal"><span class="pre">enable_telnet()</span></code>(E)</a>, <a class="reference internal" href="../concepts/mysql.html#lpc.mysql" title="mysql"><code class="xref lpc lpc-concept docutils literal"><span class="pre">mysql</span></code>(C)</a></p>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/net_connect.html#lpc.efun.net_connect" title="net_connect"><code class="xref lpc lpc-efun docutils literal"><span class="pre">net_connect</span></code>(E)</a>, <a class="reference internal" href="../efun/send_erq.html#lpc.efun.send_erq" title="send_erq"><code class="xref lpc lpc-efun docutils literal"><span class="pre">send_erq</span></code>(E)</a>, <a class="reference internal" href="../efun/set_this_object.html#lpc.efun.set_this_object" title="set_this_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_this_object</span></code>(E)</a>, <a class="reference internal" href="../efun/rename_object.html#lpc.efun.rename_object" title="rename_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rename_object</span></code>(E)</a>, <a href="#id6"><span class="problematic" id="id7">:concept:`simul_efun`</span></a>, <a class="reference internal" href="../efun/call_out_info.html#lpc.efun.call_out_info" title="call_out_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out_info</span></code>(E)</a>, <a class="reference internal" href="../efun/shadow.html#lpc.efun.shadow" title="shadow"><code class="xref lpc lpc-efun docutils literal"><span class="pre">shadow</span></code>(E)</a>, <a class="reference internal" href="../efun/add_action.html#lpc.efun.add_action" title="add_action"><code class="xref lpc lpc-efun docutils literal"><span class="pre">add_action</span></code>(E)</a>, <a class="reference internal" href="../efun/bind_lambda.html#lpc.efun.bind_lambda" title="bind_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">bind_lambda</span></code>(E)</a>, <a class="reference internal" href="../efun/send_udp.html#lpc.efun.send_udp" title="send_udp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">send_udp</span></code>(E)</a>, <a class="reference internal" href="../efun/input_to.html#lpc.efun.input_to" title="input_to"><code class="xref lpc lpc-efun docutils literal"><span class="pre">input_to</span></code>(E)</a>, <a class="reference internal" href="../efun/execute_command.html#lpc.efun.execute_command" title="execute_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">execute_command</span></code>(E)</a>, <a class="reference internal" href="../efun/variable_list.html#lpc.efun.variable_list" title="variable_list"><code class="xref lpc lpc-efun docutils literal"><span class="pre">variable_list</span></code>(E)</a>, <a class="reference internal" href="../efun/enable_telnet.html#lpc.efun.enable_telnet" title="enable_telnet"><code class="xref lpc lpc-efun docutils literal"><span class="pre">enable_telnet</span></code>(E)</a>, <a href="#id8"><span class="problematic" id="id9">:concept:`mysql`</span></a></p>
+</div>
 </div>
 </div>
 
@@ -172,35 +150,35 @@ and &#8220;set_limits&#8221;.</li>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">privilege_violation</a><ul>
+<li><a class="reference internal" href="#">master::privilege_violation()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../efun/efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -212,7 +190,7 @@ and &#8220;set_limits&#8221;.</li>
       &copy;good question.
       
       |
-      <a href="../_sources/master/privilege_violation.txt"
+      <a href="../_sources/master/privilege_violation.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

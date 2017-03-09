@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['regexp',['regexp',['../driver_concepts_regexp.html',1,'driver_concepts_concepts']]],
-  ['regexp_5fpackage',['regexp_package',['../driver_hook_regexp_package.html',1,'driver_hook_hook']]],
-  ['reset',['reset',['../driver_hook_reset.html',1,'driver_hook_hook']]],
-  ['references',['references',['../driver_LPC_references.html',1,'driver_LPC_lpc']]],
-  ['rxcache_2edoc_20_7b_23driver_5fobsolete_5frxcache_2edoc_7d',['rxcache.doc {#driver_obsolete_rxcache.doc}',['../md_obsolete_rxcache_8doc.html',1,'']]]
+  ['regexp_5fpackage',['regexp_package',['../driver_hook_regexp_package.html',1,'driver_hook_overview']]],
+  ['reset',['reset',['../driver_hook_reset.html',1,'driver_hook_overview']]],
+  ['references',['references',['../driver_syntax_references.html',1,'driver_syntax_overview']]],
+  ['regular_20expressions',['Regular Expressions',['../driver_topics_regexp.html',1,'driver_topics_overview']]]
 ];

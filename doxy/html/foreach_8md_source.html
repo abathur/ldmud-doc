@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: LPC/foreach.md Source File</title>
+<title>LDMud: syntax/foreach.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('foreach_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,48 +95,111 @@ $(document).ready(function(){initNavTree('foreach_8md.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">LPC/foreach.md</div>  </div>
+<div class="title">syntax/foreach.md</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keywordflow">foreach</span> {#driver_LPC_foreach}</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;=============================</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;@usage{</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Call quit() in all interactive users</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordflow">foreach</span>(o : users()) o-&gt;quit();</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordflow">foreach</span>(<span class="keywordtype">object</span> o : users()) o-&gt;quit();</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// Print the contents of a mapping &lt;m&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordflow">foreach</span>(key, value : m) printf(<span class="stringliteral">&quot;%O:%O\n&quot;</span>, key, value);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordflow">foreach</span>(mixed key, mixed value : m) printf(<span class="stringliteral">&quot;%O:%O\n&quot;</span>, key, value);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// Don&#39;t change the content of a string: s remains &quot;FOOBAR&quot;.</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;s = <span class="stringliteral">&quot;FOOBAR&quot;</span>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordflow">foreach</span>(i : s) i += 32;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">// Do change the content of a string: s will become &quot;foobar&quot;.</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;s = <span class="stringliteral">&quot;FOOBAR&quot;</span>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordflow">foreach</span>(i : &amp;s) i += 32;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// Count from 0 to 5</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordflow">foreach</span>(i : 6) printf(<span class="stringliteral">&quot;%d\n&quot;</span>, i);</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keywordflow">foreach</span> {#driver_syntax_foreach}</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;================================</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;The instruction evaluates its range specification - either a simple `expr` which can yield an array, a <span class="keyword">struct</span>, a string, a mapping or an integer, or an integer range `expr1` through `expr2` - and executes `statement` once <span class="keywordflow">for each</span> value in the range. The respective value is assigned to `var` right before `statement` is executed.</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;A <span class="stringliteral">&#39;break&#39;</span> in the `statement` will terminate the loop. A <span class="stringliteral">&#39;continue&#39;</span> will <span class="keywordflow">continue</span> the execution from the beginning of the loop.</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;Every `var` specification can declare a <span class="keyword">new</span> local variable, whose scope is the whole @ref driver_syntax_foreach <span class="stringliteral">&quot;foreach&quot;</span> statement.</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;## The normal form (one :part:`expr`): #</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;`expr` is evaluated and has to yield an array, a struct, a string or a mapping (or reference to the former), or an integer.</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;If `expr` is a array, struct, or string, the values of `expr` (in case of the string, the integer values of the characters) are then assigned one by one in order of occurence to `var`, and `statement` is executed for every assignment.</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;If `expr` is a mapping, the keys are assigned one by one to `var`, and the values for each key are assigned in order to `var2` .. `varN`. If there are more values than variable, the extraneous values are ignored. Due to the nature of mappings, a specific order of the keys can not be guaranteed.</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;If `expr` evaluates to a reference to an array, mapping, or string, the loop will assign references to the values into the variables. This allows the loop body to change the contents of the original data.</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;If `expr` evalutes to an integer, the loop will count up `var` from 0 to `expr`-1, basically implementing a count loop.</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;If there are more variables than necessary, the unneeded ones are not changed.</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Count from 1 to 6</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordflow">foreach</span>(i : 1 .. 6) printf(<span class="stringliteral">&quot;%d\n&quot;</span>, i);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;## The ranged form (:part:`expr1` .. :part:`expr2`): #</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;`expr1` and `expr2` are evaluated and must yield integers. The loop will count up `var` from `expr1` to `expr2`, basically implementing a counted loop.</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;@history{</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;changed (3.3.44) -- introduced the use of references, the loop over an integer expression, and the loop over an integer range.</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;changed (3.3.266) -- added support <span class="keywordflow">for</span> structs.</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;@see </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;If `expr1` is less than `expr2`, the loop will terminate at once.</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;If there are more than variable, the unneeded ones are not changed.</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;## What happens if :part:`expr` is changed in the loop? #</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;If `expr` yields an array or struct:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;- assignments to single elements or to array ranges effect the values assigned to the variable:~~~{.c}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;a = ({1, 2, 3})</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordflow">foreach</span>(x : a) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  a[1..2] = ({4, 5});</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  write(x+<span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// writes 1 4 5</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;~~~</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;- operations which implicitely copy the array or <span class="keyword">struct</span> (<span class="keyword">this</span> includes range assignments which change the size) don<span class="stringliteral">&#39;t have an effect on the loop.</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="stringliteral">If `expr` yields a mapping, the loop will run over the indices the mapping had at the begin of the loop. Deleted indices are silently skipped, new indices ignored, but changes of the data of existing indices are acknowledged.</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="stringliteral">If `expr` yields a string, the value used at the start of the loop remains.</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="stringliteral">@par warning: The additional syntax forms using &quot;in&quot; as keyword are meant to make re-engineering of MudOS objects easier. Do not use them for newly written code, as they may not be available in future.</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">@usage{</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="stringliteral">Call `quit()` in all interactive users:</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="stringliteral">~~~{.c}</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="stringliteral">foreach(o : users()) o-&gt;quit();</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="stringliteral">foreach(object o : users()) o-&gt;quit();</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="stringliteral">~~~</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="stringliteral">Print the contents of a mapping `m`:</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="stringliteral">~~~{.c}</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="stringliteral">foreach(key, value : m) printf(&quot;%O:%O\n&quot;, key, value);</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="stringliteral">foreach(mixed key, mixed value : m) printf(&quot;%O:%O\n&quot;, key, value);</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="stringliteral"></span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="stringliteral">~~~</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="stringliteral">The first foreach loop below won&#39;</span>t change the <span class="keywordtype">string</span> it operates over, but the second loop (which operates on a reference to the <span class="keywordtype">string</span>) does change it:</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;s = <span class="stringliteral">&quot;FOOBAR&quot;</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordflow">foreach</span>(i : s) i += 32;  <span class="comment">// s == &quot;FOOBAR&quot;</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordflow">foreach</span>(i : &amp;s) i += 32; <span class="comment">// s == &quot;foobar&quot;</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;~~~</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;Count from 0 to 5:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordflow">foreach</span>(i : 6) printf(<span class="stringliteral">&quot;%d\n&quot;</span>, i);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;~~~</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;Count from 1 to 6:</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;~~~{.c}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordflow">foreach</span>(i : 1 .. 6) printf(<span class="stringliteral">&quot;%d\n&quot;</span>, i);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;~~~</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;@history{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;changed (3.3.44) -- introduced the use of references, the loop over an integer expression, and the loop over an integer range.</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;changed (3.3.266) -- added support <span class="keywordflow">for</span> structs.</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;@see @ref driver_syntax_for <span class="stringliteral">&quot;for&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>foreach.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:10 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

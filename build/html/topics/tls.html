@@ -1,0 +1,160 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>transport layer security &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="userids" href="uids.html" />
+    <link rel="prev" title="telnet" href="telnet.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tls">
+<span id="transport layer security"></span><span id="lpc.topic.tls"></span><span id="lpc.topic.transport layer security"></span><div class="section" id="TOPIC">
+<h2>TOPIC (EXPERIMENTAL)<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+transport layer security</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>TLS provides a way to authenticate and encrypt the data send through a network connection. TLS, which stands for Transport Layer Security, is the successor of the well known SSL (Secure Socket Layer).</p>
+<p>By enabling TLS during compilation of the driver you can provide a secure channel into the mud to your players.</p>
+<p>In difference to other solutions as &#8220;sslwrap&#8221; or &#8220;stunnel&#8221; the driver integrated approach has the advantage that the mud sees the real IP of the player, not the IP of the local mud host.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>To use TLS configure your driver with <code class="xref std std-option docutils literal"><span class="pre">--enable-tls</span> <span class="pre">option</span></code>. After starting your driver you have five new efuns (<a class="reference internal" href="../efun/tls_init_connection.html#lpc.efun.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection</span></code>(E)</a>, <a class="reference internal" href="../efun/tls_deinit_connection.html#lpc.efun.tls_deinit_connection" title="tls_deinit_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_deinit_connection</span></code>(E)</a>, <a class="reference internal" href="../efun/tls_error.html#lpc.efun.tls_error" title="tls_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_error</span></code>(E)</a>, <a class="reference internal" href="../efun/tls_query_connection_info.html#lpc.efun.tls_query_connection_info" title="tls_query_connection_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_info</span></code>(E)</a>, <a class="reference internal" href="../efun/tls_query_connection_state.html#lpc.efun.tls_query_connection_state" title="tls_query_connection_state"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_state</span></code>(E)</a>).</p>
+<p>You can switch on TLS by calling <a class="reference internal" href="../efun/tls_init_connection.html#lpc.efun.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection</span></code>(E)</a>. This can happen in three ways:</p>
+<ol class="arabic simple">
+<li>in <a class="reference internal" href="../hook/telnet_neg.html#lpc.hook.telnet_neg" title="telnet_neg"><code class="xref lpc lpc-hook docutils literal"><span class="pre">telnet_neg</span></code>(H)</a></li>
+</ol>
+<blockquote>
+<div><p>Advantage of this method is that you can offer TLS on a normal mud port. If you have a limited number of ports this can become important. The TLS connection will be started by the client with help of telnet option STARTTLS. Currently there are no mudclients that support this method.</p>
+<p>You will have to implement the telnet option STARTTLS (46) for this method. The draft for this can be found here: <a class="reference external" href="http://www.ietf.org/proceedings/99mar/I-D/draft-ietf-tn3270e-telnet-tls-01.txt">http://www.ietf.org/proceedings/99mar/I-D/draft-ietf-tn3270e-telnet-tls-01.txt</a> Call <a class="reference internal" href="../efun/tls_init_connection.html#lpc.efun.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection</span></code>(E)</a> to initiate the TLS handshake.</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>in <a class="reference internal" href="../master/connect.html#lpc.master.connect" title="connect"><code class="xref lpc lpc-master docutils literal"><span class="pre">connect</span></code>(M)</a></li>
+</ol>
+<blockquote>
+<div><p>Advantage of this method is that your users can connect with any program that supports TLS/SSL. Examples are telnet-ssl, sslwrap or stunnel. Disadvantage is that you have to spend a dedicated port for this.</p>
+<p>You have to call <a class="reference internal" href="../efun/tls_init_connection.html#lpc.efun.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection</span></code>(E)</a> as first command after the player connected (normally in <a class="reference internal" href="../master/connect.html#lpc.master.connect" title="connect"><code class="xref lpc lpc-master docutils literal"><span class="pre">connect</span></code>(M)</a>).</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>in an interactive object using a callback.</li>
+</ol>
+<blockquote>
+<div><p>This method is similar to method (1), but not limited to telnet: it is useful for implementing protocols that use STARTTLS like SMTP or IMAP. <a class="reference internal" href="../efun/tls_init_connection.html#lpc.efun.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection</span></code>(E)</a> can be called at any time by the interactive object.</p>
+<p>You must not write to the connection after calling this efun until the callback is executed (the prompt will be supressed automatically during this time).</p>
+</div></blockquote>
+<p>To test your code, you can use the openssl binary. <code class="docutils literal"><span class="pre">openssl</span> <span class="pre">s_client</span> <span class="pre">-connect</span> <span class="pre">host:port</span></code> should display your certificate and anything you write after the callback is executed. If you encounter the error message <code class="docutils literal"><span class="pre">SSL3_GET_RECORD:</span> <span class="pre">wrong</span> <span class="pre">version</span> <span class="pre">number</span></code> you&#8217;re probably writing to the connection while you should not.</p>
+</div>
+<div class="admonition misleading">
+<p class="first admonition-title">Misleading</p>
+<p class="last">This manpage might be not quite up to date with the implementation.</p>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.474</em>)</li>
+<li><strong>backported</strong> (<em>3.2.11</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/tls_available.html#lpc.efun.tls_available" title="tls_available"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_available</span></code>(E)</a>, <a class="reference internal" href="../efun/tls_check_certificate.html#lpc.efun.tls_check_certificate" title="tls_check_certificate"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_check_certificate</span></code>(E)</a>, <a class="reference internal" href="../efun/tls_deinit_connection.html#lpc.efun.tls_deinit_connection" title="tls_deinit_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_deinit_connection</span></code>(E)</a>, <a class="reference internal" href="../efun/tls_error.html#lpc.efun.tls_error" title="tls_error"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_error</span></code>(E)</a>, <a class="reference internal" href="../efun/tls_init_connection.html#lpc.efun.tls_init_connection" title="tls_init_connection"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_init_connection</span></code>(E)</a>, <a class="reference internal" href="../efun/tls_query_connection_info.html#lpc.efun.tls_query_connection_info" title="tls_query_connection_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_info</span></code>(E)</a>, <a class="reference internal" href="../efun/tls_query_connection_state.html#lpc.efun.tls_query_connection_state" title="tls_query_connection_state"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_query_connection_state</span></code>(E)</a>, <a class="reference internal" href="../efun/tls_refresh_certs.html#lpc.efun.tls_refresh_certs" title="tls_refresh_certs"><code class="xref lpc lpc-efun docutils literal"><span class="pre">tls_refresh_certs</span></code>(E)</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">transport layer security</a><ul>
+<li><a class="reference internal" href="#TOPIC">TOPIC (EXPERIMENTAL)</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/topics/tls.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

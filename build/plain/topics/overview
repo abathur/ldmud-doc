@@ -1,0 +1,39 @@
+OVERVIEW
+========
+   Other topics
+DESCRIPTION
+===========
+   This directory collects a variety of topics relevant to programming and 
+   maintaining an LDMud.
+
+   - driver
+   - efuns
+   - External Request Demon
+   - files
+   - Henry Spencer Regular Expressions
+   - InterMUD Message Protocol
+   - inheritance
+   - variable initialization
+   - Intermud communication
+   - intermud.basic
+   - lfuns
+   - limitations
+   - The Mud Client Compression Protocol
+   - memory swapping
+   - mysql
+   - `native` driver mode
+   - Telnet Negotiations
+   - objects
+   - overloading
+   - Perl-compatible regular expressions
+   - PostgreSQL support
+   - Driver-defined preprocessor macros
+   - Regular Expressions
+   - The simul_efun object
+   - telnet
+   - transport layer security
+   - userids
+
+SEE ALSO
+========
+   applied(A), efun(E), hook(H), internals(I), syntax, master(M), `obsolete`

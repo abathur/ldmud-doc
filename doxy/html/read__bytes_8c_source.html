@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/read_bytes.c Source File</title>
+<title>LDMud: efun/read_bytes.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('read__bytes_8c_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,31 +100,19 @@ $(document).ready(function(){initNavTree('read__bytes_8c_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * string read_bytes(string file, int start, int number)</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * Reads a given amount of bytes from file. If \p start is not given or 0, the file is read from the beginning, else from byte \p start on. If \p start is negative, it is counted from the end of the file. \p number is the number of bytes to read. 0 or negative values are possible, but not useful. If \p start would be outside the actual size of the file, 0 is returned instead of a string.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * The maximum bytes being read per call is `LIMIT_BYTE` (see efun::query_limits()).</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;   <span class="keywordtype">string</span> <a class="code" href="classefun.html#ae718aabad56d4181a21426316d496107">read_bytes</a>(string file, int start, int number);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;Reads a given amount of bytes from file.</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;If &lt;start&gt; is not given or 0, the file is read from the</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;beginning, <span class="keywordflow">else</span> from the &lt;start&gt;th byte on. If &lt;start&gt; is</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;negative, it is counted from the end of the file.</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;&lt;number&gt; is the number of bytes to read. 0 or negative values</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;are possible, but not useful.</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;If &lt;start&gt; would be outside the actual size of the file, 0 is</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;returned instead of a string.</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;The maximum bytes being read per call is LIMIT_BYTE (see</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;query_limits()).</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;   See Also: </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      <a class="code" href="classefun.html#a8dc3fe07fb68607e9aeec34108c40b7a">efun::read_file</a>(), <a class="code" href="classefun.html#a2205d4e4aba7441c2c9364d151ffe244">efun::write_bytes</a>(), <a class="code" href="classefun.html#a774272e5348c068001ddb6ab2619037c">efun::write_file</a>()</div>
-<div class="ttc" id="classefun_html_a774272e5348c068001ddb6ab2619037c"><div class="ttname"><a href="classefun.html#a774272e5348c068001ddb6ab2619037c">efun.write_file</a></div><div class="ttdeci">int write_file(string file, string str, int flags)</div></div>
-<div class="ttc" id="classefun_html_a8dc3fe07fb68607e9aeec34108c40b7a"><div class="ttname"><a href="classefun.html#a8dc3fe07fb68607e9aeec34108c40b7a">efun.read_file</a></div><div class="ttdeci">string read_file(string file, int start, int number)</div></div>
-<div class="ttc" id="classefun_html_ae718aabad56d4181a21426316d496107"><div class="ttname"><a href="classefun.html#ae718aabad56d4181a21426316d496107">efun.read_bytes</a></div><div class="ttdeci">string read_bytes(string file, int start, int number)</div></div>
-<div class="ttc" id="classefun_html_a2205d4e4aba7441c2c9364d151ffe244"><div class="ttname"><a href="classefun.html#a2205d4e4aba7441c2c9364d151ffe244">efun.write_bytes</a></div><div class="ttdeci">int write_bytes(string file, int start, string str)</div><div class="ttdoc">Write string str to file file by overwriting the old bytes at position start. </div></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * string read_bytes(string file, int start, int number)</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * @see efun::read_file(), efun::write_bytes(), efun::write_file()</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;   <span class="keywordtype">string</span> <a class="code" href="classefun.html#a45d3491b9a1f26d6816b7409ca785150">read_bytes</a>(string file, int start, int number);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
+<div class="ttc" id="classefun_html_a45d3491b9a1f26d6816b7409ca785150"><div class="ttname"><a href="classefun.html#a45d3491b9a1f26d6816b7409ca785150">efun.read_bytes</a></div><div class="ttdeci">string read_bytes(string file, int start, int number)</div><div class="ttdoc">Reads a given amount of bytes from file. </div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -133,7 +120,7 @@ $(document).ready(function(){initNavTree('read__bytes_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>read_bytes.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:09 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:22 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

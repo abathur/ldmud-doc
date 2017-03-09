@@ -9,11 +9,10 @@ DESCRIPTION
    the file. The file will not be appended, instead the function will be 
    aborted. Returns 1 for success 0 for failure during execution.
 
-   <!> Note:  
-     since version 3.2@232, write_bytes() is able to append
-
-   to the file.
+HISTORY
+=======
+   - changed (3.2@232) -- can now append to the file.
 
 SEE ALSO
 ========
-   save_object()(E), write_file()(E)
+   save_object(E), write_file(E)

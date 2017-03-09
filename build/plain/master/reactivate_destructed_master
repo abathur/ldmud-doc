@@ -14,4 +14,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   destruct()(E), inaugurate_master(M), master(M)
+   destruct(E), inaugurate_master(M), >>:directory:`master`<<

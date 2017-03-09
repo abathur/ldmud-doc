@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::sort_array() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::sort_array() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::sprintf()" href="sprintf.html" />
     <link rel="prev" title="efun::snoop()" href="snoop.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,94 +47,94 @@
 <div class="section" id="SYNOPSIS">
 <span id="sort_array"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.sort_array">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">sort_array</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;*arr</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;wrong_order</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.sort_array" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.sort_array">
+<!--[lpc.efun.sort_array]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">sort_array</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+mixed<em>&nbsp;*arr</em>, </td><td id="id2">
+string<em>&nbsp;wrong_order</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.sort_array" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">sort_array</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;*arr</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;wrong_order</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a>|<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">sort_array</code></td><td><span class="sig-paren">(</span></td><td id="id3">
+mixed<em>&nbsp;*arr</em>, </td><td id="id4">
+string<em>&nbsp;wrong_order</em>, </td><td id="id5">
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a>|string<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">sort_array</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;*arr</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;wrong_order</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a>|<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">sort_array</code></td><td><span class="sig-paren">(</span></td><td id="id6">
+mixed<em>&nbsp;*arr</em>, </td><td id="id7">
+string<em>&nbsp;wrong_order</em>, </td><td id="id8">
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a>|string<em>&nbsp;ob</em>, </td><td id="id9">
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">sort_array</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;*arr</em>, </td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;cl</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">sort_array</code></td><td><span class="sig-paren">(</span></td><td id="id10">
+mixed<em>&nbsp;*arr</em>, </td><td id="id11">
+closure<em>&nbsp;cl</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">sort_array</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;*arr</em>, </td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;cl</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">sort_array</code></td><td><span class="sig-paren">(</span></td><td id="id12">
+mixed<em>&nbsp;*arr</em>, </td><td id="id13">
+closure<em>&nbsp;cl</em>, </td><td id="id14">
+mixed<em>&nbsp;extra...</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Sort the copy either by the ordering function ob-&gt;wrong_order(a, b),
-or by the closure expression &lt;cl&gt;.</p>
-<p>Usually a shallow copy of &lt;arr&gt; is made first and the sorted copy is
-returned as result. However, if &lt;arr&gt; is given as a reference, no copy
-will be made and &lt;arr&gt; will be sorted in-place.</p>
-<p>If the &lt;arr&gt; argument equals 0, the result is also 0.</p>
-<p>&lt;ob&gt; is the object in which the ordering function is called
-and may be given as object or by its filename. If &lt;ob&gt; is omitted
-or neither a string nor an object, it defaults to this_object().</p>
-<p>The elements from the array to be sorted are passed in pairs to
-the function &lt;wrong_order&gt; as arguments, followed by the &lt;extra&gt;
-arguments if any.</p>
-<p>The function should return a positive number if the elements
-are in the wrong order. It should return 0 or a negative
-number if the elements are in the correct order.</p>
+<p>Sort the copy either by the ordering function <code class="docutils literal"><span class="pre">ob-&gt;wrong_order(a,</span> <span class="pre">b)</span></code>, or by the closure expression <a class="reference internal" href="#efun/sort_array.arg.cl" title="cl"><code class="xref lpc lpc-arg docutils literal"><span class="pre">cl</span></code></a>.</p>
+<p>Usually a shallow copy of <a class="reference internal" href="#efun/sort_array.arg.arr" title="arr"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arr</span></code></a> is made first and the sorted copy is returned as result. However, if <a class="reference internal" href="#efun/sort_array.arg.arr" title="arr"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arr</span></code></a> is given as a reference, no copy will be made and <a class="reference internal" href="#efun/sort_array.arg.arr" title="arr"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arr</span></code></a> will be sorted in-place.</p>
+<p>If the <a class="reference internal" href="#efun/sort_array.arg.arr" title="arr"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arr</span></code></a> argument equals 0, the result is also 0.</p>
+<p><a class="reference internal" href="#efun/sort_array.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is the object in which the ordering function is called and may be given as object or by its filename. If <a class="reference internal" href="#efun/sort_array.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is omitted or neither a string nor an object, it defaults to <code class="docutils literal"><span class="pre">this_object()</span></code>.</p>
+<p>The elements from the array to be sorted are passed in pairs to the function <a class="reference internal" href="#efun/sort_array.arg.wrong_order" title="wrong_order"><code class="xref lpc lpc-arg docutils literal"><span class="pre">wrong_order</span></code></a> as arguments, followed by the <a class="reference internal" href="#efun/sort_array.arg.extra" title="extra"><code class="xref lpc lpc-arg docutils literal"><span class="pre">extra</span></code></a> arguments if any.</p>
+<p>The function should return a positive number if the elements are in the wrong order. It should return 0 or a negative number if the elements are in the correct order.</p>
 <div class="section" id="USAGE">
 <h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
-<p>To sort an array</p>
-<blockquote>
-<div>arr = ({ 3, 8, 1, 3 })</div></blockquote>
-<p>in ascending order with the help of the ordering function</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>int is_greater (int a, int b) {</dt>
-<dd>return a &gt; b;</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
-<p>the following uses of sort_array() are equivalent:</p>
-<blockquote>
-<div>arr = sort_array(arr, &#8220;is_greater&#8221;, this_object())
-arr = sort_array(arr, &#8220;is_greater&#8221;)
-arr = sort_array(arr, #&#8217;is_greater)
-arr = sort_array(arr, #&#8217;&gt;)  (this is the preferred variant :-)
-arr = sort_array(arr, lambda(({&#8216;a, &#8216;b}), ({#&#8217;&gt;, &#8216;a, &#8216;b})))</div></blockquote>
-<p>If no implicit shallow copy of &lt;arr&gt; should be made, pass &lt;arr&gt; as
-reference:</p>
-<blockquote>
-<div>sort_array(&amp;arr, #&#8217;&gt;)</div></blockquote>
-<p>A more complicated example is to sort the array</p>
-<blockquote>
-<div>arr = ({ ({ &#8220;foo&#8221;, 3 }), ({ &#8220;quux&#8221;, 1 }), ... })</div></blockquote>
-<p>in ascending order by the second element of each subarray.
-For this, the ordering function should be like</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>int is_greater (mixed <a href="#id1"><span class="problematic" id="id2">*</span></a>a, mixed <a href="#id3"><span class="problematic" id="id4">*</span></a>b) {</dt>
-<dd>return a[1] &gt; b[1];</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
+<p>To sort an array:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="p">({</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="p">})</span>
+</pre></div>
+</div>
+<p>in ascending order with the help of the ordering function:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">is_greater</span> <span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>the following uses of <a class="reference internal" href="#lpc.efun.sort_array" title="sort_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sort_array</span></code>(E)</a> are equivalent:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>arr = sort_array(arr, &quot;is_greater&quot;, this_object())
+arr = sort_array(arr, &quot;is_greater&quot;)
+arr = sort_array(arr, #&#39;is_greater)
+arr = sort_array(arr, #&#39;&gt;)  (this is the preferred variant :-)
+arr = sort_array(arr, lambda(({&#39;a, &#39;b}), ({#&#39;&gt;, &#39;a, &#39;b})))
+</pre></div>
+</div>
+<p>If no implicit shallow copy of <a class="reference internal" href="#efun/sort_array.arg.arr" title="arr"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arr</span></code></a> should be made, pass <a class="reference internal" href="#efun/sort_array.arg.arr" title="arr"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arr</span></code></a> as reference:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>sort_array(&amp;arr, #&#39;&gt;)
+</pre></div>
+</div>
+<p>A more complicated example is to sort the array:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="p">({</span> <span class="p">({</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="mi">3</span> <span class="p">}),</span> <span class="p">({</span> <span class="s">&quot;quux&quot;</span><span class="p">,</span> <span class="mi">1</span> <span class="p">}),</span> <span class="p">...</span> <span class="p">})</span>
+</pre></div>
+</div>
+<p>in ascending order by the second element of each subarray. For this, the ordering function should be like:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">is_greater</span> <span class="p">(</span><span class="kt">mixed</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">mixed</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; added support for extra arguments.</li>
+<li><strong>changed</strong> (<em>3.3.720</em>) &#8211; added support for passing a reference to sort in-place.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="transpose_array.html#lpc.efun.transpose_array" title="transpose_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">transpose_array</span></code>(E)</a>, <a class="reference internal" href="filter.html#lpc.efun.filter" title="filter"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter</span></code>(E)</a>, <a class="reference internal" href="map.html#lpc.efun.map" title="map"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map</span></code>(E)</a>, <code class="xref lpc lpc-lang docutils literal"><span class="pre">alists</span></code></p>
 </div>
 </div>
 </div>
@@ -146,8 +148,8 @@ For this, the ordering function should be like</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -159,6 +161,8 @@ For this, the ordering function should be like</p>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
 <li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
 <li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
 </ul>
 </li>
 </ul>
@@ -166,15 +170,14 @@ For this, the ordering function should be like</p>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -186,7 +189,7 @@ For this, the ordering function should be like</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/sort_array.txt"
+      <a href="../_sources/efun/sort_array.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

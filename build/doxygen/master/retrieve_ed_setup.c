@@ -1,7 +1,6 @@
 public class master {
    /**
-    * Should return an integer that gives the ed setup flags for the
-    * user that is denoted by command_giver.
+    * Should return an integer that gives the ed setup flags for the user that is denoted by command_giver.
     * 
     * @synopsis{
     * int retrieve_ed_setup(object command_giver)

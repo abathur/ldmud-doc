@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::implode() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::implode() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::include_list()" href="include_list.html" />
     <link rel="prev" title="efun::idna_to_unicode()" href="idna_to_unicode.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,42 +47,41 @@
 <div class="section" id="SYNOPSIS">
 <span id="implode"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.implode">
-<td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a> </td><td>
-<code class="descname">implode</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;*arr</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;del</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.implode" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.implode">
+<!--[lpc.efun.implode]--><td>
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a> </td><td>
+<code class="descname">implode</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+mixed<em>&nbsp;*arr</em>, </td><td id="id2">
+string<em>&nbsp;del</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.implode" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Concatenate all strings found in array <a class="reference internal" href="#efun/implode.arg.arr" title="arr"><code class="xref lpc lpc-arg docutils literal"><span class="pre">arr</span></code></a>, with the string <a class="reference internal" href="#efun/implode.arg.del" title="del"><code class="xref lpc lpc-arg docutils literal"><span class="pre">del</span></code></a> between each element. Only strings are used from the array.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>This basic example inserts an asterisk between each array element:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">implode</span><span class="p">(({</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span> <span class="p">}),</span> <span class="s">&quot;*&quot;</span><span class="p">)</span> <span class="c1">// returns &quot;foo*bar*&quot;</span>
+</pre></div>
+</div>
+<p>Because implode ignores non-string elements, the result below only includes a single &#8220;b&#8221;:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">implode</span><span class="p">(({</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">this_object</span><span class="p">(),</span> <span class="s">&quot;c&quot;</span> <span class="p">}),</span> <span class="s">&quot;b&quot;</span><span class="p">)</span> <span class="c1">// returns &quot;abc&quot;</span>
+</pre></div>
+</div>
+<p>Together with <a class="reference internal" href="explode.html#lpc.efun.explode" title="explode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">explode</span></code>(E)</a> this can be used as a search-and-replace for strings:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">implode</span><span class="p">(</span><span class="n">explode</span><span class="p">(</span><span class="s">&quot;a short text&quot;</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">),</span> <span class="s">&quot;_&quot;</span><span class="p">)</span> <span class="c1">// returns &quot;a_short_text&quot;</span>
+</pre></div>
+</div>
+<p>But nowadays you can also use:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">regreplace</span><span class="p">(</span><span class="s">&quot;a short text&quot;</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
-<p>Concatenate all strings found in array arr, with the string
-del between each element. Only strings are used from the array.</p>
-<p>EXAMPLES
-function                                        returns
-&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
-implode(({ &#8220;foo&#8221;, &#8220;bar&#8221;, &#8220;&#8221; }), &#8220;*&#8221;)            &#8220;foo*bar*&#8221;
-implode(({ &#8220;a&#8221;, 2, this_object(), &#8220;c&#8221; }), &#8220;b&#8221;)  &#8220;abc&#8221;</p>
-<p>Together with explode() this can be used as a search and replace
-function of strings:
-implode(explode(&#8220;a short text&#8221;, &#8221; &#8221;), &#8220;_&#8221;)      &#8220;a_short_text&#8221;</p>
-<dl class="docutils">
-<dt>But nowadays you can also use</dt>
-<dd>regreplace(&#8220;a short text&#8221;, &#8221; &#8221;, &#8220;_&#8221;, 1)</dd>
-</dl>
-<p>instead.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="explode.html#lpc.explode" title="explode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">explode()</span></code>(E)</a>, <a class="reference internal" href="regreplace.html#lpc.regreplace" title="regreplace"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regreplace()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="explode.html#lpc.efun.explode" title="explode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">explode</span></code>(E)</a>, <a class="reference internal" href="regreplace.html#lpc.efun.regreplace" title="regreplace"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regreplace</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -91,8 +92,8 @@ implode(explode(&#8220;a short text&#8221;, &#8221; &#8221;), &#8220;_&#8221;)  
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -102,21 +103,24 @@ implode(explode(&#8220;a short text&#8221;, &#8221; &#8221;), &#8220;_&#8221;)  
   <ul>
 <li><a class="reference internal" href="#">efun::implode()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -128,7 +132,7 @@ implode(explode(&#8220;a short text&#8221;, &#8221; &#8221;), &#8220;_&#8221;)  
       &copy;good question.
       
       |
-      <a href="../_sources/efun/implode.txt"
+      <a href="../_sources/efun/implode.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -1,0 +1,137 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>for &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="foreach" href="foreach.html" />
+    <link rel="prev" title="float" href="float.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="for">
+<span id="lpc.keyword.for"></span><div class="section" id="KEYWORD">
+<h2>KEYWORD<a class="headerlink" href="#KEYWORD" title="Permalink to this headline">¶</a></h2>
+<strong>Keyword</strong><pre class="literal-block">
+<span class="highlighted">for</span>(&lt;init&gt;; &lt;expr2&gt;; &lt;expr3&gt;) statement;
+</pre>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Execute <code class="xref lpc lpc-part docutils literal"><span class="pre">init</span></code> once. Then, while <code class="xref lpc lpc-part docutils literal"><span class="pre">expr2</span></code> returns a non-zero value, execute <code class="xref lpc lpc-part docutils literal"><span class="pre">statement</span></code>. Every time <code class="xref lpc lpc-part docutils literal"><span class="pre">statement</span></code> has been executed, or a <code class="xref lpc lpc-keyword docutils literal"><span class="pre">continue</span></code> statement has been executed, execute <code class="xref lpc lpc-part docutils literal"><span class="pre">expr3</span></code> before next loop.</p>
+<p><code class="xref lpc lpc-part docutils literal"><span class="pre">init</span></code> is usually a series of one or more expressions (remember that assignments are expressions, too), separated by commas. Additionally it is also allowed to define new local variables here and assign them an initial value. The scope of such variables is the whole for statement.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>Examples for legal <code class="xref lpc lpc-part docutils literal"><span class="pre">init</span></code> expressions are:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">...</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">...</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="p">...</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="p">...</span>
+</pre></div>
+</div>
+<p>Illegal <code class="xref lpc lpc-part docutils literal"><span class="pre">init</span></code> expressions are:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">;</span> <span class="p">...</span>      <span class="c1">// no value assigned</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span> <span class="p">...</span> <span class="c1">// only plain assignments allowed</span>
+</pre></div>
+</div>
+<p>A <code class="xref lpc lpc-keyword docutils literal"><span class="pre">break</span></code> in the <code class="xref lpc lpc-part docutils literal"><span class="pre">statement</span></code> will terminate the loop. A <code class="xref lpc lpc-keyword docutils literal"><span class="pre">continue</span></code> will continue the execution from the beginning of the loop.</p>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="foreach.html#lpc.keyword.foreach" title="foreach"><code class="xref lpc lpc-keyword docutils literal"><span class="pre">foreach</span></code></a>, <a class="reference internal" href="if.html#lpc.keyword.if" title="if"><code class="xref lpc lpc-keyword docutils literal"><span class="pre">if</span></code></a>, <a class="reference internal" href="do-while.html#lpc.keyword.do-while" title="do-while"><code class="xref lpc lpc-keyword docutils literal"><span class="pre">do-while</span></code></a>, <a class="reference internal" href="while.html#lpc.keyword.while" title="while"><code class="xref lpc lpc-keyword docutils literal"><span class="pre">while</span></code></a>, <a class="reference internal" href="switch.html#lpc.keyword.switch" title="switch"><code class="xref lpc lpc-keyword docutils literal"><span class="pre">switch</span></code></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">for</a><ul>
+<li><a class="reference internal" href="#KEYWORD">KEYWORD</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/for.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

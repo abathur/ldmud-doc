@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::symbol_function() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::symbol_function() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::symbol_variable()" href="symbol_variable.html" />
     <link rel="prev" title="efun::swap()" href="swap.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,53 +47,47 @@
 <div class="section" id="SYNOPSIS">
 <span id="symbol_function"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.symbol_function">
-<td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a> </td><td>
-<code class="descname">symbol_function</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/symbol.html#lpc.symbol" title="symbol">symbol</a><em>&nbsp;arg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.symbol_function" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.symbol_function">
+<!--[lpc.efun.symbol_function]--><td>
+<a class="reference internal" href="../syntax/closures.html#lpc.type.closure" title="closure">closure</a> </td><td>
+<code class="descname">symbol_function</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+symbol<em>&nbsp;arg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.symbol_function" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a> </td><td>
-<code class="descname">symbol_function</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;arg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/closures.html#lpc.type.closure" title="closure">closure</a> </td><td>
+<code class="descname">symbol_function</code></td><td><span class="sig-paren">(</span></td><td id="id2">
+string<em>&nbsp;arg</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a> </td><td>
-<code class="descname">symbol_function</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;arg</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a>|<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/closures.html#lpc.type.closure" title="closure">closure</a> </td><td>
+<code class="descname">symbol_function</code></td><td><span class="sig-paren">(</span></td><td id="id3">
+string<em>&nbsp;arg</em>, </td><td id="id4">
+<a class="reference internal" href="../syntax/object.html#lpc.type.object" title="object">object</a>|string<em>&nbsp;ob</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Constructs a lfun closure, efun closure, or operator closure from the first arg (string or symbol). For lfuns, the second arg is the object that the lfun belongs to, specified by the object itself or by its name (the object will be loaded in the second case).</p>
+<p>If the closure is created for an lfun in an object other than the current object, the result is an &#8216;alien lfun closure&#8217;. Such closures are bound to the object executing <a class="reference internal" href="#lpc.efun.symbol_function" title="symbol_function"><code class="xref lpc lpc-efun docutils literal"><span class="pre">symbol_function</span></code>(E)</a> (this is what <a class="reference internal" href="to_object.html#lpc.efun.to_object" title="to_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">to_object</span></code>(E)</a> will return), even though the actual code is in that other object (which <a class="reference internal" href="get_type_info.html#lpc.efun.get_type_info" title="get_type_info"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_type_info</span></code>(E)</a> will return).</p>
+<p>Private lfuns can never be accessed this way, static and protected lfuns only if <a class="reference internal" href="#efun/symbol_function.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is the current object.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">symbol_function</span><span class="p">(</span><span class="s">&quot;efun::users&quot;</span><span class="p">)</span>          <span class="c1">// #&#39;users</span>
+<span class="n">symbol_function</span><span class="p">(</span><span class="s">&quot;QueryProp&quot;</span><span class="p">,</span> <span class="n">other_obj</span><span class="p">)</span> <span class="c1">// other_obj-&gt;QueryProp()</span>
+</pre></div>
 </div>
 </div>
-<p>Constructs a lfun closure, efun closure or operator closure
-from the first arg (string or symbol). For lfuns, the second
-arg is the object that the lfun belongs to, specified by
-the object itself or by its name (the object will be loaded
-in the second case).</p>
-<p>If the closure is created for an lfun in an object other than
-the current object, the result is an &#8216;alien lfun closure&#8217;. Such
-closures are bound to the object executing the symbol_function()
-(this is what to_object() will return), even though the actual
-code is in that other object (which get_type_info() will return).</p>
-<p>Private lfuns can never be accessed this way, static and
-protected lfuns only if &lt;ob&gt; is the current object.</p>
-<p>EXAMPLES
-symbol_function(&#8220;efun::users&#8221;)          -&gt; #&#8217;users
-symbol_function(&#8220;QueryProp&#8221;, other_obj) -&gt; other_obj-&gt;QueryProp()</p>
-<p>Introduced in <a class="reference external" href="mailto:3&#46;2&#37;&#52;&#48;70">3<span>&#46;</span>2<span>&#64;</span>70</a>.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="lambda.html#lpc.lambda" title="lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">lambda()</span></code>(E)</a>, <a class="reference internal" href="quote.html#lpc.quote" title="quote"><code class="xref lpc lpc-efun docutils literal"><span class="pre">quote()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2&#64;70</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="lambda.html#lpc.efun.lambda" title="lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">lambda</span></code>(E)</a>, <a class="reference internal" href="quote.html#lpc.efun.quote" title="quote"><code class="xref lpc lpc-efun docutils literal"><span class="pre">quote</span></code>(E)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -102,8 +98,8 @@ symbol_function(&#8220;QueryProp&#8221;, other_obj) -&gt; other_obj-&gt;QueryPro
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -113,21 +109,25 @@ symbol_function(&#8220;QueryProp&#8221;, other_obj) -&gt; other_obj-&gt;QueryPro
   <ul>
 <li><a class="reference internal" href="#">efun::symbol_function()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -139,7 +139,7 @@ symbol_function(&#8220;QueryProp&#8221;, other_obj) -&gt; other_obj-&gt;QueryPro
       &copy;good question.
       
       |
-      <a href="../_sources/efun/symbol_function.txt"
+      <a href="../_sources/efun/symbol_function.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

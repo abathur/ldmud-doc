@@ -1,14 +1,14 @@
 SYNOPSIS
 ========
-   int symbolp(mixed arg)
+   int symbolp(mixed value)
 
 DESCRIPTION
 ===========
-   Returns 1 if <arg> is a symbol.
+   Returns 1 if value(E) is a symbol.
 
    USAGE
    =====
-      `symbolp('foo)` returns `1`.
+      `symbolp('foo) // returns 1.`
 
 HISTORY
 =======
@@ -16,6 +16,5 @@ HISTORY
 
 SEE ALSO
 ========
-   quote()(E), clonep()(E), closurep()(E), floatp()(E), mappingp()(E), 
-   objectp()(E), intp()(E), referencep()(E), pointerp()(E), stringp()(E), 
-   structp()(E)
+   quote(E), clonep(E), closurep(E), floatp(E), mappingp(E), objectp(E), 
+   intp(E), referencep(E), pointerp(E), stringp(E), structp(E)

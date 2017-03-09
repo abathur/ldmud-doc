@@ -1,6 +1,6 @@
 public class efun {
    /**
-    * Return 1 if <arg> is a string.
+    * Return 1 if \p arg is a string.
     * 
     * @synopsis{
     * int stringp(mixed arg)

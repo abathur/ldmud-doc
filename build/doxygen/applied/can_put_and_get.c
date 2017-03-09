@@ -11,7 +11,7 @@ public class applied {
     * }
     * 
     * @history{
-    * deprecated (3.3) -- because transfer() has been deprecated.
+    * deprecated (3.3) -- because transfer has been deprecated.
     * }
     * 
     * @see efun::transfer(), applied::prevent_insert()

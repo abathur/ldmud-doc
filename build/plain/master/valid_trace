@@ -6,19 +6,17 @@ DESCRIPTION
 ===========
    Check if the interactive user is allowed to use tracing.
 
-   The argument <what> denotes the action for which permission is to be 
-   checked, <arg> is the argument given to the traceing efun:
+   The argument what(M) denotes the action for which permission is to be 
+   checked, arg(M) is the argument given to trace(E).
 
-   +---------------+-------------------------------------------+
-   | <what>        | notes                                     |
-   +===============+===========================================+
-   | "trace"       | Is the user allowed to use tracing? <arg> |
-   |               | is the tracelevel argument given.         |
-   +---------------+-------------------------------------------+
-   | "traceprefix" | Is the user allowed to set a traceprefix? |
-   |               | <arg> is the prefix given.                |
-   +---------------+-------------------------------------------+
+   +---------------+----------------------------------------------------------------------------------+
+   | what(M)       | notes                                                                            |
+   +===============+==================================================================================+
+   | "trace"       | Is the user allowed to use tracing? arg(M) is the tracelevel argument  given.    |
+   +---------------+----------------------------------------------------------------------------------+
+   | "traceprefix" | Is the user allowed to set a traceprefix? arg(M) is the prefix given.            |
+   +---------------+----------------------------------------------------------------------------------+
 
 SEE ALSO
 ========
-   trace()(E), `showsmallnewmalloced`, `malloc`, `status`, memory(C)
+   trace(E), >>:concept:`memory`<<

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: hook/send_notify_fail.md Source File</title>
+<title>LDMud: hook/send_notify_fail.md Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('send__notify__fail_8md.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,40 +100,33 @@ $(document).ready(function(){initNavTree('send__notify__fail_8md.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;send_notify_fail {#driver_hook_send_notify_fail}</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;================================================</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;Optional hook to send the notify fail message, regardless</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;of how it was determined, to the player. If the hook is not</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;set, the message is delivered <span class="keyword">using</span> tell_object() internally.</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;Hook setting can be a <span class="keywordtype">string</span> or a closure.</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;If the hook is a <span class="keywordtype">string</span>, it is the name of a (possibly static)</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;function to call in the current command giver. If the hook</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;is a closure, it is the function to be called. Lambda closures</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;are bound to the current command giver first.</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;The arguments to the call are:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;- &lt;msg&gt; is the notify fail message to be delivered.</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;- &lt;msgobj&gt; is the <span class="keywordtype">object</span> which set the message. It is 0 for</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  the default message.</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;- &lt;orig_cmd_giver&gt; is the <span class="keywordtype">object</span> for which the original</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  command was first received. It is usually identical withthe current command giver this_player().</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;@headerfile &lt;sys/driver_hooks.h&gt;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;@synopsis{</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;set_driver_hook(H_SEND_NOTIFY_FAIL, value)</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;@see @ref driver_hook_command <span class="stringliteral">&quot;command&quot;</span>, @ref driver_hook_modify_command <span class="stringliteral">&quot;modify_command&quot;</span>, @ref driver_hook_modify_command_fname <span class="stringliteral">&quot;modify_command_fname&quot;</span>, @ref driver_hook_notify_fail <span class="stringliteral">&quot;notify_fail&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;Arguments: </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;- value (@ref driver_LPC_string <span class="stringliteral">&quot;string&quot;</span>) -- void &lt;name&gt;(<span class="keywordtype">string</span> msg, <span class="keywordtype">object</span> msgobj, <span class="keywordtype">object</span> orig_cmd_giver)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;- value (@ref driver_LPC_closures <span class="stringliteral">&quot;closure&quot;</span>) -- void &lt;closure&gt;(<span class="keywordtype">string</span> msg, <span class="keywordtype">object</span> msgobj, <span class="keywordtype">object</span> orig_cmd_giver)</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;@headerfile &lt;sys/driver_hooks.h&gt;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;@synopsis{</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;set_driver_hook(H_SEND_NOTIFY_FAIL, value)</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;}</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;@param value void &lt;name&gt;(<span class="keywordtype">string</span> msg, <span class="keywordtype">object</span> msgobj, <span class="keywordtype">object</span> orig_cmd_giver)</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;@param value void &lt;closure&gt;(<span class="keywordtype">string</span> msg, <span class="keywordtype">object</span> msgobj, <span class="keywordtype">object</span> orig_cmd_giver)</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;Optional hook to send the notify fail message, regardless of how it was determined, to the player. If the hook is not set, the message is delivered <span class="keyword">using</span> <a class="code" href="classefun.html#ac82979d3c13cf20f0fd4b2269248a9ab">efun::tell_object</a>() internally. Hook setting can be a <span class="keywordtype">string</span> or a closure.</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;If the hook is a <span class="keywordtype">string</span>, it is the name of a (possibly static) function to call in the current command giver. If the hook is a closure, it is the function to be called. Lambda closures are bound to the current command giver first.</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;The arguments to the call are:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;- &lt;msg&gt; is the notify fail message to be delivered.</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;- &lt;msgobj&gt; is the <span class="keywordtype">object</span> which set the message. It is 0 for the default message.</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;- &lt;orig_cmd_giver&gt; is the <span class="keywordtype">object</span> for which the original command was first received. It is usually identical with the current command giver `this_player()`.</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;@see @ref driver_hook_overview &quot;hook&quot;, @ref driver_hook_command &quot;command&quot;, @ref driver_hook_modify_command &quot;modify_command&quot;, @ref driver_hook_modify_command_fname &quot;modify_command_fname&quot;, @ref driver_hook_notify_fail &quot;notify_fail&quot;</div>
+<div class="ttc" id="classefun_html_ac82979d3c13cf20f0fd4b2269248a9ab"><div class="ttname"><a href="classefun.html#ac82979d3c13cf20f0fd4b2269248a9ab">efun.tell_object</a></div><div class="ttdeci">void tell_object(object|string ob, mixed *|mapping|struct|object msg)</div><div class="ttdoc">Send a message str to object ob (which is looked up and loaded by given name if necessary). </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>send_notify_fail.md</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:10 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:23 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

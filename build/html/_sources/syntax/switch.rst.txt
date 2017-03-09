@@ -1,0 +1,81 @@
+.. keyword:: switch
+  switch (expr) block
+
+  .. todo:: not really sure how to document the multiple parts of a switch statement, I hate it
+
+  Branch to the case label in statement that matches expr. If no matching case label is found (by value or by type), branch to the default label in statement.
+
+  .. keyword:: case
+    case expr [.. expr2]\: block
+
+    A case label has the form ::
+
+      case expr_n :
+
+    where expr_n must be constant, or the form ::
+
+      case expr_n1 .. expr_n2 :
+
+    where expr_n1 and expr_n2 must be numeric constants and expr_n1 < expr_n2.
+
+    Either all case labels have to be strings or all have to be numeric. Only 0 is special: it is allowed in a switch statement where all other labels are strings.
+
+  .. keyword:: default
+    default\: block
+
+    A default label has the form ::
+
+      default :
+
+    The default label defaults to the end of statement if not given explicitly.
+
+  Whenever a 'break' statement is executed inside 'statement' a branch to the end of the switch statement is performed.
+
+  .. usage::
+
+    ::
+
+      switch(random(100)) {
+        case 0 .. 22 : write("Nothing happens"); break;
+        case 23 .. 27 :
+          write("You are surrounded by a golden glow");
+          this_player()->heal_self(random(3));
+          break;
+        case 28 .. 32 :
+          write("The water was poisoned!\n");
+          this_player()->add_exp(this_player()->hit_player(random(4)));
+          break;
+        case 33 : write("You hear a voice whispering: "+random_hint());
+        /* fall through */
+        case 34 :
+          write(
+            "While you didn't pay attention, a water demon "
+            "snatches a coin out of your purse!\n"
+          );
+          this_player()->add_money(-1);
+          break;
+        default : write "You hear some strange noises\n"; break;
+        case 42 : return;
+        case 99 : write("It tastes good.\n";
+      }
+
+  .. note:: In C, the grammar for switch is::
+
+      switch (expr) statement
+
+    allowing constructs like::
+
+      switch (expr)
+        while (expr2)
+        {
+        case 1: ...
+        case 2: ...
+        }
+
+    In LPC a switch must be followed by a block that contains the case labels directly. In contrast to C, the group of statements following a case label have their own lexical scope so that variable declarations may not cross case labels.
+
+  :history 3.2.10 changed: constrained the grammar to require a block for the switch() body, not just a statement. This differs from the C syntax, but was necessary as the compiler didn't handle the statement case correctly.
+  :history 3.3 changed: allowed to pass values of the wrong type to switch(), the driver would in that case use the default case. Before, values of the wrong type caused a runtime error.
+  :history 3.3.718 changed: disallowed case labels in inner blocks and variable declarations that cross case labels.
+
+  .. seealso:: :keyword:`for`, :keyword:`foreach`, :keyword:`do-while`, :keyword:`if`, :keyword:`while`

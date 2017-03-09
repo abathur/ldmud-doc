@@ -4,19 +4,19 @@ SYNOPSIS (DEPRECATED)
 
 DESCRIPTION
 ===========
-   In compat mode, this function is used by transfer()(E).
+   In compat mode, this function is used by transfer(E).
 
    If an object wants control over when it is possible to pick it up (i.e. 
    moved into a living object) it must define get(A), and return 1 if ok to 
    pick up.
 
    <!> Note:  
-     `id()` has been called before this to identify the object.
+     id(A) has been called before this to identify the object.
 
 HISTORY
 =======
-   - deprecated (3.3) -- because transfer()(E) has been deprecated.
+   - deprecated (3.3) -- because transfer(E) has been deprecated.
 
 SEE ALSO
 ========
-   transfer()(E), drop(A)
+   transfer(E), drop(A)

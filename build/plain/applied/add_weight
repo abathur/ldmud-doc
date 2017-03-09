@@ -4,7 +4,7 @@ SYNOPSIS (DEPRECATED)
 
 DESCRIPTION
 ===========
-   In compat mode, this function is used by transfer()(E).
+   In compat mode, this function is used by transfer(E).
 
    An object that can contain other objects and is not a room must define this
    function. It is called with the extra weight of the object that is moved 
@@ -15,12 +15,13 @@ DESCRIPTION
    The function is also called with the negative weight in the object that the
    moving leaves.
 
-   Note that no set_weight() is required by the parser.
+   <!> Note:  
+     no `set_weight()` is required by the parser.
 
 HISTORY
 =======
-   - deprecated (3.3) -- because transfer()(E) has been deprecated.
+   - deprecated (3.3) -- because transfer(E) has been deprecated.
 
 SEE ALSO
 ========
-   transfer()(E), query_weight(A), prevent_insert(A)
+   transfer(E), query_weight(A), prevent_insert(A)

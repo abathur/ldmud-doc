@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: initialisation</title>
+<title>LDMud: Initialization of the master object.</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('driver_master_initialisation.html','')
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,18 +95,18 @@ $(document).ready(function(){initNavTree('driver_master_initialisation.html','')
 
 <div class="header">
   <div class="headertitle">
-<div class="title">initialisation </div>  </div>
+<div class="title">Initialization of the master object. </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>As the lfuns which are called to initialize objects after a load are defined through driver hooks, and these hooks are cleared prior to a master (re)load, the first function called is inaugurate_master(). It's not very sensible to do anything earlier as the master is not recognized as such at that time, and so a number of (important) things would not work. Which lfun is called during runtime to reset the master also depends on the driverhook settings. Arbitrary actions may be done on a reset.</p>
+<div class="textblock"><p>As the lfuns which are called to initialize objects after a load are defined through driver hooks, and these hooks are cleared prior to a master (re)load, the first function called is <a class="el" href="classmaster.html#a71850ecdfcc9e7bdda92d1542fd13dcd" title="This function is called in the master object after it has been created and is fully functional...">master::inaugurate_master()</a>. It's not very sensible to do anything earlier as the master is not recognized as such at that time, and so a number of (important) things would not work. Which lfun is called during runtime to reset the master also depends on the driverhook settings. Arbitrary actions may be done on a reset.</p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="classmaster.html#a71850ecdfcc9e7bdda92d1542fd13dcd" title="This function is called in the master object after it has been created and is fully functional...">master::inaugurate_master()</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="driver_todo.html">todo</a></li><li class="navelem"><a class="el" href="driver_master_master.html">master</a></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:11 for Tsunami by
+    <li class="navelem"><a class="el" href="driver_master_overview.html">Master-object methods</a></li>
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:24 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

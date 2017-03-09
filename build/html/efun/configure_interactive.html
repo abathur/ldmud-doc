@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::configure_interactive() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::configure_interactive() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::convert_charset()" href="convert_charset.html" />
     <link rel="prev" title="efun::configure_driver()" href="configure_driver.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,36 +49,32 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;configuration.h&gt;</tr>
-<tr id="lpc.configure_interactive">
-<td>
-<a class="reference internal" href="../LPC/void.html#lpc.void" title="void">void</a> </td><td>
-<code class="descname">configure_interactive</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;what</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;data</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.configure_interactive" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.configure_interactive">
+<!--[lpc.efun.configure_interactive]--><td>
+<a class="reference internal" href="../syntax/void.html#lpc.type.void" title="void">void</a> </td><td>
+<code class="descname">configure_interactive</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+object<em>&nbsp;ob</em>, </td><td id="id2">
+int<em>&nbsp;what</em>, </td><td id="id3">
+mixed<em>&nbsp;data</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.configure_interactive" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Sets the option &lt;what&gt; to the value &lt;data&gt; on the interactive &lt;ob&gt;
-or the default for all interactives if &lt;ob&gt; is 0.</p>
-<p>If the first argument &lt;ob&gt; is not this_object(), the privilege
-violation (&#8220;configure_interactive&#8221;, this_object(), ob, what, data)
-occurs.</p>
-<p>As &lt;what&gt;, the following arguments are accepted:</p>
-<p>&lt;what&gt; == IC_MAX_WRITE_BUFFER_SIZE</p>
-<blockquote>
-<div>Sets the maximum amount of data to be held pending for writing
-per player to &lt;data&gt; bytes. A value of -1 means unlimited,
-0 deactivates the write buffer.</div></blockquote>
+<p>Sets the option <a class="reference internal" href="#efun/configure_interactive.arg.what" title="what"><code class="xref lpc lpc-arg docutils literal"><span class="pre">what</span></code></a> to the value <a class="reference internal" href="#efun/configure_interactive.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a> on the interactive <a class="reference internal" href="#efun/configure_interactive.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> or the default for all interactives if <a class="reference internal" href="#efun/configure_interactive.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is 0.</p>
+<p>If the first argument <a class="reference internal" href="#efun/configure_interactive.arg.ob" title="ob"><code class="xref lpc lpc-arg docutils literal"><span class="pre">ob</span></code></a> is not <code class="docutils literal"><span class="pre">this_object()</span></code>, the privilege violation (&#8220;configure_interactive&#8221;, this_object(), ob, what, data) occurs.</p>
+<p>As <a class="reference internal" href="#efun/configure_interactive.arg.what" title="what"><code class="xref lpc lpc-arg docutils literal"><span class="pre">what</span></code></a>, the following arguments are accepted:</p>
+<dl class="docutils">
+<dt><a class="reference internal" href="#efun/configure_interactive.arg.what" title="what"><code class="xref lpc lpc-arg docutils literal"><span class="pre">what</span></code></a> == <code class="xref lpc lpc-macro docutils literal"><span class="pre">IC_MAX_WRITE_BUFFER_SIZE</span></code></dt>
+<dd>Sets the maximum amount of data to be held pending for writing per player to <a class="reference internal" href="#efun/configure_interactive.arg.data" title="data"><code class="xref lpc lpc-arg docutils literal"><span class="pre">data</span></code></a> bytes. A value of -1 means unlimited, 0 deactivates the write buffer.</dd>
+</dl>
 <div class="section" id="HISTORY">
 <h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><strong>introduced</strong> (<em>3.3.719</em>)</li>
 </ul>
 </div>
 <div class="section" id="see2also">
 <h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="configure_driver.html#lpc.configure_driver" title="configure_driver"><code class="xref lpc lpc-efun docutils literal"><span class="pre">configure_driver()</span></code>(E)</a></p>
+<p><a class="reference internal" href="configure_driver.html#lpc.efun.configure_driver" title="configure_driver"><code class="xref lpc lpc-efun docutils literal"><span class="pre">configure_driver</span></code>(E)</a></p>
 </div>
 </div>
 </div>
@@ -90,8 +88,8 @@ per player to &lt;data&gt; bytes. A value of -1 means unlimited,
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -111,15 +109,14 @@ per player to &lt;data&gt; bytes. A value of -1 means unlimited,
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -131,7 +128,7 @@ per player to &lt;data&gt; bytes. A value of -1 means unlimited,
       &copy;good question.
       
       |
-      <a href="../_sources/efun/configure_interactive.txt"
+      <a href="../_sources/efun/configure_interactive.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

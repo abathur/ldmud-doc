@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/previous_object.c Source File</title>
+<title>LDMud: efun/previous_object.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('previous__object_8c_source.html','');}
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,66 +100,48 @@ $(document).ready(function(){initNavTree('previous__object_8c_source.html','');}
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * Returns an object pointer to the object that did a call (call_other(),</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * funcall(), etc) to the current object, if any. If that object is</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * destructed, the function returns 0.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * Returns an object pointer to the object that did a call (efun::call_other(), efun::funcall(), etc) to the current object, if any. If that object is destructed, the function returns 0.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * If the optional \p i is given and `0 &lt;= i &lt; caller_stack_depth()`, the call_others are followed back \p i times (i.e. `previous_object(1)` returns the caller of the caller). If \p i is less than 0, the first previous object is returned (as if `i == 0` was passed).</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * If the optional arg is given, the call_other()s are followed</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * back i times (i.e. previous_object(1) returns the caller of</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * the caller): 0 &lt;= i &lt; caller_stack_depth(). If &lt;i&gt; is less than 0, the</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * first previous object is returned.</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * There is an important special case: in functions called by</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    * the gamedriver in reaction to some external event (e.g. commands</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    * added by add_action), previous_object() will return this_object(),</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    * but previous_object(0) will return 0.</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    * object previous_object()</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    * object previous_object(int i)</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * There is an important special case: in functions called by the gamedriver in reaction to some external event (e.g. commands added by add_action), `previous_object()` will return `this_object()`, but `previous_object(0)` will return 0.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * See Also: </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    *    efun::call_other(), efun::this_object(), efun::this_player(),</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    *    </span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * efun::caller_stack(), efun::caller_stack_depth(), efun::extern_call()</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    * object previous_object()</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    * object previous_object(int i)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    * @usage{</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">    * This example shows how we can check if the last call to a function of the current object is secure or if we should abort execution:</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;   <span class="keywordtype">object</span> <a class="code" href="classefun.html#ad97faa7d3c08dc7c7a22ef4c0a37fd08">previous_object</a>(int i);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;EXAMPLES</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;   <span class="keywordtype">int</span> security() {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;      <span class="keywordtype">object</span> prev;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;      <span class="keywordflow">if</span> (!(prev=previous_object()));</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (getuid(prev)  != getuid(this_object()));</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (geteuid(prev) != geteuid(this_object()));</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;      <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;   }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;   <span class="keywordtype">void</span> highly_sensible_func() {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      <span class="keywordflow">if</span> (!security())</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;         <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      ...</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;   }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;   This example shows how we can check <span class="keywordflow">if</span> the last call to a</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;   <span class="keyword">function</span> of the current <span class="keywordtype">object</span> is secure or <span class="keywordflow">if</span> we should abort</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;   execution.</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;BUGS</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      Values of i &lt; 0 are treated as <span class="keywordflow">if</span> i == 0 was passed - <span class="keyword">this</span> is</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      historic.</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      See Also: </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;         <a class="code" href="classefun.html#a14431f7de9bcc796d309ac6f3193f5d4">efun::call_other</a>(), <a class="code" href="classefun.html#a3beb87980adf6911709c4c431e244488">efun::this_object</a>(), <a class="code" href="classefun.html#a23dc6aa65a7477371df722a647b661af">efun::this_player</a>(),</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;   <a class="code" href="classefun.html#a7ceb41476c36b9f172725cde9515f74a">efun::caller_stack</a>(), <a class="code" href="classefun.html#a6d3ec4c35f8417da08202e813f8c40be">efun::caller_stack_depth</a>(), <a class="code" href="classefun.html#adbad80797e70e6d2fa6ba96cb6e226fb">efun::extern_call</a>()</div>
-<div class="ttc" id="classefun_html_adbad80797e70e6d2fa6ba96cb6e226fb"><div class="ttname"><a href="classefun.html#adbad80797e70e6d2fa6ba96cb6e226fb">efun.extern_call</a></div><div class="ttdeci">int extern_call()</div><div class="ttdoc">Returns zero, if the function that is currently being executed was called by a local call...</div></div>
-<div class="ttc" id="classefun_html_a6d3ec4c35f8417da08202e813f8c40be"><div class="ttname"><a href="classefun.html#a6d3ec4c35f8417da08202e813f8c40be">efun.caller_stack_depth</a></div><div class="ttdeci">int caller_stack_depth(void)</div><div class="ttdoc">Returns the number of previous objects on the stack. </div></div>
-<div class="ttc" id="classefun_html_a3beb87980adf6911709c4c431e244488"><div class="ttname"><a href="classefun.html#a3beb87980adf6911709c4c431e244488">efun.this_object</a></div><div class="ttdeci">object this_object(void)</div><div class="ttdoc">Return the object pointer for this object. </div></div>
-<div class="ttc" id="classefun_html_a23dc6aa65a7477371df722a647b661af"><div class="ttname"><a href="classefun.html#a23dc6aa65a7477371df722a647b661af">efun.this_player</a></div><div class="ttdeci">object this_player(void)</div><div class="ttdoc">Return the current command giver. </div></div>
-<div class="ttc" id="classefun_html_a7ceb41476c36b9f172725cde9515f74a"><div class="ttname"><a href="classefun.html#a7ceb41476c36b9f172725cde9515f74a">efun.caller_stack</a></div><div class="ttdeci">object * caller_stack(int add_interactive)</div></div>
-<div class="ttc" id="classefun_html_ad97faa7d3c08dc7c7a22ef4c0a37fd08"><div class="ttname"><a href="classefun.html#ad97faa7d3c08dc7c7a22ef4c0a37fd08">efun.previous_object</a></div><div class="ttdeci">object previous_object(int i)</div><div class="ttdoc">Returns an object pointer to the object that did a call (call_other(), funcall(), etc) to the current...</div></div>
-<div class="ttc" id="classefun_html_a14431f7de9bcc796d309ac6f3193f5d4"><div class="ttname"><a href="classefun.html#a14431f7de9bcc796d309ac6f3193f5d4">efun.call_other</a></div><div class="ttdeci">unknown call_other(object  *ob, string fun, mixed arg,...)</div></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">    * ~~~{.c}</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">    * int security() {</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">    *    object prev;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">    *    if (!(prev=previous_object()));</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">    *    else if (getuid(prev)  != getuid(this_object()));</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">    *    else if (geteuid(prev) != geteuid(this_object()));</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">    *    else return 1;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">    *    return 0;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">    * void highly_sensible_func() {</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">    *     if (!security())</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">    *         return;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">    *     ...</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">    * ~~~</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;   <span class="keywordtype">object</span> <a class="code" href="classefun.html#a8d720f6391a992bf62bb528a3c48ba14">previous_object</a>(int i);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="ttc" id="classefun_html_a8d720f6391a992bf62bb528a3c48ba14"><div class="ttname"><a href="classefun.html#a8d720f6391a992bf62bb528a3c48ba14">efun.previous_object</a></div><div class="ttdeci">object previous_object(int i)</div><div class="ttdoc">Returns an object pointer to the object that did a call (efun::call_other(), efun::funcall(), etc) to the current object, if any. </div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -168,7 +149,7 @@ $(document).ready(function(){initNavTree('previous__object_8c_source.html','');}
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>previous_object.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:08 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:22 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

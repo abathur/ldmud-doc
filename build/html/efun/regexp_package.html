@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::regexp_package() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::regexp_package() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::regexplode()" href="regexplode.html" />
     <link rel="prev" title="efun::regexp()" href="regexp.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,60 +49,49 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;regexp.h&gt;</tr>
-<tr id="lpc.regexp_package">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">regexp_package</code></td><a class="headerlink" href="#lpc.regexp_package" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.regexp_package">
+<!--[lpc.efun.regexp_package]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">regexp_package</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.regexp_package" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
 <p>Return which regexp package is used by default:</p>
 <blockquote>
-<div>RE_TRADITIONAL: traditional regexps
-RE_PCRE:        PCRE</div></blockquote>
-<p>As the package can be selected at runtime through the
-REGEXP_PACKAGE driver hook, there is no good way to determine
-the package at LPC compile time.
-Match the pattern &lt;pattern&gt; (interpreted according to &lt;opt&gt; if
-given) against all strings in list, and return a new array with all
-strings that matched.</p>
-<p>If there is an error in the regular expression, a runtime
-error will be raised.</p>
-<p>EXAMPLES
-string strs;
-string pattern;</p>
-<dl class="docutils">
-<dt>if (regexp_package() == RE_PCRE)</dt>
-<dd>pattern = &#8220;\&lt;help\&gt;.*\&lt;me\&gt;&#8221;;</dd>
-<dt>else</dt>
-<dd>pattern = &#8220;\bhelp\b.*\bme\b&#8221;;</dd>
-<dt>if (strs = regexp(({&#8220;please, help me Sir John.&#8221;}), pattern)) {</dt>
-<dd><dl class="first last docutils">
-<dt>if (sizeof(strs)</dt>
-<dd>write(&#8220;It matches.n&#8221;);</dd>
-</dl>
-</dd>
-</dl>
-<p>}</p>
-<p>The regular expression will test the given string (which is
-packed into an array) if there is something like &#8220;help ... me&#8221;
-inside of it.</p>
-<p>Introduced in LDMud 3.3.634.</p>
-<blockquote>
-<div><blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="regexp.html#lpc.regexp" title="regexp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexp()</span></code>(E)</a>, <a class="reference internal" href="regexplode.html#lpc.regexplode" title="regexplode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexplode()</span></code>(E)</a>, <a class="reference internal" href="regmatch.html#lpc.regmatch" title="regmatch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regmatch()</span></code>(E)</a>, <a class="reference internal" href="regreplace.html#lpc.regreplace" title="regreplace"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regreplace()</span></code>(E)</a>, <a class="reference internal" href="sscanf.html#lpc.sscanf" title="sscanf"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sscanf()</span></code>(E)</a>,</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><a class="reference internal" href="../concepts/regexp.html#lpc.regexp" title="regexp"><code class="xref lpc lpc-concept docutils literal"><span class="pre">regexp</span></code>(C)</a>, <a class="reference internal" href="../hook/regexp_package.html#lpc.regexp_package" title="regexp_package"><code class="xref lpc lpc-hook docutils literal"><span class="pre">regexp_package</span></code>(H)</a></p>
-</div></blockquote>
+<div><a class="reference internal" href="../topics/regexp.html#lpc.macro.RE_TRADITIONAL" title="RE_TRADITIONAL"><code class="xref lpc lpc-macro docutils literal"><span class="pre">RE_TRADITIONAL</span></code></a>: traditional regexps
+<a class="reference internal" href="../topics/regexp.html#lpc.macro.RE_PCRE" title="RE_PCRE"><code class="xref lpc lpc-macro docutils literal"><span class="pre">RE_PCRE</span></code></a>:        PCRE</div></blockquote>
+<p>As the package can be selected at runtime through the <a class="reference internal" href="../hook/regexp_package.html#lpc.hook.H_REGEXP_PACKAGE" title="H_REGEXP_PACKAGE"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_REGEXP_PACKAGE</span></code>(H)</a> driver hook, there is no good way to determine the package at LPC compile time. Match the pattern &lt;pattern&gt; (interpreted according to &lt;opt&gt; if given) against all strings in list, and return a new array with all strings that matched.</p>
+<p>If there is an error in the regular expression, a runtime error will be raised.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>This example uses a regular expression to test the given string (which is packed into an array) if there is something like &#8220;help ... me&#8221; inside of it:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">string</span> <span class="n">strs</span><span class="p">;</span>
+<span class="kt">string</span> <span class="n">pattern</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">regexp_package</span><span class="p">()</span> <span class="o">==</span> <span class="n">RE_PCRE</span><span class="p">)</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\\</span><span class="s">&lt;help</span><span class="se">\\</span><span class="s">&gt;.*</span><span class="se">\\</span><span class="s">&lt;me</span><span class="se">\\</span><span class="s">&gt;&quot;</span><span class="p">;</span>
+<span class="k">else</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\\</span><span class="s">bhelp</span><span class="se">\\</span><span class="s">b.*</span><span class="se">\\</span><span class="s">bme</span><span class="se">\\</span><span class="s">b&quot;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">strs</span> <span class="o">=</span> <span class="n">regexp</span><span class="p">(({</span><span class="s">&quot;please, help me Sir John.&quot;</span><span class="p">}),</span> <span class="n">pattern</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">strs</span><span class="p">)</span>
+        <span class="n">write</span><span class="p">(</span><span class="s">&quot;It matches.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.634</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="regexp.html#lpc.efun.regexp" title="regexp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexp</span></code>(E)</a>, <a class="reference internal" href="regexplode.html#lpc.efun.regexplode" title="regexplode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regexplode</span></code>(E)</a>, <a class="reference internal" href="regmatch.html#lpc.efun.regmatch" title="regmatch"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regmatch</span></code>(E)</a>, <a class="reference internal" href="regreplace.html#lpc.efun.regreplace" title="regreplace"><code class="xref lpc lpc-efun docutils literal"><span class="pre">regreplace</span></code>(E)</a>, <a class="reference internal" href="sscanf.html#lpc.efun.sscanf" title="sscanf"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sscanf</span></code>(E)</a>, <a href="#id1"><span class="problematic" id="id2">:concept:`regexp`</span></a>, <a class="reference internal" href="../hook/regexp_package.html#lpc.hook.regexp_package" title="regexp_package"><code class="xref lpc lpc-hook docutils literal"><span class="pre">regexp_package</span></code>(H)</a></p>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -111,8 +102,8 @@ inside of it.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -122,21 +113,25 @@ inside of it.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::regexp_package()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -148,7 +143,7 @@ inside of it.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/regexp_package.txt"
+      <a href="../_sources/efun/regexp_package.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

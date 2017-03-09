@@ -5,23 +5,23 @@ SYNOPSIS (OPTIONAL)
 
 DESCRIPTION
 ===========
-   parse_command() is basically a spiffed up sscanf operating on word basis 
+   parse_command(E) is basically a spiffed up sscanf operating on word basis 
    and targeted at recognizing object descriptions from command strings.
 
-   The efun takes the command string <cmd> and the object(s) <env>/<arr> and 
-   tries to match it against the format string <fmt>. Successfully matched 
-   elements are assigned to the variables <var>.... The result from the efun 
-   is 1 if the command could be fully matched, and 0 otherwise.
+   The efun takes the command string cmd(E) and the object(s) env(E)/arr(E) 
+   and tries to match it against the format string fmt(E). Successfully 
+   matched elements are assigned to the variables `var`.... The result from 
+   the efun is 1 if the command could be fully matched, and 0 otherwise.
 
-   If the objects are given as a single object <env>, the efun matches against
-   the given object and all objects contained therein. Otherwise, if the 
-   objects are given as an array <arr> of objects, the efun matches only 
+   If the objects are given as a single object env(E), the efun matches 
+   against the given object and all objects contained therein. Otherwise, if 
+   the objects are given as an array arr(E) of objects, the efun matches only 
    against the given objects.
 
-   The format string <fmt> consists of words, syntactic markers, and 
+   The format string fmt(E) consists of words, syntactic markers, and 
    %-directives for the values to parse and return in the variables. A typical
-   example is " 'get' / 'take' %i " or " 'spray' / 'paint' [paint] %i ". The 
-   elements in detail are:
+   example is `` 'get' / 'take' %i `` or `` 'spray' / 'paint' [paint] %i 
+   >>``<<. The elements in detail are:
 
       'word': obligatory text [word]: optional text /     : Alternative marker
       %o    : Single item, object %s    : Any text %w    : Any word %p    : 
@@ -35,10 +35,11 @@ DESCRIPTION
 
       %i    : Any objects %d    : Number >= 0, or when given textual: 0-99.
 
-   A <word> in this context is any sequence of characters not containing a 
-   space. 'living objects' are searched by calls to the (simul)efuns 
-   find_player() and find_living(): both functions have to accept a name as 
-   argument and return the object for this name, or 0 if there is none.
+   A *word* in this context is any sequence of characters not containing a 
+   space. 'living objects' are searched by calls to the 
+   (simul)efuns `find_player()` and `find_living()`: both functions have to 
+   accept a name as argument and return the object for this name, or 0 if 
+   there is none.
 
    The results assigned to the variables by the %-directives are:
 
@@ -54,8 +55,8 @@ DESCRIPTION
                'apples'
 
             [1..]: object: all(!) objects matching the item description.
-               In the <env> form this may be the whole recursive inventory of 
-               the <env> object.
+               In the env(E) form this may be the whole recursive inventory of
+               the env(E) object.
 
          It is up to the caller to interpret the recognized numeral and to 
          apply it on the list of matched objects.
@@ -68,8 +69,10 @@ DESCRIPTION
    %i (and non-compat-%l) match descriptions like 'three red roses', 'all 
    nasty bugs' or 'second blue sword'.
 
-   Note: Patterns of type: "%s %w %i" might not work as one would expect. %w 
-   will always succeed so the arg corresponding to %s will always be empty.
+   <!> Note:  
+     Patterns of type: "%s %w %i" might not work as one would expect. %w 
+     will always succeed so the arg corresponding to %s will always be 
+     empty.
 
    To make the efun useful it must have a certain support from the mudlib: it 
    calls a set of functions in objects to get the information it needs to 
@@ -94,32 +97,29 @@ DESCRIPTION
    reasonable defaults (like 'thing' as generic singular name):
 
       string >>*<<parse_command_id_list()
-         - Would normally return: ({ "one", "thing" })
+         - Would normally return: `({ "one", "thing" })`
 
       string >>*<<parse_command_plural_id_list()
-         - Would normally return: ({ "ones", "things", "them" })
+         - Would normally return: `({ "ones", "things", "them" })`
 
       string >>*<<parse_command_adjectiv_id_list()
-         - Would normally return ({ "iffish" })
+         - Would normally return `({ "iffish" })`
 
    Two additional functions in the master object provide the default list of 
    prepositions (needed for %p) and the single 'all' word:
 
       string >>*<<parse_command_prepos_list()
-         - Would normally return: ({ "in", "on", "under", "behind", 
-           "beside" })
+         - Would normally 
+           return: `({ "in", "on", "under", "behind", "beside" })`
 
       string parse_command_all_word()
          - Would normally return: "all"
 
-   int parse_command(string, object|object*, string, destargs...)
-
    USAGE
    =====
-      object >>*<<items; parse_command("take 
-      apple",environment(this_player()),
-
-         " 'get' / 'take' %i ", items);
+         object *items;
+         parse_command("take apple",environment(this_player()),
+                       " 'get' / 'take' %i ", items);
 
 HISTORY
 =======
@@ -127,4 +127,4 @@ HISTORY
 
 SEE ALSO
 ========
-   sscanf()(E)
+   sscanf(E)

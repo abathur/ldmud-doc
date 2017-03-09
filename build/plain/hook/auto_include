@@ -6,9 +6,9 @@ SYNOPSIS
 DESCRIPTION
 ===========
    Arguments: 
-      - value (string(LPC)) -- <text>
-      - value (closure(LPC)) -- string <closure>(string base_file, string 
-        current_file, int sys_include)
+      - value (string) -- <text> 
+      - value (closure) -- string <closure>(string base_file, string 
+        current_file, int sys_include) 
 
    Optional hook specifying a string to be included before the source of every
    compiled LPC object. Hook setting can be a string or a closure. If the 
@@ -30,4 +30,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   `hooks`, include_dirs(H)
+   hook(H), include_dirs(H)

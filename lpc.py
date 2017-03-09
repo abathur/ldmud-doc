@@ -12,25 +12,26 @@ from sphinx import addnodes
 from sphinx.util.docfields import TypedField, DocFieldTransformer, _is_single_paragraph
 from sphinx.util.nodes import make_refnode, set_source_info
 from docutils.parsers.rst import directives
+from docutils.parsers.rst.directives import admonitions, parts
 from sphinx.writers.text import TextTranslator, TextWrapper
 from sphinx.writers.html import SmartyPantsHTMLTranslator
 import operator
 import itertools
 import sys
-import filecmp
+
 import string
 import copy
-from collections import defaultdict, namedtuple, OrderedDict
+import validators
+from collections import defaultdict, OrderedDict, Iterable
 
 # true constants
 MAXWIDTH = 78  # wrap docs at
 
 # global vars for gatekeeping development output; these are named like constants but we can't actually set values until Sphinx parses the config; see set_dev_flags()
-DEV_PIN_TEST = None
-DEV_DOCTREES = None
 DEV_DOXYGEN = None
 DEV_PLAINTEXT = None
 DEV_REF = None
+DEV_DATA = None
 
 
 def debug(context, *arg, **kwargs):
@@ -52,7 +53,7 @@ class CrouchingTitle(nodes.title, nodes.Invisible):
 	"""
 	Non-rendering title node.
 
-	Fulfills docutils/sphinx expectations for where title nodes are in a document, but allows us to have things like SYNOPSIS or CONCEPT appear to be the title. Mostly necessary so that our TOC/link entries show the right title.
+	Fulfills docutils/sphinx expectations for where title nodes are in a document, but allows us to have things like SYNOPSIS appear to be the title. Mostly necessary so that our TOC/link entries show the right title.
 	"""
 
 	def visit_title(self, node):  # pylint: disable=unused-argument, no-self-use
@@ -62,6 +63,8 @@ class CrouchingTitle(nodes.title, nodes.Invisible):
 # TODO: something in here works fine for the history/typedfield kind, but falls flat on the include/groupedfield kind. The basics work now, but I either need to move the node, or figure out how to parse it out in a separate step when I parse out the synopsis.
 # TODO: support repeating an argument to document different types (i.e., the format of arg X when both array or mapping are valid)
 class LPCDocFieldTransformer(DocFieldTransformer):
+	lint = validators.Usage
+
 	def transform(self, node):  # TODO: decompose, will fix many lint warnings
 		"""Transform a single field list *node*."""
 		typemap = self.typemap
@@ -147,7 +150,7 @@ class LPCDocFieldTransformer(DocFieldTransformer):
 		for entry in entries:
 			if isinstance(entry, nodes.field):
 				# pass-through old field
-				new_list += entry
+				new_list.append(entry)
 				pseudo_field = False
 			else:
 				fieldtype, content = entry
@@ -156,8 +159,12 @@ class LPCDocFieldTransformer(DocFieldTransformer):
 					pseudo_field = True
 
 				fieldtypes = types.get(fieldtype.name, {})
-				new_list.append(fieldtype.make_field(fieldtypes, self.domain, content))
+
+				new_list.append(fieldtype.make_field(fieldtypes, self.domain, content, self.lint, node))
+
+
 		node.replace_self(new_list if pseudo_field else nodes.field_list("", *new_list, id=field_name))
+
 
 
 # two classes below violate normal class naming standard in order to uphold docutils idiomatic naming for node classes.
@@ -167,7 +174,7 @@ class semantic_sibling_section(nodes.section):  # pylint: disable=invalid-name
 
 	Allows us to nest something like a seealso directive under the element it refers to, but not get another level of indentation tacked on in output.
 	"""
-	valid_builders = ["html", "plain", "doxygen"]
+	valid_builders = ["multi", "html", "plain", "doxygen"]
 
 	@classmethod
 	def _scrubbing_bubbles(cls, app, doctree, docname):
@@ -218,17 +225,17 @@ class LPCTypedField(TypedField):
 	TYPEUNION_PUNCT = ["<", "|", ">"]
 
 	# VERBATIM FROM sphinx.util.docfields.TypedField unless otherwise noted
-	def make_field(self, types, domain, items):
+	def make_field(self, types, domain, items, lint, parent):
 		def handle_item(fieldarg, content):
-			par = nodes.paragraph()
-			par += self.make_xref(
+			line = nodes.line()
+			line += self.make_xref(
 				self.rolename,
 				domain,
 				fieldarg.split()[-1],  # differ +: .split()[-1]
 				addnodes.literal_strong
 			)
 			if fieldarg in types:
-				par += nodes.Text(' (')
+				line += nodes.Text(' (')
 				fieldtype = types.get(fieldarg)  # differ: get->pop
 				if len(fieldtype) == 1 and isinstance(fieldtype[0], nodes.Text):
 					typename = u''.join(n.astext() for n in fieldtype)
@@ -239,19 +246,19 @@ class LPCTypedField(TypedField):
 							token.append(char)
 						else:
 							if len(token):
-								par += self.make_xref(self.typerolename, domain, "".join(token), addnodes.literal_emphasis)
+								line += self.make_xref(self.typerolename, domain, "".join(token), addnodes.literal_emphasis)
 								token = []
-							par += nodes.Text(char, char)
+							line += nodes.Text(char, char)
 
 					if len(token):
-						par += self.make_xref(self.typerolename, domain, "".join(token), addnodes.literal_emphasis)
+						line += self.make_xref(self.typerolename, domain, "".join(token), addnodes.literal_emphasis)
 					# end all lines differ
 				else:
-					par += fieldtype
-				par += nodes.Text(')')
-			par += nodes.Text(' -- ')
-			par += content
-			return par
+					line += fieldtype
+				line += nodes.Text(')')
+			line += nodes.Text(' -- ')
+			line += content
+			return line
 
 		fieldname = nodes.field_name('', self.label)
 		if len(items) == 1 and self.can_collapse:
@@ -270,15 +277,27 @@ class LPCHistoryField(TypedField, PseudoField):
 	"""Enables using ":history <version> <status>: <message>" docfield markup."""
 	tagname = "history"
 	cap_tag = tagname.upper()
+	valid_verbs = ["introduced", "backported", "changed", "deprecated", "removed"]
+	lint_codes = {
+		"history-verb": lambda verb: "{:} is not a valid history verb".format(verb)
+	}
 
-	def make_field(self, types, domain, items):
+	def make_field(self, types, domain, items, lint, parent):
 		node = semantic_sibling_section(ids=[self.cap_tag])  # TODO: correct IDs?
 		node.tagname = self.tagname
 
+		if lint:
+			lint.init_state(parent, self.lint_codes)
+			node.line = lint.lineno
+
 		# VERBATIM FROM sphinx.util.docfields.TypedField unless otherwise noted
 		def handle_item(fieldarg, content):
-			par = nodes.paragraph()
-			par += self.make_xref(self.rolename, domain, fieldarg.split()[-1], addnodes.literal_strong)  # differ +: .split()[-1]
+			par = nodes.generated()
+			verb = fieldarg.split()[-1]
+			if verb not in self.valid_verbs:
+				lint._fail("history-verb", lint.lineno, verb=verb)
+			# TODO: not sure this should still be an xref
+			par += self.make_xref(self.rolename, domain, verb, addnodes.literal_strong)  # differ +: .split()[-1]
 			if fieldarg in types:
 				par += nodes.Text(' (')
 				# NOTE: using .pop() here to prevent a single type node to be inserted twice into the doctree, which leads to inconsistencies later when references are resolved
@@ -295,7 +314,7 @@ class LPCHistoryField(TypedField, PseudoField):
 				par += content
 			return par
 
-		title = nodes.title('', self.label)  # differs: field_name -> title
+		title = nodes.title('', self.label, meta=True)  # differs: field_name -> title
 		title.tagname = self.tagname  # differs: line added
 		node += title  # differs: line added
 		if len(items) == 1 and self.can_collapse:
@@ -306,6 +325,8 @@ class LPCHistoryField(TypedField, PseudoField):
 			for fieldarg, content in items:
 				bodynode += nodes.list_item('', handle_item(fieldarg, content))
 		node += bodynode  # differs significantly
+		if lint:
+			lint.clear_state()
 		return node  # differs significantly
 	# END VERBATIM
 
@@ -338,29 +359,29 @@ class misleading(nodes.warning):  # pylint: disable=invalid-name
 	pass
 
 
-class LPCSecurityWarning(directives.admonitions.Warning):
+class LPCSecurityWarning(admonitions.Warning):
 	node_class = security
 
 
-class LPCLimitWarning(directives.admonitions.Warning):
+class LPCLimitWarning(admonitions.Warning):
 	node_class = limit
 
 
-class LPCStabilityWarning(directives.admonitions.Warning):
+class LPCStabilityWarning(admonitions.Warning):
 	node_class = stability
 
 
-class LPCObsoleteWarning(directives.admonitions.Warning):
+class LPCObsoleteWarning(admonitions.Warning):
 	node_class = obsolete
 
 
-class LPCMisleadingWarning(directives.admonitions.Warning):
+class LPCMisleadingWarning(admonitions.Warning):
 	node_class = misleading
 
 
 class LPCObject(c.CObject):
 	"""Base directive class for LPC-specific directives."""
-	status_options = ["optional", "deprecated", "obsolete", "preliminary", "experimental"]
+	status_options = ["optional", "deprecated","experimental"]
 	synopsis_title = "SYNOPSIS"
 	doc_field_types = c.CObject.doc_field_types + [
 		LPCHistoryField(
@@ -374,23 +395,24 @@ class LPCObject(c.CObject):
 	__base__ = None  # assigned when our DirectiveAdapter class is created in LPCDomain.directive
 
 	# Sphinx uses these a lot but never declares them; just atoning for their sins
-	objtype = domain = indexnode = names = env = None
+	objtype = domain = indexnode = names = env = top_level = topics = None
 
 	option_spec = {
 		# document status
 		"optional": lambda x: "OPTIONAL",
 		"deprecated": lambda x: "DEPRECATED",
-		"preliminary": lambda x: "PRELIMINARY",
-		"obsolete": lambda x: "OBSOLETE",
-		"removed": lambda x: "REMOVED",
+		"removed": lambda x: "REMOVED", # TODO: rm?
 		"experimental": lambda x: "EXPERIMENTAL",
 		# other things
+		"name": directives.unchanged,
+		"title": directives.unchanged,
 		"synopsis": directives.unchanged,
 		"include": directives.unchanged,
-		"topic": directives.unchanged  # add to this index?
+		"topics": directives.unchanged  # add to this index?
 	}
 	option_spec.update(c.CObject.option_spec)
 	csplit_re = re.compile(r',\s*')
+	wsplit_re = re.compile(r'')
 
 	@property
 	def tagname(self):
@@ -404,7 +426,7 @@ class LPCObject(c.CObject):
 
 	def get_status_desc(self):
 		"""Return comma-delimited list of valid status options or empty string."""
-		optiondesc = ", ".join([self.options[x] for x in self.options if x in self.status_options])
+		optiondesc = ", ".join([self.options[x] for x in self.status_options if x in self.options])
 		return " (%s)" % optiondesc if len(optiondesc) else ""
 
 	def _parse_node_meta(self, out_node):
@@ -424,23 +446,37 @@ class LPCObject(c.CObject):
 		else:
 			self.domain, self.objtype = '', self.name
 		self.env = self.state.document.settings.env
-		self.names = []
+		#self.names = set() # TODO: don't think this is necessary anymore but disabling may cause hell
 
 		if out_node:
 			self._parse_node_meta(out_node)
 
-		# TODO: given below note, this may be pointless since we aren't planning on using the directive form, I don't think; let's disable it and see what breaks.
+		self.topics = self.get_topics()
+		for topic in self.topics:
+			self.env.domaindata['lpc']['topics'][topic].append(self.env.docname)
+
+		# TODO: given below note, this may be pointless since we aren't planning on using the directive form, I don't think; disable it and see what breaks?
 		if self.names:
 			# needed for association of version{added,changed} directives
 			self.env.temp_data['object'] = self.names[0]
 
 	def _parse_type(self, attach_to, ctype):  # pylint: disable=unused-argument
 		# add cross-ref nodes for all words
-		for part in [_f for _f in c.wsplit_re.split(ctype) if _f]:
+		parts = c.wsplit_re.split(ctype)
+		last = len(parts) - 1
+		for i, part in enumerate(parts):
+			if not part:
+				continue
+
 			tnode = nodes.Text(part, part)
-			if part[0] in string.ascii_letters + '_' and part not in self.stopwords:
+			if i != last and part[0] in string.ascii_letters + '_' and part not in self.stopwords:
 				pnode = addnodes.pending_xref(
-					'', refdomain='lpc', reftype='type', reftarget=part, modname=None, classname=None, refdoc=self.env.docname)
+					'', refdomain='lpc', reftype="any", reftarget=part, modname=None, classname=None, refdoc=self.env.docname)
+				pnode += tnode
+				attach_to += pnode
+			elif part[0] == "*":
+				pnode = addnodes.pending_xref(
+					'', refdomain='lpc', reftype='type', reftarget="array", modname=None, classname=None, refdoc=self.env.docname)
 				pnode += tnode
 				attach_to += pnode
 			else:
@@ -457,19 +493,21 @@ class LPCObject(c.CObject):
 
 	def get_synopsis_node(self):
 		synopsis = nodes.section(ids=[self.synopsis_title])  # TODO: fix ids
-		synopsis += nodes.title(text=self.synopsis_title + self.get_status_desc())
+		synopsis += nodes.title(text=self.synopsis_title + self.get_status_desc(), meta=True)
 		return synopsis
 
 	def _parse_synopsis_syntax(self, synopsis_node, out_node):  # pylint: disable=unused-argument
-		if "synopsis" in self.options:
+		if "title" in self.options:
+			out_node["title"] = self.options["title"]
 			synopsis_node += nodes.field_list('',
 				nodes.field('',
 					nodes.field_name(self.arguments[0], self.arguments[0]),
-					nodes.field_body("", nodes.inline("", self.options["synopsis"]))
+					nodes.field_body("", nodes.inline("", self.options["title"]))
 				)
 			)
 		else:
-			synopsis_node += nodes.paragraph("", "", nodes.Text(self.arguments[0], self.arguments[0]))
+			out_node["title"] = self.arguments[0]
+			synopsis_node += nodes.container("", nodes.Text(self.arguments[0], self.arguments[0]))
 
 	def _parse_synopsis(self, out_node):
 		synopsis_node = self.get_synopsis_node()
@@ -481,7 +519,7 @@ class LPCObject(c.CObject):
 	def get_content_node(self):  # pylint: disable=no-self-use
 		"""Return the node the directive's primary content should be attached to."""
 		content = nodes.section(ids=["DESCRIPTION"])  # TODO: IDs
-		content += nodes.title(text="DESCRIPTION")
+		content += nodes.title(text="DESCRIPTION", meta=True)
 		return content
 
 	def _parse_content(self, out_node):  # pylint: disable=unused-argument
@@ -495,12 +533,13 @@ class LPCObject(c.CObject):
 		- use the docfield transformer to further extract/parse docfields out of the parsed content.
 		- """
 		cont_node = self.get_content_node()
-
 		out_node += cont_node
 
 		self.before_content()
 		self.state.nested_parse(self.content, self.content_offset, cont_node)
+
 		LPCDocFieldTransformer(self).transform_all(cont_node)
+
 		self.env.temp_data['object'] = None  # TODO: this value is set in _parse_meta, and may be going away...
 		self.after_content()
 
@@ -508,19 +547,29 @@ class LPCObject(c.CObject):
 		return "{name}({kind})".format(kind=self.objtype, name=name)
 
 	def get_topics(self):
-		if "topic" in self.options:
-			return self.csplit_re.split(self.options["topic"])
+		if "topics" in self.options:
+			return self.csplit_re.split(self.options["topics"])
 		return []
+
+	def add_local_target(self, name, signode):
+		local_targetname = "{:}.{:}".format(self.env.docname, name)
+		self.env.domaindata['lpc']["arg"][local_targetname] = True
+		self.state.document.note_anonymous_target(signode)
 
 	def add_target(self, name, signode):
 		set_source_info(self, signode)
-		targetname = 'lpc.' + name
+		targetname = 'lpc.{:}.{:}'.format(self.objtype, name)
 
 		if targetname not in self.state.document.ids:
+			signode['first'] = (not len(signode['names']))
 			signode['names'].append(targetname)
 			signode['ids'].append(targetname)
-			signode['first'] = (not self.names)
-			self.state.document.note_explicit_target(signode)
+
+			# We can only have one explicit target for a node, but sometimes we want more (i.e., we might refer to the -> operator or the arrow operator) so we use anonymous targets for the rest...
+			if signode['first']:
+				self.state.document.note_explicit_target(signode)
+			else:
+				self.state.document.note_anonymous_target(signode)
 
 			try:
 				inv = self.env.domaindata['lpc'][self.objtype]
@@ -546,19 +595,30 @@ class LPCObject(c.CObject):
 		return targetname
 
 	def add_index(self, targetname, name):
+		if self.noindex:
+			return
+
 		indextext = self.get_index_text(name)
 		if indextext:
-			self.indexnode['entries'].append(('single', indextext, targetname, ''))
-			self.indexnode['entries'].append(('single', self.objtype + "; " + indextext, targetname, ''))
-			for topic in self.get_topics():
-				self.indexnode['entries'].append(('single', topic + "; " + indextext, targetname, ''))
+			# from docs; index is a list of 5-tuples of ``(entrytype, entryname, target, ignored, key)``.
+			self.indexnode['entries'].append(('single', indextext, targetname, '', ''))
+			self.indexnode['entries'].append(('single', self.objtype + "; " + indextext, targetname, '', ''))
+			# TODO: this might be the place (or the source of the information with which) to schlorp up the "topics" that docs will get collected into:
+				# any time we have more than N of the same tag, it gets a topic page (and we maybe even have a build error until we add one)
+			for topic in self.topics:
+				self.indexnode['entries'].append(('single', topic + "; " + indextext, targetname, '', ''))
 
 	def add_target_and_index(self, name, sig, signode):
 		self.add_index(self.add_target(name, signode), name)
 
 	def get_out_node(self):  # pylint: disable=no-self-use
 		"""Returns the node that will represent this directive, to which all of its other output will be attached."""
-		return nodes.section(ids=["glossary"])  # TODO: this isn't the right id, at all
+		return nodes.section(ids=sorted(set(self.names)) if self.names else self.name)  # TODO: this was just ["glossary"], but I'm not sure .names is "right" yet
+
+	def preparse(self):
+		self.top_level = isinstance(self.state.parent, nodes.document)
+		self.indexnode = addnodes.index(entries=[])
+		self.names = []
 
 	def run(self):
 		"""
@@ -572,7 +632,7 @@ class LPCObject(c.CObject):
 
 		See the factored-out parsing functions for more on their purpose and using/overriding them.
 		"""
-		self.indexnode = addnodes.index(entries=[])
+		self.preparse()
 		out_node = self.get_out_node()
 		self._parse_meta(out_node)
 
@@ -590,16 +650,21 @@ class LPCGlossary(LPCObject, sphinx.domains.std.Glossary):
 	# TODO: integrate with LPCObject parse model...
 	def _parse_content(self, out_node):
 		title = self.arguments[0].strip() if len(self.arguments) else None
+		# TODO: this may be dumb.
 		if title and len(title):
-			out_node += nodes.title(text=title.upper())
+			out_node += nodes.title("", "", *self.state.inline_text(title, self.lineno)[0])
 			out_node['ids'] = [title]
-
-		if 'synopsis' in self.options:
-			out_node += nodes.paragraph(text=self.options['synopsis'])
+			if 'synopsis' in self.options:
+				out_node += nodes.block_quote("", nodes.paragraph("", "", *self.state.inline_text(self.options['synopsis'], self.lineno)[0]))
+		elif 'synopsis' in self.options:
+			out_node += nodes.paragraph("", "", *self.state.inline_text(self.options['synopsis'], self.lineno)[0])
+			#nodes.paragraph("", "", *self.state.inline_text(self.arguments[0], self.lineno)[0])
 
 		original = sphinx.domains.std.Glossary.run(self)
 		# sphinx applies a glossary class here, which they style in a specific way that makes each term very bold; let's take another swing at it.
 		original[-1][0]["classes"].remove("glossary")
+		for indexnode in original[-1].traverse(addnodes.index):
+			indexnode.parent.remove(indexnode)
 		out_node += original
 
 	def run(self):
@@ -626,7 +691,7 @@ class LPCSeeAlso(LPCObject):
 		contentnode = None
 		if isinstance(most_parent, nodes.section):
 			contentnode = semantic_sibling_section(ids=['see2also'])  # TODO: ids
-			see_aslan = nodes.title(text="SEE ALSO")
+			see_aslan = nodes.title(text="SEE ALSO", meta=True)
 			see_aslan.tagname = "seealso"
 			contentnode += see_aslan
 			contentnode += nodes.paragraph("", "", *self.state.inline_text(self.arguments[0], self.lineno)[0])
@@ -649,7 +714,7 @@ class LPCSeeAlso(LPCObject):
 		contentnode.tagname = "seealso"
 		return [contentnode]
 
-
+# TODO: would be nice to have a way to set style wrappers per re-use of this meta type
 class LPCVar(LPCObject):
 	"""Conceptually similar to LPCObject, but for smaller things (i.e., no separate sections). Could use a more generic/re-usable name."""
 
@@ -663,15 +728,22 @@ class LPCVar(LPCObject):
 
 	def _parse_synopsis_syntax(self, synopsis_node, out_node):
 		for var in self.varnames:
-			# debug("TRYING TO ADD", var)
+			#debug("TRYING TO ADD", var)
 			self.add_target_and_index(var, None, synopsis_node)
-			break
 
 	def get_content_node(self):
 		return nodes.definition()
 
+	@staticmethod
+	def _clean_macro_args(line):
+		open_paren = line.find("(")
+		if open_paren > -1:
+			return "{:}()".format(line[:open_paren])
+		return line
+
 	def run(self):
-		self.varnames = self.arguments[0].splitlines()
+		#print(self.arguments)
+		self.varnames = [self._clean_macro_args(x) for x in self.arguments[0].splitlines()]
 		indexnode, out_node = super().run()
 		return [indexnode, nodes.definition_list("", out_node)]
 
@@ -683,7 +755,7 @@ class LPCUsage(LPCObject):
 	def run(self):
 		temp = nodes.section(ids=["USAGE"])
 		temp.tagname = "usage"
-		temp += nodes.title(text="USAGE")
+		temp += nodes.title(text="USAGE", meta=True)
 		self.state.nested_parse(self.content, self.content_offset, temp)
 		return [temp]
 
@@ -693,10 +765,11 @@ class LPCLore(LPCObject):
 
 	def run(self):
 		temp = semantic_sibling_section(ids=["LORE"])  # TODO: ids
-		temp += nodes.title(text="LORE")
+		temp += nodes.title(text="LORE", meta=True)
 		self.state.nested_parse(self.content, self.content_offset, temp)
 		return [temp]
 
+import unicodedata
 
 class LPCFunction(LPCObject):
 	doc_field_types = [
@@ -726,7 +799,18 @@ class LPCFunction(LPCObject):
 		if len(temp) > 1:
 			comment = temp[1].strip()
 			signode += addnodes.desc_annotation(comment, comment)
-		return None, super().handle_signature(sig, signode)
+
+		objtype = self.objtype
+		self.objtype = "function"
+		fullname = super().handle_signature(sig, signode)
+		self.objtype = objtype
+
+		# add refs to args
+		for param in signode.traverse(addnodes.desc_parameter):
+			#print("TRAVERSING PARAM", param, param[-1].astext(), param[-1].astext().lstrip(" *"))
+			self.add_local_target("arg.{:}".format(unicodedata.normalize("NFKD", param[-1].astext()).strip(" *.")), param)
+
+		return None, fullname
 
 	def get_out_node(self):
 		"""Override to set no id; we'll set it later/conditionally in the parse."""
@@ -787,12 +871,13 @@ class LPCFunction(LPCObject):
 
 		synopsis_node += node
 
+	# I AM FIGURING OUT HOW TO TITLE PROPERLY
 	# TODO: if 'names' can be added before or after this code, this could easily add names and just call super()._parse_synopsis(out_node); everything else is the same.
 	def _parse_synopsis(self, out_node):
 
 		synopsis = self.get_synopsis_node()
 
-		self.names = []
+		#self.names = set() # TODO: don't think this is necessary anymore but disabling may cause hell
 
 		self._parse_synopsis_syntax(synopsis, out_node)
 
@@ -800,6 +885,60 @@ class LPCFunction(LPCObject):
 
 	def _parse_meta(self, out_node=None):
 		super()._parse_meta(out_node)
+
+
+# TODO: is there a better way to do this?
+class LPCSyntaxIndex(Index):  # pylint: disable=too-few-public-methods
+	name = "syntaxindex"
+	localname = "localsyntaxindex"
+	shortname = "shortsyntaxindex"
+
+	def gen_keyword(self, name, docname, anchor):
+		out = []
+		out.append([name, 0, docname, anchor, None, None, self.domain.data['summaries'].get("lpc.keyword."+name, None)])
+		return out
+
+	def gen_operator(self, name, docname, anchor):
+		out = []
+		out.append([name, 0, docname, anchor, None, None, self.domain.data['summaries'].get("lpc.operator."+name, None)])
+		return out
+
+	# TODO: kill one of these
+	def gen_operator2(self, name, docname, anchor):
+		out = []
+		out.append([name, 0, docname, anchor, None, None, self.domain.data['summaries'].get("lpc.operator."+name, None)])
+		for syntax in self.domain.data['variants'].get(name, ()):
+			out.append([syntax, 2, None, None, None, None, ''])
+		return out
+
+	def generate(self, docnames=None):
+		collapse = False
+		content = []
+		last_letter = None
+
+		choices = (0,1,2)
+
+		import random
+
+		for part, label, fn in (
+			("keyword", "keywords", self.gen_keyword), # would actually like to include all types and modifiers (or have a separate all keywords section which does?)
+			("operator", "operators", self.gen_operator), # the name should be the literal operator, comma-delimited examples in extra, could use qualifier for a category, could also generate nested/child entries for the examples, i.e.
+			# foreach
+			# 	foreach(ex1)
+			# 	foreach(ex2)
+			# 	foreach(ex3)
+			# This kinda implies each syntax form would get its own directive?
+			("type", "types", self.gen_keyword),
+			("modifier", "modifiers", self.gen_keyword),
+			("syntax", "other syntax", self.gen_keyword)):
+			content.append((label, []))
+
+			for name in sorted(self.domain.data[part], key=str.lower):
+				docname, anchor = self.domain.data[part][name]
+
+				content[-1][1].extend(fn(name, docname, anchor))
+
+		return (content, collapse)
 
 
 # TODO: is there a better way to do this?
@@ -816,7 +955,21 @@ class LPCHookIndex(Index):  # pylint: disable=too-few-public-methods
 		for hook_name in sorted(self.domain.data['hook'], key=str.lower):
 			name = hook_name
 			docname, anchor = self.domain.data['hook'][hook_name]
-			entries = [name, 0, docname, anchor, 'extra', 'qualifier', 'descr']
+
+			# This abysmally documented format is kinda free-form in a way (you can make whatever values you like here, as long as you update the template to use them), but the base html template uses (and Alabaster inherits) the following form:
+			# (name, grouptype, page, anchor, extra, qualifier, description)
+			# name: the visible index entry text
+			# grouptype:
+			# 	affects how entries are grouped, only used values are 1 or 2
+			# 	1 - toggleable group "head"
+			# 	2 - indented group member
+			# 	Any other value will just produce a regular entry (which can also appear as a group head, you just won't be able to toggle the group closed/open)
+			# page: the doc/path this will link to
+			# anchor: any #anchor indicated in the link
+			# extra: this appears in parenthesis immediately after the name
+			# qualifier: immediately before the description, in bold, terminated with a colon.
+			# description: about like you'd expect
+			entries = [name, 0, docname, anchor, None, None, self.domain.data['summaries'].get("lpc.hook."+hook_name, None)]
 			letter = name[0]
 
 			if letter == last_letter:
@@ -825,6 +978,7 @@ class LPCHookIndex(Index):  # pylint: disable=too-few-public-methods
 				content.append((letter, [entries]))
 
 			last_letter = letter
+
 		return (content, collapse)
 
 
@@ -860,7 +1014,7 @@ class LPCSubtopic(LPCObject):
 	# letting this one repeat a little it uses the same basic code, but it shifts the attachment locus by a node for most of these, which will be more clear if it's handled in one function instead of magicked through multiple overrides.
 
 	def _parse_content(self, out_node):
-		out_node += nodes.title(text=self.arguments[0].upper())
+		out_node += nodes.title(text=self.arguments[0])
 
 		# TODO: I think disabling these is right, but this may break something re: targeting and may throw a wrench in the works...
 		# self.names = []
@@ -891,17 +1045,32 @@ class LPCTopic(LPCObject):
 
 	def __init__(self, *arg, **kwarg):
 		super().__init__(*arg, **kwarg)
+		# TODO: this probably overrides/obsoletes every other use of 	 since it happens on init
 		self.synopsis_title = self.name.upper()
 
 	def get_out_node(self):
-		topic = nodes.section(ids=[self.arguments[0]])
-		topic += CrouchingTitle(text=self.arguments[0])
+		topic = nodes.section(ids=sorted(set(self.names)))
+		topic += CrouchingTitle(text=self.names[0])
 		return topic
 
+	def preparse(self):
+		super().preparse()
+		self._preparse_names()
+
+	def _preparse_names(self):
+		self.names.append(self.arguments[0])
+		if "name" in self.options:
+			self.names.append(self.options["name"])
+
 	def run(self):
-		temp = super().run()
-		self.add_target_and_index(self.arguments[0], None, temp[1])
-		return temp
+		out_node = super().run()
+
+		# no point in making multiple targets at the same loc for the same name
+		for name in sorted(set(self.names)):
+			self.add_target_and_index(
+				name, None, out_node[1]
+			)
+		return out_node
 
 
 class LPCCommand(LPCTopic):
@@ -913,23 +1082,50 @@ class LPCCommand(LPCTopic):
 		return topic
 
 
-class LPCType(LPCTopic):
-	pass
-
-
 class LPCXRefRole(c.CXRefRole):
 	pass
 
 
 class LPCGuide(LPCTopic):
-	# def _parse_synopsis(self, attach_to):
-	# 	pass
+	"""
+	Pared down directive class omits the synopsis parsing/section and collapses the content parse so that there's no a separate/child "DESCRIPTION" node/section.
+	"""
 
-	# this used "INTRODUCTION" but I've rolled it back to "DESCRIPTION" for now
-	def get_content_node(self):
-		intro = nodes.section(ids=["DESCRIPTION"])  # TODO: fix ids
-		intro += nodes.title(text="DESCRIPTION")
-		return intro
+	def get_out_node(self):
+		topic = nodes.section(ids=sorted(set(self.names)))
+		topic += nodes.title(text="Guide to {:}".format(self.arguments[0]))
+		return topic
+
+	def _parse_content(self, out_node):  # pylint: disable=unused-argument
+
+		self.before_content()
+		self.state.nested_parse(self.content, self.content_offset, out_node)
+
+		LPCDocFieldTransformer(self).transform_all(out_node)
+
+		self.env.temp_data['object'] = None  # TODO: this value is set in _parse_meta, and may be going away...
+		self.after_content()
+
+	def run(self):
+		self.preparse()
+		out_node = self.get_out_node()
+
+		# adding an option for the Contents directive to self (and clearing args) in order to pass this object through that directive, then re-set arguments.
+		self.options['local'] = True
+		temp = self.arguments
+		self.arguments = None
+		out_node += directives.parts.Contents.run(self)[0]
+		self.arguments = temp
+
+		self._parse_meta(out_node)
+		self._parse_content(out_node)
+
+		for name in sorted(set(self.names)):
+			self.add_target_and_index(
+				name, None, out_node[1]
+			)
+
+		return [out_node]
 
 
 # TODO: probably a better way to handle
@@ -937,15 +1133,254 @@ class LPCLang(LPCTopic):
 	required_arguments = 1  # TODO: why?
 
 
+def syntax_highlight(highlight_regexi):
+	return re.compile("({:})".format("|".join(highlight_regexi.splitlines())))
+
+
 class LPCSyntax(LPCLang):
 	synopsis_title = "SYNTAX"
+	variants = []
+	syntax = None
+	usage = None
+	lines = None
+	show_usage_name = True
+
+	option_spec = {
+		"highlighters": syntax_highlight
+	}
+	option_spec.update(LPCLang.option_spec)
+
+	# doc_field_types = [
+	# 	LPCTypedField(
+	# 		'keywords',
+	# 		label=l_('Keywords'),
+	# 		names=('keyword', 'keyword'),
+	# 		typerolename='type',
+	# 		typenames=('type',)
+	# 	),
+	# 	LPCTypedField(
+	# 		'terms',
+	# 		label=l_('Terms'),
+	# 		names=('term', 'term'),
+	# 		typerolename='type',
+	# 		typenames=('type',)
+	# 	),
+	# ]
+	# doc_field_types.extend(LPCLang.doc_field_types)
+
+	# TODO: something here needs to add us to the syntax index, ideally under an appropriate subhead
+	#
+	# TODO: ideally factor out getting the title node in LPCObject so that other types can fiddle with it easily
+	def get_synopsis_node(self):
+		if self.top_level:
+			synopsis = nodes.section(ids=[self.synopsis_title])  # TODO: fix ids
+			# TODO: below was text="SYNTAX"
+			synopsis += nodes.title(text=self.synopsis_title + self.get_status_desc(), meta=True)
+			return synopsis
+		else:
+			return nodes.container(ids=[self.synopsis_title])
 
 	def _parse_synopsis_syntax(self, synopsis_node, out_node):
-		synopsis_node += self.parse_syntax(self.arguments[0].splitlines()[1:])
+		self.parse_syntax(synopsis_node)
 
-	def parse_syntax(self, lines):  # pylint: disable=no-self-use
-		syntax = u'\n'.join(lines)
-		return nodes.literal_block(syntax, syntax)
+	def _preparse_long_usage(self):
+		self.usage = []
+		indent = 0
+
+		if 'name' in self.options:
+			self.usage.append(nodes.Text(self.syntax+'\n'))
+
+		for label, body in map(self.use_parts, self.lines[1:]):
+			if label:
+				indent = 4
+				if not len(self.usage):
+					self.usage.append(addnodes.literal_strong('', '{:}:\n'.format(label)))
+				# all labels after the first get a blank preceding line
+				else:
+					self.usage.append(addnodes.literal_strong('', '\n{:}:\n'.format(label)))
+
+			#ideally we should nest everything until the next label if we encounter one
+			self.usage.append(nodes.Text(" "*indent))
+			self.usage.extend(body)
+			self.usage.append(nodes.Text("\n"))
+
+		if len(self.usage) > 1:
+			self.usage.pop()
+
+	def get_usage_name(self):
+		if 'title' in self.options:
+			return self.options['title'].capitalize()
+		elif 'name' in self.options:
+			return self.options['name'].capitalize()
+		else:
+			return self.syntax.capitalize()
+
+	label_regex = re.compile("(?<!\\\):\s?")
+	#need to be able to tailor this to the long/short modes which now need different nodes...
+
+	def use_parts(self, example):
+		use_nodes = []
+
+		label_check = self.label_regex.split(example.strip(), 1)
+
+		if len(label_check) == 1:
+			body = label_check[0].replace('\:', ':')
+			label = None
+		else:
+			label, body = label_check
+
+		# highlight
+		# TODO: catch regex errors and log a lint failure?
+		highlighter = self.options["highlighters"] if "highlighters" in self.options else re.compile("({:})".format(re.escape(self.syntax)))
+
+		for i, part in enumerate(highlighter.split(body)):
+			if i % 2 and len(part): # odd (highlight)
+				use_nodes.append(nodes.inline(part, part, classes=["highlighted"]))
+			else: # even (Text)
+				use_nodes.append(nodes.Text(part))
+
+		return label, use_nodes
+
+	def use_parts2(self, example):
+		use_nodes = []
+
+		label_check = example.split(":", 1) if not example.startswith(' ') else [example]
+
+		label = label_check[0].strip() if len(label_check) > 1 else None
+
+		label_check[-1] = label_check[-1].strip() if label else label_check[-1][2:].rstrip()
+
+		for i, part in enumerate(label_check[-1].partition(self.syntax)):
+			if i % 2 and len(part): # odd (highlight)
+				use_nodes.append(nodes.inline(part, part, classes=["highlighted"]))
+			else: # even (Text)
+				use_nodes.append(nodes.Text(part))
+
+		return label, use_nodes
+
+	def _preparse_short_usage(self):
+		fields = [addnodes.literal_strong('', self.get_usage_name()+': '), nodes.literal('', self.syntax)]
+
+		# let's only keep this if we have no sub-labels, see end of function
+		field = nodes.line_block()
+
+		fields.append(field)
+
+		# 1. replace on each line
+		# 2. parse on each line
+		# 3. wrap each line in a literal
+		# 4. throw in text separator nodes
+
+		for label, body in map(self.use_parts, self.lines[1:]):
+			if not label:
+				# attach this to the previous field body's line block
+				field.append(nodes.line('', '', nodes.literal('', *body)))
+
+			else:
+				fields.append(addnodes.literal_strong('', label+':'))
+				field = nodes.line_block('', nodes.line('', '', nodes.literal('', *body)))
+				fields.append(field)
+
+		if len(fields) == 3: # no sub-labels
+			self.usage = fields
+		else:
+			self.usage = fields[3:]
+
+	def _preparse_usage(self):
+		template = None
+
+		if self.top_level:
+			self._preparse_long_usage()
+		else:
+			self._preparse_short_usage()
+
+	def _preparse_syntax(self):
+
+		self.lines = self.arguments[0].splitlines()
+		self.syntax = self.lines[0] #TODO this is only right when we name first, not use the syntax unit first
+		self._preparse_usage()
+
+	def _preparse_names(self):
+		self._preparse_syntax()
+		self.names.append(self.syntax)
+
+		if "name" in self.options:
+			self.names.append(self.options["name"])
+
+	def parse_syntax(self, synopsis_node):  # pylint: disable=no-self-use
+		self.env.domaindata['lpc']['variants'][self.syntax] = self.lines[1:]
+		#synopsis_node.append(nodes.literal(self.syntax, self.syntax))
+
+		# Saving this for now in case I later need the knowledge--it was hard to track down.
+		# TODO: move somewhere more durable
+		# if 'name' in self.options:
+		# 	viewlist = ViewList()
+		# 	viewlist.append("", "")
+		# 	viewlist.append(".. productionlist::", "")
+		# 	# TODO: really only want to append objtype for subtypes of syntax (i.e., we want arrow_operator instead of just arrow, but just block instead of block_syntax? Do we really want for_keyword though? maybe this is a new option (production_name or w/e))
+		# 	viewlist.append("  {:}_{:}: {:}".format(self.options['name'], self.objtype, self.syntax), "")
+		# 	viewlist.append("", "")
+		# 	self.state.nested_parse(viewlist, 2, synopsis_node)
+
+		if self.usage:
+			if self.top_level:
+				#syntax_nodes, messages = self.state.inline_text(self.usage, self.lineno)
+				#synopsis_node.append(nodes.literal_block(self.usage, '', *syntax_nodes))
+				if self.show_usage_name:
+					synopsis_node.append(addnodes.literal_strong('', self.get_usage_name()))
+				# the sphinx html formatter uses code highlighting unless node.rawsource != node.astext(), so we have to specifiy a filler rawtext string to avoid a trip through the lexer
+				litblock = nodes.literal_block('filler', '', *self.usage)
+				synopsis_node.append(litblock)
+			else:
+				synopsis_node.extend(self.usage)
+		else:
+			pass
+
+
+	def get_out_node(self):
+		if self.top_level:
+			return super().get_out_node()
+		else:
+			return nodes.container()  # TODO: IDs
+
+	def get_content_node(self):
+		if self.top_level:
+			return super().get_content_node()
+		else:
+			return nodes.definition(ids=["DESCRIPTION"])  # TODO: IDs
+
+
+class LPCOperator(LPCSyntax):
+
+	#detect unnamed condition and capitalize below / invert the presentation order:
+	# Equality operator: =
+	# , operator:
+	# Operator: ,
+	def get_usage_type(self):
+		return ' operator'
+
+	def get_usage_name(self):
+		if 'name' in self.options:
+			return '{:} operator'.format(self.options['name'].capitalize())
+		else:
+			return 'Operator'
+
+class LPCKeyword(LPCSyntax):
+
+	#detect unnamed condition and capitalize below / invert the presentation order:
+	# Equality operator: =
+	# , operator:
+	# Operator: ,
+	# TODO: lolwut?
+	def get_usage_type(self):
+		return ' HAMoperator'
+
+	def get_usage_name(self):
+		return 'Keyword'
+
+
+class LPCType(LPCSyntax):
+	show_usage_name = False
 
 
 # note: we declare some generic objects and some specific objects based on those in object_types, directives and roles below; the specific types are listed under the generic type (with an extra indent) in order to suggest these relationships
@@ -954,12 +1389,12 @@ class LPCDomain(c.CDomain):
 	name = 'lpc'
 	label = 'LPC'
 
+	from docutils.parsers.rst import roles
+
 	# TODO: figure out what this is for (i.e., resolve the nagging concern I have stomped all over its purpose; I know it's for localization, roughly, just not sure on specifics)
 	object_types = {
 		'topic': ObjType(l_('topic'), 'topic'),
-			'concept': ObjType(l_('concept'), 'concept'),
-			'driver': ObjType(l_('driver'), 'driver'),
-			'directory': ObjType(l_('directory'), 'directory'),
+			'overview': ObjType(l_('overview'), 'overview'),
 		'function': ObjType(l_('function'), 'function'),
 			'applied': ObjType(l_('applied'), 'applied'),
 			'efun': ObjType(l_('efun'), 'efun'),
@@ -988,15 +1423,13 @@ class LPCDomain(c.CDomain):
 
 	directives = {
 		'topic': LPCTopic,
-			'concept': LPCTopic,
-			'driver': LPCTopic,
-			'directory': LPCTopic,
+			'overview': LPCTopic,
 		'lang': LPCLang,
 			'syntax': LPCSyntax,
-				'keyword': LPCSyntax,
+				'keyword': LPCKeyword,
 					'modifier': LPCVar,
 					'type': LPCType,
-				'operator': LPCSyntax,
+				'operator': LPCOperator,
 			'pragma': LPCVar,
 		'function': LPCFunction,
 			'applied': LPCApplied,
@@ -1014,16 +1447,22 @@ class LPCDomain(c.CDomain):
 		'seealso': LPCSeeAlso,
 		'subtopic': LPCSubtopic,
 		'usage': LPCUsage,
+		#'usage': LPCObject,
 		'lore': LPCLore,
 		'var': LPCObject,
 		'enumerate': LPCGlossary,
 		'meta': LPCTopic,
 	}
 	roles = {
+	# presentation
+		'highlight': roles.CustomRole(
+			'highlight',
+			roles.GenericRole('highlight', nodes.inline),
+			{'classes':['highlighted']}
+		),
+	# semantic
 		'topic': LPCXRefRole(),  # innernodeclass=nodes.strong),
-			'concept': LPCXRefRole(),  # innernodeclass=nodes.inline),
-			'driver': LPCXRefRole(),
-			'directory': LPCXRefRole(),
+			'overview': LPCXRefRole(),
 		'lang': LPCXRefRole(),  # innernodeclass=nodes.inline),
 			'syntax': LPCXRefRole(),
 				'keyword': LPCXRefRole(),
@@ -1031,9 +1470,11 @@ class LPCDomain(c.CDomain):
 					'type': LPCXRefRole(),
 				'operator': LPCXRefRole(),
 			'pragma': LPCXRefRole(),
-		'function': LPCXRefRole(fix_parens=True),
+		'function': LPCXRefRole(),
+			'arg': LPCXRefRole(),
+			'part': LPCXRefRole(),
 			'applied': LPCXRefRole(),
-			'efun': LPCXRefRole(fix_parens=True),
+			'efun': LPCXRefRole(),
 			'hook': LPCXRefRole(),
 			'master': LPCXRefRole(),
 			'obsolete': LPCXRefRole(),
@@ -1049,17 +1490,20 @@ class LPCDomain(c.CDomain):
 	# TODO: when doc-set is mostly complete, drop in some test code that flags any of these that are empty at the end of a full parse run (subtext: they probably aren't necessary)
 	initial_data = {
 		"applied": {},
+		"arg": {},
+		"part": {},
+		"efun": {},
 		"command": {},
-		"concept": {},
-		"directory": {},
-		"driver": {},
+		"overview": {},
 		"enumerate": {},  # TODO: needed? presently no entries
 		"glossary": {},  # TODO: needed? presently no entries (esp given above?)
+		"guide": {},
 		"meta": {},
 		"hook": {},
 		"macro": {},
 		"master": {},
 		"objects": {},
+		"topic": {},
 		'lang': {},
 			'syntax': {},
 				'keyword': {},
@@ -1068,8 +1512,12 @@ class LPCDomain(c.CDomain):
 				'operator': {},
 			'pragma': {},
 		'var': {},  # TODO: needed? presently no entries
+
+		"summaries": {},
+		"variants": {},
+		"topics": defaultdict(list),
 	}
-	indices = [LPCHookIndex]  # TODO: eval whether we still need this hookindex, whether we're using it, and whether we need some other kinds of index that we don't have already; keeping it for now, just so we have an example of a separate index and how to make one; AFAIK nothing links directly to this atm
+	indices = [LPCSyntaxIndex, LPCHookIndex]  # TODO: eval whether we still need this hookindex, whether we're using it, and whether we need some other kinds of index that we don't have already; keeping it for now, just so we have an example of a separate index and how to make one; AFAIK nothing links directly to this atm
 
 	def directive(self, directive_name):
 		"""Overload the default directive handling to store the original directive for later access."""
@@ -1092,8 +1540,17 @@ class LPCDomain(c.CDomain):
 		self._directive_cache[directive_name] = DirectiveAdapter
 		return DirectiveAdapter
 
+	# TODO: factor resolve_xref and resolve_any_xref to kill duplication
+
 	def resolve_xref(self, env, fromdocname, builder, typ, target, node, contnode):  # pylint: disable=too-many-arguments
 		"""Return a resolved refnode or none."""
+
+		if typ == "any":
+			results = self.resolve_any_xref(env, fromdocname, builder, target, node, contnode)
+			if len(results):
+				return results[0][1]
+			else:
+				return None
 
 		DEV_REF > 1 and debug("DEV_REF: attempting to resolve xref",
 			{"env": env},
@@ -1104,20 +1561,60 @@ class LPCDomain(c.CDomain):
 			{"node": node, "refdomain": node['refdomain'] if 'refdomain' in node else None},
 			{"contnode": contnode}
 		)
+
+		title = target
 		# strip pointer asterisk
 		target = target.rstrip(' *')
+		target_sans = target.partition("(")[0]
+		specifier = None
 
-		if typ in self.directives and typ in self.data and target in self.data[typ]:
-			# typ already set to something useful
-			pass
+		if typ in self.directives and typ in self.data:
+			if target_sans in self.data[typ]:
+				specifier = 'lpc.{:}.{:}'.format(typ, target_sans)
+				target = target_sans
+			elif target in self.data[typ]:
+				specifier = 'lpc.{:}.{:}'.format(typ, target)
+			else:
+				return None
+
+		elif typ in self.roles:
+			if typ in self.data:
+				# we're tracking this typ and it resolves
+				local_refname = '{:}.{:}.{:}'.format(fromdocname, typ, target_sans)
+				#print("LOCAL?", local_refname)
+				if local_refname in self.data["arg"]:
+					refnode = make_refnode(builder, fromdocname, fromdocname, local_refname, contnode, title)
+					refnode['section'] = typ
+					refnode['fromdoc'] = fromdocname
+					refnode['todoc'] = fromdocname
+					return refnode
+
+				else:
+					local_refname = '{:}.{:}.{:}'.format(fromdocname, typ, target)
+					if local_refname in self.data["arg"]:
+						refnode = make_refnode(builder, fromdocname, fromdocname, local_refname, contnode, title)
+						refnode['section'] = typ
+						refnode['fromdoc'] = fromdocname
+						refnode['todoc'] = fromdocname
+						return refnode
+
+				print("NON-RESOLVED ROLE FOR ", local_refname)
+
+				return None
+			else:
+				# should this be logged/warned/errored?
+				return None
 		elif target in self.data["objects"]:
+			if typ not in self.directives: # not sure if this happens, but it should probably be some sort of error if it do...
+				print("UNRECOGNIZED REF TYP", typ)
 			# or the target was in our fallback 'objects'
 			typ = "objects"
+			specifier = 'lpc.{:}.{:}'.format(typ, target)
 		else:
 			return None
 		obj = self.data[typ][target]
 
-		refnode = make_refnode(builder, fromdocname, obj[0], 'lpc.' + target, contnode, target)
+		refnode = make_refnode(builder, fromdocname, obj[0], specifier, contnode, title)
 		refnode['section'] = obj[1]
 		refnode['fromdoc'] = fromdocname
 		refnode['todoc'] = obj[0]
@@ -1147,12 +1644,14 @@ class LPCDomain(c.CDomain):
 		# strip pointer asterisk
 		target = target.rstrip(' *')
 
-		# TODO: list of refs we'll bother identifyin without providing the type; this could be liberal for easy references, or very tightly controlled to require doc source be more semantic
-		for typ in ["concept", "efun", "hook", "master", "lang", "objects"]:
+		# TODO: list of refs we'll bother identifying without providing the type; this could be liberal for easy references, or very tightly controlled to require doc source be more semantic
+		for typ in ["type", "keyword", "modifier", "syntax", "efun", "hook", "master", "lang", "guide", "objects"]:
 			if typ in self.data and target in self.data[typ]:
 				obj = self.data[typ][target]
-				refnode = make_refnode(builder, fromdocname, obj[0], 'lpc.' + target, contnode, target)
+				refnode = make_refnode(builder, fromdocname, obj[0], 'lpc.{:}.{:}'.format(typ, target), contnode, target)
 				refnode['section'] = obj[1]
+				refnode['fromdoc'] = fromdocname
+				refnode['todoc'] = obj[0]
 				DEV_REF > 1 and debug(
 					"DEV_REF: resolved any_xref to",
 					{"obj": obj},
@@ -1167,16 +1666,13 @@ class LPCDomain(c.CDomain):
 		return []
 
 
-class LPCAppliedDomain(LPCDomain):
-	name = 'applied'
-	label = 'applied'
-
-
 # TODO: For organizational clarity it might be useful to factor a few of the bigger sections, such as the desc functions, out into a mixin
 # docutils uses two catch-all functions for raising errors on unimplemented visit/depart; pylint likes to complain, but we shouldn't implement them  # pylint: disable=abstract-method
 class LPCHTMLTranslator(SmartyPantsHTMLTranslator):  # pylint: disable=abstract-method
 	# pylint: disable=unused-argument
+	# TODO: update per reorg
 	SECTIONS = {
+	# TODO: update these when the dust settles
 		'applied': 'A',
 		# note "concept" (directive) here but "concepts" (directory) in plaintext translator
 		'concept': 'C',
@@ -1363,7 +1859,6 @@ class LPCHTMLTranslator(SmartyPantsHTMLTranslator):  # pylint: disable=abstract-
 		self.body.append('<td><span class="sig-paren">(</span></td>')
 		self.first_param = 1
 		self.optional_param_level = 0
-		# How many required parameters are left.
 		self.required_params_left = sum([isinstance(c, addnodes.desc_parameter) for c in node.children])
 		self.param_separator = node.child_text_separator
 
@@ -1372,12 +1867,6 @@ class LPCHTMLTranslator(SmartyPantsHTMLTranslator):  # pylint: disable=abstract-
 			return super().depart_desc_parameterlist(node)
 		self.body.append('<td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td>')
 
-	# If required parameters are still to come, then put the comma after
-	# the parameter.  Otherwise, put the comma before.  This ensures that
-	# signatures like the following render correctly (see issue  # 1001: https://github.com/sphinx-doc/sphinx/issues/1001):
-	#
-	#     foo([a, ]b, c[, d])
-	#
 	@start_td
 	def visit_desc_parameter(self, node):
 		if not self.tabling:
@@ -1471,6 +1960,11 @@ class LPCHTMLTranslator(SmartyPantsHTMLTranslator):  # pylint: disable=abstract-
 	def depart_misleading(self, node):
 		self.depart_admonition(node)
 
+	# override to remove the title node this builder adds to keep the tree clean
+	def depart_admonition(self, node=None):
+		super().depart_admonition(node)
+		node.pop(0)
+
 
 class TextWrapperDeux(TextWrapper):
 	_wordsep_re = re.compile(
@@ -1542,7 +2036,7 @@ def lpc_wrap(obj, text, width=MAXWIDTH, **kwargs):  # pylint: disable=unused-arg
 class LPCTextTranslator(TextTranslator):  # pylint: disable=abstract-method
 	# pylint: disable=unused-argument
 	wrapper = lpc_wrap
-	# TODO: perhaps instead of trying to use directive
+	# TODO: update to sanely reflect simpler organization
 	SECTIONS = {
 		'applied': 'A',
 		# note "concepts" (directory) here for plaintext, "concept" (direcive) in HTML translator
@@ -1641,10 +2135,13 @@ class LPCTextTranslator(TextTranslator):  # pylint: disable=abstract-method
 
 	def depart_list_item(self, node):
 		if self.list_counter[-1] == -1:
+			# bullet list
 			self.end_state(first='- ', end=None)
 		elif self.list_counter[-1] == -2:
+			# definition list
 			pass
 		else:
+			# enumerated list
 			self.end_state(first='%s. ' % self.list_counter[-1], end=None)
 
 	def depart_bullet_list(self, node):
@@ -1652,6 +2149,14 @@ class LPCTextTranslator(TextTranslator):  # pylint: disable=abstract-method
 		if not isinstance(node.parent, nodes.list_item):
 			self.states[-1].append((0, ['']))
 		return super().depart_bullet_list(node)
+
+	def visit_caption(self, node):
+		self.new_state(0)
+
+	def depart_caption(self, node):
+		self.add_text("_:")
+		self.end_state(first="_", end=None)
+		self.add_text(self.nl)
 
 	# begin special handling for sig-related funcs
 	def visit_desc(self, node):
@@ -2358,18 +2863,20 @@ class LPCTextTranslator(TextTranslator):  # pylint: disable=abstract-method
 		return final_result
 
 	def report_calls(self, name):
+		# debug(
+		# 	"DEV_PLAINTEXT",
+		# 	"called %s.%s" % (self.__class__, name)
+		# )
+		returned = object.__getattribute__(self, name)
 		debug(
 			"DEV_PLAINTEXT",
-			"called LPCTextTranslator.%s" % name
+			"called",
+			name,
+			returned
 		)
-		returned = object.__getattribute__(self, name)
 		return returned
 
 
-# TODO: another distinct possibility is that I need to add a "transform" or modify the doctree at doctree-resolved to massage the document state into something that is straightforward to doxify...
-# AGH.
-# not sure whether I should start from scratch or from text
-# class LPCDoxygenTranslator(nodes.NodeVisitor):
 # TODO: Either need to document includes with one of the below, or by schleping them up to the top of the document somehow before writing
 # \class MyClassName include.h path/include.h
 # \class MyClassName myhdr.h "path/myhdr.h"
@@ -2393,7 +2900,10 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 		kw["wrap"] = False
 
 		self.states[-1].extend(self.end_state_rewrite_2(content, maxindent, indent, **kw))
-		# print("STATS", self.states[-1])
+
+	def nowrap_add_text(self, text):
+		"""Replace all spaces with non-breaking spaces."""
+		return self.old_add_text(text)
 
 	@staticmethod
 	def build_signature(sig):
@@ -2413,8 +2923,32 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 
 		return "".join(signature)
 
+	def build_arg(self, node):
+		argdesc = node[5].astext() if isinstance(node[5], nodes.Text) else "\n".join(self._consume_node(node[5], self._prefix))
+		# print("BUILD ARG", node, repr(argdesc))
+		# for index, part in enumerate(node):
+		# 	print("ARG PARTS", index, part, part.__class__)
+		name = node[0].astext()
+		return "{}@param {} {}".format(self._prefix, name, argdesc)
+
+	def build_args2(self, node):
+		"""Convert from Sphinx to Doxygen idioms for arg/param lists."""
+
+		# plaintext is like: value (closure) -- mixed <closure>(object blueprint, string objectname)
+		# where everything after "--" is the description, so it's <name> (<type>) -- <desc>
+		return [self.build_arg(x) for x in node.traverse(nodes.line)]
+
 	def build_args(self, node):
-		return self._consume_node(node)
+		args = []
+		for arg in node.traverse(nodes.line):
+			name = arg[0].astext()
+			if isinstance(arg[5], nodes.Text):
+				args.append("@param {} {}".format(name, arg[5].astext()))
+			else:
+				args.append("@param {}".format(name))
+				args.extend(self._consume_node(arg[5], ""))
+
+		return [self._prefix + x for x in args]
 
 	def build_topical_doc(self, node):
 		self._set_prefix("", 3)
@@ -2423,17 +2957,20 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 		# make this an ordered dict, pre-build the part in order
 		parts = OrderedDict()
 		parts["definition"] = None
-		parts["description"] = None
 		parts["synopsis"] = None
+		parts["arguments"] = None
+		parts["description"] = None
 		parts["usage"] = None
 		parts["history"] = None
 		parts["seealso"] = None
-		parts["arguments"] = None
+
+		# TODO: update after culling/refining directives
+
 
 		for section in node.traverse(nodes.section):
 			if "DESCRIPTION" in section["ids"]:
 				parts["description"] = section
-			elif len(set(["SYNOPSIS", "TYPE", "LANG", "CONCEPT", "DIRECTORY", "COMMAND", "DRIVER", "META", "GUIDE", "TOPIC"]).intersection(set(section["ids"]))):
+			elif len(set(["SYNOPSIS", "HOOK", "TOPIC", "COMMAND", "OVERVIEW", "LANG", "TYPE", "SYNTAX", "KEYWORD", "MODIFIER", "OPERATOR", "META", "GUIDE"]).intersection(set(section["ids"]))):
 				parts["synopsis"], parts["definition"] = self.build_topic_synopsis(section)
 				section.parent.remove(section)
 			elif "USAGE" in section["ids"]:
@@ -2453,6 +2990,8 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 				if not parts["arguments"]:
 					parts["arguments"] = []
 				parts["arguments"].extend(self.build_args(fieldlist))
+				parts["arguments"].append("")
+				fieldlist.parent.remove(fieldlist)
 
 		# in doxygen output our synopsis is much lower in the document:
 		# description
@@ -2462,7 +3001,33 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 		# seealso *
 
 		# late parse of description after children are pulled out
-		parts["description"] = self.build_description(parts["description"])
+		if parts["description"]:
+			parts["description"] = self.build_description(parts["description"])
+
+		doc = [(0, part) for section, part in parts.items() if part]
+
+		self.states[-1].extend(doc)
+
+	def build_guide_doc(self, node):
+		self._set_prefix("", 3)
+
+		# build doc parts
+		# make this an ordered dict, pre-build the part in order
+		parts = OrderedDict()
+		parts["definition"] = None
+		parts["synopsis"] = None
+		parts["description"] = []
+
+		# TODO: update after culling/refining directives
+
+		for section in node.traverse(nodes.topic):
+			if "contents" in section["ids"]:
+				section.parent.remove(section)
+
+		parts["synopsis"], parts["definition"] = self.build_guide_synopsis(section)
+		for child in node.children:
+			if child:
+				parts["description"].extend(self.build_description(child))
 
 		doc = [(0, part) for section, part in parts.items() if part]
 
@@ -2476,11 +3041,13 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 		parts = OrderedDict()
 		parts["description"] = None
 		parts["synopsis"] = None
+		parts["arguments"] = None
 		parts["usage"] = None
 		parts["history"] = None
 		parts["seealso"] = None
 		parts["definition"] = None
-		parts["arguments"] = None
+
+		# RESUME: The issue here is that my "tagname" changes don't survive the deepcopy before the node reaches this point, BUT just removing the elements seems to cause downstream trouble with them being absent elsewhere. One issue is that any builder following this one ends up getting doctrees with elements already removed. A separate but similar issue is that the plaintext and doxygen builds are turning up with spurious admonition titles in them (because the html builder injects it)...
 
 		for section in node.traverse(nodes.section):
 			if "DESCRIPTION" in section["ids"]:
@@ -2505,6 +3072,8 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 				if not parts["arguments"]:
 					parts["arguments"] = []
 				parts["arguments"].extend(self.build_args(fieldlist))
+				parts["arguments"].append("")
+				fieldlist.parent.remove(fieldlist)
 
 		# in doxygen output our synopsis is much lower in the document:
 		# description
@@ -2526,12 +3095,13 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 		self._prefix = prefix
 		self._offset = offset
 
-	def _consume_node(self, node):
+	def _consume_node(self, node, prefix=None):
 		self.new_state(0)
 		node.walkabout(self)
-		node.parent.remove(node)
+		if prefix is None:
+			prefix = self._prefix
 		return [
-			self._prefix + (" " * (indent - self._offset)) + line
+			prefix + (" " * (indent - self._offset)) + line
 			for indent, lines in self.states.pop() if len(lines)
 			for line in lines
 		]
@@ -2539,11 +3109,17 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 	def build_description(self, node):
 		return self._consume_node(node)
 
-	def build_usage(self, node):
+	def build_usage2(self, node):
 		usage = ["@usage{"]
 		# usage.extend([x.astext().splitlines() for x in node[1:-1]])
 		for child in node[1:]:
 			usage.extend(child.astext().splitlines())
+		usage.extend(["}", ""])
+		return [self._prefix + x for x in usage]
+
+	def build_usage(self, node):
+		usage = ["@usage{"]
+		usage.extend(self._consume_node(node, ""))
 		usage.extend(["}", ""])
 		return [self._prefix + x for x in usage]
 
@@ -2555,8 +3131,13 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 
 	def build_ref(self, node):
 		section = node.get("section")
+		#print("BUILD_REF", node, section)
 		if section in ["efun", "applied", "master"]:
 			return "{0}::{1}()".format(section, node.get("reftitle"))
+		elif section == "arg":
+			return "\p {0}".format(node.get("reftitle"))
+		elif section == "part":
+			return "\a {0}".format(node.get("reftitle"))
 		else:
 			# debug("I don't know", node)
 			todoc = node.get("todoc", node.get("refuri"))
@@ -2568,7 +3149,6 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 				docpath = todoc.split("/")
 				return '@ref driver_{0} "{1}"'.format("_".join(docpath), desc) if node.get("todoc") else '@subpage driver_{0} "{1}"'.format("_".join(docpath), desc)
 			else:
-
 				#
 				# I think there may be two different uses reaching here:
 				# A = TOC docs?
@@ -2605,10 +3185,19 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 		synopsis.extend(["}", ""])
 		return synopsis
 
+	def build_guide_synopsis(self, node):
+		desc = node.parent["title"] if "title" in node else None
+		docpath = self.builder.current_docname.split("/")
+		title = "{0} {{#driver_{1}}}".format(desc or docpath[-1], "_".join(docpath))
+		self.builder.out_suffix = ".md"
+		return None, [title, "=" * len(title)]
+
 	def build_topic_synopsis(self, node):
+		desc = node.parent["title"] if "title" in node.parent else None
 		synopsis = self.build_synopsis(node)
 		docpath = self.builder.current_docname.split("/")
-		title = "{0} {{#driver_{1}}}".format(docpath[-1], "_".join(docpath))
+		# print("DOLL PARTS", node, node.parent, desc, synopsis, docpath)
+		title = "{0} {{#driver_{1}}}".format(desc or docpath[-1], "_".join(docpath))
 		self.builder.out_suffix = ".md"
 		return [self._prefix + x for x in synopsis] if synopsis else None, [title, "=" * len(title)]
 
@@ -2618,35 +3207,15 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 		# return [" * " + x for x in synopsis], ["*/"] + [sig + ";" for sig in signatures]
 		return [self._prefix + x for x in synopsis], ["**/"] + [synopsis[-3] + ";"]
 
-		# temp reference
-		# 		'topic': LPCTopic,
-		# 	'concept': LPCTopic,
-		# 	'driver': LPCTopic,
-		# 	'directory': LPCTopic,
-		# 'lang': LPCLang,
-		# 	'syntax': LPCSyntax,
-		# 		'keyword': LPCSyntax,
-		# 			'modifier': LPCVar,
-		# 			'type': LPCType,
-		# 		'operator': LPCSyntax,
-		# 	'pragma': LPCVar,
-		# 'function': LPCFunction,
-		# 	'applied': LPCApplied,
-		# 	'efun': LPCFunction,
-		# 	'hook': LPCHook,
-		# 	'master': LPCFunction,
-		# 	# 'obsolete': LPCFunction,
-		# 'guide': LPCGuide,
-		# 	# 'internal': LPCGuide,
-		# 	# 'tutorial': LPCGuide,?
-		# 'command': LPCCommand,
-
 	def visit_section(self, node):
 		if node.tagname in ["function", "applied", "efun", "master"]:
 			# skip the node and dive off into our own processing routine
 			self.build_function_doc(node)
 			raise nodes.SkipNode
-		elif node.tagname in ["hook", "topic", "command", "directory", "lang", "type", "syntax", "keyword", "modifier", "operator", "meta", "guide"]:
+		elif node.tagname in ["guide"]:
+			self.build_guide_doc(node)
+			raise nodes.SkipNode
+		elif node.tagname in ["hook", "topic", "command", "overview", "lang", "type", "syntax", "keyword", "modifier", "operator", "meta"]:
 			self.build_topical_doc(node)
 			raise nodes.SkipNode
 		else:
@@ -2667,7 +3236,7 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 		)
 		# TODO: we can skip meta titles like SYNOPSIS or HISTORY, but sub-section titles will eventually need to be let back through
 		# raise nodes.SkipNode
-		if node.parent.tagname != "subtopic":
+		if 'meta' in node and node['meta']:
 			raise nodes.SkipNode
 		else:
 			self.new_state(0)
@@ -2708,7 +3277,7 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 	def _make_visit_admonition(name):  # pylint: disable=no-self-argument
 		def visit_admonition(self, node):  # pylint: disable=unused-argument
 			self.new_state(0)
-			self.add_text("@par %s:" % name)
+			self.add_text("@par %s: " % name)
 		return visit_admonition
 
 	def _depart_admonition(self, node):
@@ -2772,6 +3341,62 @@ class LPCDoxygenTranslator(LPCTextTranslator):
 		self.add_text(self.build_ref(node))
 		raise nodes.SkipNode
 
+	def depart_table(self, node):
+		# type: (nodes.Node) -> None
+		lines = None                # type: List[unicode]
+		lines = self.table[1:]      # type: ignore
+		fmted_rows = []             # type: List[List[List[unicode]]]
+		colwidths = None            # type: List[int]
+		colwidths = self.table[0]   # type: ignore
+		realwidths = colwidths[:]
+		separator = 0
+		# don't allow paragraphs in table cells for now
+		for line in lines:
+			if line == 'sep':
+				separator = len(fmted_rows)
+			else:
+				cells = []  # type: List[List[unicode]]
+				for i, cell in enumerate(line):
+					par = self.wrapper(cell, width=colwidths[i])
+					if par:
+						maxwidth = max(column_width(x) for x in par)
+					else:
+						maxwidth = 0
+					realwidths[i] = max(realwidths[i], maxwidth)
+					cells.append(par)
+				fmted_rows.append(cells)
+
+		def writesep(char='-'):
+			# type: (unicode) -> None
+			out = ['|']  # type: List[unicode]
+			for width in realwidths:
+				out.append(char * (width + 2))
+				out.append('|')
+			self.add_text(''.join(out) + self.nl)
+
+		def writerow(row):
+			# type: (list[List[unicode]]) -> None
+			lines = itertools.zip_longest(*row)
+			for line in lines:
+				out = ['|']
+				for i, cell in enumerate(line):
+					if cell:
+						adjust_len = len(cell) - column_width(cell)
+						out.append(' ' + cell.ljust(
+							realwidths[i] + 1 + adjust_len))
+					else:
+						out.append(' ' * (realwidths[i] + 2))
+					out.append('|')
+				self.add_text(''.join(out) + self.nl)
+
+		for i, row in enumerate(fmted_rows):
+			if i == 1:
+				writesep('-')
+			writerow(row)
+
+		self.table = None
+		self.end_state(wrap=False)
+
 
 def char_role(name, rawtext, text, lineno, inliner, options={}, content=[]):  # pylint: disable=unused-argument,too-many-arguments,dangerous-default-value
 	"""Describe a character given by unicode name.
@@ -2828,606 +3453,18 @@ class LPCTextBuilder(TextBuilder):
 	out_suffix = ''  # no file extension
 
 
-class Validator(object):
-	"""
-	Basic validator functionality.
-	"""
-	app = name = doc = codes = lineno = infraction_type = None
-	doc_infractions = defaultdict(lambda: defaultdict(list))
-	code_infractions = defaultdict(list)
-	infraction = namedtuple('LinterInfraction', ["type", "code", "doc", "line", "message"])
-	infraction_severity = defaultdict(int)
+def summarize_targets(app, doctree):
+	for thing, node in (doctree.ids.items() if "ids" in doctree else []):
 
-	@classmethod
-	def lint(cls):
-		raise NotImplementedError
-
-	@classmethod
-	def _register_infraction(cls, severity, code, lineno, **kw):
-		"""Register linter infractions for later summarization."""
-		sub_code = code.format(**kw)
-		infraction = cls.infraction(type=severity, code=sub_code, doc=cls.name, line=lineno, message=cls.codes[code](**kw))
-		cls.doc_infractions[cls.name][lineno].append(
-			infraction
-		)
-		cls.code_infractions[sub_code].append(infraction)
-		# TODO: for now we just count, but we may later append infraction here as well if we need to bisect reports this way
-		cls.infraction_severity[severity] += 1
-
-	@classmethod
-	def _fail(cls, code, lineno, **kw):
-		"""Alert about a linter error that will block."""
-		cls._register_infraction("fail", code, lineno, **kw)
-
-	@classmethod
-	def _future(cls, code, lineno, **kw):
-		"""Alert about a linter 'error' that won't block for now, but will at some future date."""
-		cls._register_infraction("fail-future", code, lineno, **kw)
-
-	@classmethod
-	def _warn(cls, code, lineno, **kw):
-		"""Alert about some linting issue that isn't strong enough to block build over."""
-		cls._register_infraction("warn", code, lineno, **kw)
-
-	@classmethod
-	def _infraction(cls, severity, code, lineno, **kw):
-		"""Generic alert without pre-set severity (for alerting mixed-severity infraction types)."""
-		cls._register_infraction(severity, code, lineno, **kw)
-
-	@classmethod
-	def init_state(cls):
-		"""
-		Overload: initialize all state linter needs before run.
-
-		At the absolute minimum, 'app' and 'name' must be set.
-		"""
-		raise NotImplementedError
-
-	@classmethod
-	def clear_state(cls):
-		"""Overload: clear all linter state."""
-		raise NotImplementedError
-
-	@classmethod
-	def _node_docname(cls, node):
-		"""Walk up the tree looking for a good docname."""
-		temp = node
-		docname = None
-
-		while docname is None and temp:
-			# there are 3 places we might find it; docname, refdoc, or source
-			for location in ("refdoc", "docname", "source"):
-				docname = temp.get(location, None)
-				if docname:
-					break
-
-			temp = temp.parent
-
-		# scrub any common substring with srcdir
-		# technically this will do the "wrong" thing if we get a docname that starts with srcdir but lacks a file extension, since we indiscriminately lop off the last 4 characters.
-		# pylint: disable=no-member
-		docname = docname[len(cls.env.srcdir) + 1:-4] if docname.startswith(cls.env.srcdir) else docname
-
-		assert docname is not None
-		return docname
-
-	@staticmethod
-	def _node_line(node):
-		temp = node
-		lineno = node.line
-		while lineno is None and temp.parent:
-			temp = temp.parent
-			lineno = temp.line
-
-		return lineno if lineno is not None else 0
-
-	@classmethod
-	def summary(cls, app, exc):  # pylint: disable=unused-argument
-		"""Summarize lint errors stored on the Validator class by various subclassed validators."""
-		# pylint: disable=protected-access
-		# if there were warnings, add our linting message
-		if app._warncount or cls.infraction_severity["fail"]:
-			# TODO: a bit of a lie, oui?
-			app.info("Though the documentation has been built, there were errors.")
-			app.statuscode = 1
-
-		if len(cls.code_infractions):
-			print("The LDMud documentation linter encountered issues with the docs; a list of infractions will be printed below, followed by a tabular summary of all issues.")
-			sorted_docs = sorted(cls.doc_infractions)
-			sorted_codes = sorted(cls.code_infractions)
-			max_code_len = max(map(len, sorted_codes))
-			doc_infraction_template = "{:>5} | {:>%d}: {:<%d}" % (max_code_len, 70 - max_code_len)
-
-			for doc in sorted_docs:
-				print(doc)
-				for line in sorted(cls.doc_infractions[doc].keys()):
-					infractions = cls.doc_infractions[doc][line]
-					for infraction in infractions:
-						print(doc_infraction_template.format(line or "?", infraction.code, infraction.message))
-				print("")
-
-			print("")
-			print("{:-^65}".format("[Linter stats]"))
-
-			# infractions-by-document table
-			print("  {:<40} | {:>6}".format("document", "count"))
-			print("-" * 55)
-			for doc in sorted_docs:
-				print("  {:<40} | {:>6}".format(doc, sum(map(len, cls.doc_infractions[doc].values()))))
-			print("")
-
-			# infractions-by-code table
-			print("  {:<40} | {:>6}".format("code", "count"))
-			print("-" * 55)
-			for code in sorted_codes:
-				print("  {:<40} | {:>6}".format(code, len(Validator.code_infractions[code])))
-			print("")
-
-			# severity table
-			print("  {:<40} | {:>6}".format("severity", "count"))
-			print("-" * 55)
-			for severity, count in cls.infraction_severity.items():
-				print("  {:<40} | {:>6}".format(severity, count))
-			print("")
-
-			# TODO: add a message about the docutils/sphinx errors that we'll fail for but which might be buried above all of our output?
-
-			if app.statuscode:
-				# if we have a statuscode, the exit code we throw will stop the makefile from printing the output directory; simplest fix is printing it here
-				print("Build finished. The '{:}' files are in {:}/".format(app.builder.name, app.outdir))
-
-
-class ValidateSource(Validator):
-	"""
-	Enforces generic codestyle rules.
-
-	Rules of this kind should be testable with simple heuristics and 0 semantic knowledge.
-
-	1: Nothing but directives and comments at the document level; this means a line should be blank, should begin with two periods and a space, or should have some quantity of blank spaces (probably coming in pairs)
-	2: Only valid directives are used at the top level of a document:
-		concept, efun, master, hook...
-
-	TODO: blank lines aren't *always* ok; should we try to specify when they are and aren't?
-	"""
-	INDENT_STEP = 2
-	stack = None
-	codes = {
-		# pylint: disable=unnecessary-lambda
-		# disabled the line-too-long rule, but saving for posterity
-		# "line-too-long": lambda n: "len: {:} (max: {:})".format(n, ValidateSource.MAX_SOURCE_LINE_LEN),
-		"under-indent": lambda n, expected: "found {:>2} spaces, expected {:>2}".format(n, expected),
-		"over-indent": lambda n, expected: "found {:>2} spaces, expected {:>2}".format(n, expected),
-	}
-
-	@classmethod
-	def init_state(cls, app, docname, source):  # pylint: disable=arguments-differ
-		cls.app = app
-		cls.name = docname
-		cls.doc = source
-		cls.lineno = 0
-		cls.stack = [cls.document]
-
-	@classmethod
-	def clear_state(cls):  # pylint: disable=arguments-differ
-		cls.app = cls.name = cls.doc = cls.lineno = cls.stack = None
-
-	@classmethod
-	def lint(cls, app, docname, source):  # pylint: disable=arguments-differ
-		cls.init_state(app, docname, source)
-		for block in cls.doc:
-			for line in block.splitlines():
-				cls.lineno += 1
-
-				while cls.stack[-1](line) is False:
-					cls.stack.pop()
-		cls.clear_state()
-
-	@classmethod
-	def handle_directive(cls, line, indent):
-		"""Returns True if the line has been handled"""
-		directive, comment = cls.find_directive(line, indent)
-		if directive:
-			# It's tempting to validate directives here, but it's a fool's errand; this validator should stick to structure/style and leave directives to the tree linter
-			cls.stack.append(cls.directive(len(cls.stack)))
-			return True
-		elif comment:
-			# this should be a comment line, but I haven't decided if we allow comments or not...
-			cls.stack.append(cls.directive(len(cls.stack)))  # allow for now I guess...
-			return True  # OK for now
-
-	@classmethod
-	def handle_field(cls, line, indent):
-		"""Returns True if the line has been handled"""
-		field = cls.find_field(line, indent)
-		if field:
-			# It's tempting to validate fields here, but it's a fool's errand; stick to structure/style
-			cls.stack.append(cls.field(len(cls.stack)))
-			return True
-
-	@classmethod
-	def handle_markup(cls, line, indent):
-		"""Returns True if the line has been handled"""
-
-		if cls.find_markup(line, indent):
-			cls.stack.append(cls.markup(len(cls.stack)))
-			return True
-
-	@staticmethod
-	def find_markup(line, indent):
-		if line.startswith((" " * (indent + 2))):
-			if line[indent + 2] == " ":
-				return False
-			else:
-				return True
-
-	@staticmethod
-	def find_field(line, indent):
-		if line.startswith((" " * indent) + ":"):
-			try:
-				return line[indent + 1:line.index(":", indent + 1)]
-			except ValueError:
-				return False
-		return False
-
-	@staticmethod
-	def find_directive(line, indent):
-		if line.startswith((" " * indent) + ".."):
-			try:
-				return line[indent + 3:line.index(":")], False
-			except ValueError:
-				return False, True
-		return False, False
-
-	@classmethod
-	def document(cls, line):
-		"""Lint bare document lines."""
-		if not len(line):
-			return True
-
-		if cls.handle_directive(line, 0):
-			return True
-
-		if cls.handle_field(line, 0):
-			return True
-
-	@classmethod
-	def _generate_indent_linter(cls, pad):
-		def indent_linter(line):
-			if not len(line):  # TODO: yuck; would like to catch this earlier
-				return True  # OK
-
-			indented = len(line) - len(line.lstrip())
-
-			if indented == pad:
-				# indent is exactly right
-				if cls.handle_directive(line, pad):
-					return True  # OK
-				elif cls.handle_field(line, pad):
-					return True
-			elif indented > pad:
-				if cls.handle_markup(line, pad):
-					return True
-
-				cls._fail("over-indent", cls.lineno, n=indented, expected=pad)  # over-indent
-				return True
-			elif not indented % cls.INDENT_STEP:
-				# indent is divisible by our step
-				return False
-			else:
-				cls._fail(
-					"under-indent",
-					cls.lineno,
-					n=indented,
-					expected=pad
-				)
-				return True
-		return indent_linter
-
-	@classmethod
-	def indent(cls, depth):
-		pad = depth * cls.INDENT_STEP  # cols to indent
-
-		return cls._generate_indent_linter(pad)
-
-	# TODO: perhaps amusingly, this function was massively indented; refactored into indent and _generate_indent_linter above; keeping code until I'm more confident it works.
-	# @classmethod
-	# def indent2(cls, depth):
-	# 	"""
-	# 	Return an indent linter which accounts for the indent.
-
-	# 	TODO: don't be lazy, what do these return values mean?
-	# 	"""
-	# 	pad = depth * cls.INDENT_STEP
-	# 	indent = " " * (pad)
-
-	# 	def lint_indent(line):
-	# 		"""Lint indent lines."""
-	# 		if not len(line):  # and initial_blank:  # TODO: yuck
-	# 			return True  # OK
-
-	# 		indented = len(line) - len(line.lstrip())
-
-	# 		if line.startswith(indent):
-	# 			# OK
-	# 			if line[pad] == " ":
-	# 				# unless this is some valid markup structure, like a list or possibly a table.
-	# 				if cls.handle_markup(line, pad):
-	# 					return True
-
-	# 				cls._fail("over-indent", cls.lineno, n=indented, expected=pad)  # over-indent
-	# 				return True
-	# 			elif cls.handle_directive(line, pad):
-	# 				return True  # OK
-	# 			elif cls.handle_field(line, pad):
-	# 				return True
-
-	# 		else:
-	# 			if line.startswith(indent[0:-cls.INDENT_STEP]) and line[pad - cls.INDENT_STEP] != " ":
-	# 				# single-block dedent?
-	# 				return False  # POP
-	# 			else:
-	# 				if not indented % cls.INDENT_STEP:
-	# 					# this might be a proper multi-block dedent
-	# 					return False
-
-	# 				cls._fail(
-	# 					"under-indent",
-	# 					cls.lineno,
-	# 					n=indented,
-	# 					expected=pad
-	# 				)
-	# 				return True
-
-	# 	return lint_indent
-
-	field = indent
-	directive = indent
-	markup = indent
-
-
-class ValidateReferences(Validator):
-	codes = {
-		# pylint: disable=unnecessary-lambda
-		"unresolved-ref": lambda target: "unresolved reference to {:}".format(target),
-	}
-
-	# cache the most recent doc so we don't have to go look up the path every ref
-	lastname = lastref = None
-
-	@classmethod
-	def init_state(cls, app, env, node):  # pylint: disable=arguments-differ
-		cls.app = app
-		cls.env = env
-		refdoc = cls._node_docname(node)
-
-		if refdoc != cls.lastref:
-			cls.lastname = cls.name = refdoc
-			cls.lastref = refdoc  # TODO: probably superfluous
-		else:
-			cls.name = cls.lastname
-
-	@classmethod
-	def clear_state(cls):  # pylint: disable=arguments-differ
-		cls.app = cls.name = cls.env = None
-
-	@classmethod
-	def lint(cls, app, env, node, contnode):  # pylint: disable=arguments-differ,unused-argument
-		cls.init_state(app, env, node)
-		cls._fail("unresolved-ref", cls._node_line(node), target="%s:%s" % (node.get("reftype", "dunno"), node.get("reftarget", "dunno2")))
-		cls.clear_state()
-
-
-class ValidateTree(Validator):
-	"""
-	Enforces specific structural and semantic rules.
-	"""
-	app = name = doc = None
-	codes = {
-		# TODO: don't expose abstractions ("child") to end users?
-		"invalid-{child:}": lambda child, parent, choices: "{:} isn't a valid child of a {:} node".format(child, parent),  # formerly included: , ", ".join(choices)
-		"requires-{child:}": lambda child, parent, template: template.format(parent, child),
-	}
-	rule = namedtuple('LinterNodeRuleMeta', ["severity", "template"])
-	BASIC_BODY_NODES = [
-		"section",
-		"CrouchingTitle",  # TODO: the presence of this in the valid child list isn't super user-friendly
-		"index"
-	]
-	PRIMARY_DOC_TYPES = [
-		"concept",
-		"command",
-		"function",
-		"hook",
-		"applied",
-		"lang",
-		"type",
-		"operator",
-		"topic",
-		"guide",
-	]
-	VALID_TOP_LEVEL_NODES = [
-		"index",
-		"section",
-		"comment",
-	] + PRIMARY_DOC_TYPES
-	REQUIRED_PRIMARY_CHILDREN = {  # TODO: note that these messages could be combined into a single one: "{:} documents should always include a {:} section"
-		"history": rule("fail-future", "{:} documents should have a history section"),
-		"seealso": rule("fail-future", "{:} documents should have a seealso section"),
-	}
-	valid = {
-		"document": VALID_TOP_LEVEL_NODES,
-		"function": BASIC_BODY_NODES,
-		"hook": BASIC_BODY_NODES,
-		"meta": [
-			"paragraph",
-			"todo_node"
-		]
-	}
-	required = {
-		"function": REQUIRED_PRIMARY_CHILDREN,
-		"hook": REQUIRED_PRIMARY_CHILDREN,
-		"topic": REQUIRED_PRIMARY_CHILDREN,
-		"usage": {
-			"paragraph": rule("fail-future", "usage sections should always include some explanation")
-		},
-	}
-
-	@classmethod
-	def init_state(cls, app, doctree, docname):  # pylint: disable=arguments-differ
-		cls.app = app
-		cls.name = docname
-		cls.doc = doctree
-		DEV_DOCTREES and debug("dev_doctrees:", "full document tree", doctree)
-
-	@classmethod
-	def clear_state(cls):  # pylint: disable=arguments-differ
-		cls.app = cls.name = cls.doc = None
-
-	@classmethod
-	def valid_child(cls, node):
-		# make sure we care about this node type.
-		if node.parent and node.parent.tagname in cls.valid:
-			if node.tagname in cls.valid[node.parent.tagname]:
-				return True
-
-			else:
-				cls._infraction("fail", "invalid-{child:}", cls._node_line(node), child=node.tagname, parent=node.parent.tagname, choices=cls.valid[node.parent.tagname])
-		else:
-			if node.tagname in cls.valid:
-				return True
-			# don't review nodes we don't care about.
-			return False
-
-	@classmethod
-	def lint(cls, app, doctree, docname):  # pylint: disable=arguments-differ
-		cls.init_state(app, doctree, docname)
-		cls.traverse(cls.doc)
-
-	@classmethod
-	def traverse(cls, top):
-		for node in top.traverse(cls.valid_child, include_self=True):
-			tag = node.tagname
-			# if tag in cls.required:
-			# 	kids = map(lambda x: x.tagname, node.children)
-			# 	for req in cls.required[tag]:
-			# 		if req not in kids:
-			# 			cls._fail("required-child", cls.doc.line, child=req, parent=node.tagname)
-			if hasattr(cls, tag):  # if I have a function <tag>, go ahead and pass this node to it for more explicit validation.
-				getattr(cls, tag)(node)
-
-			elif tag in cls.required:
-				cls._deep_require_children(node)
-
-	@classmethod
-	def _deep_require_children(cls, target):
-		targetname = target.tagname
-		required = list(cls.required[targetname])
-		for node in target.traverse():
-			tag = node.tagname
-			if tag in required:
-				required.remove(tag)
-
-			if not len(required):
-				# success
-				break
-
-		for req in required:
-			cls._infraction(cls.required[targetname][req].severity, "requires-{child:}", cls._node_line(target), child=req, parent=targetname, template=cls.required[targetname][req].template)
-
-	@classmethod
-	def history(cls, target):  # this isn't a node, it's an attrib
-		return cls._deep_require_children(target)
-
-	hook = _deep_require_children
-
-
-class ValidatePinnedDocs(Validator):
-	"""Not actually sharing much code with other validators."""
-
-	# output files "pinned" as reference/test files whose output should not unintentionally slip while we work; as such, we raise hell if they change.
-	test_files = [
-		# (reference_file_path, built_file_path)
-		("hook", "hook/hook"),  # directory
-		("master", "master/master"),  # directory
-		("predefined", "driver/predefined"),  # concept, macro
-		("ed", "LPC/ed"),  # command
-		("init", "applied/init"),  # applied
-		("input_to", "efun/input_to"),  # efun
-		("privilege_violation", "master/privilege_violation"),  # master
-		("default_method", "hook/default_method"),  # hook
-		("codestyle", "internals/codestyle"),  # meta
-		("parsing-inline-closures", "internals/parsing-inline-closures"),  # meta
-		("negotiation", "concepts/negotiation"),  # admonition (note, misleading)
-		("modifiers", "LPC/modifiers"),  # modifier
-		("int", "LPC/int"),  # type
-		("foreach", "LPC/foreach"),  # lang, keyword
-		("arrow", "LPC/arrow"),  # lang, operator
-		("pragma", "LPC/pragma"),  # lang, pragma
-		("functionlist", "efun/functionlist"),  # :include:
-	]
-	test_output_types = ["html", "plain"]
-
-	@classmethod
-	def notify_pinned_difference(cls, source, pinned, generated):
-		cls.app.env.warn(source,
-			"\n".join(
-				(
-					"Pinned file '{pinned:}' differs from generated '{generated:}'.",
-					"	You should manually compare the files in case output has unintentionally changed:",
-					"		git diff --no-index --color-words=. {pinned:} {generated:}",
-					"	If the output difference is expected, update the pinned file to current output with:",
-					"		cp {generated:} {pinned:}"
-				)
-			).format(pinned=pinned, generated=generated), "*")
-
-	# TODO: below methods look ripe for a refactor
-	@classmethod
-	def diff_html(cls, source, pinned, generated):
-		pinned = "pinned/%s.html" % pinned
-		generated = "build/html/%s.html" % generated
 		try:
-			if filecmp.cmp(pinned, generated, shallow=False) is False:
-				cls.notify_pinned_difference(source, pinned, generated)
-		except FileNotFoundError:
-			# can't diff as one of these files doesn't exist
+			first = node.next_node(nodes.paragraph, siblings=True)
+			# dumbfire; split on first period and call everything before the summary (implies summative first sentences should be mandatory...)
+			summary = "".join(first.astext().partition(".")[:2])
+			app.env.domaindata['lpc']['summaries'][thing] = summary
+
+		except (ValueError, AttributeError) as e:
 			pass
-
-	@classmethod
-	def diff_plain(cls, source, pinned, generated):
-		pinned = "pinned/%s" % pinned
-		generated = "build/plain/%s" % generated
-		try:
-			if filecmp.cmp(pinned, generated, shallow=False) is False:
-				cls.notify_pinned_difference(source, pinned, generated)
-		except FileNotFoundError:
-			# can't diff as one of these files doesn't exist
-			pass
-
-	@classmethod
-	def init_state(cls, app):  # pylint: disable=arguments-differ
-		cls.app = app
-
-	@classmethod
-	def clear_state(cls):  # pylint: disable=arguments-differ
-		cls.app = None
-
-	@classmethod
-	def lint(cls, app, exception):  # pylint: disable=arguments-differ
-		"""Uses build-finished event, which is called at end of Sphinx run with exception if one occurred."""
-		if exception or not DEV_PIN_TEST:
-			return
-
-		cls.init_state(app)
-
-		for pinned, generated in cls.test_files:
-			source = generated
-			cls.diff_html(source, pinned, generated)
-			cls.diff_plain(source, pinned, generated)
-			# self.diff_doxy(pinned, generated)
-
-		debug("Temporary debug report on which object types are in use", {k: len(v or []) for k, v in app.env.domains['lpc'].data.items()})
-
-		cls.clear_state()
+			#print("ValueError on next_node", e, thing, node, doctree, doctree.__dict__)
 
 
 def set_dev_flags(app):
@@ -3439,16 +3476,17 @@ def set_dev_flags(app):
 	Note that while these are set here, it's only because we have to wait for Sphinx to set up its environment before we have config values; otherwise they should be treated as constants.
 	"""
 	# pylint: disable=global-statement
-	global DEV_PIN_TEST, DEV_DOCTREES, DEV_PLAINTEXT, DEV_REF, DEV_DOXYGEN
+	global DEV_PLAINTEXT, DEV_REF, DEV_DOXYGEN, DEV_DATA
 	# a dict is like a fistful of options
 	dev = app.config.lddoc_develop_options
-	DEV_PIN_TEST = dev["pinned"] or sum(dev.values()) > 0
-	DEV_DOCTREES = dev["doctrees"]
 	DEV_PLAINTEXT = dev["plaintext"]
 	DEV_REF = dev["ref"]
+	DEV_DATA = dev["data"]
 	DEV_DOXYGEN = dev["doxygen"]
 	if DEV_PLAINTEXT > 5:
 		LPCTextTranslator.__getattribute__ = LPCTextTranslator.report_calls
+	if False and DEV_DOXYGEN:
+		LPCDoxygenTranslator.__getattribute__ = LPCDoxygenTranslator.report_calls
 
 
 def heat_lamps(app):
@@ -3456,10 +3494,21 @@ def heat_lamps(app):
 	set_dev_flags(app)
 
 
+def lights_out(app, exception):
+	#print("SUMMARIES", app.env.domaindata['lpc']['summaries'])
+	validators.Topics.lint(app, exception)
+	validators.PinnedDocs.lint(app, exception)
+	validators.Validator.summary(app, exception)
+
+
+import multi
+
+
 def setup(app):
 	app.domains = {'std': sphinx.domains.std.StandardDomain}
 	app.add_config_value("lddoc_develop_options", False, '')
 	app.connect('builder-inited', heat_lamps)
+	app.connect('builder-inited', validators.heat_lamps)
 	app.verbosity = 2
 
 	# do_nothing = lambda *x: None
@@ -3474,9 +3523,9 @@ def setup(app):
 	)
 
 	app.add_domain(LPCDomain)
-	app.add_domain(LPCAppliedDomain)
 	app.add_builder(LPCTextBuilder)
 	app.add_builder(LPCDoxygenBuilder)
+	multi.setup(app)
 
 	# adding admonitions
 	app.add_directive("security", LPCSecurityWarning)
@@ -3490,13 +3539,17 @@ def setup(app):
 	app.set_translator("doxygen", LPCDoxygenTranslator)
 
 	app.add_role('char', char_role)
-	app.connect('source-read', ValidateSource.lint)
+	#TODO: move all of these out into a function in validators?
+	#app.connect('source-read', validators.Source.lint)
+
+	app.connect('doctree-read', summarize_targets)
 
 	app.connect('doctree-resolved', semantic_sibling_section._scrub)
-	app.connect('doctree-resolved', ValidateTree.lint)
-	app.connect('missing-reference', ValidateReferences.lint)
-	app.connect('build-finished', ValidatePinnedDocs.lint)
-	app.connect('build-finished', Validator.summary)
+	app.connect('build-finished', lights_out)
+	# env-purge-doc(app, env, docname)
+	# app.connect('env-purge-doc', validators.Validator._purge_doc)
+
+	#print([(x, y) for x, y in app._listeners['doctree-read'].items()])
 
 	return {
 		'version': '0.1',

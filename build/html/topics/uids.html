@@ -1,0 +1,160 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>userids &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="transport layer security" href="tls.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="uids">
+<span id="userids"></span><span id="lpc.topic.uids"></span><span id="lpc.topic.userids"></span><div class="section" id="TOPIC">
+<h2>TOPIC<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+userids</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Every object in the mud is attributed with a user-id &#8216;uid&#8217;: a string which associates the object with a certain &#8216;user&#8217; (aka &#8216;wizard&#8217; or &#8216;creator&#8217;, though it is not limited to that). The uid can be 0, which internally is the default-uid.</p>
+<p>The uid serves a dual purpose: on the on hand it is used to gather statistics about the various groups of objects (in the famous &#8216;wizlist&#8217;), on the other hand the uid can come in handy in the implementation of security systems.</p>
+<p>The uid of an object is assigned at its creation through the driver hooks <a class="reference internal" href="../hook/load_uids.html#lpc.hook.H_LOAD_UIDS" title="H_LOAD_UIDS"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_LOAD_UIDS</span></code>(H)</a> for loaded objects, and <a class="reference internal" href="../hook/clone_uids.html#lpc.hook.H_CLONE_UIDS" title="H_CLONE_UIDS"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CLONE_UIDS</span></code>(H)</a> for cloned objects, and can&#8217;t be changed afterwards.</p>
+<p>The uid of an object can be queried with the <a class="reference internal" href="../efun/getuid.html#lpc.efun.getuid" title="getuid"><code class="xref lpc lpc-efun docutils literal"><span class="pre">getuid</span></code>(E)</a> (resp. <a class="reference internal" href="../efun/creator.html#lpc.efun.creator" title="creator"><code class="xref lpc lpc-efun docutils literal"><span class="pre">creator</span></code>(E)</a> in compat-mode).</p>
+<p>Every object also has a second string attribute, the &#8216;effective userid&#8217; or &#8216;euid&#8217;, which also may be 0. This value was intended to implement a security system based on difference between theoretical and effective permissions. Since the effectiveness of this system is doubtful, the driver enforces such a use only as an option.</p>
+<p>As uids, euids are assigned at an objects creation through the two aformentioned driverhooks. They can be queried with <a class="reference internal" href="../efun/geteuid.html#lpc.efun.geteuid" title="geteuid"><code class="xref lpc lpc-efun docutils literal"><span class="pre">geteuid</span></code>(E)</a> and changed with <a class="reference internal" href="../efun/seteuid.html#lpc.efun.seteuid" title="seteuid"><code class="xref lpc lpc-efun docutils literal"><span class="pre">seteuid</span></code>(E)</a>. Calls to the latter are verified by <a class="reference internal" href="../master/valid_seteuid.html#lpc.master.valid_seteuid" title="valid_seteuid"><code class="xref lpc lpc-master docutils literal"><span class="pre">valid_seteuid</span></code>(M)</a>.</p>
+<p>Additionally objects can impose their uid onto an other objects euid with the <a class="reference internal" href="../efun/export_uid.html#lpc.efun.export_uid" title="export_uid"><code class="xref lpc lpc-efun docutils literal"><span class="pre">export_uid</span></code>(E)</a>.</p>
+<p>If the driver is run in &#8216;strict euids&#8217; mode, euids are taken more seriously than being just another attribute:</p>
+<ul class="simple">
+<li>all objects must have a non-0 uid.</li>
+<li>objects with a 0 euid can&#8217;t load or clone other objects.</li>
+<li>the backbone uid as returned by <a class="reference internal" href="../master/get_bb_uid.html#lpc.master.get_bb_uid" title="get_bb_uid"><code class="xref lpc lpc-master docutils literal"><span class="pre">get_bb_uid</span></code>(M)</a> must not be 0.</li>
+</ul>
+<p>Userids are assigned at the time of the creation of an object by calling the driverhooks <a class="reference internal" href="../hook/load_uids.html#lpc.hook.H_LOAD_UIDS" title="H_LOAD_UIDS"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_LOAD_UIDS</span></code>(H)</a> and <a class="reference internal" href="../hook/clone_uids.html#lpc.hook.H_CLONE_UIDS" title="H_CLONE_UIDS"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CLONE_UIDS</span></code>(H)</a>:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="kt">mixed</span> <span class="o">&lt;</span><span class="n">load_uids</span> <span class="n">closure</span><span class="o">&gt;</span> <span class="p">(</span><span class="kt">string</span> <span class="n">objectname</span><span class="p">)</span>
+<span class="kt">mixed</span> <span class="o">&lt;</span><span class="n">clone_uids</span> <span class="n">closure</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">object</span> <span class="n">blueprint</span><span class="p">,</span> <span class="kt">string</span> <span class="n">objectname</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When an object is newly loaded, the <a class="reference internal" href="../hook/load_uids.html#lpc.hook.H_LOAD_UIDS" title="H_LOAD_UIDS"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_LOAD_UIDS</span></code>(H)</a> hook is called with the object name as argument.</p>
+<p>When an object is cloned, the <a class="reference internal" href="../hook/clone_uids.html#lpc.hook.H_CLONE_UIDS" title="H_CLONE_UIDS"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_CLONE_UIDS</span></code>(H)</a> hook is called with the blueprint object as first and the clone&#8217;s designated name as second argument.</p>
+<p>In both cases the new object already exists, but has 0 uids.</p>
+<p>For the result, the following possibilities exist (<code class="docutils literal"><span class="pre">&lt;num&gt;</span></code> is a non-zero number, <code class="docutils literal"><span class="pre">&lt;no-string&gt;</span></code> is anything but a string):</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="s">&quot;&lt;uid&gt;&quot;</span>                    <span class="o">-&gt;</span> <span class="n">uid</span> <span class="o">=</span> <span class="s">&quot;&lt;uid&gt;&quot;</span><span class="p">,</span> <span class="n">euid</span> <span class="o">=</span> <span class="s">&quot;&lt;uid&gt;&quot;</span>
+<span class="p">({</span> <span class="s">&quot;&lt;uid&gt;&quot;</span><span class="p">,</span> <span class="s">&quot;&lt;euid&gt;&quot;</span> <span class="p">})</span>    <span class="o">-&gt;</span> <span class="n">uid</span> <span class="o">=</span> <span class="s">&quot;&lt;uid&gt;&quot;</span><span class="p">,</span> <span class="n">euid</span> <span class="o">=</span> <span class="s">&quot;&lt;euid&gt;&quot;</span>
+<span class="p">({</span> <span class="s">&quot;&lt;uid&gt;&quot;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">no</span><span class="o">-</span><span class="kt">string</span><span class="o">&gt;</span> <span class="p">})</span> <span class="o">-&gt;</span> <span class="n">uid</span> <span class="o">=</span> <span class="s">&quot;&lt;uid&gt;&quot;</span><span class="p">,</span> <span class="n">euid</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>If strict-euids is not active, the following results are possible, too:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>&lt;num&gt;                      -&gt; uid = &#39;default&#39;, euid = 0
+({ &lt;num&gt;, &quot;&lt;euid&gt;&quot; })      -&gt; uid = &#39;default&#39;, euid = &quot;&lt;euid&gt;&quot;
+({ &lt;num&gt;, &lt;no-string&gt; })   -&gt; uid = &#39;default&#39;, euid = 0
+</pre></div>
+</div>
+<p>Slightly different rules apply to the (e)uid of the master. The master&#8217;s (e)uid is determined by a call to <a class="reference internal" href="../master/get_master_uid.html#lpc.master.get_master_uid" title="get_master_uid"><code class="xref lpc lpc-master docutils literal"><span class="pre">get_master_uid</span></code>(M)</a>:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="s">&quot;&lt;uid&quot;</span><span class="o">&gt;</span> <span class="o">-&gt;</span> <span class="n">uid</span> <span class="o">=</span> <span class="s">&quot;&lt;uid&gt;&quot;</span><span class="p">,</span> <span class="n">euid</span> <span class="o">=</span> <span class="s">&quot;&lt;uid&gt;&quot;</span>
+</pre></div>
+</div>
+<p>In non-strict-euids mode, more results are possible:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>0       -&gt; uid = 0, euid = 0
+&lt;num&gt;   -&gt; uid = &#39;default&#39;, euid = 0
+</pre></div>
+</div>
+<p>If your uids are in general based on filenames, it is wise to return a value here which can not be legally generated from any filename. OSB for example uses &#8216;ze/us&#8217;.</p>
+<p>The masters uid is determined only on startup this way, at runtime the uids of a reloaded master determined as for every object by a call to the appropriate driver hooks.</p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">:concept:`native`</span></a>, <a class="reference internal" href="../master/valid_seteuid.html#lpc.master.valid_seteuid" title="valid_seteuid"><code class="xref lpc lpc-master docutils literal"><span class="pre">valid_seteuid</span></code>(M)</a>, <a href="#id3"><span class="problematic" id="id4">:concept:`objects`</span></a>, <a class="reference internal" href="../efun/clone_object.html#lpc.efun.clone_object" title="clone_object"><code class="xref lpc lpc-efun docutils literal"><span class="pre">clone_object</span></code>(E)</a>, <a class="reference internal" href="../efun/geteuid.html#lpc.efun.geteuid" title="geteuid"><code class="xref lpc lpc-efun docutils literal"><span class="pre">geteuid</span></code>(E)</a>, <a class="reference internal" href="../efun/getuid.html#lpc.efun.getuid" title="getuid"><code class="xref lpc lpc-efun docutils literal"><span class="pre">getuid</span></code>(E)</a>, <a class="reference internal" href="../efun/seteuid.html#lpc.efun.seteuid" title="seteuid"><code class="xref lpc lpc-efun docutils literal"><span class="pre">seteuid</span></code>(E)</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">userids</a><ul>
+<li><a class="reference internal" href="#TOPIC">TOPIC</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/topics/uids.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -6,8 +6,8 @@ SYNOPSIS
 DESCRIPTION
 ===========
    Arguments: 
-      - value (string(LPC)) -- <msg>
-      - value (closure(LPC)) -- string <closure>(object user)
+      - value (string) -- <msg> 
+      - value (closure) -- string <closure>(object user) 
 
    Optional hook to specify a message or take other measures when a message 
    had to be discarded, because they could not be delivered to the player 
@@ -22,8 +22,8 @@ DESCRIPTION
 
 HISTORY
 =======
-   - 3.3.719 (introduced)
+   - introduced (3.3.719)
 
 SEE ALSO
 ========
-   `hooks`, configure_interactive()(E)
+   hook(H), configure_interactive(E)

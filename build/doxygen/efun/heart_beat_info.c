@@ -1,7 +1,6 @@
 public class efun {
    /**
-    * This function returns an array of all objects having their heart
-    * beat turned on.
+    * This function returns an array of all objects having their heart beat turned on.
     * 
     * @synopsis{
     * object * heart_beat_info()

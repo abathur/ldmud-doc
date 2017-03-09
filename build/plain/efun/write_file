@@ -5,15 +5,17 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-DESCRIPTION Append the string <str> to the file <file>. Returns 1 for success 
-and 0 if any failure occured.
+   Append the string str(E) to the file file(E). Returns 1 for success and 0 
+   if any failure occured.
 
-If <flags> is 1, the file is removed first; thus making the 'append' 
-effectively an 'overwrite'. Default for <flags> is 0.
+   If flags(E) is 1, the file is removed first; thus making the 'append' 
+   effectively an 'overwrite'. Default for flags(E) is 0.
 
-LDMud 3.3.523 added the <flags> parameter.
+HISTORY
+=======
+   - changed (3.3.523) -- added the flags(E) parameter.
 
-      See Also: 
-         file_size()(E), write_bytes()(E), write_file()(E), read_file()(E),
-
-   read_bytes()(E), rm()(E), get_dir()(E)
+SEE ALSO
+========
+   file_size(E), write_bytes(E), write_file(E), read_file(E), read_bytes(E), 
+   rm(E), get_dir(E)

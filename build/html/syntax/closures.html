@@ -1,0 +1,335 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>closures &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="closures example" href="closures-example.html" />
+    <link rel="prev" title="Guide to closures" href="closure_guide.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="closures">
+<span id="lpc.lang.closures"></span><div class="section" id="LANG">
+<h2>LANG<a class="headerlink" href="#LANG" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+closures</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<div class="container" id="lpc.type.closure">
+<div class="container" id="TYPE">
+<strong>Closure: </strong><code class="docutils literal"><span class="pre">closure</span></code><div class="line-block">
+</div>
+</div>
+</dt>
+<dd id="DESCRIPTION"></dd>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is the official man page concerning closures. If you find it hard to read maybe the Closure Guide is an easier introduction for you: See <a class="reference internal" href="closure_guide.html#lpc.guide.closures" title="closures"><code class="xref lpc lpc-guide docutils literal"><span class="pre">closures</span></code></a> and <a class="reference internal" href="closures-example.html#lpc.topic.closures example" title="closures example"><code class="xref lpc lpc-topic docutils literal"><span class="pre">closures</span> <span class="pre">example</span></code></a>.</p>
+</div>
+<p>Closures provide a means of creating code dynamically and passing pieces of code as parameters, storing them in variables. One might think of them as a very advanced form of <a class="reference internal" href="../efun/process_string.html#lpc.efun.process_string" title="process_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">process_string</span></code>(E)</a>. However, this falls short of what you can actually do with them.</p>
+<p>The simplest kind of closures are efuns, lfuns or operators. For example, <code class="docutils literal"><span class="pre">#'this_player</span></code> is an example of a closure. You can assign it to a variable as in:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>closure f;
+object p;
+f = #&#39;this_player;
+</pre></div>
+</div>
+<p>and later use either the <a class="reference internal" href="../efun/funcall.html#lpc.efun.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a> or <a class="reference internal" href="../efun/apply.html#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a> efun to evaluate it. Like:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">funcall</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In both cases there p will afterwards hold the value of <code class="docutils literal"><span class="pre">this_player()</span></code>. Of course, this is only a rather simple application.</p>
+<p>Inline closures are a variant of lfun closures, the difference being that the function text is written right where the closure is used. Since they are pretty powerful by themselves, inline closures have their own manpage.</p>
+<p>More useful instances of closures can be created using the <a class="reference internal" href="../efun/lambda.html#lpc.efun.lambda" title="lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">lambda</span></code>(E)</a> efun. It is much like the lambda function in LISP. For example, you can do the following:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>f = lambda( ({ &#39;x }), ({ #&#39;environment, &#39;x }) );
+</pre></div>
+</div>
+<p>This will create a lambda closure and assign it to f. The first argument to lambda is an array describing the arguments (symbols) passed to the closure upon evaluation by <a class="reference internal" href="../efun/funcall.html#lpc.efun.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a> or <a class="reference internal" href="../efun/apply.html#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a>. You can now evaluate f, for example by means of <code class="docutils literal"><span class="pre">funcall(f,this_object())</span></code>. This will result in the following steps:</p>
+<ol class="arabic simple">
+<li>The value of <code class="docutils literal"><span class="pre">this_object()</span></code> will be bound to symbol x.</li>
+<li><code class="docutils literal"><span class="pre">environment(x)</span></code> evaluates to <code class="docutils literal"><span class="pre">environment(this_object())</span></code> and is returned as the result of the <a class="reference internal" href="../efun/funcall.html#lpc.efun.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a>.</li>
+</ol>
+<p>One might wonder why there are two functions, <a class="reference internal" href="../efun/funcall.html#lpc.efun.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a> and <a class="reference internal" href="../efun/apply.html#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a>, to perform the seemingly same job, namely evaluating a closure. Of course there is a subtle difference. If the last argument to <a class="reference internal" href="../efun/apply.html#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a> is an array, then each of its elements gets expanded to an additional paramater. The obvious use would be <code class="docutils literal"><span class="pre">#'call_other</span></code> as in:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>mixed eval(object ob,string func,mixed *args) {
+  return apply(#&#39;call_other,ob,func,args);
+}
+</pre></div>
+</div>
+<p>This will result in calling <code class="docutils literal"><span class="pre">ob-&gt;func(args[0],args[1],...,args[sizeof(args)-1])</span></code>. Using <a class="reference internal" href="../efun/funcall.html#lpc.efun.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a> instead of <a class="reference internal" href="../efun/apply.html#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a> would have given us <code class="docutils literal"><span class="pre">ob-&gt;func(args)</span></code>.</p>
+<p>Of course, besides efuns there are closures for <a href="#id1"><span class="problematic" id="id2">:concept:`operators`</span></a>, like <code class="docutils literal"><span class="pre">#'+</span></code>, <code class="docutils literal"><span class="pre">#'-</span></code>, <code class="docutils literal"><span class="pre">#'&lt;</span></code>, <code class="docutils literal"><span class="pre">#'&amp;&amp;</span></code>, etc.</p>
+<p>Well, so far closures have been pretty much limited despite their obvious flexibility. This changes now with the introduction of conditional and loop operators. For example, try:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>closure max;
+max = lambda(
+  ({ &#39;x, &#39;y }),
+  ({
+    #&#39;?,
+    ({ #&#39;&gt;, &#39;x, &#39;y }),
+    &#39;x,
+    &#39;y
+  })
+);
+return funcall(max,7,3);
+</pre></div>
+</div>
+<p>The above example will return 7. What happened? Of course <code class="docutils literal"><span class="pre">#'?</span></code> is the conditional operator and its &#8216;syntax&#8217; is as follows:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>({ #&#39;?, cond1, val1, cond2, val2, ..., condn, valn, valdefault });
+</pre></div>
+</div>
+<p>It evaluates cond1, cond2, ..., condn successively until it gets a nonzero result and then returns the corresponding value. If there is no condition evaluating to a nonzero result, valdefault gets returned. If valdefault is omitted, 0 gets returned. <code class="docutils literal"><span class="pre">#'?!</span></code> works just like <code class="docutils literal"><span class="pre">#'?</span></code>, except that the <code class="xref lpc lpc-operator docutils literal"></code> is applied to conditions before testing. Therefore, while <code class="docutils literal"><span class="pre">#'?</span></code> is somewhat like an if statement, <code class="docutils literal"><span class="pre">#'?!</span></code> resembles an if_not statement if there were one.</p>
+<p>There are also loops:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>({ #&#39;do, loopbody1, ..., loopbodyN, loopcond, loopresult })
+</pre></div>
+</div>
+<p>will evaluate the loopbodies until loopcond evaluates to 0 and then return the value of loopresult. Symbols may be used as variables, of course.:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>({ #&#39;while, loopcond, loopresult, loopbody1, ..., loopbodyN })
+</pre></div>
+</div>
+<p>works similar but evaluates loopcond before the loopbodies.</p>
+<p>The <a class="reference internal" href="foreach.html#lpc.keyword.foreach" title="foreach"><code class="xref lpc lpc-keyword docutils literal"><span class="pre">foreach</span></code></a> loop also has a closure form:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>({ #&#39;foreach, &#39;var, expr, loopbody1, ..., loopbodyN })
+({ #&#39;foreach, ({ &#39;var1, ..., &#39;varN}) , expr, loopbody1, ..., loopbodyN })
+</pre></div>
+</div>
+<p>Now on to a couple of tricky things:</p>
+<ol class="loweralpha simple">
+<li>How do I write down an array within a lambda closure to avoid interpretation as a subclosure?</li>
+</ol>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">({</span> <span class="pre">#'member,</span> <span class="pre">({</span> <span class="pre">&quot;abc&quot;,</span> <span class="pre">&quot;xyz&quot;</span> <span class="pre">}),</span> <span class="pre">'x</span> <span class="pre">})</span></code> will result in an error as soon as <a class="reference internal" href="../efun/lambda.html#lpc.efun.lambda" title="lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">lambda</span></code>(E)</a> tries to interpret &#8220;abc&#8221; as a closure operator. The solution is to quote the array, as in: <code class="docutils literal"><span class="pre">({</span> <span class="pre">#'member,</span> <span class="pre">'({</span> <span class="pre">&quot;abc&quot;,</span> <span class="pre">&quot;xyz&quot;</span> <span class="pre">}),</span> <span class="pre">'x</span> <span class="pre">})</span></code>. Applying <a class="reference internal" href="../efun/lambda.html#lpc.efun.lambda" title="lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">lambda</span></code>(E)</a> to this will not result in an error. Instead, the quote will be stripped from the array and the result regarded as a normal array literal. The same can be achieved by using <a class="reference internal" href="../efun/quote.html#lpc.efun.quote" title="quote"><code class="xref lpc lpc-efun docutils literal"><span class="pre">quote</span></code>(E)</a>, e.g.:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>({ #&#39;member, quote( ({ &quot;abc&quot;, &quot;xyz&quot; }), &#39;x ) })
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="loweralpha simple" start="2">
+<li>Isn&#8217;t it a security risk to pass, say, a closure to the master object which then evaluates it with all the permissions it got?</li>
+</ol>
+<blockquote>
+<div><p>Luckily, no. Each closure gets upon compilation bound to the object defining it. That means that executing it first sets <code class="docutils literal"><span class="pre">this_object()</span></code> to the object that defined it and then evaluates the closure. This also allows us to call lfuns which might otherwise be undefined in the calling object.</p>
+<p>There is however, a variant of <a class="reference internal" href="../efun/lambda.html#lpc.efun.lambda" title="lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">lambda</span></code>(E)</a>, called <a class="reference internal" href="../efun/unbound_lambda.html#lpc.efun.unbound_lambda" title="unbound_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">unbound_lambda</span></code>(E)</a>, which works similar but does not allow the use of lfuns and does not bind the closure to the defining object. The drawback is that trying to evaluate it by <a class="reference internal" href="../efun/apply.html#lpc.efun.apply" title="apply"><code class="xref lpc lpc-efun docutils literal"><span class="pre">apply</span></code>(E)</a> or <a class="reference internal" href="../efun/funcall.html#lpc.efun.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a> will result in an error. The closure first needs to be bound by calling <a class="reference internal" href="../efun/bind_lambda.html#lpc.efun.bind_lambda" title="bind_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">bind_lambda</span></code>(E)</a>. <a class="reference internal" href="../efun/bind_lambda.html#lpc.efun.bind_lambda" title="bind_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">bind_lambda</span></code>(E)</a> normally takes one argument and transforms an unbound closure into a closure bound to the object executing the <a class="reference internal" href="../efun/bind_lambda.html#lpc.efun.bind_lambda" title="bind_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">bind_lambda</span></code>(E)</a>.</p>
+<p>Privileged objects, like the master and the simul_efun object (or those authorized by <a class="reference internal" href="../master/privilege_violation.html#lpc.master.privilege_violation" title="privilege_violation"><code class="xref lpc lpc-master docutils literal"><span class="pre">privilege_violation</span></code>(M)</a>) may also give an object as the second argument to <a class="reference internal" href="../efun/bind_lambda.html#lpc.efun.bind_lambda" title="bind_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">bind_lambda</span></code>(E)</a>. This will bind the closure to that object. A sample application is:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>dump_object(ob)
+// will dump the variables of ob to /dump.o
+{
+  closure save;
+  save = unbound_lambda( ({ }), ({ #&#39;save_object, &quot;/open/dump&quot; }) );
+  bind_lambda(save,ob);
+  funcall(save);
+}
+</pre></div>
+</div>
+<p><a class="reference internal" href="../efun/bind_lambda.html#lpc.efun.bind_lambda" title="bind_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">bind_lambda</span></code>(E)</a> can also be used with efun closures.</p>
+</div></blockquote>
+<ol class="loweralpha simple" start="3">
+<li>It might be an interesting application to create closures dynamically as an alternative to writing LPC code to a file and then loading it. However, how do I avoid doing exactly that if I need symbols like <code class="docutils literal"><span class="pre">'x</span></code> or <code class="docutils literal"><span class="pre">'y</span></code>?</li>
+</ol>
+<blockquote>
+<div>To do that one uses <a class="reference internal" href="../efun/quote.html#lpc.efun.quote" title="quote"><code class="xref lpc lpc-efun docutils literal"><span class="pre">quote</span></code>(E)</a>. It takes a string as its argument and transforms it into a symbol. For example, writing <code class="docutils literal"><span class="pre">quote(&quot;x&quot;)</span></code> is exactly the same as writing <code class="docutils literal"><span class="pre">'x</span></code>.</div></blockquote>
+<ol class="loweralpha simple" start="4">
+<li>How do I test if a variable holds a closure?</li>
+</ol>
+<blockquote>
+<div>Use the <a class="reference internal" href="../efun/closurep.html#lpc.efun.closurep" title="closurep"><code class="xref lpc lpc-efun docutils literal"><span class="pre">closurep</span></code>(E)</a> efun which works like all the other type testing efuns. For symbols there is also <a class="reference internal" href="../efun/symbolp.html#lpc.efun.symbolp" title="symbolp"><code class="xref lpc lpc-efun docutils literal"><span class="pre">symbolp</span></code>(E)</a> available.</div></blockquote>
+<ol class="loweralpha simple" start="5">
+<li>That means, I can do: <code class="docutils literal"><span class="pre">if</span> <span class="pre">(closurep(f))</span> <span class="pre">return</span> <span class="pre">funcall(f);</span> <span class="pre">else</span> <span class="pre">return</span> <span class="pre">f;</span></code> ?</li>
+</ol>
+<blockquote>
+<div>Yes, but in the case of <a class="reference internal" href="../efun/funcall.html#lpc.efun.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a> it is unnecessary. If <a class="reference internal" href="../efun/funcall.html#lpc.efun.funcall" title="funcall"><code class="xref lpc lpc-efun docutils literal"><span class="pre">funcall</span></code>(E)</a> gets only one argument and it is not a closure it will be returned unchanged. So return <code class="docutils literal"><span class="pre">funcall(f);</span></code> would suffice.</div></blockquote>
+<ol class="loweralpha simple" start="6">
+<li>I want to use a function in some object as a closure. How do I do that?</li>
+</ol>
+<blockquote>
+<div>There are several ways. If the function resides in <code class="docutils literal"><span class="pre">this_object()</span></code>, just use <code class="docutils literal"><span class="pre">#'func_name</span></code>. If not, or if you want to create the function dnynamically, use the efun <a class="reference internal" href="../efun/symbol_function.html#lpc.efun.symbol_function" title="symbol_function"><code class="xref lpc lpc-efun docutils literal"><span class="pre">symbol_function</span></code>(E)</a>. It takes a string as it first and an object as its second argument and returns a closure which upon evaluation calls the given function in the given object (and faster than <a class="reference internal" href="../efun/call_other.html#lpc.efun.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a>, too, if done from inside a loop, since function search will be done only when calling <a class="reference internal" href="../efun/symbol_function.html#lpc.efun.symbol_function" title="symbol_function"><code class="xref lpc lpc-efun docutils literal"><span class="pre">symbol_function</span></code>(E)</a>.</div></blockquote>
+<ol class="loweralpha simple" start="7">
+<li>Can I create efun closures dynamically, too?</li>
+</ol>
+<blockquote>
+<div>Yes, just use <a class="reference internal" href="../efun/symbol_function.html#lpc.efun.symbol_function" title="symbol_function"><code class="xref lpc lpc-efun docutils literal"><span class="pre">symbol_function</span></code>(E)</a> with a single argument. Most useful for marker objects and the like. But theoretically a security risk if not used properly and from inside a security relevant object. Take care, however, that, if there is a simul_efun with the same name, it will be preferred as in the case of <code class="docutils literal"><span class="pre">#'function</span></code>. Use the <code class="docutils literal"><span class="pre">efun::</span></code> modifier to get the efun if you need it.</div></blockquote>
+<ol class="loweralpha simple" start="8">
+<li>Are there other uses of closures except using them to store code?</li>
+</ol>
+<blockquote>
+<div>Lots. For example, you can use them within almost all of the efuns where you give a function as an argument, like <a class="reference internal" href="../efun/filter.html#lpc.efun.filter" title="filter"><code class="xref lpc lpc-efun docutils literal"><span class="pre">filter</span></code>(E)</a>, <a class="reference internal" href="../efun/sort_array.html#lpc.efun.sort_array" title="sort_array"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sort_array</span></code>(E)</a> or <a class="reference internal" href="../efun/walk_mapping.html#lpc.efun.walk_mapping" title="walk_mapping"><code class="xref lpc lpc-efun docutils literal"><span class="pre">walk_mapping</span></code>(E)</a>. <code class="docutils literal"><span class="pre">sort_array(array,#'&gt;)</span></code> does indeed what is expected. Another application is <a class="reference internal" href="../efun/set_prompt.html#lpc.efun.set_prompt" title="set_prompt"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_prompt</span></code>(E)</a>, where a closure can output your own prompt based on the current time and other stuff which changes all the time.</div></blockquote>
+<p>Finally, there are some special efun/operator closures:</p>
+<p><code class="docutils literal"><span class="pre">#'[</span></code> : indexes an array.
+<code class="docutils literal"><span class="pre">#'[&lt;</span></code> : does the same, but starting at the end.
+<code class="docutils literal"><span class="pre">#'[..]</span></code> : gets an array and two numbers and returns a sub-array.
+<code class="docutils literal"><span class="pre">#'[..&lt;]</span></code> : same as above but the second index is interpreted as counted from the left end.
+<code class="docutils literal"><span class="pre">#'[&lt;..]</span></code>  and
+<code class="docutils literal"><span class="pre">#'[&lt;..&lt;]</span></code> : should be clear now.
+<code class="docutils literal"><span class="pre">#'[..</span></code> : takes only one index and returns the sub- array from this index to the end.
+<code class="docutils literal"><span class="pre">#'[&lt;..</span></code> : same as above but the index is interpreted as counted from the left end.
+<code class="docutils literal"><span class="pre">#'({</span></code> : puts all arguments into an array.
+<code class="docutils literal"><span class="pre">#'([</span></code> : gets an unquoted (!) array which must include at least one element as argument and returns a mapping of the width of the given array&#8217;s size with one entry that contains the first element as key and the other elements as values to the key.</p>
+<p><code class="docutils literal"><span class="pre">#'negate</span></code> is for unary minus.
+<code class="docutils literal"><span class="pre">#'</span></code>, may be followed by any number of closures, e.g.: <code class="docutils literal"><span class="pre">({</span> <span class="pre">(#',),</span> <span class="pre">({#'=</span> <span class="pre">'h,</span> <span class="pre">'a,</span> <span class="pre">}),</span> <span class="pre">({#'=,</span> <span class="pre">'a,</span> <span class="pre">'b</span> <span class="pre">}),</span> <span class="pre">({#'=,</span> <span class="pre">'b,</span> <span class="pre">'h</span> <span class="pre">})</span> <span class="pre">})</span></code> will swap &#8216;a and &#8216;b when compiled and executed.</p>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h3>closures-abstract<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h4>Procedural elements<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h4>
+<p>definition of terms:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">&lt;block&gt;</span></code></dt>
+<dd>zero or more values to be evaluated.</dd>
+<dt><code class="docutils literal"><span class="pre">&lt;test&gt;</span></code></dt>
+<dd>one value to be evaluated as branch or loop condition.</dd>
+<dt><code class="docutils literal"><span class="pre">&lt;result&gt;</span></code></dt>
+<dd>one value to be evaluated at the end of the execution of the form; the value is returned.</dd>
+<dt><code class="docutils literal"><span class="pre">&lt;lvalue&gt;</span></code></dt>
+<dd>local variable/parameter, global variable, or an indexed lvalue.</dd>
+</dl>
+<p>used EBNF operators:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="p">}</span>     <span class="n">iteration</span>
+<span class="p">[</span> <span class="p">]</span>     <span class="n">option</span>
+</pre></div>
+</div>
+<p>forms:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">({#',</span> <span class="pre">&lt;body&gt;</span> <span class="pre">&lt;result&gt;})</span></code></li>
+<li><code class="docutils literal"><span class="pre">({#'?</span> <span class="pre">{</span> <span class="pre">&lt;test&gt;</span> <span class="pre">&lt;result&gt;</span> <span class="pre">}</span> <span class="pre">[</span> <span class="pre">&lt;result&gt;</span> <span class="pre">]</span> <span class="pre">})</span></code></li>
+<li><code class="docutils literal"><span class="pre">({#'?!</span> <span class="pre">{</span> <span class="pre">&lt;test&gt;</span> <span class="pre">&lt;result&gt;</span> <span class="pre">}</span> <span class="pre">[</span> <span class="pre">&lt;result&gt;</span> <span class="pre">]</span> <span class="pre">})</span></code></li>
+<li><code class="docutils literal"><span class="pre">({#'&amp;&amp;</span> <span class="pre">{</span> <span class="pre">test</span> <span class="pre">}</span> <span class="pre">})</span></code></li>
+<li><code class="docutils literal"><span class="pre">({#'||</span> <span class="pre">{</span> <span class="pre">test</span> <span class="pre">}</span> <span class="pre">})</span></code></li>
+<li><code class="docutils literal"><span class="pre">({#'while</span> <span class="pre">&lt;test&gt;</span> <span class="pre">&lt;result&gt;</span> <span class="pre">&lt;body&gt;})</span></code>    loop while test evaluates non-zero.</li>
+<li><code class="docutils literal"><span class="pre">({#'do</span> <span class="pre">&lt;body&gt;</span> <span class="pre">&lt;test&gt;</span> <span class="pre">&lt;result&gt;})</span></code>       loop till test evaluates zero.</li>
+<li><code class="docutils literal"><span class="pre">({#'=</span> <span class="pre">{</span> <span class="pre">&lt;lvalue&gt;</span> <span class="pre">&lt;value&gt;</span> <span class="pre">}</span> <span class="pre">})</span></code>         assignment other assignment operators work, too.</li>
+</ul>
+<p>lisp similars:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="cp">#&#39;,           progn</span>
+<span class="cp">#&#39;?           cond</span>
+<span class="cp">#&#39;&amp;&amp;          and</span>
+<span class="cp">#&#39;||          or</span>
+<span class="cp">#&#39;while       do      </span><span class="cm">/* but lisp has more syntactic candy here */</span><span class="cp"></span>
+<span class="cp">#&#39;=           setq</span>
+</pre></div>
+</div>
+<p>A parameter / local variable &#8216;foo&#8217; is referenced as &#8216;foo , a global variable as <code class="docutils literal"><span class="pre">({#'foo})</span></code>. In lvalue positions (assignment), you need not enclose global variable closures in arrays.</p>
+<p>Call by reference parameters are given with <code class="docutils literal"><span class="pre">({#'&amp;,</span> <span class="pre">&lt;lvalue&gt;})</span></code></p>
+<p>Some special efuns:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="cp">#&#39;[             indexing</span>
+<span class="cp">#&#39;[&lt;            indexing from the end</span>
+<span class="cp">#&#39;negate        unary -</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="l">
+<span id="p"></span><span id="c"></span><span id=":"></span><span id="s"></span><span id="u"></span><span id="b"></span><span id="t"></span><span id="o"></span><span id="p"></span><span id="i"></span><span id="c"></span><h4>Unbound lambda closures<a class="headerlink" href="#l" title="Permalink to this headline">¶</a></h4>
+<p>These closures are not bound to any object. They are created with the efun <a class="reference internal" href="../efun/unbound_lambda.html#lpc.efun.unbound_lambda" title="unbound_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">unbound_lambda</span></code>(E)</a>. They cannot contain references to global variables, and all lfun closures are inserted as is, since there is no native object for this closure. You can bind and rebind unbound lambda closures to an object with efun <a class="reference internal" href="../efun/bind_lambda.html#lpc.efun.bind_lambda" title="bind_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">bind_lambda</span></code>(E)</a> You need to bind it before it can be called. Ordinary objects can obly bind to themselves, binding to other objects causes a privilege violation. The point is that previous_object for calls done from inside the closure will reflect the object doing <a class="reference internal" href="../efun/bind_lambda.html#lpc.efun.bind_lambda" title="bind_lambda"><code class="xref lpc lpc-efun docutils literal"><span class="pre">bind_lambda</span></code>(E)</a>, and all object / uid based security will also refer to this object.</p>
+</div>
+</div>
+<div class="section" id="LORE">
+<h2>LORE<a class="headerlink" href="#LORE" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Authors</dt>
+<dd>MacBeth, Amylaar, Hyp</dd>
+</dl>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="closures-example.html#lpc.topic.closures example" title="closures example"><code class="xref lpc lpc-topic docutils literal"><span class="pre">closures</span> <span class="pre">example</span></code></a>, <a class="reference internal" href="closure_guide.html#lpc.guide.closures" title="closures"><code class="xref lpc lpc-guide docutils literal"><span class="pre">closures</span></code></a>, <code class="xref lpc lpc-syntax docutils literal"><span class="pre">inline-closures</span></code></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">closures</a><ul>
+<li><a class="reference internal" href="#LANG">LANG</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#l">closures-abstract</a><ul>
+<li><a class="reference internal" href="#l">Procedural elements</a></li>
+<li><a class="reference internal" href="#l">Unbound lambda closures</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#LORE">LORE</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/syntax/closures.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

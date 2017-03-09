@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::match_command() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::match_command() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::max()" href="max.html" />
     <link rel="prev" title="efun::master()" href="master.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,29 +49,34 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;commands.h&gt;</tr>
-<tr id="lpc.match_command">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">match_command</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;command</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;origin</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.match_command" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.match_command">
+<!--[lpc.efun.match_command]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">match_command</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;command</em>, </td><td id="id2">
+object<em>&nbsp;origin</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.match_command" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Take the command &lt;command&gt;, parse it, and return an array of all
-matching actions added to &lt;origin&gt; (read: &lt;origin&gt; is the object
-&#8216;issuing&#8217; the command).</p>
+<p>Take the command <a class="reference internal" href="#efun/match_command.arg.command" title="command"><code class="xref lpc lpc-arg docutils literal"><span class="pre">command</span></code></a>, parse it, and return an array of all matching actions added to <a class="reference internal" href="#efun/match_command.arg.origin" title="origin"><code class="xref lpc lpc-arg docutils literal"><span class="pre">origin</span></code></a> (read: <a class="reference internal" href="#efun/match_command.arg.origin" title="origin"><code class="xref lpc lpc-arg docutils literal"><span class="pre">origin</span></code></a> is the object &#8216;issuing&#8217; the command).</p>
 <p>Each entry in the result array is itself an array of:</p>
-<blockquote>
-<div><p>string [CMDM_VERB]:   The matched verb.
-string [CMDM_ARG]:    The argument string remaining, or 0 if none.
-object [CMDM_OBJECT]: The object defining the action.
-string [CMDM_FUN]:    The name of the function to call in</p>
-<blockquote>
-<div>CMDM_OBJECT, which may be static.</div></blockquote>
-</div></blockquote>
-<p>The efun is useful for both debugging, and for implementing your
-own H_COMMAND handling.</p>
+<ul class="simple">
+<li>string [<code class="xref lpc lpc-macro docutils literal"><span class="pre">CMDM_VERB</span></code>]:   The matched verb.</li>
+<li>string [<code class="xref lpc lpc-macro docutils literal"><span class="pre">CMDM_ARG</span></code>]:    The argument string remaining, or 0 if none.</li>
+<li>object [<code class="xref lpc lpc-macro docutils literal"><span class="pre">CMDM_OBJECT</span></code>]: The object defining the action.</li>
+<li>string [<code class="xref lpc lpc-macro docutils literal"><span class="pre">CMDM_FUN</span></code>]:    The name of the function to call in <code class="xref lpc lpc-macro docutils literal"><span class="pre">CMDM_OBJECT</span></code>, which may be static.</li>
+</ul>
+<p>The efun is useful for both debugging, and for implementing your own <a class="reference internal" href="../hook/command.html#lpc.hook.H_COMMAND" title="H_COMMAND"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_COMMAND</span></code>(H)</a> handling.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.259</em>)</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../hook/overview.html#lpc.overview.hook" title="hook"><code class="xref lpc lpc-overview docutils literal"><span class="pre">hook</span></code></a>, <a class="reference internal" href="execute_command.html#lpc.efun.execute_command" title="execute_command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">execute_command</span></code>(E)</a>, <a class="reference internal" href="command.html#lpc.efun.command" title="command"><code class="xref lpc lpc-efun docutils literal"><span class="pre">command</span></code>(E)</a>, <a class="reference internal" href="notify_fail.html#lpc.efun.notify_fail" title="notify_fail"><code class="xref lpc lpc-efun docutils literal"><span class="pre">notify_fail</span></code>(E)</a>, <a class="reference internal" href="command_stack.html#lpc.efun.command_stack" title="command_stack"><code class="xref lpc lpc-efun docutils literal"><span class="pre">command_stack</span></code>(E)</a></p>
+</div>
 </div>
 </div>
 
@@ -82,8 +89,8 @@ own H_COMMAND handling.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -93,21 +100,24 @@ own H_COMMAND handling.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::match_command()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -119,7 +129,7 @@ own H_COMMAND handling.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/match_command.txt"
+      <a href="../_sources/efun/match_command.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

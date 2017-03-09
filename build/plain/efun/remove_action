@@ -5,15 +5,19 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-If <verb> is a string: remove the first action defined by the current object 
-with the given <verb> from <ob> (default is this_player()). Return 1 if the 
-action was found and removed, and 0 else.
+   If verb(E) is a string: remove the first action defined by the current 
+   object with the given verb(E) from ob(E) (default is `this_player()`). 
+   Return 1 if the action was found and removed, and 0 else.
 
-If <verb> is a number: if non-0, remove all actions defined by the current 
-object from <ob> (default is this_player()). Return the number of actions 
-removed.
+   If verb(E) is a number: if non-0, remove all actions defined by the current
+   object from ob(E) (default is `this_player()`). Return the number of 
+   actions removed.
 
-Introduced in 3.2.1. LDMud 3.2.10 added the ability to remove all actions.
+HISTORY
+=======
+   - introduced (3.2.1)
+   - changed (3.2.10) -- added the ability to remove all actions.
 
-   See Also: 
-      add_action()(E), move_object()(E)
+SEE ALSO
+========
+   add_action(E), move_object(E)

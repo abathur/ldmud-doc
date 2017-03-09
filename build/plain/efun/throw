@@ -1,14 +1,14 @@
 SYNOPSIS
 ========
-   void throw(mixed arg)
+   void throw(mixed message)
 
 DESCRIPTION
 ===========
-   Abort execution. If the current program execution was initiated by catch(),
-   that catch expression will return <arg> as error code.
+   Abort execution. If the current program execution was initiated by 
+   catch(E), that catch expression will return message(E) as error code.
 
-   Calling throw() without previous catch() does not make sense and will 
-   result in a "Throw with no catch." error.
+   Calling `throw()` without an enclosing `catch()` does not make sense and 
+   will result in a "Throw with no catch." error.
 
    USAGE
    =====
@@ -18,4 +18,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   catch()(E), raise_error()(E)
+   catch(E), raise_error(E)

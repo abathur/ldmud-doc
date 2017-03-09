@@ -5,14 +5,14 @@ SYNOPSIS
 
 DESCRIPTION
 ===========
-   Crypt the string <str> the first two characters from the string <seed> as a
-   seed. If <seed> is an integer, then a random seed is used.
+   Crypt the string str(E) the first two characters from the string seed(E) as
+   a seed. If seed(E) is an integer, then a random seed is used.
 
    The result has the first two characters as the seed.
 
-   If you want to let enter password information without echo, input_to() can 
-   be used with special argument.
+   If you want to let users enter password information without echo, 
+   input_to(E) can be used with the `INPUT_NOECHO` flag.
 
 SEE ALSO
 ========
-   md5()(E), md5_crypt()(E), sha1()(E), hash()(E), hmac()(E)
+   md5(E), md5_crypt(E), sha1(E), hash(E), hmac(E)

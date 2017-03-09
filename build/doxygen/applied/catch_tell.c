@@ -1,8 +1,8 @@
 public class applied {
    /**
-    * When a message is sent to an non-interactive object, via @asay()`, @atell_object()`, @atell_room()` or @awrite()`, it will get to the function @acatch_tell(string)`. The idea is to enable communications between NPCs and from a user to an NPC.
+    * When a message is sent to an non-interactive object, via efun::say(), efun::tell_object(), efun::tell_room() or efun::write(), it will get to the function applied::catch_tell(string)(). The idea is to enable communications between NPCs and from a user to an NPC.
     * 
-    * Messages sent to an interactive object are also passed to that object's @acatch_tell()` lfun, <em>if it has one</em>. If the receiver (or one of its shadows) doesn't have that lfun, the text is sent to the socket directly. Only messages sent by an interactive object to itself inside a catch_tell are always written to the socket immediately.
+    * Messages sent to an interactive object are also passed to that object's applied::catch_tell() lfun, <em>if it has one</em>. If the receiver (or one of its shadows) doesn't have that lfun, the text is sent to the socket directly. Only messages sent by an interactive object to itself inside a catch_tell are always written to the socket immediately.
     * 
     * This allows text to be filtered and processed before it is written to a player.
     * 

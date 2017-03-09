@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::pg_connect() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::pg_connect() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::pg_conv_string()" href="pg_conv_string.html" />
     <link rel="prev" title="efun::pg_close()" href="pg_close.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,52 +47,58 @@
 <div class="section" id="SYNOPSIS">
 <span id="pg_connect"></span><h2>SYNOPSIS (OPTIONAL)<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.pg_connect">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">pg_connect</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;conn</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;fun</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.pg_connect" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.pg_connect">
+<!--[lpc.efun.pg_connect]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">pg_connect</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;conn</em>, </td><td id="id2">
+string<em>&nbsp;fun</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.pg_connect" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">pg_connect</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;conn</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;fun</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a>|<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;obj</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra</em>, </td><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">pg_connect</code></td><td><span class="sig-paren">(</span></td><td id="id3">
+string<em>&nbsp;conn</em>, </td><td id="id4">
+string<em>&nbsp;fun</em>, </td><td id="id5">
+<a class="reference internal" href="../syntax/string.html#lpc.type.string" title="string">string</a>|object<em>&nbsp;obj</em>, </td><td id="id6">
+mixed<em>&nbsp;extra</em>, </td><td id="id7">
 ...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">pg_connect</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;conn</em>, </td><td>
-<a class="reference internal" href="../LPC/closures.html#lpc.closure" title="closure">closure</a><em>&nbsp;cl</em>, </td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;extra</em>, </td><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">pg_connect</code></td><td><span class="sig-paren">(</span></td><td id="id8">
+string<em>&nbsp;conn</em>, </td><td id="id9">
+closure<em>&nbsp;cl</em>, </td><td id="id10">
+mixed<em>&nbsp;extra</em>, </td><td id="id11">
 ...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Open a database connection as directed by &lt;conn&gt;, and assign the
-callback function &lt;fun&gt;/&lt;cl&gt; with the optional &lt;extra&gt; parameters
-to it.</p>
-<p>The object holding the callback function becomes the controlling
-object; obiously it is an error to assign more than one connection
-to the same controlling object.</p>
-<p>The &lt;conn&gt; string is in the format accepted by Postgres&#8217;
-PQconnectStart() API functions. Pass an empty string to use the
-default options, or a string holding the &#8216;&lt;key&gt;=&lt;value&gt;&#8217; options
-separated by whitespace.</p>
+<p>Open a database connection as directed by <a class="reference internal" href="#efun/pg_connect.arg.conn" title="conn"><code class="xref lpc lpc-arg docutils literal"><span class="pre">conn</span></code></a>, and assign the callback function <a class="reference internal" href="#efun/pg_connect.arg.fun" title="fun"><code class="xref lpc lpc-arg docutils literal"><span class="pre">fun</span></code></a>/<a class="reference internal" href="#efun/pg_connect.arg.cl" title="cl"><code class="xref lpc lpc-arg docutils literal"><span class="pre">cl</span></code></a> with the optional <a class="reference internal" href="#efun/pg_connect.arg.extra" title="extra"><code class="xref lpc lpc-arg docutils literal"><span class="pre">extra</span></code></a> parameters to it.</p>
+<p>The object holding the callback function becomes the controlling object; obiously it is an error to assign more than one connection to the same controlling object.</p>
+<p>The <a class="reference internal" href="#efun/pg_connect.arg.conn" title="conn"><code class="xref lpc lpc-arg docutils literal"><span class="pre">conn</span></code></a> string is in the format accepted by Postgres&#8217; <code class="docutils literal"><span class="pre">PQconnectStart()</span></code> API functions. Pass an empty string to use the default options, or a string holding the <code class="docutils literal"><span class="pre">'&lt;key&gt;=&lt;value&gt;'</span></code> options separated by whitespace.</p>
+<p>The most useful options are:</p>
 <dl class="docutils">
-<dt>The most useful options are:</dt>
-<dd>dbname:   The database name
-user:     The user name to connect as.
-password: Password to be used.</dd>
+<dt>dbname</dt>
+<dd>The database name</dd>
+<dt>user</dt>
+<dd>The user name to connect as.</dd>
+<dt>password</dt>
+<dd>Password to be used.</dd>
 </dl>
 <p>Return 0 on success, and -1 on failure.</p>
-<p>The function is available only if the driver is compiled with
-PostgreSQL support. In that case, __PGSQL__ is defined.</p>
+<p>The function is available only if the driver is compiled with PostgreSQL support. In that case, <a class="reference internal" href="../topics/predefined.html#lpc.macro.__PGSQL__" title="__PGSQL__"><code class="xref lpc lpc-macro docutils literal"><span class="pre">__PGSQL__</span></code></a> is defined.</p>
 <p>The efun triggers a privilege violation (&#8220;pgsql&#8221;, &#8220;pg_connect&#8221;).</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.3.445</em>)</li>
+<li><strong>changed</strong> (<em>3.3.640</em>) &#8211; added the privilege violation.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a href="#id12"><span class="problematic" id="id13">:concept:`pgsql`</span></a>, <a class="reference internal" href="pg_query.html#lpc.efun.pg_query" title="pg_query"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_query</span></code>(E)</a>, <a class="reference internal" href="pg_pending.html#lpc.efun.pg_pending" title="pg_pending"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_pending</span></code>(E)</a>, <a class="reference internal" href="pg_conv_string.html#lpc.efun.pg_conv_string" title="pg_conv_string"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_conv_string</span></code>(E)</a>, <a class="reference internal" href="pg_close.html#lpc.efun.pg_close" title="pg_close"><code class="xref lpc lpc-efun docutils literal"><span class="pre">pg_close</span></code>(E)</a>, <a class="reference internal" href="../master/privilege_violation.html#lpc.master.privilege_violation" title="privilege_violation"><code class="xref lpc lpc-master docutils literal"><span class="pre">privilege_violation</span></code>(M)</a></p>
+</div>
 </div>
 </div>
 
@@ -103,8 +111,8 @@ PostgreSQL support. In that case, __PGSQL__ is defined.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -114,21 +122,24 @@ PostgreSQL support. In that case, __PGSQL__ is defined.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::pg_connect()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS (OPTIONAL)</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -140,7 +151,7 @@ PostgreSQL support. In that case, __PGSQL__ is defined.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/pg_connect.txt"
+      <a href="../_sources/efun/pg_connect.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

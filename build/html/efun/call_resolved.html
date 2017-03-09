@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::call_resolved() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::call_resolved() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::caller_stack()" href="caller_stack.html" />
     <link rel="prev" title="efun::call_out_info()" href="call_out_info.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,45 +47,33 @@
 <div class="section" id="SYNOPSIS">
 <span id="call_resolved"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.call_resolved">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">call_resolved</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a><em>&nbsp;result</em>, </td><td>
-<a class="reference internal" href="../LPC/object.html#lpc.object" title="object">object</a><em>&nbsp;ob</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;func</em>, </td><td>
-...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.call_resolved" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.call_resolved">
+<!--[lpc.efun.call_resolved]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">call_resolved</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+mixed<em>&nbsp;result</em>, </td><td id="id2">
+object<em>&nbsp;ob</em>, </td><td id="id3">
+string<em>&nbsp;func</em>, </td><td id="id4">
+...</td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.call_resolved" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Similar to <a class="reference internal" href="call_other.html#lpc.efun.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a>. If <code class="docutils literal"><span class="pre">ob-&gt;func()</span></code> is defined and publicly accessible, any of the optional extra arguments are passed to <code class="docutils literal"><span class="pre">ob-&gt;func(...)</span></code>. The result of that function call is stored in result, which must be passed by reference.</p>
+<p>The efun returns 1 if the function could be called. If ob::fun does not define a publicly accessible function, the efun will call the <a class="reference internal" href="../hook/default_method.html#lpc.hook.H_DEFAULT_METHOD" title="H_DEFAULT_METHOD"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_DEFAULT_METHOD</span></code>(H)</a> hook if set. If the hook is not set or can&#8217;t resolve the call either, the efun will return 0. If the hook is set and can resolve the call, the efun will return -1.</p>
+<p>Calls to the master object never use the <a class="reference internal" href="../hook/default_method.html#lpc.hook.H_DEFAULT_METHOD" title="H_DEFAULT_METHOD"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_DEFAULT_METHOD</span></code>(H)</a> hook. To force non-default calls, <a class="reference internal" href="call_direct_resolved.html#lpc.efun.call_direct_resolved" title="call_direct_resolved"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_direct_resolved</span></code>(E)</a> can be used.</p>
+<p>ob can also be an object_name. If a string is passed for ob and an object with that name can&#8217;t be found or loaded, an error occurs.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.3.113</em>) &#8211; added the <a class="reference internal" href="../hook/default_method.html#lpc.hook.H_DEFAULT_METHOD" title="H_DEFAULT_METHOD"><code class="xref lpc lpc-hook docutils literal"><span class="pre">H_DEFAULT_METHOD</span></code>(H)</a> hook.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="call_other.html#lpc.efun.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other</span></code>(E)</a>, <a class="reference internal" href="call_direct.html#lpc.efun.call_direct" title="call_direct"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_direct</span></code>(E)</a>, <a class="reference internal" href="call_direct_resolved.html#lpc.efun.call_direct_resolved" title="call_direct_resolved"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_direct_resolved</span></code>(E)</a>, <a class="reference internal" href="../applied/create.html#lpc.applied.create" title="create"><code class="xref lpc lpc-applied docutils literal"><span class="pre">create</span></code>(A)</a>, <a class="reference internal" href="../syntax/pragma.html#lpc.syntax.pragma" title="pragma"><code class="xref lpc lpc-syntax docutils literal"><span class="pre">pragma</span></code></a>, <a class="reference internal" href="extern_call.html#lpc.efun.extern_call" title="extern_call"><code class="xref lpc lpc-efun docutils literal"><span class="pre">extern_call</span></code>(E)</a>, <a class="reference internal" href="function_exists.html#lpc.efun.function_exists" title="function_exists"><code class="xref lpc lpc-efun docutils literal"><span class="pre">function_exists</span></code>(E)</a>, <a class="reference internal" href="../syntax/functions.html#lpc.syntax.functions" title="functions"><code class="xref lpc lpc-syntax docutils literal"><span class="pre">functions</span></code></a>, <a class="reference internal" href="map_objects.html#lpc.efun.map_objects" title="map_objects"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_objects</span></code>(E)</a></p>
 </div>
 </div>
-<p>Similar to call_other(). If ob-&gt;func() is defined and publicly
-accessible, any of the optional extra arguments are passed to
-ob-&gt;func(...). The result of that function call is stored in
-result, which must be passed by reference.</p>
-<p>The efun returns 1 if the function could be called.
-If ob::fun does not define a publicly accessible function, the
-efun will call the H_DEFAULT_METHOD hook if set. If the hook
-is not set or can&#8217;t resolve the call either, the efun will return 0.
-If the hook is set and can resolve the call, the efun will return -1.</p>
-<p>Calls to the master object never use the H_DEFAULT_METHOD hook.
-To force non-default calls, the efun call_direct_resolved() can
-be used.</p>
-<p>ob can also be an object_name. If a string is passed for ob
-and an object with that name can&#8217;t be found or loaded, an
-error occurs.</p>
-<p>LDMud 3.3.113 introduced the H_DEFAULT_METHOD hook.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="call_other.html#lpc.call_other" title="call_other"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_other()</span></code>(E)</a>, <a class="reference internal" href="call_direct.html#lpc.call_direct" title="call_direct"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_direct()</span></code>(E)</a>, <a class="reference internal" href="call_direct_resolved.html#lpc.call_direct_resolved" title="call_direct_resolved"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_direct_resolved()</span></code>(E)</a>, <a class="reference internal" href="../applied/create.html#lpc.create" title="create"><code class="xref lpc lpc-applied docutils literal"><span class="pre">create</span></code>(A)</a>, <a class="reference internal" href="../LPC/pragma.html#lpc.pragma" title="pragma"><code class="xref lpc lpc-lang docutils literal"><span class="pre">pragma</span></code>(LPC)</a>, <a class="reference internal" href="extern_call.html#lpc.extern_call" title="extern_call"><code class="xref lpc lpc-efun docutils literal"><span class="pre">extern_call()</span></code>(E)</a>, <a class="reference internal" href="function_exists.html#lpc.function_exists" title="function_exists"><code class="xref lpc lpc-efun docutils literal"><span class="pre">function_exists()</span></code>(E)</a>, <code class="xref lpc lpc-lang docutils literal"><span class="pre">functions</span></code>, <a class="reference internal" href="map_objects.html#lpc.map_objects" title="map_objects"><code class="xref lpc lpc-efun docutils literal"><span class="pre">map_objects()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+</div>
 
 
           </div>
@@ -94,8 +84,8 @@ error occurs.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -105,21 +95,24 @@ error occurs.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::call_resolved()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -131,7 +124,7 @@ error occurs.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/call_resolved.txt"
+      <a href="../_sources/efun/call_resolved.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::strstr() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::strstr() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::struct_info()" href="struct_info.html" />
     <link rel="prev" title="efun::strrstr()" href="strrstr.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,41 +47,31 @@
 <div class="section" id="SYNOPSIS">
 <span id="strstr"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.strstr">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">strstr</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str2</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.strstr" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.strstr">
+<!--[lpc.efun.strstr]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">strstr</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;str</em>, </td><td id="id2">
+string<em>&nbsp;str2</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.strstr" title="Permalink to this definition">¶</a></tr>
 <tr>
 <td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">strstr</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;str2</em>, </td><td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a><em>&nbsp;pos</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">strstr</code></td><td><span class="sig-paren">(</span></td><td id="id3">
+string<em>&nbsp;str</em>, </td><td id="id4">
+string<em>&nbsp;str2</em>, </td><td id="id5">
+int<em>&nbsp;pos</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Returns the index of <a class="reference internal" href="#efun/strstr.arg.str2" title="str2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str2</span></code></a> in <a class="reference internal" href="#efun/strstr.arg.str" title="str"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str</span></code></a>, searching from position <a class="reference internal" href="#efun/strstr.arg.pos" title="pos"><code class="xref lpc lpc-arg docutils literal"><span class="pre">pos</span></code></a> on.</p>
+<p>The returned index is relative to the beginning of the string. If <a class="reference internal" href="#efun/strstr.arg.str2" title="str2"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str2</span></code></a> is not found in <a class="reference internal" href="#efun/strstr.arg.str" title="str"><code class="xref lpc lpc-arg docutils literal"><span class="pre">str</span></code></a>, -1 is returned.</p>
+<p>If <a class="reference internal" href="#efun/strstr.arg.pos" title="pos"><code class="xref lpc lpc-arg docutils literal"><span class="pre">pos</span></code></a> is negative, it designates the start position relative to the end of the string (the search will still proceed towards the end of the string).</p>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="strrstr.html#lpc.efun.strrstr" title="strrstr"><code class="xref lpc lpc-efun docutils literal"><span class="pre">strrstr</span></code>(E)</a>, <a class="reference internal" href="strlen.html#lpc.efun.strlen" title="strlen"><code class="xref lpc lpc-efun docutils literal"><span class="pre">strlen</span></code>(E)</a>, <a class="reference internal" href="sscanf.html#lpc.efun.sscanf" title="sscanf"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sscanf</span></code>(E)</a>, <a class="reference internal" href="sprintf.html#lpc.efun.sprintf" title="sprintf"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sprintf</span></code>(E)</a>, <a class="reference internal" href="explode.html#lpc.efun.explode" title="explode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">explode</span></code>(E)</a></p>
 </div>
 </div>
-<p>Returns the index of &lt;str2&gt; in &lt;str&gt;, searching from position &lt;pos&gt;
-on.</p>
-<p>The returned index is relative to the beginning of the string.
-If &lt;str2&gt; is not found in &lt;str&gt;, -1 is returned.</p>
-<p>If &lt;pos&gt; is negative, it designates the start position relative
-to the end of the string (the search will still proceed towards
-the end of the string).</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="strrstr.html#lpc.strrstr" title="strrstr"><code class="xref lpc lpc-efun docutils literal"><span class="pre">strrstr()</span></code>(E)</a>, <a class="reference internal" href="strlen.html#lpc.strlen" title="strlen"><code class="xref lpc lpc-efun docutils literal"><span class="pre">strlen()</span></code>(E)</a>, <a class="reference internal" href="sscanf.html#lpc.sscanf" title="sscanf"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sscanf()</span></code>(E)</a>, <a class="reference internal" href="sprintf.html#lpc.sprintf" title="sprintf"><code class="xref lpc lpc-efun docutils literal"><span class="pre">sprintf()</span></code>(E)</a>, <a class="reference internal" href="explode.html#lpc.explode" title="explode"><code class="xref lpc lpc-efun docutils literal"><span class="pre">explode()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+</div>
 
 
           </div>
@@ -90,8 +82,8 @@ the end of the string).</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -101,21 +93,23 @@ the end of the string).</p>
   <ul>
 <li><a class="reference internal" href="#">efun::strstr()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -127,7 +121,7 @@ the end of the string).</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/strstr.txt"
+      <a href="../_sources/efun/strstr.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

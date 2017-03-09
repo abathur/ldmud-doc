@@ -13,7 +13,7 @@ DESCRIPTION
    returning the replacement pattern string.
 
    The flag is a bitmask of the usual regexp options. Additionally the efun 
-   recognizes RE_GLOBAL: if set, the search and replace is repeated as often 
+   recognizes `RE_GLOBAL`: if set, the search and replace is repeated as often
    as the pattern matches.
 
    The function returns the modified string (or the original if it wasn't 
@@ -24,35 +24,39 @@ DESCRIPTION
    (as opposed to regexplode, where you can explode by regular expression, 
    but not implode...)
 
-EXAMPLES
-   string msgin;
+   USAGE
+   =====
+         string msgin;
 
-   /* Checks msgin for the string 'tells you: ' and all following
-      - characters and encloses those characters by <underline>
-      - and </underline>. global.
+         // Checks msgin for the string 'tells you: ' and all following
+         // characters and encloses those characters by <underline>
+         // and </underline>. global.
+         //
+         msgin = regreplace(msgin, "tells you: (.*)",
+                  "tells you: <underline>\\1</underline>", 1);
 
-      >>*<</
+         // replaces all <underline> html tags by the vt100 escape
+         // sequence for underline.
+         //
+         txt = regreplace(txt, "<underline>", "<ESC>[5m", 1);
 
-   msgin = regreplace(msgin, "tells you: (.*)",
-      "tells you: <underline>\1</underline>", 1);
+         // Put the word HOUSE into lower case.
+         txt = regreplace(txt, "HOUSE",
+                 function string (string s) {return lower_case(s);},
+                 1);
 
-   /* replaces all <underline> html tags by the vt100 escape
-      - sequence for underline.
+HISTORY
+=======
+   - introduced (3.2.1@125)
+   - changed (3.2.9) -- accepts a closure as replacepattern
 
-      >>*<</
-
-   txt = regreplace(txt, "<underline>", "<ESC>[5m", 1);
-
-   /* Put the word HOUSE into lower case. >>*<</ txt = regreplace(txt, 
-   "HOUSE",
-
-      function string (string s) {return lower_case(s);}, 1);
-
-AUTHOR
+LORE
+====
+   Author
       Marcus@TAPPMud contributed the original idea for the efun and the man 
       page.
 
-      See Also: 
-         regexp()(E), regexplode()(E), regmatch()(E), regexp_package()(E),
-
-   sscanf()(E), trim()(E), regexp(C)
+SEE ALSO
+========
+   regexp(E), regexplode(E), regmatch(E), regexp_package(E), sscanf(E), 
+   trim(E), >>:concept:`regexp`<<

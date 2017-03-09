@@ -1,0 +1,675 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>External Request Demon &#8212; LDMud UNRELEASED documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'UNRELEASED',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="files" href="files.html" />
+    <link rel="prev" title="efuns" href="efuns.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="External Request Demon">
+<span id="erq"></span><span id="lpc.topic.External Request Demon"></span><span id="lpc.topic.erq"></span><div class="section" id="TOPIC">
+<h2>TOPIC<a class="headerlink" href="#TOPIC" title="Permalink to this headline">¶</a></h2>
+<div class="container">
+External Request Demon</div>
+</div>
+<div class="section" id="DESCRIPTION">
+<h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Up to version <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;61">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>61</a>, LPMud utilized two external programs in an ad-hoc manner to solve problems: the &#8216;hname&#8217; program to resolve IP addresses into meaningful hostnames, and the &#8216;indent&#8217; program to properly indent LPC files. In version <a class="reference external" href="mailto:3&#46;2&#46;1&#37;&#52;&#48;61">3<span>&#46;</span>2<span>&#46;</span>1<span>&#64;</span>61</a> both functions were united in a generalized &#8216;erq&#8217; process, to which additional functions may be attached. Unfortunately it was never documented by Amylaar, so the information presented here had to be reverse engineered from the sources - better take it with a grain of salt.</p>
+<p>The erq feature is available if the driver is compiled with ERQ_DEMON defined (in config.h).</p>
+<p>When the driver starts up, it tries to fork off the program &#8216;BINDIR/erq &#8211;forked &lt;other args&gt;&#8217; (with BINDIR defined in the Makefile). If this succeeds, the erq may talk with the driver through stdin and stdout (piped through AF_UNIX sockets). The erq has to signal its successfull start by writing the character &#8216;1&#8217; back to the driver.</p>
+<p>The erq has to understand these commandline arguments:</p>
+<dl class="option">
+<dt id="cmdoption-forked">
+<code class="descname">--forked</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-forked" title="Permalink to this definition">¶</a></dt>
+<dd><p>explained above</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-execdir">
+<code class="descname">--execdir</code><code class="descclassname"> &lt;dir&gt;</code><a class="headerlink" href="#cmdoption-execdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The directory where the callable executables can be found. If not specified, ERQ_DIR is used. &lt;dir&gt; must not end in a &#8216;/&#8217; and should be absolute.</p>
+</dd></dl>
+
+<p>At runtime, the erq may be changed/removed from within the mudlib using the efun attach_erq_demon(). This efun is given an interactive object as argument, and takes the connection away(!) from this object and stores it as the erq connection to use (an old erq connection is closed first). The object (which is now no longer is interactive) is then no longer needed, but may continue to exist. The erq attached this way of course has to use the sockets it opened to communicate with the driver.</p>
+<p>Most of the communication between erq and driver is going to be initiated by the driver (the erq has to look up the hostnames for given IP addresses), but using the efun send_erq() the mudlib may talk with the erq as well.</p>
+<p>The communication between driver and erq is done using messages of specified structures and constants (defined in util/erq.h resp. sys/erq.h). The &#8216;int32&#8217;s are signed integers of four byte length, and are sent with the MSByte first. Every message must be sent atomically!</p>
+<p>The head of the messages is always the same:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">erq_msghead</span> <span class="p">{</span>
+  <span class="n">int32</span>  <span class="n">msglen</span><span class="p">;</span>  <span class="cm">/* Total size of message in bytes */</span>
+  <span class="n">int32</span>  <span class="n">handle</span><span class="p">;</span>  <span class="cm">/* Identification number */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The &#8216;handle&#8217; number is set by the driver (do not make assumptions about its value) and is used to associated the erq responses with the pending requests. This way the erq is free to respond in an order different to those of the incoming requests.</p>
+<p>The messages send to the erq follow this symbolic format:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">to_erq_msg</span> <span class="p">{</span>
+  <span class="n">int32</span>  <span class="n">msglen</span><span class="p">;</span>
+  <span class="n">int32</span>  <span class="n">handle</span><span class="p">;</span>
+  <span class="kt">char</span>   <span class="n">request</span><span class="p">;</span>
+  <span class="kt">char</span>   <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The &#8216;request&#8217; denotes which service is requested from the erq, the size and content of &#8216;data&#8217; depends on the requested service.</p>
+<p>The answer message from the erq to the driver (if there is one at all) may have two forms:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">from_erq_msg</span> <span class="p">{</span>
+  <span class="n">int32</span>  <span class="n">msglen</span><span class="p">;</span>
+  <span class="n">int32</span>  <span class="n">handle</span><span class="p">;</span>
+  <span class="kt">char</span>   <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">struct</span> <span class="n">from_erq_keep_msg</span> <span class="p">{</span>
+  <span class="n">int32</span>        <span class="n">msglen</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">int32</span>  <span class="n">keep</span> <span class="o">=</span> <span class="n">ERQ_KEEP_HANDLE</span><span class="p">;</span>
+  <span class="n">int32</span>        <span class="n">handle</span><span class="p">;</span>
+  <span class="kt">char</span>         <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The replied data from the erq is stored in &#8216;data&#8217;, which size and content depends on the request answered. The answer is identified by &#8216;header.handle&#8217;. Normally, one request results in just one response sent by the erq using struct from_erq_msg, so the handle is recycled after this response.</p>
+<p>Shall the erq send several responses (or break one response into several parts), the struct from_erq_keep_msg has to be used for all but the last response - this message with its included special handle keeps the real handle alive.</p>
+<p>Mudlib generated erq-calls specify the &#8216;request&#8217; and the &#8216;data&#8217; to be sent, and receive the &#8216;data&#8217; replied. When dealing with spawned programs, the first byte of the returned &#8216;data&#8217; determines the content type of the received message. The actual &#8216;data&#8217; which the lpc programs get to see is sent and retrieved as arrays of byte integers (integers in the range of 0..255).</p>
+<p>The actual interface between erq demon and driver is limited to the general message formats and the hostname lookup mechanism. The driver is meant to withstand erq demon failures at least in a garbage-in garbage-out fashion. You could add new requests to the erq demon, or write your own from scratch, without changing the driver.</p>
+<p>Currently five services are predefined in the supplied erq-demon (util/erq.c in the driver source archive): looking up a hostname, execution, forking or spawning an external program, authentification of a connection, and handling of external UDP/TCP connections. As mentioned above, only the hostname-lookup is a true must.</p>
+<p>For a program to be executable for erq, it must be placed in or below ERQ_DIR (defined in config.h). On most unix systems, it is possible to use a symlink instead of the whole program if you want a standard binary. You could even symlink entire directories like /usr/sbin, but chances are you make a big security hole this way :-)</p>
+<p>Hostname lookup:</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">request:</th><td class="field-body">ERQ_RLOOKUP</td>
+</tr>
+<tr class="field-even field"><th class="field-name">data sent:</th><td class="field-body">struct in_addr.s_addr addr // the address to resolve</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">data recv:</th><td class="field-body">struct in_addr.s_addr addr // the resolved address
+char[]                name // the hostname (if any)</td>
+</tr>
+</tbody>
+</table>
+<p>If the sent address can&#8217;t be resolved, just the address is to be returned. The string need not be 0-terminated.</p>
+</div></blockquote>
+<p>Hostname lookup:</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">request:</th><td class="field-body">ERQ_LOOKUP</td>
+</tr>
+<tr class="field-even field"><th class="field-name">data sent:</th><td class="field-body">char[]                name // the name to resolve</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">data recv:</th><td class="field-body">struct in_addr.s_addr addr // the resolved address</td>
+</tr>
+</tbody>
+</table>
+<p>If the sent address can&#8217;t be resolved, no data is returned (the driver will get a message with just the header).</p>
+</div></blockquote>
+<p>Hostname lookup - IPv6:</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">request:</th><td class="field-body">ERQ_RLOOKUPV6</td>
+</tr>
+<tr class="field-even field"><th class="field-name">data sent:</th><td class="field-body">char[] addr  // the address to resolve</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">data recv:</th><td class="field-body">char[] data  // the resolved name</td>
+</tr>
+</tbody>
+</table>
+<p>If the address could be resolved, the returned data is a string, with exactly one space, in the form &#8220;&lt;addr&gt; &lt;name&gt;&#8221;. &lt;addr&gt; is the address passed to the erq, &lt;name&gt; is the hostname of the address or, if there is no reverse-IPv6 entry for &lt;addr&gt;, the IPv6 address which may or may not be different from &lt;addr&gt;.</p>
+<p>If the address can not be resolved, the returned data is an error message without a space (currently, just &#8220;invalid-format&#8221; and &#8220;out-of-memory&#8221; are returned).</p>
+</div></blockquote>
+<p>Execute/Fork program:</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">request:</th><td class="field-body"><p class="first">ERQ_EXECUTE/ERQ_FORK</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">data sent:</th><td class="field-body"><p class="first">char[] command  // the command to execute</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">data recv:</th><td class="field-body"><div class="first last highlight-pike"><div class="highlight"><pre><span></span><span class="kt">char</span>   <span class="n">status</span> <span class="o">=</span> <span class="n">CHILD_FREE</span>
+<span class="kt">char</span>   <span class="n">rc</span>       <span class="c1">// the success/error code</span>
+<span class="kt">char</span>   <span class="n">info</span>     <span class="c1">// additional information</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The erq executes the sent command using the execv(). The erq does the processing of the command line arguments (which must not contain &#8216;&#8217;) and checks the validity of the command (it must not start with &#8216;/&#8217; nor contain &#8216;..&#8217;), which is interpreted relative to ERQ_DIR. The external program is executed from a fork()ed instance of the erq, however, with ERQ_EXECUTE the erq waits until the external program finished before replying its response, with ERQ_FORK the response is immediately sent back.</p>
+<dl class="docutils">
+<dt>Possible return codes are:</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ERQ_OK:</th><td class="field-body">Operation succeeded.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ERQ_E_ARGLENGTH:</th><td class="field-body">Too long command.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">ERQ_E_ARGFORMAT:</th><td class="field-body">Illegal argument given (contains &#8216;&#8217;);</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ERQ_E_ARGNUMBER:</th><td class="field-body">Too much arguments (&gt;= 96).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">ERQ_E_ILLEGAL:</th><td class="field-body">Command from outside ERQ_DIR requested.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ERQ_E_PATHLEN:</th><td class="field-body">Commandpath too long.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">ERQ_E_FORKFAIL:</th><td class="field-body">Command could not be forked; info holds the errno value.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<p>ERQ_EXECUTE features some more return codes:</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ERQ_OK:</th><td class="field-body">Operation succeeded, &lt;info&gt; holds the exit status.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ERQ_SIGNALED:</th><td class="field-body">Command terminated the signal &lt;info&gt;.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">ERQ_E_NOTFOUND:</th><td class="field-body">No process found to wait() for.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ERQ_E_UNKNOWN:</th><td class="field-body">Unknown exit condition from wait().</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+<p>Spawn program:</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">request:</th><td class="field-body">ERQ_SPAWN</td>
+</tr>
+<tr class="field-even field"><th class="field-name">data sent:</th><td class="field-body">char[] command  // the command to execute</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">data recv:</th><td class="field-body">Spawn failed:
+char   rc       // the error code (see ERQ_FORK)
+char   info     // additional information</td>
+</tr>
+<tr class="field-even field"><th class="field-name">data recv:</th><td class="field-body">Spawn succeeded:
+char   rc = ERQ_OK
+char[] ticket        // the spawn ticket.</td>
+</tr>
+</tbody>
+</table>
+<p>The erq executes the sent command as if given an ERQ_FORK command, but returns additional information about the started process to allow further communication. In contrast to ERQ_FORK, ERQ_SPAWNED processes may be controlled via ERQ_KILL, receive data from the mud via ERQ_SEND on their stdin, and output from their stdout/stderr is sent back to the mud. The spawned process is identified by its &lt;ticket&gt; (don&#8217;t make any assumptions about its length or content), the transaction itself by &lt;handle&gt;.</p>
+</div></blockquote>
+<p>Send data to spawned program:</p>
+<blockquote>
+<div><blockquote>
+<div><p>request: ERQ_SEND
+data sent: char[]  ticket // the addressed process ticket.</p>
+<blockquote>
+<div>char[]  text   // the text to send.</div></blockquote>
+<dl class="docutils">
+<dt>data recv: char    rc     // the success/error code.</dt>
+<dd>int32   info   // opt: additional info.</dd>
+</dl>
+<p>The &lt;text&gt; is sent to the stdin of the spawned process
+identified by &lt;ticket&gt;.</p>
+<dl class="docutils">
+<dt>Possible return codes are:</dt>
+<dd><p class="first">ERQ_OK          : Operation succeeded, no &lt;info&gt; is replied.
+ERQ_E_TICKET    : The given ticket is invalid, no &lt;info&gt; replied.
+ERQ_E_INCOMPLETE: Only &lt;info&gt; chars of the text have been</p>
+<blockquote>
+<div>sent.
+If a callback is specified, the erq will send
+a ERQ_OK message once all data has been sent
+(this may never happen).</div></blockquote>
+<dl class="last docutils">
+<dt>ERQ_E_WOULDBLOCK: Error E_WOULDBLOCK (also stored in &lt;info&gt;)</dt>
+<dd>happened while sending the text.</dd>
+<dt>ERQ_E_PIPE <span class="classifier-delimiter">:</span> <span class="classifier">Error E_PIPE (also stored in &lt;info&gt;)</span></dt>
+<dd>happened while sending the text.</dd>
+<dt>ERQ_E_UNKNOWN <span class="classifier-delimiter">:</span> <span class="classifier">The error with code &lt;info&gt; happened</span></dt>
+<dd>while sending the data.</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<p>Amylaar-erq doesn&#8217;t try to re-send the remaining data after a ERQ_E_INCOMPLETE, so there will never be an ERQ_OK.</p>
+</div></blockquote>
+<p>Send a signal to a spawned program:</p>
+<blockquote>
+<div><p>request: ERQ_KILL
+data sent: char[]  ticket // the addressed process ticket</p>
+<blockquote>
+<div>int32   signal // the signal to send</div></blockquote>
+<p>data recv: char    rc     // the success/error code</p>
+<p>The &lt;signal&gt; is sent to the spawned process identified by &lt;ticket&gt;.</p>
+<dl class="docutils">
+<dt>Possible return codes are:</dt>
+<dd>ERQ_OK          : Operation succeeded, no &lt;info&gt; is replied.
+ERQ_E_TICKET    : The given ticket is invalid, no &lt;info&gt; replied.
+ERQ_E_ILLEGAL   : The given signal is illegal.</dd>
+</dl>
+</div></blockquote>
+<p>Data replies from spawned programs:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>data recv: char   out_or_err  // type of text output</dt>
+<dd>char[] text        // text output by child process</dd>
+</dl>
+<p>The child process controlled by the erq did output &lt;text&gt; on stdout (&lt;out_or_err&gt; == ERQ_STDOUT) resp. on stderr (&lt;out_or_err&gt; == ERQ_STDERR).</p>
+</div></blockquote>
+<p>Exit notifications from spawned programs:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>data recv: char   rc          // the exit code</dt>
+<dd>char   info        // additional information.</dd>
+</dl>
+<p>The child process controlled by the erq did terminate.</p>
+<dl class="docutils">
+<dt>Possible exit codes are:</dt>
+<dd>ERQ_EXITED    : Process exited with status &lt;info&gt;.
+ERQ_SIGNALED  : Process terminated by signal &lt;info&gt;.
+ERQ_E_UNKNOWN : Process terminated for unknown reason.</dd>
+</dl>
+</div></blockquote>
+<p>Authenticate connection (see rfc 931):</p>
+<blockquote>
+<div><p>request  : ERQ_AUTH
+data sent: struct sockaddr_in remote // the address to check</p>
+<blockquote>
+<div><blockquote>
+<div>int32              port   // the mud port</div></blockquote>
+<p>or</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>data sent: int32  remote_ip    // remote ip to check</dt>
+<dd>int16  remote_port  // remote port to check
+int16  local_port   // the mud port</dd>
+</dl>
+<p>data recv: char[]             reply  // the data received by authd</p>
+<p>The erq attempts to connect the authd on the remote system and to verify the connection between the remote port and the mud port. The latter will normally be the port number of the socket on besides of the gamedriver, retrievable by query_ip_number().</p>
+<p>The answer from the authd (one line of text) if there is any is returned as result.</p>
+<p>The second form of the ERQ_AUTH command is recognized by the xerq as alternative.</p>
+</div></blockquote>
+<p>Open an UDP port:</p>
+<blockquote>
+<div><p>request  : ERQ_OPEN_UDP
+data sent: char[2] port   // the port number to open (network order)
+data recv: Open failed:</p>
+<blockquote>
+<div>char    rc     // the success/error code.
+char    info   // opt: additional info.</div></blockquote>
+<dl class="docutils">
+<dt>data recv: Open succeeded:</dt>
+<dd>char   rc = ERQ_OK
+char[] ticket  // the connection ticket.</dd>
+</dl>
+<p>The erq opens an UDP-port on the host machine with the given port number.</p>
+<dl class="docutils">
+<dt>Possible exit codes are:</dt>
+<dd><p class="first">ERQ_OK          : Operation succeeded.
+ERQ_E_ARGLENGTH : The port number given does not consist</p>
+<blockquote>
+<div>of two bytes.</div></blockquote>
+<dl class="last docutils">
+<dt>ERQ_E_NSLOTS <span class="classifier-delimiter">:</span> <span class="classifier">The max number of child processes (given</span></dt>
+<dd>in &lt;info&gt;) is exhausted.</dd>
+<dt>ERQ_E_UNKNOWN <span class="classifier-delimiter">:</span> <span class="classifier">Error &lt;info&gt; occured in one of the system</span></dt>
+<dd>calls done to open the port.</dd>
+</dl>
+</dd>
+</dl>
+<p>Once the port is open, it is treated as if is just another spawned program.</p>
+</div></blockquote>
+<p>Send data over an UDP port:</p>
+<blockquote>
+<div><p>request  : ERQ_SEND
+data sent: char[]                ticket // the addressed port&#8217;s ticket.</p>
+<blockquote>
+<div>struct in_addr.s_addr addr   // address of receiver.
+struct addr.sin_port  port   // port of receiver.
+char[]                text   // the text to send.</div></blockquote>
+<dl class="docutils">
+<dt>data recv: char   rc     // the success/error code.</dt>
+<dd>int32  info   // opt: additional info.</dd>
+</dl>
+<p>The &lt;text&gt; is sent from our port &lt;ticket&gt; to the network address &lt;addr&gt;, port &lt;port&gt;.</p>
+<dl class="docutils">
+<dt>Possible return codes are:</dt>
+<dd><p class="first">ERQ_OK          : Operation succeeded, no &lt;info&gt; is replied.
+ERQ_E_TICKET    : The given ticket is invalid, no &lt;info&gt; replied.
+ERQ_E_INCOMPLETE: Only &lt;info&gt; chars of the text have been</p>
+<blockquote>
+<div>sent. The erq will send a ERQ_OK message
+once all data has been sent.</div></blockquote>
+<dl class="last docutils">
+<dt>ERQ_E_WOULDBLOCK: Error E_WOULDBLOCK (also stored in &lt;info&gt;)</dt>
+<dd>happened while sending the text.</dd>
+<dt>ERQ_E_PIPE <span class="classifier-delimiter">:</span> <span class="classifier">Error E_PIPE (also stored in &lt;info&gt;)</span></dt>
+<dd>happened while sending the text.</dd>
+<dt>ERQ_E_UNKNOWN <span class="classifier-delimiter">:</span> <span class="classifier">The error with code &lt;info&gt; happened</span></dt>
+<dd>while sending the data.</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<p>Close an UDP port:</p>
+<blockquote>
+<div><p>request  : ERQ_KILL
+data sent: char[]  ticket // the addressed port&#8217;s ticket</p>
+<blockquote>
+<div>int32   signal // the signal to send (ignored)</div></blockquote>
+<p>data recv: char    rc = ERQ_OK</p>
+<p>The port &lt;ticket&gt; is closed. The &lt;signal&gt; must be sent, but its value is ignored.</p>
+</div></blockquote>
+<p>Data received over an UDP connection:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>data recv: char                  out_or_err = ERQ_STDOUT</dt>
+<dd>struct in_addr.s_addr addr    // ip-address of sender
+struct addr.sin_port  port    // port of sender
+char[]                text    // data received</dd>
+</dl>
+<p>The UPD port controlled by the erq did receive &lt;text&gt; over the network from the sender at &lt;addr&gt;, reply port number &lt;port&gt;.</p>
+</div></blockquote>
+<p>Open a TCP port to listen for connections:</p>
+<blockquote>
+<div><p>request  : ERQ_LISTEN
+data sent: struct addr.sin_port port   // the port number to open
+data recv: Open failed:</p>
+<blockquote>
+<div>char    rc     // the success/error code.
+char    info   // opt: additional info.</div></blockquote>
+<dl class="docutils">
+<dt>data recv: Open succeeded:</dt>
+<dd>char   rc = ERQ_OK
+char[] ticket  // the connection ticket.</dd>
+</dl>
+<p>The erq opens a TCP-port on the host machine with the given
+port number to listen for connections.</p>
+<dl class="docutils">
+<dt>Possible exit codes are:</dt>
+<dd><p class="first">ERQ_OK          : Operation succeeded.
+ERQ_E_ARGLENGTH : The port number given does not consist</p>
+<blockquote>
+<div>of two bytes.</div></blockquote>
+<dl class="last docutils">
+<dt>ERQ_E_NSLOTS <span class="classifier-delimiter">:</span> <span class="classifier">The max number of child processes (given</span></dt>
+<dd>in &lt;info&gt;) is exhausted.</dd>
+<dt>ERQ_E_UNKNOWN <span class="classifier-delimiter">:</span> <span class="classifier">Error &lt;info&gt; occured in one of the system</span></dt>
+<dd>calls done to open the port.</dd>
+</dl>
+</dd>
+</dl>
+<p>Once the port is open, it is treated as if is just another spawned program.</p>
+</div></blockquote>
+<p>Open a TCP port:</p>
+<blockquote>
+<div><p>request  : ERQ_OPEN_TCP
+data sent: struct in_addr.s_addr ip   // the ip to address</p>
+<blockquote>
+<div>struct addr.sin_port  port // the port to address</div></blockquote>
+<dl class="docutils">
+<dt>data recv: Open failed:</dt>
+<dd>char    rc     // the success/error code.
+char    info   // opt: additional info.</dd>
+<dt>data recv: Open succeeded:</dt>
+<dd>char   rc = ERQ_OK
+char[] ticket  // the connection ticket.</dd>
+</dl>
+<p>The erq opens a TCP-port on the host machine and tries to connect it to the address &lt;ip&gt;:&lt;port&gt;.</p>
+<dl class="docutils">
+<dt>Possible exit codes are:</dt>
+<dd><p class="first">ERQ_OK          : Operation succeeded.
+ERQ_E_ARGLENGTH : The port number given does not consist</p>
+<blockquote>
+<div>of two bytes.</div></blockquote>
+<dl class="last docutils">
+<dt>ERQ_E_NSLOTS <span class="classifier-delimiter">:</span> <span class="classifier">The max number of child processes (given</span></dt>
+<dd>in &lt;info&gt;) is exhausted.</dd>
+<dt>ERQ_E_UNKNOWN <span class="classifier-delimiter">:</span> <span class="classifier">Error &lt;info&gt; occured in one of the system</span></dt>
+<dd>calls done to open the port.</dd>
+</dl>
+</dd>
+</dl>
+<p>Once the port is open, it is treated as if is just another spawned program.</p>
+</div></blockquote>
+<p>Send data over a TCP connection:</p>
+<blockquote>
+<div><p>request  : ERQ_SEND
+data sent: char[]  ticket // the addressed process ticket.</p>
+<blockquote>
+<div>char[]  text   // the text to send.</div></blockquote>
+<dl class="docutils">
+<dt>data recv: char    rc     // the success/error code.</dt>
+<dd>int32   info   // opt: additional info.</dd>
+</dl>
+<p>The &lt;text&gt; is sent to the stdin of the spawned process identified by &lt;ticket&gt;.</p>
+<dl class="docutils">
+<dt>Possible return codes are:</dt>
+<dd><p class="first">ERQ_OK          : Operation succeeded, no &lt;info&gt; is replied.
+ERQ_E_TICKET    : The given ticket is invalid, no &lt;info&gt; replied.
+ERQ_E_INCOMPLETE: Only &lt;info&gt; chars of the text have been</p>
+<blockquote>
+<div>sent. The erq will send a ERQ_OK message
+once all data has been sent.</div></blockquote>
+<dl class="last docutils">
+<dt>ERQ_E_WOULDBLOCK: Error E_WOULDBLOCK (also stored in &lt;info&gt;)</dt>
+<dd>happened while sending the text.</dd>
+<dt>ERQ_E_PIPE <span class="classifier-delimiter">:</span> <span class="classifier">Error E_PIPE (also stored in &lt;info&gt;)</span></dt>
+<dd>happened while sending the text.</dd>
+<dt>ERQ_E_UNKNOWN <span class="classifier-delimiter">:</span> <span class="classifier">The error with code &lt;info&gt; happened</span></dt>
+<dd>while sending the data.</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<p>Data ready to read on TCP connection:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>data recv: char    out_or_err = ERQ_OK</dt>
+<dd>char[]  ticket  // ticket of this connection</dd>
+</dl>
+<p>There is data available to read on the specified TCP connection.</p>
+</div></blockquote>
+<p>Data received over a TCP connection:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>data recv: char    out_or_err = ERQ_STDOUT</dt>
+<dd>char[]  text    // data received</dd>
+</dl>
+<p>The TCP port controlled by the erq did receive &lt;text&gt;.</p>
+</div></blockquote>
+<p>TCP connection closes on error:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>data recv: char    out_or_err = ERQ_E_UNKNOWN</dt>
+<dd>char    errno   // errno from socket operation</dd>
+</dl>
+<p>The TCP connection caused an error &lt;errno&gt; and has been closed.</p>
+</div></blockquote>
+<p>TCP connection closed:</p>
+<blockquote>
+<div><p>data recv: char    out_or_err = ERQ_EXITED</p>
+<p>The TCP connection closed regularily (End Of File).</p>
+</div></blockquote>
+<p>Connection pending on TCP socket:</p>
+<blockquote>
+<div><p>data recv: char    out_or_err = ERQ_STDOUT</p>
+<p>The TCP &#8216;listen&#8217; port controlled by the erq received a connection request.</p>
+</div></blockquote>
+<p>Accept a pending connections:</p>
+<blockquote>
+<div><p>request  : ERQ_ACCEPT
+data sent: char[]  ticket // the ticket of this socket
+data recv: Accept failed:</p>
+<blockquote>
+<div>char    rc     // the success/error code.
+char    info   // opt: additional info.</div></blockquote>
+<dl class="docutils">
+<dt>data recv: Accept succeeded:</dt>
+<dd>char    rc = ERQ_OK
+struct in_addr.s_addr ip    // remote side&#8217;s ip
+struct addr.sin_port  port  // remote side&#8217;s port
+char[]                ticket  // the new ticket.</dd>
+</dl>
+<p>The erq accepts a new connection on an accept-TCP-port, creates a child and ticket for it, and returns its ticket together with the remote&#8217;s side &lt;ip&gt;:&lt;port&gt; number (in network byte order).</p>
+<dl class="docutils">
+<dt>Possible exit codes are:</dt>
+<dd><p class="first">ERQ_OK          : Operation succeeded.
+ERQ_E_ARGLENGTH : The port number given does not consist</p>
+<blockquote>
+<div>of two bytes.</div></blockquote>
+<dl class="docutils">
+<dt>ERQ_E_NSLOTS <span class="classifier-delimiter">:</span> <span class="classifier">The max number of child processes (given</span></dt>
+<dd>in &lt;info&gt;) is exhausted.</dd>
+</dl>
+<p>ERQ_E_TICKET    : the ticket didn&#8217;t match
+ERQ_E_UNKNOWN   : Error &lt;info&gt; occured in one of the system</p>
+<blockquote class="last">
+<div>calls done to open the port.</div></blockquote>
+</dd>
+</dl>
+<p>Once the port is open, it is treated as if it is just another spawned program.</p>
+</div></blockquote>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p>Assume you have a script &#8216;welcome-mail&#8217; to send a welcome mail to a new player. Put this script into the directory for the callable executables, then you can use it like this:</p>
+<div class="highlight-pike"><div class="highlight"><pre><span></span>void erq_response(mixed * data)
+{
+    write_file( &quot;WELCOMELOG&quot;
+              , sprintf(&quot;rc %d, info %d\n&quot;, data[0], data[1]));
+}
+
+void send_mail(string player_name, string player_email)
+{
+    send_erq( ERQ_EXECUTE
+            , &quot;welcome-mail &#39;&quot;+player_name+&quot;&#39; &#39;&quot;+player_email+&quot;&#39;&quot;
+            , #&#39;erq_response);
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>introduced</strong> (<em>3.2.1&#64;61</em>)</li>
+<li><strong>changed</strong> (<em>3.2.1&#64;81</em>) &#8211; added ERQ_AUTH</li>
+<li><strong>changed</strong> (<em>3.2.1&#64;82</em>) &#8211; added ERQ_SEND, ERQ_SPAWN, ERQ_KILL</li>
+<li><strong>changed</strong> (<em>3.2.1&#64;98</em>) &#8211; added ERQ_OPEN_UDP, ERQ_OPEN_TCP, ERQ_LIST</li>
+<li><strong>changed</strong> (<em>3.2.8</em>) &#8211; added ERQ_RLOOKUPV6</li>
+<li><strong>changed</strong> (<em>3.2.9</em>) &#8211; added the &#8216;&#8211;execdir&#8217; argument to erq, and the ERQ_OK after ERQ_E_INCOMPLETE protocol.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../efun/attach_erq_demon.html#lpc.efun.attach_erq_demon" title="attach_erq_demon"><code class="xref lpc lpc-efun docutils literal"><span class="pre">attach_erq_demon</span></code>(E)</a>, <a class="reference internal" href="../efun/send_erq.html#lpc.efun.send_erq" title="send_erq"><code class="xref lpc lpc-efun docutils literal"><span class="pre">send_erq</span></code>(E)</a>, <a class="reference internal" href="../master/stale_erq.html#lpc.master.stale_erq" title="stale_erq"><code class="xref lpc lpc-master docutils literal"><span class="pre">stale_erq</span></code>(M)</a>, :rfc:` 931`, <a class="reference internal" href="../efun/query_ip_number.html#lpc.efun.query_ip_number" title="query_ip_number"><code class="xref lpc lpc-efun docutils literal"><span class="pre">query_ip_number</span></code>(E)</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">External Request Demon</a><ul>
+<li><a class="reference internal" href="#TOPIC">TOPIC</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../efun/overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">Other topics</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;good question.
+      
+      |
+      <a href="../_sources/topics/erq.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

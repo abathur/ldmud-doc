@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::rename() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::rename() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::rename_object()" href="rename_object.html" />
     <link rel="prev" title="efun::remove_interactive()" href="remove_interactive.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,43 +47,29 @@
 <div class="section" id="SYNOPSIS">
 <span id="rename"></span><h2>SYNOPSIS<a class="headerlink" href="#SYNOPSIS" title="Permalink to this headline">¶</a></h2>
 <table class="function" style="border-spacing:0;">
-<tr id="lpc.rename">
-<td>
-<a class="reference internal" href="../LPC/int.html#lpc.int" title="int">int</a> </td><td>
-<code class="descname">rename</code></td><td><span class="sig-paren">(</span></td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;from</em>, </td><td>
-<a class="reference internal" href="../LPC/string.html#lpc.string" title="string">string</a><em>&nbsp;to</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.rename" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.rename">
+<!--[lpc.efun.rename]--><td>
+<a class="reference internal" href="../syntax/int.html#lpc.type.int" title="int">int</a> </td><td>
+<code class="descname">rename</code></td><td><span class="sig-paren">(</span></td><td id="id1">
+string<em>&nbsp;from</em>, </td><td id="id2">
+string<em>&nbsp;to</em></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.rename" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
+<p>Moves <a class="reference internal" href="#efun/rename.arg.from" title="from"><code class="xref lpc lpc-arg docutils literal"><span class="pre">from</span></code></a> to the new name <a class="reference internal" href="#efun/rename.arg.to" title="to"><code class="xref lpc lpc-arg docutils literal"><span class="pre">to</span></code></a>. If <a class="reference internal" href="#efun/rename.arg.from" title="from"><code class="xref lpc lpc-arg docutils literal"><span class="pre">from</span></code></a> is a file, then <a class="reference internal" href="#efun/rename.arg.to" title="to"><code class="xref lpc lpc-arg docutils literal"><span class="pre">to</span></code></a> may be either a file or a directory. If <a class="reference internal" href="#efun/rename.arg.from" title="from"><code class="xref lpc lpc-arg docutils literal"><span class="pre">from</span></code></a> is a directory, then <a class="reference internal" href="#efun/rename.arg.to" title="to"><code class="xref lpc lpc-arg docutils literal"><span class="pre">to</span></code></a> has to be a directory. If <a class="reference internal" href="#efun/rename.arg.to" title="to"><code class="xref lpc lpc-arg docutils literal"><span class="pre">to</span></code></a> exists and is a directory, then <a class="reference internal" href="#efun/rename.arg.from" title="from"><code class="xref lpc lpc-arg docutils literal"><span class="pre">from</span></code></a> will be placed in that directory and keep its original name.</p>
+<p>You must have write permission for <a class="reference internal" href="#efun/rename.arg.from" title="from"><code class="xref lpc lpc-arg docutils literal"><span class="pre">from</span></code></a> to rename the file.</p>
+<p>It is only possible to change name of a directory within a directory on machines running System V, i.e. it is not possible to move to another directory. It is not possible to move a directory across filesystems on any system.</p>
+<p>On successfull completion <a class="reference internal" href="#lpc.efun.rename" title="rename"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rename</span></code>(E)</a> will return 0. If any error occurs, a non-zero value is returned.</p>
+<div class="section" id="USAGE">
+<h3>USAGE<a class="headerlink" href="#USAGE" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">rename(&quot;/players/wizard/obj.c&quot;,</span> <span class="pre">&quot;/players/wizard/newobj.c&quot;);</span></code></p>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="copy_file.html#lpc.efun.copy_file" title="copy_file"><code class="xref lpc lpc-efun docutils literal"><span class="pre">copy_file</span></code>(E)</a>, <a class="reference internal" href="mkdir.html#lpc.efun.mkdir" title="mkdir"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mkdir</span></code>(E)</a>, <a class="reference internal" href="rmdir.html#lpc.efun.rmdir" title="rmdir"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rmdir</span></code>(E)</a>, <a class="reference internal" href="rm.html#lpc.efun.rm" title="rm"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rm</span></code>(E)</a></p>
 </div>
 </div>
-<p>The efun rename() will move from to the new name to. If from
-is a file, then to may be either a file or a directory. If
-from is a directory, then to has to be a directory. If to
-exists and is a directory, then from will be placed in that
-directory and keep its original name.</p>
-<p>You must have write permission for from to rename the file.</p>
-<p>It is only possible to change name of a directory within a
-directory on machines running System V, i.e. it is not
-possible to move to another directory. It is not possible to
-move a directory across filesystems on any system.</p>
-<p>On successfull completion rename() will return 0. If any error
-occurs, a non-zero value is returned.</p>
-<dl class="docutils">
-<dt>EXAMPLES</dt>
-<dd><blockquote class="first">
-<div>rename(&#8220;/players/wizard/obj.c&#8221;, &#8220;/players/wizard/newobj.c&#8221;);</div></blockquote>
-<table class="last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">See Also:</th><td class="field-body"><a class="reference internal" href="copy_file.html#lpc.copy_file" title="copy_file"><code class="xref lpc lpc-efun docutils literal"><span class="pre">copy_file()</span></code>(E)</a>, <a class="reference internal" href="mkdir.html#lpc.mkdir" title="mkdir"><code class="xref lpc lpc-efun docutils literal"><span class="pre">mkdir()</span></code>(E)</a>, <a class="reference internal" href="rmdir.html#lpc.rmdir" title="rmdir"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rmdir()</span></code>(E)</a>, <a class="reference internal" href="rm.html#lpc.rm" title="rm"><code class="xref lpc lpc-efun docutils literal"><span class="pre">rm()</span></code>(E)</a></td>
-</tr>
-</tbody>
-</table>
-</dd>
-</dl>
+</div>
 
 
           </div>
@@ -92,8 +80,8 @@ occurs, a non-zero value is returned.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -103,21 +91,24 @@ occurs, a non-zero value is returned.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::rename()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#USAGE">USAGE</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -129,7 +120,7 @@ occurs, a non-zero value is returned.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/rename.txt"
+      <a href="../_sources/efun/rename.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

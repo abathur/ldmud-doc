@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>efun::wizlist_info() &mdash; LDMud UNRELEASED documentation</title>
+    <title>efun::wizlist_info() &#8212; LDMud UNRELEASED documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +18,15 @@
         VERSION:     'UNRELEASED',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="LDMud UNRELEASED documentation" href="../index.html" />
-    <link rel="up" title="efun" href="efun.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="efun::write()" href="write.html" />
     <link rel="prev" title="efun::widthof()" href="widthof.html" />
    
@@ -33,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -47,34 +49,41 @@
 <table class="function" style="border-spacing:0;">
 <tr>
 #include &lt;wizlist.h&gt;</tr>
-<tr id="lpc.wizlist_info">
-<td>
-<a class="reference internal" href="../LPC/mixed.html#lpc.mixed" title="mixed">mixed</a> * </td><td>
-<code class="descname">wizlist_info</code></td><a class="headerlink" href="#lpc.wizlist_info" title="Permalink to this definition">¶</a></tr>
+<tr id="lpc.efun.wizlist_info">
+<!--[lpc.efun.wizlist_info]--><td>
+<a class="reference internal" href="../syntax/mixed.html#lpc.type.mixed" title="mixed">mixed</a> * </td><td>
+<code class="descname">wizlist_info</code></td><td><span class="sig-paren">(</span></td><td colspan="1000" style="border:0;padding:0;margin:0;text-align:right;"><span class="sig-paren">)</span></td><a class="headerlink" href="#lpc.efun.wizlist_info" title="Permalink to this definition">¶</a></tr>
 </table></div>
 <div class="section" id="DESCRIPTION">
 <h2>DESCRIPTION<a class="headerlink" href="#DESCRIPTION" title="Permalink to this headline">¶</a></h2>
-<p>Returns an array with the interesting entries of the wizlist.
-Needs to be privileged by the master object.</p>
-<p>The result is an array with one entry for every wizard (uid).
-Every entry is an array itself:</p>
+<p>Returns an array with the interesting entries of the wizlist. Needs to be privileged by the master object.</p>
+<p>The result is an array with one entry for every wizard (uid). Every entry is an array itself:</p>
 <blockquote>
-<div><p>string w[WL_NAME]           = Name of the wizard.
-int    w[WL_COMMANDS]       = Weighted number of commands execute by</p>
-<blockquote>
-<div>objects of this wizard.</div></blockquote>
-<p>int    w[WL_COST]
-int    w[WL_GIGACOST]       = Weighted sum of eval_costs.
-int    w[WL_TOTAL_COST]
-int    w[WL_TOTAL_GIGACOST] = Total sum of eval_costs.
-int    w[WL_HEART_BEATS]    = Weighted count of heart_beats.
-int    w[WL_CALL_OUT]       = Reserved for call_out() (unused yet).
-int    w[WL_ARRAY_TOTAL]    = Total size of arrays in elements.
-int    w[WL_MAPPING_TOTAL]  = Total size of mappings in elements.
-int    w[WL_STRUCT_TOTAL]   = Total size of structs in elements.
-mixed  w[WL_EXTRA]          = Extra wizlist-info if set.</p>
-</div></blockquote>
+<div>string w[<code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_NAME</span></code>]           = Name of the wizard.
+int    w[<code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_COMMANDS</span></code>]       = Weighted number of commands execute by objects of this wizard.
+int    w[<code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_COST</span></code>]
+int    w[<code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_GIGACOST</span></code>]       = Weighted sum of eval_costs.
+int    w[<code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_TOTAL_COST</span></code>]
+int    w[<code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_TOTAL_GIGACOST</span></code>] = Total sum of eval_costs.
+int    w[<code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_HEART_BEATS</span></code>]    = Weighted count of heart_beats.
+int    w[<code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_CALL_OUT</span></code>]       = Reserved for <a class="reference internal" href="call_out.html#lpc.efun.call_out" title="call_out"><code class="xref lpc lpc-efun docutils literal"><span class="pre">call_out</span></code>(E)</a> (unused yet).
+int    w[<code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_ARRAY_TOTAL</span></code>]    = Total size of arrays in elements.
+int    w[<code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_MAPPING_TOTAL</span></code>]  = Total size of mappings in elements.
+int    w[<code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_STRUCT_TOTAL</span></code>]   = Total size of structs in elements.
+mixed  w[<code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_EXTRA</span></code>]          = Extra wizlist-info if set.</div></blockquote>
 <p>The &#8216;weighted&#8217; entries decay every hour by 10%.</p>
+<div class="section" id="HISTORY">
+<h2>HISTORY<a class="headerlink" href="#HISTORY" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><strong>changed</strong> (<em>3.2.10</em>) &#8211; split the old <code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_EVAL_COST</span></code> into <code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_COST</span></code> and <code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_GIGACOST</span></code> to accomodate for longer uptimes, and introduced <code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_TOTAL_COST</span></code>/<code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_TOTAL_GIGACOST</span></code>.</li>
+<li><strong>changed</strong> (<em>3.3.174</em>) &#8211; added <code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_MAPPING_TOTAL</span></code>.</li>
+<li><strong>changed</strong> (<em>3.3.?</em>) &#8211; added <code class="xref lpc lpc-macro docutils literal"><span class="pre">WL_STRUCT_TOTAL</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="see2also">
+<h2>SEE ALSO<a class="headerlink" href="#see2also" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../master/privilege_violation.html#lpc.master.privilege_violation" title="privilege_violation"><code class="xref lpc lpc-master docutils literal"><span class="pre">privilege_violation</span></code>(M)</a>, <a class="reference internal" href="set_extra_wizinfo_size.html#lpc.efun.set_extra_wizinfo_size" title="set_extra_wizinfo_size"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_extra_wizinfo_size</span></code>(E)</a>, <a class="reference internal" href="get_extra_wizinfo.html#lpc.efun.get_extra_wizinfo" title="get_extra_wizinfo"><code class="xref lpc lpc-efun docutils literal"><span class="pre">get_extra_wizinfo</span></code>(E)</a>, <a class="reference internal" href="set_extra_wizinfo.html#lpc.efun.set_extra_wizinfo" title="set_extra_wizinfo"><code class="xref lpc lpc-efun docutils literal"><span class="pre">set_extra_wizinfo</span></code>(E)</a></p>
+</div>
 </div>
 </div>
 
@@ -87,8 +96,8 @@ mixed  w[WL_EXTRA]          = Extra wizlist-info if set.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -98,21 +107,24 @@ mixed  w[WL_EXTRA]          = Extra wizlist-info if set.</p>
   <ul>
 <li><a class="reference internal" href="#">efun::wizlist_info()</a><ul>
 <li><a class="reference internal" href="#SYNOPSIS">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#DESCRIPTION">DESCRIPTION</a><ul>
+<li><a class="reference internal" href="#HISTORY">HISTORY</a></li>
+<li><a class="reference internal" href="#see2also">SEE ALSO</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../applied/applied.html">applied</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/concepts.html">concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../driver/driver.html">driver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="efun.html">efun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hook/hook.html">hook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals/internals.html">internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../master/master.html">master</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../obsolete/obsolete.html">obsolete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LPC/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../admin/overview.html">Administrating an ldmud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied/overview.html">Driver-applied methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="overview.html">External functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hook/overview.html">Driver-supported hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals/overview.html">Driver-internal docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../master/overview.html">Master-object methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syntax/overview.html">LPC syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/overview.html">Other topics</a></li>
 </ul>
 
 
@@ -124,7 +136,7 @@ mixed  w[WL_EXTRA]          = Extra wizlist-info if set.</p>
       &copy;good question.
       
       |
-      <a href="../_sources/efun/wizlist_info.txt"
+      <a href="../_sources/efun/wizlist_info.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

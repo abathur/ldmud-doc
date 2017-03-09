@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tsunami: efun/restore_object.c Source File</title>
+<title>LDMud: efun/restore_object.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Tsunami
+   <div id="projectname">LDMud
    </div>
   </td>
  </tr>
@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -85,7 +84,7 @@ $(document).ready(function(){initNavTree('restore__object_8c_source.html','');})
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,55 +100,40 @@ $(document).ready(function(){initNavTree('restore__object_8c_source.html','');})
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classefun.html">efun</a> {<span class="comment"></span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">   /**</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * @synopsis{</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * int restore_object(string name)</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * int restore_object(string str)</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * }</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * </span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">   **/</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classefun.html#afb378a5ffc2d2142a7bf9cae11a04203">restore_object</a>(string str);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;Restore values of variables <span class="keywordflow">for</span> current <span class="keywordtype">object</span> from the file &lt;name&gt;,</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;or directly from the string &lt;str&gt;.</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;To restore directly from a string &lt;str&gt;, the <span class="keywordtype">string</span> must begin</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;with the typical line <span class="stringliteral">&quot;#x:y&quot;</span> as it is created by the save_object()</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<a class="code" href="classefun.html">efun</a>.</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;When restoring from a file, the name may end in &quot;.c&quot; which is stripped</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;off by the parser. The <a class="code" href="classmaster.html">master</a> <span class="keywordtype">object</span> will probably append a .o to the</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;&lt;name&gt;. The validity of the filename is checked with a call to</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;check_valid_path().</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;Return 1 on success, 0 if there was nothing to restore.</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;Variables that has the type modifer &#39;nosave&#39; will not be restored.</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;Example: nosave <span class="keywordtype">int</span> xxx;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;Lfun, variable and simul_efun closures are restored only if they</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;can be found (this excludes closures of private lfuns as well) - if</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;not, they are restored as value &#39;0&#39;.</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;If inheritance is used, then it might be possible that a</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;variable will exist with the same name in more than one place,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;and thus appear in the  save file multiple times. When</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;restoring, the variables are restored in the order they are</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;found in the inheritance tree.  A good practice is to have</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;verbose and unique name on non-static variables, which also</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;will make it more easy to read or patch the save file</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;manually.</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;Restoring directly from a <span class="keywordtype">string</span> was added in LDMud 3.2.8 and</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;may be moved in future into a separate <a class="code" href="classefun.html">efun</a>.</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;LDMud 3.2.9 added the restoring of non-lambda closures, symbols,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;and quoted arrays, using a new savefile format version.</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;LDMud 3.5.0 added the possibility to restore version 2 with its higher</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">float</span> precision.</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;   See Also: </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      <a class="code" href="classefun.html">efun</a>::save_object(), <a class="code" href="classefun.html">efun</a>::restore_value(), <a class="code" href="classmaster.html">master</a>::valid_read()</div>
-<div class="ttc" id="classefun_html_afb378a5ffc2d2142a7bf9cae11a04203"><div class="ttname"><a href="classefun.html#afb378a5ffc2d2142a7bf9cae11a04203">efun.restore_object</a></div><div class="ttdeci">int restore_object(string str)</div></div>
-<div class="ttc" id="classmaster_html"><div class="ttname"><a href="classmaster.html">master</a></div><div class="ttdef"><b>Definition:</b> <a href="compile__object_8c_source.html#l00001">compile_object.c:1</a></div></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    * Restore values of variables for current object from the file \p name, or directly from the string \p str.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    * To restore directly from a string \p str, the string must begin with the typical line `#x:y` as it is created by efun::save_object().</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    * When restoring from a file, the name may end in `.c` which is stripped off by the parser. The master object will probably append a `.o` to the \p name. The validity of the filename is checked with a call to `check_valid_path`.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    * Return 1 on success, 0 if there was nothing to restore.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    * Variables with &gt;&gt;:modifer:`nosave`&lt;&lt; will not be restored:</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    * ~~~{.c}</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    * ``nosave int xxx;``</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    * ~~~</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    * Lfun, variable and simul_efun closures are restored only if they can be found (this excludes closures of private lfuns as well) - if not, they are restored as value `0`.</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    * If inheritance is used, then it might be possible that a variable will exist with the same name in more than one place, and thus appear in the  save file multiple times. When restoring, the variables are restored in the order they are found in the inheritance tree. A good practice is to have verbose and unique name on non-static variables, which also will make it more easy to read or patch the save file manually.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">    * @synopsis{</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">    * int restore_object(string name)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">    * int restore_object(string str)</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">    * @history{</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">    * changed (3.2.8) -- added restoring directly from a string.</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">    * changed (3.2.9) -- added restoring of non-lambda closures, symbols, and quoted arrays, using a new savefile format version 1.</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">    * changed (3.5.0) -- added the possibility to restore version 2 with its higher float precision.</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">    * }</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">    * </span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">    * @see efun::save_object(), efun::restore_value(), master::valid_read()</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">   **/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="classefun.html#afb378a5ffc2d2142a7bf9cae11a04203">restore_object</a>(string str);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
+<div class="ttc" id="classefun_html_afb378a5ffc2d2142a7bf9cae11a04203"><div class="ttname"><a href="classefun.html#afb378a5ffc2d2142a7bf9cae11a04203">efun.restore_object</a></div><div class="ttdeci">int restore_object(string str)</div><div class="ttdoc">Restore values of variables for current object from the file name, or directly from the string str...</div></div>
 <div class="ttc" id="classefun_html"><div class="ttname"><a href="classefun.html">efun</a></div><div class="ttdef"><b>Definition:</b> <a href="abs_8c_source.html#l00001">abs.c:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -157,7 +141,7 @@ $(document).ready(function(){initNavTree('restore__object_8c_source.html','');})
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3657252cd4359c796b48ecdfcf6b3c3d.html">efun</a></li><li class="navelem"><b>restore_object.c</b></li>
-    <li class="footer">Generated on Sat Jun 11 2016 14:24:09 for Tsunami by
+    <li class="footer">Generated on Thu Mar 9 2017 17:45:22 for LDMud by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

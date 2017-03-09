@@ -9,5 +9,4 @@ DESCRIPTION
 
 SEE ALSO
 ========
-   caller_stack()(E), previous_object()(E), call_other()(E), 
-   call_resolved()(E)
+   caller_stack(E), previous_object(E), call_other(E), call_resolved(E)

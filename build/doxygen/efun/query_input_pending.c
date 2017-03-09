@@ -1,8 +1,6 @@
 public class efun {
    /**
-    * If ob is interactive and currently has an input_to() pending,
-    * the object that has called the input_to() is returned,
-    * else 0.
+    * If ob is interactive and currently has an efun::input_to() pending, the object that has called the efun::input_to() is returned, else 0.
     * 
     * @synopsis{
     * object query_input_pending(object ob)
